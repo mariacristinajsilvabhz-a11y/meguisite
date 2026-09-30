@@ -1,0 +1,255 @@
+import os
+from urllib.parse import quote
+from flask import Flask, render_template, request, redirect, url_for, session, abort
+
+app = Flask(__name__)
+app.secret_key = os.environ.get("SECRET_KEY", "troque-esta-chave-no-render")
+
+WHATSAPP_NUMBER = os.environ.get("WHATSAPP_NUMBER", "")
+
+CATEGORIES = [
+    {"slug": "brindes", "name": "Brindes", "description": "Copos, squeezes, canecas, kits e presentes corporativos.", "icon": "✦"},
+    {"slug": "bolsas-acessorios", "name": "Bolsas & Acessórios", "description": "Mochilas, nécessaires, ecobags, sacolas e acessórios.", "icon": "◇"},
+    {"slug": "vestuario", "name": "Vestuário", "description": "Camisetas, moletons, uniformes, bonés, aventais e jalecos.", "icon": "M"},
+    {"slug": "corporativo", "name": "Corporativo", "description": "Soluções para eventos, equipes, campanhas e kits empresariais.", "icon": "▦"},
+    {"slug": "grafica", "name": "Meg Gráfica", "description": "Materiais gráficos e comunicação visual para sua marca.", "icon": "▤"},
+    {"slug": "destaques", "name": "Destaques", "description": "Seleção de produtos com alta procura e ótimo potencial de marca.", "icon": "★"},
+]
+
+PRODUCTS = [
+    {
+        "id": 1,
+        "slug": "camiseta-premium-algodao",
+        "name": "Camiseta Premium 100% Algodão",
+        "category": "vestuario",
+        "line": "Meg Roupas",
+        "sku": "MEG-ROUPAS-001",
+        "short": "Malha encorpada, toque macio e personalização sob medida.",
+        "description": "Camiseta pensada para uniformes, eventos, marcas e ações corporativas. Opções de personalização por silk, DTF ou bordado conforme o projeto.",
+        "tags": ["Algodão", "Uniformes", "Silk / DTF"],
+        "visual": "tshirt",
+    },
+    {
+        "id": 2,
+        "slug": "squeeze-corporativo",
+        "name": "Squeeze Corporativo",
+        "category": "brindes",
+        "line": "Meg Personalizados",
+        "sku": "MEG-BRINDES-001",
+        "short": "Brinde versátil para eventos, equipes e campanhas.",
+        "description": "Squeeze personalizável com a identidade da sua empresa. Quantidade mínima e técnica de aplicação variam conforme o modelo escolhido.",
+        "tags": ["Brindes", "Eventos", "Corporativo"],
+        "visual": "bottle",
+    },
+    {
+        "id": 3,
+        "slug": "mochila-corporativa",
+        "name": "Mochila Corporativa",
+        "category": "bolsas-acessorios",
+        "line": "Meg Personalizados",
+        "sku": "MEG-BOLSAS-001",
+        "short": "Mochila para kits, ações internas e presentes corporativos.",
+        "description": "Modelos com diferentes materiais, capacidades e formas de personalização. Ideal para onboarding, eventos e campanhas.",
+        "tags": ["Mochilas", "Kits", "B2B"],
+        "visual": "bag",
+    },
+    {
+        "id": 4,
+        "slug": "kit-boas-vindas",
+        "name": "Kit Boas-vindas",
+        "category": "corporativo",
+        "line": "Meg Personalizados",
+        "sku": "MEG-KIT-001",
+        "short": "Monte um kit completo com produtos personalizados.",
+        "description": "Combine vestuário, papelaria, copos, garrafas, bolsas e outros itens em uma entrega única e personalizada para sua empresa.",
+        "tags": ["Onboarding", "Kits", "Empresas"],
+        "visual": "kit",
+    },
+    {
+        "id": 5,
+        "slug": "wind-banner",
+        "name": "Wind Banner Personalizado",
+        "category": "grafica",
+        "line": "Meg Gráfica",
+        "sku": "MEG-GRAF-001",
+        "short": "Comunicação visual de alto impacto para ponto de venda e eventos.",
+        "description": "Wind banner personalizado para fachadas, eventos, ativações e pontos comerciais. Produção conforme arte, tamanho e quantidade.",
+        "tags": ["Comunicação visual", "Eventos", "PDV"],
+        "visual": "banner",
+    },
+    {
+        "id": 6,
+        "slug": "caneca-personalizada",
+        "name": "Caneca Personalizada",
+        "category": "destaques",
+        "line": "Meg Personalizados",
+        "sku": "MEG-BRINDES-002",
+        "short": "Uma opção clássica para ações promocionais e presentes.",
+        "description": "Canecas em diferentes materiais e formatos, personalizadas conforme sua identidade. Consulte disponibilidade e quantidade.",
+        "tags": ["Canecas", "Brindes", "Presentes"],
+        "visual": "mug",
+    },
+]
+
+def get_product(product_id):
+    return next((p for p in PRODUCTS if p["id"] == product_id), None)
+
+def get_category(slug):
+    return next((c for c in CATEGORIES if c["slug"] == slug), None)
+
+def cart():
+    return session.setdefault("quote_cart", {})
+
+def cart_count():
+    return sum(int(item.get("qty", 0)) for item in cart().values())
+
+@app.context_processor
+def inject_global():
+    return {
+        "categories": CATEGORIES,
+        "cart_count": cart_count(),
+        "whatsapp_configured": bool(WHATSAPP_NUMBER),
+    }
+
+@app.get("/")
+def home():
+    return render_template("index.html", products=PRODUCTS[:6])
+
+@app.get("/produtos")
+def products():
+    category_slug = request.args.get("categoria")
+    items = PRODUCTS
+    active_category = None
+    if category_slug:
+        active_category = get_category(category_slug)
+        if active_category:
+            items = [p for p in PRODUCTS if p["category"] == category_slug]
+    return render_template("products.html", products=items, active_category=active_category)
+
+@app.get("/categoria/<slug>")
+def category(slug):
+    category_obj = get_category(slug)
+    if not category_obj:
+        abort(404)
+    items = [p for p in PRODUCTS if p["category"] == slug]
+    return render_template("products.html", products=items, active_category=category_obj)
+
+@app.get("/produto/<slug>")
+def product(slug):
+    item = next((p for p in PRODUCTS if p["slug"] == slug), None)
+    if not item:
+        abort(404)
+    return render_template("product.html", product=item)
+
+@app.post("/orcamento/adicionar/<int:product_id>")
+def add_to_quote(product_id):
+    product = get_product(product_id)
+    if not product:
+        abort(404)
+
+    qty_raw = request.form.get("qty", "1")
+    try:
+        qty = max(1, min(int(qty_raw), 99999))
+    except ValueError:
+        qty = 1
+
+    notes = request.form.get("notes", "").strip()[:500]
+    key = str(product_id)
+    quote = cart()
+    quote[key] = {
+        "product_id": product_id,
+        "name": product["name"],
+        "sku": product["sku"],
+        "qty": qty,
+        "notes": notes,
+    }
+    session["quote_cart"] = quote
+    session.modified = True
+
+    next_url = request.form.get("next")
+    return redirect(next_url or url_for("quote"))
+
+@app.get("/orcamento")
+def quote_view():
+    items = list(cart().values())
+    return render_template("quote.html", items=items)
+
+@app.post("/orcamento/atualizar/<int:product_id>")
+def update_quote(product_id):
+    quote = cart()
+    key = str(product_id)
+    if key in quote:
+        try:
+            qty = max(1, min(int(request.form.get("qty", 1)), 99999))
+        except ValueError:
+            qty = 1
+        quote[key]["qty"] = qty
+        quote[key]["notes"] = request.form.get("notes", "").strip()[:500]
+        session["quote_cart"] = quote
+        session.modified = True
+    return redirect(url_for("quote_view"))
+
+@app.post("/orcamento/remover/<int:product_id>")
+def remove_from_quote(product_id):
+    quote = cart()
+    quote.pop(str(product_id), None)
+    session["quote_cart"] = quote
+    session.modified = True
+    return redirect(url_for("quote_view"))
+
+@app.post("/orcamento/limpar")
+def clear_quote():
+    session["quote_cart"] = {}
+    session.modified = True
+    return redirect(url_for("quote_view"))
+
+@app.post("/orcamento/whatsapp")
+def send_whatsapp():
+    if not WHATSAPP_NUMBER:
+        return render_template(
+            "quote.html",
+            items=list(cart().values()),
+            config_error="Configure a variável WHATSAPP_NUMBER no Render para ativar o envio.",
+        )
+
+    name = request.form.get("name", "").strip()
+    company = request.form.get("company", "").strip()
+    deadline = request.form.get("deadline", "").strip()
+    general_notes = request.form.get("general_notes", "").strip()
+
+    lines = ["Olá! Quero solicitar um orçamento na Megui.", ""]
+    if name:
+        lines.append(f"Nome: {name}")
+    if company:
+        lines.append(f"Empresa: {company}")
+    if deadline:
+        lines.append(f"Prazo desejado: {deadline}")
+    if name or company or deadline:
+        lines.append("")
+
+    lines.append("Itens:")
+    for item in cart().values():
+        line = f"• {item['qty']}x {item['name']} — SKU {item['sku']}"
+        lines.append(line)
+        if item.get("notes"):
+            lines.append(f"  Observação: {item['notes']}")
+
+    if general_notes:
+        lines.extend(["", f"Observações gerais: {general_notes}"])
+
+    lines.extend(["", "Pode me ajudar com valores, personalização e prazo?"])
+
+    message = "\n".join(lines)
+    whatsapp_url = f"https://wa.me/{WHATSAPP_NUMBER}?text={quote(message)}"
+    return redirect(whatsapp_url)
+
+@app.get("/sobre")
+def about():
+    return render_template("about.html")
+
+@app.get("/contato")
+def contact():
+    return render_template("contact.html")
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)), debug=True)
