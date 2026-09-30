@@ -64,16 +64,16 @@
         <a href="{{ url_for('about') }}">Sobre nós</a>
       </div>
       <div>
-        <h3>Linhas</h3>
-        <span>Meg Personalizados</span>
-        <span>Meg Roupas</span>
-        <span>Meg Gráfica</span>
+        <h3>Contato</h3>
+        <a href="https://wa.me/{{ whatsapp_number }}" target="_blank" rel="noopener">(31) 99488-8250</a>
+        <a href="mailto:{{ contact_email }}">{{ contact_email }}</a>
+        <span>{{ contact_address }}</span>
         <a href="{{ url_for('quote_view') }}">Meu orçamento</a>
       </div>
     </div>
     <div class="container footer-bottom">
-      <span>© 2026 Megui Personalizados.</span>
-      <span>Feito para vender sob orçamento.</span>
+      <span>© 2026 Megui Personalizados • CNPJ {{ company_cnpj }}</span>
+      <span>Produção • personalização • B2B</span>
     </div>
   </footer>
 
