@@ -49,6 +49,15 @@
   </div>
 </section>
 
+<section class="section campaign-section">
+  <div class="container">
+    <a class="campaign-banner" href="{{ url_for('category', slug='vestuario') }}">
+      <img src="{{ url_for('static', filename='img/hero-camisetas.webp') }}" alt="Camisetas personalizadas Megui">
+      <span class="campaign-hover">Ver camisetas e uniformes →</span>
+    </a>
+  </div>
+</section>
+
 <section class="section">
   <div class="container">
     <div class="section-heading split-heading">
@@ -124,6 +133,36 @@
       {% for product in products %}
         {% include "_product_card.html" %}
       {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section-soft">
+  <div class="container">
+    <div class="section-heading split-heading">
+      <div>
+        <span class="eyebrow">SOLUÇÕES POR PROJETO</span>
+        <h2>Não é só produto. É aplicação.</h2>
+      </div>
+      <p>As referências que você nos enviou mostram bem onde a Megui pode atuar: uniformização, igrejas, eventos, ponto de venda, comunicação visual e kits completos.</p>
+    </div>
+
+    <div class="solution-grid">
+      <a class="solution-card dark" href="{{ url_for('b2b') }}">
+        <span>EMPRESAS</span>
+        <h3>Uniformes, onboarding, campanhas e ações internas.</h3>
+        <p>Combine roupas, brindes e gráfica no mesmo orçamento.</p>
+      </a>
+      <a class="solution-card purple" href="{{ url_for('category', slug='vestuario') }}">
+        <span>IGREJAS & EVENTOS</span>
+        <h3>Camisetas para congressos, retiros, ministérios e equipes.</h3>
+        <p>Produção por grade de tamanhos e personalização por projeto.</p>
+      </a>
+      <a class="solution-card light" href="{{ url_for('category', slug='grafica') }}">
+        <span>PDV & VISIBILIDADE</span>
+        <h3>Wind banners e comunicação para fazer a marca aparecer.</h3>
+        <p>Soluções para lojas, ativações, eventos e pontos comerciais.</p>
+      </a>
     </div>
   </div>
 </section>
