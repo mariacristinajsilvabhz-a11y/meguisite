@@ -318,3 +318,39 @@ input:focus,textarea:focus{border-color:var(--purple);box-shadow:0 0 0 3px rgba(
   .footer-grid{grid-template-columns:1fr}
   .footer-bottom{flex-direction:column;gap:8px}
 }
+
+/* B2B comercial */
+.b2b-proof-section{padding-bottom:68px}
+.b2b-brand-wall{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.b2b-brand{min-height:118px;border:1px solid var(--line);border-radius:20px;background:#fff;display:grid;place-items:center;text-align:center;padding:18px;font-family:"Manrope";font-size:20px;font-weight:800;color:#332b36;box-shadow:0 12px 30px rgba(42,28,49,.04)}
+.fabric-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.fabric-card{border:1px solid var(--line);border-radius:24px;background:#fff;padding:30px;min-height:315px;display:flex;flex-direction:column}
+.fabric-card.fabric-featured{background:linear-gradient(145deg,#171219,#3b2d42);color:#fff;border-color:#33283a}
+.fabric-tag{font-size:9px;font-weight:800;letter-spacing:.17em;color:var(--purple-dark);margin-bottom:54px}
+.fabric-featured .fabric-tag{color:var(--lavender)}
+.fabric-card h3{font-family:"Manrope";font-size:26px;line-height:1.04;margin:0 0 12px}
+.fabric-card strong{font-size:13px;color:var(--purple-dark)}
+.fabric-featured strong{color:var(--lavender)}
+.fabric-card p{color:var(--muted);line-height:1.65;margin:18px 0 0}
+.fabric-featured p{color:#cfc6d2}
+.reasons-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.reason-card{border:1px solid var(--line);border-radius:20px;padding:26px;background:#fff;min-height:235px}
+.reason-card>span{font-size:10px;font-weight:800;letter-spacing:.15em;color:var(--purple)}
+.reason-card h3{font-family:"Manrope";font-size:22px;margin:42px 0 8px}
+.reason-card p{color:var(--muted);font-size:14px;line-height:1.6;margin:0}
+.b2b-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.b2b-flow>div{position:relative;border:1px solid var(--line);border-radius:18px;background:#fff;padding:24px;min-height:210px}
+.b2b-flow span{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--soft-2);color:var(--purple-dark);font-weight:800;font-size:12px;margin-bottom:42px}
+.b2b-flow strong{display:block;font-family:"Manrope";font-size:18px;margin-bottom:8px}
+.b2b-flow p{color:var(--muted);font-size:13px;line-height:1.55;margin:0}
+
+@media (max-width:1000px){
+  .b2b-brand-wall,.fabric-grid,.reasons-grid,.b2b-flow{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:680px){
+  .b2b-brand-wall,.fabric-grid,.reasons-grid,.b2b-flow{grid-template-columns:1fr}
+  .fabric-card{min-height:auto}
+  .fabric-tag{margin-bottom:34px}
+  .b2b-flow>div{min-height:auto}
+  .b2b-flow span{margin-bottom:28px}
+}
