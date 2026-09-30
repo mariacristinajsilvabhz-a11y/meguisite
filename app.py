@@ -1,11 +1,24 @@
 import os
+import re
 from urllib.parse import quote
 from flask import Flask, render_template, request, redirect, url_for, session, abort
 
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY", "troque-esta-chave-no-render")
 
-WHATSAPP_NUMBER = os.environ.get("WHATSAPP_NUMBER", "")
+PRIMARY_WHATSAPP = "5531994888250"
+ADMIN_PHONE = "5531993181939"
+CONTACT_EMAIL = "contatomegui@gmail.com"
+CONTACT_ADDRESS = "Rua Seis, nº 31 — Água Branca, Contagem - MG"
+COMPANY_CNPJ = "45.833.844/0001-51"
+
+_raw_whatsapp = os.environ.get("WHATSAPP_NUMBER", PRIMARY_WHATSAPP)
+WHATSAPP_NUMBER = re.sub(r"\\D", "", _raw_whatsapp)
+
+# Número antigo não pertence mais à Megui. Mesmo que ainda esteja salvo no Render,
+# o site substitui pelo atendimento atual.
+if WHATSAPP_NUMBER in {"31984912083", "5531984912083"}:
+    WHATSAPP_NUMBER = PRIMARY_WHATSAPP
 
 CATEGORIES = [
     {"slug": "brindes", "name": "Brindes", "description": "Copos, squeezes, canecas, kits e presentes corporativos.", "icon": "✦"},
@@ -128,6 +141,11 @@ def inject_global():
         "trusted_brands": TRUSTED_BRANDS,
         "reviews": REVIEWS,
         "whatsapp_configured": bool(WHATSAPP_NUMBER),
+        "whatsapp_number": WHATSAPP_NUMBER,
+        "admin_phone": ADMIN_PHONE,
+        "contact_email": CONTACT_EMAIL,
+        "contact_address": CONTACT_ADDRESS,
+        "company_cnpj": COMPANY_CNPJ,
     }
 
 
