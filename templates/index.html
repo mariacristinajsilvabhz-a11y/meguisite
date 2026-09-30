@@ -1,31 +1,40 @@
 {% extends "base.html" %}
 {% block title %}Megui Personalizados — sua marca em tudo{% endblock %}
 {% block content %}
-<section class="hero">
+<section class="hero hero-premium">
   <div class="container hero-grid">
     <div class="hero-copy">
-      <span class="eyebrow">FÁBRICA + PERSONALIZAÇÃO + CRIAÇÃO</span>
-      <h1>Sua marca <span>ganha forma.</span></h1>
-      <p>Brindes, roupas, gráfica e soluções corporativas em um só lugar. Você escolhe, monta seu orçamento e fala com a gente.</p>
+      <span class="eyebrow">FÁBRICA • PERSONALIZAÇÃO • B2B</span>
+      <h1>Sua marca em produtos que <span>chamam atenção.</span></h1>
+      <p>Brindes, roupas, gráfica e projetos corporativos em um único lugar. Escolha os itens, monte seu orçamento e fale com a Megui sem complicação.</p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="{{ url_for('products') }}">Explorar produtos</a>
-        <a class="btn btn-secondary" href="{{ url_for('quote_view') }}">Montar orçamento</a>
+        <a class="btn btn-primary" href="{{ url_for('products') }}">Explorar catálogo</a>
+        <a class="btn btn-secondary" href="{{ url_for('b2b') }}">Atendimento para empresas</a>
       </div>
       <div class="hero-proof">
-        <div><strong>3</strong><span>linhas integradas</span></div>
-        <div><strong>B2B</strong><span>atendimento consultivo</span></div>
-        <div><strong>∞</strong><span>possibilidades</span></div>
+        <div><strong>3</strong><span>frentes integradas</span></div>
+        <div><strong>B2B</strong><span>cotações e licitações</span></div>
+        <div><strong>1</strong><span>orçamento com vários itens</span></div>
       </div>
     </div>
 
-    <div class="hero-art" aria-label="Composição visual de produtos personalizados">
-      <div class="hero-panel hero-panel-main">
-        <div class="micro-label">MEG PERSONALIZADOS</div>
-        <div class="hero-object bottle-shape"><span>M</span></div>
-        <div class="hero-object shirt-shape"><span>MEGUI</span></div>
-        <div class="hero-object card-shape">SUA MARCA<br>AQUI</div>
-      </div>
-      <div class="hero-tag">produzido para destacar</div>
+    <div class="hero-showcase" aria-label="Vitrine de produtos Megui">
+      <a class="showcase-card showcase-main" href="{{ url_for('category', slug='vestuario') }}">
+        <span class="showcase-kicker">MEG ROUPAS</span>
+        <strong>Uniformes e camisetas</strong>
+        <span>Produção própria + personalização</span>
+        <div class="showcase-art art-shirt">M</div>
+      </a>
+      <a class="showcase-card" href="{{ url_for('category', slug='brindes') }}">
+        <span class="showcase-kicker">PERSONALIZADOS</span>
+        <strong>Brindes corporativos</strong>
+        <div class="showcase-art art-bottle">M</div>
+      </a>
+      <a class="showcase-card" href="{{ url_for('category', slug='grafica') }}">
+        <span class="showcase-kicker">MEG GRÁFICA</span>
+        <strong>Comunicação visual</strong>
+        <div class="showcase-art art-banner">MEGUI</div>
+      </a>
     </div>
   </div>
 </section>
@@ -33,9 +42,9 @@
 <section class="trust-row">
   <div class="container trust-track">
     <span>Produção própria</span>
-    <span>Atendimento humano</span>
-    <span>Projetos corporativos</span>
     <span>Personalização sob medida</span>
+    <span>Atendimento corporativo</span>
+    <span>Orçamento centralizado</span>
     <span>Envio para todo Brasil</span>
   </div>
 </section>
@@ -44,18 +53,18 @@
   <div class="container">
     <div class="section-heading split-heading">
       <div>
-        <span class="eyebrow">ESCOLHA POR UNIVERSO</span>
-        <h2>Tudo que sua marca precisa.</h2>
+        <span class="eyebrow">TRÊS FRENTES. UMA MEGUI.</span>
+        <h2>Do uniforme ao brinde. Do brinde à campanha.</h2>
       </div>
-      <p>Um catálogo amplo sem virar bagunça: as três frentes da Megui organizadas para você encontrar rápido o que procura.</p>
+      <p>O site organiza o catálogo por universo para você encontrar rápido o que precisa e juntar tudo no mesmo pedido de orçamento.</p>
     </div>
 
     <div class="business-lines">
-      <a class="line-card line-personalizados" href="{{ url_for('products') }}">
+      <a class="line-card line-personalizados" href="{{ url_for('category', slug='brindes') }}">
         <span class="line-number">01</span>
         <div>
           <h3>Meg Personalizados</h3>
-          <p>Brindes, bolsas, acessórios, kits e soluções corporativas.</p>
+          <p>Brindes, bolsas, acessórios, kits, copos e soluções corporativas.</p>
         </div>
         <span class="arrow">↗</span>
       </a>
@@ -63,7 +72,7 @@
         <span class="line-number">02</span>
         <div>
           <h3>Meg Roupas</h3>
-          <p>Camisetas, uniformes, moletons e vestuário personalizado.</p>
+          <p>Camisetas, uniformes, moletons, jalecos, aventais e produção em malha.</p>
         </div>
         <span class="arrow">↗</span>
       </a>
@@ -71,7 +80,7 @@
         <span class="line-number">03</span>
         <div>
           <h3>Meg Gráfica</h3>
-          <p>Comunicação visual e materiais gráficos para sua empresa.</p>
+          <p>Materiais gráficos e comunicação visual para ponto de venda e eventos.</p>
         </div>
         <span class="arrow">↗</span>
       </a>
@@ -81,9 +90,12 @@
 
 <section class="section section-soft">
   <div class="container">
-    <div class="section-heading">
-      <span class="eyebrow">CATEGORIAS</span>
-      <h2>Encontre sem perder tempo.</h2>
+    <div class="section-heading split-heading">
+      <div>
+        <span class="eyebrow">CATÁLOGO</span>
+        <h2>Encontre sem perder tempo.</h2>
+      </div>
+      <a class="text-link" href="{{ url_for('products') }}">Ver todos os produtos →</a>
     </div>
     <div class="category-grid">
       {% for category in categories %}
@@ -91,7 +103,7 @@
         <span class="category-icon">{{ category.icon }}</span>
         <h3>{{ category.name }}</h3>
         <p>{{ category.description }}</p>
-        <span class="category-link">Ver produtos →</span>
+        <span class="category-link">Explorar →</span>
       </a>
       {% endfor %}
     </div>
@@ -103,9 +115,9 @@
     <div class="section-heading split-heading">
       <div>
         <span class="eyebrow">DESTAQUES</span>
-        <h2>Pra começar por aqui.</h2>
+        <h2>Produtos para começar o projeto.</h2>
       </div>
-      <a class="text-link" href="{{ url_for('products') }}">Ver catálogo completo →</a>
+      <p>Sem preço engessado: quantidade, técnica de personalização e prazo entram no orçamento.</p>
     </div>
 
     <div class="product-grid">
@@ -116,14 +128,86 @@
   </div>
 </section>
 
+<section class="section b2b-home">
+  <div class="container b2b-feature">
+    <div>
+      <span class="eyebrow eyebrow-light">EMPRESAS & LICITAÇÕES</span>
+      <h2>Volume, variedade e atendimento organizado para compras B2B.</h2>
+      <p>Uma área dedicada para empresas, órgãos, eventos, uniformização de equipes, ações promocionais e demandas com vários itens.</p>
+      <a class="btn btn-light" href="{{ url_for('b2b') }}">Conhecer atendimento B2B</a>
+    </div>
+    <div class="b2b-points">
+      <span>01 <strong>Cotação multi-item</strong></span>
+      <span>02 <strong>Projetos por quantidade</strong></span>
+      <span>03 <strong>Personalização sob demanda</strong></span>
+      <span>04 <strong>Atendimento comercial dedicado</strong></span>
+    </div>
+  </div>
+</section>
+
+<section class="section section-soft">
+  <div class="container">
+    <div class="section-heading centered-heading">
+      <span class="eyebrow">QUEM JÁ CONFIOU NA MEGUI</span>
+      <h2>Marcas e projetos que fazem parte da nossa história.</h2>
+    </div>
+    <div class="brand-wall">
+      {% for brand in trusted_brands %}
+        <div class="brand-chip">{{ brand }}</div>
+      {% endfor %}
+    </div>
+    <p class="asset-note">As logos oficiais entram aqui assim que os arquivos forem adicionados ao projeto.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container split-content">
+    <div>
+      <span class="eyebrow">AVALIAÇÕES</span>
+      <h2 class="display-small">Confiança se constrói na entrega.</h2>
+      <p class="muted-copy">Esta área está pronta para avaliações reais de clientes. Não vamos inventar depoimentos: entram apenas relatos autorizados e verificáveis.</p>
+    </div>
+    <div class="review-shell">
+      {% if reviews %}
+        {% for review in reviews %}
+          <article class="review-card">
+            <div class="stars">★★★★★</div>
+            <p>“{{ review.text }}”</p>
+            <strong>{{ review.name }}</strong>
+            <span>{{ review.company }}</span>
+          </article>
+        {% endfor %}
+      {% else %}
+        <div class="review-placeholder">
+          <span>★★★★★</span>
+          <strong>Avaliações reais em breve</strong>
+          <p>O componente já está pronto para receber os depoimentos dos clientes da Megui.</p>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container video-teaser">
+    <div class="video-teaser-art"><span>▶</span></div>
+    <div>
+      <span class="eyebrow">BASTIDORES</span>
+      <h2>Veja como a Megui produz, personaliza e entrega.</h2>
+      <p>Uma área própria para vídeos de produção, materiais, aplicações, cases e bastidores da fábrica.</p>
+      <a class="btn btn-secondary" href="{{ url_for('videos') }}">Ver vídeos</a>
+    </div>
+  </div>
+</section>
+
 <section class="section">
   <div class="container quote-banner">
     <div>
-      <span class="eyebrow eyebrow-light">SEM PREÇO ENGESSADO</span>
-      <h2>Seu projeto é único.<br>O orçamento também.</h2>
+      <span class="eyebrow eyebrow-light">MONTE SUA SELEÇÃO</span>
+      <h2>Escolha vários itens.<br>Peça tudo de uma vez.</h2>
     </div>
     <div>
-      <p>Adicione vários produtos ao seu orçamento, informe quantidade e detalhes e envie tudo de uma vez para nosso atendimento.</p>
+      <p>Adicione os produtos ao carrinho de orçamento, informe quantidade e personalização e envie a lista completa para o atendimento.</p>
       <a class="btn btn-light" href="{{ url_for('products') }}">Começar meu orçamento</a>
     </div>
   </div>
