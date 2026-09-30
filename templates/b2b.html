@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %}Empresas & Licitações — Megui{% endblock %}
+{% block content %}
+<section class="page-hero b2b-hero">
+  <div class="container">
+    <span class="eyebrow">B2B • COMPRAS CORPORATIVAS • LICITAÇÕES</span>
+    <h1>Uma frente preparada para demandas maiores.</h1>
+    <p>Atendimento para empresas, órgãos, eventos, equipes e projetos que precisam combinar quantidade, variedade, personalização e prazo.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="{{ url_for('products') }}">Montar cotação</a>
+      <a class="btn btn-secondary" href="{{ url_for('contact') }}">Falar com comercial</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container b2b-grid">
+    <div class="b2b-card">
+      <span>01</span>
+      <h2>Cotação multi-item</h2>
+      <p>Selecione diferentes produtos e envie tudo no mesmo pedido de orçamento.</p>
+    </div>
+    <div class="b2b-card">
+      <span>02</span>
+      <h2>Projetos por volume</h2>
+      <p>Quantidade, técnica, acabamento e prazo são considerados conforme cada demanda.</p>
+    </div>
+    <div class="b2b-card">
+      <span>03</span>
+      <h2>Produção e personalização</h2>
+      <p>Roupas próprias, brindes, gráfica e itens complementares em uma operação organizada.</p>
+    </div>
+    <div class="b2b-card">
+      <span>04</span>
+      <h2>Documentação sob demanda</h2>
+      <p>A equipe comercial pode alinhar as exigências documentais específicas de cada processo de compra.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section section-soft">
+  <div class="container">
+    <div class="section-heading centered-heading">
+      <span class="eyebrow">PARA QUEM É</span>
+      <h2>Compras corporativas sem catálogo engessado.</h2>
+    </div>
+    <div class="b2b-audiences">
+      <span>Empresas privadas</span>
+      <span>Órgãos e instituições</span>
+      <span>Eventos e campanhas</span>
+      <span>RH e endomarketing</span>
+      <span>Uniformização de equipes</span>
+      <span>Revendas e projetos especiais</span>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container quote-banner">
+    <div>
+      <span class="eyebrow eyebrow-light">COMECE PELO CATÁLOGO</span>
+      <h2>Monte sua lista.<br>A Megui cuida da cotação.</h2>
+    </div>
+    <div>
+      <p>Adicione os itens, informe quantidades e observações e envie tudo para o atendimento comercial em uma única solicitação.</p>
+      <a class="btn btn-light" href="{{ url_for('products') }}">Selecionar produtos</a>
+    </div>
+  </div>
+</section>
+{% endblock %}
