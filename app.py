@@ -323,4 +323,5 @@ def contact():
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)), debug=True)
 
-# deploy-sync: force Render to deploy the complete site revision
+
+# deploy-sync: versão visual e comercial completa 2026-09-30
