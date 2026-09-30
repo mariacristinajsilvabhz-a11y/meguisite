@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#171219">
-  <meta name="description" content="Megui Personalizados — brindes, roupas, gráfica e soluções corporativas personalizadas.">
+  <meta name="description" content="Megui Personalizados — brindes, roupas, gráfica e soluções corporativas sob medida.">
   <title>{% block title %}Megui Personalizados{% endblock %}</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-  <div class="top-strip">Produção personalizada • Atendimento para empresas e projetos sob medida</div>
+  <div class="top-strip">Produção personalizada • Atendimento B2B • Projetos sob medida</div>
 
   <header class="site-header">
     <div class="container header-inner">
@@ -35,12 +35,14 @@
             {% endfor %}
           </div>
         </div>
-        <a href="{{ url_for('about') }}">Sobre nós</a>
+        <a href="{{ url_for('b2b') }}">Empresas & Licitações</a>
+        <a href="{{ url_for('videos') }}">Vídeos</a>
+        <a href="{{ url_for('about') }}">Sobre</a>
         <a href="{{ url_for('contact') }}">Contato</a>
       </nav>
 
       <a class="quote-button" href="{{ url_for('quote_view') }}">
-        Meu orçamento
+        Orçamento
         <span class="quote-count">{{ cart_count }}</span>
       </a>
     </div>
@@ -52,25 +54,26 @@
     <div class="container footer-grid">
       <div>
         <img class="footer-logo" src="{{ url_for('static', filename='img/logo-placeholder-light.svg') }}" alt="Megui Personalizados">
-        <p>Soluções personalizadas para marcas, empresas, eventos e projetos que precisam aparecer.</p>
+        <p>Brindes, vestuário, gráfica e soluções corporativas para transformar sua marca em algo que as pessoas veem, usam e lembram.</p>
       </div>
       <div>
         <h3>Explore</h3>
         <a href="{{ url_for('products') }}">Produtos</a>
+        <a href="{{ url_for('b2b') }}">Empresas & Licitações</a>
+        <a href="{{ url_for('videos') }}">Vídeos</a>
         <a href="{{ url_for('about') }}">Sobre nós</a>
-        <a href="{{ url_for('contact') }}">Contato</a>
-        <a href="{{ url_for('quote_view') }}">Meu orçamento</a>
       </div>
       <div>
         <h3>Linhas</h3>
         <span>Meg Personalizados</span>
         <span>Meg Roupas</span>
         <span>Meg Gráfica</span>
+        <a href="{{ url_for('quote_view') }}">Meu orçamento</a>
       </div>
     </div>
     <div class="container footer-bottom">
       <span>© 2026 Megui Personalizados.</span>
-      <span>Site próprio • versão 0.1</span>
+      <span>Feito para vender sob orçamento.</span>
     </div>
   </footer>
 
