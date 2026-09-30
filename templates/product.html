@@ -4,16 +4,20 @@
 <section class="product-page">
   <div class="container product-page-grid">
     <div class="product-gallery visual-{{ product.visual }}">
-      <span class="visual-label">{{ product.line }}</span>
-      <div class="product-hero-object">
-        {% if product.visual == "tshirt" %}<span class="shape-shirt large">M</span>{% endif %}
-        {% if product.visual == "bottle" %}<span class="shape-bottle large">M</span>{% endif %}
-        {% if product.visual == "bag" %}<span class="shape-bag large">MEG</span>{% endif %}
-        {% if product.visual == "kit" %}<span class="shape-kit large">KIT</span>{% endif %}
-        {% if product.visual == "banner" %}<span class="shape-banner large">MEGUI</span>{% endif %}
-        {% if product.visual == "mug" %}<span class="shape-mug large">M</span>{% endif %}
-      </div>
-      <div class="photo-note">Área preparada para fotos reais do produto</div>
+      {% if product.image %}
+        <img class="real-product-photo" src="{{ url_for('static', filename=product.image) }}" alt="{{ product.name }}">
+      {% else %}
+        <span class="visual-label">{{ product.line }}</span>
+        <div class="product-hero-object">
+          {% if product.visual == "tshirt" %}<span class="shape-shirt large">M</span>{% endif %}
+          {% if product.visual == "bottle" %}<span class="shape-bottle large">M</span>{% endif %}
+          {% if product.visual == "bag" %}<span class="shape-bag large">MEG</span>{% endif %}
+          {% if product.visual == "kit" %}<span class="shape-kit large">KIT</span>{% endif %}
+          {% if product.visual == "banner" %}<span class="shape-banner large">MEGUI</span>{% endif %}
+          {% if product.visual == "mug" %}<span class="shape-mug large">M</span>{% endif %}
+        </div>
+        <div class="photo-note">Estrutura pronta para receber a foto real deste produto</div>
+      {% endif %}
     </div>
 
     <div class="product-info">
@@ -21,9 +25,20 @@
       <h1>{{ product.name }}</h1>
       <div class="sku">{{ product.sku }}</div>
       <p class="lead">{{ product.description }}</p>
+
       <div class="tag-row">
         {% for tag in product.tags %}<span>{{ tag }}</span>{% endfor %}
       </div>
+
+      {% if product.id in cart_ids %}
+      <div class="already-added">
+        <span class="added-check">✓</span>
+        <div>
+          <strong>Este produto já está no seu orçamento.</strong>
+          <a href="{{ url_for('quote_view') }}">Ver ou editar no carrinho →</a>
+        </div>
+      </div>
+      {% endif %}
 
       <div class="quote-box">
         <div class="quote-box-header">
@@ -31,10 +46,11 @@
             <span class="micro-label">VALOR</span>
             <strong>Sob orçamento</strong>
           </div>
-          <span>Preço varia conforme quantidade, personalização e prazo.</span>
+          <span>O valor depende de quantidade, personalização, acabamento e prazo.</span>
         </div>
 
         <form action="{{ url_for('add_to_quote', product_id=product.id) }}" method="post">
+          <input type="hidden" name="next" value="{{ request.path }}">
           <label>
             Quantidade desejada
             <input type="number" name="qty" min="1" value="50" required>
@@ -43,14 +59,16 @@
             Detalhes da personalização
             <textarea name="notes" rows="4" placeholder="Ex.: logo na frente, cor preta, tamanhos P ao GG..."></textarea>
           </label>
-          <button class="btn btn-primary btn-full" type="submit">Adicionar ao meu orçamento</button>
+          <button class="btn btn-primary btn-full" type="submit">
+            {% if product.id in cart_ids %}Atualizar no orçamento{% else %}Adicionar ao meu orçamento{% endif %}
+          </button>
         </form>
       </div>
 
       <div class="product-benefits">
         <span>✓ Atendimento consultivo</span>
         <span>✓ Personalização sob medida</span>
-        <span>✓ Orçamento sem compromisso</span>
+        <span>✓ Sem pagamento online</span>
       </div>
     </div>
   </div>
