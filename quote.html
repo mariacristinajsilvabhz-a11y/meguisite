@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block title %}Meu orçamento — Megui{% endblock %}
+{% block content %}
+<section class="page-hero compact">
+  <div class="container">
+    <span class="eyebrow">QUOTE CART</span>
+    <h1>Meu orçamento</h1>
+    <p>Monte sua lista e envie tudo de uma vez para a Megui.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container quote-layout">
+    <div class="quote-items">
+      {% if items %}
+        {% for item in items %}
+        <article class="quote-item">
+          <div class="quote-item-top">
+            <div>
+              <span class="product-meta">{{ item.sku }}</span>
+              <h2>{{ item.name }}</h2>
+            </div>
+            <form action="{{ url_for('remove_from_quote', product_id=item.product_id) }}" method="post">
+              <button class="remove-link" type="submit">Remover</button>
+            </form>
+          </div>
+
+          <form class="quote-item-form" action="{{ url_for('update_quote', product_id=item.product_id) }}" method="post">
+            <label>
+              Quantidade
+              <input type="number" name="qty" min="1" value="{{ item.qty }}">
+            </label>
+            <label class="grow">
+              Observação
+              <input type="text" name="notes" value="{{ item.notes }}" placeholder="Cor, aplicação, tamanhos...">
+            </label>
+            <button class="btn btn-secondary small" type="submit">Atualizar</button>
+          </form>
+        </article>
+        {% endfor %}
+
+        <form action="{{ url_for('clear_quote') }}" method="post">
+          <button class="text-link danger" type="submit">Limpar orçamento</button>
+        </form>
+      {% else %}
+        <div class="empty-cart">
+          <span>◇</span>
+          <h2>Seu orçamento ainda está vazio.</h2>
+          <p>Explore o catálogo e adicione quantos produtos quiser.</p>
+          <a class="btn btn-primary" href="{{ url_for('products') }}">Explorar produtos</a>
+        </div>
+      {% endif %}
+    </div>
+
+    {% if items %}
+    <aside class="send-quote-card">
+      <span class="eyebrow">ENVIAR SOLICITAÇÃO</span>
+      <h2>Quase lá.</h2>
+      <p>Esses dados vão junto com a lista para facilitar seu atendimento.</p>
+
+      {% if config_error %}
+        <div class="config-warning">{{ config_error }}</div>
+      {% endif %}
+
+      <form action="{{ url_for('send_whatsapp') }}" method="post">
+        <label>Seu nome<input name="name" required placeholder="Nome"></label>
+        <label>Empresa<input name="company" placeholder="Nome da empresa"></label>
+        <label>Prazo desejado<input name="deadline" placeholder="Ex.: até 20/10"></label>
+        <label>Observações gerais<textarea name="general_notes" rows="4" placeholder="Conte um pouco sobre o projeto..."></textarea></label>
+        <button class="btn btn-primary btn-full" type="submit">Enviar pelo WhatsApp</button>
+      </form>
+      <small>Sem pagamento online. A Megui confirma valores, personalização e prazo no atendimento.</small>
+    </aside>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

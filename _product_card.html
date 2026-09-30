@@ -1,0 +1,26 @@
+<article class="product-card">
+  <a class="product-visual visual-{{ product.visual }}" href="{{ url_for('product', slug=product.slug) }}" aria-label="{{ product.name }}">
+    <span class="visual-label">{{ product.line }}</span>
+    <div class="abstract-product">
+      {% if product.visual == "tshirt" %}<span class="shape-shirt">M</span>{% endif %}
+      {% if product.visual == "bottle" %}<span class="shape-bottle">M</span>{% endif %}
+      {% if product.visual == "bag" %}<span class="shape-bag">MEG</span>{% endif %}
+      {% if product.visual == "kit" %}<span class="shape-kit">KIT</span>{% endif %}
+      {% if product.visual == "banner" %}<span class="shape-banner">MEGUI</span>{% endif %}
+      {% if product.visual == "mug" %}<span class="shape-mug">M</span>{% endif %}
+    </div>
+  </a>
+  <div class="product-body">
+    <div class="product-meta">{{ product.sku }}</div>
+    <h3><a href="{{ url_for('product', slug=product.slug) }}">{{ product.name }}</a></h3>
+    <p>{{ product.short }}</p>
+    <div class="product-actions">
+      <a class="product-details" href="{{ url_for('product', slug=product.slug) }}">Ver detalhes</a>
+      <form action="{{ url_for('add_to_quote', product_id=product.id) }}" method="post">
+        <input type="hidden" name="qty" value="1">
+        <input type="hidden" name="next" value="{{ request.path }}">
+        <button class="mini-quote" type="submit">+ Orçamento</button>
+      </form>
+    </div>
+  </div>
+</article>

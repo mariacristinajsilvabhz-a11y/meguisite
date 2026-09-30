@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+{% block title %}Megui Personalizados — sua marca em tudo{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">FÁBRICA + PERSONALIZAÇÃO + CRIAÇÃO</span>
+      <h1>Sua marca <span>ganha forma.</span></h1>
+      <p>Brindes, roupas, gráfica e soluções corporativas em um só lugar. Você escolhe, monta seu orçamento e fala com a gente.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="{{ url_for('products') }}">Explorar produtos</a>
+        <a class="btn btn-secondary" href="{{ url_for('quote_view') }}">Montar orçamento</a>
+      </div>
+      <div class="hero-proof">
+        <div><strong>3</strong><span>linhas integradas</span></div>
+        <div><strong>B2B</strong><span>atendimento consultivo</span></div>
+        <div><strong>∞</strong><span>possibilidades</span></div>
+      </div>
+    </div>
+
+    <div class="hero-art" aria-label="Composição visual de produtos personalizados">
+      <div class="hero-panel hero-panel-main">
+        <div class="micro-label">MEG PERSONALIZADOS</div>
+        <div class="hero-object bottle-shape"><span>M</span></div>
+        <div class="hero-object shirt-shape"><span>MEGUI</span></div>
+        <div class="hero-object card-shape">SUA MARCA<br>AQUI</div>
+      </div>
+      <div class="hero-tag">produzido para destacar</div>
+    </div>
+  </div>
+</section>
+
+<section class="trust-row">
+  <div class="container trust-track">
+    <span>Produção própria</span>
+    <span>Atendimento humano</span>
+    <span>Projetos corporativos</span>
+    <span>Personalização sob medida</span>
+    <span>Envio para todo Brasil</span>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-heading split-heading">
+      <div>
+        <span class="eyebrow">ESCOLHA POR UNIVERSO</span>
+        <h2>Tudo que sua marca precisa.</h2>
+      </div>
+      <p>Um catálogo amplo sem virar bagunça: as três frentes da Megui organizadas para você encontrar rápido o que procura.</p>
+    </div>
+
+    <div class="business-lines">
+      <a class="line-card line-personalizados" href="{{ url_for('products') }}">
+        <span class="line-number">01</span>
+        <div>
+          <h3>Meg Personalizados</h3>
+          <p>Brindes, bolsas, acessórios, kits e soluções corporativas.</p>
+        </div>
+        <span class="arrow">↗</span>
+      </a>
+      <a class="line-card line-roupas" href="{{ url_for('category', slug='vestuario') }}">
+        <span class="line-number">02</span>
+        <div>
+          <h3>Meg Roupas</h3>
+          <p>Camisetas, uniformes, moletons e vestuário personalizado.</p>
+        </div>
+        <span class="arrow">↗</span>
+      </a>
+      <a class="line-card line-grafica" href="{{ url_for('category', slug='grafica') }}">
+        <span class="line-number">03</span>
+        <div>
+          <h3>Meg Gráfica</h3>
+          <p>Comunicação visual e materiais gráficos para sua empresa.</p>
+        </div>
+        <span class="arrow">↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section section-soft">
+  <div class="container">
+    <div class="section-heading">
+      <span class="eyebrow">CATEGORIAS</span>
+      <h2>Encontre sem perder tempo.</h2>
+    </div>
+    <div class="category-grid">
+      {% for category in categories %}
+      <a class="category-card" href="{{ url_for('category', slug=category.slug) }}">
+        <span class="category-icon">{{ category.icon }}</span>
+        <h3>{{ category.name }}</h3>
+        <p>{{ category.description }}</p>
+        <span class="category-link">Ver produtos →</span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-heading split-heading">
+      <div>
+        <span class="eyebrow">DESTAQUES</span>
+        <h2>Pra começar por aqui.</h2>
+      </div>
+      <a class="text-link" href="{{ url_for('products') }}">Ver catálogo completo →</a>
+    </div>
+
+    <div class="product-grid">
+      {% for product in products %}
+        {% include "_product_card.html" %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container quote-banner">
+    <div>
+      <span class="eyebrow eyebrow-light">SEM PREÇO ENGESSADO</span>
+      <h2>Seu projeto é único.<br>O orçamento também.</h2>
+    </div>
+    <div>
+      <p>Adicione vários produtos ao seu orçamento, informe quantidade e detalhes e envie tudo de uma vez para nosso atendimento.</p>
+      <a class="btn btn-light" href="{{ url_for('products') }}">Começar meu orçamento</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

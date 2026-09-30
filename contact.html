@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Contato — Megui{% endblock %}
+{% block content %}
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow">CONTATO</span>
+    <h1>Conta pra gente o que você quer criar.</h1>
+    <p>Se você já sabe os produtos, monte seu orçamento. Se ainda está escolhendo, fale com a Megui e a gente te ajuda.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container contact-grid">
+    <div class="contact-card">
+      <span>01</span>
+      <h2>Já escolheu?</h2>
+      <p>Monte uma lista com vários produtos e mande tudo junto.</p>
+      <a class="btn btn-primary" href="{{ url_for('products') }}">Explorar catálogo</a>
+    </div>
+    <div class="contact-card">
+      <span>02</span>
+      <h2>Tem um projeto diferente?</h2>
+      <p>O site está preparado para conectar o atendimento ao WhatsApp. Configure o número no Render e o botão será ativado.</p>
+      <a class="btn btn-secondary" href="{{ url_for('quote_view') }}">Meu orçamento</a>
+    </div>
+  </div>
+</section>
+{% endblock %}
