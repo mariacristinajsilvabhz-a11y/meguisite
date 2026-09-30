@@ -4,25 +4,49 @@
 <section class="page-hero">
   <div class="container">
     <span class="eyebrow">CONTATO</span>
-    <h1>Conta pra gente o que você quer criar.</h1>
-    <p>Se você já sabe os produtos, monte seu orçamento. Se ainda está escolhendo, fale com a Megui e a gente te ajuda.</p>
+    <h1>Fale com a Megui.</h1>
+    <p>Se você já sabe o que precisa, monte seu orçamento. Se ainda está escolhendo, fale com nosso atendimento comercial.</p>
   </div>
 </section>
 
 <section class="section">
-  <div class="container contact-grid">
-    <div class="contact-card">
-      <span>01</span>
-      <h2>Já escolheu?</h2>
-      <p>Monte uma lista com vários produtos e mande tudo junto.</p>
-      <a class="btn btn-primary" href="{{ url_for('products') }}">Explorar catálogo</a>
+  <div class="container contact-grid contact-grid-full">
+    <article class="contact-card contact-card-primary">
+      <span>ATENDIMENTO</span>
+      <h2>(31) 99488-8250</h2>
+      <p>Orçamentos, dúvidas sobre produtos, personalização, prazos e projetos.</p>
+      <a class="btn btn-primary" href="https://wa.me/{{ whatsapp_number }}" target="_blank" rel="noopener">Chamar no WhatsApp</a>
+    </article>
+
+    <article class="contact-card">
+      <span>ADMINISTRAÇÃO</span>
+      <h2>(31) 99318-1939</h2>
+      <p>Contato administrativo da Megui.</p>
+    </article>
+
+    <article class="contact-card">
+      <span>E-MAIL</span>
+      <h2>{{ contact_email }}</h2>
+      <p>Envio de informações comerciais, documentos e demandas que precisam ficar registradas.</p>
+      <a class="text-link" href="mailto:{{ contact_email }}">Enviar e-mail →</a>
+    </article>
+
+    <article class="contact-card">
+      <span>ENDEREÇO DE ATENDIMENTO</span>
+      <h2>Água Branca, Contagem</h2>
+      <p>{{ contact_address }}</p>
+    </article>
+  </div>
+</section>
+
+<section class="section section-soft">
+  <div class="container contact-quote-panel">
+    <div>
+      <span class="eyebrow">QUER COTAR VÁRIOS ITENS?</span>
+      <h2>Monte a lista antes de chamar.</h2>
+      <p>O carrinho de orçamento organiza produtos, quantidades e observações para seu atendimento começar com tudo em mãos.</p>
     </div>
-    <div class="contact-card">
-      <span>02</span>
-      <h2>Tem um projeto diferente?</h2>
-      <p>O site está preparado para conectar o atendimento ao WhatsApp. Configure o número no Render e o botão será ativado.</p>
-      <a class="btn btn-secondary" href="{{ url_for('quote_view') }}">Meu orçamento</a>
-    </div>
+    <a class="btn btn-primary" href="{{ url_for('products') }}">Explorar catálogo</a>
   </div>
 </section>
 {% endblock %}
