@@ -28,4 +28,8 @@
       if (empty) empty.hidden = visible !== 0;
     });
   }
+
+  document.querySelectorAll(".mini-quote.is-added").forEach((button) => {
+    button.setAttribute("title", "Este produto já está no orçamento. Clique para manter/atualizar.");
+  });
 })();
