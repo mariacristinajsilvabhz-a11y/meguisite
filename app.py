@@ -13,8 +13,12 @@ CATEGORIES = [
     {"slug": "vestuario", "name": "Vestuário", "description": "Camisetas, moletons, uniformes, bonés, aventais e jalecos.", "icon": "M"},
     {"slug": "corporativo", "name": "Corporativo", "description": "Soluções para eventos, equipes, campanhas e kits empresariais.", "icon": "▦"},
     {"slug": "grafica", "name": "Meg Gráfica", "description": "Materiais gráficos e comunicação visual para sua marca.", "icon": "▤"},
-    {"slug": "destaques", "name": "Destaques", "description": "Seleção de produtos com alta procura e ótimo potencial de marca.", "icon": "★"},
+    {"slug": "destaques", "name": "Destaques", "description": "Produtos com alta procura e ótimo potencial de marca.", "icon": "★"},
 ]
+
+TRUSTED_BRANDS = ["Band Minas", "Sesc", "Cemig", "Resultado Final"]
+
+REVIEWS = []
 
 PRODUCTS = [
     {
@@ -28,6 +32,7 @@ PRODUCTS = [
         "description": "Camiseta pensada para uniformes, eventos, marcas e ações corporativas. Opções de personalização por silk, DTF ou bordado conforme o projeto.",
         "tags": ["Algodão", "Uniformes", "Silk / DTF"],
         "visual": "tshirt",
+        "image": None,
     },
     {
         "id": 2,
@@ -40,6 +45,7 @@ PRODUCTS = [
         "description": "Squeeze personalizável com a identidade da sua empresa. Quantidade mínima e técnica de aplicação variam conforme o modelo escolhido.",
         "tags": ["Brindes", "Eventos", "Corporativo"],
         "visual": "bottle",
+        "image": None,
     },
     {
         "id": 3,
@@ -52,6 +58,7 @@ PRODUCTS = [
         "description": "Modelos com diferentes materiais, capacidades e formas de personalização. Ideal para onboarding, eventos e campanhas.",
         "tags": ["Mochilas", "Kits", "B2B"],
         "visual": "bag",
+        "image": None,
     },
     {
         "id": 4,
@@ -64,6 +71,7 @@ PRODUCTS = [
         "description": "Combine vestuário, papelaria, copos, garrafas, bolsas e outros itens em uma entrega única e personalizada para sua empresa.",
         "tags": ["Onboarding", "Kits", "Empresas"],
         "visual": "kit",
+        "image": None,
     },
     {
         "id": 5,
@@ -76,6 +84,7 @@ PRODUCTS = [
         "description": "Wind banner personalizado para fachadas, eventos, ativações e pontos comerciais. Produção conforme arte, tamanho e quantidade.",
         "tags": ["Comunicação visual", "Eventos", "PDV"],
         "visual": "banner",
+        "image": None,
     },
     {
         "id": 6,
@@ -88,58 +97,77 @@ PRODUCTS = [
         "description": "Canecas em diferentes materiais e formatos, personalizadas conforme sua identidade. Consulte disponibilidade e quantidade.",
         "tags": ["Canecas", "Brindes", "Presentes"],
         "visual": "mug",
+        "image": None,
     },
 ]
+
 
 def get_product(product_id):
     return next((p for p in PRODUCTS if p["id"] == product_id), None)
 
+
 def get_category(slug):
     return next((c for c in CATEGORIES if c["slug"] == slug), None)
+
 
 def cart():
     return session.setdefault("quote_cart", {})
 
+
 def cart_count():
-    return sum(int(item.get("qty", 0)) for item in cart().values())
+    return len(cart())
+
 
 @app.context_processor
 def inject_global():
+    quote_cart = cart()
     return {
         "categories": CATEGORIES,
         "cart_count": cart_count(),
+        "cart_ids": [int(key) for key in quote_cart.keys()],
+        "trusted_brands": TRUSTED_BRANDS,
+        "reviews": REVIEWS,
         "whatsapp_configured": bool(WHATSAPP_NUMBER),
     }
+
 
 @app.get("/")
 def home():
     return render_template("index.html", products=PRODUCTS[:6])
+
 
 @app.get("/produtos")
 def products():
     category_slug = request.args.get("categoria")
     items = PRODUCTS
     active_category = None
+
     if category_slug:
         active_category = get_category(category_slug)
         if active_category:
             items = [p for p in PRODUCTS if p["category"] == category_slug]
+
     return render_template("products.html", products=items, active_category=active_category)
+
 
 @app.get("/categoria/<slug>")
 def category(slug):
     category_obj = get_category(slug)
     if not category_obj:
         abort(404)
+
     items = [p for p in PRODUCTS if p["category"] == slug]
     return render_template("products.html", products=items, active_category=category_obj)
+
 
 @app.get("/produto/<slug>")
 def product(slug):
     item = next((p for p in PRODUCTS if p["slug"] == slug), None)
     if not item:
         abort(404)
+
     return render_template("product.html", product=item)
+
 
 @app.post("/orcamento/adicionar/<int:product_id>")
 def add_to_quote(product_id):
@@ -155,53 +183,63 @@ def add_to_quote(product_id):
 
     notes = request.form.get("notes", "").strip()[:500]
     key = str(product_id)
-    quote = cart()
-    quote[key] = {
+    quote_cart = cart()
+
+    quote_cart[key] = {
         "product_id": product_id,
         "name": product["name"],
         "sku": product["sku"],
         "qty": qty,
         "notes": notes,
     }
-    session["quote_cart"] = quote
+
+    session["quote_cart"] = quote_cart
     session.modified = True
 
     next_url = request.form.get("next")
-    return redirect(next_url or url_for("quote"))
+    return redirect(next_url or url_for("quote_view"))
+
 
 @app.get("/orcamento")
 def quote_view():
     items = list(cart().values())
     return render_template("quote.html", items=items)
 
+
 @app.post("/orcamento/atualizar/<int:product_id>")
 def update_quote(product_id):
-    quote = cart()
+    quote_cart = cart()
     key = str(product_id)
-    if key in quote:
+
+    if key in quote_cart:
         try:
             qty = max(1, min(int(request.form.get("qty", 1)), 99999))
         except ValueError:
             qty = 1
-        quote[key]["qty"] = qty
-        quote[key]["notes"] = request.form.get("notes", "").strip()[:500]
-        session["quote_cart"] = quote
+
+        quote_cart[key]["qty"] = qty
+        quote_cart[key]["notes"] = request.form.get("notes", "").strip()[:500]
+        session["quote_cart"] = quote_cart
         session.modified = True
+
     return redirect(url_for("quote_view"))
+
 
 @app.post("/orcamento/remover/<int:product_id>")
 def remove_from_quote(product_id):
-    quote = cart()
-    quote.pop(str(product_id), None)
-    session["quote_cart"] = quote
+    quote_cart = cart()
+    quote_cart.pop(str(product_id), None)
+    session["quote_cart"] = quote_cart
     session.modified = True
     return redirect(url_for("quote_view"))
+
 
 @app.post("/orcamento/limpar")
 def clear_quote():
     session["quote_cart"] = {}
     session.modified = True
     return redirect(url_for("quote_view"))
+
 
 @app.post("/orcamento/whatsapp")
 def send_whatsapp():
@@ -218,6 +256,7 @@ def send_whatsapp():
     general_notes = request.form.get("general_notes", "").strip()
 
     lines = ["Olá! Quero solicitar um orçamento na Megui.", ""]
+
     if name:
         lines.append(f"Nome: {name}")
     if company:
@@ -229,8 +268,7 @@ def send_whatsapp():
 
     lines.append("Itens:")
     for item in cart().values():
-        line = f"• {item['qty']}x {item['name']} — SKU {item['sku']}"
-        lines.append(line)
+        lines.append(f"• {item['qty']}x {item['name']} — SKU {item['sku']}")
         if item.get("notes"):
             lines.append(f"  Observação: {item['notes']}")
 
@@ -243,13 +281,26 @@ def send_whatsapp():
     whatsapp_url = f"https://wa.me/{WHATSAPP_NUMBER}?text={quote(message)}"
     return redirect(whatsapp_url)
 
+
+@app.get("/empresas-licitacoes")
+def b2b():
+    return render_template("b2b.html")
+
+
+@app.get("/videos")
+def videos():
+    return render_template("videos.html")
+
+
 @app.get("/sobre")
 def about():
-    return render_template("about.html")
+    return render_template("sobre.html")
+
 
 @app.get("/contato")
 def contact():
     return render_template("contact.html")
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)), debug=True)
