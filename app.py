@@ -100,8 +100,7 @@ PRODUCTS = [
         "description": "Combine vestuário, papelaria, copos, garrafas, bolsas e outros itens em uma entrega única e personalizada para sua empresa.",
         "tags": ["Onboarding", "Kits", "Empresas"],
         "visual": "kit",
-        "image": "img/produtos/mochila-megui.webp",
-        "images": ["img/produtos/mochila-megui.webp", "img/produtos/squeeze-megui.webp", "img/produtos/caneca-megui.webp"],
+        "image": "img/produtos/kit-corporativo-megui.webp",
         "image_reference": True,
     },
     {
@@ -191,7 +190,13 @@ def order_by_stock(products):
 
 @app.get("/")
 def home():
-    return render_template("index.html", products=order_by_stock(PRODUCTS)[:6])
+    homepage_images = {
+        "brindes": "copo-termico", "bolsas-acessorios": "ecobag",
+        "vestuario": "moletom", "corporativo": "caderno",
+        "grafica": "papelaria", "destaques": "bone",
+    }
+    home_categories = [dict(category, images=[f"img/inicio/{homepage_images[category['slug']]}.webp"]) for category in CATEGORIES]
+    return render_template("index.html", products=order_by_stock(PRODUCTS)[:6], home_categories=home_categories)
 
 
 @app.get("/produtos")

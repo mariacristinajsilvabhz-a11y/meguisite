@@ -673,3 +673,40 @@ body{background:#faf6ff}
 @media(max-width:1000px){.catalog-section>.catalog-layout{grid-template-columns:1fr}.catalog-layout .filters{position:static}.catalog-layout .product-visual{height:245px}}
 @media(max-width:760px){.catalog-layout .product-grid:not(.list-view){grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.catalog-layout .product-visual{height:220px}.catalog-layout .product-body{padding:16px}.catalog-layout .list-view .product-card{grid-template-columns:105px minmax(0,1fr)}}
 @media(max-width:479px){.catalog-layout .product-grid:not(.list-view){grid-template-columns:1fr}.catalog-layout .product-visual{height:270px}}
+
+/* Abertura Megui: composição editorial, foco no produto e caminhos claros. */
+.welcome-megui{background:radial-gradient(ellipse at 80% 12%,#3e2659 0,transparent 54%),linear-gradient(120deg,#151019,#22172d);color:#fff;overflow:hidden;padding:50px 0 0}
+.welcome-grid{width:min(1380px,calc(100% - 64px));display:grid;grid-template-columns:1fr 1.15fr;gap:30px;align-items:center}
+.welcome-overline{color:#d1aae8;font-size:.8rem;font-weight:800;letter-spacing:.18em;display:block;margin-bottom:24px}
+.welcome-copy h1{font-family:'Manrope',sans-serif;font-size:clamp(48px,5.5vw,82px);line-height:1.06;letter-spacing:-.055em;margin:0 0 24px}
+.welcome-copy h1 span{color:#d6b0f0}
+.welcome-copy>p{max-width:520px;font-size:1.0625rem;line-height:1.75;color:#ded3e6;margin:0 0 28px}
+.welcome-actions{display:flex;flex-wrap:wrap;gap:12px}
+.welcome-primary{background:#d1a4ee;color:#21122e;box-shadow:0 8px 28px #bb73e829}
+.welcome-primary:hover{background:#e0c0f6}
+.welcome-secondary{background:#ffffff07;color:#fff;border-color:#a480bf70}
+.welcome-secondary:hover{background:#ffffff13;border-color:#cba1e4}
+.welcome-details{display:flex;flex-wrap:wrap;gap:10px 20px;margin-top:26px;color:#c1a8d0;font-size:.875rem}
+.welcome-details span{display:flex;align-items:center;gap:9px}
+.welcome-details span:before{content:'';width:6px;height:6px;border-radius:50%;background:#bb88df}
+.welcome-visual{margin:0;position:relative;min-width:0}
+.welcome-visual img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:28px;box-shadow:0 25px 75px #0003;border:1px solid #ad79ca2b;transition:transform .5s}
+.welcome-visual:hover img{transform:translateY(-4px)}
+.welcome-visual figcaption{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:18px 4px 0;font-size:.75rem;letter-spacing:.12em;font-weight:700;color:#d1b8e1}
+.welcome-visual figcaption span{font-size:.75rem;letter-spacing:0;font-weight:400;color:#ae98bb}
+.welcome-paths{width:min(1380px,calc(100% - 64px));margin-top:46px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid #b28dc735}
+.welcome-paths a{padding:25px 28px;display:grid;grid-template-columns:32px 1fr;column-gap:10px;transition:background .25s;border-right:1px solid #b28dc735}
+.welcome-paths a:first-child{padding-left:0}.welcome-paths a:last-child{border-right:0}
+.welcome-paths a:hover{background:#b778d916}
+.welcome-paths a>span{grid-row:1/3;color:#b58bce;font-size:.75rem;padding-top:3px}
+.welcome-paths strong{font-size:1rem;line-height:1.5}
+.welcome-paths small{font-size:.875rem;line-height:1.5;color:#ae98bb;margin-top:3px}
+.welcome-megui+.trust-row{background:#e8d5f6;border-bottom:1px solid #d4b6e6}
+.home-category-grid .category-photo-stage{height:240px}
+.home-category-grid .category-photo-stage img{transform:none;width:100%;height:100%;object-fit:contain}
+.home-category-grid .category-photo-copy{padding:22px 24px}
+.home-category-grid .category-photo-copy h3{font-size:23px;line-height:1.2}
+.home-category-grid .category-photo-copy p{font-size:.9375rem;line-height:1.65}
+@media(max-width:1000px){.welcome-grid{grid-template-columns:1fr 1fr;gap:22px}.welcome-copy h1{font-size:52px}.welcome-copy>p{font-size:1rem}.welcome-visual figcaption{display:block;line-height:1.7}.welcome-visual figcaption span{display:block}.welcome-paths a{padding:22px 18px}}
+@media(max-width:760px){.welcome-megui{padding-top:36px}.welcome-grid{width:calc(100% - 40px);grid-template-columns:1fr;gap:30px}.welcome-copy h1{font-size:clamp(44px,9vw,64px)}.welcome-copy>p{max-width:none}.welcome-overline{margin-bottom:18px}.welcome-details{margin-top:20px}.welcome-visual{max-width:650px;width:100%;margin:auto}.welcome-visual figcaption{display:flex;font-size:.7rem;letter-spacing:.06em}.welcome-visual figcaption span{font-size:.7rem}.welcome-paths{width:calc(100% - 40px);margin-top:30px;grid-template-columns:1fr}.welcome-paths a,.welcome-paths a:first-child{padding:18px 0;border-right:0;border-bottom:1px solid #b28dc735}.welcome-paths a:last-child{border-bottom:0}.home-category-grid .category-with-photo{display:block}.home-category-grid .category-photo-stage{height:235px;border-right:0;border-bottom:1px solid #dec5ed70;padding:24px}.home-category-grid .category-photo-copy{padding:20px 24px}}
+@media(prefers-reduced-motion:reduce){.welcome-visual img,.welcome-paths a{transition:none}.welcome-visual:hover img{transform:none}}

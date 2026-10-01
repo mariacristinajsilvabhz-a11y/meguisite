@@ -3,38 +3,28 @@
 {% block content %}
 {% from '_icons.html' import icon %}
 {% from '_video_preview.html' import video_preview %}
-<section class="hero hero-premium">
-  <div class="container hero-grid">
-    <div class="hero-copy">
-      <span class="eyebrow">FÁBRICA • PERSONALIZAÇÃO • B2B</span>
-      <h1>Sua marca em produtos que <span>chamam atenção.</span></h1>
-      <p>Brindes, roupas, gráfica e projetos corporativos em um único lugar. Escolha os itens, monte seu orçamento e fale com a Megui sem complicação.</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="{{ url_for('products') }}">Explorar catálogo</a>
-        <a class="btn btn-secondary" href="{{ url_for('b2b') }}">Atendimento para empresas</a>
+<section class="welcome-megui">
+  <div class="container welcome-grid">
+    <div class="welcome-copy">
+      <span class="welcome-overline">MEGUI PERSONALIZADOS</span>
+      <h1>Sua marca.<br><span>Em cada detalhe.</span></h1>
+      <p>Uniformes, brindes e comunicação visual com a identidade da sua empresa. Da escolha do produto à personalização, a gente cuida do seu projeto.</p>
+      <div class="welcome-actions">
+        <a class="btn welcome-primary" href="{{ url_for('products') }}">Explorar produtos</a>
+        <a class="btn welcome-secondary" href="https://wa.me/{{ whatsapp_number }}" target="_blank" rel="noopener">Conversar com a Megui</a>
       </div>
-      <div class="hero-proof">
-        <div><strong>3</strong><span>frentes integradas</span></div>
-        <div><strong>B2B</strong><span>cotações e licitações</span></div>
-        <div><strong>1</strong><span>orçamento com vários itens</span></div>
-      </div>
+      <div class="welcome-details"><span>Produção própria</span><span>Personalização sob medida</span></div>
     </div>
-
-    <div class="hero-showcase" aria-label="Vitrine de produtos Megui">
-      <a class="showcase-card showcase-main has-product-photo" href="{{ url_for('category', slug='vestuario') }}">
-        <div class="showcase-copy"><span class="showcase-kicker">MEG ROUPAS</span><strong>Uniformes e camisetas</strong><span>Produção própria + personalização</span></div>
-        <div class="showcase-product-stage"><img src="{{ url_for('static', filename='img/produtos/camiseta-megui.webp') }}" alt="Camiseta preta com estampa lilás Megui"></div>
-      </a>
-      <a class="showcase-card has-product-photo" href="{{ url_for('category', slug='brindes') }}">
-        <div class="showcase-copy"><span class="showcase-kicker">PERSONALIZADOS</span><strong>Brindes corporativos</strong></div>
-        <div class="showcase-product-stage"><img src="{{ url_for('static', filename='img/produtos/squeeze-megui.webp') }}" alt="Squeeze branco com arte Megui"></div>
-      </a>
-      <a class="showcase-card has-product-photo" href="{{ url_for('category', slug='grafica') }}">
-        <div class="showcase-copy"><span class="showcase-kicker">MEG GRÁFICA</span><strong>Comunicação visual</strong></div>
-        <div class="showcase-product-stage"><img src="{{ url_for('static', filename='img/produtos/wind-banner-megui.webp') }}" alt="Wind banner preto e lilás com arte Megui"></div>
-      </a>
-    </div>
+    <figure class="welcome-visual">
+      <img src="{{ url_for('static', filename='img/inicio/welcome.webp') }}" alt="Apresentação ilustrativa de avental, guarda-chuva e cordão personalizados com a marca Megui" width="1440" height="960" fetchpriority="high" decoding="async">
+      <figcaption>DO SEU JEITO. COM A SUA MARCA.<span>Composição ilustrativa.</span></figcaption>
+    </figure>
   </div>
+  <nav class="container welcome-paths" aria-label="Comece pelo seu projeto">
+    <a href="{{ url_for('category', slug='vestuario') }}"><span>01</span><strong>Vista sua equipe</strong><small>Uniformes e vestuário</small></a>
+    <a href="{{ url_for('category', slug='brindes') }}"><span>02</span><strong>Presenteie com propósito</strong><small>Brindes e kits personalizados</small></a>
+    <a href="{{ url_for('category', slug='grafica') }}"><span>03</span><strong>Dê presença à sua marca</strong><small>Gráfica e comunicação visual</small></a>
+  </nav>
 </section>
 
 <section class="trust-row">
@@ -50,52 +40,10 @@
 <section class="section campaign-section">
   <div class="container">
     <a class="campaign-banner campaign-new-photo" href="{{ url_for('category', slug='vestuario') }}">
-      <div class="campaign-new-copy"><span class="eyebrow">MEG ROUPAS</span><h2>A sua marca.<br>O seu jeito de vestir.</h2><p>Camisetas, uniformes e personalização para o seu próximo projeto.</p></div>
-      <img src="{{ url_for('static', filename='img/produtos/camiseta-megui.webp') }}" alt="Camiseta preta com estampa lilás Megui">
-      <span class="campaign-hover">Ver camisetas e uniformes →</span>
+      <div class="campaign-new-copy"><span class="eyebrow">MEG ROUPAS</span><h2>Uma equipe.<br>A mesma identidade.</h2><p>Polos, camisetas e uniformes com a identidade da sua empresa.</p></div>
+      <img src="{{ url_for('static', filename='img/inicio/polo.webp') }}" alt="Polo preta ilustrativa com bordado Megui e detalhes lilás">
+      <span class="campaign-hover">Explorar vestuário</span>
     </a>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
-    <div class="section-heading split-heading">
-      <div>
-        <span class="eyebrow">TRÊS FRENTES. UMA MEGUI.</span>
-        <h2>Do uniforme ao brinde. Do brinde à campanha.</h2>
-      </div>
-      <p>Vestuário, brindes e comunicação visual para dar forma à sua marca. Explore nossas frentes e reúna tudo em um só projeto.</p>
-    </div>
-
-    <div class="business-lines">
-      <a class="line-card line-photo line-neutral-photo line-personalizados" href="{{ url_for('category', slug='brindes') }}">
-        <img class="line-photo-image" src="{{ url_for('static', filename='img/produtos/caneca-megui.webp') }}" alt="" loading="lazy">
-        <span class="line-number">01</span>
-        <div>
-          <h3>Meg Personalizados</h3>
-          <p>Brindes, bolsas, acessórios, kits, copos e soluções corporativas.</p>
-        </div>
-        <span class="arrow">↗</span>
-      </a>
-      <a class="line-card line-photo line-neutral-photo line-roupas" href="{{ url_for('category', slug='vestuario') }}">
-        <img class="line-photo-image" src="{{ url_for('static', filename='img/produtos/camiseta-megui.webp') }}" alt="" loading="lazy">
-        <span class="line-number">02</span>
-        <div>
-          <h3>Meg Roupas</h3>
-          <p>Camisetas, uniformes, moletons, jalecos, aventais e produção em malha.</p>
-        </div>
-        <span class="arrow">↗</span>
-      </a>
-      <a class="line-card line-photo line-neutral-photo line-grafica" href="{{ url_for('category', slug='grafica') }}">
-        <img class="line-photo-image" src="{{ url_for('static', filename='img/produtos/wind-banner-megui.webp') }}" alt="" loading="lazy">
-        <span class="line-number">03</span>
-        <div>
-          <h3>Meg Gráfica</h3>
-          <p>Materiais gráficos e comunicação visual para ponto de venda e eventos.</p>
-        </div>
-        <span class="arrow">↗</span>
-      </a>
-    </div>
   </div>
 </section>
 
@@ -104,12 +52,12 @@
     <div class="section-heading split-heading">
       <div>
         <span class="eyebrow">CATÁLOGO</span>
-        <h2>Encontre sem perder tempo.</h2>
+        <h2>O que vamos personalizar?</h2>
       </div>
       <a class="text-link" href="{{ url_for('products') }}">Ver todos os produtos →</a>
     </div>
-    <div class="category-grid">
-      {% for category in categories %}
+    <div class="category-grid home-category-grid">
+      {% for category in home_categories %}
       <a class="category-card category-with-photo" data-category="{{ category.slug }}" href="{{ url_for('category', slug=category.slug) }}">
         <div class="category-photo-stage category-photo-{{ category.slug }} {% if category.images|length > 1 %}category-photo-pair{% endif %}">
           {% for image in category.images %}<img src="{{ url_for('static', filename=image) }}" alt="" loading="lazy">{% endfor %}
@@ -138,30 +86,6 @@
       {% for product in products %}
         {% include "_product_card.html" %}
       {% endfor %}
-    </div>
-  </div>
-</section>
-
-<section class="section section-soft project-selection">
-  <div class="container">
-    <div class="section-heading project-selection-heading">
-      <span class="eyebrow">FEITO PARA O SEU PROJETO</span>
-      <h2>O que você quer criar?</h2>
-      <p>Escolha o seu objetivo. A Megui ajuda a dar forma.</p>
-    </div>
-    <div class="solution-grid">
-      <a class="solution-card project-card" href="{{ url_for('b2b') }}">
-        <div class="project-card-visual project-kit"><img src="{{ url_for('static', filename='img/produtos/mochila-megui.webp') }}" alt=""><img src="{{ url_for('static', filename='img/produtos/squeeze-megui.webp') }}" alt=""><span class="project-card-tag">EMPRESAS</span></div>
-        <div class="project-card-copy"><h3>Sua equipe, sua marca.</h3><p>Uniformes e kits para receber, presentear e conectar pessoas.</p><span class="project-card-link">Explorar soluções <span aria-hidden="true">↗</span></span></div>
-      </a>
-      <a class="solution-card project-card" href="{{ url_for('category', slug='vestuario') }}">
-        <div class="project-card-visual"><img src="{{ url_for('static', filename='img/produtos/camiseta-megui.webp') }}" alt=""><span class="project-card-tag">IGREJAS & EVENTOS</span></div>
-        <div class="project-card-copy"><h3>Vista o seu evento.</h3><p>Camisetas para congressos, retiros e momentos em equipe.</p><span class="project-card-link">Ver vestuário <span aria-hidden="true">↗</span></span></div>
-      </a>
-      <a class="solution-card project-card" href="{{ url_for('category', slug='grafica') }}">
-        <div class="project-card-visual"><img src="{{ url_for('static', filename='img/produtos/wind-banner-megui.webp') }}" alt=""><span class="project-card-tag">LOJAS & CAMPANHAS</span></div>
-        <div class="project-card-copy"><h3>Sua marca à vista.</h3><p>Banners e comunicação visual para destacar o seu negócio.</p><span class="project-card-link">Ver comunicação visual <span aria-hidden="true">↗</span></span></div>
-      </a>
     </div>
   </div>
 </section>
