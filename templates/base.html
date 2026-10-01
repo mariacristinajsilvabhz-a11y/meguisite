@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css', v='carousel-20261001-v2') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/design-system.css', v='readable-20261001-v1') }}">
 </head>
 <body>
   {% from '_icons.html' import icon %}
@@ -27,7 +28,7 @@
       </button>
 
       <nav id="main-nav" class="main-nav" aria-label="Navegação principal">
-        <a href="{{ url_for('home') }}">Início</a>
+        <a href="{{ url_for('home') }}" {% if request.endpoint == 'home' %}aria-current="page"{% endif %}>Início</a>
         <div class="nav-dropdown">
           <a href="{{ url_for('products') }}">Produtos</a>
           <div class="dropdown-panel">
@@ -36,12 +37,12 @@
             {% endfor %}
           </div>
         </div>
-        <a href="{{ url_for('b2b') }}">Empresas & Licitações</a>
-        <a href="{{ url_for('category', slug='eventos') }}">Eventos</a>
-        <a href="{{ url_for('videos') }}">Vídeos</a>
-        <a href="{{ url_for('portfolio_view') }}">Trabalhos</a>
-        <a href="{{ url_for('about') }}">Sobre</a>
-        <a href="{{ url_for('contact') }}">Contato</a>
+        <a href="{{ url_for('b2b') }}" {% if request.endpoint == 'b2b' %}aria-current="page"{% endif %}>Empresas & Licitações</a>
+        <a href="{{ url_for('category', slug='eventos') }}" {% if request.view_args and request.view_args.get('slug') == 'eventos' %}aria-current="page"{% endif %}>Eventos</a>
+        <a href="{{ url_for('videos') }}" {% if request.endpoint == 'videos' %}aria-current="page"{% endif %}>Vídeos</a>
+        <a href="{{ url_for('portfolio_view') }}" {% if request.endpoint == 'portfolio_view' %}aria-current="page"{% endif %}>Trabalhos</a>
+        <a href="{{ url_for('about') }}" {% if request.endpoint == 'about' %}aria-current="page"{% endif %}>Sobre</a>
+        <a href="{{ url_for('contact') }}" {% if request.endpoint == 'contact' %}aria-current="page"{% endif %}>Contato</a>
       </nav>
 
       <a class="quote-button" href="{{ url_for('quote_view') }}">
