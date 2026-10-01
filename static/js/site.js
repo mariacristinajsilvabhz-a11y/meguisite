@@ -35,11 +35,14 @@
       options[index].scrollIntoView({ block: 'nearest' });
     }
   };
-  const renderSearch = () => {
+  let searchTimer; let searchRequest; let searchVersion=0;
+  const remoteSearch = document.querySelector('#search-product-data')?.dataset.remote === 'true';
+  const renderSearch = async () => {
+    const version=++searchVersion;
     const query = normalize(input.value);
     const terms = query.split(/\s+/).filter(Boolean);
     clear.hidden = !query;
-    if (grid) {
+    if (grid && !remoteSearch) {
       let visible = 0;
       grid.querySelectorAll(':scope > [data-search]').forEach(item => {
         const text = normalize(item.dataset.search);
@@ -54,7 +57,17 @@
     active = -1;
     input.removeAttribute('aria-activedescendant');
     if (!query) { closeSearch(); return; }
-    matches = products.filter(product => {
+    let candidates=products;
+    if (remoteSearch) {
+      searchRequest?.abort(); searchRequest=new AbortController();
+      try {
+        const response=await fetch('/api/busca-produtos?q='+encodeURIComponent(input.value),{signal:searchRequest.signal});
+        if (!response.ok) throw new Error('Busca indisponível');
+        candidates=(await response.json()).produtos;
+        if (version!==searchVersion)return;
+      } catch(error) { if(error.name==='AbortError')return;closeSearch();return; }
+    }
+    matches = candidates.filter(product => {
       const text = normalize(`${product.name} ${product.sku} ${product.line} ${product.short}`);
       return terms.every(term => text.includes(term));
     }).sort((a, b) => {
@@ -93,7 +106,7 @@
     dropdown.hidden = false;
     input.setAttribute('aria-expanded', 'true');
   };
-  input?.addEventListener('input', renderSearch);
+  input?.addEventListener('input', () => { clearTimeout(searchTimer); searchTimer=setTimeout(renderSearch,220); });
   input?.addEventListener('focus', renderSearch);
   clear?.addEventListener('click', () => { input.value = ''; renderSearch(); input.focus(); });
   input?.addEventListener('keydown', event => {
@@ -104,6 +117,7 @@
       if (!matches.length) return;
       select(event.key === 'ArrowDown' ? (active + 1) % matches.length : (active <= 0 ? matches.length - 1 : active - 1));
     }
+    if (event.key === 'Enter' && remoteSearch && active < 0) { event.preventDefault(); window.location.assign('/produtos?q='+encodeURIComponent(input.value)); return; }
     if (event.key === 'Enter' && !dropdown.hidden && matches.length) {
       event.preventDefault();
       window.location.assign(matches[active < 0 ? 0 : active].url);

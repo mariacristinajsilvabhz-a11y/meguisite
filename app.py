@@ -3,9 +3,12 @@ import re
 from decimal import Decimal, InvalidOperation
 from urllib.parse import quote
 from flask import Flask, render_template, request, redirect, url_for, session, abort, jsonify
+from hub_catalog import HubCatalog, CatalogUnavailable
 from content_data import HISTORICAL_BRANDS, PORTFOLIO, PRODUCTION_VIDEOS
 
 app = Flask(__name__)
+hub_catalog = HubCatalog()
+
 app.secret_key = os.environ.get("SECRET_KEY", "troque-esta-chave-no-render")
 
 PRIMARY_WHATSAPP = "5531994888250"
@@ -144,6 +147,8 @@ PRODUCTS = [
 
 
 def get_product(product_id):
+    if hub_catalog.enabled and product_id >= 1_000_000_000:
+        return hub_catalog.get(product_id-1_000_000_000)
     return next((p for p in PRODUCTS if p["id"] == product_id), None)
 
 
@@ -177,7 +182,8 @@ def inject_global():
         "historical_brands": HISTORICAL_BRANDS,
         "portfolio": PORTFOLIO,
         "production_videos": PRODUCTION_VIDEOS,
-        "search_products": [{"name": p["name"], "sku": p["sku"], "category": p["category"], "line": p["line"], "short": p["short"], "stock_priority": stock_priority(p), "url": url_for("product", slug=p["slug"])} for p in PRODUCTS],
+        "hub_catalog_enabled": hub_catalog.enabled,
+        "search_products": [] if hub_catalog.enabled else [{"name": p["name"], "sku": p["sku"], "category": p["category"], "line": p["line"], "short": p["short"], "stock_priority": stock_priority(p), "url": url_for("product", slug=p["slug"])} for p in PRODUCTS],
     }
 
 
@@ -211,36 +217,61 @@ def home():
         "grafica": "papelaria", "destaques": "bone", "eventos": "eventos",
     }
     home_categories = [dict(category, images=[f"img/inicio/{homepage_images[category['slug']]}.webp"]) for category in CATEGORIES]
-    return render_template("index.html", products=order_by_stock(PRODUCTS)[:6], home_categories=home_categories)
+    items = hub_catalog.list(limit=6,vitrine=True)[0] if hub_catalog.enabled else order_by_stock(PRODUCTS)[:6]
+    return render_template("index.html", products=items, home_categories=home_categories)
+
+
+def render_catalog(category_slug=""):
+    active_category = get_category(category_slug)
+    if category_slug and not active_category:
+        abort(404)
+    query = request.args.get("q", "").strip()[:160]
+    page = max(1, request.args.get("pagina", 1, type=int) or 1)
+    if hub_catalog.enabled:
+        items, pagination = hub_catalog.list(category_slug, query, page)
+    else:
+        items = [p for p in PRODUCTS if not category_slug or matches_category(p, category_slug)]
+        if query:
+            items = [p for p in items if all(t.lower() in (p['name']+' '+p['sku']).lower() for t in query.split())]
+        items = order_by_stock(items)
+        pagination = {"total": len(items), "pagina": 1, "paginas": 1}
+    return render_template("products.html", products=items, active_category=active_category, pagination=pagination, query=query)
 
 
 @app.get("/produtos")
 def products():
-    category_slug = request.args.get("categoria")
-    items = PRODUCTS
-    active_category = None
-
-    if category_slug:
-        active_category = get_category(category_slug)
-        if active_category:
-            items = [p for p in PRODUCTS if matches_category(p, category_slug)]
-
-    return render_template("products.html", products=order_by_stock(items), active_category=active_category)
+    return render_catalog(request.args.get("categoria", ""))
 
 
 @app.get("/categoria/<slug>")
 def category(slug):
-    category_obj = get_category(slug)
-    if not category_obj:
-        abort(404)
+    return render_catalog(slug)
 
-    items = [p for p in PRODUCTS if matches_category(p, slug)]
-    return render_template("products.html", products=order_by_stock(items), active_category=category_obj)
+
+@app.get("/api/busca-produtos")
+def search_products_api():
+    query=request.args.get("q", "").strip()[:160]
+    if not query:return jsonify(produtos=[])
+    if hub_catalog.enabled:
+        items=hub_catalog.list(query=query,limit=8)[0]
+    else:
+        items=[p for p in order_by_stock(PRODUCTS) if all(t.lower() in (p['name']+' '+p['sku']).lower() for t in query.split())][:8]
+    return jsonify(produtos=[{"name":p["name"],"sku":p["sku"],"line":p["line"],"category":p["category"],"url":url_for("product",slug=p["slug"])} for p in items])
+
+
+@app.errorhandler(CatalogUnavailable)
+def catalog_unavailable(error):
+    if request.path.startswith('/api/'):
+        return jsonify(error="O catálogo está atualizando. Tente novamente em instantes."),503
+    return render_template("catalog_unavailable.html"),503
 
 
 @app.get("/produto/<slug>")
 def product(slug):
-    item = next((p for p in PRODUCTS if p["slug"] == slug), None)
+    if hub_catalog.enabled and re.fullmatch(r"hub-\d+", slug):
+        item = hub_catalog.get(int(slug[4:]))
+    else:
+        item = next((p for p in PRODUCTS if p["slug"] == slug), None)
     if not item:
         abort(404)
 
@@ -366,6 +397,11 @@ def send_whatsapp():
 @app.get("/empresas-licitacoes")
 def b2b():
     return render_template("b2b.html")
+
+
+@app.get("/eventos")
+def events():
+    return render_template("eventos.html")
 
 
 @app.get("/videos")

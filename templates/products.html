@@ -21,8 +21,12 @@
     </aside>
 
     <div>
+      <form class="catalog-query" action="{{ request.path }}" method="get">
+        {% if request.args.get('categoria') %}<input type="hidden" name="categoria" value="{{ request.args.get('categoria') }}">{% endif %}
+        <label for="full-catalog-query">Buscar no catálogo completo</label><div><input id="full-catalog-query" name="q" value="{{ query }}" placeholder="Nome, código ou categoria"><button class="btn btn-primary" type="submit">Buscar</button></div>
+      </form>
       <div class="catalog-toolbar">
-        <div id="catalog-result-count" role="status" aria-live="polite"><strong>{{ products|length }}</strong> produtos para sua marca</div>
+        <div id="catalog-result-count" role="status" aria-live="polite"><strong>{{ pagination.total }}</strong> produtos para sua marca</div>
         <div class="catalog-view-controls" aria-label="Visualização dos produtos">
           <button type="button" data-view="grid" aria-pressed="true" aria-label="Mostrar em grade">{{ icon('grid') }}</button>
           <button type="button" data-view="list" aria-pressed="false" aria-label="Mostrar em lista">{{ icon('list') }}</button>
@@ -36,7 +40,13 @@
           </div>
         {% endfor %}
       </div>
-      <div id="empty-search" class="empty-state" hidden>{{ icon('search') }}<h2>Nenhum produto nesta categoria.</h2><p>Veja as sugestões da busca ou explore o catálogo completo.</p><a class="btn btn-secondary" href="{{ url_for('products') }}">Ver todos os produtos</a></div>
+      {% if pagination.paginas > 1 %}
+      <nav class="catalog-pagination" aria-label="Páginas do catálogo">
+        {% if pagination.pagina > 1 %}<a class="btn btn-secondary" href="{{ url_for(request.endpoint, slug=active_category.slug if request.endpoint == 'category' else none, categoria=request.args.get('categoria') or none, q=query or none, pagina=pagination.pagina-1) }}">← Anterior</a>{% endif %}
+        <span>Página {{ pagination.pagina }} de {{ pagination.paginas }}</span>
+        {% if pagination.pagina < pagination.paginas %}<a class="btn btn-primary" href="{{ url_for(request.endpoint, slug=active_category.slug if request.endpoint == 'category' else none, categoria=request.args.get('categoria') or none, q=query or none, pagina=pagination.pagina+1) }}">Próxima →</a>{% endif %}
+      </nav>{% endif %}
+      <div id="empty-search" class="empty-state" {% if products %}hidden{% endif %}>{{ icon('search') }}<h2>Nenhum produto nesta categoria.</h2><p>Veja as sugestões da busca ou explore o catálogo completo.</p><a class="btn btn-secondary" href="{{ url_for('products') }}">Ver todos os produtos</a></div>
     </div>
   </div>
 </section>

@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css', v='carousel-20261001-v2') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/design-system.css', v='client-png-20261001-v2') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/design-system.css', v='hub-events-logo-20261001-v1') }}">
 </head>
 <body>
   {% from '_icons.html' import icon %}
@@ -19,7 +19,7 @@
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="{{ url_for('home') }}" aria-label="Megui Personalizados - início">
-        <img src="{{ url_for('static', filename='img/logo-placeholder.svg') }}" alt="Megui Personalizados">
+        <img class="brand-official" src="{{ url_for('static', filename='img/logo-megui-oficial.png') }}" alt="Megui Personalizados">
       </a>
 
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">
@@ -38,7 +38,7 @@
           </div>
         </div>
         <a href="{{ url_for('b2b') }}" {% if request.endpoint == 'b2b' %}aria-current="page"{% endif %}>Empresas & Licitações</a>
-        <a href="{{ url_for('category', slug='eventos') }}" {% if request.view_args and request.view_args.get('slug') == 'eventos' %}aria-current="page"{% endif %}>Eventos</a>
+        <a href="{{ url_for('events') }}" {% if request.endpoint == 'events' %}aria-current="page"{% endif %}>Eventos</a>
         <a href="{{ url_for('videos') }}" {% if request.endpoint == 'videos' %}aria-current="page"{% endif %}>Vídeos</a>
         <a href="{{ url_for('portfolio_view') }}" {% if request.endpoint == 'portfolio_view' %}aria-current="page"{% endif %}>Trabalhos</a>
         <a href="{{ url_for('about') }}" {% if request.endpoint == 'about' %}aria-current="page"{% endif %}>Sobre</a>
@@ -71,7 +71,7 @@
   <footer class="site-footer">
     <div class="container footer-grid">
       <div>
-        <img class="footer-logo" src="{{ url_for('static', filename='img/logo-placeholder-light.svg') }}" alt="Megui Personalizados">
+        <img class="footer-logo brand-official" src="{{ url_for('static', filename='img/logo-megui-oficial.png') }}" alt="Megui Personalizados">
         <p>Brindes, vestuário, gráfica e soluções corporativas para transformar sua marca em algo que as pessoas veem, usam e lembram.</p>
       </div>
       <div>
@@ -100,7 +100,7 @@
     <video controls playsinline preload="metadata"></video>
     <p class="video-load-error" role="status" hidden>Não foi possível carregar o vídeo. <a class="video-direct-link" href="#" target="_blank" rel="noopener">Abrir vídeo em outra aba ↗</a></p>
   </dialog>
-  <script id="search-product-data" type="application/json">{{ search_products|tojson }}</script>
-  <script src="{{ url_for('static', filename='js/site.js', v='carousel-20261001-v2') }}"></script>
+  <script id="search-product-data" data-remote="{{ 'true' if hub_catalog_enabled else 'false' }}" type="application/json">{{ search_products|tojson }}</script>
+  <script src="{{ url_for('static', filename='js/site.js', v='hub-20261001-v1') }}"></script>
 </body>
 </html>

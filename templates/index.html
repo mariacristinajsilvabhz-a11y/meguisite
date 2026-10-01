@@ -22,7 +22,7 @@
             <a class="carousel-cta" href="{{ url_for('category', slug=slide.slug) if slide.slug else url_for('products') }}">{{ slide.cta }} <span>{{ icon('arrow') }}</span></a>
             <a class="carousel-talk" href="https://wa.me/{{ whatsapp_number }}" target="_blank" rel="noopener">Vamos conversar {{ icon('arrow') }}</a>
           </div>
-          <span class="carousel-signature">MEGUI <small>PERSONALIZADOS</small></span>
+          <img class="carousel-brand-logo" src="{{ url_for('static',filename='img/logo-megui-oficial.png') }}" alt="Megui Personalizados">
         </div>
         <figure class="carousel-art"><img src="{{ url_for('static', filename='img/inicio/' + slide.image) }}" alt="{{ slide.alt }}" width="1440" height="960" {% if loop.first %}fetchpriority="high"{% endif %} decoding="async"><figcaption>Composição ilustrativa</figcaption></figure>
       </article>
@@ -75,7 +75,7 @@
     </div>
     <div class="category-grid home-category-grid">
       {% for category in home_categories %}
-      <a class="category-card category-with-photo" data-category="{{ category.slug }}" href="{{ url_for('category', slug=category.slug) }}">
+      <a class="category-card category-with-photo" data-category="{{ category.slug }}" href="{{ url_for('events') if category.slug == 'eventos' else url_for('category', slug=category.slug) }}">
         <div class="category-photo-stage category-photo-{{ category.slug }} {% if category.images|length > 1 %}category-photo-pair{% endif %}">
           {% for image in category.images %}<img src="{{ url_for('static', filename=image) }}" alt="" loading="lazy">{% endfor %}
           <span class="category-photo-action" aria-hidden="true">↗</span>

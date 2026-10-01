@@ -1,0 +1,11 @@
+{
+  "tool": "image_gen.imagegen",
+  "usage": "Imagens ilustrativas, sem apresentar pessoas ou projetos fictícios como clientes reais.",
+  "grupo-igreja.webp": "Foto editorial natural, fotografia de evento brasileiro com aparência de câmera real. Grupo de seis adultos diversos sorrindo em um pátio comunitário, todos vestindo camisetas lilás e pretas com estampa discreta branca 'ENCONTRO • FÉ EM MOVIMENTO' e pequeno desenho linear de sol, sem logos de marcas. Movimento fictício de igreja, ambiente acolhedor contemporâneo, ninguém em pose rígida de catálogo. Largura horizontal 3:2, composição com pessoas completas na cintura para cima, iluminação diurna suave, nenhum título sobre a foto, sem marca Megui e sem alegar cliente real. Fotos ilustrativas para página de serviços de personalização.",
+  "itens-encontro.webp": "Fotografia de produto de alta qualidade, horizontal 3:2. Apresentação de itens personalizados para evento com marca fictícia 'ENCONTRO': uma camiseta preta dobrada com estampa tipográfica lilás e branca, uma ecobag de lona lilás com estampa branca, credencial com cordão preto e lilás, copo preto com estampa branca, pulseira de identificação lilás. Itens separados com respiro em composição de estúdio sobre mesa cinza escura, fundo degradê lilás escuro discreto, luz suave realista, tecidos e materiais detalhados. Cada item realista e distinto, sem duplicação, sem títulos sobrepostos, sem textos explicativos, sem logotipo Megui. Foto ilustrativa de serviços de personalização.",
+  "logo-megui-oficial.png": {
+    "reference": "34(2).png, monograma oficial fornecido pela usuária",
+    "prompt": "Use case: background-extraction. Extract the exact supplied MEGUI logo onto a genuinely transparent background. Keep the ORIGINAL lilac M, the rotated EGUI lettering to its right, exact original chunky typography, thin butterfly drawing in the upper left M, same proportions. Remove ONLY the black backdrop. The thin black butterfly lines should become transparent negative space as in original. No redesign, do not retype any letter, no added captions, no glow, shadows or bevels. Tight transparent margin around fully preserved original monogram. Flat brand PNG for website.",
+    "display": "PNG transparente; preto no cabeçalho e branco no rodapé/carrossel via CSS."
+  }
+}
