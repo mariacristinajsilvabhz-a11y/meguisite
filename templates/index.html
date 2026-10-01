@@ -130,11 +130,7 @@
       <span class="eyebrow">QUEM JÁ CONFIOU NA MEGUI</span>
       <h2>Marcas e projetos que fazem parte da nossa história.</h2>
     </div>
-    <div class="brand-wall">
-      {% for brand in trusted_brands %}
-        <div class="brand-chip">{{ brand }}</div>
-      {% endfor %}
-    </div>
+    {% include '_client_logos.html' %}
   </div>
 </section>
 

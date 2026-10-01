@@ -37,11 +37,7 @@
       <p>Atendemos demandas corporativas com produtos personalizados, vestuário, brindes e soluções para ações de marca.</p>
     </div>
 
-    <div class="b2b-brand-wall">
-      {% for brand in trusted_brands %}
-        <div class="b2b-brand">{{ brand }}</div>
-      {% endfor %}
-    </div>
+    {% include '_client_logos.html' %}
 
   </div>
 </section>

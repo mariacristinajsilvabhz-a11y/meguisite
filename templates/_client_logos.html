@@ -1,0 +1,10 @@
+<div class="client-logo-wall" aria-label="Clientes que já confiaram na Megui">
+  {% for brand in trusted_brands %}
+  <div class="client-logo-card">
+    <svg class="client-logo" viewBox="{{ brand.crop }}" role="img" aria-label="{{ brand.name }}" preserveAspectRatio="xMidYMid meet">
+      <title>{{ brand.name }}</title>
+      <image href="{{ url_for('static', filename='img/clientes/logos-enviadas.webp') }}" x="0" y="0" width="1122" height="1402" aria-hidden="true"/>
+    </svg>
+  </div>
+  {% endfor %}
+</div>

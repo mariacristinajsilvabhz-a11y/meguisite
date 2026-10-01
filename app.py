@@ -44,7 +44,14 @@ CATEGORY_IMAGES = {
 for category_item in CATEGORIES:
     category_item["images"] = CATEGORY_IMAGES[category_item["slug"]]
 
-TRUSTED_BRANDS = ["Band Minas", "Sesc", "Cemig", "Resultado Final"]
+TRUSTED_BRANDS = [
+    {"name": "Band Minas", "crop": "446 532 235 165"},
+    {"name": "Sesc", "crop": "761 543 266 143"},
+    {"name": "Cemig", "crop": "425 910 279 90"},
+    {"name": "Balaia", "crop": "119 511 223 195"},
+    {"name": "We Basic", "crop": "88 910 293 80"},
+    {"name": "Resultado Final", "crop": "748 859 287 171"},
+]
 
 REVIEWS = []
 
