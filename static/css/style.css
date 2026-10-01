@@ -653,3 +653,23 @@ body{background:#faf6ff}
 .fabric-card h3{line-height:1.2}
 .fabric-card strong{font-size:.875rem}
 .fabric-photo-note{font-size:.875rem;line-height:1.6;color:var(--muted);margin:18px 0 0}
+
+/* Catálogo amplo: mais produtos visíveis sem comprimir a leitura. */
+.catalog-section>.catalog-layout{width:min(1480px,94%);grid-template-columns:190px minmax(0,1fr);gap:24px}
+.catalog-layout>div{min-width:0}
+.catalog-layout .product-grid:not(.list-view){grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.catalog-layout .product-grid>div{min-width:0}
+.catalog-layout .product-card{height:100%;display:flex;flex-direction:column}
+.catalog-layout .product-visual{height:230px;flex-shrink:0}
+.catalog-layout .product-body{padding:18px;display:flex;flex:1;flex-direction:column}
+.catalog-layout .product-card h3{font-size:18px;line-height:1.3;overflow-wrap:anywhere}
+.catalog-layout .product-meta{line-height:1.6;overflow-wrap:anywhere}
+.catalog-layout .product-actions{margin-top:auto;padding-top:18px;flex-wrap:wrap}
+.catalog-layout .product-grid.list-view{grid-template-columns:1fr}
+.catalog-layout .list-view .product-card{display:grid;grid-template-columns:170px minmax(0,1fr)}
+.catalog-layout .list-view .product-visual{height:100%;min-height:200px}
+@media(min-width:1800px){.catalog-section>.catalog-layout{width:min(1740px,94%)}.catalog-layout .product-grid:not(.list-view){grid-template-columns:repeat(5,minmax(0,1fr))}}
+@media(max-width:1279px){.catalog-layout .product-grid:not(.list-view){grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:1000px){.catalog-section>.catalog-layout{grid-template-columns:1fr}.catalog-layout .filters{position:static}.catalog-layout .product-visual{height:245px}}
+@media(max-width:760px){.catalog-layout .product-grid:not(.list-view){grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.catalog-layout .product-visual{height:220px}.catalog-layout .product-body{padding:16px}.catalog-layout .list-view .product-card{grid-template-columns:105px minmax(0,1fr)}}
+@media(max-width:479px){.catalog-layout .product-grid:not(.list-view){grid-template-columns:1fr}.catalog-layout .product-visual{height:270px}}
