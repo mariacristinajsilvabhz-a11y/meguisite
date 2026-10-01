@@ -1,0 +1,11 @@
+{% from '_icons.html' import icon %}
+<div class="search-shell" data-product-search>
+  {{ icon('search') }}
+  <input id="catalog-search" type="search" placeholder="O que você quer personalizar?" aria-label="Buscar produtos" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="search-suggestions" autocomplete="off">
+  <button class="search-clear" type="button" aria-label="Limpar busca" hidden>{{ icon('close') }}</button>
+  <div class="search-dropdown" hidden>
+    <span class="search-caption">PRODUTOS ENCONTRADOS</span>
+    <ul id="search-suggestions" role="listbox" aria-label="Sugestões de produtos"></ul>
+    <p class="search-no-results" hidden>Nenhum produto encontrado. Tente outro nome.</p>
+  </div>
+</div>

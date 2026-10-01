@@ -1,7 +1,8 @@
 import os
 import re
 from urllib.parse import quote
-from flask import Flask, render_template, request, redirect, url_for, session, abort
+from flask import Flask, render_template, request, redirect, url_for, session, abort, jsonify
+from content_data import HISTORICAL_BRANDS, PORTFOLIO, PRODUCTION_VIDEOS
 
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY", "troque-esta-chave-no-render")
@@ -13,7 +14,7 @@ CONTACT_ADDRESS = "Rua Seis, nº 31 — Água Branca, Contagem - MG"
 COMPANY_CNPJ = "45.833.844/0001-51"
 
 _raw_whatsapp = os.environ.get("WHATSAPP_NUMBER", PRIMARY_WHATSAPP)
-WHATSAPP_NUMBER = re.sub(r"\\D", "", _raw_whatsapp)
+WHATSAPP_NUMBER = re.sub(r"\D", "", _raw_whatsapp)
 
 # Número antigo não pertence mais à Megui. Mesmo que ainda esteja salvo no Render,
 # o site substitui pelo atendimento atual.
@@ -28,6 +29,17 @@ CATEGORIES = [
     {"slug": "grafica", "name": "Meg Gráfica", "description": "Materiais gráficos e comunicação visual para sua marca.", "icon": "▤"},
     {"slug": "destaques", "name": "Destaques", "description": "Produtos com alta procura e ótimo potencial de marca.", "icon": "★"},
 ]
+
+CATEGORY_IMAGES = {
+    "brindes": ["img/produtos/squeeze-megui.webp", "img/produtos/caneca-megui.webp"],
+    "bolsas-acessorios": ["img/produtos/mochila-megui.webp"],
+    "vestuario": ["img/produtos/camiseta-megui.webp"],
+    "corporativo": ["img/produtos/mochila-megui.webp", "img/produtos/squeeze-megui.webp", "img/produtos/caneca-megui.webp"],
+    "grafica": ["img/produtos/wind-banner-megui.webp"],
+    "destaques": ["img/produtos/caneca-megui.webp", "img/produtos/camiseta-megui.webp"],
+}
+for category_item in CATEGORIES:
+    category_item["images"] = CATEGORY_IMAGES[category_item["slug"]]
 
 TRUSTED_BRANDS = ["Band Minas", "Sesc", "Cemig", "Resultado Final"]
 
@@ -45,7 +57,8 @@ PRODUCTS = [
         "description": "Camiseta pensada para uniformes, eventos, marcas e ações corporativas. Opções de personalização por silk, DTF ou bordado conforme o projeto.",
         "tags": ["Algodão", "Uniformes", "Silk / DTF"],
         "visual": "tshirt",
-        "image": None,
+        "image": "img/produtos/camiseta-megui.webp",
+        "image_reference": True,
     },
     {
         "id": 2,
@@ -58,7 +71,8 @@ PRODUCTS = [
         "description": "Squeeze personalizável com a identidade da sua empresa. Quantidade mínima e técnica de aplicação variam conforme o modelo escolhido.",
         "tags": ["Brindes", "Eventos", "Corporativo"],
         "visual": "bottle",
-        "image": None,
+        "image": "img/produtos/squeeze-megui.webp",
+        "image_reference": True,
     },
     {
         "id": 3,
@@ -71,7 +85,8 @@ PRODUCTS = [
         "description": "Modelos com diferentes materiais, capacidades e formas de personalização. Ideal para onboarding, eventos e campanhas.",
         "tags": ["Mochilas", "Kits", "B2B"],
         "visual": "bag",
-        "image": None,
+        "image": "img/produtos/mochila-megui.webp",
+        "image_reference": True,
     },
     {
         "id": 4,
@@ -84,7 +99,9 @@ PRODUCTS = [
         "description": "Combine vestuário, papelaria, copos, garrafas, bolsas e outros itens em uma entrega única e personalizada para sua empresa.",
         "tags": ["Onboarding", "Kits", "Empresas"],
         "visual": "kit",
-        "image": None,
+        "image": "img/produtos/mochila-megui.webp",
+        "images": ["img/produtos/mochila-megui.webp", "img/produtos/squeeze-megui.webp", "img/produtos/caneca-megui.webp"],
+        "image_reference": True,
     },
     {
         "id": 5,
@@ -97,7 +114,8 @@ PRODUCTS = [
         "description": "Wind banner personalizado para fachadas, eventos, ativações e pontos comerciais. Produção conforme arte, tamanho e quantidade.",
         "tags": ["Comunicação visual", "Eventos", "PDV"],
         "visual": "banner",
-        "image": None,
+        "image": "img/produtos/wind-banner-megui.webp",
+        "image_reference": True,
     },
     {
         "id": 6,
@@ -110,7 +128,8 @@ PRODUCTS = [
         "description": "Canecas em diferentes materiais e formatos, personalizadas conforme sua identidade. Consulte disponibilidade e quantidade.",
         "tags": ["Canecas", "Brindes", "Presentes"],
         "visual": "mug",
-        "image": None,
+        "image": "img/produtos/caneca-megui.webp",
+        "image_reference": True,
     },
 ]
 
@@ -146,6 +165,10 @@ def inject_global():
         "contact_email": CONTACT_EMAIL,
         "contact_address": CONTACT_ADDRESS,
         "company_cnpj": COMPANY_CNPJ,
+        "historical_brands": HISTORICAL_BRANDS,
+        "portfolio": PORTFOLIO,
+        "production_videos": PRODUCTION_VIDEOS,
+        "search_products": [{"name": p["name"], "sku": p["sku"], "category": p["category"], "line": p["line"], "short": p["short"], "url": url_for("product", slug=p["slug"])} for p in PRODUCTS],
     }
 
 
@@ -213,6 +236,9 @@ def add_to_quote(product_id):
 
     session["quote_cart"] = quote_cart
     session.modified = True
+
+    if request.accept_mimetypes.best == "application/json":
+        return jsonify(count=cart_count(), name=product["name"], quote_url=url_for("quote_view"))
 
     next_url = request.form.get("next")
     return redirect(next_url or url_for("quote_view"))
@@ -308,6 +334,11 @@ def b2b():
 @app.get("/videos")
 def videos():
     return render_template("videos.html")
+
+
+@app.get("/trabalhos")
+def portfolio_view():
+    return render_template("portfolio.html")
 
 
 @app.get("/sobre")

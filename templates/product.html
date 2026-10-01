@@ -4,20 +4,8 @@
 <section class="product-page">
   <div class="container product-page-grid">
     <div class="product-gallery visual-{{ product.visual }}">
-      {% if product.image %}
-        <img class="real-product-photo" src="{{ url_for('static', filename=product.image) }}" alt="{{ product.name }}">
-      {% else %}
-        <span class="visual-label">{{ product.line }}</span>
-        <div class="product-hero-object">
-          {% if product.visual == "tshirt" %}<span class="shape-shirt large">M</span>{% endif %}
-          {% if product.visual == "bottle" %}<span class="shape-bottle large">M</span>{% endif %}
-          {% if product.visual == "bag" %}<span class="shape-bag large">MEG</span>{% endif %}
-          {% if product.visual == "kit" %}<span class="shape-kit large">KIT</span>{% endif %}
-          {% if product.visual == "banner" %}<span class="shape-banner large">MEGUI</span>{% endif %}
-          {% if product.visual == "mug" %}<span class="shape-mug large">M</span>{% endif %}
-        </div>
-        <div class="photo-note">Estrutura pronta para receber a foto real deste produto</div>
-      {% endif %}
+      {% if product.images %}<div class="catalog-photo-set catalog-photo-set-large">{% for image in product.images %}<img src="{{ url_for('static', filename=image) }}" alt="{{ product.name }} — item de referência do kit">{% endfor %}</div>{% else %}      <img class="real-product-photo" src="{{ url_for('static', filename=product.image) }}" alt="{{ product.name }}{% if product.image_reference %} — mockup ilustrativo{% endif %}">{% endif %}
+      {% if product.image_reference %}<span class="photo-reference-label">Mockup ilustrativo · Personalização sob consulta</span>{% endif %}
     </div>
 
     <div class="product-info">
@@ -53,11 +41,11 @@
           <input type="hidden" name="next" value="{{ request.path }}">
           <label>
             Quantidade desejada
-            <input type="number" name="qty" min="1" value="50" required>
+            <input type="number" name="qty" min="1" value="{{ session.get('quote_cart', {}).get(product.id|string, {}).get('qty', 50) }}" required>
           </label>
           <label>
             Detalhes da personalização
-            <textarea name="notes" rows="4" placeholder="Ex.: logo na frente, cor preta, tamanhos P ao GG..."></textarea>
+            <textarea name="notes" rows="4" placeholder="Ex.: logo na frente, cor preta, tamanhos P ao GG...">{{ session.get('quote_cart', {}).get(product.id|string, {}).get('notes', '') }}</textarea>
           </label>
           <button class="btn btn-primary btn-full" type="submit">
             {% if product.id in cart_ids %}Atualizar no orçamento{% else %}Adicionar ao meu orçamento{% endif %}

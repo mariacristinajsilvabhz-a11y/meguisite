@@ -9,9 +9,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css', v='vivid-media-20260930') }}">
 </head>
 <body>
+  {% from '_icons.html' import icon %}
   <div class="top-strip">Produção personalizada • Atendimento B2B • Projetos sob medida</div>
 
   <header class="site-header">
@@ -31,12 +32,13 @@
           <a href="{{ url_for('products') }}">Produtos</a>
           <div class="dropdown-panel">
             {% for category in categories %}
-              <a href="{{ url_for('category', slug=category.slug) }}">{{ category.name }}</a>
+              <a data-category="{{ category.slug }}" href="{{ url_for('category', slug=category.slug) }}">{{ icon(category.slug) }} {{ category.name }}</a>
             {% endfor %}
           </div>
         </div>
         <a href="{{ url_for('b2b') }}">Empresas & Licitações</a>
         <a href="{{ url_for('videos') }}">Vídeos</a>
+        <a href="{{ url_for('portfolio_view') }}">Trabalhos</a>
         <a href="{{ url_for('about') }}">Sobre</a>
         <a href="{{ url_for('contact') }}">Contato</a>
       </nav>
@@ -48,7 +50,21 @@
     </div>
   </header>
 
+  <div class="discovery-bar">
+    <div class="container discovery-inner">
+      {% include '_search.html' %}
+      <div class="discovery-links" aria-label="Atalhos de categorias">
+        {% for category in categories[:3] %}<a data-category="{{ category.slug }}" href="{{ url_for('category', slug=category.slug) }}">{{ icon(category.slug) }} {{ category.name }}</a>{% endfor %}
+      </div>
+    </div>
+  </div>
   <main>{% block content %}{% endblock %}</main>
+  <div class="quote-toast" role="status" aria-live="polite" hidden>
+    <span class="toast-symbol">{{ icon('check') }}</span>
+    <div><strong>Adicionado ao orçamento</strong><span class="toast-name"></span></div>
+    <a href="{{ url_for('quote_view') }}">Ver orçamento {{ icon('arrow') }}</a>
+    <button type="button" aria-label="Fechar aviso">{{ icon('close') }}</button>
+  </div>
 
   <footer class="site-footer">
     <div class="container footer-grid">
@@ -77,6 +93,11 @@
     </div>
   </footer>
 
-  <script src="{{ url_for('static', filename='js/site.js') }}"></script>
+  <dialog class="video-dialog" aria-labelledby="video-dialog-title">
+    <div class="video-dialog-heading"><div><span class="eyebrow eyebrow-light">POR DENTRO DA MEGUI</span><h2 id="video-dialog-title"></h2></div><button class="video-dialog-close" type="button" aria-label="Fechar vídeo">{{ icon('close') }}</button></div>
+    <video controls playsinline preload="none"></video>
+  </dialog>
+  <script id="search-product-data" type="application/json">{{ search_products|tojson }}</script>
+  <script src="{{ url_for('static', filename='js/site.js', v='vivid-media-20260930') }}"></script>
 </body>
 </html>

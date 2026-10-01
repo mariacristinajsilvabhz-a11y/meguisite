@@ -1,0 +1,25 @@
+{
+  "tipo": "Mockups ilustrativos gerados com arte Megui; não são fotos de trabalhos realizados.",
+  "ferramenta": "image_gen.imagegen (integrada)",
+  "paleta": [
+    "lilás",
+    "preto",
+    "branco"
+  ],
+  "referencia_logo": "34(2).png",
+  "tecnicas": {
+    "camiseta": "silk lilás",
+    "mochila": "bordado lilás",
+    "squeeze": "impressão UV lilás e preto",
+    "caneca": "sublimação lilás e preto",
+    "wind-banner": "impressão de arte preta e lilás"
+  },
+  "arquivos": {
+    "camiseta": "camiseta-megui.webp",
+    "mochila": "mochila-megui.webp",
+    "squeeze": "squeeze-megui.webp",
+    "caneca": "caneca-megui.webp",
+    "wind-banner": "wind-banner-megui.webp"
+  },
+  "transparencia": "Canal alpha preservado na conversão para WebP"
+}

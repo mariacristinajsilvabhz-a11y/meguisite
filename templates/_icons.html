@@ -1,0 +1,19 @@
+{% macro icon(name, class_name='') -%}
+<svg class="icon {{ class_name }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+{% if name in ['vestuario', 'tshirt'] %}<path d="m8 3-6 4 3 5 3-2v11h8V10l3 2 3-5-6-4c0 4-8 4-8 0Z"/>
+{% elif name in ['brindes', 'kit'] %}<rect x="3" y="8" width="18" height="4" rx="1"/><path d="M5 12v9h14v-9M12 8v13"/><path d="M12 8C3 9 4 1 8 3c2 1 4 5 4 5Zm0 0c9 1 8-7 4-5-2 1-4 5-4 5Z"/>
+{% elif name in ['bolsas-acessorios', 'bag'] %}<rect x="5" y="7" width="14" height="14" rx="3"/><path d="M9 7V5a3 3 0 0 1 6 0v2M8 13h8v5H8zM5 10H3v7h2m14-7h2v7h-2"/>
+{% elif name == 'corporativo' %}<rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V3h8v4M3 12c5 4 13 4 18 0M10 14h4"/>
+{% elif name in ['grafica', 'banner'] %}<path d="M7 21V3c5-2 9-1 12 2v11c-4-3-8-3-12-1M3 21h8M10 7h5m-5 3h5"/>
+{% elif name == 'destaques' %}<path d="m12 2 3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1Z"/>
+{% elif name == 'mug' %}<path d="M4 6h13v11a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4ZM17 7h2a3 3 0 0 1 0 6h-2M7 2v1m4-1v1m4-1v1"/>
+{% elif name == 'bottle' %}<path d="M9 2h6v4H9zM8 6h8l2 4v9a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3v-9ZM6 12h12m-8 4h4"/>
+{% elif name == 'search' %}<circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/>
+{% elif name == 'grid' %}<rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/>
+{% elif name == 'list' %}<path d="M9 5h12M9 12h12M9 19h12M3 5h1m-1 7h1m-1 7h1"/>
+{% elif name == 'arrow' %}<path d="M5 12h14m-6-6 6 6-6 6"/>
+{% elif name == 'close' %}<path d="m6 6 12 12M6 18 18 6"/>
+{% elif name == 'check' %}<path d="m5 12 4 4L19 6"/>
+{% endif %}
+</svg>
+{%- endmacro %}

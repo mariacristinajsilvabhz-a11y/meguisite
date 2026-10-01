@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block title %}{% if active_category %}{{ active_category.name }}{% else %}Produtos{% endif %} — Megui{% endblock %}
 {% block content %}
+{% from '_icons.html' import icon %}
 <section class="page-hero">
   <div class="container">
     <span class="eyebrow">CATÁLOGO MEGUI</span>
@@ -13,17 +14,18 @@
   <div class="container catalog-layout">
     <aside class="filters">
       <h2>Categorias</h2>
-      <a class="{% if not active_category %}active{% endif %}" href="{{ url_for('products') }}">Todos os produtos</a>
+      <a class="{% if not active_category %}active{% endif %}" href="{{ url_for('products') }}">{{ icon('grid') }} Todos os produtos</a>
       {% for category in categories %}
-        <a class="{% if active_category and active_category.slug == category.slug %}active{% endif %}" href="{{ url_for('category', slug=category.slug) }}">{{ category.name }}</a>
+        <a class="{% if active_category and active_category.slug == category.slug %}active{% endif %}" data-category="{{ category.slug }}" href="{{ url_for('category', slug=category.slug) }}">{{ icon(category.slug) }} {{ category.name }}</a>
       {% endfor %}
     </aside>
 
     <div>
       <div class="catalog-toolbar">
-        <div><strong>{{ products|length }}</strong> produtos nesta versão inicial</div>
-        <div class="search-shell">
-          <input id="catalog-search" type="search" placeholder="Buscar no catálogo..." aria-label="Buscar produtos">
+        <div id="catalog-result-count" role="status" aria-live="polite"><strong>{{ products|length }}</strong> produtos para sua marca</div>
+        <div class="catalog-view-controls" aria-label="Visualização dos produtos">
+          <button type="button" data-view="grid" aria-pressed="true" aria-label="Mostrar em grade">{{ icon('grid') }}</button>
+          <button type="button" data-view="list" aria-pressed="false" aria-label="Mostrar em lista">{{ icon('list') }}</button>
         </div>
       </div>
 
@@ -34,7 +36,7 @@
           </div>
         {% endfor %}
       </div>
-      <p id="empty-search" class="empty-state" hidden>Nenhum produto encontrado nesta categoria.</p>
+      <div id="empty-search" class="empty-state" hidden>{{ icon('search') }}<h2>Nenhum produto nesta categoria.</h2><p>Veja as sugestões da busca ou explore o catálogo completo.</p><a class="btn btn-secondary" href="{{ url_for('products') }}">Ver todos os produtos</a></div>
     </div>
   </div>
 </section>

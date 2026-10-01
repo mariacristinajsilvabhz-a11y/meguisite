@@ -1,0 +1,9 @@
+{% macro video_preview(src, poster, title) %}
+<button class="video-preview" type="button" data-video-src="{{ url_for('static', filename=src) }}" data-video-poster="{{ url_for('static', filename=poster) }}" data-video-title="{{ title }}" aria-label="Assistir: {{ title }}">
+  <img class="video-ambient" src="{{ url_for('static', filename=poster) }}" alt="" loading="lazy">
+  <img class="video-poster" src="{{ url_for('static', filename=poster) }}" alt="" loading="lazy">
+  <span class="video-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l11 7-11 7z" fill="currentColor"/></svg></span>
+  <span class="video-preview-label">ASSISTIR AO PROCESSO <span>↗</span></span>
+</button>
+<noscript><a class="video-fallback" href="{{ url_for('static', filename=src) }}">Assistir a {{ title }}</a></noscript>
+{% endmacro %}

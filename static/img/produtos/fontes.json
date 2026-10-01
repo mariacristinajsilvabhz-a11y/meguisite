@@ -1,0 +1,30 @@
+{
+  "status": "Imagens de referência para aprovação visual. Substituir pelas fotos dos modelos efetivamente ofertados antes da publicação comercial.",
+  "images": [
+    {
+      "file": "camiseta.jpg",
+      "source": "https://canada.michaels.com/product/gildan-short-sleeve-adult-tshirt-10532374",
+      "usage": "Referência visual de camiseta lisa; não representa peça fabricada pela Megui."
+    },
+    {
+      "file": "squeeze.jpg",
+      "source": "https://www.pampatech.com.br/squeeze-aluminio-mosquetao-branco-500ml",
+      "usage": "Referência visual de squeeze sem personalização."
+    },
+    {
+      "file": "mochila.jpg",
+      "source": "https://www.plazavea.com.pe/mochila-porta-laptop-15-6-con-puerto-usb-negro-b51-100969597/p",
+      "usage": "Referência visual de mochila corporativa lisa."
+    },
+    {
+      "file": "wind-banner.jpg",
+      "source": "https://www.casalmockup.com/en/post/wind-banner-mockup",
+      "usage": "Mockup de referência para a prévia visual; não é foto de trabalho realizado."
+    },
+    {
+      "file": "caneca.jpg",
+      "source": "https://www.imprimaqdigital.com.br/caneca-branca-de-porcelana-325ml-",
+      "usage": "Referência visual de caneca branca sem personalização."
+    }
+  ]
+}

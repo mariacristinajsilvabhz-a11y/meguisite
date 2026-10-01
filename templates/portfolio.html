@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Trabalhos realizados — Megui{% endblock %}
+{% from '_video_preview.html' import video_preview with context %}
+{% block content %}
+<section class="page-hero"><div class="container"><span class="eyebrow">TRABALHOS REAIS</span><h1>Da ideia para o mundo.</h1><p>Produtos que vestem equipes, acompanham eventos e carregam a identidade de cada marca. Conheça alguns registros do nosso trabalho.</p></div></section>
+<section class="section"><div class="container"><div class="portfolio-grid">
+{% for work in portfolio %}
+<article class="portfolio-card">
+{% if work.video %}{{ video_preview(work.video, work.image, work.title) }}{% else %}<a href="{{ url_for('static', filename=work.image) }}" target="_blank" rel="noopener" aria-label="Ampliar imagem: {{ work.title }}"><img src="{{ url_for('static', filename=work.image) }}" alt="{{ work.title }} — registro do trabalho realizado" loading="lazy"></a>{% endif %}
+<div class="portfolio-copy"><span class="eyebrow">{{ work.kind }} · {{ work.year }}</span><h2>{{ work.title }}</h2><p>{{ work.text }}</p></div>
+</article>
+{% endfor %}
+</div></div></section>
+<section class="section section-soft"><div class="container"><div class="section-heading"><span class="eyebrow">NOSSA TRAJETÓRIA</span><h2>Marcas presentes desde os primeiros passos.</h2><p class="muted-copy">Trabalhos registrados entre 2021 e 2022, quando nossa operação ainda se chamava Freedom.</p></div><div class="archive-grid">
+{% for brand in historical_brands %}<article class="archive-card"><a href="{{ url_for('static', filename=brand.image) }}" target="_blank" rel="noopener"><img src="{{ url_for('static', filename=brand.image) }}" alt="{{ brand.work }} para {{ brand.name }}, fase Freedom" loading="lazy"></a><div><span class="archive-date">ACERVO FREEDOM · {{ brand.year }}</span><h3>{{ brand.name }}</h3><p>{{ brand.work }}</p></div></article>{% endfor %}
+</div></div></section>
+<section class="section"><div class="container quote-banner"><div><span class="eyebrow eyebrow-light">O PRÓXIMO PROJETO PODE SER O SEU</span><h2>Sua marca também<br>pode estar aqui.</h2></div><div><p>Conte o que você precisa produzir. A Megui ajuda a escolher produtos, aplicações e acabamentos.</p><a class="btn btn-light" href="https://wa.me/{{ whatsapp_number }}">Conversar sobre meu projeto</a></div></div></section>
+{% endblock %}
