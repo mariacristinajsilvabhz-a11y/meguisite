@@ -1,0 +1,18 @@
+{
+  "tool": "image_gen",
+  "note": "Mockups ilustrativos; não são fotos de trabalhos realizados.",
+  "assets": [
+    {
+      "file": "static/img/inicio/carousel-uniformes.webp",
+      "prompt": "Use case: ads-marketing. Website carousel campaign photography, landscape 3:2. Reference image is official MEGUI logo, use its M/vertical EGUI/thin butterfly mark accurately embroidered on clothing. Create premium editorial studio composition of a black zip work jacket with lilac panels on a hanger, and a folded lilac work shirt with small black logo on chest. Clothing only, no people. Pale lavender seamless background, natural shadows, large tactile cotton texture, directional lighting, detailed professional photo, dynamic asymmetrical styling yet readable product shapes. Products fill frame with generous margins, no cropping, no extra products. Lilac black white palette. No slogan, no overlaid text, no city, no fake factory."
+    },
+    {
+      "file": "static/img/inicio/carousel-brindes.webp",
+      "prompt": "Use case: ads-marketing. Website carousel campaign photography, landscape 3:2. Reference image is official MEGUI logo use its M/vertical EGUI/thin butterfly mark accurately on products. Premium colorful studio composition of matte lilac wireless headphones, black lunch bag with lilac embroidered mark, and white compact powerbank with lilac logo. All three distinct products fully visible on staggered lavender display platforms. Luminous lilac seamless backdrop with realistic soft shadows, dynamic diagonal composition, tactile fabrics, realistic product photography not plastic CGI, crisp professional advertising lighting. No cup, no notebook, no cap, no umbrella, no additional items. Lilac black white palette. No slogan or overlay text."
+    },
+    {
+      "file": "static/img/inicio/eventos.webp",
+      "prompt": "Use case: product-mockup. Homepage category photograph cutout on genuine transparent background. Official Megui logo reference. A neatly arranged black and lilac event badge on a lilac lanyard, two silicone event wristbands in lilac and black, and a lilac reusable event cup. Fully visible products with airy margins, commercial studio light and fine realistic textures. Print official Megui mark accurately retaining fine butterfly. Lilac black white only. No slogans, no additional objects or background."
+    }
+  ]
+}

@@ -201,3 +201,52 @@
     document.querySelectorAll('[data-video-src]').forEach(trigger => trigger.addEventListener('click', () => { window.location.href = trigger.dataset.videoSrc; }));
   }
 })();
+
+// A rotação fica sob controle de quem visita, inclusive pelo teclado.
+(() => {
+  const root = document.querySelector('[data-welcome-carousel]');
+  if (!root) return;
+  const slides = [...root.querySelectorAll('[data-carousel-slide]')];
+  const selectors = [...root.querySelectorAll('[data-carousel-to]')];
+  const pause = root.querySelector('[data-carousel-pause]');
+  const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let current = 0, paused = motion.matches, hovered = false, focused = false, timer;
+  const schedule = () => {
+    clearTimeout(timer);
+    if (!paused && !hovered && !focused && !document.hidden) timer = setTimeout(() => show(current + 1), 7000);
+  };
+  const show = index => {
+    current = (index + slides.length) % slides.length;
+    slides.forEach((slide, i) => {
+      slide.hidden = i !== current;
+      slide.inert = i !== current;
+      slide.classList.toggle('is-active', i === current);
+    });
+    selectors.forEach((button, i) => {
+      button.classList.toggle('is-current', i === current);
+      if (i === current) button.setAttribute('aria-current', 'true');
+      else button.removeAttribute('aria-current');
+    });
+    root.querySelector('[data-carousel-counter]').textContent = `${String(current + 1).padStart(2, '0')} / 03`;
+    schedule();
+  };
+  const updatePause = () => {
+    pause.setAttribute('aria-label', paused ? 'Retomar rotação dos banners' : 'Pausar rotação dos banners');
+    pause.firstElementChild.textContent = paused ? '▷' : 'Ⅱ';
+    schedule();
+  };
+  root.querySelector('[data-carousel-prev]').addEventListener('click', () => show(current - 1));
+  root.querySelector('[data-carousel-next]').addEventListener('click', () => show(current + 1));
+  selectors.forEach((button, i) => button.addEventListener('click', () => show(i)));
+  pause.addEventListener('click', () => { paused = !paused; updatePause(); });
+  root.addEventListener('mouseenter', () => { hovered = true; schedule(); });
+  root.addEventListener('mouseleave', () => { hovered = false; schedule(); });
+  root.addEventListener('focusin', () => { focused = true; schedule(); });
+  root.addEventListener('focusout', event => { if (!root.contains(event.relatedTarget)) { focused = false; schedule(); } });
+  root.addEventListener('keydown', event => {
+    if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') { event.preventDefault(); show(current + (event.key === 'ArrowRight' ? 1 : -1)); }
+  });
+  document.addEventListener('visibilitychange', schedule);
+  motion.addEventListener('change', () => { paused = motion.matches; updatePause(); });
+  updatePause();
+})();

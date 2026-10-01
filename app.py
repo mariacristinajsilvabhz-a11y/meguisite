@@ -28,6 +28,7 @@ CATEGORIES = [
     {"slug": "vestuario", "name": "Vestuário", "description": "Camisetas, moletons, uniformes, bonés, aventais e jalecos.", "icon": "M"},
     {"slug": "corporativo", "name": "Corporativo", "description": "Soluções para eventos, equipes, campanhas e kits empresariais.", "icon": "▦"},
     {"slug": "grafica", "name": "Meg Gráfica", "description": "Materiais gráficos e comunicação visual para sua marca.", "icon": "▤"},
+    {"slug": "eventos", "name": "Eventos", "description": "Camisetas, brindes e comunicação visual para feiras, festas e ações promocionais.", "icon": "✦"},
     {"slug": "destaques", "name": "Destaques", "description": "Produtos com alta procura e ótimo potencial de marca.", "icon": "★"},
 ]
 
@@ -37,6 +38,7 @@ CATEGORY_IMAGES = {
     "vestuario": ["img/produtos/camiseta-megui.webp"],
     "corporativo": ["img/produtos/kit-corporativo-megui.webp"],
     "grafica": ["img/produtos/wind-banner-megui.webp"],
+    "eventos": ["img/inicio/eventos.webp"],
     "destaques": ["img/produtos/caneca-megui.webp", "img/produtos/camiseta-megui.webp"],
 }
 for category_item in CATEGORIES:
@@ -183,6 +185,12 @@ def stock_priority(product):
         return 1
 
 
+def matches_category(product, slug):
+    if slug == "eventos":
+        return product["category"] in {"vestuario", "brindes", "grafica", "corporativo"}
+    return product["category"] == slug
+
+
 def order_by_stock(products):
     # sorted é estável: mantém a ordem editorial dentro de cada faixa de saldo.
     return sorted(products, key=stock_priority)
@@ -193,7 +201,7 @@ def home():
     homepage_images = {
         "brindes": "copo-termico", "bolsas-acessorios": "ecobag",
         "vestuario": "moletom", "corporativo": "caderno",
-        "grafica": "papelaria", "destaques": "bone",
+        "grafica": "papelaria", "destaques": "bone", "eventos": "eventos",
     }
     home_categories = [dict(category, images=[f"img/inicio/{homepage_images[category['slug']]}.webp"]) for category in CATEGORIES]
     return render_template("index.html", products=order_by_stock(PRODUCTS)[:6], home_categories=home_categories)
@@ -208,7 +216,7 @@ def products():
     if category_slug:
         active_category = get_category(category_slug)
         if active_category:
-            items = [p for p in PRODUCTS if p["category"] == category_slug]
+            items = [p for p in PRODUCTS if matches_category(p, category_slug)]
 
     return render_template("products.html", products=order_by_stock(items), active_category=active_category)
 
@@ -219,7 +227,7 @@ def category(slug):
     if not category_obj:
         abort(404)
 
-    items = [p for p in PRODUCTS if p["category"] == slug]
+    items = [p for p in PRODUCTS if matches_category(p, slug)]
     return render_template("products.html", products=order_by_stock(items), active_category=category_obj)
 
 

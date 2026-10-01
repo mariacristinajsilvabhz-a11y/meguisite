@@ -3,27 +3,44 @@
 {% block content %}
 {% from '_icons.html' import icon %}
 {% from '_video_preview.html' import video_preview %}
-<section class="welcome-megui">
-  <div class="container welcome-grid">
-    <div class="welcome-copy">
-      <span class="welcome-overline">MEGUI PERSONALIZADOS</span>
-      <h1>Sua marca.<br><span>Em cada detalhe.</span></h1>
-      <p>Uniformes, brindes e comunicação visual com a identidade da sua empresa. Da escolha do produto à personalização, a gente cuida do seu projeto.</p>
-      <div class="welcome-actions">
-        <a class="btn welcome-primary" href="{{ url_for('products') }}">Explorar produtos</a>
-        <a class="btn welcome-secondary" href="https://wa.me/{{ whatsapp_number }}" target="_blank" rel="noopener">Conversar com a Megui</a>
-      </div>
-      <div class="welcome-details"><span>Produção própria</span><span>Personalização sob medida</span></div>
+<section class="home-welcome" aria-label="Conheça as possibilidades da Megui">
+  <div class="welcome-carousel" aria-roledescription="carrossel" aria-label="Produtos personalizados" data-welcome-carousel>
+    <button class="carousel-pause" type="button" aria-label="Pausar rotação dos banners" data-carousel-pause><span aria-hidden="true">Ⅱ</span></button>
+    <div class="carousel-slides" aria-live="off">
+      {% set slides = [
+        {'theme':'gifts','tag':'BRINDES COM PERSONALIDADE','title':'Sua marca vai','accent':'junto.','text':'Do presente ao uso diário. Produtos personalizados para fazer parte da rotina de quem recebe.','image':'carousel-brindes.webp','alt':'Composição ilustrativa de fone, bolsa térmica e carregador personalizados Megui','cta':'Descobrir os brindes','slug':'brindes'},
+        {'theme':'wear','tag':'UNIFORMES & VESTUÁRIO','title':'Uma equipe.','accent':'Uma identidade.','text':'Vista sua marca com peças feitas para trabalhar, representar e impressionar.','image':'carousel-uniformes.webp','alt':'Composição ilustrativa de jaqueta e camisa personalizadas Megui','cta':'Explorar vestuário','slug':'vestuario'},
+        {'theme':'brand','tag':'PERSONALIZAÇÃO DO SEU JEITO','title':'Ideias que','accent':'viram presença.','text':'Da escolha do produto ao acabamento. Vamos criar algo com a cara da sua empresa?','image':'welcome.webp','alt':'Composição ilustrativa de avental, guarda-chuva e cordão Megui','cta':'Ver todos os produtos','slug':none}
+      ] %}
+      {% for slide in slides %}
+      <article class="carousel-slide slide-{{ slide.theme }} {% if loop.first %}is-active{% endif %}" data-carousel-slide role="group" aria-roledescription="banner" aria-label="{{ loop.index }} de 3" {% if not loop.first %}hidden inert{% endif %}>
+        <div class="carousel-copy">
+          <span class="carousel-kicker"><span aria-hidden="true">✦</span> {{ slide.tag }}</span>
+          <{% if loop.first %}h1{% else %}h2{% endif %}>{{ slide.title }}<br><span>{{ slide.accent }}</span></{% if loop.first %}h1{% else %}h2{% endif %}>
+          <p>{{ slide.text }}</p>
+          <div class="carousel-actions">
+            <a class="carousel-cta" href="{{ url_for('category', slug=slide.slug) if slide.slug else url_for('products') }}">{{ slide.cta }} <span>{{ icon('arrow') }}</span></a>
+            <a class="carousel-talk" href="https://wa.me/{{ whatsapp_number }}" target="_blank" rel="noopener">Vamos conversar {{ icon('arrow') }}</a>
+          </div>
+          <span class="carousel-signature">MEGUI <small>PERSONALIZADOS</small></span>
+        </div>
+        <figure class="carousel-art"><img src="{{ url_for('static', filename='img/inicio/' + slide.image) }}" alt="{{ slide.alt }}" width="1440" height="960" {% if loop.first %}fetchpriority="high"{% endif %} decoding="async"><figcaption>Composição ilustrativa</figcaption></figure>
+      </article>
+      {% endfor %}
     </div>
-    <figure class="welcome-visual">
-      <img src="{{ url_for('static', filename='img/inicio/welcome.webp') }}" alt="Apresentação ilustrativa de avental, guarda-chuva e cordão personalizados com a marca Megui" width="1440" height="960" fetchpriority="high" decoding="async">
-      <figcaption>DO SEU JEITO. COM A SUA MARCA.<span>Composição ilustrativa.</span></figcaption>
-    </figure>
+    <div class="carousel-toolbar">
+      <div class="carousel-selectors" aria-label="Escolher banner">
+        <button class="is-current" type="button" data-carousel-to="0" aria-current="true"><span>01</span> Brindes <i></i></button>
+        <button type="button" data-carousel-to="1"><span>02</span> Vestuário <i></i></button>
+        <button type="button" data-carousel-to="2"><span>03</span> Sua marca <i></i></button>
+      </div>
+      <div class="carousel-arrows"><span data-carousel-counter aria-live="polite">01 / 03</span><button type="button" data-carousel-prev aria-label="Banner anterior">{{ icon('arrow') }}</button><button type="button" data-carousel-next aria-label="Próximo banner">{{ icon('arrow') }}</button></div>
+    </div>
   </div>
-  <nav class="container welcome-paths" aria-label="Comece pelo seu projeto">
-    <a href="{{ url_for('category', slug='vestuario') }}"><span>01</span><strong>Vista sua equipe</strong><small>Uniformes e vestuário</small></a>
-    <a href="{{ url_for('category', slug='brindes') }}"><span>02</span><strong>Presenteie com propósito</strong><small>Brindes e kits personalizados</small></a>
-    <a href="{{ url_for('category', slug='grafica') }}"><span>03</span><strong>Dê presença à sua marca</strong><small>Gráfica e comunicação visual</small></a>
+  <nav class="welcome-shortcuts" aria-label="Explore a Megui">
+    <a href="{{ url_for('products') }}"><span class="shortcut-icon">{{ icon('brindes') }}</span><div><strong>Encontre seu produto</strong><small>Explore o catálogo</small></div>{{ icon('arrow') }}</a>
+    <a href="{{ url_for('b2b') }}"><span class="shortcut-icon">{{ icon('corporativo') }}</span><div><strong>Para sua empresa</strong><small>Uniformes, ações e licitações</small></div>{{ icon('arrow') }}</a>
+    <a href="https://wa.me/{{ whatsapp_number }}" target="_blank" rel="noopener"><span class="shortcut-icon">{{ icon('whatsapp') }}</span><div><strong>Conte sua ideia</strong><small>A gente ajuda a criar</small></div>{{ icon('arrow') }}</a>
   </nav>
 </section>
 
