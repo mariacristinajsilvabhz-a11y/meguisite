@@ -26,7 +26,7 @@
         <label for="full-catalog-query">Buscar no catálogo completo</label><div><input id="full-catalog-query" name="q" value="{{ query }}" placeholder="Nome, código ou categoria"><button class="btn btn-primary" type="submit">Buscar</button></div>
       </form>
       <div class="catalog-toolbar">
-        <div id="catalog-result-count" role="status" aria-live="polite"><strong>{{ pagination.total }}</strong> produtos para sua marca</div>
+        <div id="catalog-result-count" role="status" aria-live="polite"><strong>{{ "{:,}".format(pagination.total).replace(",", ".") }}</strong> produtos para sua marca</div>
         <div class="catalog-view-controls" aria-label="Visualização dos produtos">
           <button type="button" data-view="grid" aria-pressed="true" aria-label="Mostrar em grade">{{ icon('grid') }}</button>
           <button type="button" data-view="list" aria-pressed="false" aria-label="Mostrar em lista">{{ icon('list') }}</button>
