@@ -11,7 +11,7 @@ app.secret_key = os.environ.get("SECRET_KEY", "troque-esta-chave-no-render")
 PRIMARY_WHATSAPP = "5531994888250"
 ADMIN_PHONE = "5531993181939"
 CONTACT_EMAIL = "contatomegui@gmail.com"
-CONTACT_ADDRESS = "Rua Seis, nº 31 — Água Branca, Contagem - MG"
+CONTACT_ADDRESS = "Avenida Seis, nº 31 — Água Branca, Contagem - MG"
 COMPANY_CNPJ = "45.833.844/0001-51"
 
 _raw_whatsapp = os.environ.get("WHATSAPP_NUMBER", PRIMARY_WHATSAPP)

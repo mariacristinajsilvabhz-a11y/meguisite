@@ -645,3 +645,11 @@ body{background:#faf6ff}
 :where(a,button,summary):focus-visible{outline:3px solid #9747c9;outline-offset:5px}
 @media(max-width:1000px){.contact-intro-grid,.b2b-visual-grid{grid-template-columns:1fr;gap:30px}.contact-intro-art{max-width:590px;width:100%;margin:auto;min-height:280px}.contact-intro-art img{height:270px}.b2b-team-figure{max-width:760px}.contact-preparation-grid{gap:30px}.b2b-visual-copy h1{font-size:44px}}
 @media(max-width:680px){.hero-showcase .has-product-photo{min-height:300px;padding:24px;gap:18px}.hero-showcase .showcase-main{min-height:425px}.showcase-product-stage img{height:190px}.showcase-main .showcase-product-stage img{height:260px}.showcase-copy strong{font-size:23px}.category-photo-corporativo img{height:100%;width:100%}.category-photo-corporativo{padding:12px 8px}.home-process-preview .video-preview{height:300px}.contact-intro,.b2b-visual-hero{padding:40px 0}.contact-intro h1,.b2b-visual-copy h1{font-size:34px}.contact-intro p,.b2b-visual-copy>p{font-size:15px}.contact-intro-art{transform:none;min-height:260px;padding:20px 15px 40px}.contact-intro-art img{height:230px}.contact-channel-grid,.contact-details-grid,.contact-preparation-grid{grid-template-columns:1fr;gap:16px}.contact-channel{padding:24px}.contact-channel h3{font-size:23px}.contact-number{font-size:24px}.contact-detail{padding:22px}.contact-details-grid{margin-top:16px}.contact-preparation-grid{gap:28px}.b2b-visual-copy .btn{width:100%;font-size:12px;padding:12px 15px;line-height:1.5;text-align:center}.b2b-visual-grid{gap:30px}.b2b-team-figure{border-radius:22px}.b2b-team-figure figcaption{padding:15px 17px}.contact-heading h2{font-size:29px}.b2b-credentials .credentials-panel h2{font-size:27px}}
+
+/* Textile photography: image and copy retain separate reading areas. */
+.fabric-card{overflow:hidden}
+.fabric-photo{display:block;width:calc(100% + 60px);max-width:none;height:auto;aspect-ratio:3/2;object-fit:cover;margin:-30px -30px 24px;flex-shrink:0}
+.fabric-card .fabric-tag{font-size:.75rem;margin-bottom:18px;letter-spacing:.12em}
+.fabric-card h3{line-height:1.2}
+.fabric-card strong{font-size:.875rem}
+.fabric-photo-note{font-size:.875rem;line-height:1.6;color:var(--muted);margin:18px 0 0}

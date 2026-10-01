@@ -1,0 +1,18 @@
+{
+  "tool": "image_gen.imagegen (integrada)",
+  "type": "Fotografias ilustrativas geradas com IA, não são amostras certificadas de gramatura",
+  "assets": [
+    {
+      "path": "static/img/tecidos/malha-leve.webp",
+      "prompt": "Use case: product-mockup. Asset type: illustrative fabric photograph for Megui website material card. Primary request: premium realistic macro studio photograph of folded jersey knit textile swatch, Fine cotton jersey fabric, lightweight with small smooth closely knit loops, soft flowing delicate folds. Ivory fabric, subtle lilac reflected light on an offwhite surface. Composition: landscape 3:2 close-up, one textile only filling most of the frame, elegant diagonal folds, tangible weave and realistic cloth drape, clean editorial fabric catalog photography. Soft side light, crisp focus on foreground knit texture with subtle depth of field, no CGI sheen. No garments, no tools, no text, no logos, no labels, no hands, no watermark. This is an illustrative texture image, not an exact laboratory sample of a declared fabric weight."
+    },
+    {
+      "path": "static/img/tecidos/malha-estruturada.webp",
+      "prompt": "Use case: product-mockup. Asset type: illustrative fabric photograph for Megui website material card. Primary request: premium realistic macro studio photograph of folded jersey knit textile swatch, Medium weight cotton jersey fabric, compact smooth knit, fuller soft rounded folded edges, slightly more substantial drape. Rich lilac fabric on a dark charcoal surface. Composition: landscape 3:2 close-up, one textile only filling most of the frame, elegant diagonal folds, tangible weave and realistic cloth drape, clean editorial fabric catalog photography. Soft side light, crisp focus on foreground knit texture with subtle depth of field, no CGI sheen. No garments, no tools, no text, no logos, no labels, no hands, no watermark. This is an illustrative texture image, not an exact laboratory sample of a declared fabric weight."
+    },
+    {
+      "path": "static/img/tecidos/malha-encorpada.webp",
+      "prompt": "Use case: product-mockup. Asset type: illustrative fabric photograph for Megui website material card. Primary request: premium realistic macro studio photograph of folded jersey knit textile swatch, Heavy cotton jersey fabric suitable for oversized t-shirts, dense smooth knit, thick substantial folded edges and deep sculptural folds. Black fabric on a softly lit pale lilac surface, retain visible texture in shadows. Composition: landscape 3:2 close-up, one textile only filling most of the frame, elegant diagonal folds, tangible weave and realistic cloth drape, clean editorial fabric catalog photography. Soft side light, crisp focus on foreground knit texture with subtle depth of field, no CGI sheen. No garments, no tools, no text, no logos, no labels, no hands, no watermark. This is an illustrative texture image, not an exact laboratory sample of a declared fabric weight."
+    }
+  ]
+}
