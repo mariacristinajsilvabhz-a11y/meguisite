@@ -4,6 +4,7 @@ import re
 import json
 import time
 import threading
+import logging
 from urllib.request import Request, urlopen
 from urllib.parse import urlencode, urlparse
 from urllib.error import HTTPError
@@ -31,7 +32,7 @@ class HubCatalog:
                 cached=self.cache.get(key)
                 if cached and time.monotonic()-cached[0]<60:return cached[1]
                 req=Request(self.base+key,headers={'Authorization':'Bearer '+self.token,'Accept':'application/json'})
-                with urlopen(req,timeout=12) as response:
+                with urlopen(req,timeout=25) as response:
                     data=json.loads(response.read(4_000_000))
                 if not isinstance(data,dict) or not any(k in data for k in ('produtos','produto')):
                     raise ValueError('Resposta inválida do catálogo')
@@ -41,10 +42,12 @@ class HubCatalog:
                 self.cache[key]=(time.monotonic(),data)
                 return data
         except HTTPError as error:
+            logging.warning("Hub catalog HTTP status=%s", error.code)
             if error.code==404:return None
             if cached and time.monotonic()-cached[0]<86400:return cached[1]
             raise CatalogUnavailable() from error
         except Exception as error:
+            logging.warning("Hub catalog unavailable: %s", type(error).__name__)
             if cached and time.monotonic()-cached[0]<86400:return cached[1]
             raise CatalogUnavailable() from error
 
