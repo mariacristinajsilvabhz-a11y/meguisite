@@ -26,11 +26,11 @@ class HubCatalog:
     def fetch(self,path,params=None):
         key=path+'?'+urlencode(params or {})
         cached=self.cache.get(key)
-        if cached and time.monotonic()-cached[0]<60:return cached[1]
+        if cached and time.monotonic()-cached[0]<30:return cached[1]
         try:
             with self.lock:
                 cached=self.cache.get(key)
-                if cached and time.monotonic()-cached[0]<60:return cached[1]
+                if cached and time.monotonic()-cached[0]<30:return cached[1]
                 req=Request(self.base+key,headers={'Authorization':'Bearer '+self.token,'Accept':'application/json'})
                 with urlopen(req,timeout=25) as response:
                     data=json.loads(response.read(4_000_000))
