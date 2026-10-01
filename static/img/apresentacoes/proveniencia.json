@@ -1,0 +1,21 @@
+{
+  "tool": "image_gen.imagegen (integrada)",
+  "assets": [
+    {
+      "path": "static/img/produtos/kit-corporativo-megui.webp",
+      "type": "Mockup ilustrativo",
+      "prompt": "Use case: product-mockup. Asset type: category image for Megui corporate kits website. Input image 1 is the official Megui logo reference ONLY, preserve its exact M with EGUI vertical at right and fine butterfly at upper left. Create a completely new photorealistic premium corporate onboarding kit: one black rigid presentation box open at a tasteful 3/4 angle, one lilac hardcover A5 notebook with the official logo in small black print, one matte black pen with a small lilac MEGUI wordmark, and one black lanyard with lilac MEGUI lettering neatly coiled. Logo lilac on the box lid. No mug, no bottle, no backpack, no shirt. Compact cohesive composition with every item entirely visible, photographed like a real catalog studio cutout, accurate textures and believable scale. Palette lilac, black, white only. Actual transparent background with alpha, no rectangular studio backdrop, no floor, no checkerboard, no baked purple glow. No large copy or slogans. Elegant unobtrusive branding, realistic objects rather than plastic CGI."
+    },
+    {
+      "path": "static/img/apresentacoes/equipe-uniformizada.webp",
+      "type": "Cena ilustrativa, empresa fictícia; não representa a equipe Megui nem um cliente real",
+      "prompt": "Use case: precise-object-edit. Edit the supplied photograph into an illustrative example of ANOTHER company's uniformed office team, not Megui employees. Preserve the four adults, natural expressions, realistic photographic quality, black polo uniforms and lilac accent palette. Replace EVERY Megui logo on EVERY chest with the small fictional company wordmark 'NEXO' in discreet white embroidery, absolutely no Megui monogram anywhere. Replace the garment showroom background with a realistic modern Brazilian business office, desks and an understated glass meeting room softly blurred. Replace all textile swatches/folded garments on table and the fabric held by the woman with everyday office work: a few printed documents, a black laptop and tablet, she is lightly resting her hand on the table instead. Their gestures should look like colleagues reviewing their project. Composition remains wide and realistic, no stock-photo handshake, no slogans, no additional people in foreground. This is a fictional business uniform application example. Do not add signs, large logos or fancy futuristic architecture."
+    }
+  ],
+  "video": {
+    "source": "18048642502815543.mp4 (acervo autorizado)",
+    "path": "static/video/serigrafia-v2.mp4",
+    "poster": "static/img/acervo/serigrafia-capa-v2.jpg",
+    "poster_seconds": 20.2
+  }
+}

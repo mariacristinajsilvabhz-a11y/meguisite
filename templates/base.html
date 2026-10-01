@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css', v='vivid-media-20260930') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css', v='ux-20261001-v2') }}">
 </head>
 <body>
   {% from '_icons.html' import icon %}
@@ -95,9 +95,10 @@
 
   <dialog class="video-dialog" aria-labelledby="video-dialog-title">
     <div class="video-dialog-heading"><div><span class="eyebrow eyebrow-light">POR DENTRO DA MEGUI</span><h2 id="video-dialog-title"></h2></div><button class="video-dialog-close" type="button" aria-label="Fechar vídeo">{{ icon('close') }}</button></div>
-    <video controls playsinline preload="none"></video>
+    <video controls playsinline preload="metadata"></video>
+    <p class="video-load-error" role="status" hidden>Não foi possível carregar o vídeo. <a class="video-direct-link" href="#" target="_blank" rel="noopener">Abrir vídeo em outra aba ↗</a></p>
   </dialog>
   <script id="search-product-data" type="application/json">{{ search_products|tojson }}</script>
-  <script src="{{ url_for('static', filename='js/site.js', v='vivid-media-20260930') }}"></script>
+  <script src="{{ url_for('static', filename='js/site.js', v='ux-20261001-v2') }}"></script>
 </body>
 </html>

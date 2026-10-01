@@ -1,5 +1,6 @@
 import os
 import re
+from decimal import Decimal, InvalidOperation
 from urllib.parse import quote
 from flask import Flask, render_template, request, redirect, url_for, session, abort, jsonify
 from content_data import HISTORICAL_BRANDS, PORTFOLIO, PRODUCTION_VIDEOS
@@ -34,7 +35,7 @@ CATEGORY_IMAGES = {
     "brindes": ["img/produtos/squeeze-megui.webp", "img/produtos/caneca-megui.webp"],
     "bolsas-acessorios": ["img/produtos/mochila-megui.webp"],
     "vestuario": ["img/produtos/camiseta-megui.webp"],
-    "corporativo": ["img/produtos/mochila-megui.webp", "img/produtos/squeeze-megui.webp", "img/produtos/caneca-megui.webp"],
+    "corporativo": ["img/produtos/kit-corporativo-megui.webp"],
     "grafica": ["img/produtos/wind-banner-megui.webp"],
     "destaques": ["img/produtos/caneca-megui.webp", "img/produtos/camiseta-megui.webp"],
 }
@@ -168,13 +169,29 @@ def inject_global():
         "historical_brands": HISTORICAL_BRANDS,
         "portfolio": PORTFOLIO,
         "production_videos": PRODUCTION_VIDEOS,
-        "search_products": [{"name": p["name"], "sku": p["sku"], "category": p["category"], "line": p["line"], "short": p["short"], "url": url_for("product", slug=p["slug"])} for p in PRODUCTS],
+        "search_products": [{"name": p["name"], "sku": p["sku"], "category": p["category"], "line": p["line"], "short": p["short"], "stock_priority": stock_priority(p), "url": url_for("product", slug=p["slug"])} for p in PRODUCTS],
     }
+
+
+def stock_priority(product):
+    """Estoque positivo primeiro; saldo desconhecido preservado; zerados no fim."""
+    try:
+        stock = Decimal(str(product.get("stock")))
+        if not stock.is_finite():
+            return 1
+        return 0 if stock > 0 else 2
+    except (InvalidOperation, ValueError, TypeError):
+        return 1
+
+
+def order_by_stock(products):
+    # sorted é estável: mantém a ordem editorial dentro de cada faixa de saldo.
+    return sorted(products, key=stock_priority)
 
 
 @app.get("/")
 def home():
-    return render_template("index.html", products=PRODUCTS[:6])
+    return render_template("index.html", products=order_by_stock(PRODUCTS)[:6])
 
 
 @app.get("/produtos")
@@ -188,7 +205,7 @@ def products():
         if active_category:
             items = [p for p in PRODUCTS if p["category"] == category_slug]
 
-    return render_template("products.html", products=items, active_category=active_category)
+    return render_template("products.html", products=order_by_stock(items), active_category=active_category)
 
 
 @app.get("/categoria/<slug>")
@@ -198,7 +215,7 @@ def category(slug):
         abort(404)
 
     items = [p for p in PRODUCTS if p["category"] == slug]
-    return render_template("products.html", products=items, active_category=category_obj)
+    return render_template("products.html", products=order_by_stock(items), active_category=category_obj)
 
 
 @app.get("/produto/<slug>")

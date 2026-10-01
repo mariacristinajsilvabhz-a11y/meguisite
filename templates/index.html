@@ -2,6 +2,7 @@
 {% block title %}Megui Personalizados — sua marca em tudo{% endblock %}
 {% block content %}
 {% from '_icons.html' import icon %}
+{% from '_video_preview.html' import video_preview %}
 <section class="hero hero-premium">
   <div class="container hero-grid">
     <div class="hero-copy">
@@ -21,23 +22,16 @@
 
     <div class="hero-showcase" aria-label="Vitrine de produtos Megui">
       <a class="showcase-card showcase-main has-product-photo" href="{{ url_for('category', slug='vestuario') }}">
-        <img src="{{ url_for('static', filename='img/produtos/camiseta-megui.webp') }}" alt="Camiseta preta com estampa lilás Megui">
-        <span class="showcase-kicker">MEG ROUPAS</span>
-        <strong>Uniformes e camisetas</strong>
-        <span>Produção própria + personalização</span>
-        <div class="showcase-art art-shirt">{{ icon('vestuario') }}</div>
+        <div class="showcase-copy"><span class="showcase-kicker">MEG ROUPAS</span><strong>Uniformes e camisetas</strong><span>Produção própria + personalização</span></div>
+        <div class="showcase-product-stage"><img src="{{ url_for('static', filename='img/produtos/camiseta-megui.webp') }}" alt="Camiseta preta com estampa lilás Megui"></div>
       </a>
       <a class="showcase-card has-product-photo" href="{{ url_for('category', slug='brindes') }}">
-        <img src="{{ url_for('static', filename='img/produtos/squeeze-megui.webp') }}" alt="Squeeze branco com arte Megui">
-        <span class="showcase-kicker">PERSONALIZADOS</span>
-        <strong>Brindes corporativos</strong>
-        <div class="showcase-art art-bottle">{{ icon('brindes') }}</div>
+        <div class="showcase-copy"><span class="showcase-kicker">PERSONALIZADOS</span><strong>Brindes corporativos</strong></div>
+        <div class="showcase-product-stage"><img src="{{ url_for('static', filename='img/produtos/squeeze-megui.webp') }}" alt="Squeeze branco com arte Megui"></div>
       </a>
       <a class="showcase-card has-product-photo" href="{{ url_for('category', slug='grafica') }}">
-        <img src="{{ url_for('static', filename='img/produtos/wind-banner-megui.webp') }}" alt="Wind banner preto e lilás com arte Megui">
-        <span class="showcase-kicker">MEG GRÁFICA</span>
-        <strong>Comunicação visual</strong>
-        <div class="showcase-art art-banner">{{ icon('grafica') }}</div>
+        <div class="showcase-copy"><span class="showcase-kicker">MEG GRÁFICA</span><strong>Comunicação visual</strong></div>
+        <div class="showcase-product-stage"><img src="{{ url_for('static', filename='img/produtos/wind-banner-megui.webp') }}" alt="Wind banner preto e lilás com arte Megui"></div>
       </a>
     </div>
   </div>
@@ -235,7 +229,7 @@
 
 <section class="section">
   <div class="container video-teaser">
-    <a class="video-teaser-art" href="{{ url_for('videos') }}" aria-label="Ver bastidores da produção" style="background:linear-gradient(#17121955,#17121955),url('{{ url_for('static', filename='img/acervo/serigrafia.jpg') }}') center/cover"><span>▶</span></a>
+    <div class="home-process-preview">{{ video_preview('video/serigrafia-v2.mp4', 'img/acervo/serigrafia-capa-v2.jpg', 'Serigrafia em produção') }}</div>
     <div>
       <span class="eyebrow">BASTIDORES</span>
       <h2>Veja como a Megui produz, personaliza e entrega.</h2>

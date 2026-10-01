@@ -1,15 +1,13 @@
 {% extends "base.html" %}
 {% block title %}Empresas & Licitações — Megui{% endblock %}
 {% block content %}
-<section class="page-hero b2b-hero">
-  <div class="container">
-    <span class="eyebrow">B2B • COMPRAS CORPORATIVAS • LICITAÇÕES</span>
-    <h1>Uma frente preparada para demandas maiores.</h1>
-    <p>Atendimento para empresas, órgãos, eventos, equipes e projetos que precisam combinar quantidade, variedade, personalização e prazo.</p>
-    <div class="hero-actions">
-      <a class="btn btn-primary" href="{{ url_for('products') }}">Montar cotação</a>
-      <a class="btn btn-secondary" href="{{ url_for('contact') }}">Falar com comercial</a>
+<section class="b2b-visual-hero">
+  <div class="container b2b-visual-grid">
+    <div class="b2b-visual-copy"><span class="eyebrow">EMPRESAS & LICITAÇÕES</span><h1>Vista sua equipe.<br>Fortaleça sua marca.</h1><p>Uniformes, brindes e comunicação visual para empresas que querem ser lembradas. Um atendimento para reunir tudo no mesmo projeto.</p>
+      <div class="hero-actions"><a class="btn btn-primary" href="https://wa.me/{{ whatsapp_number }}?text=Ol%C3%A1%2C%20quero%20uma%20cota%C3%A7%C3%A3o%20para%20minha%20empresa." target="_blank" rel="noopener">Conversar sobre meu projeto ↗</a><a class="btn btn-secondary" href="{{ url_for('products') }}">Explorar produtos</a></div>
+      <nav class="b2b-section-links" aria-label="Explore a página de empresas"><a href="#experiencia">Quem já confiou</a><a href="#materiais">Tecidos e acabamentos</a><a href="#projetos">Como funciona</a></nav>
     </div>
+    <figure class="b2b-team-figure"><img src="{{ url_for('static', filename='img/apresentacoes/equipe-uniformizada.webp') }}" alt="Exemplo ilustrativo de equipe de uma empresa fictícia usando polos pretas personalizadas"><figcaption>Uniformes que levam a identidade da sua empresa.<span>Cena ilustrativa gerada com IA.</span></figcaption></figure>
   </div>
 </section>
 
@@ -17,8 +15,8 @@
   <div class="container credentials-panel">
     <div>
       <span class="eyebrow eyebrow-light">ESTRUTURA FORMAL</span>
-      <h2>Fornecedor com atuação alinhada ao que vende.</h2>
-      <p>O cadastro empresarial está ativo e inclui confecção de vestuário, estamparia e impressão de material publicitário entre as atividades cadastradas.</p>
+      <h2>Pronta para o seu processo de compra.</h2>
+      <p>Confecção, estamparia e impressão de material publicitário nas atividades cadastradas. Documentação alinhada conforme a sua demanda.</p>
     </div>
     <div class="credential-list">
       <div><span>CNPJ</span><strong>{{ company_cnpj }}</strong></div>
@@ -29,7 +27,7 @@
   </div>
 </section>
 
-<section class="section b2b-proof-section">
+<section class="section b2b-proof-section" id="experiencia">
   <div class="container">
     <div class="section-heading split-heading">
       <div>
@@ -44,11 +42,11 @@
         <div class="b2b-brand">{{ brand }}</div>
       {% endfor %}
     </div>
-    <p class="asset-note">As logos oficiais podem substituir os nomes assim que os arquivos forem adicionados ao site.</p>
+
   </div>
 </section>
 
-<section class="section section-soft">
+<section class="section section-soft" id="materiais">
   <div class="container">
     <div class="section-heading split-heading">
       <div>
@@ -125,7 +123,7 @@
   </div>
 </section>
 
-<section class="section b2b-usecases">
+<section class="section b2b-usecases" id="projetos">
   <div class="container">
     <div class="section-heading split-heading">
       <div>

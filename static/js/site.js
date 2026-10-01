@@ -59,7 +59,7 @@
       return terms.every(term => text.includes(term));
     }).sort((a, b) => {
       const rank = product => normalize(product.name).startsWith(query) ? 0 : normalize(product.name).split(/\s+/).some(word => word.startsWith(query)) ? 1 : 2;
-      return rank(a) - rank(b) || a.name.localeCompare(b.name, 'pt-BR');
+      return (a.stock_priority ?? 1) - (b.stock_priority ?? 1) || rank(a) - rank(b) || a.name.localeCompare(b.name, 'pt-BR');
     }).slice(0, 8);
     matches.forEach((product, i) => {
       const item = document.createElement('li');
@@ -168,6 +168,8 @@
   const videoDialog = document.querySelector('.video-dialog');
   if (videoDialog && typeof videoDialog.showModal === 'function') {
     const player = videoDialog.querySelector('video');
+    const videoError = videoDialog.querySelector('.video-load-error');
+    player.addEventListener('error', () => { if (player.getAttribute('src') && videoError) videoError.hidden = false; });
     let videoTrigger;
     document.querySelectorAll('[data-video-src]').forEach(trigger => {
       trigger.addEventListener('click', () => {
@@ -175,7 +177,12 @@
         videoDialog.querySelector('h2').textContent = trigger.dataset.videoTitle;
         player.src = trigger.dataset.videoSrc;
         player.poster = trigger.dataset.videoPoster;
+        if (videoError) {
+          videoError.hidden = true;
+          videoError.querySelector('a').href = trigger.dataset.videoSrc;
+        }
         videoDialog.showModal();
+        player.load();
         player.play().catch(() => {});
       });
     });
