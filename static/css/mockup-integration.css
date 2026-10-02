@@ -1,0 +1,18 @@
+/* O estúdio fica ao lado do orçamento em todo o site. */
+.header-actions{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.create-art-button{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:46px;padding:11px 17px;border:1px solid #d8aeef55;border-radius:999px;background:linear-gradient(115deg,#68288f 0%,#9145b2 52%,#663199 100%);color:#fff;font-size:14px;font-weight:700;line-height:1.4;white-space:nowrap;box-shadow:0 5px 18px #74349f30;transition:box-shadow .2s ease,transform .2s ease}
+.create-art-button .icon{width:19px;height:19px;flex:none;position:relative;z-index:1}
+.create-art-button span{position:relative;z-index:1}
+.create-art-button:before{content:'';position:absolute;inset:-60% auto -60% -65%;width:48%;background:linear-gradient(90deg,transparent,#ffffff12 28%,#ffffff66 50%,#ffffff12 72%,transparent);transform:skewX(-22deg) translateX(0);pointer-events:none;animation:megui-art-reflection 5.8s ease-in-out infinite;z-index:0}
+.create-art-button:hover{transform:translateY(-1px);box-shadow:0 8px 25px #74349f50}
+.create-art-button:focus-visible{outline:3px solid #803cab;outline-offset:4px}
+.create-art-button[aria-current="page"]{box-shadow:0 0 0 3px #a961cd25,0 5px 18px #74349f30}
+.header-actions .quote-button>.icon{display:none}
+@keyframes megui-art-reflection{0%,48%{left:-65%}75%,100%{left:140%}}
+.mockup-page{background:#16131c;padding:0;line-height:0}
+.mockup-studio{scroll-margin-top:100px;display:block;width:100%;height:1400px;min-height:600px;border:0;background:#16131c}
+@media(max-width:1250px) and (min-width:1001px){.header-inner{gap:14px}.main-nav{gap:11px;font-size:12px}.header-actions{gap:8px}.create-art-button{padding-inline:13px}.header-actions .quote-button{padding-inline:12px}}
+@media(max-width:1000px){.header-actions{gap:8px}.header-actions .quote-button{position:relative;min-height:46px;width:46px;padding:10px;justify-content:center;font-size:0}.header-actions .quote-button:before{content:none}.header-actions .quote-button>.icon{display:block;width:22px;height:22px}.header-actions .quote-count{position:absolute;top:-5px;right:-5px;min-width:20px;height:20px;padding:0 4px;font-size:11px;border:2px solid #fff}.create-art-button{padding:11px 14px}}
+@media(max-width:600px){.header-inner{gap:9px}.header-actions{gap:7px}.create-art-button{font-size:14px;gap:6px;padding:10px 12px;min-height:44px}.create-art-button .icon{width:16px;height:16px}.header-actions .quote-button{width:40px;min-height:44px;padding:9px}.menu-toggle{padding:6px}.brand-official{height:40px!important}.mockup-studio{height:2400px}}
+@media(max-width:360px){.header-inner{gap:6px}.create-art-button{padding-inline:10px}.create-art-button .icon{display:none}.brand-official{height:36px!important}}
+@media(prefers-reduced-motion:reduce){.create-art-button:before{animation:none;display:none}.create-art-button{transition:none}.create-art-button:hover{transform:none}}

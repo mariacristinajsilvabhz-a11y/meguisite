@@ -403,6 +403,11 @@ def send_whatsapp():
     return redirect(whatsapp_url)
 
 
+@app.get("/criar-arte")
+def create_art():
+    return render_template("mockups.html")
+
+
 @app.get("/empresas-licitacoes")
 def b2b():
     return render_template("b2b.html")

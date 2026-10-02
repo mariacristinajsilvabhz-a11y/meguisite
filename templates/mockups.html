@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block title %}Criar arte | Megui Personalizados{% endblock %}
+{% block content %}
+<section class="mockup-page" aria-label="Estúdio de personalização da Megui">
+  <iframe id="mockup-studio" class="mockup-studio" src="{{ url_for('static', filename='mockups/index.html', v='20261002-v1') }}" title="Estúdio: crie a arte do seu produto" allow="clipboard-write; web-share"></iframe>
+</section>
+<script src="{{ url_for('static', filename='js/mockup-integration.js', v='20261002-v1') }}" defer></script>
+{% endblock %}
