@@ -76,5 +76,15 @@
     "source": "https://drive.google.com/file/d/1TajcOxiTMwrGEFK7hJ-qczulcwy7F5qu/view",
     "original_name": "C33D02C0-F5A7-46C0-8680-9D44A1CB0AE7.JPG",
     "type": "foto do acervo fornecido pela empresa"
+  },
+  {
+    "image": "img/acervo/2026/senac-cadernos-estudio-v2.webp",
+    "source": "img/acervo/2026/senac-cadernos.webp",
+    "type": "visualização de produto gerada com IA a partir da fotografia original; uso na apresentação B2B"
+  },
+  {
+    "image": "img/acervo/2026/future-pro-estudio-v2.webp",
+    "source": "img/acervo/2026/future-pro.webp",
+    "type": "visualização de produto gerada com IA a partir da fotografia original; uso na apresentação B2B"
   }
 ]

@@ -21,11 +21,11 @@ PRODUCTION_VIDEOS = [
 # Seleção do acervo enviado em 02/10/2026. Datas de envio não são datas de produção.
 RECENT_WORKS = [
     {"title": "Samba do Maestro", "kind": "EVENTOS & COMUNICAÇÃO VISUAL", "text": "Capas de grades personalizadas levam a identidade do evento para o espaço de circulação do público.", "image": "img/acervo/2026/samba-do-maestro.webp"},
-    {"title": "Senac Minas", "kind": "BRINDES & PAPELARIA", "text": "Cadernos personalizados para o projeto NaSemanas: a marca presente nos materiais de quem participa.", "image": "img/acervo/2026/senac-cadernos.webp"},
+    {"title": "Senac Minas", "kind": "BRINDES & PAPELARIA", "text": "Cadernos personalizados para o projeto NaSemanas: a marca presente nos materiais de quem participa.", "image": "img/acervo/2026/senac-cadernos.webp", "presentation_image": "img/acervo/2026/senac-cadernos-estudio-v2.webp"},
     {"title": "Circuito das Indústrias", "kind": "BOLSAS EM PRODUÇÃO", "text": "Sacochilas personalizadas em volume, com registros da organização e preparação das peças.", "image": "img/acervo/2026/bolsas-producao.webp"},
     {"title": "Escola de Cura", "kind": "CAMISETAS PARA MOVIMENTOS", "text": "Camisetas estampadas e embaladas para um projeto que conecta identidade, mensagem e pertencimento.", "image": "img/acervo/2026/escola-de-cura.webp"},
     {"title": "Minions Run", "kind": "PERSONALIZAÇÃO PARA CORRIDAS", "text": "Capas de grades em uso: comunicação visual acompanhando o percurso e a experiência dos participantes.", "image": "img/acervo/2026/minions-run.webp"},
-    {"title": "Future Pro", "kind": "VESTUÁRIO PERSONALIZADO", "text": "Aplicação da identidade da marca em camiseta, registrada no acervo de produção.", "image": "img/acervo/2026/future-pro.webp"},
+    {"title": "Future Pro", "kind": "VESTUÁRIO PERSONALIZADO", "text": "Aplicação da identidade da marca em camiseta, registrada no acervo de produção.", "image": "img/acervo/2026/future-pro.webp", "presentation_image": "img/acervo/2026/future-pro-estudio-v2.webp"},
     {"title": "Senac · garrafas personalizadas", "kind": "BRINDES CORPORATIVOS", "text": "Garrafas com a identidade do Senac, reunidas em um pedido de brindes personalizados.", "image": "img/acervo/2026/senac-garrafas.webp"},
     {"title": "Nécessaires personalizadas", "kind": "BOLSAS & ACESSÓRIOS", "text": "Uma identidade aplicada a peças de uso diário, com detalhes e acabamento que fazem parte do projeto.", "image": "img/acervo/2026/necessaires-personalizadas.webp"},
     {"title": "Da estampa à camiseta", "kind": "BASTIDORES DA PERSONALIZAÇÃO", "text": "Registro da aplicação de estampas para um projeto de vestuário em volume.", "image": "img/acervo/2026/camisetas-estamparia.webp"},

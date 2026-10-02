@@ -39,7 +39,7 @@
 
     {% include '_client_logos.html' %}
 <div class="acervo-project-heading"><h3>Mais marcas presentes no nosso acervo.</h3><a class="text-link" href="{{ url_for('portfolio_view') }}">Ver trabalhos realizados →</a></div><div class="acervo-gallery">
-{% for work in [recent_works[1],recent_works[2],recent_works[5]] %}<figure><a href="{{ url_for('portfolio_view') }}"><img src="{{ url_for('static',filename=work.image) }}" alt="{{ work.title }} — {{ work.kind|lower }}" loading="lazy"></a><figcaption><strong>{{ work.title }}</strong><span>{{ work.kind|capitalize }}</span></figcaption></figure>{% endfor %}
+{% for work in [recent_works[1],recent_works[2],recent_works[5]] %}<figure><a href="{{ url_for('portfolio_view') }}"><img src="{{ url_for('static',filename=work.presentation_image|default(work.image)) }}" alt="{{ work.title }} — {{ work.kind|lower }}" loading="lazy"></a><figcaption><strong>{{ work.title }}</strong><span>{{ work.kind|capitalize }}{% if work.presentation_image %} · Visualização do produto{% endif %}</span></figcaption></figure>{% endfor %}
 </div>
 
   </div>
