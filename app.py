@@ -54,6 +54,9 @@ TRUSTED_BRANDS = [
     {"name": "Balaia", "image": "balaia.png"},
     {"name": "We Basic", "image": "we-basic.png"},
     {"name": "Resultado Final", "image": "resultado-final.png"},
+    {"name": "Senac Minas"},
+    {"name": "Future Pro"},
+    {"name": "Circuito das Indústrias"},
 ]
 
 REVIEWS = []
