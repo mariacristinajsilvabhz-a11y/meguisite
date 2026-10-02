@@ -19,6 +19,7 @@
     controls.className = 'motion-gallery-controls';
     controls.innerHTML = '<span>Explore os trabalhos</span><button type="button" data-step="-1" aria-label="Fotos anteriores">←</button><button type="button" class="motion-toggle" aria-pressed="false">Pausar</button><button type="button" data-step="1" aria-label="Próximas fotos">→</button>';
     controls.querySelectorAll('button').forEach(button => button.setAttribute('aria-controls', gallery.id));
+    controls.querySelector('span').textContent = `${gallery.children.length} trabalhos para explorar`;
     gallery.after(controls);
     let paused = reduced.matches, hovered = false, visible = false, direction = 1;
     const toggle = controls.querySelector('.motion-toggle');

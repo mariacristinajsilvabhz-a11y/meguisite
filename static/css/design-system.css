@@ -118,3 +118,5 @@ input::placeholder,textarea::placeholder{color:#89778f;font-size:14px}input:focu
 .production-feature p{color:#675870;line-height:1.7}
 @media(max-width:800px){.motion-gallery>figure,.motion-gallery>article{flex-basis:84%}.client-ribbon-group{gap:38px;padding-inline:19px}.client-ribbon-brand{width:135px}.production-feature{grid-template-columns:1fr;gap:24px}.client-ribbon-heading{font-size:12px}}
 @media(prefers-reduced-motion:reduce){.client-ribbon-track{animation:none;transform:none}.client-ribbon-window{overflow-x:auto}.ribbon-toggle{display:none}.video-preview .motion-video{transition:none}}
+
+.client-ribbon-brand{background:#211726}

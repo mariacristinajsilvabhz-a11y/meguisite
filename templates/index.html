@@ -126,7 +126,7 @@
   </div>
 </section>
 
-<section class="section"><div class="container"><div class="section-heading split-heading"><div><span class="eyebrow">FEITO PARA IR ALÉM DA IDEIA</span><h2>Marcas, eventos e trabalhos reais.</h2></div><a class="text-link" href="{{ url_for('portfolio_view') }}">Explorar nosso trabalho →</a></div><div class="acervo-gallery">{% for work in recent_works[:3] %}<figure><a href="{{ url_for('portfolio_view') }}"><img src="{{ url_for('static',filename=work.image) }}" alt="{{ work.title }} — trabalho personalizado" loading="lazy"></a><figcaption><strong>{{ work.title }}</strong><span>{{ work.kind|capitalize }}</span></figcaption></figure>{% endfor %}</div></div></section>
+<section class="section"><div class="container"><div class="section-heading split-heading"><div><span class="eyebrow">FEITO PARA IR ALÉM DA IDEIA</span><h2>Marcas, eventos e trabalhos reais.</h2></div><a class="text-link" href="{{ url_for('portfolio_view') }}">Explorar nosso trabalho →</a></div><div class="acervo-gallery">{% for work in portfolio %}<figure><a href="{{ url_for('portfolio_view') }}"><img src="{{ url_for('static',filename=work.image) }}" alt="{{ work.title }} — trabalho personalizado" loading="lazy"></a><figcaption><strong>{{ work.title }}</strong><span>{{ work.kind|capitalize }}</span></figcaption></figure>{% endfor %}</div></div></section>
 
 {% if reviews %}
 <section class="section">
