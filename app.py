@@ -10,6 +10,19 @@ from mockup_3d import mockup_3d
 
 app = Flask(__name__)
 app.register_blueprint(mockup_3d)
+app.config['MOCKUP_STUDIO_ENABLED'] = os.getenv('MOCKUP_STUDIO_ENABLED', '0') == '1'
+
+@app.before_request
+def gate_mockup_studio():
+    if app.config['MOCKUP_STUDIO_ENABLED']:
+        return None
+    if request.endpoint == 'create_art':
+        return redirect(url_for('home'))
+    if (request.endpoint or '').startswith('mockup_3d.'):
+        abort(404)
+    if request.endpoint == 'static' and (request.view_args or {}).get('filename', '').startswith('mockups/'):
+        abort(404)
+
 hub_catalog = HubCatalog()
 
 app.secret_key = os.environ.get("SECRET_KEY", "troque-esta-chave-no-render")

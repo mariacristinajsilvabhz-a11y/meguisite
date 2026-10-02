@@ -8,6 +8,10 @@ class Mockup3DTests(unittest.TestCase):
     def setUp(self):
         self.client = app.test_client()
         app.config['TESTING'] = True
+        self.previous_enabled = app.config['MOCKUP_STUDIO_ENABLED']
+        app.config['MOCKUP_STUDIO_ENABLED'] = True
+    def tearDown(self):
+        app.config['MOCKUP_STUDIO_ENABLED'] = self.previous_enabled
     def test_disabled_without_account(self):
         with patch.dict(os.environ, {'MESHY_ENABLE_IMAGE_TO_3D': '0'}):
             self.assertFalse(self.client.get('/api/mockups/3d/config').json['enabled'])

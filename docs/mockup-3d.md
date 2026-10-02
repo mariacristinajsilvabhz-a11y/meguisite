@@ -1,5 +1,7 @@
 # Estúdio 3D
 
+O estúdio está temporariamente desativado no site. `MOCKUP_STUDIO_ENABLED=1` reativa o botão, o editor e suas APIs. Desativado, o endereço `/criar-arte` redireciona à página inicial e os arquivos do editor e APIs retornam 404.
+
 Camiseta, caneca, garrafa, caderno e almofada têm modelos geométricos ilustrativos locais. Materiais físicos, ambiente de reflexos RoomEnvironment, iluminação de estúdio, malha de tecido, bordas arredondadas e detalhes de construção aproximam a aparência de produto. A camiseta inclui volume, gola, mangas, barra e relevo de malha; os modelos continuam ilustrativos, sem corresponder a um SKU real digitalizado. Three.js 0.180.0 está incluído com licença MIT. O editor permite giro, zoom, cor da peça, detalhes, aplicação de arte e exportação da vista atual. Modelos ilustrativos não são dimensões de fabricação nem confirmação de cores disponíveis.
 
 ## Geração por foto

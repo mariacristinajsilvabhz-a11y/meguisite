@@ -47,9 +47,11 @@
       </nav>
 
       <div class="header-actions">
+        {% if config['MOCKUP_STUDIO_ENABLED'] %}
         <a class="create-art-button" href="{{ url_for('create_art') }}" {% if request.endpoint == 'create_art' %}aria-current="page"{% endif %}>
           {{ icon('create-art') }}<span>Criar arte</span>
         </a>
+        {% endif %}
         <a class="quote-button" href="{{ url_for('quote_view') }}" aria-label="Meu orçamento: {{ cart_count }} itens">
           {{ icon('cart') }} Orçamento
           <span class="quote-count">{{ cart_count }}</span>
