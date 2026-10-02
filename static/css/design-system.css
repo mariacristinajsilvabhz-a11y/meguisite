@@ -120,3 +120,5 @@ input::placeholder,textarea::placeholder{color:#89778f;font-size:14px}input:focu
 @media(prefers-reduced-motion:reduce){.client-ribbon-track{animation:none;transform:none}.client-ribbon-window{overflow-x:auto}.ribbon-toggle{display:none}.video-preview .motion-video{transition:none}}
 
 .client-ribbon-brand{background:#211726}
+
+@media(min-width:801px){.homepage-work-gallery.motion-gallery>figure{flex-basis:calc((100% - 56px)/3)}}
