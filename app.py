@@ -64,11 +64,11 @@ TRUSTED_BRANDS = [
     {"name": "PrintUp Estamparia", "image": "printup-v2.png"},
     {"name": "Brantchic", "image": "brantchic-v2.png", "logo_style": "paper"},
     {"name": "T-Shirteria Versátil"},
-    {"name": "Vorr Brasil"},
-    {"name": "Tailor’s Mind"},
-    {"name": "Samba do Maestro"},
-    {"name": "Escola de Cura"},
-    {"name": "Minions Run"},
+    {"name": "Vörr Brasil", "image": "vorr-oficial.png", "logo_style": "ink"},
+    {"name": "Tailor’s Mind", "image": "tailors-mind-oficial.svg", "logo_style": "ink"},
+    {"name": "Samba do Maestro", "image": "samba-do-maestro-acervo.png"},
+    {"name": "Escola de Cura", "image": "escola-de-cura-acervo.png"},
+    {"name": "Minions Run", "image": "minions-run-acervo.png", "logo_style": "ink"},
 ]
 
 REVIEWS = []

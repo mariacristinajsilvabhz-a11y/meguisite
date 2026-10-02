@@ -1,0 +1,32 @@
+[
+  {
+    "brand": "Vörr Brasil",
+    "image": "vorr-oficial.png",
+    "source": "https://vorr.com.br/cdn/shop/files/VORR_dog_dourado_texto_preto_transparente.png?v=1784003653&width=640",
+    "type": "arquivo original do cabeçalho do site oficial"
+  },
+  {
+    "brand": "Tailor’s Mind",
+    "image": "tailors-mind-oficial.svg",
+    "source": "https://www.tailorsmind.com.br/",
+    "type": "SVG original do cabeçalho do site oficial; geometria e lettering preservados"
+  },
+  {
+    "brand": "Samba do Maestro",
+    "image": "samba-do-maestro-acervo.png",
+    "source": "IMG_4464.JPG do acervo enviado pela Megui",
+    "type": "extração assistida por IA do emblema aplicado na grade; não é arquivo matriz oficial"
+  },
+  {
+    "brand": "Escola de Cura",
+    "image": "escola-de-cura-acervo.png",
+    "source": "IMG_5057.jpg do acervo enviado pela Megui",
+    "type": "extração assistida por IA da estampa plana; não é arquivo matriz oficial"
+  },
+  {
+    "brand": "Minions Run",
+    "image": "minions-run-acervo.png",
+    "source": "IMG_4401.jpg do acervo enviado pela Megui",
+    "type": "extração assistida por IA do logotipo aplicado na grade; não é arquivo matriz oficial"
+  }
+]
