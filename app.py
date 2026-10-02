@@ -6,7 +6,10 @@ from flask import Flask, render_template, request, redirect, url_for, session, a
 from hub_catalog import HubCatalog, CatalogUnavailable
 from content_data import HISTORICAL_BRANDS, PORTFOLIO, PRODUCTION_VIDEOS, RECENT_WORKS, DESIGN_PROJECTS
 
+from mockup_3d import mockup_3d
+
 app = Flask(__name__)
+app.register_blueprint(mockup_3d)
 hub_catalog = HubCatalog()
 
 app.secret_key = os.environ.get("SECRET_KEY", "troque-esta-chave-no-render")
