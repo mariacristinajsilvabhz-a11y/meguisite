@@ -1,6 +1,6 @@
 # Estúdio 3D
 
-Caneca, garrafa, caderno e almofada têm modelos geométricos ilustrativos locais. Three.js 0.180.0 está incluído com licença MIT. O editor permite giro, zoom, cor da peça, detalhes, aplicação de arte e exportação da vista atual. Modelos ilustrativos não são dimensões de fabricação nem confirmação de cores disponíveis.
+Camiseta, caneca, garrafa, caderno e almofada têm modelos geométricos ilustrativos locais. Materiais físicos, ambiente de reflexos RoomEnvironment, iluminação de estúdio, malha de tecido, bordas arredondadas e detalhes de construção aproximam a aparência de produto. A camiseta inclui volume, gola, mangas, barra e relevo de malha; os modelos continuam ilustrativos, sem corresponder a um SKU real digitalizado. Three.js 0.180.0 está incluído com licença MIT. O editor permite giro, zoom, cor da peça, detalhes, aplicação de arte e exportação da vista atual. Modelos ilustrativos não são dimensões de fabricação nem confirmação de cores disponíveis.
 
 ## Geração por foto
 
@@ -19,3 +19,5 @@ A foto é reduzida a até 1600 pixels, convertida para JPEG e enviada ao servido
 O fornecedor estima a geometria e os lados ocultos. Não identifica SKU do catálogo nem garante reprodução exata. O modelo gerado pode ser girado, colorido e receber a estampa clicando em Posicionar arte e na superfície. A cor recolore os materiais, mantendo a textura gerada. Não há segmentação automática de tampas e detalhes nesses modelos. Geração pode levar minutos, diferentemente dos modelos prontos.
 
 Sem a conta configurada, não são feitas chamadas pagas. Os quatro modelos locais funcionam sem serviço externo.
+
+Validação das geometrias e materiais: `node tests/mockup_models.mjs`. Testes Flask: `python -m unittest discover -s tests -q`.

@@ -2,19 +2,26 @@ import * as T from 'three';
 import {OrbitControls} from './vendor/OrbitControls.js';
 import {GLTFLoader} from './vendor/GLTFLoader.js';
 import {DecalGeometry} from './vendor/DecalGeometry.js';
+import {RoomEnvironment} from './vendor/RoomEnvironment.js';
 import {makeProduct,supported} from './models3d.js';
 const $=id=>document.getElementById(id), stage=$('stage3d');
-let renderer,scene,camera,controls,model,productId,active=false,spinning=false,frame,generatedFor=null,decal=null,placing=false,generatedTask=null;
+let renderer,scene,camera,controls,model,productId,active=false,spinning=false,frame,generatedFor=null,decal=null,placing=false,generatedTask=null,floor3d;
 function paint(){if(renderer&&active)renderer.render(scene,camera);}
 function animate(){if(!spinning||!active)return;controls.update();paint();frame=requestAnimationFrame(animate);}
-function dispose(){if(decal){scene.remove(decal);decal.geometry.dispose();decal.material.dispose();decal=null;}if(!model)return;generatedFor=null;model.group.traverse(node=>{node.geometry?.dispose();if(model.generated){const materials=Array.isArray(node.material)?node.material:[node.material];materials.forEach(m=>{if(m){Object.values(m).filter(v=>v?.isTexture).forEach(t=>t.dispose());m.dispose();}});}});model.ink.map?.dispose();new Set([model.body,model.trim,model.ink,...model.group.children.map(n=>n.material)]).forEach(m=>m?.dispose());scene.remove(model.group);model=null;generatedTask=null;}
+function dispose(){
+ if(decal){scene.remove(decal);decal.geometry.dispose();decal=null;}
+ if(!model)return;const materials=new Set([model.body,model.trim,model.ink]),textures=new Set();
+ model.group.traverse(n=>{n.geometry?.dispose();(Array.isArray(n.material)?n.material:[n.material]).forEach(m=>{if(m)materials.add(m);});});
+ materials.forEach(m=>{if(!m)return;Object.values(m).filter(v=>v?.isTexture).forEach(t=>textures.add(t));m.dispose();});textures.forEach(t=>t.dispose());
+ scene.remove(model.group);model=null;productId=null;generatedFor=null;generatedTask=null;
+}
 function init(){
   if(renderer)return;
-  renderer=new T.WebGLRenderer({antialias:true,preserveDrawingBuffer:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setClearColor(0xf4f1f9);renderer.shadowMap.enabled=true;renderer.shadowMap.type=T.PCFSoftShadowMap;stage.append(renderer.domElement);
-  scene=new T.Scene();camera=new T.PerspectiveCamera(38,1,.1,100);camera.position.set(3,1.8,6);
+  renderer=new T.WebGLRenderer({antialias:true,preserveDrawingBuffer:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setClearColor(0xf5f3f0);renderer.toneMapping=T.ACESFilmicToneMapping;renderer.toneMappingExposure=1;renderer.outputColorSpace=T.SRGBColorSpace;renderer.shadowMap.enabled=true;renderer.shadowMap.type=T.PCFSoftShadowMap;stage.append(renderer.domElement);
+  scene=new T.Scene();const room=new RoomEnvironment(),pmrem=new T.PMREMGenerator(renderer);scene.environment=pmrem.fromScene(room,.04).texture;room.dispose();pmrem.dispose();scene.environmentIntensity=.65;camera=new T.PerspectiveCamera(38,1,.1,100);camera.position.set(2.7,1.15,6.4);
   controls=new OrbitControls(camera,renderer.domElement);controls.minDistance=3.5;controls.maxDistance=12;controls.enablePan=false;controls.autoRotateSpeed=2;controls.addEventListener('change',paint);
-  scene.add(new T.HemisphereLight(0xffffff,0x8d819e,2));const light=new T.DirectionalLight(0xffffff,3);light.position.set(4,6,5);light.castShadow=true;light.shadow.mapSize.set(1024,1024);scene.add(light);
-  const floor=new T.Mesh(new T.PlaneGeometry(100,100),new T.ShadowMaterial({opacity:.12}));floor.rotation.x=-Math.PI/2;floor.position.y=-1.65;floor.receiveShadow=true;scene.add(floor);
+  scene.add(new T.HemisphereLight(0xffffff,0xb9b5bf,.65));const light=new T.DirectionalLight(0xfff7ee,3.1);light.position.set(4,6,5);light.castShadow=true;light.shadow.mapSize.set(2048,2048);light.shadow.camera.left=-4;light.shadow.camera.right=4;light.shadow.camera.top=4;light.shadow.camera.bottom=-4;light.shadow.normalBias=.025;light.shadow.bias=-.0001;light.shadow.radius=4;scene.add(light);const fill=new T.DirectionalLight(0xe6eaff,1.2);fill.position.set(-4,2,3);scene.add(fill);const rim=new T.DirectionalLight(0xffffff,2);rim.position.set(2,4,-4);scene.add(rim);
+  floor3d=new T.Mesh(new T.PlaneGeometry(100,100),new T.MeshStandardMaterial({color:0xf5f3f0,roughness:.96}));floor3d.rotation.x=-Math.PI/2;floor3d.position.y=-1.65;floor3d.receiveShadow=true;scene.add(floor3d);
   new ResizeObserver(resize).observe(stage);
 }
 function resize(){if(!renderer||!active)return;const {width,height}=stage.getBoundingClientRect();if(!width||!height)return;renderer.setSize(width,height);camera.aspect=width/height;camera.updateProjectionMatrix();paint();}
@@ -23,14 +30,14 @@ function sync(){
   const design=window.MeguiDesign?.read();if(!design)return;
   const available=generatedFor===design.product.id||(supported.includes(design.product.id)&&!design.hasCustomBase);
   $('view3d').disabled=!available;
-  $('viewMessage').textContent=available?'Modelo ilustrativo · arraste para girar e use zoom.':'3D disponível: caneca, garrafa, caderno e almofada.';
+  $('viewMessage').textContent=available?'Materiais e iluminação de estúdio · arraste para girar.':'3D: camiseta, caneca, garrafa, caderno e almofada.';
   if(active&&!available)setView(false);
   $('productColor').value=design.state.productColor;$('trimColor').value=design.state.trimColor;
   if(!active)return;
   $('trimColor').disabled=!!model?.generated;
   if(productId!==design.product.id){dispose();model=makeProduct(design.product.id,texture());productId=design.product.id;scene.add(model.group);}
   else {model.ink.map?.dispose();model.ink.map=texture();model.ink.needsUpdate=true;}
-  if(model.generated){model.group.traverse(n=>{if(n.isMesh){const materials=Array.isArray(n.material)?n.material:[n.material];materials.forEach(m=>m.color?.set(design.state.productColor));}});}else{model.body.color.set(design.state.productColor);model.trim.color.set(design.state.trimColor);}paint();
+  if(model.generated){model.group.traverse(n=>{if(n.isMesh){const materials=Array.isArray(n.material)?n.material:[n.material];materials.forEach(m=>m.color?.set(design.state.productColor));}});}else{model.body.color.set(design.state.productColor);model.trim.color.set(design.state.trimColor);}floor3d.position.y=new T.Box3().setFromObject(model.group).min.y-.012;paint();
 }
 function setView(value){
   try{if(value)init();}catch(error){$('viewMessage').textContent='Seu navegador não conseguiu abrir o 3D. Continue na prévia 2D.';return;}
@@ -47,7 +54,7 @@ const changeColor=()=>window.MeguiDesign.setColors($('productColor').value,$('tr
 $('productColor').onchange=$('trimColor').onchange=changeColor;
 for(const color of ['#ffffff','#19151f','#7250d4','#e2488c','#217eae','#20855d','#e6bc62']){const button=document.createElement('button');button.type='button';button.style.background=color;button.setAttribute('aria-label','Cor '+color);button.onclick=()=>{ $('productColor').value=color;changeColor();};$('productSwatches').append(button);}
 window.addEventListener('megui:design-change',sync);
-window.Megui3D={get active(){return active;},capture(){paint();const canvas=document.createElement('canvas');canvas.width=canvas.height=1200;const ctx=canvas.getContext('2d');ctx.fillStyle='#f4f1f9';ctx.fillRect(0,0,1200,1200);const source=renderer.domElement,ratio=Math.min(1200/source.width,1200/source.height);ctx.drawImage(source,(1200-source.width*ratio)/2,(1200-source.height*ratio)/2,source.width*ratio,source.height*ratio);return canvas;},getView(){return {template:generatedTask?'foto-gerada':productId,generationTask:generatedTask,bodyColor:$('productColor').value,trimColor:$('trimColor').value,camera:camera.position.toArray(),target:controls.target.toArray()};}};
+window.Megui3D={get active(){return active;},capture(){paint();const canvas=document.createElement('canvas');canvas.width=canvas.height=1200;const ctx=canvas.getContext('2d');ctx.fillStyle='#f5f3f0';ctx.fillRect(0,0,1200,1200);const source=renderer.domElement,ratio=Math.min(1200/source.width,1200/source.height);ctx.drawImage(source,(1200-source.width*ratio)/2,(1200-source.height*ratio)/2,source.width*ratio,source.height*ratio);return canvas;},getView(){return {template:generatedTask?'foto-gerada':productId,generationTask:generatedTask,bodyColor:$('productColor').value,trimColor:$('trimColor').value,camera:camera.position.toArray(),target:controls.target.toArray()};}};
 setView(false);sync();
 
 $('placeDecal').onclick=()=>{placing=!placing;controls.enabled=!placing;$('placeDecal').textContent=placing?'Clique na superfície':'Posicionar arte';};
