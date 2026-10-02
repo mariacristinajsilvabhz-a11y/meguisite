@@ -17,3 +17,23 @@ PRODUCTION_VIDEOS = [
     {"title": "Comunicação visual na prática", "text": "Aplicação de vinil em um ponto comercial.", "video": "video/comunicacao-visual.mp4", "poster": "img/acervo/comunicacao-visual.jpg", "year": "2025"},
     {"title": "Uma bolsa, do corte à peça", "text": "Do corte à costura, acompanhe uma etapa da confecção de uma bolsa personalizada.", "video": "video/confeccao-bolsas.mp4", "poster": "img/acervo/confeccao-bolsas.jpg", "year": "2023"},
 ]
+
+# Seleção do acervo enviado em 02/10/2026. Datas de envio não são datas de produção.
+RECENT_WORKS = [
+    {"title": "Samba do Maestro", "kind": "EVENTOS & COMUNICAÇÃO VISUAL", "text": "Capas de grades personalizadas levam a identidade do evento para o espaço de circulação do público.", "image": "img/acervo/2026/samba-do-maestro.webp"},
+    {"title": "Senac Minas", "kind": "BRINDES & PAPELARIA", "text": "Cadernos personalizados para o projeto NaSemanas: a marca presente nos materiais de quem participa.", "image": "img/acervo/2026/senac-cadernos.webp"},
+    {"title": "Circuito das Indústrias", "kind": "BOLSAS EM PRODUÇÃO", "text": "Sacochilas personalizadas em volume, com registros da organização e preparação das peças.", "image": "img/acervo/2026/bolsas-producao.webp"},
+    {"title": "Escola de Cura", "kind": "CAMISETAS PARA MOVIMENTOS", "text": "Camisetas estampadas e embaladas para um projeto que conecta identidade, mensagem e pertencimento.", "image": "img/acervo/2026/escola-de-cura.webp"},
+    {"title": "Minions Run", "kind": "PERSONALIZAÇÃO PARA CORRIDAS", "text": "Capas de grades em uso: comunicação visual acompanhando o percurso e a experiência dos participantes.", "image": "img/acervo/2026/minions-run.webp"},
+    {"title": "Future Pro", "kind": "VESTUÁRIO PERSONALIZADO", "text": "Aplicação da identidade da marca em camiseta, registrada no acervo de produção.", "image": "img/acervo/2026/future-pro.webp"},
+    {"title": "Senac · garrafas personalizadas", "kind": "BRINDES CORPORATIVOS", "text": "Garrafas com a identidade do Senac, reunidas em um pedido de brindes personalizados.", "image": "img/acervo/2026/senac-garrafas.webp"},
+    {"title": "Nécessaires personalizadas", "kind": "BOLSAS & ACESSÓRIOS", "text": "Uma identidade aplicada a peças de uso diário, com detalhes e acabamento que fazem parte do projeto.", "image": "img/acervo/2026/necessaires-personalizadas.webp"},
+    {"title": "Da estampa à camiseta", "kind": "BASTIDORES DA PERSONALIZAÇÃO", "text": "Registro da aplicação de estampas para um projeto de vestuário em volume.", "image": "img/acervo/2026/camisetas-estamparia.webp"},
+    {"title": "Chaveiros personalizados", "kind": "LEMBRANÇAS & PRESENTES", "text": "Pequenas peças que carregam nomes, mensagens e a identidade de cada ocasião.", "image": "img/acervo/2026/chaveiros-personalizados.webp"},
+]
+PORTFOLIO = RECENT_WORKS + PORTFOLIO
+DESIGN_PROJECTS = [
+    {"title": "AMAGIS", "text": "Proposta de sacochila com a identidade do projeto e marcas participantes.", "image": "img/acervo/2026/amagis-projeto.webp"},
+    {"title": "Senac", "text": "Apresentação de sacochila personalizada para Santos na Ladeira.", "image": "img/acervo/2026/senac-sacochila-projeto.webp"},
+    {"title": "Circuito das Indústrias", "text": "Visualização da sacochila antes da produção.", "image": "img/acervo/2026/circuito-industrias-projeto.webp"},
+]

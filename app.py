@@ -4,7 +4,7 @@ from decimal import Decimal, InvalidOperation
 from urllib.parse import quote
 from flask import Flask, render_template, request, redirect, url_for, session, abort, jsonify
 from hub_catalog import HubCatalog, CatalogUnavailable
-from content_data import HISTORICAL_BRANDS, PORTFOLIO, PRODUCTION_VIDEOS
+from content_data import HISTORICAL_BRANDS, PORTFOLIO, PRODUCTION_VIDEOS, RECENT_WORKS, DESIGN_PROJECTS
 
 app = Flask(__name__)
 hub_catalog = HubCatalog()
@@ -181,6 +181,8 @@ def inject_global():
         "company_cnpj": COMPANY_CNPJ,
         "historical_brands": HISTORICAL_BRANDS,
         "portfolio": PORTFOLIO,
+        "recent_works": RECENT_WORKS,
+        "design_projects": DESIGN_PROJECTS,
         "production_videos": PRODUCTION_VIDEOS,
         "hub_catalog_enabled": hub_catalog.enabled,
         "search_products": [] if hub_catalog.enabled else [{"name": p["name"], "sku": p["sku"], "category": p["category"], "line": p["line"], "short": p["short"], "stock_priority": stock_priority(p), "url": url_for("product", slug=p["slug"])} for p in PRODUCTS],
