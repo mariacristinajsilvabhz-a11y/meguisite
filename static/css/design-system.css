@@ -158,3 +158,35 @@ input::placeholder,textarea::placeholder{color:#89778f;font-size:14px}input:focu
 .shirt-showcase-controls button:focus-visible{outline:2px solid #a17db6;outline-offset:2px}
 @media(max-width:600px){.shirt-showcase figcaption{align-items:flex-start;gap:6px}.shirt-showcase-controls button{min-height:36px}.shirt-showcase figcaption>span{max-width:60%;line-height:1.5}}
 @media(prefers-reduced-motion:reduce){.events-story .shirt-showcase-stage .shirt-showcase-image{transition:none;transform:none}}
+
+/* Seletores centrais por pontos, com alvo confortável e foco visível. */
+.gallery-dots{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:4px;padding:22px 0 0}
+.gallery-dots[hidden]{display:none}
+.gallery-dots button{display:grid;place-items:center;width:28px;height:28px;padding:0;background:none;border:0;border-radius:50%;cursor:pointer;color:#ad96b9}
+.gallery-dots button:after{content:'';width:7px;height:7px;border-radius:50%;background:currentColor;transition:transform .25s,background .25s}
+.gallery-dots button.is-current{color:#75418e}
+.gallery-dots button.is-current:after{transform:scale(1.35)}
+.gallery-dots button:hover{color:#75418e}
+.gallery-dots button:focus-visible{outline:2px solid #a17db6;outline-offset:2px}
+.welcome-carousel .carousel-toolbar{display:flex;justify-content:center;padding:0 24px 20px;border:0;background:transparent}
+.carousel-dots{padding-top:4px}
+.shirt-showcase figcaption{display:block}
+.shirt-showcase-dots{padding-top:12px}
+.home-work-section{position:relative;background:radial-gradient(ellipse at 12% 0,#57326e70,transparent 60%),#1d1624;color:#fff;padding:70px 0 56px}
+.home-work-section .section-heading{align-items:flex-end;margin-bottom:32px}
+.home-work-section .eyebrow{background:#ffffff08;border-color:#ceace331;color:#ddc0ee}
+.home-work-section h2{font-size:clamp(32px,4vw,48px);letter-spacing:-.035em;line-height:1.15}
+.home-work-section .text-link{color:#e0c6ef}
+.homepage-work-gallery.motion-gallery{gap:20px}
+.homepage-work-gallery.motion-gallery>figure{position:relative;flex-basis:calc((100% - 40px)/3);border-radius:22px;overflow:hidden;isolation:isolate}
+.homepage-work-gallery img{aspect-ratio:4/4.5;border-radius:0;transition:transform .65s ease}
+.homepage-work-gallery figure:hover img{transform:scale(1.035)}
+.homepage-work-gallery figcaption{position:absolute;inset:auto 0 0;padding:68px 24px 24px;background:linear-gradient(transparent,#130d19ed);pointer-events:none}
+.homepage-work-gallery strong{font-size:22px;line-height:1.25;color:#fff}
+.homepage-work-gallery figcaption span{font-size:14px;line-height:1.5;color:#e1d4e8}
+.home-work-section .gallery-dots{padding-top:24px}
+.home-work-section .gallery-dots button{color:#7e688b}
+.home-work-section .gallery-dots button.is-current,.home-work-section .gallery-dots button:hover{color:#e2b5ff}
+@media(max-width:800px){.home-work-section{padding:48px 0 36px}.home-work-section .section-heading{align-items:flex-start}.homepage-work-gallery.motion-gallery>figure{flex-basis:86%}.homepage-work-gallery img{aspect-ratio:4/4.2}.homepage-work-gallery figcaption{padding:60px 20px 22px}.gallery-dots{gap:0}.gallery-dots button{width:26px;height:30px}.shirt-showcase figcaption>span{max-width:none}}
+@media(pointer:coarse){.gallery-dots button{height:44px;min-width:28px}}
+@media(prefers-reduced-motion:reduce){.homepage-work-gallery figure:hover img{transform:none}}

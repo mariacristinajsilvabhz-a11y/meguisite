@@ -5,7 +5,6 @@
 {% from '_video_preview.html' import video_preview %}
 <section class="home-welcome" aria-label="Conheça as possibilidades da Megui">
   <div class="welcome-carousel" aria-roledescription="carrossel" aria-label="Produtos personalizados" data-welcome-carousel>
-    <button class="carousel-pause" type="button" aria-label="Pausar rotação dos banners" data-carousel-pause><span aria-hidden="true">Ⅱ</span></button>
     <div class="carousel-slides" aria-live="off">
       {% set slides = [
         {'theme':'gifts','tag':'BRINDES COM PERSONALIDADE','title':'Sua marca vai','accent':'junto.','text':'Do presente ao uso diário. Produtos personalizados para fazer parte da rotina de quem recebe.','image':'carousel-brindes.webp','alt':'Composição ilustrativa de fone, bolsa térmica e carregador personalizados Megui','cta':'Descobrir os brindes','slug':'brindes'},
@@ -29,12 +28,11 @@
       {% endfor %}
     </div>
     <div class="carousel-toolbar">
-      <div class="carousel-selectors" aria-label="Escolher banner">
-        <button class="is-current" type="button" data-carousel-to="0" aria-current="true"><span>01</span> Brindes <i></i></button>
-        <button type="button" data-carousel-to="1"><span>02</span> Vestuário <i></i></button>
-        <button type="button" data-carousel-to="2"><span>03</span> Sua marca <i></i></button>
+      <div class="gallery-dots carousel-dots" aria-label="Escolher banner">
+        <button class="is-current" type="button" data-carousel-to="0" aria-label="Ver banner de brindes" aria-current="true"></button>
+        <button type="button" data-carousel-to="1" aria-label="Ver banner de vestuário"></button>
+        <button type="button" data-carousel-to="2" aria-label="Ver banner de personalização"></button>
       </div>
-      <div class="carousel-arrows"><span data-carousel-counter aria-live="polite">01 / 03</span><button type="button" data-carousel-prev aria-label="Banner anterior">{{ icon('arrow') }}</button><button type="button" data-carousel-next aria-label="Próximo banner">{{ icon('arrow') }}</button></div>
     </div>
   </div>
   <nav class="welcome-shortcuts" aria-label="Explore a Megui">
@@ -126,7 +124,7 @@
   </div>
 </section>
 
-<section class="section"><div class="container"><div class="section-heading split-heading"><div><span class="eyebrow">FEITO PARA IR ALÉM DA IDEIA</span><h2>Marcas, eventos e trabalhos reais.</h2></div><a class="text-link" href="{{ url_for('portfolio_view') }}">Explorar nosso trabalho →</a></div><div class="acervo-gallery homepage-work-gallery">{% for work in portfolio %}<figure><a href="{{ url_for('portfolio_view') }}"><img src="{{ url_for('static',filename=work.image) }}" alt="{{ work.title }} — trabalho personalizado" loading="lazy"></a><figcaption><strong>{{ work.title }}</strong><span>{{ work.kind|capitalize }}</span></figcaption></figure>{% endfor %}{% for brand in historical_brands %}<figure><a href="{{ url_for('portfolio_view') }}"><img src="{{ url_for('static', filename=brand.image) }}" alt="{{ brand.work }} para {{ brand.name }}" loading="lazy"></a><figcaption><strong>{{ brand.name }}</strong><span>{{ brand.work }} · Acervo Freedom {{ brand.year }}</span></figcaption></figure>{% endfor %}</div></div></section>
+<section class="section home-work-section"><div class="container"><div class="section-heading split-heading"><div><span class="eyebrow">FEITO PARA IR ALÉM DA IDEIA</span><h2>Marcas, eventos e trabalhos reais.</h2></div><a class="text-link" href="{{ url_for('portfolio_view') }}">Explorar nosso trabalho →</a></div><div class="acervo-gallery homepage-work-gallery">{% for work in portfolio %}<figure><a href="{{ url_for('portfolio_view') }}"><img src="{{ url_for('static',filename=work.image) }}" alt="{{ work.title }} — trabalho personalizado" loading="lazy"></a><figcaption><strong>{{ work.title }}</strong><span>{{ work.kind|capitalize }}</span></figcaption></figure>{% endfor %}{% for brand in historical_brands %}<figure><a href="{{ url_for('portfolio_view') }}"><img src="{{ url_for('static', filename=brand.image) }}" alt="{{ brand.work }} para {{ brand.name }}" loading="lazy"></a><figcaption><strong>{{ brand.name }}</strong><span>{{ brand.work }} · Acervo Freedom {{ brand.year }}</span></figcaption></figure>{% endfor %}</div></div></section>
 
 {% if reviews %}
 <section class="section">

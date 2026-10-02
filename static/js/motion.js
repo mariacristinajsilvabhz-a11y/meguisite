@@ -1,90 +1,110 @@
 (() => {
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
   const saveData = navigator.connection?.saveData;
-  document.querySelectorAll('.client-ribbon').forEach(ribbon => {
-    const button = ribbon.querySelector('.ribbon-toggle');
-    button.addEventListener('click', () => {
-      const paused = ribbon.classList.toggle('is-paused');
-      button.setAttribute('aria-pressed', String(paused));
-      button.textContent = paused ? 'Continuar' : 'Pausar';
-      button.setAttribute('aria-label', `${paused ? 'Continuar' : 'Pausar'} movimento das marcas`);
-    });
-  });
+  const makeDot = (label, action) => {
+    const dot = document.createElement('button');
+    dot.type = 'button';
+    dot.setAttribute('aria-label', label);
+    dot.addEventListener('click', action);
+    return dot;
+  };
+  const markDot = (dot, active) => {
+    dot.classList.toggle('is-current', active);
+    if (active) dot.setAttribute('aria-current', 'true');
+    else dot.removeAttribute('aria-current');
+  };
   document.querySelectorAll('.acervo-gallery:not(.acervo-designs), .archive-grid').forEach((gallery, index) => {
     gallery.classList.add('motion-gallery');
     gallery.id ||= `motion-gallery-${index}`;
     gallery.setAttribute('tabindex', '0');
     gallery.setAttribute('aria-label', 'Galeria de trabalhos: deslize para ver mais');
     const controls = document.createElement('div');
-    controls.className = 'motion-gallery-controls';
-    controls.innerHTML = '<span>Explore os trabalhos</span><button type="button" data-step="-1" aria-label="Fotos anteriores">←</button><button type="button" class="motion-toggle" aria-pressed="false">Pausar</button><button type="button" data-step="1" aria-label="Próximas fotos">→</button>';
-    controls.querySelectorAll('button').forEach(button => button.setAttribute('aria-controls', gallery.id));
-    controls.querySelector('span').textContent = `${gallery.children.length} trabalhos para explorar`;
+    controls.className = 'gallery-dots motion-gallery-dots';
+    controls.setAttribute('aria-label', 'Escolher grupo de fotos');
     gallery.after(controls);
-    let paused = reduced.matches, hovered = false, visible = false, direction = 1;
-    const toggle = controls.querySelector('.motion-toggle');
-    const sync = () => {toggle.textContent = paused ? 'Continuar' : 'Pausar';toggle.setAttribute('aria-pressed', String(paused));};
-    sync();
-    toggle.addEventListener('click', () => {paused = !paused;sync();});
-    const step = value => {
-      const first = gallery.firstElementChild;
-      gallery.scrollBy({left: value * (first.getBoundingClientRect().width + 28), behavior: reduced.matches ? 'instant' : 'smooth'});
+    let hovered = false, focused = false, visible = false, direction = 1, holdUntil = 0;
+    let targets = [], active = 0;
+    const sync = () => {
+      active = targets.reduce((best, left, i) => Math.abs(left - gallery.scrollLeft) < Math.abs(targets[best] - gallery.scrollLeft) ? i : best, 0);
+      [...controls.children].forEach((dot, i) => markDot(dot, i === active));
     };
-    controls.querySelectorAll('[data-step]').forEach(button => button.addEventListener('click', () => {paused = true;sync();step(Number(button.dataset.step));}));
+    const go = i => gallery.scrollTo({left: targets[i], behavior: reduced.matches ? 'instant' : 'smooth'});
+    const rebuild = () => {
+      const items = [...gallery.children];
+      if (!items.length) return;
+      const gap = parseFloat(getComputedStyle(gallery).gap) || 0;
+      const width = items[0].getBoundingClientRect().width;
+      const perPage = Math.max(1, Math.floor((gallery.clientWidth + gap + 1) / (width + gap)));
+      const max = Math.max(0, gallery.scrollWidth - gallery.clientWidth);
+      targets = [];
+      for (let i = 0; i < items.length; i += perPage) {
+        const left = Math.min(max, items[i].offsetLeft - items[0].offsetLeft);
+        if (!targets.length || left > targets[targets.length - 1] + 1) targets.push(left);
+      }
+      if (max > targets[targets.length - 1] + 1) targets.push(max);
+      controls.replaceChildren();
+      targets.forEach((left, i) => {
+        const dot = makeDot(`Ver grupo ${i + 1} de ${targets.length} trabalhos`, () => {holdUntil = Date.now() + 8000;go(i);});
+        dot.setAttribute('aria-controls', gallery.id);
+        controls.append(dot);
+      });
+      controls.hidden = targets.length < 2;
+      sync();
+    };
+    gallery.addEventListener('scroll', sync, {passive:true});
     gallery.addEventListener('mouseenter', () => hovered = true);
     gallery.addEventListener('mouseleave', () => hovered = false);
-    gallery.addEventListener('focusin', () => hovered = true);
-    gallery.addEventListener('focusout', () => hovered = false);
-    gallery.addEventListener('pointerdown', () => {paused = true;sync();}, {passive:true});
+    const setFocus = event => {focused = gallery.contains(event.relatedTarget) || controls.contains(event.relatedTarget);};
+    [gallery, controls].forEach(element => {
+      element.addEventListener('focusin', () => focused = true);
+      element.addEventListener('focusout', setFocus);
+    });
+    gallery.addEventListener('pointerdown', () => holdUntil = Date.now() + 8000, {passive:true});
+    gallery.addEventListener('keydown', event => {
+      if (!['ArrowLeft','ArrowRight'].includes(event.key)) return;
+      event.preventDefault();holdUntil = Date.now() + 8000;
+      go(Math.max(0,Math.min(targets.length - 1,active + (event.key === 'ArrowRight' ? 1 : -1))));
+    });
+    new ResizeObserver(rebuild).observe(gallery);
     new IntersectionObserver(entries => visible = entries[0].isIntersecting, {threshold:.3}).observe(gallery);
+    rebuild();
     setInterval(() => {
-      if (paused || hovered || !visible || document.hidden || reduced.matches) return;
-      const max = gallery.scrollWidth - gallery.clientWidth;
-      if (max <= 1) return;
-      if (gallery.scrollLeft >= max - 4) direction = -1;
-      if (gallery.scrollLeft <= 4) direction = 1;
-      step(direction);
+      if (hovered || focused || !visible || document.hidden || reduced.matches || Date.now() < holdUntil || targets.length < 2) return;
+      if (active >= targets.length - 1) direction = -1;
+      if (active <= 0) direction = 1;
+      go(active + direction);
     }, 5500);
   });
   document.querySelectorAll('.video-preview').forEach(preview => {
     const video = preview.querySelector('.motion-video');
     if (!video || saveData || reduced.matches) return;
-    let paused = false, visible = false;
-    const control = document.createElement('button');
-    control.type = 'button';control.className = 'motion-video-toggle motion-toggle';control.textContent = 'Pausar prévia';control.setAttribute('aria-pressed','false');
-    preview.after(control);
+    let visible = false;
     const play = () => {
-      if (!visible || paused || document.hidden || reduced.matches) {video.pause();return;}
+      if (!visible || document.hidden || reduced.matches) {video.pause();return;}
       video.src ||= preview.dataset.videoSrc;
       video.play().then(() => preview.classList.add('is-playing')).catch(() => {});
     };
-    control.addEventListener('click', () => {paused = !paused;control.textContent = paused ? 'Continuar prévia' : 'Pausar prévia';control.setAttribute('aria-pressed',String(paused));play();});
     new IntersectionObserver(entries => {visible = entries[0].isIntersecting;play();}, {threshold:.4}).observe(preview);
     document.addEventListener('visibilitychange', play);
     reduced.addEventListener('change',play);
-    video.addEventListener('error', () => {preview.classList.remove('is-playing');control.hidden = true;});
+    video.addEventListener('error', () => preview.classList.remove('is-playing'));
   });
-
   document.querySelectorAll('[data-shirt-showcase]').forEach(showcase => {
     const frames = [...showcase.querySelectorAll('[data-shirt-brand]')];
-    const pause = showcase.querySelector('[data-shirt-pause]');
-    let index = 0, paused = reduced.matches, visible = false, hovered = false;
-    const sync = () => {pause.textContent = paused ? 'Continuar' : 'Pausar';pause.setAttribute('aria-pressed', String(paused));pause.setAttribute('aria-label', `${paused ? 'Continuar' : 'Pausar'} apresentação das camisetas`);};
-    const show = step => {
-      index = (index + step + frames.length) % frames.length;
+    const controls = showcase.querySelector('[data-shirt-dots]');
+    let index = 0, visible = false, hovered = false, focused = false, holdUntil = 0;
+    const show = next => {
+      index = (next + frames.length) % frames.length;
       frames.forEach((frame, i) => {frame.classList.toggle('is-active', i === index);frame.setAttribute('aria-hidden',String(i !== index));});
+      [...controls.children].forEach((dot, i) => markDot(dot, i === index));
       showcase.querySelector('[data-shirt-caption]').textContent = `${frames[index].dataset.shirtBrand} · Visualização de personalização`;
     };
-    sync();
-    pause.addEventListener('click', () => {paused = !paused;sync();});
-    showcase.querySelector('[data-shirt-prev]').addEventListener('click', () => {paused = true;sync();show(-1);});
-    showcase.querySelector('[data-shirt-next]').addEventListener('click', () => {paused = true;sync();show(1);});
+    frames.forEach((frame, i) => controls.append(makeDot(`Ver camiseta ${frame.dataset.shirtBrand}`, () => {holdUntil = Date.now() + 8000;show(i);})));show(0);
     showcase.addEventListener('mouseenter', () => hovered = true);
     showcase.addEventListener('mouseleave', () => hovered = false);
-    showcase.addEventListener('focusin', () => hovered = true);
-    showcase.addEventListener('focusout', () => hovered = false);
+    showcase.addEventListener('focusin', () => focused = true);
+    showcase.addEventListener('focusout', event => focused = showcase.contains(event.relatedTarget));
     new IntersectionObserver(entries => visible = entries[0].isIntersecting, {threshold:.3}).observe(showcase);
-    setInterval(() => {if (!paused && visible && !hovered && !document.hidden) show(1);},5500);
-    reduced.addEventListener('change', () => {if(reduced.matches){paused = true;sync();}});
+    setInterval(() => {if (visible && !hovered && !focused && !document.hidden && !reduced.matches && Date.now() >= holdUntil) show(index + 1);},5500);
   });
 })();
