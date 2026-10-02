@@ -64,4 +64,27 @@
     reduced.addEventListener('change',play);
     video.addEventListener('error', () => {preview.classList.remove('is-playing');control.hidden = true;});
   });
+
+  document.querySelectorAll('[data-shirt-showcase]').forEach(showcase => {
+    const frames = [...showcase.querySelectorAll('[data-shirt-brand]')];
+    const pause = showcase.querySelector('[data-shirt-pause]');
+    let index = 0, paused = reduced.matches, visible = false, hovered = false;
+    const sync = () => {pause.textContent = paused ? 'Continuar' : 'Pausar';pause.setAttribute('aria-pressed', String(paused));pause.setAttribute('aria-label', `${paused ? 'Continuar' : 'Pausar'} apresentação das camisetas`);};
+    const show = step => {
+      index = (index + step + frames.length) % frames.length;
+      frames.forEach((frame, i) => {frame.classList.toggle('is-active', i === index);frame.setAttribute('aria-hidden',String(i !== index));});
+      showcase.querySelector('[data-shirt-caption]').textContent = `${frames[index].dataset.shirtBrand} · Visualização de personalização`;
+    };
+    sync();
+    pause.addEventListener('click', () => {paused = !paused;sync();});
+    showcase.querySelector('[data-shirt-prev]').addEventListener('click', () => {paused = true;sync();show(-1);});
+    showcase.querySelector('[data-shirt-next]').addEventListener('click', () => {paused = true;sync();show(1);});
+    showcase.addEventListener('mouseenter', () => hovered = true);
+    showcase.addEventListener('mouseleave', () => hovered = false);
+    showcase.addEventListener('focusin', () => hovered = true);
+    showcase.addEventListener('focusout', () => hovered = false);
+    new IntersectionObserver(entries => visible = entries[0].isIntersecting, {threshold:.3}).observe(showcase);
+    setInterval(() => {if (!paused && visible && !hovered && !document.hidden) show(1);},5500);
+    reduced.addEventListener('change', () => {if(reduced.matches){paused = true;sync();}});
+  });
 })();

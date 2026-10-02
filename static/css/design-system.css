@@ -145,3 +145,16 @@ input::placeholder,textarea::placeholder{color:#89778f;font-size:14px}input:focu
 .client-ribbon .ribbon-toggle{background:#211726;border-color:#ffffff26;font-size:11px;padding:4px 9px}
 .carousel-arrows button:focus-visible,.carousel-pause:focus-visible,.motion-toggle:focus-visible,.motion-gallery-controls button:focus-visible,.video-preview:focus-visible{outline:2px solid #a17db6;outline-offset:3px}
 @media(pointer:coarse){.carousel-arrows button,.carousel-pause,.motion-gallery-controls button{min-width:44px;min-height:44px}}
+
+.events-story .shirt-showcase{margin:0;min-width:0}
+.shirt-showcase-stage{position:relative;aspect-ratio:4/3;overflow:hidden;border-radius:18px;background:#e6e5e7}
+.events-story .shirt-showcase-stage .shirt-showcase-image{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:contain;border-radius:0;opacity:0;transform:translateX(3%);transition:opacity .8s ease,transform 1.1s ease}
+.events-story .shirt-showcase-stage .shirt-showcase-image.is-active{opacity:1;transform:translateX(0)}
+.shirt-showcase figcaption{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-top:12px;font-size:12px;color:#8b7993}
+.shirt-showcase-controls{display:flex;align-items:center;gap:3px;flex-shrink:0}
+.shirt-showcase-controls button{border:0;background:none;color:#8b7993;font:inherit;cursor:pointer;padding:6px;font-size:15px}
+.shirt-showcase-controls button.motion-toggle{font-size:11px;padding:6px 8px}
+.shirt-showcase-controls button:hover{color:#593268}
+.shirt-showcase-controls button:focus-visible{outline:2px solid #a17db6;outline-offset:2px}
+@media(max-width:600px){.shirt-showcase figcaption{align-items:flex-start;gap:6px}.shirt-showcase-controls button{min-height:36px}.shirt-showcase figcaption>span{max-width:60%;line-height:1.5}}
+@media(prefers-reduced-motion:reduce){.events-story .shirt-showcase-stage .shirt-showcase-image{transition:none;transform:none}}
