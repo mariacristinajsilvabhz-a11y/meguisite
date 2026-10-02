@@ -54,9 +54,13 @@ TRUSTED_BRANDS = [
     {"name": "Balaia", "image": "balaia.png"},
     {"name": "We Basic", "image": "we-basic.png"},
     {"name": "Resultado Final", "image": "resultado-final.png"},
-    {"name": "Senac Minas"},
-    {"name": "Future Pro"},
-    {"name": "Circuito das Indústrias"},
+    {"name": "Senac Minas", "image": "senac.svg", "logo_style": "ink"},
+    {"name": "Future Pro", "image": "future-pro-v2.png"},
+    {"name": "Circuito das Indústrias", "image": "circuito-industrias-v2.png"},
+    {"name": "Studio IS Concept", "image": "studio-is-concept-v2.png"},
+    {"name": "PrintUp Estamparia", "image": "printup-v2.png"},
+    {"name": "Brantchic", "image": "brantchic-v2.png", "logo_style": "paper"},
+    {"name": "T-Shirteria Versátil"},
 ]
 
 REVIEWS = []

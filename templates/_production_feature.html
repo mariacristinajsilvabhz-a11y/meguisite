@@ -1,0 +1,2 @@
+{% from '_video_preview.html' import video_preview with context %}
+<section class="section section-soft"><div class="container production-feature"><div>{{ video_preview(production_videos[0].video, production_videos[0].poster, production_videos[0].title) }}</div><div><span class="eyebrow">O TRABALHO ACONTECE AQUI</span><h2>Da bancada<br>à sua marca.</h2><p>Veja um trecho real da personalização em produção. Cada aplicação faz parte do cuidado com o seu projeto.</p><a class="text-link" href="{{ url_for('videos') }}">Mais vídeos da produção →</a></div></div></section>

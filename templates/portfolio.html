@@ -3,6 +3,7 @@
 {% from '_video_preview.html' import video_preview with context %}
 {% block content %}
 <section class="page-hero"><div class="container"><span class="eyebrow">TRABALHOS REAIS</span><h1>Da ideia para o mundo.</h1><p>Produtos que vestem equipes, acompanham eventos e carregam a identidade de cada marca. Conheça alguns registros do nosso trabalho.</p></div></section>
+{% include '_client_marquee.html' %}
 <section class="section"><div class="container"><div class="portfolio-grid">
 {% for work in portfolio %}
 <article class="portfolio-card">
