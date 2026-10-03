@@ -258,3 +258,15 @@ input::placeholder,textarea::placeholder{color:#89778f;font-size:14px}input:focu
 .uniform-footer{display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap;margin:36px 0 0;padding-top:30px;border-top:1px solid #cfbada}.uniform-footer p{font-size:20px;color:#3d254a;margin:0}
 @media(max-width:800px){.faq-categories{gap:8px;margin-bottom:24px}.faq-categories button{font-size:14px;padding:11px 16px}.faq-answers{padding:6px 8px}.corporate-faq summary{font-size:18px;padding:21px 0;gap:16px}.faq-answer{font-size:16px;padding-right:16px}.uniform-gallery.motion-gallery>figure{flex-basis:82%}.uniform-look-stage{height:340px}.uniform-footer{gap:18px;flex-direction:column;text-align:center}.uniform-gallery figcaption strong{font-size:22px}}
 @media(prefers-reduced-motion:reduce){.uniform-gallery .uniform-look-stage img,.corporate-faq summary>span{transition:none}.uniform-look:hover img{transform:none}}
+
+/* Cores e entradas acompanham a rolagem, sem alterar o catálogo. */
+body.scroll-experience{background:var(--scroll-surface,#f8f1fc);transition:background-color .35s ease}
+.scroll-experience main>.scroll-chapter{position:relative;isolation:isolate;background:transparent!important}
+.scroll-experience .scroll-chapter:before,.scroll-experience .scroll-chapter:after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;mask-image:linear-gradient(to bottom,transparent,#000 48px,#000 calc(100% - 48px),transparent)}
+.scroll-experience .scroll-chapter:before{background-image:var(--chapter-background-image);background-color:var(--chapter-background-color)}
+.scroll-experience .scroll-chapter:after{background:radial-gradient(ellipse at var(--chapter-glow-x,50%) 55%,#b06ada,transparent 72%);opacity:var(--chapter-glow-opacity,.12)}
+.scroll-experience .scroll-content{transition:opacity .75s ease,transform .85s cubic-bezier(.2,.7,.2,1)}
+.scroll-experience .scroll-content.reveal-pending:not(.is-revealed){opacity:.65;transform:translateY(18px)}
+.scroll-experience .scroll-content:focus-within{opacity:1!important;transform:none!important}
+@media(max-width:680px){.scroll-experience .scroll-chapter:before,.scroll-experience .scroll-chapter:after{mask-image:linear-gradient(to bottom,transparent,#000 28px,#000 calc(100% - 28px),transparent)}}
+@media(prefers-reduced-motion:reduce){body.scroll-experience{transition:none}.scroll-experience .scroll-content{opacity:1!important;transform:none!important;transition:none}}

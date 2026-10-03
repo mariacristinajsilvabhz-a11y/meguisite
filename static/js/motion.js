@@ -1,6 +1,74 @@
 (() => {
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
   const saveData = navigator.connection?.saveData;
+  // Efeitos de rolagem apenas nas páginas institucionais.
+  if (document.body.hasAttribute('data-scroll-experience')) {
+    const chapters = [...document.querySelectorAll('main > section')].filter(section =>
+      !section.querySelector('.product-grid, .quote-layout, .mockup-editor') && !section.classList.contains('mockup-page'));
+    const palettes = [[249,243,253], [235,221,246], [244,233,250], [225,207,239]];
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-revealed');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0, rootMargin:'0px 0px -36px 0px'});
+    let active = false, scheduled = false;
+    const paint = () => {
+      scheduled = false;
+      if (!active || document.hidden) return;
+      const center = innerHeight * .55;
+      let nearest = 0, distance = Infinity;
+      chapters.forEach((section, index) => {
+        const rect = section.getBoundingClientRect();
+        const progress = Math.max(0, Math.min(1, (innerHeight - rect.top) / (innerHeight + rect.height)));
+        if (rect.bottom > -80 && rect.top < innerHeight + 80) {
+          section.style.setProperty('--chapter-glow-x', `${15 + progress * 70}%`);
+          section.style.setProperty('--chapter-glow-opacity', String(.08 + Math.sin(progress * Math.PI) * .16));
+        }
+        const delta = Math.abs(rect.top + rect.height / 2 - center);
+        if (delta < distance) {distance = delta; nearest = index;}
+      });
+      if (!chapters.length) return;
+      const rect = chapters[nearest].getBoundingClientRect();
+      const mix = Math.max(0, Math.min(1, (center - rect.top) / Math.max(rect.height, 1)));
+      const from = palettes[nearest % palettes.length], to = palettes[(nearest + 1) % palettes.length];
+      const rgb = from.map((value, index) => Math.round(value + (to[index] - value) * mix));
+      document.body.style.setProperty('--scroll-surface', `rgb(${rgb.join(',')})`);
+    };
+    const schedule = () => {
+      if (active && !scheduled) {scheduled = true; requestAnimationFrame(paint);}
+    };
+    const configure = () => {
+      active = !reduced.matches;
+      document.body.classList.toggle('scroll-experience', active);
+      if (!active) {revealObserver.disconnect();return;}
+      chapters.forEach(section => {
+        if (!section.classList.contains('scroll-chapter')) {
+          const style = getComputedStyle(section);
+          section.style.setProperty('--chapter-background-image', style.backgroundImage);
+          section.style.setProperty('--chapter-background-color', style.backgroundColor);
+          section.classList.add('scroll-chapter');
+          const content = section.querySelector(':scope > .container');
+          if (content) {
+            content.classList.add('scroll-content');
+            if (section.getBoundingClientRect().top > innerHeight) content.classList.add('reveal-pending');
+          }
+        }
+        const content = section.querySelector(':scope > .scroll-content');
+        if (content && !content.classList.contains('is-revealed')) revealObserver.observe(content);
+      });
+      paint();
+    };
+    configure();
+    addEventListener('scroll', schedule, {passive:true});
+    addEventListener('resize', schedule, {passive:true});
+    addEventListener('pageshow', schedule);
+    document.addEventListener('visibilitychange', schedule);
+    reduced.addEventListener('change', configure);
+  }
+
   const makeDot = (label, action) => {
     const dot = document.createElement('button');
     dot.type = 'button';
