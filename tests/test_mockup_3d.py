@@ -8,9 +8,12 @@ class Mockup3DTests(unittest.TestCase):
     def setUp(self):
         self.client = app.test_client()
         app.config['TESTING'] = True
+        self.previous_3d_enabled = app.config['MOCKUP_3D_ENABLED']
+        app.config['MOCKUP_3D_ENABLED'] = True
         self.previous_enabled = app.config['MOCKUP_STUDIO_ENABLED']
         app.config['MOCKUP_STUDIO_ENABLED'] = True
     def tearDown(self):
+        app.config['MOCKUP_3D_ENABLED'] = self.previous_3d_enabled
         app.config['MOCKUP_STUDIO_ENABLED'] = self.previous_enabled
     def test_disabled_without_account(self):
         with patch.dict(os.environ, {'MESHY_ENABLE_IMAGE_TO_3D': '0'}):
@@ -36,6 +39,6 @@ class Mockup3DTests(unittest.TestCase):
             provider.return_value = {'status':'SUCCEEDED','model_urls':{'glb':'https://evil.test/test.glb'}}
             self.assertEqual(self.client.get('/api/mockups/3d/tasks/valid-task-1234').status_code,502)
     def test_editor_assets(self):
-        for path in ['/criar-arte','/static/mockups/studio3d.js','/static/mockups/models3d.js','/static/mockups/vendor/three.core.min.js']:
+        for path in ['/criar-arte','/static/mockups/recognition.js','/static/mockups/recognition-worker.js','/static/mockups/vision/model.json','/static/mockups/vision/weights.bin']:
             with self.client.get(path) as response:
                 self.assertEqual(response.status_code,200,path)

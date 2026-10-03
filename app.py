@@ -10,10 +10,13 @@ from mockup_3d import mockup_3d
 
 app = Flask(__name__)
 app.register_blueprint(mockup_3d)
-app.config['MOCKUP_STUDIO_ENABLED'] = os.getenv('MOCKUP_STUDIO_ENABLED', '0') == '1'
+app.config['MOCKUP_3D_ENABLED'] = False
+app.config['MOCKUP_STUDIO_ENABLED'] = os.getenv('MOCKUP_STUDIO_ENABLED', '1') == '1'
 
 @app.before_request
 def gate_mockup_studio():
+    if (request.endpoint or '').startswith('mockup_3d.') and not app.config['MOCKUP_3D_ENABLED']:
+        abort(404)  # Public editor is 2D only.
     if app.config['MOCKUP_STUDIO_ENABLED']:
         return None
     if request.endpoint == 'create_art':
