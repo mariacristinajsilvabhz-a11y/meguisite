@@ -214,3 +214,47 @@ input::placeholder,textarea::placeholder{color:#89778f;font-size:14px}input:focu
 .homepage-work-gallery figcaption span{font-size:14px;line-height:1.5;margin:0;min-height:3em;text-wrap:pretty}
 @media(max-width:1100px) and (min-width:761px){.carousel-copy{padding:32px 24px 32px 30px}.carousel-copy h1,.carousel-copy h2{font-size:clamp(34px,4vw,44px)}.carousel-kicker{font-size:11px}.carousel-actions{gap:12px}}
 @media(max-width:760px){.carousel-slide{grid-template-columns:minmax(0,1fr)}.carousel-copy{padding:30px 24px 24px}.carousel-kicker{font-size:11px;margin-bottom:16px;padding-right:0}.carousel-copy h1,.carousel-copy h2{font-size:clamp(32px,8.4vw,44px);line-height:1.18;margin-bottom:20px}.carousel-copy p{font-size:16px;line-height:1.65;margin-bottom:24px;max-width:40ch}.carousel-actions{gap:14px 18px}.carousel-cta,.carousel-talk{font-size:13px}.carousel-copy .carousel-brand-logo{margin-top:22px;height:44px!important}.carousel-art figcaption{font-size:11px}.campaign-new-copy p{font-size:16px}.homepage-work-gallery figcaption{padding:64px 20px 22px}.homepage-work-gallery strong{font-size:21px}}
+
+.wardrobe-campaign{cursor:default;gap:28px;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)}
+.wardrobe-campaign .wardrobe-link{display:inline-flex;margin-top:24px;padding:12px 20px;border-radius:999px;background:#592b7c;color:#fff;font-size:14px;line-height:1.5}
+.wardrobe-preview{margin:0;min-width:0;text-align:center}
+.wardrobe-stage{position:relative;height:310px;isolation:isolate}
+.wardrobe-campaign .wardrobe-image{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:contain;mix-blend-mode:normal;opacity:0;transform:translateX(10px);transition:opacity .8s,transform 1s}
+.wardrobe-campaign .wardrobe-image.is-active{opacity:1;transform:none}
+.wardrobe-preview figcaption{margin-top:14px;color:#3b244c;font-size:16px;line-height:1.5}
+.wardrobe-preview figcaption>span{display:block;font-weight:700}
+.wardrobe-preview figcaption small{display:block;font-size:12px;line-height:1.5;color:#695177;margin-top:3px}
+.wardrobe-preview .gallery-dots{padding-top:6px}
+@media(max-width:680px){.wardrobe-campaign{grid-template-columns:minmax(0,1fr);gap:24px}.wardrobe-stage{height:300px}.wardrobe-campaign .wardrobe-link{margin-top:20px}}
+@media(prefers-reduced-motion:reduce){.wardrobe-campaign .wardrobe-image{transition:none;transform:none}}
+/* FAQ corporativo e vitrine de uniformes */
+.b2b-faq-section{background:#f4edf8;scroll-margin-top:110px}
+.b2b-faq-section .section-heading>p{max-width:650px;margin:18px auto 0;color:#685771;font-size:17px;line-height:1.65}
+.corporate-faq{max-width:1000px;margin:auto}
+.faq-categories{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-bottom:32px}
+.faq-categories button{font:600 15px/1.5 'DM Sans',sans-serif;border:1px solid #d9c9e3;border-radius:999px;background:transparent;color:#513b60;padding:12px 20px;cursor:pointer}
+.faq-categories button[aria-pressed=true]{background:#572b72;border-color:#572b72;color:#fff}
+.faq-categories button:focus-visible,.corporate-faq summary:focus-visible{outline:3px solid #9c6bb8;outline-offset:4px}
+.faq-answers{padding:8px 32px 12px;border-top:1px solid #d7c4e3;border-bottom:1px solid #d7c4e3}
+.faq-answers [hidden]{display:none}
+.faq-answers h3{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#79548d;margin:18px 0 4px}
+.corporate-faq details{border-bottom:1px solid #ddcee6}
+.corporate-faq details:last-child{border-bottom:0}
+.corporate-faq summary{display:flex;justify-content:space-between;align-items:center;gap:24px;list-style:none;padding:23px 0;cursor:pointer;font-size:19px;font-weight:600;line-height:1.5;color:#32213d}
+.corporate-faq summary::-webkit-details-marker{display:none}
+.corporate-faq summary>span{flex:none;font-size:26px;font-weight:400;color:#8c609f;transition:transform .2s}
+.corporate-faq details[open] summary>span{transform:rotate(45deg)}
+.faq-answer{padding:0 44px 24px 0;max-width:850px;color:#685771;font-size:17px;line-height:1.8}
+.faq-answer p{margin:0}.faq-answer .text-link{display:inline-block;margin-top:14px}
+.faq-contact{font-size:15px;line-height:1.7;text-align:center;margin:24px 0 0;color:#6c5679}.faq-contact a{color:#572b72;font-weight:700}
+.uniform-showcase-section{background:linear-gradient(140deg,#e4d3ef,#f5edf8 65%,#eadcf3);overflow:hidden;scroll-margin-top:110px}
+.uniform-showcase-section .section-heading h2{font-size:clamp(32px,3.6vw,48px);line-height:1.2}
+.uniform-gallery{gap:28px}.uniform-gallery.motion-gallery>figure{flex:0 0 calc((100% - 56px)/3);scroll-snap-align:start}
+.uniform-look-stage{height:360px;display:flex;align-items:center;justify-content:center;padding:20px;background:radial-gradient(ellipse at center,#fff7 0%,#fff0 72%);border-bottom:1px solid #cdb9da}
+.uniform-gallery .uniform-look-stage img{width:100%;height:100%;aspect-ratio:auto;object-fit:contain;border-radius:0;background:transparent;filter:drop-shadow(0 12px 14px #55346918);transition:transform .7s}
+.uniform-look:hover img{transform:translateY(-5px) scale(1.025)}
+.uniform-gallery figcaption{padding:20px 8px 0}.uniform-gallery figcaption strong{font-size:22px;line-height:1.35;color:#35213e}.uniform-gallery figcaption span{font-size:16px;line-height:1.6;color:#6b5376}
+.uniform-note{text-align:center;font-size:12px;line-height:1.7;color:#765f81;margin:18px auto 0;max-width:720px}
+.uniform-footer{display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap;margin:36px 0 0;padding-top:30px;border-top:1px solid #cfbada}.uniform-footer p{font-size:20px;color:#3d254a;margin:0}
+@media(max-width:800px){.faq-categories{gap:8px;margin-bottom:24px}.faq-categories button{font-size:14px;padding:11px 16px}.faq-answers{padding:6px 8px}.corporate-faq summary{font-size:18px;padding:21px 0;gap:16px}.faq-answer{font-size:16px;padding-right:16px}.uniform-gallery.motion-gallery>figure{flex-basis:82%}.uniform-look-stage{height:340px}.uniform-footer{gap:18px;flex-direction:column;text-align:center}.uniform-gallery figcaption strong{font-size:22px}}
+@media(prefers-reduced-motion:reduce){.uniform-gallery .uniform-look-stage img,.corporate-faq summary>span{transition:none}.uniform-look:hover img{transform:none}}

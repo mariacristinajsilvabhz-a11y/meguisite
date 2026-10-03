@@ -46,11 +46,18 @@
 
 <section class="section campaign-section">
   <div class="container">
-    <a class="campaign-banner campaign-new-photo" href="{{ url_for('category', slug='vestuario') }}">
-      <div class="campaign-new-copy"><span class="eyebrow">MEG ROUPAS</span><h2>Uma equipe.<br>A mesma identidade.</h2><p>Polos, camisetas e uniformes com a identidade da sua empresa.</p></div>
-      <img src="{{ url_for('static', filename='img/inicio/polo.webp') }}" alt="Polo preta ilustrativa com bordado Megui e detalhes lilás">
-      <span class="campaign-hover">Explorar vestuário</span>
-    </a>
+    <div class="campaign-banner campaign-new-photo wardrobe-campaign" data-shirt-showcase data-shirt-caption-mode="name" aria-label="Modelos de vestuário personalizado">
+      <div class="campaign-new-copy"><span class="eyebrow">MEG ROUPAS</span><h2>Uma equipe.<br>A mesma identidade.</h2><p>Polos, babylooks e camisas sociais de manga curta ou longa com a identidade da sua empresa.</p><a class="text-link wardrobe-link" href="{{ url_for('category', slug='vestuario') }}">Explorar vestuário</a></div>
+      <figure class="wardrobe-preview">
+        <div class="wardrobe-stage">
+          {% for image, name in [('polo.webp','Polo'),('babylook-manequim.webp','Babylook'),('social-manga-curta-manequim.webp','Social de manga curta'),('social-manga-longa-manequim.webp','Social de manga longa')] %}
+          <img class="wardrobe-image{% if loop.first %} is-active{% endif %}" src="{{ url_for('static', filename='img/inicio/' ~ image) }}" alt="{{ name }} personalizada Megui em manequim invisível — imagem ilustrativa" data-shirt-brand="{{ name }}" aria-hidden="{{ 'false' if loop.first else 'true' }}" loading="lazy">
+          {% endfor %}
+        </div>
+        <figcaption><span data-shirt-caption>Polo</span><small>Visualização ilustrativa</small></figcaption>
+        <div class="gallery-dots" data-shirt-dots aria-label="Escolher modelo de vestuário"></div>
+      </figure>
+    </div>
   </div>
 </section>
 

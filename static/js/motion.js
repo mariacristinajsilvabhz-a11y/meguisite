@@ -17,7 +17,7 @@
     gallery.classList.add('motion-gallery');
     gallery.id ||= `motion-gallery-${index}`;
     gallery.setAttribute('tabindex', '0');
-    gallery.setAttribute('aria-label', 'Galeria de trabalhos: deslize para ver mais');
+    if (!gallery.hasAttribute('aria-label')) gallery.setAttribute('aria-label', 'Galeria de trabalhos: deslize para ver mais');
     const controls = document.createElement('div');
     controls.className = 'gallery-dots motion-gallery-dots';
     controls.setAttribute('aria-label', 'Escolher grupo de fotos');
@@ -89,6 +89,16 @@
     reduced.addEventListener('change',play);
     video.addEventListener('error', () => preview.classList.remove('is-playing'));
   });
+  document.querySelectorAll('[data-corporate-faq]').forEach(faq => {
+    const buttons = [...faq.querySelectorAll('[data-faq-category]')];
+    const panels = [...faq.querySelectorAll('[data-faq-panel]')];
+    const select = key => {
+      buttons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.faqCategory === key)));
+      panels.forEach(panel => panel.hidden = panel.dataset.faqPanel !== key);
+    };
+    buttons.forEach(button => button.addEventListener('click', () => select(button.dataset.faqCategory)));
+    select(buttons[0].dataset.faqCategory);
+  });
   document.querySelectorAll('[data-shirt-showcase]').forEach(showcase => {
     const frames = [...showcase.querySelectorAll('[data-shirt-brand]')];
     const controls = showcase.querySelector('[data-shirt-dots]');
@@ -97,7 +107,7 @@
       index = (next + frames.length) % frames.length;
       frames.forEach((frame, i) => {frame.classList.toggle('is-active', i === index);frame.setAttribute('aria-hidden',String(i !== index));});
       [...controls.children].forEach((dot, i) => markDot(dot, i === index));
-      showcase.querySelector('[data-shirt-caption]').textContent = `${frames[index].dataset.shirtBrand} · Visualização de personalização`;
+      showcase.querySelector('[data-shirt-caption]').textContent = showcase.dataset.shirtCaptionMode === 'name' ? frames[index].dataset.shirtBrand : `${frames[index].dataset.shirtBrand} · Visualização de personalização`;
     };
     frames.forEach((frame, i) => controls.append(makeDot(`Ver camiseta ${frame.dataset.shirtBrand}`, () => {holdUntil = Date.now() + 8000;show(i);})));show(0);
     showcase.addEventListener('mouseenter', () => hovered = true);
