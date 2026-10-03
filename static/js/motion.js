@@ -5,7 +5,6 @@
   if (document.body.hasAttribute('data-scroll-experience')) {
     const chapters = [...document.querySelectorAll('main > section')].filter(section =>
       !section.querySelector('.product-grid, .quote-layout, .mockup-editor') && !section.classList.contains('mockup-page'));
-    const palettes = [[249,243,253], [235,221,246], [244,233,250], [225,207,239]];
     const revealObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -14,42 +13,44 @@
         }
       });
     }, {threshold:0, rootMargin:'0px 0px -36px 0px'});
-    let active = false, scheduled = false;
-    const paint = () => {
-      scheduled = false;
+    let active = false, frame = 0, currentY = scrollY, targetY = scrollY, lastTime = 0;
+    const paint = time => {
+      frame = 0;
       if (!active || document.hidden) return;
-      const center = innerHeight * .55;
-      let nearest = 0, distance = Infinity;
-      chapters.forEach((section, index) => {
-        const rect = section.getBoundingClientRect();
-        const progress = Math.max(0, Math.min(1, (innerHeight - rect.top) / (innerHeight + rect.height)));
-        if (rect.bottom > -80 && rect.top < innerHeight + 80) {
-          section.style.setProperty('--chapter-glow-x', `${15 + progress * 70}%`);
-          section.style.setProperty('--chapter-glow-opacity', String(.08 + Math.sin(progress * Math.PI) * .16));
-        }
-        const delta = Math.abs(rect.top + rect.height / 2 - center);
-        if (delta < distance) {distance = delta; nearest = index;}
-      });
-      if (!chapters.length) return;
-      const rect = chapters[nearest].getBoundingClientRect();
-      const mix = Math.max(0, Math.min(1, (center - rect.top) / Math.max(rect.height, 1)));
-      const from = palettes[nearest % palettes.length], to = palettes[(nearest + 1) % palettes.length];
-      const rgb = from.map((value, index) => Math.round(value + (to[index] - value) * mix));
-      document.body.style.setProperty('--scroll-surface', `rgb(${rgb.join(',')})`);
+      const elapsed = Math.min(48, time - (lastTime || time - 16));
+      lastTime = time;
+      currentY += (targetY - currentY) * (1 - Math.exp(-elapsed / 115));
+      const range = Math.max(1, document.documentElement.scrollHeight - innerHeight);
+      const progress = Math.max(0, Math.min(1, currentY / range));
+      // Um fundo contínuo atravessa as seções sem trocar a paleta em blocos.
+      document.body.style.setProperty('--flow-x', `${Math.sin(progress * Math.PI * 2) * 9}%`);
+      document.body.style.setProperty('--flow-y', `${6 - progress * 12}%`);
+      document.body.style.setProperty('--flow-turn', `${-3 + progress * 6}deg`);
+      document.body.style.setProperty('--flow-lilac', `${22 + progress * 58}%`);
+      document.body.style.setProperty('--flow-pink', `${78 - progress * 48}%`);
+      if (Math.abs(targetY - currentY) > .15) frame = requestAnimationFrame(paint);
+      else lastTime = 0;
     };
     const schedule = () => {
-      if (active && !scheduled) {scheduled = true; requestAnimationFrame(paint);}
+      targetY = scrollY;
+      if (active && !frame) frame = requestAnimationFrame(paint);
     };
     const configure = () => {
       active = !reduced.matches;
       document.body.classList.toggle('scroll-experience', active);
-      if (!active) {revealObserver.disconnect();return;}
+      if (!active) {revealObserver.disconnect();cancelAnimationFrame(frame);frame = 0;return;}
       chapters.forEach(section => {
         if (!section.classList.contains('scroll-chapter')) {
           const style = getComputedStyle(section);
           section.style.setProperty('--chapter-background-image', style.backgroundImage);
           section.style.setProperty('--chapter-background-color', style.backgroundColor);
           section.classList.add('scroll-chapter');
+          const rgb = style.backgroundColor.match(/[\d.]+/g)?.map(Number) || [];
+          const text = style.color.match(/[\d.]+/g)?.map(Number) || [];
+          const luma = values => values[0] * .2126 + values[1] * .7152 + values[2] * .0722;
+          if ((rgb.length >= 3 && (rgb[3] ?? 1) > .5 && luma(rgb) < 120) || (text.length >= 3 && luma(text) > 190)) {
+            section.classList.add('scroll-chapter-dark');
+          }
           const content = section.querySelector(':scope > .container');
           if (content) {
             content.classList.add('scroll-content');
@@ -59,7 +60,8 @@
         const content = section.querySelector(':scope > .scroll-content');
         if (content && !content.classList.contains('is-revealed')) revealObserver.observe(content);
       });
-      paint();
+      currentY = targetY = scrollY;
+      schedule();
     };
     configure();
     addEventListener('scroll', schedule, {passive:true});
