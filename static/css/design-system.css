@@ -299,3 +299,5 @@ body.scroll-experience:before{content:"";position:fixed;inset:-22%;z-index:-1;po
 .home-clients .client-logo-paper{filter:grayscale(1);mix-blend-mode:multiply}
 .home-clients .client-brand-name{font-size:15px;color:#574362;text-align:center}
 @media(max-width:800px){.home-clients .client-logo-wall{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px 16px}.home-clients .client-logo-card{min-height:74px;padding:14px 6px}.home-clients .client-logo{height:40px}.home-clients .client-brand-name{font-size:12px}}
+.homepage-work-gallery img{width:100%;height:auto;aspect-ratio:4/3;object-fit:contain}
+.client-ribbon .client-logo[src*="samba-do-maestro"],.home-clients .client-logo[src*="samba-do-maestro"]{filter:none;opacity:1}
