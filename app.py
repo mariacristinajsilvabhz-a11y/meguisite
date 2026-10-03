@@ -247,7 +247,12 @@ def home():
         "grafica": "papelaria", "destaques": "bone", "eventos": "eventos",
     }
     home_categories = [dict(category, images=[f"img/inicio/{homepage_images[category['slug']]}.webp"]) for category in CATEGORIES]
-    items = hub_catalog.list(limit=6,vitrine=True)[0] if hub_catalog.enabled else order_by_stock(PRODUCTS)[:6]
+    try:
+        items = hub_catalog.list(limit=6, vitrine=True)[0] if hub_catalog.enabled else order_by_stock(PRODUCTS)[:6]
+    except CatalogUnavailable:
+        # A indisponibilidade do catálogo não deve impedir a abertura da página inicial.
+        app.logger.warning("Página inicial sem vitrine: catálogo do Hub indisponível")
+        items = []
     return render_template("index.html", products=items, home_categories=home_categories)
 
 
