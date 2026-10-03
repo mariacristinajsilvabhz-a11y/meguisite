@@ -121,7 +121,7 @@
   </div>
 </section>
 
-<section class="section section-soft">
+<section class="section home-clients">
   <div class="container">
     <div class="section-heading centered-heading">
       <span class="eyebrow">QUEM JÁ CONFIOU NA MEGUI</span>
@@ -131,7 +131,7 @@
   </div>
 </section>
 
-<section class="section home-work-section"><div class="container"><div class="section-heading split-heading"><div><span class="eyebrow">FEITO PARA IR ALÉM DA IDEIA</span><h2>Marcas, eventos e trabalhos reais.</h2></div><a class="text-link" href="{{ url_for('portfolio_view') }}">Explorar nosso trabalho →</a></div><div class="acervo-gallery homepage-work-gallery">{% for work in portfolio %}<figure><a href="{{ url_for('portfolio_view') }}"><img src="{{ url_for('static',filename=work.image) }}" alt="{{ work.title }} — trabalho personalizado" loading="lazy"></a><figcaption><strong>{{ work.title }}</strong><span>{{ work.kind|capitalize }}</span></figcaption></figure>{% endfor %}{% for brand in historical_brands %}<figure><a href="{{ url_for('portfolio_view') }}"><img src="{{ url_for('static', filename=brand.image) }}" alt="{{ brand.work }} para {{ brand.name }}" loading="lazy"></a><figcaption><strong>{{ brand.name }}</strong><span>{{ brand.work }} · Acervo Freedom {{ brand.year }}</span></figcaption></figure>{% endfor %}</div></div></section>
+<section class="section home-work-section"><div class="container"><div class="section-heading split-heading"><div><span class="eyebrow">FEITO PARA IR ALÉM DA IDEIA</span><h2>Marcas, eventos e trabalhos reais.</h2></div><a class="text-link" href="{{ url_for('portfolio_view') }}">Ver todos os trabalhos →</a></div><div class="acervo-gallery homepage-work-gallery" data-gallery-autoplay="false">{% for work in [recent_works[5],recent_works[3],recent_works[1],recent_works[0],recent_works[2],recent_works[7]] %}<figure><a href="{{ url_for('portfolio_view') }}"><img src="{{ url_for('static',filename=work.presentation_image|default(work.image)) }}" alt="{{ work.title }} — {{ 'visualização do produto' if work.presentation_image else 'trabalho personalizado' }}" width="900" height="675" loading="lazy" decoding="async"></a><figcaption><strong>{{ work.title }}</strong><span>{{ work.kind|capitalize }}{% if work.presentation_image %} · Visualização do produto{% endif %}</span></figcaption></figure>{% endfor %}</div></div></section>
 
 {% if reviews %}
 <section class="section">

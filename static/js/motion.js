@@ -4,7 +4,7 @@
   // Efeitos de rolagem apenas nas páginas institucionais.
   if (document.body.hasAttribute('data-scroll-experience')) {
     const chapters = [...document.querySelectorAll('main > section')].filter(section =>
-      !section.querySelector('.product-grid, .quote-layout, .mockup-editor') && !section.classList.contains('mockup-page'));
+      !section.querySelector('.product-grid, .quote-layout, .mockup-editor') && !section.classList.contains('mockup-page') && !section.classList.contains('client-ribbon'));
     const revealObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -26,8 +26,6 @@
       document.body.style.setProperty('--flow-x', `${Math.sin(progress * Math.PI * 2) * 9}%`);
       document.body.style.setProperty('--flow-y', `${6 - progress * 12}%`);
       document.body.style.setProperty('--flow-turn', `${-3 + progress * 6}deg`);
-      document.body.style.setProperty('--flow-lilac', `${22 + progress * 58}%`);
-      document.body.style.setProperty('--flow-pink', `${78 - progress * 48}%`);
       if (Math.abs(targetY - currentY) > .15) frame = requestAnimationFrame(paint);
       else lastTime = 0;
     };
@@ -71,6 +69,14 @@
     reduced.addEventListener('change', configure);
   }
 
+  document.querySelectorAll('.client-ribbon').forEach(ribbon => {
+    const track = ribbon.querySelector('.client-ribbon-track');
+    let visible = false;
+    const sync = () => track.style.animationPlayState = visible && !document.hidden && !reduced.matches ? '' : 'paused';
+    new IntersectionObserver(entries => {visible = entries[0].isIntersecting;sync();}).observe(ribbon);
+    document.addEventListener('visibilitychange', sync);
+    reduced.addEventListener('change', sync);
+  });
   const makeDot = (label, action) => {
     const dot = document.createElement('button');
     dot.type = 'button';
@@ -139,7 +145,7 @@
     new IntersectionObserver(entries => visible = entries[0].isIntersecting, {threshold:.3}).observe(gallery);
     rebuild();
     setInterval(() => {
-      if (hovered || focused || !visible || document.hidden || reduced.matches || Date.now() < holdUntil || targets.length < 2) return;
+      if (gallery.dataset.galleryAutoplay === 'false' || hovered || focused || !visible || document.hidden || reduced.matches || Date.now() < holdUntil || targets.length < 2) return;
       if (active >= targets.length - 1) direction = -1;
       if (active <= 0) direction = 1;
       go(active + direction);

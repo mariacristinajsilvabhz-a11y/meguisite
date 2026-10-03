@@ -1,0 +1,26 @@
+{
+  "ferramenta": "imagegen",
+  "data": "2026-10-03",
+  "imagens": [
+    {
+      "arquivo": "escola-de-cura-manequim-v3.webp",
+      "origem": "exec-cd39d0f7-0c4b-4e28-884e-3e1cd127e9c6.png",
+      "edicao": "Visualização ilustrativa baseada na camiseta e arte originais: manequim invisível com três camisetas embaladas."
+    },
+    {
+      "arquivo": "bolsas-producao-sem-marca-v3.webp",
+      "origem": "exec-944d411c-5c9f-40f3-b8b6-910f27f52a36.png",
+      "edicao": "Remoção solicitada do símbolo Gemini no canto inferior direito. Imagem de referência preservada no acervo."
+    },
+    {
+      "arquivo": "samba-do-maestro-sem-marca-v3.webp",
+      "origem": "exec-d60ecd51-2502-4189-b2bf-44cc16ef043b.png",
+      "edicao": "Remoção solicitada do símbolo Gemini no canto inferior direito. Imagem de referência preservada no acervo."
+    },
+    {
+      "arquivo": "minions-run-sem-marca-v3.webp",
+      "origem": "exec-c55cce7b-cbc4-461a-b3e7-bfb29cb9685f.png",
+      "edicao": "Remoção solicitada do símbolo Gemini no canto inferior direito."
+    }
+  ]
+}

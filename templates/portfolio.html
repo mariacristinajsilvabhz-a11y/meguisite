@@ -7,7 +7,7 @@
 <section class="section"><div class="container"><div class="portfolio-grid">
 {% for work in portfolio %}
 <article class="portfolio-card">
-{% if work.video %}{{ video_preview(work.video, work.image, work.title) }}{% else %}<a href="{{ url_for('static', filename=work.image) }}" target="_blank" rel="noopener" aria-label="Ampliar imagem: {{ work.title }}"><img src="{{ url_for('static', filename=work.image) }}" alt="{{ work.title }} — registro do trabalho realizado" loading="lazy"></a>{% endif %}
+{% if work.video %}{{ video_preview(work.video, work.image, work.title) }}{% else %}<a href="{{ url_for('static', filename=work.presentation_image|default(work.image)) }}" target="_blank" rel="noopener" aria-label="Ampliar imagem: {{ work.title }}"><img src="{{ url_for('static', filename=work.presentation_image|default(work.image)) }}" alt="{{ work.title }} — {{ "visualização do produto" if work.presentation_image else "registro do trabalho realizado" }}" loading="lazy"></a>{% endif %}
 <div class="portfolio-copy"><span class="eyebrow">{{ work.kind }}{% if work.year %} · {{ work.year }}{% endif %}</span><h2>{{ work.title }}</h2><p>{{ work.text }}</p></div>
 </article>
 {% endfor %}

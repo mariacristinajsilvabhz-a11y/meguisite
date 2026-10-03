@@ -2,7 +2,7 @@
   <div class="client-ribbon-window"><div class="client-ribbon-track">
     {% for copy in range(2) %}<div class="client-ribbon-group"{% if copy %} aria-hidden="true"{% endif %}>
       {% for brand in trusted_brands %}<div class="client-ribbon-brand">
-        {% if brand.image %}<img class="client-logo{% if brand.logo_style %} client-logo-{{ brand.logo_style }}{% endif %}" src="{{ url_for('static', filename='img/clientes/' ~ brand.image) }}" alt="{{ brand.name if not copy else '' }}" decoding="async" loading="eager">{% else %}<span class="client-brand-name">{{ brand.name }}</span>{% endif %}
+        {% if brand.image %}<img class="client-logo{% if brand.logo_style %} client-logo-{{ brand.logo_style }}{% endif %}" src="{{ url_for('static', filename='img/clientes/' ~ brand.image) }}" alt="{{ brand.name if not copy else '' }}" width="106" height="25" decoding="async" loading="lazy">{% else %}<span class="client-brand-name">{{ brand.name }}</span>{% endif %}
       </div>{% endfor %}
     </div>{% endfor %}
   </div></div>
