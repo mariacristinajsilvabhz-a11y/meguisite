@@ -193,35 +193,92 @@
   });
 })();
 
-// A borboleta percorre a curva conforme esta seção entra na tela.
+// A rolagem convida ao voo; cada passagem segue até o fim no seu próprio ritmo.
 (() => {
   const section = document.querySelector('[data-butterfly-journey]');
   if (!section) return;
   const path = section.querySelector('[data-flight-path]');
   const butterfly = section.querySelector('[data-flight-butterfly]');
+  const stage = section.querySelector('.corporate-flight');
   const svg = path.ownerSVGElement;
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-  let visible = false, queued = false;
+  const duration = 4600;
+  let visible = false, running = false, frame = 0, previousTime = 0;
+  let elapsed = 0, progress = 0, from = 0, to = 1, length = 1;
+  let lastY = scrollY, direction = 1, finishedY = scrollY, completed = false;
+  butterfly.querySelector('g').setAttribute('transform','translate(-18 -18) scale(1.5)');
   const paint = () => {
-    queued = false;
-    if (!visible || document.hidden) return;
-    const bounds = section.getBoundingClientRect();
-    const progress = reduced.matches ? .5 : Math.max(0,Math.min(1,(innerHeight * .9 - bounds.top) / (innerHeight * .65 + bounds.height * .4)));
-    const point = path.getPointAtLength(path.getTotalLength() * progress);
-    butterfly.setAttribute('transform',`translate(${point.x} ${point.y})`);
+    const point = path.getPointAtLength(length * progress);
+    const before = path.getPointAtLength(Math.max(0,length * progress - 3));
+    const after = path.getPointAtLength(Math.min(length,length * progress + 3));
+    const tilt = reduced.matches ? 0 : Math.atan2(after.y-before.y,after.x-before.x) * 180 / Math.PI * .24 * (to > from ? 1 : -1);
+    butterfly.setAttribute('transform',`translate(${point.x} ${point.y}) rotate(${tilt})`);
   };
-  const schedule = () => {if (visible && !queued) {queued = true;requestAnimationFrame(paint);}};
+  const tick = now => {
+    frame = 0;
+    if (!running || document.hidden) return;
+    if (previousTime) elapsed += Math.max(0,now-previousTime);
+    previousTime = now;
+    const t = Math.min(1,elapsed / duration);
+    // Smoothstep keeps the middle of the flight fluid and eases both ends.
+    progress = from + (to-from) * (t*t*(3-2*t));
+    paint();
+    if (t < 1) frame = requestAnimationFrame(tick);
+    else {
+      running = false; completed = true; finishedY = scrollY;
+      section.classList.remove('flight-running');
+    }
+  };
+  const start = () => {
+    if (running || !visible || document.hidden || reduced.matches) return;
+    from = direction > 0 ? 0 : 1;
+    to = 1-from;
+    progress = from; elapsed = 0; previousTime = 0; completed = false;
+    running = true;
+    section.classList.add('flight-running');
+    paint();
+    frame = requestAnimationFrame(tick);
+  };
   const resize = () => {
     const w = Math.max(280,svg.getBoundingClientRect().width);
     svg.setAttribute('viewBox',`0 0 ${w} 150`);
     path.setAttribute('d',`M28 90 C${w*.18} -20 ${w*.27} 150 ${w*.4} 75 S${w*.65} 5 ${w*.76} 75 S${w*.91} 145 ${w-28} 45`);
-    schedule();
+    length = path.getTotalLength();
+    paint();
   };
-  new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;section.classList.toggle('journey-visible',visible);schedule();},{rootMargin:'60px'}).observe(section);
-  addEventListener('scroll',schedule,{passive:true});
+  const scroll = () => {
+    const delta = scrollY-lastY;
+    if (Math.abs(delta) < 2) return;
+    direction = delta > 0 ? 1 : -1;
+    lastY = scrollY;
+    // A return through the section can replay in the opposite direction.
+    // Ignore scroll events during flight so trackpads cannot restart it midair.
+    if (visible && completed && !running && Math.abs(scrollY-finishedY) > 100 &&
+        ((progress >= 1 && direction < 0) || (progress <= 0 && direction > 0))) start();
+  };
+  new IntersectionObserver(entries => {
+    visible = entries[0].isIntersecting;
+    section.classList.toggle('journey-visible',visible);
+    if (visible) {
+      if (!running) start();
+    } else if (!running) {
+      completed = false;
+    }
+  },{rootMargin:'-12% 0px -12% 0px',threshold:0}).observe(stage);
+  addEventListener('scroll',scroll,{passive:true});
   addEventListener('resize',resize,{passive:true});
-  document.addEventListener('visibilitychange',schedule);
-  reduced.addEventListener('change',schedule);
+  document.addEventListener('visibilitychange',() => {
+    if (document.hidden) {cancelAnimationFrame(frame);frame=0;previousTime=0;}
+    else if (running) frame = requestAnimationFrame(tick);
+    else if (visible && !completed) start();
+  });
+  reduced.addEventListener('change',() => {
+    if (reduced.matches) {
+      cancelAnimationFrame(frame);frame=0;running=false;completed=false;
+      progress=.5;section.classList.remove('flight-running');paint();
+    } else if (visible) start();
+  });
+  if (reduced.matches) progress=.5;
   resize();
 })();
 
