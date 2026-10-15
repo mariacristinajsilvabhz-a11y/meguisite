@@ -423,3 +423,4 @@ body.scroll-experience{background:#f4eef7}body.scroll-experience:before{backgrou
 @media(max-width:390px){.corporate-actions{flex-direction:column}.corporate-hero-gallery{min-height:350px}.corporate-hero-main strong{font-size:16px}.corporate-hero-detail>span{font-size:11px}}
 @media(prefers-reduced-motion:reduce){.corporate-flight .flight-wings,.corporate-action-primary .icon{animation:none}.corporate-hero-gallery img,.corporate-actions>a{transition:none}.corporate-actions>a:hover,.corporate-actions>a:active,.corporate-hero-gallery>a:hover img{transform:none}}
 .corporate-journey:not(.journey-visible) .flight-wings{animation-play-state:paused}
+.corporate-hero-main>img{height:calc(100% - 109px);padding:0;object-fit:cover}.corporate-hero-main>span{min-height:109px}
