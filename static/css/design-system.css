@@ -470,7 +470,7 @@ body.scroll-experience{background:#f4eef7}body.scroll-experience:before{backgrou
 .corporate-hero-signature{position:relative;margin:28px 0 0!important;padding-left:18px;font-size:14px!important;line-height:1.8!important;color:#80668b!important;letter-spacing:0;max-width:none!important}
 .corporate-hero-signature>span{position:absolute;left:0;top:7px;bottom:7px;width:2px;background:#ae8fbd;border-radius:2px}
 .corporate-hero-gallery{min-height:475px;gap:14px}.corporate-hero-gallery>a{border:1px solid #dacde2;border-radius:18px;background:#f7f2fa}
-.corporate-hero-main>img{height:calc(100% - 122px);object-fit:contain;background:#e9e3ee}
+.corporate-hero-main>img{height:calc(100% - 122px);object-fit:cover;background:#e9e3ee}
 .corporate-hero-main>span{min-height:122px;padding:22px;background:#f8f4fa;border-top:1px solid #ddd1e4}
 .corporate-hero-main small,.corporate-hero-detail small{display:block;font-size:9px;letter-spacing:.1em;line-height:1.6;font-weight:750;color:#805991}
 .corporate-hero-main strong{font-size:21px;margin-top:8px;letter-spacing:-.025em}.corporate-hero-main em{font-size:10px;color:#816c8a;margin-top:7px}
