@@ -12,11 +12,12 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css', v='carousel-20261001-v2') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/design-system.css', v='garment-photos-20261015-v26') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/mockup-integration.css', v='20261002-v1') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/brand-experience.css',v='20261015-v2') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/brand-experience.css',v='20261015-v3') }}">
   {% block extra_head %}{% endblock %}
 </head>
 <body{% if request.endpoint == 'b2b' %} class="corporate-page"{% elif request.endpoint == 'events' %} class="events-page"{% endif %}{% if request.endpoint not in ['products', 'category', 'product', 'create_art', 'events'] %} data-scroll-experience{% endif %}>
   {% from '_icons.html' import icon %}
+  <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false"><defs><symbol id="megui-butterfly" viewBox="0 0 125 154">{% include '_brand_butterfly.html' %}</symbol></defs></svg>
   <div class="top-strip">Confecção própria • Malha & personalização • Empresas & eventos</div>
 
   <header class="site-header">

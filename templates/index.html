@@ -15,7 +15,7 @@
       {% for slide in slides %}
       <article class="carousel-slide slide-{{ slide.theme }} {% if loop.first %}is-active{% endif %}" data-carousel-slide role="group" aria-roledescription="banner" aria-label="{{ loop.index }} de {{ loop.length }}" {% if not loop.first %}hidden inert{% endif %}>
         <div class="carousel-copy">
-          <span class="carousel-kicker"><svg class="carousel-butterfly" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 12C10 7 5 3 3 5c-3 3 1 8 5 8-4 1-4 6-1 7 3 1 5-5 5-8Z"/><path d="M12 12c2-5 7-9 9-7 3 3-1 8-5 8 4 1 4 6 1 7-3 1-5-5-5-8Z"/><path d="M12 10v8m0-8L9.5 6M12 10l2.5-4"/></svg> {{ slide.tag }}</span>
+          <span class="carousel-kicker">{{ icon('butterfly','carousel-butterfly') }} {{ slide.tag }}</span>
           <{% if loop.first %}h1{% else %}h2{% endif %}>{{ slide.title }}<br><span>{{ slide.accent }}</span></{% if loop.first %}h1{% else %}h2{% endif %}>
           <p>{{ slide.text }}</p>
           <div class="carousel-actions">

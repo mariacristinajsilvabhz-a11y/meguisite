@@ -8,7 +8,7 @@
 .site-header{position:sticky;z-index:50}
 .site-header:after{content:"";position:absolute;bottom:-1px;left:0;width:100%;height:2px;background:linear-gradient(90deg,#b481d1,#71438e);transform:scaleX(var(--page-progress,0));transform-origin:left;pointer-events:none}
 .page-hero{position:relative;padding:65px 0 50px;border-bottom:1px solid #dbc8e5;background:linear-gradient(125deg,#e8d8f1,#f3ebf7);isolation:isolate}
-.page-hero:after{content:"";position:absolute;right:8%;top:15%;width:180px;height:180px;background:url('../ui/butterfly-pointer.svg') center/contain no-repeat;opacity:.035;pointer-events:none;transform:rotate(15deg);z-index:-1}
+.page-hero:after{content:"";position:absolute;right:8%;top:15%;width:180px;height:180px;background:url('../ui/logo-butterfly.svg') center/contain no-repeat;opacity:.035;pointer-events:none;transform:rotate(15deg);z-index:-1}
 .page-hero h1{font-size:clamp(38px,4.5vw,60px);line-height:1.12;letter-spacing:-.045em;margin:20px 0;color:#39223f;max-width:25ch}
 .page-hero p{font-size:16px;line-height:1.85;max-width:760px;color:#796080}
 .page-crosslinks{display:flex;gap:10px 26px;flex-wrap:wrap;margin-top:25px}.page-crosslinks a{font-size:13px;line-height:1.7;font-weight:650;padding:7px 0;color:#77468b;border-bottom:1px solid #c5a9d4;text-decoration:none}
@@ -42,3 +42,5 @@
 @media(max-width:1000px){.knit-use-grid{gap:22px}.knit-use-photo{height:270px}.knit-use h3{font-size:22px}.knit-pouches,.knit-material-grid{gap:35px}}
 @media(max-width:760px){.knit-use-grid{grid-template-columns:1fr;gap:32px}.knit-use-photo{height:330px;margin-bottom:20px}.knit-use h3{font-size:26px}.knit-use p{font-size:15px;margin-bottom:14px}.knit-pouches{grid-template-columns:1fr;gap:20px;padding:27px 0;margin-top:32px}.knit-pouches h3{font-size:27px}.knit-material-grid{grid-template-columns:1fr;gap:27px}.knit-material-grid h2{font-size:33px}.knit-material-grid p{font-size:15px}.carousel-slide.slide-knit .carousel-art img{max-height:340px}.knit-material-grid .text-link{font-size:12px}}
 @media(prefers-reduced-motion:reduce){.knit-use-photo img{transition:none}.knit-use:hover img{transform:none}}
+
+.corporate-flight .flight-wings{color:#efd9fa;fill:currentColor;stroke:none}
