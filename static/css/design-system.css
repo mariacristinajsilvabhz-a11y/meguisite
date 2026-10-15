@@ -392,3 +392,13 @@ body.scroll-experience{background:#f4eef7}body.scroll-experience:before{backgrou
 @media(hover:hover){.home-welcome .carousel-actions>.carousel-cta:hover,.contact-desk-action:hover{transform:translateY(-2px);box-shadow:inset 0 1px 0 #ffffff35,0 9px 22px #4421532b}.home-welcome .carousel-actions>.carousel-talk:hover{transform:translateY(-2px);box-shadow:0 5px 14px #44215312}.home-welcome .carousel-actions>a:hover:after,.contact-desk-action:hover:after{animation-duration:2.5s}}
 .home-welcome .carousel-actions>a:active,.contact-desk-action:active{transform:translateY(0) scale(.98);box-shadow:inset 0 2px 5px #301c3918}
 @media(prefers-reduced-motion:reduce){.home-welcome .carousel-actions>a,.contact-desk-action{transition:none}.home-welcome .carousel-actions>.carousel-cta:after,.contact-desk-action:after{animation:none;display:none}.home-welcome .carousel-actions>a:hover,.home-welcome .carousel-actions>a:active,.contact-desk-action:hover,.contact-desk-action:active{transform:none}}
+
+/* Indicadores de ação com a mesma proporção e linguagem visual. */
+.home-welcome .carousel-actions>.carousel-cta{justify-content:space-between;gap:14px}
+.home-welcome .carousel-actions>.carousel-cta>.cta-direction{display:flex;align-items:center;justify-content:flex-end;width:28px;height:24px;flex:0 0 28px;padding:0 0 0 10px;border:0;border-left:1px solid #ffffff38;border-radius:0;background:transparent;color:inherit}
+.home-welcome .carousel-actions>.carousel-cta .cta-direction .icon{display:block;width:20px;height:20px;flex:none;animation:megui-action-cue 3.6s ease-in-out infinite}
+.home-welcome .carousel-actions>.carousel-talk{gap:10px}.home-welcome .carousel-actions>.carousel-talk>.icon{width:19px;height:19px;flex:0 0 19px}
+.home-welcome .slide-brand .carousel-cta>.cta-direction{border-color:#44215338}
+@keyframes megui-action-cue{0%,58%,100%{transform:translateX(0)}68%{transform:translateX(4px)}78%{transform:translateX(0)}88%{transform:translateX(3px)}}
+@media(hover:hover){.home-welcome .carousel-actions>.carousel-cta:hover .cta-direction .icon{animation:none;transform:translateX(4px);transition:transform .2s ease}}
+@media(prefers-reduced-motion:reduce){.home-welcome .carousel-actions>.carousel-cta .cta-direction .icon{animation:none;transition:none;transform:none}}

@@ -18,8 +18,8 @@
           <{% if loop.first %}h1{% else %}h2{% endif %}>{{ slide.title }}<br><span>{{ slide.accent }}</span></{% if loop.first %}h1{% else %}h2{% endif %}>
           <p>{{ slide.text }}</p>
           <div class="carousel-actions">
-            <a class="carousel-cta" href="{{ url_for('category', slug=slide.slug) if slide.slug else url_for('products') }}">{{ slide.cta }}</a>
-            <a class="carousel-talk" href="https://wa.me/{{ whatsapp_number }}" target="_blank" rel="noopener">Vamos conversar</a>
+            <a class="carousel-cta" href="{{ url_for('category', slug=slide.slug) if slide.slug else url_for('products') }}">{{ slide.cta }}<span class="cta-direction" aria-hidden="true">{{ icon('arrow') }}</span></a>
+            <a class="carousel-talk" href="https://wa.me/{{ whatsapp_number }}" target="_blank" rel="noopener">{{ icon('whatsapp') }}<span>Vamos conversar</span></a>
           </div>
         </div>
         <figure class="carousel-art"><img src="{{ url_for('static', filename='img/inicio/' + slide.image) }}" alt="{{ slide.alt }}" width="1440" height="960" {% if loop.first %}fetchpriority="high"{% endif %} decoding="async"></figure>
