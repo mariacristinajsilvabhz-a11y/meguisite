@@ -7,10 +7,10 @@
   <div class="welcome-carousel" aria-roledescription="carrossel" aria-label="Produtos personalizados" data-welcome-carousel>
     <div class="carousel-slides" aria-live="off">
       {% set slides = [
-        {'theme':'events','tag':'EVENTOS QUE CONECTAM','title':'O encontro passa.','accent':'A história fica.','text':'Camisetas, kits e personalizados para fazer parte da memória de quem esteve lá. Do primeiro convite à última lembrança.','image':'img/eventos/itens-encontro.webp','alt':'Composição ilustrativa de camiseta, bolsa, copo e credencial com identidade para um encontro','cta':'Criar meu evento','href':url_for('events'),'label':'eventos'},
-        {'theme':'gifts','tag':'BRINDES COM PERSONALIDADE','title':'Sua ideia vai','accent':'junto.','text':'Para equipes, clientes e convidados. Produtos personalizados que continuam presentes depois da entrega.','image':'img/inicio/carousel-brindes.webp','alt':'Composição ilustrativa de fone, bolsa térmica e carregador personalizados Megui','cta':'Descobrir os brindes','href':url_for('category',slug='brindes'),'label':'brindes'},
-        {'theme':'faith','tag':'RETIROS, IGREJAS & MOVIMENTOS','title':'Uma mensagem.','accent':'Muitas pessoas.','text':'Vista o tema do seu encontro. Camisetas e itens personalizados para reunir o grupo em uma identidade.','image':'img/eventos/grupo-igreja.webp','alt':'Referência ilustrativa de grupo reunido com camisetas pretas e lilás','cta':'Conhecer as possibilidades','href':url_for('events') ~ '#movimentos','label':'encontros religiosos'},
-        {'theme':'wear','tag':'UNIFORMES & VESTUÁRIO','title':'Uma equipe.','accent':'Uma identidade.','text':'Polos, camisetas e uniformes para vestir sua marca no atendimento, na operação e nos encontros com o público.','image':'img/inicio/carousel-uniformes.webp','alt':'Composição ilustrativa de jaqueta e camisa personalizadas Megui','cta':'Explorar vestuário','href':url_for('category',slug='vestuario'),'label':'vestuário'}
+        {'theme':'knit','tag':'MALHA É A NOSSA ESPECIALIDADE','title':'Da malha','accent':'à sua ideia.','text':'Confecção própria e personalização para transformar tecido em camisetas, uniformes, peças para eventos e saquinhos com identidade.','image':'img/produtos/camiseta-megui.webp','alt':'Camiseta preta inteira com a identidade Megui e acabamento em gola de ribana','cta':'Explorar a malha','href':'#malharia','label':'malha e confecção própria'},
+        {'theme':'wear','tag':'CONFECÇÃO PARA EQUIPES & MARCAS','title':'Uma equipe.','accent':'Uma identidade.','text':'Da camiseta ao uniforme. Modelagem, tecido e personalização alinhados à rotina e à apresentação da sua equipe.','image':'img/inicio/carousel-uniformes.webp','alt':'Composição ilustrativa de jaqueta e camisa personalizadas Megui','cta':'Explorar vestuário','href':url_for('category',slug='vestuario'),'label':'vestuário e uniformes'},
+        {'theme':'faith','tag':'CAMISETAS PARA ENCONTROS & MOVIMENTOS','title':'Uma mensagem.','accent':'Muitas pessoas.','text':'Vista o tema do seu encontro. Camisetas e itens personalizados para reunir o grupo em uma identidade.','image':'img/eventos/grupo-igreja.webp','alt':'Referência ilustrativa de grupo reunido com camisetas pretas e lilás','cta':'Conhecer as possibilidades','href':url_for('events') ~ '#movimentos','label':'encontros religiosos'},
+        {'theme':'events','tag':'COPOS, KITS & ITENS PARA EVENTOS','title':'Além da camiseta.','accent':'O encontro completo.','text':'Copos, garrafas, bolsas, credenciais e outros personalizados para acompanhar o público e levar a lembrança do evento adiante.','image':'img/inicio/eventos.webp','alt':'Copo reutilizável lilás, credencial com cordão e pulseiras personalizados para eventos','cta':'Compor os itens do evento','href':url_for('events') ~ '#compor','label':'copos e itens para eventos'}
       ] %}
       {% for slide in slides %}
       <article class="carousel-slide slide-{{ slide.theme }} {% if loop.first %}is-active{% endif %}" data-carousel-slide role="group" aria-roledescription="banner" aria-label="{{ loop.index }} de {{ loop.length }}" {% if not loop.first %}hidden inert{% endif %}>
@@ -43,29 +43,26 @@
 
 {% include '_client_marquee.html' %}
 
-<section class="section campaign-section">
-  <div class="container">
-    <div class="campaign-banner campaign-new-photo wardrobe-campaign" data-shirt-showcase data-shirt-caption-mode="name" aria-label="Modelos de vestuário personalizado">
-      <div class="campaign-new-copy"><span class="eyebrow">MEG ROUPAS</span><h2>Uma equipe.<br>A mesma identidade.</h2><p>Polos, babylooks e camisas sociais de manga curta ou longa com a identidade da sua empresa.</p><a class="text-link wardrobe-link" href="{{ url_for('category', slug='vestuario') }}">Explorar vestuário</a></div>
-      <figure class="wardrobe-preview">
-        <div class="wardrobe-stage">
-          {% for image, name in [('polo.webp','Polo'),('babylook-manequim.webp','Babylook'),('social-manga-curta-manequim.webp','Social de manga curta'),('social-manga-longa-manequim.webp','Social de manga longa')] %}
-          <img class="wardrobe-image{% if loop.first %} is-active{% endif %}" src="{{ url_for('static', filename='img/inicio/' ~ image) }}" alt="{{ name }} personalizada Megui em manequim invisível — imagem ilustrativa" data-shirt-brand="{{ name }}" aria-hidden="{{ 'false' if loop.first else 'true' }}" loading="lazy">
-          {% endfor %}
-        </div>
-        <figcaption><span data-shirt-caption>Polo</span><small>Visualização ilustrativa</small></figcaption>
-        <div class="gallery-dots" data-shirt-dots aria-label="Escolher modelo de vestuário"></div>
-      </figure>
-    </div>
+<section class="section knit-studio" id="malharia">
+ <div class="container">
+  <div class="section-heading split-heading"><div><span class="eyebrow">NOSSO CARRO-CHEFE. O COMEÇO DE MUITAS IDEIAS.</span><h2>Malha que veste.<br>Personalização que marca.</h2></div><p>É na confecção em malha que está a nossa especialidade. Do tecido à peça, pensamos no uso, no caimento e na identidade de cada projeto.</p></div>
+  <div class="knit-use-grid">
+   <a class="knit-use" href="{{ url_for('category',slug='vestuario') }}"><div class="knit-use-photo"><img src="{{ url_for('static',filename='img/produtos/camiseta-megui.webp') }}" alt="Camiseta Megui inteira em malha preta" width="1280" height="1280" loading="lazy"></div><span>01 / PARA VESTIR IDEIAS</span><h3>Camisetas & marcas</h3><p>Básicas, babylooks e propostas de modelagem para vestir uma identidade.</p><strong>Explorar as peças {{ icon('arrow') }}</strong></a>
+   <a class="knit-use" href="{{ url_for('b2b') }}#uniformes"><div class="knit-use-photo"><img src="{{ url_for('static',filename='img/inicio/polo.webp') }}" alt="Polo Megui inteira com detalhes de gola e mangas" width="1000" height="1000" loading="lazy"></div><span>02 / PARA O DIA A DIA</span><h3>Uniformes & equipes</h3><p>Peças pensadas para a rotina, o conforto e a apresentação de quem representa sua empresa.</p><strong>Conhecer os modelos {{ icon('arrow') }}</strong></a>
+   <a class="knit-use" href="{{ url_for('events') }}#movimentos"><div class="knit-use-photo"><img src="{{ url_for('static',filename='img/acervo/2026/escola-de-cura-manequim-v3.webp') }}" alt="Visualização de camiseta Escola de Cura com peças embaladas" width="1448" height="1086" loading="lazy"></div><span>03 / PARA REUNIR PESSOAS</span><h3>Eventos & movimentos</h3><p>Camisetas para retiros, congressos, equipes, campanhas e encontros que deixam história.</p><strong>Vestir o encontro {{ icon('arrow') }}</strong></a>
   </div>
+  <div class="knit-pouches"><div><span class="eyebrow">MALHA TAMBÉM VIRA EMBALAGEM.</span><h3>Saquinhos que apresentam.<br>E continuam com quem recebe.</h3></div><div><p>Saquinhos de malha para presentes, kits e apresentação de produtos. Tamanho, cor e personalização pensados para o que você quer entregar.</p><a class="text-link" href="https://wa.me/{{ whatsapp_number }}?text=Ol%C3%A1!%20Quero%20conhecer%20os%20saquinhos%20de%20malha%20personalizados%20da%20Megui." target="_blank" rel="noopener">Criar meus saquinhos {{ icon('arrow') }}</a></div></div>
+ </div>
 </section>
+<section class="section knit-materials"><div class="container knit-material-grid"><figure><img src="{{ url_for('static',filename='img/tecidos/detalhe-trama-v9.webp') }}" alt="Referência ilustrativa do toque, da trama e do caimento de uma malha" width="1200" height="800" loading="lazy"><figcaption>Referência ilustrativa de textura. A malha é definida para cada projeto.</figcaption></figure><div><span class="eyebrow">A ESCOLHA DO TECIDO FAZ PARTE DO RESULTADO</span><h2>Começa na malha.<br>Aparece em cada detalhe.</h2><p>Toque, composição, gramatura, modelagem e acabamento precisam conversar com o uso da peça. A gente ajuda a fazer essa escolha.</p><div class="knit-material-notes"><span>Malhas para diferentes propostas</span><span>Golas, costuras e acabamentos</span><span>Personalização alinhada à peça</span></div><a class="text-link" href="{{ url_for('b2b') }}#materiais">Conhecer os materiais e acabamentos {{ icon('arrow') }}</a></div></div></section>
+
 
 <section class="section section-soft">
   <div class="container">
     <div class="section-heading split-heading">
       <div>
-        <span class="eyebrow">CATÁLOGO</span>
-        <h2>O que vamos personalizar?</h2>
+        <span class="eyebrow">PARA COMPLETAR O SEU PROJETO</span>
+        <h2>Da confecção aos complementos.</h2>
       </div>
       <a class="text-link" href="{{ url_for('products') }}">Ver todos os produtos →</a>
     </div>
@@ -89,14 +86,15 @@
   </div>
 </section>
 
+{% if products %}
 <section class="section">
   <div class="container">
     <div class="section-heading split-heading">
       <div>
-        <span class="eyebrow">DESTAQUES</span>
+        <span class="eyebrow">CONTINUE EXPLORANDO</span>
         <h2>Sua próxima ideia começa aqui.</h2>
       </div>
-      <p>Escolha os itens. A gente alinha quantidade, acabamento e prazo com você.</p>
+      <p>Malha, brindes e outras possibilidades. A gente alinha quantidade, acabamento e prazo com você.</p>
     </div>
 
     <div class="product-grid">
@@ -106,6 +104,7 @@
     </div>
   </div>
 </section>
+{% endif %}
 
 <section class="section home-pathways"><div class="container"><div class="section-heading split-heading"><div><span class="eyebrow">A MESMA MEGUI. POSSIBILIDADES DIFERENTES.</span><h2>O que a gente<br>vai criar junto?</h2></div><p>Para a rotina de uma equipe ou para um encontro que merece ser lembrado. Seu projeto começa pelo que faz sentido para você.</p></div><div class="home-project-paths"><a href="{{ url_for('b2b') }}"><span class="home-path-number">01 / EMPRESAS</span><img src="{{ url_for('static',filename='img/inicio/polo.webp') }}" alt="Polo personalizada Megui" width="1000" height="1000" loading="lazy"><div><h3>Vista a equipe.<br>Apresente sua marca.</h3><p>Uniformes, brindes e comunicação visual para o seu negócio.</p><strong>Conheça as possibilidades {{ icon('arrow') }}</strong></div></a><a href="{{ url_for('events') }}"><span class="home-path-number">02 / EVENTOS</span><img src="{{ url_for('static',filename='img/inicio/eventos.webp') }}" alt="Credencial, pulseiras e copo personalizados para um encontro" width="1000" height="1000" loading="lazy"><div><h3>Reúna as pessoas.<br>Leve a história adiante.</h3><p>Festas, encontros religiosos, congressos e movimentos.</p><strong>Encontre o seu evento {{ icon('arrow') }}</strong></div></a></div></div></section>
 
@@ -155,9 +154,9 @@
   <div class="container video-teaser">
     <div class="home-process-preview">{{ video_preview('video/serigrafia-v2.mp4', 'img/acervo/serigrafia-capa-v2.jpg', 'Serigrafia em produção') }}</div>
     <div>
-      <span class="eyebrow">BASTIDORES</span>
-      <h2>Da produção<br>ao resultado.</h2>
-      <p>Conheça os materiais, as aplicações e os bastidores da personalização.</p>
+      <span class="eyebrow">CONFECÇÃO & PERSONALIZAÇÃO</span>
+      <h2>Do tecido<br>à sua identidade.</h2>
+      <p>Veja a personalização em produção e conheça o cuidado que acompanha as peças da Megui.</p>
       <a class="btn btn-secondary" href="{{ url_for('videos') }}">Ver vídeos</a>
     </div>
   </div>

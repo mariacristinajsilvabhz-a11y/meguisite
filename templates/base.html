@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#171219">
-  <meta name="description" content="Megui Personalizados — uniformes, eventos, brindes e comunicação visual com a sua identidade.">
+  <meta name="description" content="Megui Personalizados — confecção e personalização em malha. Camisetas, uniformes, saquinhos, eventos, brindes e comunicação visual.">
   <title>{% block title %}Megui Personalizados{% endblock %}</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,12 +12,12 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css', v='carousel-20261001-v2') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/design-system.css', v='garment-photos-20261015-v26') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/mockup-integration.css', v='20261002-v1') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/brand-experience.css',v='20261015-v1') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/brand-experience.css',v='20261015-v2') }}">
   {% block extra_head %}{% endblock %}
 </head>
 <body{% if request.endpoint == 'b2b' %} class="corporate-page"{% elif request.endpoint == 'events' %} class="events-page"{% endif %}{% if request.endpoint not in ['products', 'category', 'product', 'create_art', 'events'] %} data-scroll-experience{% endif %}>
   {% from '_icons.html' import icon %}
-  <div class="top-strip">Produção própria • Empresas & eventos • Ideias com identidade</div>
+  <div class="top-strip">Confecção própria • Malha & personalização • Empresas & eventos</div>
 
   <header class="site-header">
     <div class="container header-inner">
@@ -82,7 +82,7 @@
     <div class="container footer-grid">
       <div>
         <img class="footer-logo brand-official" src="{{ url_for('static', filename='img/logo-megui-oficial.png') }}" alt="Megui Personalizados">
-        <p>Brindes, vestuário, gráfica e soluções corporativas para transformar sua marca em algo que as pessoas veem, usam e lembram.</p>
+        <p>Nossa especialidade é confecção e personalização em malha. Camisetas, uniformes e saquinhos, com brindes e comunicação visual para completar seu projeto.</p>
       </div>
       <div>
         <h3>Explore</h3>
@@ -115,7 +115,7 @@
   <script src="{{ url_for('static', filename='js/site.js', v='gallery-dots-20261002-v1') }}"></script>
   <script src="{{ url_for('static', filename='js/motion.js', v='quality-flight-20261015-v22') }}"></script>
   <button class="back-to-top" type="button" data-back-to-top aria-label="Voltar ao topo" hidden><span aria-hidden="true">↑</span></button>
-  <script defer src="{{ url_for('static',filename='js/brand-experience.js',v='20261015-v1') }}"></script>
+  <script defer src="{{ url_for('static',filename='js/brand-experience.js',v='20261015-v2') }}"></script>
   {% block extra_scripts %}{% endblock %}
 </body>
 </html>

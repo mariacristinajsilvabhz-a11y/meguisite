@@ -45,9 +45,9 @@ if WHATSAPP_NUMBER in {"31984912083", "5531984912083"}:
     WHATSAPP_NUMBER = PRIMARY_WHATSAPP
 
 CATEGORIES = [
-    {"slug": "brindes", "name": "Brindes", "description": "Copos, squeezes, canecas, kits e presentes corporativos.", "icon": "✦"},
-    {"slug": "bolsas-acessorios", "name": "Bolsas & Acessórios", "description": "Mochilas, nécessaires, ecobags, sacolas e acessórios.", "icon": "◇"},
     {"slug": "vestuario", "name": "Vestuário", "description": "Camisetas, moletons, uniformes, bonés, aventais e jalecos.", "icon": "M"},
+    {"slug": "bolsas-acessorios", "name": "Bolsas & Acessórios", "description": "Mochilas, nécessaires, ecobags, sacolas e acessórios.", "icon": "◇"},
+    {"slug": "brindes", "name": "Brindes", "description": "Copos, squeezes, canecas, kits e presentes corporativos.", "icon": "✦"},
     {"slug": "corporativo", "name": "Corporativo", "description": "Soluções para eventos, equipes, campanhas e kits empresariais.", "icon": "▦"},
     {"slug": "grafica", "name": "Meg Gráfica", "description": "Materiais gráficos e comunicação visual para sua marca.", "icon": "▤"},
     {"slug": "eventos", "name": "Eventos", "description": "Camisetas, brindes e comunicação visual para feiras, festas e ações promocionais.", "icon": "✦"},
