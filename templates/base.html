@@ -38,7 +38,7 @@
             {% endfor %}
           </div>
         </div>
-        <a href="{{ url_for('b2b') }}" {% if request.endpoint == 'b2b' %}aria-current="page"{% endif %}>Empresas & Licitações</a>
+        <a href="{{ url_for('b2b') }}" {% if request.endpoint == 'b2b' %}aria-current="page"{% endif %}>Empresas</a>
         <a href="{{ url_for('events') }}" {% if request.endpoint == 'events' %}aria-current="page"{% endif %}>Eventos</a>
         <a href="{{ url_for('videos') }}" {% if request.endpoint == 'videos' %}aria-current="page"{% endif %}>Vídeos</a>
         <a href="{{ url_for('portfolio_view') }}" {% if request.endpoint == 'portfolio_view' %}aria-current="page"{% endif %}>Trabalhos</a>
@@ -85,7 +85,7 @@
       <div>
         <h3>Explore</h3>
         <a href="{{ url_for('products') }}">Produtos</a>
-        <a href="{{ url_for('b2b') }}">Empresas & Licitações</a>
+        <a href="{{ url_for('b2b') }}">Empresas</a>
         <a href="{{ url_for('videos') }}">Vídeos</a>
         <a href="{{ url_for('about') }}">Sobre nós</a>
       </div>
