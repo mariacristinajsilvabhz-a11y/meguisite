@@ -70,15 +70,19 @@
       <a class="text-link" href="{{ url_for('products') }}">Ver todos os produtos →</a>
     </div>
     <div class="category-grid home-category-grid">
-      {% for category in home_categories %}
-      <a class="category-card category-with-photo" data-category="{{ category.slug }}" href="{{ url_for('events') if category.slug == 'eventos' else url_for('category', slug=category.slug) }}">
+      {% set extra_categories = [
+        {'slug':'uniformes','name':'Uniformes','description':'Modelos para saúde, gastronomia, atendimento e equipes operacionais.','images':['img/inicio/uniforme-chef-v4.webp'],'href':url_for('b2b') ~ '#uniformes','link_label':'Conhecer os modelos'},
+        {'slug':'kits-personalizados','name':'Kits personalizados','description':'Combine produtos e crie uma entrega especial para equipes, clientes e eventos.','images':['img/eventos/kits-evento-v4.webp'],'href':url_for('products',q='kit'),'link_label':'Explorar os kits'}
+      ] %}
+      {% for category in home_categories + extra_categories %}
+      <a class="category-card category-with-photo" data-category="{{ category.slug }}" href="{{ category.href if category.href is defined else (url_for('events') if category.slug == 'eventos' else url_for('category', slug=category.slug)) }}">
         <div class="category-photo-stage category-photo-{{ category.slug }} {% if category.images|length > 1 %}category-photo-pair{% endif %}">
           {% for image in category.images %}<img src="{{ url_for('static', filename=image) }}" alt="" loading="lazy">{% endfor %}
           <span class="category-photo-action" aria-hidden="true">↗</span>
         </div>
         <div class="category-photo-copy"><h3>{{ category.name }}</h3>
         <p>{{ category.description }}</p>
-        <span class="category-link">Explorar categoria →</span></div>
+        <span class="category-link">{{ category.link_label|default('Explorar categoria') }} →</span></div>
       </a>
       {% endfor %}
     </div>

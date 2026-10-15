@@ -402,3 +402,5 @@ body.scroll-experience{background:#f4eef7}body.scroll-experience:before{backgrou
 @keyframes megui-action-cue{0%,58%,100%{transform:translateX(0)}68%{transform:translateX(4px)}78%{transform:translateX(0)}88%{transform:translateX(3px)}}
 @media(hover:hover){.home-welcome .carousel-actions>.carousel-cta:hover .cta-direction .icon{animation:none;transform:translateX(4px);transition:transform .2s ease}}
 @media(prefers-reduced-motion:reduce){.home-welcome .carousel-actions>.carousel-cta .cta-direction .icon{animation:none;transition:none;transform:none}}
+
+.home-category-grid .category-photo-uniformes img{height:100%;width:100%;object-fit:contain}.home-category-grid .category-photo-kits-personalizados{padding:0}.home-category-grid .category-photo-kits-personalizados img{width:100%;height:100%;object-fit:cover;border-radius:0}
