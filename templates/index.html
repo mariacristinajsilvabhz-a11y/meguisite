@@ -22,7 +22,7 @@
             <a class="carousel-talk" href="https://wa.me/{{ whatsapp_number }}" target="_blank" rel="noopener">Vamos conversar</a>
           </div>
         </div>
-        <figure class="carousel-art"><img src="{{ url_for('static', filename='img/inicio/' + slide.image) }}" alt="{{ slide.alt }}" width="1440" height="960" {% if loop.first %}fetchpriority="high"{% endif %} decoding="async"><figcaption>Composição ilustrativa</figcaption></figure>
+        <figure class="carousel-art"><img src="{{ url_for('static', filename='img/inicio/' + slide.image) }}" alt="{{ slide.alt }}" width="1440" height="960" {% if loop.first %}fetchpriority="high"{% endif %} decoding="async"></figure>
       </article>
       {% endfor %}
     </div>
