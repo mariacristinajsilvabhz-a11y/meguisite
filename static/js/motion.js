@@ -192,3 +192,35 @@
     setInterval(() => {if (visible && !focused && !document.hidden && !reduced.matches && Date.now() >= holdUntil) show(index + 1);},5500);
   });
 })();
+
+// A borboleta percorre a curva conforme esta seção entra na tela.
+(() => {
+  const section = document.querySelector('[data-butterfly-journey]');
+  if (!section) return;
+  const path = section.querySelector('[data-flight-path]');
+  const butterfly = section.querySelector('[data-flight-butterfly]');
+  const svg = path.ownerSVGElement;
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  let visible = false, queued = false;
+  const paint = () => {
+    queued = false;
+    if (!visible || document.hidden) return;
+    const bounds = section.getBoundingClientRect();
+    const progress = reduced.matches ? .5 : Math.max(0,Math.min(1,(innerHeight * .9 - bounds.top) / (innerHeight * .65 + bounds.height * .4)));
+    const point = path.getPointAtLength(path.getTotalLength() * progress);
+    butterfly.setAttribute('transform',`translate(${point.x} ${point.y})`);
+  };
+  const schedule = () => {if (visible && !queued) {queued = true;requestAnimationFrame(paint);}};
+  const resize = () => {
+    const w = Math.max(280,svg.getBoundingClientRect().width);
+    svg.setAttribute('viewBox',`0 0 ${w} 150`);
+    path.setAttribute('d',`M28 90 C${w*.18} -20 ${w*.27} 150 ${w*.4} 75 S${w*.65} 5 ${w*.76} 75 S${w*.91} 145 ${w-28} 45`);
+    schedule();
+  };
+  new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;section.classList.toggle('journey-visible',visible);schedule();},{rootMargin:'60px'}).observe(section);
+  addEventListener('scroll',schedule,{passive:true});
+  addEventListener('resize',resize,{passive:true});
+  document.addEventListener('visibilitychange',schedule);
+  reduced.addEventListener('change',schedule);
+  resize();
+})();
