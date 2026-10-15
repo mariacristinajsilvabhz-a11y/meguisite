@@ -224,3 +224,15 @@
   reduced.addEventListener('change',schedule);
   resize();
 })();
+
+// Mantém a velocidade contínua do acervo, sem paradas por hover.
+(() => {
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  document.querySelectorAll('[data-case-reel]').forEach(reel => {
+    let visible = false;
+    const sync = () => reel.classList.toggle('is-running',visible && !document.hidden && !reduced.matches);
+    new IntersectionObserver(entries => {visible=entries[0].isIntersecting;sync();},{threshold:0}).observe(reel);
+    document.addEventListener('visibilitychange',sync);
+    reduced.addEventListener('change',sync);
+  });
+})();
