@@ -457,3 +457,8 @@ body.scroll-experience{background:#f4eef7}body.scroll-experience:before{backgrou
 @media(hover:hover){.corporate-journey-steps li:hover .journey-photo img{transform:scale(1.025)}}
 @media(max-width:760px){.corporate-journey-steps{gap:32px}.corporate-journey-steps li{border:0;padding-top:0}.journey-photo{margin-bottom:20px}.corporate-flight{height:88px;margin:12px 0 24px}.corporate-flight>svg{height:88px}.corporate-journey-steps h3{margin-top:12px}}
 @media(prefers-reduced-motion:reduce){.journey-photo img{transition:none}.corporate-journey-steps li:hover .journey-photo img{transform:none}}
+
+/* Capa de uniformes ocupa a área inteira, sem miniatura sobreposta. */
+.home-category-grid .category-photo-stage.category-photo-uniformes{padding:0;background:#e8e5ed}
+.home-category-grid .category-photo-uniformes img{display:block;width:100%;height:100%;object-fit:cover;object-position:center top;mix-blend-mode:normal;filter:none;border-radius:0}
+.home-category-grid [data-category="uniformes"]{border-color:#cdbbd7}
