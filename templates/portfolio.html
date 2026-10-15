@@ -2,11 +2,12 @@
 {% block title %}Trabalhos realizados — Megui{% endblock %}
 {% from '_video_preview.html' import video_preview with context %}
 {% block content %}
-<section class="page-hero"><div class="container"><span class="eyebrow">TRABALHOS REAIS</span><h1>Da ideia para o mundo.</h1><p>Produtos que vestem equipes, acompanham eventos e carregam a identidade de cada marca. Conheça alguns registros do nosso trabalho.</p></div></section>
+<section class="page-hero"><div class="container"><span class="eyebrow">TRABALHOS REAIS</span><h1>Da ideia para o mundo.</h1><p>Produtos que vestem equipes, acompanham eventos e carregam a identidade de cada marca. Conheça alguns registros do nosso trabalho.</p><nav class="page-crosslinks" aria-label="Continue a explorar"><a href="{{ url_for('events') }}">Ideias para eventos ↗</a><a href="{{ url_for('videos') }}">Por dentro da produção ↗</a></nav></div></section>
 {% include '_client_marquee.html' %}
-<section class="section"><div class="container"><div class="portfolio-grid">
+<section class="section"><div class="container"><div class="project-filters" aria-label="Explorar trabalhos por tema">{% for key,label in [('todos','Todos os trabalhos'),('eventos','Eventos'),('vestuario','Vestuário'),('brindes','Brindes & bolsas')] %}<button type="button" data-project-filter="{{ key }}" aria-pressed="{{ 'true' if loop.first else 'false' }}">{{ label }}</button>{% endfor %}<span class="project-filter-count" data-project-count role="status" aria-live="polite">{{ portfolio|length }} trabalhos</span></div><div class="portfolio-grid">
 {% for work in portfolio %}
-<article class="portfolio-card">
+{% set kind = work.kind|upper %}
+<article class="portfolio-card" data-project-tags="{% if 'EVENT' in kind or 'CORRIDA' in kind or 'MOVIMENTO' in kind or 'COMUNICAÇÃO' in kind %}eventos {% endif %}{% if 'VESTU' in kind or 'CAMISETA' in kind or 'EQUIPE' in kind or 'ESTAMP' in kind %}vestuario {% endif %}{% if 'BRINDE' in kind or 'BOLSA' in kind or 'PAPELARIA' in kind or 'LEMBRAN' in kind %}brindes{% endif %}">
 {% if work.video %}{{ video_preview(work.video, work.image, work.title) }}{% else %}<a href="{{ url_for('static', filename=work.presentation_image|default(work.image)) }}" target="_blank" rel="noopener" aria-label="Ampliar imagem: {{ work.title }}"><img src="{{ url_for('static', filename=work.presentation_image|default(work.image)) }}" alt="{{ work.title }} — {{ "visualização do produto" if work.presentation_image else "registro do trabalho realizado" }}" loading="lazy"></a>{% endif %}
 <div class="portfolio-copy"><span class="eyebrow">{{ work.kind }}{% if work.year %} · {{ work.year }}{% endif %}</span><h2>{{ work.title }}</h2><p>{{ work.text }}</p></div>
 </article>

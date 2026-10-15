@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#171219">
-  <meta name="description" content="Megui Personalizados — brindes, roupas, gráfica e soluções corporativas sob medida.">
+  <meta name="description" content="Megui Personalizados — uniformes, eventos, brindes e comunicação visual com a sua identidade.">
   <title>{% block title %}Megui Personalizados{% endblock %}</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,10 +12,12 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css', v='carousel-20261001-v2') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/design-system.css', v='garment-photos-20261015-v26') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/mockup-integration.css', v='20261002-v1') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/brand-experience.css',v='20261015-v1') }}">
+  {% block extra_head %}{% endblock %}
 </head>
-<body{% if request.endpoint == 'b2b' %} class="corporate-page"{% endif %}{% if request.endpoint not in ['products', 'category', 'product', 'create_art'] %} data-scroll-experience{% endif %}>
+<body{% if request.endpoint == 'b2b' %} class="corporate-page"{% elif request.endpoint == 'events' %} class="events-page"{% endif %}{% if request.endpoint not in ['products', 'category', 'product', 'create_art', 'events'] %} data-scroll-experience{% endif %}>
   {% from '_icons.html' import icon %}
-  <div class="top-strip">Produção personalizada • Atendimento B2B • Projetos sob medida</div>
+  <div class="top-strip">Produção própria • Empresas & eventos • Ideias com identidade</div>
 
   <header class="site-header">
     <div class="container header-inner">
@@ -86,6 +88,7 @@
         <h3>Explore</h3>
         <a href="{{ url_for('products') }}">Produtos</a>
         <a href="{{ url_for('b2b') }}">Empresas</a>
+        <a href="{{ url_for('events') }}">Eventos</a>
         <a href="{{ url_for('videos') }}">Vídeos</a>
         <a href="{{ url_for('about') }}">Sobre nós</a>
       </div>
@@ -99,7 +102,7 @@
     </div>
     <div class="container footer-bottom">
       <span>© 2026 Megui Personalizados • CNPJ {{ company_cnpj }}</span>
-      <span>Produção • personalização • B2B</span>
+      <span>Pessoas • empresas • encontros</span>
     </div>
   </footer>
 
@@ -111,5 +114,8 @@
   <script id="search-product-data" data-remote="{{ 'true' if hub_catalog_enabled else 'false' }}" type="application/json">{{ search_products|tojson }}</script>
   <script src="{{ url_for('static', filename='js/site.js', v='gallery-dots-20261002-v1') }}"></script>
   <script src="{{ url_for('static', filename='js/motion.js', v='quality-flight-20261015-v22') }}"></script>
+  <button class="back-to-top" type="button" data-back-to-top aria-label="Voltar ao topo" hidden><span aria-hidden="true">↑</span></button>
+  <script defer src="{{ url_for('static',filename='js/brand-experience.js',v='20261015-v1') }}"></script>
+  {% block extra_scripts %}{% endblock %}
 </body>
 </html>

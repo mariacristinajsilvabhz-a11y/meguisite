@@ -7,36 +7,36 @@
   <div class="welcome-carousel" aria-roledescription="carrossel" aria-label="Produtos personalizados" data-welcome-carousel>
     <div class="carousel-slides" aria-live="off">
       {% set slides = [
-        {'theme':'gifts','tag':'BRINDES COM PERSONALIDADE','title':'Sua marca vai','accent':'junto.','text':'Do presente ao uso diário. Produtos personalizados para fazer parte da rotina de quem recebe.','image':'carousel-brindes.webp','alt':'Composição ilustrativa de fone, bolsa térmica e carregador personalizados Megui','cta':'Descobrir os brindes','slug':'brindes'},
-        {'theme':'wear','tag':'UNIFORMES & VESTUÁRIO','title':'Uma equipe.','accent':'Uma identidade.','text':'Vista sua marca com peças feitas para trabalhar, representar e impressionar.','image':'carousel-uniformes.webp','alt':'Composição ilustrativa de jaqueta e camisa personalizadas Megui','cta':'Explorar vestuário','slug':'vestuario'},
-        {'theme':'brand','tag':'PERSONALIZAÇÃO DO SEU JEITO','title':'Ideias que','accent':'viram presença.','text':'Da escolha do produto ao acabamento. Vamos criar algo com a cara da sua empresa?','image':'welcome.webp','alt':'Composição ilustrativa de avental, guarda-chuva e cordão Megui','cta':'Ver todos os produtos','slug':none}
+        {'theme':'events','tag':'EVENTOS QUE CONECTAM','title':'O encontro passa.','accent':'A história fica.','text':'Camisetas, kits e personalizados para fazer parte da memória de quem esteve lá. Do primeiro convite à última lembrança.','image':'img/eventos/itens-encontro.webp','alt':'Composição ilustrativa de camiseta, bolsa, copo e credencial com identidade para um encontro','cta':'Criar meu evento','href':url_for('events'),'label':'eventos'},
+        {'theme':'gifts','tag':'BRINDES COM PERSONALIDADE','title':'Sua ideia vai','accent':'junto.','text':'Para equipes, clientes e convidados. Produtos personalizados que continuam presentes depois da entrega.','image':'img/inicio/carousel-brindes.webp','alt':'Composição ilustrativa de fone, bolsa térmica e carregador personalizados Megui','cta':'Descobrir os brindes','href':url_for('category',slug='brindes'),'label':'brindes'},
+        {'theme':'faith','tag':'RETIROS, IGREJAS & MOVIMENTOS','title':'Uma mensagem.','accent':'Muitas pessoas.','text':'Vista o tema do seu encontro. Camisetas e itens personalizados para reunir o grupo em uma identidade.','image':'img/eventos/grupo-igreja.webp','alt':'Referência ilustrativa de grupo reunido com camisetas pretas e lilás','cta':'Conhecer as possibilidades','href':url_for('events') ~ '#movimentos','label':'encontros religiosos'},
+        {'theme':'wear','tag':'UNIFORMES & VESTUÁRIO','title':'Uma equipe.','accent':'Uma identidade.','text':'Polos, camisetas e uniformes para vestir sua marca no atendimento, na operação e nos encontros com o público.','image':'img/inicio/carousel-uniformes.webp','alt':'Composição ilustrativa de jaqueta e camisa personalizadas Megui','cta':'Explorar vestuário','href':url_for('category',slug='vestuario'),'label':'vestuário'}
       ] %}
       {% for slide in slides %}
-      <article class="carousel-slide slide-{{ slide.theme }} {% if loop.first %}is-active{% endif %}" data-carousel-slide role="group" aria-roledescription="banner" aria-label="{{ loop.index }} de 3" {% if not loop.first %}hidden inert{% endif %}>
+      <article class="carousel-slide slide-{{ slide.theme }} {% if loop.first %}is-active{% endif %}" data-carousel-slide role="group" aria-roledescription="banner" aria-label="{{ loop.index }} de {{ loop.length }}" {% if not loop.first %}hidden inert{% endif %}>
         <div class="carousel-copy">
           <span class="carousel-kicker"><svg class="carousel-butterfly" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 12C10 7 5 3 3 5c-3 3 1 8 5 8-4 1-4 6-1 7 3 1 5-5 5-8Z"/><path d="M12 12c2-5 7-9 9-7 3 3-1 8-5 8 4 1 4 6 1 7-3 1-5-5-5-8Z"/><path d="M12 10v8m0-8L9.5 6M12 10l2.5-4"/></svg> {{ slide.tag }}</span>
           <{% if loop.first %}h1{% else %}h2{% endif %}>{{ slide.title }}<br><span>{{ slide.accent }}</span></{% if loop.first %}h1{% else %}h2{% endif %}>
           <p>{{ slide.text }}</p>
           <div class="carousel-actions">
-            <a class="carousel-cta" href="{{ url_for('category', slug=slide.slug) if slide.slug else url_for('products') }}">{{ slide.cta }}<span class="cta-direction" aria-hidden="true">{{ icon('arrow') }}</span></a>
+            <a class="carousel-cta" href="{{ slide.href }}">{{ slide.cta }}<span class="cta-direction" aria-hidden="true">{{ icon('arrow') }}</span></a>
             <a class="carousel-talk" href="https://wa.me/{{ whatsapp_number }}" target="_blank" rel="noopener">{{ icon('whatsapp') }}<span>Vamos conversar</span></a>
           </div>
         </div>
-        <figure class="carousel-art"><img src="{{ url_for('static', filename='img/inicio/' + slide.image) }}" alt="{{ slide.alt }}" width="1440" height="960" {% if loop.first %}fetchpriority="high"{% endif %} decoding="async"></figure>
+        <figure class="carousel-art"><img src="{{ url_for('static', filename=slide.image) }}" alt="{{ slide.alt }}" width="1440" height="960" {% if loop.first %}fetchpriority="high"{% endif %} decoding="async"></figure>
       </article>
       {% endfor %}
     </div>
     <div class="carousel-toolbar">
       <div class="gallery-dots carousel-dots" aria-label="Escolher banner">
-        <button class="is-current" type="button" data-carousel-to="0" aria-label="Ver banner de brindes" aria-current="true"></button>
-        <button type="button" data-carousel-to="1" aria-label="Ver banner de vestuário"></button>
-        <button type="button" data-carousel-to="2" aria-label="Ver banner de personalização"></button>
+        {% for slide in slides %}<button{% if loop.first %} class="is-current"{% endif %} type="button" data-carousel-to="{{ loop.index0 }}" aria-label="Ver banner de {{ slide.label }}"{% if loop.first %} aria-current="true"{% endif %}></button>{% endfor %}
       </div>
     </div>
   </div>
   <nav class="welcome-shortcuts" aria-label="Explore a Megui">
     <a href="{{ url_for('products') }}"><span class="shortcut-icon">{{ icon('brindes') }}</span><div><strong>Encontre seu produto</strong><small>Explore o catálogo</small></div>{{ icon('arrow') }}</a>
-    <a href="{{ url_for('b2b') }}"><span class="shortcut-icon">{{ icon('corporativo') }}</span><div><strong>Para sua empresa</strong><small>Uniformes, ações e licitações</small></div>{{ icon('arrow') }}</a>
+    <a href="{{ url_for('b2b') }}"><span class="shortcut-icon">{{ icon('corporativo') }}</span><div><strong>Para sua empresa</strong><small>Uniformes, brindes e projetos</small></div>{{ icon('arrow') }}</a>
+    <a href="{{ url_for('events') }}"><span class="shortcut-icon">{{ icon('eventos') }}</span><div><strong>Para o seu evento</strong><small>Encontros, kits e camisetas</small></div>{{ icon('arrow') }}</a>
     <a href="https://wa.me/{{ whatsapp_number }}" target="_blank" rel="noopener"><span class="shortcut-icon">{{ icon('whatsapp') }}</span><div><strong>Conte sua ideia</strong><small>A gente ajuda a criar</small></div>{{ icon('arrow') }}</a>
   </nav>
 </section>
@@ -107,22 +107,7 @@
   </div>
 </section>
 
-<section class="section b2b-home">
-  <div class="container b2b-feature">
-    <div>
-      <span class="eyebrow eyebrow-light">EMPRESAS</span>
-      <h2>Projetos completos.<span>Para sua empresa.</span></h2>
-      <p>Uniformes, brindes e comunicação visual no mesmo projeto. Atendimento para empresas, órgãos e compras em volume.</p>
-      <a class="btn btn-light" href="{{ url_for('b2b') }}">Conhecer atendimento B2B</a>
-    </div>
-    <div class="b2b-points">
-      <span>01 <strong>Cotação multi-item</strong></span>
-      <span>02 <strong>Projetos por quantidade</strong></span>
-      <span>03 <strong>Personalização sob demanda</strong></span>
-      <span>04 <strong>Atendimento comercial dedicado</strong></span>
-    </div>
-  </div>
-</section>
+<section class="section home-pathways"><div class="container"><div class="section-heading split-heading"><div><span class="eyebrow">A MESMA MEGUI. POSSIBILIDADES DIFERENTES.</span><h2>O que a gente<br>vai criar junto?</h2></div><p>Para a rotina de uma equipe ou para um encontro que merece ser lembrado. Seu projeto começa pelo que faz sentido para você.</p></div><div class="home-project-paths"><a href="{{ url_for('b2b') }}"><span class="home-path-number">01 / EMPRESAS</span><img src="{{ url_for('static',filename='img/inicio/polo.webp') }}" alt="Polo personalizada Megui" width="1000" height="1000" loading="lazy"><div><h3>Vista a equipe.<br>Apresente sua marca.</h3><p>Uniformes, brindes e comunicação visual para o seu negócio.</p><strong>Conheça as possibilidades {{ icon('arrow') }}</strong></div></a><a href="{{ url_for('events') }}"><span class="home-path-number">02 / EVENTOS</span><img src="{{ url_for('static',filename='img/inicio/eventos.webp') }}" alt="Credencial, pulseiras e copo personalizados para um encontro" width="1000" height="1000" loading="lazy"><div><h3>Reúna as pessoas.<br>Leve a história adiante.</h3><p>Festas, encontros religiosos, congressos e movimentos.</p><strong>Encontre o seu evento {{ icon('arrow') }}</strong></div></a></div></div></section>
 
 <section class="section home-clients">
   <div class="container">
