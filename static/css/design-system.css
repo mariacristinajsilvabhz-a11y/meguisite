@@ -332,3 +332,18 @@ body.scroll-experience{background:#f4eef7}body.scroll-experience:before{backgrou
 .wardrobe-campaign{background:linear-gradient(115deg,#f5edf9,#e5d7ee);box-shadow:0 10px 30px #5427700a}
 @media(max-width:800px){.business-proof{grid-template-columns:1fr;gap:24px}.business-proof-intro>p{max-width:none}.b2b-section-links{gap:8px 0}.events-offerings p{min-height:0}.events-offerings{gap:30px}.events-offerings a>img{max-height:330px}.business-proof h2 br{display:none}}
 @media(max-width:480px){.business-registration{padding:24px 20px}.business-registration h3{font-size:21px}.business-proof-evidence{gap:16px}.business-proof-evidence img{height:120px}.b2b-section-links a{padding:4px 12px}.business-proof-evidence strong{font-size:16px}}
+
+/* Ações do banner principal: uma composição, duas prioridades. */
+.home-welcome .carousel-actions{display:flex;align-items:stretch;gap:12px;max-width:472px;margin-top:30px}
+.home-welcome .carousel-actions>a{display:inline-flex;flex:1 1 180px;justify-content:center;align-items:center;min-height:54px;padding:15px 20px;border-radius:12px;border:1px solid transparent;font-size:14px;font-weight:750;line-height:1.4;letter-spacing:0;text-align:center;text-decoration:none;box-shadow:none;gap:0;transition:background .2s,border-color .2s,box-shadow .2s;transform:none}
+.home-welcome .carousel-cta{background:#442153;color:#fff;border-color:#442153}
+.home-welcome .carousel-talk{background:#ffffff30;color:#442153;border-color:#8e719d}
+.home-welcome .carousel-cta:hover{background:#562c69;border-color:#562c69;box-shadow:0 4px 14px #44215318;transform:none}
+.home-welcome .carousel-talk:hover{background:#ffffff80;border-color:#624475;transform:none}
+.home-welcome .carousel-actions>a:focus-visible{outline:3px solid #8c58a8;outline-offset:4px}
+.home-welcome .slide-brand .carousel-cta{background:#e4c9ef;color:#301c39;border-color:#e4c9ef}
+.home-welcome .slide-brand .carousel-talk{background:transparent;color:#f4eaf9;border-color:#aa8ab8}
+.home-welcome .slide-brand .carousel-cta:hover{background:#efddf6;border-color:#efddf6}
+.home-welcome .slide-brand .carousel-talk:hover{background:#ffffff12;border-color:#e4c9ef}
+@media(max-width:760px){.home-welcome .carousel-actions{margin-top:24px;max-width:none}.home-welcome .carousel-actions>a{min-height:52px;padding:14px 16px;font-size:14px;flex-basis:160px}}
+@media(max-width:460px){.home-welcome .carousel-actions{flex-direction:column;gap:10px}.home-welcome .carousel-actions>a{flex:0 0 auto;width:100%}}
