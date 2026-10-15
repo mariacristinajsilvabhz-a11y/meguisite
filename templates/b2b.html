@@ -6,13 +6,21 @@
   <div class="container b2b-visual-grid">
     <div class="b2b-visual-copy"><span class="eyebrow corporate-eyebrow">{{ icon('butterfly') }} EMPRESAS & LICITAÇÕES</span><h1>Vista sua equipe.<br><span>Fortaleça sua marca.</span></h1><p>Uniformes, brindes e comunicação visual para empresas que querem ser lembradas. Um atendimento para reunir tudo no mesmo projeto.</p>
       <div class="corporate-actions"><a class="corporate-action-primary" href="https://wa.me/{{ whatsapp_number }}?text=Ol%C3%A1!%20Quero%20cotar%20um%20projeto%20para%20minha%20empresa." target="_blank" rel="noopener"><span>Pedir uma cotação</span>{{ icon('arrow') }}</a><a class="corporate-action-secondary" href="#uniformes">{{ icon('vestuario') }} Ver uniformes</a></div>
-      <nav class="corporate-navigation" aria-label="Explore a página de empresas"><a href="#experiencia">Os nossos trabalhos {{ icon('arrow') }}</a><a href="#materiais">Tecidos e acabamentos {{ icon('arrow') }}</a><a href="#caminho">Do projeto à entrega {{ icon('arrow') }}</a></nav>
+      <p class="corporate-hero-signature"><span></span>Da escolha do produto ao acabamento.<br>Seu projeto, com a identidade da sua marca.</p>
     </div>
     <div class="corporate-hero-gallery" aria-label="Vestuário, brindes e comunicação visual">
-      <a class="corporate-hero-main" href="#uniformes"><img src="{{ url_for('static',filename='img/acervo/2026/future-pro-estudio-v2.webp') }}" alt="Camiseta Future Pro em manequim invisível" fetchpriority="high"><span><small>PARA A SUA EQUIPE</small><strong>Uma marca que veste.</strong><em>Future Pro · visualização do produto</em></span></a>
-      <a class="corporate-hero-detail" href="{{ url_for('portfolio_view') }}"><img src="{{ url_for('static',filename='img/acervo/band-minas-kit.jpg') }}" alt="Kit de brindes personalizados para a Band Minas"><span>Brindes que acompanham. {{ icon('arrow') }}</span></a>
-      <a class="corporate-hero-detail" href="{{ url_for('events') }}"><img src="{{ url_for('static',filename='img/acervo/2026/samba-do-maestro-sem-marca-v3.webp') }}" alt="Comunicação visual no evento Samba do Maestro"><span>Presença no seu evento. {{ icon('arrow') }}</span></a>
+      <a class="corporate-hero-main" href="#uniformes"><img src="{{ url_for('static',filename='img/acervo/2026/future-pro-estudio-v2.webp') }}" alt="Camiseta Future Pro em manequim invisível" fetchpriority="high"><span><small>VESTUÁRIO / FUTURE PRO</small><strong>Identidade em cada peça.</strong><em>Camiseta personalizada · visualização do produto</em></span></a>
+      <a class="corporate-hero-detail" href="{{ url_for('portfolio_view') }}"><img src="{{ url_for('static',filename='img/acervo/2026/band-kit-estudio-v6.webp') }}" alt="Visualização do kit de brindes personalizados para a Band Minas"><span><span><small>BRINDES / BAND MINAS</small><strong>Presença no dia a dia.</strong></span>{{ icon('arrow') }}</span></a>
+      <a class="corporate-hero-detail" href="{{ url_for('events') }}"><img src="{{ url_for('static',filename='img/acervo/2026/samba-do-maestro-sem-marca-v3.webp') }}" alt="Comunicação visual no evento Samba do Maestro"><span><span><small>EVENTOS / SAMBA DO MAESTRO</small><strong>Uma marca que ocupa o espaço.</strong></span>{{ icon('arrow') }}</span></a>
     </div>
+  </div>
+  <div class="container corporate-explore">
+    <div class="corporate-explore-label">{{ icon('butterfly') }}<span>CONHEÇA O JEITO MEGUI DE FAZER</span><i aria-hidden="true"></i></div>
+    <nav class="corporate-explore-links" aria-label="Explore a página de empresas">
+      <a href="#experiencia"><span class="explore-number">01</span><span class="explore-copy"><strong>Trabalhos que contam histórias.</strong><small>Marcas atendidas e projetos do nosso acervo.</small><em>Conhecer os trabalhos</em></span>{{ icon('arrow') }}</a>
+      <a href="#materiais"><span class="explore-number">02</span><span class="explore-copy"><strong>Qualidade que você sente.</strong><small>Entenda as malhas, o caimento e os acabamentos.</small><em>Explorar os materiais</em></span>{{ icon('arrow') }}</a>
+      <a href="#caminho"><span class="explore-number">03</span><span class="explore-copy"><strong>Da conversa à peça pronta.</strong><small>Veja como alinhamos e realizamos seu projeto.</small><em>Acompanhar as etapas</em></span>{{ icon('arrow') }}</a>
+    </nav>
   </div>
 </section>
 
