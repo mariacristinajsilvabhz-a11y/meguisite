@@ -347,3 +347,5 @@ body.scroll-experience{background:#f4eef7}body.scroll-experience:before{backgrou
 .home-welcome .slide-brand .carousel-actions>.carousel-talk:hover{background:#ffffff12;border-color:#e4c9ef}
 @media(max-width:760px){.home-welcome .carousel-actions{margin-top:24px;max-width:none}.home-welcome .carousel-actions>a{min-height:52px;padding:14px 16px;font-size:14px;flex-basis:160px}}
 @media(max-width:460px){.home-welcome .carousel-actions{flex-direction:column;gap:10px}.home-welcome .carousel-actions>a{flex:0 0 auto;width:100%}}
+
+.carousel-kicker .carousel-butterfly{display:block;width:24px;height:24px;flex:0 0 24px}
