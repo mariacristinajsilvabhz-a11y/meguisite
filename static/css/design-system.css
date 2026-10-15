@@ -451,3 +451,9 @@ body.scroll-experience{background:#f4eef7}body.scroll-experience:before{backgrou
 @media(max-width:420px){.trust-evidence{grid-template-columns:1fr}.trust-evidence-link>img{height:200px}.trust-documentation{grid-template-columns:1fr}.trust-document-icon{display:none}.trust-documentation>a{grid-column:1;justify-self:stretch;justify-content:space-between}}
 
 .corporate-page .trust-evidence-link>img{height:auto;aspect-ratio:3/2;object-fit:contain;background:#e7e3e9}
+
+/* Uma referência visual dedicada a cada etapa do projeto. */
+.corporate-journey-steps{gap:28px}.journey-photo{position:relative;overflow:hidden;border-radius:18px;margin-bottom:25px;background:#5a4665;border:1px solid #d9b9e82b}.journey-photo img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;transition:transform .5s ease}.journey-photo>span{position:absolute;bottom:14px;left:14px;display:grid;place-items:center;width:36px;height:36px;border:1px solid #ffffff70;border-radius:50%;background:#35213fdd;color:#f4e7fb;font-size:12px;font-weight:750;backdrop-filter:blur(5px)}.corporate-journey-steps h3{font-size:23px}.corporate-flight{margin:20px 0 14px;height:120px}.corporate-flight>svg{height:120px}
+@media(hover:hover){.corporate-journey-steps li:hover .journey-photo img{transform:scale(1.025)}}
+@media(max-width:760px){.corporate-journey-steps{gap:32px}.corporate-journey-steps li{border:0;padding-top:0}.journey-photo{margin-bottom:20px}.corporate-flight{height:88px;margin:12px 0 24px}.corporate-flight>svg{height:88px}.corporate-journey-steps h3{margin-top:12px}}
+@media(prefers-reduced-motion:reduce){.journey-photo img{transition:none}.corporate-journey-steps li:hover .journey-photo img{transform:none}}
