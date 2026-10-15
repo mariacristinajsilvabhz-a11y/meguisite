@@ -16,11 +16,35 @@
   </div>
   <div class="container corporate-explore">
     <div class="corporate-explore-label">{{ icon('butterfly') }}<span>CONHEÇA O JEITO MEGUI DE FAZER</span><i aria-hidden="true"></i></div>
-    <nav class="corporate-explore-links" aria-label="Explore a página de empresas">
-      <a href="#experiencia"><span class="explore-number">01</span><span class="explore-copy"><strong>Trabalhos que contam histórias.</strong><small>Marcas atendidas e projetos do nosso acervo.</small><em>Conhecer os trabalhos</em></span>{{ icon('arrow') }}</a>
-      <a href="#materiais"><span class="explore-number">02</span><span class="explore-copy"><strong>Qualidade que você sente.</strong><small>Entenda as malhas, o caimento e os acabamentos.</small><em>Explorar os materiais</em></span>{{ icon('arrow') }}</a>
-      <a href="#caminho"><span class="explore-number">03</span><span class="explore-copy"><strong>Da conversa à peça pronta.</strong><small>Veja como alinhamos e realizamos seu projeto.</small><em>Acompanhar as etapas</em></span>{{ icon('arrow') }}</a>
-    </nav>
+    <div class="megui-trail-heading"><h2>De perto, cada detalhe<br>conta uma história.</h2><p>Percorra nossos trabalhos, encontre o uniforme da sua equipe e conheça o cuidado por trás de cada escolha.</p></div>
+    <ol class="megui-trail" aria-label="Conheça os trabalhos e as possibilidades da Megui">
+      <li class="megui-trail-stop">
+        <span class="megui-trail-marker" aria-hidden="true">01</span>
+        <div class="megui-trail-copy"><span class="eyebrow">MARCAS & ENCONTROS</span><h3>Trabalhos que<br>contam histórias.</h3><p>Uma marca no material de um curso. Uma mensagem vestida por um movimento. A identidade de um evento em cada detalhe.</p><a href="#experiencia">Conhecer os trabalhos {{ icon('arrow') }}</a></div>
+        <div class="megui-trail-mosaic">
+          <figure><img src="{{ url_for('static', filename='img/acervo/2026/senac-cadernos.webp') }}" alt="Cadernos personalizados para o Senac Minas, em registro do acervo Megui" width="900" height="675" loading="lazy"><figcaption>Senac Minas <span>Brindes & papelaria</span></figcaption></figure>
+          <figure><img src="{{ url_for('static', filename='img/acervo/2026/escola-de-cura.webp') }}" alt="Camisetas estampadas do projeto Escola de Cura" width="900" height="675" loading="lazy"><figcaption>Escola de Cura <span>Camisetas & pertencimento</span></figcaption></figure>
+        </div>
+      </li>
+      <li class="megui-trail-stop">
+        <span class="megui-trail-marker" aria-hidden="true">02</span>
+        <div class="megui-trail-copy"><span class="eyebrow">UMA EQUIPE, VÁRIAS ROTINAS</span><h3>O seu jeito<br>de vestir a marca.</h3><p>Do atendimento à operação, cada função pede uma peça. Polos, sociais, jalecos e uniformes profissionais para compor a identidade da sua equipe.</p><a href="#uniformes">Explorar os modelos {{ icon('arrow') }}</a></div>
+        <div class="megui-trail-uniforms">
+          {% for image, name in [('social-manga-longa-manequim.webp','Social'),('uniforme-chef-v4.webp','Gastronomia'),('uniforme-industrial-v4.webp','Operação')] %}<figure><div><img src="{{ url_for('static', filename='img/inicio/' ~ image) }}" alt="{{ name }} — visualização ilustrativa de uniforme profissional" width="900" height="1100" loading="lazy"></div><figcaption>{{ name }}</figcaption></figure>{% endfor %}
+          <p>Possibilidades de modelagem · visualizações ilustrativas</p>
+        </div>
+      </li>
+      <li class="megui-trail-stop">
+        <span class="megui-trail-marker" aria-hidden="true">03</span>
+        <div class="megui-trail-copy"><span class="eyebrow">TOQUE, TRAMA & ACABAMENTO</span><h3>Qualidade que<br>você sente.</h3><p>A textura da malha, o encontro da gola, a regularidade dos pontos. Conheça os detalhes que ajudam a escolher uma peça para o dia a dia.</p><a href="#materiais">Olhar os detalhes {{ icon('arrow') }}</a></div>
+        <div class="megui-trail-details"><figure><img src="{{ url_for('static', filename='img/tecidos/detalhe-gola-v9.webp') }}" alt="Referência ilustrativa de acabamento de gola em ribana" width="1200" height="800" loading="lazy"><figcaption>O cuidado no acabamento.</figcaption></figure><figure><img src="{{ url_for('static', filename='img/tecidos/detalhe-trama-v9.webp') }}" alt="Referência ilustrativa da textura e da trama da malha" width="1200" height="800" loading="lazy"><figcaption>A textura de perto.</figcaption></figure><p>Referências ilustrativas · materiais definidos no seu projeto</p></div>
+      </li>
+      <li class="megui-trail-stop">
+        <span class="megui-trail-marker megui-trail-butterfly" aria-hidden="true">{{ icon('butterfly') }}</span>
+        <div class="megui-trail-copy"><span class="eyebrow">DA IDEIA À REALIZAÇÃO</span><h3>Da conversa<br>à peça pronta.</h3><p>Começa com o que você precisa. Passa pela escolha dos materiais, pela arte e pelos acabamentos. E ganha forma na produção.</p><a href="#caminho">Acompanhar as etapas {{ icon('arrow') }}</a></div>
+        <figure class="megui-trail-production"><img src="{{ url_for('static', filename='img/acervo/serigrafia-capa-v2.jpg') }}" alt="Registro real de serigrafia em produção na Megui" width="900" height="675" loading="lazy"><figcaption><small>POR DENTRO DA MEGUI</small><strong>A identidade ganha forma.</strong><span>Registro do nosso acervo de produção</span></figcaption></figure>
+      </li>
+    </ol>
   </div>
 </section>
 
