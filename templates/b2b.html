@@ -4,7 +4,7 @@
 <section class="b2b-visual-hero">
   <div class="container b2b-visual-grid">
     <div class="b2b-visual-copy"><span class="eyebrow">EMPRESAS & LICITAÇÕES</span><h1>Vista sua equipe.<br>Fortaleça sua marca.</h1><p>Uniformes, brindes e comunicação visual para empresas que querem ser lembradas. Um atendimento para reunir tudo no mesmo projeto.</p>
-      <div class="hero-actions"><a class="btn btn-primary" href="https://wa.me/{{ whatsapp_number }}?text=Ol%C3%A1%2C%20quero%20uma%20cota%C3%A7%C3%A3o%20para%20minha%20empresa." target="_blank" rel="noopener">Conversar sobre meu projeto ↗</a><a class="btn btn-secondary" href="{{ url_for('products') }}">Explorar produtos</a></div>
+      <div class="hero-actions"><a class="btn btn-primary" href="https://wa.me/{{ whatsapp_number }}?text=Ol%C3%A1%2C%20quero%20uma%20cota%C3%A7%C3%A3o%20para%20minha%20empresa." target="_blank" rel="noopener">Conversar sobre meu projeto</a><a class="btn btn-secondary" href="{{ url_for('products') }}">Explorar produtos</a></div>
       <nav class="b2b-section-links" aria-label="Explore a página de empresas"><a href="#experiencia">Quem já confiou</a><a href="#materiais">Tecidos e acabamentos</a><a href="#projetos">Como funciona</a></nav>
     </div>
     <figure class="b2b-team-figure"><img src="{{ url_for('static', filename='img/acervo/2026/bolsas-producao-sem-marca-v3.webp') }}" alt="Produção de sacochilas personalizadas para o Circuito das Indústrias"><figcaption>Circuito das Indústrias<span>Registro de produção do acervo Megui.</span></figcaption></figure>
@@ -12,17 +12,12 @@
 </section>
 
 <section class="section b2b-credentials">
-  <div class="container credentials-panel">
-    <div>
-      <span class="eyebrow eyebrow-light">ESTRUTURA FORMAL</span>
-      <h2>Pronta para o seu processo de compra.</h2>
-      <p>Confecção, estamparia e impressão de material publicitário nas atividades cadastradas. Documentação alinhada conforme a sua demanda.</p>
-    </div>
-    <div class="credential-list">
-      <div><span>CNPJ</span><strong>{{ company_cnpj }}</strong></div>
-      <div><span>Situação cadastral</span><strong>Ativa</strong></div>
-      <div><span>Atividade principal</span><strong>Confecção de peças de vestuário</strong></div>
-      <div><span>Atendimento</span><strong>Empresas, eventos e processos de compra</strong></div>
+  <div class="container business-proof">
+    <div class="business-proof-intro"><span class="eyebrow">TRANSPARÊNCIA PARA COMPRAR COM CONFIANÇA</span><h2>Você pode conferir.<br>E conhecer quem produz.</h2><p>Dados da empresa, registros de produção e trabalhos realizados: conheça a Megui antes de fechar o seu projeto.</p></div>
+    <div class="business-proof-details">
+      <article class="business-registration"><span class="proof-label">IDENTIFICAÇÃO DA EMPRESA</span><h3>CNPJ {{ company_cnpj }}</h3><p>Consulte o cadastro e emita o comprovante diretamente na Receita Federal.</p><a class="proof-link" href="https://solucoes.receita.fazenda.gov.br/Servicos/cnpjreva/Cnpjreva_S.aspx" target="_blank" rel="noopener">Consultar CNPJ na Receita Federal</a></article>
+      <div class="business-proof-evidence"><a href="{{ url_for('videos') }}"><img src="{{ url_for('static',filename='img/acervo/serigrafia-capa-v2.jpg') }}" alt="Registro real da estamparia Megui" loading="lazy"><span><strong>Produção de verdade</strong><small>Veja os bastidores em vídeo</small></span></a><a href="{{ url_for('portfolio_view') }}"><img src="{{ url_for('static',filename='img/acervo/band-minas-kit.jpg') }}" alt="Itens personalizados para a Band Minas" loading="lazy"><span><strong>Trabalhos que você vê</strong><small>Explore projetos e clientes do acervo</small></span></a></div>
+      <div class="business-documentation"><strong>Seu processo tem exigências específicas?</strong><p>Envie a lista de documentos e as especificações. Avaliamos o que o seu processo precisa antes de confirmar a proposta.</p><a class="text-link" href="https://wa.me/{{ whatsapp_number }}?text=Olá!%20Quero%20alinhar%20a%20documentação%20para%20uma%20compra%20corporativa.">Alinhar documentação com a Megui</a></div>
     </div>
   </div>
 </section>
@@ -134,14 +129,17 @@
 
 <section class="section uniform-showcase-section" id="uniformes">
   <div class="container">
-    <div class="section-heading split-heading"><div><span class="eyebrow">MODELAGENS & POSSIBILIDADES</span><h2>Vários jeitos de<br>vestir a sua marca.</h2></div><p>Do corte ajustado às peças encorpadas. Explore formas, texturas e acabamentos para diferentes equipes e rotinas.</p></div>
+    <div class="section-heading split-heading"><div><span class="eyebrow">MODELAGENS & POSSIBILIDADES</span><h2>Vários jeitos de<br>vestir a sua marca.</h2></div><p>Da recepção à cozinha, do consultório à operação. Explore uniformes para diferentes profissões, equipes e rotinas.</p></div>
     {% set uniforms = [
       ('polo.webp','Polo','Gola estruturada e acabamento nas mangas.'),
       ('babylook-manequim.webp','Babylook','Corte ajustado e gola redonda.'),
       ('social-manga-curta-manequim.webp','Social de manga curta','Colarinho, botões e manga curta.'),
       ('social-manga-longa-manequim.webp','Social de manga longa','Colarinho e punhos com botões.'),
       ('moletom.webp','Moletom','Capuz, bolso frontal e caimento encorpado.'),
-      ('jaleco-manequim.webp','Jaleco','Modelagem alongada e bolsos funcionais.')
+      ('jaleco-manequim.webp','Jaleco','Saúde, laboratórios e atendimento clínico.'),
+      ('uniforme-saude-v4.webp','Conjunto de saúde','Pijama cirúrgico para clínicas e equipes de cuidado.'),
+      ('uniforme-chef-v4.webp','Gastronomia','Dólmã, avental e calça para cozinhas e restaurantes.'),
+      ('uniforme-industrial-v4.webp','Operação & manutenção','Macacão com bolsos para equipes operacionais.')
     ] %}
     <div class="uniform-gallery acervo-gallery" aria-label="Galeria de uniformes: deslize para ver os modelos">
       {% for image, title, description in uniforms %}

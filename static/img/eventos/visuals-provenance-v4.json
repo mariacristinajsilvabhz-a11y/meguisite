@@ -1,0 +1,40 @@
+{
+  "created": "2026-10-03",
+  "assets": [
+    {
+      "path": "img/acervo/2026/camisetas-estamparia-piso-v4.webp",
+      "type": "AI background edit of real production photograph",
+      "source": "img/acervo/2026/camisetas-estamparia.webp"
+    },
+    {
+      "path": "img/inicio/uniforme-saude-v4.webp",
+      "type": "AI-generated illustrative commercial visualization",
+      "source": null
+    },
+    {
+      "path": "img/inicio/uniforme-chef-v4.webp",
+      "type": "AI-generated illustrative commercial visualization",
+      "source": null
+    },
+    {
+      "path": "img/inicio/uniforme-industrial-v4.webp",
+      "type": "AI-generated illustrative commercial visualization",
+      "source": null
+    },
+    {
+      "path": "img/eventos/kits-evento-v4.webp",
+      "type": "AI-generated illustrative commercial visualization",
+      "source": null
+    },
+    {
+      "path": "img/eventos/equipes-evento-v4.webp",
+      "type": "AI-generated illustrative commercial visualization",
+      "source": null
+    },
+    {
+      "path": "img/eventos/recepcao-evento-v4.webp",
+      "type": "AI-generated illustrative commercial visualization",
+      "source": null
+    }
+  ]
+}

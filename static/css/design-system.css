@@ -301,3 +301,34 @@ body.scroll-experience:before{content:"";position:fixed;inset:-22%;z-index:-1;po
 @media(max-width:800px){.home-clients .client-logo-wall{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px 16px}.home-clients .client-logo-card{min-height:74px;padding:14px 6px}.home-clients .client-logo{height:40px}.home-clients .client-brand-name{font-size:12px}}
 .homepage-work-gallery img{width:100%;height:auto;aspect-ratio:4/3;object-fit:contain}
 .client-ribbon .client-logo[src*="samba-do-maestro"],.home-clients .client-logo[src*="samba-do-maestro"]{filter:none;opacity:1}
+
+/* Revisão comercial: contraste confortável, evidências e imagens em uso. */
+.b2b-visual-copy .hero-actions{gap:22px;align-items:center}
+.b2b-visual-copy .hero-actions .btn-primary{border-radius:12px;background:#713b92;box-shadow:0 6px 18px #54277018;font-size:15px;padding:15px 22px}
+.b2b-visual-copy .hero-actions .btn-secondary{border:0;border-bottom:1px solid #90749e;border-radius:0;box-shadow:none;padding:10px 0;background:transparent;font-size:15px}
+.b2b-section-links{gap:0;margin-top:32px;padding-top:20px;border-top:1px solid #c9b8d4}
+.b2b-section-links a{border:0;border-radius:0;background:transparent;font-size:14px;padding:4px 18px;min-height:38px;border-right:1px solid #c9b8d4}
+.b2b-section-links a:first-child{padding-left:0}.b2b-section-links a:last-child{border-right:0}
+.b2b-section-links a:hover{background:transparent;text-decoration:underline;text-underline-offset:6px}
+.business-proof{display:grid;grid-template-columns:.85fr 1.15fr;gap:64px;padding-block:28px}
+.business-proof h2{font-size:clamp(32px,3.4vw,46px);line-height:1.22;letter-spacing:-.035em;margin:22px 0}
+.business-proof p{font-size:17px;line-height:1.75;color:#5b4a65}.business-proof-intro>p{max-width:35ch}
+.business-registration{border-radius:20px;background:#faf7fc;padding:30px;border:1px solid #dcd0e3}
+.proof-label{font-size:13px;font-weight:800;letter-spacing:.08em;color:#75428e}.business-registration h3{font-size:24px;line-height:1.4;margin:14px 0;overflow-wrap:anywhere}
+.business-registration p{margin:0 0 20px}.proof-link{display:inline-block;font-size:16px;font-weight:750;color:#643184;border-bottom:1px solid #9d7cb0;padding-bottom:5px}
+.business-proof-evidence{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:26px 0}
+.business-proof-evidence a{display:block;min-width:0}.business-proof-evidence img{display:block;width:100%;height:145px;object-fit:cover;border-radius:14px}
+.business-proof-evidence strong{font-size:18px;display:block;margin:14px 0 5px}.business-proof-evidence small{font-size:14px;line-height:1.5;color:#6b5478;display:block}
+.business-documentation{border-top:1px solid #c9b8d4;padding-top:23px}.business-documentation>strong{font-size:18px;line-height:1.5}.business-documentation p{font-size:16px;margin:8px 0 16px}.business-documentation .text-link{font-size:15px}
+body.scroll-experience{background:#f4eef7}body.scroll-experience:before{background:radial-gradient(ellipse at 28% 28%,#d2a4e622,transparent 68%),radial-gradient(ellipse at 78% 72%,#ead3ed35,transparent 66%),#f4eef7}
+.scroll-experience .scroll-chapter-dark:before{mask-image:none;border-radius:0}
+.events-hero{background:linear-gradient(120deg,#29202f,#211d26);box-shadow:none}
+.events-hero-photo img{box-shadow:none}.events-copy h1 span{color:#d0acdf}
+.events-offerings{gap:28px}.events-offerings a{border-top:0;padding:0 0 20px}
+.events-offerings a>img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:16px;margin-bottom:24px}
+.events-offerings span{font-size:13px}.events-offerings h3{font-size:25px;margin-top:12px}.events-offerings p{min-height:5.25em;margin-bottom:20px}
+.events-photo-note{font-size:13px;line-height:1.7;color:#6b5478;margin-top:20px}
+.uniform-look-stage{background:#f4f1f7;border-radius:16px;border:0}.uniform-note{font-size:14px}
+.wardrobe-campaign{background:linear-gradient(115deg,#f5edf9,#e5d7ee);box-shadow:0 10px 30px #5427700a}
+@media(max-width:800px){.business-proof{grid-template-columns:1fr;gap:24px}.business-proof-intro>p{max-width:none}.b2b-section-links{gap:8px 0}.events-offerings p{min-height:0}.events-offerings{gap:30px}.events-offerings a>img{max-height:330px}.business-proof h2 br{display:none}}
+@media(max-width:480px){.business-registration{padding:24px 20px}.business-registration h3{font-size:21px}.business-proof-evidence{gap:16px}.business-proof-evidence img{height:120px}.b2b-section-links a{padding:4px 12px}.business-proof-evidence strong{font-size:16px}}

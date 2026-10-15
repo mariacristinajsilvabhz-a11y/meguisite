@@ -178,7 +178,7 @@
   document.querySelectorAll('[data-shirt-showcase]').forEach(showcase => {
     const frames = [...showcase.querySelectorAll('[data-shirt-brand]')];
     const controls = showcase.querySelector('[data-shirt-dots]');
-    let index = 0, visible = false, hovered = false, focused = false, holdUntil = 0;
+    let index = 0, visible = false, focused = false, holdUntil = 0;
     const show = next => {
       index = (next + frames.length) % frames.length;
       frames.forEach((frame, i) => {frame.classList.toggle('is-active', i === index);frame.setAttribute('aria-hidden',String(i !== index));});
@@ -186,11 +186,9 @@
       showcase.querySelector('[data-shirt-caption]').textContent = showcase.dataset.shirtCaptionMode === 'name' ? frames[index].dataset.shirtBrand : `${frames[index].dataset.shirtBrand} · Visualização de personalização`;
     };
     frames.forEach((frame, i) => controls.append(makeDot(`Ver camiseta ${frame.dataset.shirtBrand}`, () => {holdUntil = Date.now() + 8000;show(i);})));show(0);
-    showcase.addEventListener('mouseenter', () => hovered = true);
-    showcase.addEventListener('mouseleave', () => hovered = false);
-    showcase.addEventListener('focusin', () => focused = true);
-    showcase.addEventListener('focusout', event => focused = showcase.contains(event.relatedTarget));
+    showcase.addEventListener('focusin', () => focused = Boolean(showcase.querySelector(':focus-visible')));
+    showcase.addEventListener('focusout', event => focused = Boolean(event.relatedTarget && showcase.contains(event.relatedTarget) && event.relatedTarget.matches(':focus-visible')));
     new IntersectionObserver(entries => visible = entries[0].isIntersecting, {threshold:.3}).observe(showcase);
-    setInterval(() => {if (visible && !hovered && !focused && !document.hidden && !reduced.matches && Date.now() >= holdUntil) show(index + 1);},5500);
+    setInterval(() => {if (visible && !focused && !document.hidden && !reduced.matches && Date.now() >= holdUntil) show(index + 1);},5500);
   });
 })();

@@ -28,7 +28,7 @@ RECENT_WORKS = [
     {"title": "Future Pro", "kind": "VESTUÁRIO PERSONALIZADO", "text": "Aplicação da identidade da marca em camiseta, registrada no acervo de produção.", "image": "img/acervo/2026/future-pro.webp", "presentation_image": "img/acervo/2026/future-pro-estudio-v2.webp"},
     {"title": "Senac · garrafas personalizadas", "kind": "BRINDES CORPORATIVOS", "text": "Garrafas com a identidade do Senac, reunidas em um pedido de brindes personalizados.", "image": "img/acervo/2026/senac-garrafas.webp"},
     {"title": "Nécessaires personalizadas", "kind": "BOLSAS & ACESSÓRIOS", "text": "Uma identidade aplicada a peças de uso diário, com detalhes e acabamento que fazem parte do projeto.", "image": "img/acervo/2026/necessaires-personalizadas.webp"},
-    {"title": "Da estampa à camiseta", "kind": "BASTIDORES DA PERSONALIZAÇÃO", "text": "Registro da aplicação de estampas para um projeto de vestuário em volume.", "image": "img/acervo/2026/camisetas-estamparia.webp"},
+    {"title": "Da estampa à camiseta", "kind": "BASTIDORES DA PERSONALIZAÇÃO", "text": "Registro da aplicação de estampas para um projeto de vestuário em volume.", "image": "img/acervo/2026/camisetas-estamparia.webp", "presentation_image": "img/acervo/2026/camisetas-estamparia-piso-v4.webp"},
     {"title": "Chaveiros personalizados", "kind": "LEMBRANÇAS & PRESENTES", "text": "Pequenas peças que carregam nomes, mensagens e a identidade de cada ocasião.", "image": "img/acervo/2026/chaveiros-personalizados.webp"},
 ]
 PORTFOLIO = RECENT_WORKS + PORTFOLIO
