@@ -336,14 +336,14 @@ body.scroll-experience{background:#f4eef7}body.scroll-experience:before{backgrou
 /* Ações do banner principal: uma composição, duas prioridades. */
 .home-welcome .carousel-actions{display:flex;align-items:stretch;gap:12px;max-width:472px;margin-top:30px}
 .home-welcome .carousel-actions>a{display:inline-flex;flex:1 1 180px;justify-content:center;align-items:center;min-height:54px;padding:15px 20px;border-radius:12px;border:1px solid transparent;font-size:14px;font-weight:750;line-height:1.4;letter-spacing:0;text-align:center;text-decoration:none;box-shadow:none;gap:0;transition:background .2s,border-color .2s,box-shadow .2s;transform:none}
-.home-welcome .carousel-cta{background:#442153;color:#fff;border-color:#442153}
-.home-welcome .carousel-talk{background:#ffffff30;color:#442153;border-color:#8e719d}
-.home-welcome .carousel-cta:hover{background:#562c69;border-color:#562c69;box-shadow:0 4px 14px #44215318;transform:none}
-.home-welcome .carousel-talk:hover{background:#ffffff80;border-color:#624475;transform:none}
+.home-welcome .carousel-actions>.carousel-cta{background:#442153;color:#fff;border-color:#442153}
+.home-welcome .carousel-actions>.carousel-talk{background:#ffffff30;color:#442153;border-color:#8e719d}
+.home-welcome .carousel-actions>.carousel-cta:hover{background:#562c69;border-color:#562c69;box-shadow:0 4px 14px #44215318;transform:none}
+.home-welcome .carousel-actions>.carousel-talk:hover{background:#ffffff80;border-color:#624475;transform:none}
 .home-welcome .carousel-actions>a:focus-visible{outline:3px solid #8c58a8;outline-offset:4px}
-.home-welcome .slide-brand .carousel-cta{background:#e4c9ef;color:#301c39;border-color:#e4c9ef}
-.home-welcome .slide-brand .carousel-talk{background:transparent;color:#f4eaf9;border-color:#aa8ab8}
-.home-welcome .slide-brand .carousel-cta:hover{background:#efddf6;border-color:#efddf6}
-.home-welcome .slide-brand .carousel-talk:hover{background:#ffffff12;border-color:#e4c9ef}
+.home-welcome .slide-brand .carousel-actions>.carousel-cta{background:#e4c9ef;color:#301c39;border-color:#e4c9ef}
+.home-welcome .slide-brand .carousel-actions>.carousel-talk{background:transparent;color:#f4eaf9;border-color:#aa8ab8}
+.home-welcome .slide-brand .carousel-actions>.carousel-cta:hover{background:#efddf6;border-color:#efddf6}
+.home-welcome .slide-brand .carousel-actions>.carousel-talk:hover{background:#ffffff12;border-color:#e4c9ef}
 @media(max-width:760px){.home-welcome .carousel-actions{margin-top:24px;max-width:none}.home-welcome .carousel-actions>a{min-height:52px;padding:14px 16px;font-size:14px;flex-basis:160px}}
 @media(max-width:460px){.home-welcome .carousel-actions{flex-direction:column;gap:10px}.home-welcome .carousel-actions>a{flex:0 0 auto;width:100%}}
