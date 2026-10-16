@@ -9,7 +9,27 @@
     {% set available_colors = product.variants|default([])|selectattr('stock','gt',0)|list %}
     {% if available_colors %}<div class="product-color-peeks" aria-label="Cores disponíveis de {{ product.name }}">{% for variant in available_colors[:7] %}<a href="{{ url_for('product',slug=product.slug,opcao=variant.id) }}" aria-label="Escolher {{ variant.color or ('opção ' ~ loop.index) }}" title="{{ variant.color or ('Opção ' ~ loop.index) }}">{% if variant.swatch %}<span class="product-color-dot" style="--product-color:{{ variant.swatch }}" aria-hidden="true"></span>{% elif variant.image %}<img src="{{ variant.image }}" alt="" width="24" height="24" loading="lazy">{% else %}<span class="product-color-unknown" aria-hidden="true">?</span>{% endif %}</a>{% endfor %}{% if available_colors|length > 7 %}<a class="product-color-more" href="{{ url_for('product',slug=product.slug) }}" aria-label="Ver todas as {{ available_colors|length }} opções">+{{ available_colors|length - 7 }}</a>{% endif %}</div>{% endif %}
     <div class="product-actions">
-      <a class="product-create-link" href="{{ url_for('product',slug=product.slug) }}">Quero do meu jeito <span aria-hidden="true">↗</span></a>
+      <form class="product-quick-quote" action="{{ url_for('add_to_quote', product_id=product.id) }}" method="post">
+        <input type="hidden" name="qty" value="50">
+        <input type="hidden" name="next" value="{{ request.full_path if request.query_string else request.path }}">
+        {% if product.variants %}
+          {% if available_colors|length == 1 %}
+            <input type="hidden" name="variant_id" value="{{ available_colors[0].id }}">
+          {% elif available_colors|length > 1 %}
+            <label class="product-quick-variant">
+              <span class="sr-only">Cor ou opção para {{ product.name }}</span>
+              <select name="variant_id" required aria-label="Cor ou opção para {{ product.name }}">
+                <option value="">Escolha uma cor / opção</option>
+                {% for variant in available_colors %}<option value="{{ variant.id }}">{{ variant.color or ('Opção ' ~ loop.index) }}</option>{% endfor %}
+              </select>
+            </label>
+          {% endif %}
+        {% endif %}
+        <button type="submit" class="product-quick-button" {% if product.variants and not available_colors %}disabled{% endif %}>
+          <span aria-hidden="true">＋</span> {% if product.variants and not available_colors %}Indisponível{% else %}Adicionar ao orçamento{% endif %}
+        </button>
+      </form>
+      <a class="product-detail-link" href="{{ url_for('product',slug=product.slug) }}">Ver detalhes ↗</a>
       {% if product.id in cart_ids %}<a class="product-selected" href="{{ url_for('quote_view') }}">✓ Na sua seleção</a>{% endif %}
     </div>
   </div>
