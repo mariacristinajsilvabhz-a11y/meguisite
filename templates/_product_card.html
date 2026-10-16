@@ -7,16 +7,19 @@
     <div class="product-meta">{{ product.line }} • {{ product.sku }}</div>
     <h3><a href="{{ url_for('product', slug=product.slug) }}">{{ product.name }}</a></h3>
     <p>{{ product.short }}</p>
+    {% if product.variants|default([])|length > 1 %}<span class="product-meta">{{ product.variants|selectattr('stock','gt',0)|list|length }} opções disponíveis</span>{% endif %}
     <div class="product-actions">
       <a class="product-details" href="{{ url_for('product', slug=product.slug) }}">Ver detalhes</a>
       {% if product.id in cart_ids %}
         <a class="mini-quote is-added" href="{{ url_for('quote_view') }}" title="Ver ou editar este produto no orçamento">✓ Adicionado</a>
       {% else %}
+      {% if product.variants|default([])|length > 1 %}<a class="mini-quote" href="{{ url_for('product',slug=product.slug) }}">Escolher cor ↗</a>{% else %}
       <form class="quick-quote-form" action="{{ url_for('add_to_quote', product_id=product.id) }}" method="post">
         <input type="hidden" name="qty" value="1">
         <input type="hidden" name="next" value="{{ request.path }}">
           <button class="mini-quote" type="submit">+ Orçamento</button>
       </form>
+      {% endif %}
       {% endif %}
     </div>
   </div>

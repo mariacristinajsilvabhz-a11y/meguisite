@@ -202,7 +202,7 @@ def inject_global():
     return {
         "categories": CATEGORIES,
         "cart_count": cart_count(),
-        "cart_ids": [int(key) for key in quote_cart.keys()],
+        "cart_ids": [item["product_id"] for item in quote_cart.values()],
         "trusted_brands": TRUSTED_BRANDS,
         "reviews": REVIEWS,
         "whatsapp_configured": bool(WHATSAPP_NUMBER),
@@ -319,6 +319,8 @@ def product(slug):
     if not item:
         abort(404)
 
+    if slug.startswith("hub-") and item["slug"] != slug:
+        return redirect(url_for("product",slug=item["slug"]),code=301)
     return render_template("product.html", product=item)
 
 
@@ -335,13 +337,23 @@ def add_to_quote(product_id):
         qty = 1
 
     notes = request.form.get("notes", "").strip()[:500]
-    key = str(product_id)
+    variant_id = request.form.get("variant_id", "").strip()
+    variants = product.get("variants", [])
+    if not variant_id and len(variants) == 1:
+        variant_id = variants[0]["id"]
+    if variants and not variant_id:
+        abort(400, description="Escolha uma opção disponível deste produto.")
+    variant = next((v for v in variants if v["id"] == variant_id), None)
+    if variant_id and (not variant or variant["stock"] <= 0):
+        abort(400, description="Escolha uma opção disponível deste produto.")
+    key = str(product["id"]) + (":" + variant_id if variant else "")
     quote_cart = cart()
 
     quote_cart[key] = {
-        "product_id": product_id,
-        "name": product["name"],
-        "sku": product["sku"],
+        "product_id": product["id"],
+        "cart_key": key,
+        "name": product["name"] + (" — " + variant["color"] if variant and variant["color"] else ""),
+        "sku": variant["sku"] if variant else product["sku"],
         "qty": qty,
         "notes": notes,
     }
@@ -362,7 +374,7 @@ def quote_view():
     return render_template("quote.html", items=items)
 
 
-@app.post("/orcamento/atualizar/<int:product_id>")
+@app.post("/orcamento/atualizar/<product_id>")
 def update_quote(product_id):
     quote_cart = cart()
     key = str(product_id)
@@ -381,7 +393,7 @@ def update_quote(product_id):
     return redirect(url_for("quote_view"))
 
 
-@app.post("/orcamento/remover/<int:product_id>")
+@app.post("/orcamento/remover/<product_id>")
 def remove_from_quote(product_id):
     quote_cart = cart()
     quote_cart.pop(str(product_id), None)

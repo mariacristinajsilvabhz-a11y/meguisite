@@ -60,13 +60,25 @@ class HubCatalog:
         return adapt(data['produto']) if data and int(data['produto'].get('estoque') or 0)>0 else None
 
 
+def safe_image(value):
+    value=str(value or '')
+    parsed=urlparse(value)
+    return value if parsed.scheme in {'http','https'} and parsed.netloc else ''
+
+
 def adapt(p):
     image=p.get('imagem') or ''
     parsed=urlparse(image)
     if parsed.scheme not in {'http','https'} or not parsed.netloc:image=''
     description=re.sub('<[^>]*>',' ',p.get('descricao') or '')
     description=re.sub(r'\s+',' ',description).strip()
-    return {'id':1_000_000_000+int(p['id']),'hub_id':int(p['id']),
+    variants=[]
+    for variant in p.get('variacoes') or []:
+        variants.append({'id':str(variant['id']),'sku':str(variant.get('sku') or ''),
+                         'color':str(variant.get('cor') or ''),'stock':max(0,int(variant.get('estoque') or 0)),
+                         'image':safe_image(variant.get('imagem'))})
+    gallery=list(dict.fromkeys(url for url in [image]+[safe_image(v) for v in p.get('imagens',[])] if url))
+    return {'variants':variants,'gallery':gallery,'id':1_000_000_000+int(p['id']),'hub_id':int(p['id']),
             'slug':'hub-'+str(p['id']),'name':p['nome'],'sku':p.get('sku_mestre') or str(p['id']),
             'category':p.get('categoria') or 'brindes','line':p.get('linha_negocio') or 'Megui Personalizados',
             'short':description[:160] or 'Personalização para sua marca. Consulte acabamentos e disponibilidade.',

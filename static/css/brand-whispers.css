@@ -1,0 +1,15 @@
+/* Pequenas assinaturas da marca, sempre atrás do conteúdo. */
+.brand-whisper-host { position: relative; isolation: isolate; }
+.brand-whisper { position: absolute; width: 112px; height: 150px; top: 12%; right: clamp(5px, 2.5vw, 48px); z-index: -1; pointer-events: none; overflow: visible; opacity: .19; color: #91638f; }
+.brand-whisper--left { right: auto; left: clamp(4px, 2vw, 34px); top: auto; bottom: 7%; transform: rotate(-14deg); }
+.brand-whisper__trail { fill: none; stroke: currentColor; stroke-width: .7; stroke-linecap: round; stroke-dasharray: 1 5; opacity: .62; }
+.brand-whisper__flight { transform-origin: 58px 24px; }
+.brand-whisper__wings { transform-box: fill-box; transform-origin: center; }
+.brand-whisper--wings .brand-whisper__wings { animation: whisper-wings 9s ease-in-out infinite; }
+.brand-whisper--flight .brand-whisper__flight { animation: whisper-flight 21s ease-in-out infinite; }
+.brand-whisper--flight .brand-whisper__wings { animation: whisper-wings 5.4s ease-in-out infinite; }
+.brand-whisper:not(.is-visible) * { animation-play-state: paused; }
+@keyframes whisper-wings { 0%, 58%, 78%, 100% { transform: scaleX(1); } 63%, 73% { transform: scaleX(.48); } 68% { transform: scaleX(.9); } }
+@keyframes whisper-flight { 0%, 100% { transform: translate(0, 0) rotate(-12deg); } 28% { transform: translate(-14px, 16px) rotate(8deg); } 55% { transform: translate(9px, 27px) rotate(-5deg); } 78% { transform: translate(15px, 9px) rotate(-17deg); } }
+@media (max-width: 680px) { .brand-whisper { width: 70px; height: 110px; opacity: .15; right: 3px; } .brand-whisper--left { left: 2px; right: auto; } }
+@media (prefers-reduced-motion: reduce) { .brand-whisper * { animation: none !important; } }

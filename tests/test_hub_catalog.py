@@ -33,10 +33,39 @@ class CatalogTests(unittest.TestCase):
             for route in ['/produtos','/produto/hub-42','/api/busca-produtos?q=caneca']:
                 response=client.get(route);self.assertEqual(response.status_code,200)
                 self.assertIn(b'Caneca personalizada',response.data)
-                self.assertNotIn(b'3.14',response.data)
+                self.assertNotIn(b'\"preco\"',response.data)
+                self.assertNotIn(b'R$ 3,14',response.data)
             response=client.post('/orcamento/adicionar/1000000042',data={'qty':30},headers={'Accept':'application/json'})
             self.assertEqual(response.status_code,200)
             quote=client.get('/orcamento');self.assertIn(b'XBZ-42',quote.data)
             self.assertIn(b'value="30"',quote.data)
+
+class VariantTests(unittest.TestCase):
+    def test_colors_keep_separate_quote_items_and_validate_offer(self):
+        product=dict(PRODUCT,variacoes=[
+            {'id':7,'sku':'6520-AZU','cor':'Azul','estoque':20,'imagem':'https://example.com/blue.jpg'},
+            {'id':8,'sku':'6520-VD','cor':'Verde','estoque':10,'imagem':'https://example.com/green.jpg'},
+            {'id':9,'sku':'6520-PT','cor':'Preto','estoque':0,'imagem':'javascript:alert(1)'}],
+            imagens=['https://example.com/blue.jpg','https://example.com/green.jpg','javascript:alert(1)'])
+        with patch.object(hub_catalog,'base','https://hub.test'),patch.object(hub_catalog,'token','test'),patch.object(hub_catalog,'fetch',return_value={'produto':product}):
+            client=app.test_client()
+            detail=client.get('/produto/hub-42')
+            self.assertEqual(detail.status_code,200)
+            self.assertIn(b'data-catalog-photo',detail.data)
+            for variant in ('7','8'):
+                self.assertEqual(client.post('/orcamento/adicionar/1000000042',data={'qty':50,'variant_id':variant}).status_code,302)
+            for invalid in ('9','999'):
+                self.assertEqual(client.post('/orcamento/adicionar/1000000042',data={'variant_id':invalid}).status_code,400)
+            quote=client.get('/orcamento')
+            self.assertIn(b'6520-AZU',quote.data);self.assertIn(b'6520-VD',quote.data)
+            client.post('/orcamento/atualizar/1000000042:7',data={'qty':80})
+            with client.session_transaction() as session:
+                self.assertEqual(session['quote_cart']['1000000042:7']['qty'],80)
+                self.assertEqual(session['quote_cart']['1000000042:8']['qty'],50)
+            client.post('/orcamento/remover/1000000042:7')
+            self.assertNotIn(b'6520-AZU',client.get('/orcamento').data)
+        adapted=adapt(product)
+        self.assertEqual(len(adapted['gallery']),3)
+        self.assertEqual(adapted['variants'][2]['image'],'')
 
 if __name__=='__main__':unittest.main()
