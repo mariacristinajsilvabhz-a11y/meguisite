@@ -6,11 +6,12 @@
 
 /* A focused, branded product showroom. ID scope protects the other sections. */
 #malharia{padding:0;background:#eee5f3}
-#malharia .knit-flow{position:relative;isolation:isolate;background:linear-gradient(180deg,#eee5f3 0,#d7c3e3 280px,#855f99 430px,#392846 560px,#201727 700px);overflow:hidden}
-#malharia .knit-flow:after{content:"";display:block;height:90px;background:linear-gradient(180deg,#201727,#493653 35%,#aa8dbb 72%,#eee5f3)}
-#malharia .knit-flow>.container{position:relative;z-index:1}
-#malharia .knit-atmosphere{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
-#malharia .knit-flying-butterfly{position:absolute;left:var(--flight-left);top:var(--flight-top);color:#e8ccfa;opacity:var(--flight-opacity,.12);animation:knit-background-flight var(--flight-duration,23s) ease-in-out infinite alternate;animation-delay:var(--flight-delay,0s);will-change:transform}
+#malharia .knit-flow{position:relative;isolation:isolate;background:transparent;overflow:hidden}
+#malharia .knit-flow:before{content:"";position:absolute;inset:-55px 0;background:linear-gradient(180deg,transparent 0,#76508c 30%,#76508c 73%,transparent 100%);opacity:var(--film-opacity,0);transform:translate3d(0,var(--film-shift,0px),0);pointer-events:none;z-index:0}
+#malharia .knit-flow:after{content:"";display:block;height:36px;background:none}
+#malharia .knit-flow>.container{position:relative;z-index:2}
+#malharia .knit-atmosphere{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1}
+#malharia .knit-flying-butterfly{position:absolute;left:var(--flight-left);top:var(--flight-top);color:#9670ac;opacity:var(--flight-opacity,.12);animation:knit-background-flight var(--flight-duration,23s) ease-in-out infinite alternate;animation-delay:var(--flight-delay,0s);will-change:transform}
 #malharia .knit-flying-butterfly>.icon{width:var(--flight-size,75px);height:calc(var(--flight-size,75px) * 1.23);animation:knit-background-wings 4.5s ease-in-out infinite alternate;animation-delay:var(--flight-delay,0s)}
 #malharia .pouch-editorial{margin-top:0}
 @keyframes knit-background-flight{0%{transform:translate3d(-25px,18px,0) rotate(-14deg)}45%{transform:translate3d(36px,-24px,0) rotate(7deg)}100%{transform:translate3d(85px,-80px,0) rotate(22deg)}}
@@ -39,15 +40,15 @@
 #malharia .knit-edition-panel{gap:clamp(24px,4vw,54px);grid-template-columns:.9fr 1.1fr;align-items:center}
 #malharia .knit-edition-panel[hidden]{display:none}
 #malharia .knit-edition-story{padding:18px 0}
-#malharia .knit-edition-kicker{color:#bd92d5;font-size:9px;letter-spacing:.11em}
-#malharia .knit-edition-story h3{color:#f3eaf8;font-size:clamp(32px,3.2vw,45px);line-height:1.14;margin:18px 0}
-#malharia .knit-edition-story h3 em{color:#c89fe0}
-#malharia .knit-edition-story p{color:#c5b4ce;font-size:15px;line-height:1.8;margin-bottom:20px}
-#malharia .knit-edition-options{color:#c3a1d2;font-size:11px;margin-bottom:24px}
+#malharia .knit-edition-kicker{color:#815992;font-size:9px;letter-spacing:.11em}
+#malharia .knit-edition-story h3{color:#3c2746;font-size:clamp(32px,3.2vw,45px);line-height:1.14;margin:18px 0}
+#malharia .knit-edition-story h3 em{color:#8952a3}
+#malharia .knit-edition-story p{color:#62496f;font-size:15px;line-height:1.8;margin-bottom:20px}
+#malharia .knit-edition-options{color:#795e88;font-size:11px;margin-bottom:24px}
 #malharia .knit-edition-cta{background:#dfc3ef;color:#2f193d;border:1px solid #edd8f7;border-radius:10px;box-shadow:0 8px 26px #0002;min-height:48px;padding:13px 18px;font-size:12px}
 #malharia .knit-edition-cta:hover{background:#f0ddfb}
-#malharia .knit-edition-signature{color:#af92bf;font-size:10px;margin-top:22px}
-#malharia .knit-edition-signature .icon{color:#c89fe0}
+#malharia .knit-edition-signature{color:#785789;font-size:10px;margin-top:22px}
+#malharia .knit-edition-signature .icon{color:#956baa}
 #malharia .knit-edition-stage{height:460px;min-width:0;border-radius:22px;border:1px solid #cba6df44;background:radial-gradient(ellipse at 50% 38%,#f3e7fb,#c4a5d6 68%,#a184b4);box-shadow:inset 0 1px 0 #fff8,0 20px 40px #0002;overflow:hidden}
 #malharia .knit-edition-stage:before{inset:12% 7% 20%;border-color:#80509b30}
 #malharia .knit-stage-word{font-size:clamp(60px,6.5vw,95px);top:48px;color:#80509b20;letter-spacing:-.06em;z-index:0}
@@ -75,13 +76,13 @@
 #malharia .knit-brand-sculpture>.icon{filter:none}
 #malharia .knit-brand-orbit{display:none}
 #malharia .knit-brand-note{color:#775083}
-#malharia .knit-edition-tabs button{background:#28183370;color:#eadcf2;border-color:#e0bfea2b;box-shadow:none}
+#malharia .knit-edition-tabs button{background:#f8f2fa66;color:#725181;border-color:#b591c233;box-shadow:none}
 
 @media(max-width:1000px){#malharia .knit-edition-tabs button{padding:14px 10px;gap:8px}#malharia .knit-edition-tabs strong{font-size:16px}#malharia .knit-tab-index{width:23px;height:26px}#malharia .knit-edition-tabs .icon{display:none}#malharia .knit-edition-stage{height:410px}}
 @media(max-width:760px){
  #malharia{padding-top:0}#malharia .knit-immersive{padding:28px 0 12px;border-radius:0}
- #malharia .knit-flow{background:linear-gradient(180deg,#eee5f3 0,#d7c3e3 180px,#815e95 330px,#30203d 440px,#201727 590px)}
- #malharia .knit-flow:after{height:65px}
+ 
+ #malharia .knit-flow:after{height:24px}
  #malharia .knit-flying-butterfly:nth-child(n+4){display:none}
  #malharia .knit-intro{grid-template-columns:1fr;gap:0;margin-bottom:24px;position:relative}
  #malharia .knit-intro-copy{position:relative;z-index:1}#malharia .knit-overline{font-size:8px;letter-spacing:.08em;padding-right:36px;margin-bottom:15px}
@@ -341,17 +342,29 @@
  const flow = document.querySelector('[data-knit-flow]');
  if (!flow) return;
  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
- let visible = false;
+ let visible = false, frame = 0;
+ const paint = () => {
+  frame = 0;
+  const rect = flow.getBoundingClientRect();
+  const progress = Math.max(0, Math.min(1, (innerHeight * .85 - rect.top) / (rect.height + innerHeight * .15)));
+  // A transparent tint, capped at 14%; the base page remains light.
+  flow.style.setProperty('--film-opacity', (reduced.matches ? .04 : progress * .14).toFixed(4));
+  flow.style.setProperty('--film-shift', `${reduced.matches ? 0 : progress * 28}px`);
+ };
+ const schedule = () => { if (!frame) frame = requestAnimationFrame(paint); };
  const refresh = () => {
   const paused = !visible || document.hidden || reduced.matches;
   flow.querySelectorAll('.knit-flying-butterfly, .knit-flying-butterfly > .icon').forEach(el => {
    el.style.animationPlayState = paused ? 'paused' : 'running';
   });
+  schedule();
  };
  new IntersectionObserver(entries => { visible = entries[0].isIntersecting; refresh(); }, {threshold:0}).observe(flow);
+ addEventListener('scroll', () => { if (visible && !document.hidden) schedule(); }, {passive:true});
+ addEventListener('resize', schedule, {passive:true});
  document.addEventListener('visibilitychange', refresh);
  reduced.addEventListener('change', refresh);
- refresh();
+ paint();refresh();
 })();
 </script>
 {% endblock %}
