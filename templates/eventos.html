@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% from '_icons.html' import icon %}
 {% block title %}Eventos com a sua identidade — Megui{% endblock %}
-{% block extra_head %}<link rel="stylesheet" href="{{ url_for('static',filename='css/eventos.css',v='20261016-reunir-v4') }}">{% endblock %}
+{% block extra_head %}<link rel="stylesheet" href="{{ url_for('static',filename='css/eventos.css',v='20261016-detalhes-v5') }}">{% endblock %}
 {% block content %}
 <div class="ev-experience">
 <section class="ev-opening" aria-labelledby="ev-title">
@@ -27,11 +27,17 @@
 <section class="ev-details" aria-labelledby="ev-details-title"><div class="ev-container">
  <div class="ev-details-heading"><span class="ev-eyebrow">A SUA IDENTIDADE, EM CADA ESCOLHA</span><h2 id="ev-details-title">Veste o grupo.<br><em>Conecta os detalhes.</em></h2><p>Começa na malha, nosso forte. E segue em peças<br>para receber, acompanhar e surpreender.</p></div>
  <div class="ev-project-gallery">
-  <a class="ev-project ev-project-shirts" href="#compor" data-ev-pick="Camisetas"><div class="ev-project-image"><img src="{{ url_for('static',filename='img/acervo/2026/escola-de-cura.webp') }}" width="900" height="1600" alt="Camisetas da Escola de Cura com estampa dourada, embaladas para entrega" loading="lazy"><span>{{ icon('arrow') }}</span></div><span class="ev-project-type">01 / PARA VESTIR</span><h3>Camisetas com propósito.</h3><p>Escola de Cura · camisetas personalizadas</p></a>
+  <a class="ev-project ev-project-shirts" href="#compor" data-ev-pick="Camisetas"><div class="ev-project-image"><img src="{{ url_for('static',filename='img/eventos/escola-de-cura-bancada-v5.webp') }}" width="900" height="1600" alt="Camisetas da Escola de Cura com estampa dourada, embaladas para entrega" loading="lazy"><span>{{ icon('arrow') }}</span></div><span class="ev-project-type">01 / PARA VESTIR</span><h3>Camisetas com propósito.</h3><p>Escola de Cura · camisetas personalizadas</p></a>
   <a class="ev-project ev-project-kits" href="#compor" data-ev-pick="Cadernos e kits"><div class="ev-project-image"><img src="{{ url_for('static',filename='img/acervo/2026/senac-cadernos.webp') }}" width="900" height="1600" alt="Cadernos pretos e laranja do projeto Senac NaSemanaS sobre uma mesa de madeira" loading="lazy"><span>{{ icon('arrow') }}</span></div><span class="ev-project-type">02 / PARA RECEBER</span><h3>Boas-vindas em forma de kit.</h3><p>Senac · papelaria personalizada</p></a>
   <a class="ev-project ev-project-gifts" href="#compor" data-ev-pick="Copos e garrafas"><div class="ev-project-image"><img src="{{ url_for('static',filename='img/acervo/band-minas-kit.jpg') }}" width="1200" height="1600" alt="Copos, bolsa e chaveiro personalizados da Band Minas" loading="lazy"><span>{{ icon('arrow') }}</span></div><span class="ev-project-type">03 / PARA LEVAR JUNTO</span><h3>A marca fica na lembrança.</h3><p>Band Minas · brindes e acessórios</p></a>
  </div>
  <div class="ev-craft-note">{{ icon('butterfly') }}<p>Da arte à escolha dos materiais,<br><strong>vamos pensar no conjunto com você.</strong></p><a class="ev-text-link" href="{{ url_for('portfolio_view') }}">Mais trabalhos da Megui {{ icon('arrow') }}</a></div>
+</div></section>
+
+<section class="ev-beyond" aria-labelledby="ev-beyond-title"><div class="ev-container ev-beyond-grid">
+ <div class="ev-beyond-intro"><span class="ev-eyebrow">O ENCONTRO CONTINUA NOS DETALHES</span><h2 id="ev-beyond-title">Pense além<br><em>da camiseta.</em></h2><p>Para chegar, se identificar, guardar o essencial e levar um pouco do evento para casa.</p><a class="ev-signpost" href="#compor" data-ev-pick="Banners e sinalização"><span>{{ icon('banner') }}</span><strong>O espaço também<br>entra no clima.</strong><small>Banners & sinalização {{ icon('arrow') }}</small></a></div>
+ <div class="ev-beyond-photo"><span class="ev-handnote">um cuidado que vai junto.</span><a href="#compor" data-ev-pick="Sacochilas e bolsas"><img src="{{ url_for('static',filename='img/acervo/2026/necessaires-personalizadas.webp') }}" alt="Nécessaires bege personalizadas com bordado branco e acabamento em zíper" width="1290" height="1406" loading="lazy"><span class="ev-photo-chip">PARA LEVAR O ESSENCIAL {{ icon('arrow') }}</span></a><div class="ev-beyond-caption"><h3>Pequenos itens.<br>Um cuidado que aparece.</h3><p>Nécessaires, bolsas e sacochilas para compor o kit com a identidade do encontro.</p></div></div>
+ <div class="ev-arrival"><div class="ev-pass-wrap" aria-hidden="true"><div class="ev-pass-cord"></div><div class="ev-pass"><span class="ev-pass-slot"></span><span class="ev-pass-top">O SEU EVENTO</span>{{ icon('butterfly') }}<strong>EU FAÇO<br>PARTE.</strong><span class="ev-pass-bottom">PARTICIPANTE <b>01</b></span></div></div><h3>A experiência<br>começa na chegada.</h3><p>Credenciais e pulseiras para identificar quem participa e quem faz acontecer.</p><a class="ev-text-link" href="#compor" data-ev-pick="Credenciais e pulseiras">Pensar na recepção {{ icon('arrow') }}</a></div>
 </div></section>
 
 <section class="ev-start" id="compor" aria-labelledby="ev-start-title"><div class="ev-container ev-start-grid">
@@ -40,4 +46,4 @@
 </div></section>
 </div>
 {% endblock %}
-{% block extra_scripts %}<script defer src="{{ url_for('static',filename='js/eventos.js',v='20261016-reunir-v4') }}"></script>{% endblock %}
+{% block extra_scripts %}<script defer src="{{ url_for('static',filename='js/eventos.js',v='20261016-detalhes-v5') }}"></script>{% endblock %}
