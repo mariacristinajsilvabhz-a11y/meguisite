@@ -1,20 +1,21 @@
 {% extends "base.html" %}
 {% block title %}Para empresas de todo tamanho — Megui{% endblock %}
-{% block extra_head %}<link rel="stylesheet" href="{{ url_for('static',filename='css/enterprise-studio.css',v='20261016-v4') }}">{% endblock %}
+{% block extra_head %}<link rel="stylesheet" href="{{ url_for('static',filename='css/enterprise-studio.css',v='20261016-v5') }}">{% endblock %}
 {% block content %}
 {% from '_icons.html' import icon %}
-<section class="enterprise-hero enterprise-b2b-refined" id="empresas">
- <div class="container enterprise-refined-layout">
-  <div class="enterprise-refined-copy">
-   <div class="enterprise-refined-overline">{{ icon('butterfly') }} <span>MEGUI PARA NEGÓCIOS</span></div>
-   <h1>Sua marca no dia a dia de quem faz acontecer.</h1>
-   <p>Da camiseta da equipe ao kit de uma grande ação. Confeccionamos e personalizamos peças para empresas, com soluções pensadas para cada necessidade, quantidade e orçamento.</p>
-   <a class="enterprise-refined-cta" href="https://wa.me/{{ whatsapp_number }}?text={{ 'Olá, Megui! Quero fazer um orçamento para minha empresa. Gostaria de falar sobre produtos, quantidades e prazos.'|urlencode }}" target="_blank" rel="noopener">Conversar sobre meu projeto</a>
-   <div class="enterprise-refined-facts"><span><strong>Confecção própria</strong> em malharia</span><span><strong>Personalização</strong> de diferentes produtos</span><span><strong>Projetos</strong> para empresas e eventos</span></div>
+<section class="megui-b2b-entry" id="empresas">
+ <div class="container">
+  <div class="megui-b2b-intro">
+   <div class="megui-b2b-title"><div class="megui-b2b-sign">{{ icon('butterfly') }} <span>MEGUI / SOLUÇÕES PARA NEGÓCIOS</span></div><h1>A sua marca<br><em>faz parte do trabalho.</em></h1></div>
+   <div class="megui-b2b-intro-right"><p>Uniformes, malharia, brindes e materiais personalizados para o seu negócio funcionar, se apresentar e ser lembrado.</p><a class="megui-b2b-cta" href="https://wa.me/{{ whatsapp_number }}?text={{ 'Olá! Quero solicitar uma cotação empresarial com a Megui. Posso informar as quantidades e os produtos?'|urlencode }}" target="_blank" rel="noopener">Solicitar orçamento</a></div>
   </div>
-  <figure class="enterprise-refined-visual"><img src="{{ url_for('static',filename='img/empresas/equipe-pastelaria-v1.webp') }}" width="1536" height="1024" alt="Equipe de pastelaria trabalhando com uniformes personalizados" fetchpriority="high"><figcaption><span class="enterprise-refined-visual-tag">UNIFORMES & IDENTIDADE</span><span>Gente de verdade faz o negócio acontecer.</span></figcaption></figure>
+  <div class="megui-b2b-showroom">
+   <a href="#uniformes" class="megui-b2b-showroom-item megui-b2b-showroom-main"><img src="{{ url_for('static',filename='img/acervo/2026/camisetas-estamparia-piso-v4.webp') }}" alt="Produção e estamparia de camisetas de malha Megui" width="1200" height="800" fetchpriority="high"><div class="megui-b2b-showroom-caption"><span>01 / NOSSA ESPECIALIDADE</span><strong>Malharia e uniformização</strong><small>Camisetas, polos, aventais e equipes completas</small></div></a>
+   <a href="#presentes" class="megui-b2b-showroom-item megui-b2b-showroom-detail"><img src="{{ url_for('static',filename='img/empresas/agenda-social-tecnologia-v1.webp') }}" alt="Agenda corporativa, camisa social e tecnologia para presentes de empresas" width="1536" height="1024"><div class="megui-b2b-showroom-caption"><span>02 / PRESENTES CORPORATIVOS</span><strong>Kits e brindes</strong></div></a>
+   <a href="#transporte" class="megui-b2b-showroom-item megui-b2b-showroom-detail"><img src="{{ url_for('static',filename='img/empresas/capas-encosto-transporte-v1.webp') }}" alt="Capas personalizadas para bancos de transporte" width="1536" height="1024"><div class="megui-b2b-showroom-caption"><span>03 / PROJETOS ESPECIAIS</span><strong>Além do uniforme</strong></div></a>
+  </div>
+  <div class="megui-b2b-footline"><p><strong>Da pastelaria ao escritório.</strong> Do primeiro pedido às demandas em volume.</p><a href="#experiencia">Conheça quem já confiou na Megui</a></div>
  </div>
- <div class="container enterprise-refined-paths" aria-label="Áreas de atuação"><a href="#uniformes"><span>01</span> Uniformes e malharia</a><a href="#presentes"><span>02</span> Brindes corporativos</a><a href="#transporte"><span>03</span> Projetos especiais</a><a href="#seu-orcamento"><span>04</span> Planejar uma compra</a></div>
 </section>
 
 <section class="enterprise-possibilities" id="possibilidades">
