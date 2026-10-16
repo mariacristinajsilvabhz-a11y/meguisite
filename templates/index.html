@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% block title %}Megui Personalizados — sua marca em tudo{% endblock %}
 {% block extra_head %}
-<link rel="stylesheet" href="{{ url_for('static',filename='css/textiles.css',v='20261016-1') }}">
-<link rel="stylesheet" href="{{ url_for('static',filename='css/home-showroom.css',v='20261016-1') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/textiles.css',v='20261016-2') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/home-showroom.css',v='20261016-2') }}">
 <script defer src="{{ url_for('static',filename='js/home-showroom.js',v='20261016-1') }}"></script>
 <style>
 {% raw %}
@@ -89,10 +89,10 @@
   <div class="welcome-carousel" aria-roledescription="carrossel" aria-label="Produtos personalizados" data-welcome-carousel>
     <div class="carousel-slides" aria-live="off">
       {% set slides = [
-        {'theme':'knit','tag':'MALHA É A NOSSA ESPECIALIDADE','title':'Sua ideia.','accent':'Ganha corpo.','text':'Confecção própria e personalização para transformar tecido em camisetas, uniformes, peças para eventos e saquinhos com identidade.','image':'img/inicio/camiseta-megui-movimento-v3.webp','alt':'Camiseta preta Megui em manequim invisível, com dobras e caimento em movimento','cta':'Explorar a malha','href':'#malharia','label':'malha e confecção própria'},
-        {'theme':'wear','tag':'CONFECÇÃO PARA EQUIPES & MARCAS','title':'Uma equipe.','accent':'Uma identidade.','text':'Da camiseta ao uniforme. Modelagem, tecido e personalização alinhados à rotina e à apresentação da sua equipe.','image':'img/inicio/carousel-uniformes.webp','alt':'Composição ilustrativa de jaqueta e camisa personalizadas Megui','cta':'Explorar vestuário','href':url_for('category',slug='vestuario'),'label':'vestuário e uniformes'},
-        {'theme':'faith','tag':'CAMISETAS PARA ENCONTROS & MOVIMENTOS','title':'Uma mensagem.','accent':'Muitas pessoas.','text':'Vista o tema do seu encontro. Camisetas e itens personalizados para reunir o grupo em uma identidade.','image':'img/eventos/grupo-igreja.webp','alt':'Referência ilustrativa de grupo reunido com camisetas pretas e lilás','cta':'Conhecer as possibilidades','href':url_for('events') ~ '#movimentos','label':'encontros religiosos'},
-        {'theme':'events','tag':'COPOS, KITS & ITENS PARA EVENTOS','title':'Além da camiseta.','accent':'O encontro completo.','text':'Copos, garrafas, bolsas, credenciais e outros personalizados para acompanhar o público e levar a lembrança do evento adiante.','image':'img/inicio/eventos.webp','alt':'Copo reutilizável lilás, credencial com cordão e pulseiras personalizados para eventos','cta':'Compor os itens do evento','href':url_for('events') ~ '#compor','label':'copos e itens para eventos'}
+        {'theme':'knit','tag':'MEGUI / CONFECÇÃO & PERSONALIZAÇÃO','title':'Do primeiro fio','accent':'à sua marca.','text':'Confecção própria e personalização para transformar tecido em camisetas, uniformes, peças para eventos e saquinhos com identidade.','image':'img/acervo/camisetas-em-uso.jpg','alt':'Camisetas personalizadas em uso, com estampas no peito e nas costas','cta':'Explorar a malha','href':'#malharia','label':'malha e confecção própria'},
+        {'theme':'wear','tag':'CONFECÇÃO PARA EQUIPES & MARCAS','title':'Uma equipe.','accent':'Uma identidade.','text':'Da camiseta ao uniforme. Modelagem, tecido e personalização alinhados à rotina e à apresentação da sua equipe.','image':'img/acervo/uniforme-personalizado.jpg','alt':'Detalhe de uniforme preto e amarelo personalizado','cta':'Explorar vestuário','href':url_for('category',slug='vestuario'),'label':'vestuário e uniformes'},
+        {'theme':'faith','tag':'CAMISETAS PARA ENCONTROS & MOVIMENTOS','title':'Uma mensagem.','accent':'Muitas pessoas.','text':'Vista o tema do seu encontro. Camisetas e itens personalizados para reunir o grupo em uma identidade.','image':'img/acervo/2026/escola-de-cura.webp','alt':'Peças personalizadas do projeto Escola de Cura','cta':'Conhecer as possibilidades','href':url_for('events') ~ '#movimentos','label':'encontros religiosos'},
+        {'theme':'events','tag':'ITENS & COMUNICAÇÃO PARA EVENTOS','title':'Além da camiseta.','accent':'O encontro completo.','text':'Copos, garrafas, bolsas, credenciais e outros personalizados para acompanhar o público e levar a lembrança do evento adiante.','image':'img/acervo/2026/samba-do-maestro.webp','alt':'Projeto de comunicação visual para o evento Samba do Maestro','cta':'Compor os itens do evento','href':url_for('events') ~ '#compor','label':'projetos para eventos'}
       ] %}
       {% for slide in slides %}
       <article class="carousel-slide slide-{{ slide.theme }} {% if loop.first %}is-active{% endif %}" data-carousel-slide role="group" aria-roledescription="banner" aria-label="{{ loop.index }} de {{ loop.length }}" {% if not loop.first %}hidden inert{% endif %}>
@@ -105,7 +105,7 @@
             <a class="carousel-talk" href="https://wa.me/{{ whatsapp_number }}" target="_blank" rel="noopener">{{ icon('whatsapp') }}<span>Vamos conversar</span></a>
           </div>
         </div>
-        <figure class="carousel-art" data-depth-scene><span class="opening-orbit" aria-hidden="true"></span><span class="opening-orbit opening-orbit-two" aria-hidden="true"></span><span class="opening-mark" aria-hidden="true">{{ icon('butterfly') }}</span><span class="opening-floor" aria-hidden="true"></span><img src="{{ url_for('static', filename=slide.image) }}" alt="{{ slide.alt }}" width="1440" height="960" {% if loop.first %}fetchpriority="high"{% endif %} decoding="async"><figcaption class="opening-caption"><span>MEGUI / {{ "%02d"|format(loop.index) }}</span><strong>{{ slide.label|upper }}</strong></figcaption></figure>
+        <figure class="carousel-art" data-depth-scene><img src="{{ url_for('static', filename=slide.image) }}" alt="{{ slide.alt }}" width="1440" height="960" {% if loop.first %}fetchpriority="high"{% endif %} decoding="async"><figcaption class="opening-caption"><span>MEGUI / {{ "%02d"|format(loop.index) }}</span><strong>{{ slide.label|upper }}</strong></figcaption></figure>
       </article>
       {% endfor %}
     </div>

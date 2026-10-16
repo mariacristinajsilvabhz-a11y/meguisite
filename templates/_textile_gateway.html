@@ -1,15 +1,10 @@
 <section class="textile-gateway section" id="materiais" aria-labelledby="textile-gateway-title">
  <div class="container textile-gateway-layout">
-  <div class="textile-samplebook">
-   <span class="textile-label">MEGUI / BIBLIOTECA DE MATERIAIS</span>
-   <div class="textile-sample-stack" aria-hidden="true"><span class="fabric-swatch swatch-twill"></span><span class="fabric-swatch swatch-woven"></span><img src="{{ url_for('static',filename='img/tecidos/malha-estruturada.webp') }}" alt="" width="1200" height="800" loading="lazy"><span class="samplebook-seal">{{ icon('butterfly') }}</span></div>
-   <div class="textile-sample-key"><span>01 / MALHAS</span><span>02 / TECIDOS PLANOS</span><span>03 / POSSIBILIDADES</span></div>
-   <small>Imagens e texturas ilustrativas. Conheça a base do seu projeto no atendimento.</small>
-  </div>
-  <div class="textile-gateway-copy"><span class="textile-label">A ESCOLHA COMEÇA NO TOQUE</span><h2 id="textile-gateway-title">Começa na malha.<br>Abre um mundo<br>de <em>texturas.</em></h2><p>Malha é a nossa especialidade. Mas cada ideia pede uma base: do conforto da camiseta à estrutura de uma camisa, de um avental ou de um acessório.</p>
-   <div class="textile-mini-guide"><a href="{{ url_for('textiles') }}#algodao"><span class="mini-swatch swatch-cotton"></span><span>Maciez<strong>Malhas</strong></span>↗</a><a href="{{ url_for('textiles') }}#piquet"><span class="mini-swatch swatch-pique"></span><span>Textura<strong>Piquet</strong></span>↗</a><a href="{{ url_for('textiles') }}#sarja"><span class="mini-swatch swatch-twill"></span><span>Estrutura<strong>Sarja & brim</strong></span>↗</a></div>
-   <div class="textile-faq"><details><summary>Qual tecido combina com o meu projeto?</summary><p>O uso vem primeiro. Compare conforto, estrutura e acabamento na tecidoteca e conte como a peça será usada. A Megui ajuda a definir a base.</p></details><details><summary>Posso escolher tamanhos e quantidades?</summary><p>Sim. Monte uma seleção com a grade de tamanhos ou informe suas medidas. Envie a lista pelo WhatsApp para confirmar viabilidade, materiais e orçamento.</p></details></div>
-   <a class="textile-primary" href="{{ url_for('textiles') }}">Explorar tecidos & montar minha seleção {{ icon('arrow') }}</a>
+  <figure class="textile-samplebook"><img src="{{ url_for('static',filename='img/tecidos/malha-estruturada.webp') }}" alt="Referência ilustrativa do caimento de uma malha lilás" width="1200" height="800" loading="lazy"><figcaption><span>01 — A MATÉRIA</span><span>Toque, trama e caimento.</span></figcaption><small>Imagem ilustrativa. A base do projeto é definida com você.</small></figure>
+  <div class="textile-gateway-copy"><span class="textile-label">MATERIAIS / DO TOQUE À ESCOLHA</span><h2 id="textile-gateway-title">A malha é<br>o começo.<br><em>Há mais para criar.</em></h2><p>Uma camiseta pede conforto. Uma camisa, outro caimento. Um avental, estrutura. A escolha do tecido acompanha o que você quer fazer.</p>
+   <nav class="textile-mini-guide" aria-label="Explore tecidos"><a href="{{ url_for('textiles') }}#algodao"><span>01</span><strong>Malhas</strong>↗</a><a href="{{ url_for('textiles') }}#piquet"><span>02</span><strong>Piquet</strong>↗</a><a href="{{ url_for('textiles') }}#sarja"><span>03</span><strong>Tecidos planos</strong>↗</a></nav>
+   <div class="textile-faq"><details><summary>Como escolher a base?</summary><p>Comece pelo uso. Na tecidoteca, você compara as características e as indicações de cada família. Depois, a gente alinha composição, gramatura e acabamento.</p></details><details><summary>E os tamanhos e quantidades?</summary><p>Monte sua grade ou informe medidas especiais. A seleção reúne tudo numa mensagem para conversar sobre viabilidade e orçamento.</p></details></div>
+   <a class="textile-primary" href="{{ url_for('textiles') }}">Conhecer os tecidos {{ icon('arrow') }}</a>
   </div>
  </div>
 </section>
