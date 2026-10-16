@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% from '_icons.html' import icon %}
 {% block title %}Eventos — Megui{% endblock %}
-{% block extra_head %}<link rel="stylesheet" href="{{ url_for('static',filename='css/eventos.css',v='20261015-v1') }}">{% endblock %}
+{% block extra_head %}<link rel="stylesheet" href="{{ url_for('static',filename='css/eventos.css',v='20261016-v2') }}">{% endblock %}
 {% block content %}
 <section class="ev-hero" id="encontro">
   <div class="ev-hero-orbit" aria-hidden="true"><svg viewBox="0 0 1440 850" preserveAspectRatio="none"><path d="M-80 650C220 920 850 620 780 340S240 30 400 280s880 340 1100-150"/></svg></div>
@@ -19,16 +19,26 @@
 
 <section class="ev-section ev-formats" id="formatos" data-ev-formats>
  <div class="container">
-  <div class="ev-section-heading" data-ev-reveal><div><span class="ev-kicker">01 / CADA ENCONTRO TEM SEU JEITO</span><h2>Qual é a energia<br>do seu evento?</h2></div><p>Escolha o contexto. As ideias e os produtos acompanham o que você quer criar.</p></div>
+  <div class="ev-section-heading" data-ev-reveal><div><span class="ev-kicker">01 / CADA ENCONTRO TEM SEU JEITO</span><h2>Qual é a energia<br>do seu evento?</h2></div><p>Cada encontro tem uma história. Escolha o seu e descubra ideias para vestir, receber e criar lembranças.</p></div>
   {% set formats = [
    ('fe','Fé & comunidade','Quando a mensagem<br>vira pertencimento.','Retiros, congressos, encontros de jovens e ações comunitárias. Uma identidade para reunir participantes, organização e voluntários.','img/eventos/equipes-evento-v4.webp','Referência ilustrativa de equipe em um encontro.','Camisetas · Sacochilas · Lembranças','Um encontro religioso'),
    ('celebracao','Festas & cultura','A energia do evento.<br>Presente nos detalhes.','Shows, festas e celebrações ganham unidade com peças para a equipe, itens para o público e comunicação visual no espaço.','img/acervo/2026/samba-do-maestro-sem-marca-v3.webp','Samba do Maestro · comunicação visual do acervo Megui.','Equipe · Copos · Comunicação visual','Uma festa ou evento cultural'),
    ('congresso','Feiras & congressos','Do primeiro contato<br>à última lembrança.','Receba, identifique e acompanhe os participantes com materiais que conversam entre si, do credenciamento ao kit do encontro.','img/eventos/recepcao-evento-v4.webp','Referência ilustrativa de recepção e credenciamento.','Credenciais · Cadernos · Kits','Uma feira ou congresso'),
    ('esporte','Esporte & movimento','Uma identidade<br>que vai junto.','Corridas, desafios e ações ao ar livre. Camisetas, bolsas e materiais para dar presença à equipe e ao percurso.','img/acervo/2026/minions-run-sem-marca-v3.webp','Minions Run · comunicação visual do acervo Megui.','Camisetas · Sacochilas · Banners','Um evento esportivo')
   ] %}
-  <div class="ev-format-tabs" role="tablist" aria-label="Tipos de evento">{% for key,label,title,description,image,caption,items,event_name in formats %}<button id="ev-tab-{{ key }}" type="button" role="tab" aria-selected="{{ 'true' if loop.first else 'false' }}" aria-controls="ev-panel-{{ key }}" tabindex="{{ '0' if loop.first else '-1' }}" data-ev-tab="{{ key }}">{{ label }}<span aria-hidden="true">↗</span></button>{% endfor %}</div>
+  {% set format_notes = {'fe':'Retiros, encontros e ações que unem.','celebracao':'Shows, festas e histórias para celebrar.','congresso':'Conexões que começam no encontro.','esporte':'Equipes, desafios e novas conquistas.'} %}
+  <div class="ev-format-tabs ev-format-visual-tabs" role="tablist" aria-label="Tipos de evento">
+    {% for key,label,title,description,image,caption,items,event_name in formats %}
+    <button id="ev-tab-{{ key }}" type="button" role="tab" aria-selected="{{ 'true' if loop.first else 'false' }}" aria-controls="ev-panel-{{ key }}" tabindex="{{ '0' if loop.first else '-1' }}" data-ev-tab="{{ key }}">
+      <span class="ev-format-choice-photo"><img src="{{ url_for('static',filename=image) }}" alt="" width="600" height="400" loading="lazy" decoding="async"><span class="ev-format-choice-index" aria-hidden="true">0{{ loop.index }}</span></span>
+      <span class="ev-format-choice-title">{{ label }}{{ icon('butterfly') }}</span>
+      <span class="ev-format-choice-note">{{ format_notes[key] }}</span>
+      <span class="ev-format-choice-line" aria-hidden="true"></span>
+    </button>
+    {% endfor %}
+  </div>
   <div class="ev-format-panels">{% for key,label,title,description,image,caption,items,event_name in formats %}<div id="ev-panel-{{ key }}" class="ev-format-panel" role="tabpanel" aria-labelledby="ev-tab-{{ key }}" data-ev-panel="{{ key }}" data-event-name="{{ event_name }}"{% if not loop.first %} hidden{% endif %}>
-    <figure><img src="{{ url_for('static',filename=image) }}" alt="{{ caption }}" width="1536" height="1024" loading="lazy"><figcaption>{{ caption }}</figcaption></figure><div class="ev-format-copy"><span class="ev-kicker">{{ label|upper }}</span><h3>{{ title|safe }}</h3><p>{{ description }}</p><div class="ev-format-items">{{ items }}</div><a class="ev-text-link" href="#compor" data-ev-start="{{ key }}">Pensar nos itens do meu evento {{ icon('arrow') }}</a></div>
+    <figure><img src="{{ url_for('static',filename=image) }}" alt="{{ caption }}" width="1536" height="1024" loading="lazy"><figcaption>{{ caption }}</figcaption></figure><div class="ev-format-copy"><span class="ev-kicker">{{ icon('butterfly') }} {{ label|upper }}</span><h3>{{ title|safe }}</h3><p>{{ description }}</p><div class="ev-format-items">{% for item in items.split(' · ') %}<span>{{ item }}</span>{% endfor %}</div><a class="ev-text-link" href="#compor" data-ev-start="{{ key }}">Pensar nos itens do meu evento {{ icon('arrow') }}</a></div>
   </div>{% endfor %}</div>
  </div>
 </section>

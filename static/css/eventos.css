@@ -24,3 +24,31 @@
 .ev-faith-grid{grid-template-columns:1fr;gap:26px}.ev-faith-copy h2{font-size:37px;margin:17px 0 22px}.ev-faith-copy>p{font-size:15px;max-width:none}.ev-faith-signature{font-size:9px;margin-top:24px}.ev-faith-photo{padding-top:10px;max-width:550px;margin:auto}.ev-faith-circle{inset:5% 0}.ev-faith-stamp{font-size:17px}.ev-faith-photo figcaption{padding-left:0;font-size:9px}.ev-case-list{gap:32px;grid-template-columns:1fr}.ev-case-wide{grid-column:auto;display:block}.ev-case figcaption,.ev-case-wide figcaption{padding-top:18px}.ev-case h3,.ev-case-wide h3{font-size:28px}.ev-case p{font-size:14px;max-width:none}.ev-case-photo{border-radius:12px}
 .ev-kit-grid{grid-template-columns:1fr;gap:30px}.ev-kit-options{gap:0 16px}.ev-kit-options>button{font-size:13px;padding:16px 0}.ev-kit-summary{min-height:0;padding:20px 0}.ev-kit-note{font-size:10px}.ev-button{font-size:13px;min-height:51px;padding:14px 18px;gap:20px}.ev-finale{padding:42px 0 30px}.ev-finale-top .ev-kicker{font-size:8px;max-width:260px}.ev-finale-grid{grid-template-columns:1fr;gap:25px;padding:30px 0}.ev-finale h2{font-size:39px}.ev-finale-grid p{font-size:15px}.ev-process{grid-template-columns:1fr;gap:24px;padding:26px 0}.ev-process strong{font-size:16px}.ev-process p{margin-top:5px}.ev-finale-links{gap:22px}.ev-finale-links a{font-size:11px}}
 @media(prefers-reduced-motion:reduce){.ev-hero-art,.ev-ribbon>div{transform:none!important;will-change:auto}.ev-format-panel{animation:none}.ev-enhanced [data-ev-reveal]{opacity:1!important;transform:none!important;transition:none}.ev-hero-orbit path{stroke-dashoffset:0!important}}
+
+/* Escolhas visuais: os encontros ganham pessoas, atmosfera e identidade. */
+.ev-format-tabs.ev-format-visual-tabs{border:0;gap:28px;margin:0 0 48px;padding:0 0 4px;overflow:visible}
+.ev-format-visual-tabs>button{display:block;position:relative;min-width:0;text-align:left;border:0;padding:0;background:none!important;color:#38243f;font-weight:500;box-shadow:none;border-radius:0;transition:none;white-space:normal}
+.ev-format-visual-tabs>button:nth-child(even){padding-top:18px}
+.ev-format-visual-tabs>button .ev-format-choice-photo{display:block;position:relative;width:100%;overflow:hidden;aspect-ratio:1.45;border-radius:85px 85px 16px 16px;background:#d9c9e2;isolation:isolate}
+.ev-format-choice-photo>img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .5s ease,filter .4s ease;filter:saturate(.8)}
+.ev-format-visual-tabs>button .ev-format-choice-index{position:absolute;bottom:12px;left:14px;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#35213fbd;border:1px solid #ffffff70;color:white;font-size:10px;letter-spacing:.04em;font-weight:650;line-height:1}
+.ev-format-visual-tabs>button .ev-format-choice-title{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:19px;font-size:19px;font-weight:750;line-height:1.4;letter-spacing:-.035em;color:#50375d}
+.ev-format-choice-title>.icon{width:23px;height:23px;flex:none;color:#84509b;opacity:0;transform:translateX(-5px) rotate(-10deg);transition:opacity .25s,transform .35s}
+.ev-format-visual-tabs>button .ev-format-choice-note{display:block;margin-top:7px;font-size:13px;line-height:1.7;letter-spacing:0;color:#7e6887;max-width:27ch}
+.ev-format-visual-tabs>button .ev-format-choice-line{display:block;height:2px;background:#d4c3de;margin-top:20px;position:relative;overflow:hidden}
+.ev-format-choice-line:after{content:"";position:absolute;inset:0;background:#88549e;transform:scaleX(0);transform-origin:left;transition:transform .4s ease}
+.ev-format-visual-tabs>button[aria-selected=true]{color:#38243f;background:none}
+.ev-format-visual-tabs>button[aria-selected=true] .ev-format-choice-title{color:#502465}
+.ev-format-visual-tabs>button[aria-selected=true] .ev-format-choice-photo>img{filter:saturate(1)}
+.ev-format-visual-tabs>button[aria-selected=true] .ev-format-choice-title>.icon{opacity:1;transform:translateX(0) rotate(0)}
+.ev-format-visual-tabs>button[aria-selected=true] .ev-format-choice-line:after{transform:scaleX(1)}
+.ev-format-visual-tabs>button:focus-visible{outline:2px solid #89549e;outline-offset:8px;border-radius:4px}
+.ev-formats .ev-format-panel{gap:55px;padding-top:32px;border-top:1px solid #d9c8e2}
+.ev-formats .ev-format-panel figure{position:relative}.ev-formats .ev-format-panel img{border-radius:20px 70px 20px 20px}
+.ev-format-copy .ev-kicker>.icon{width:22px;height:22px;color:#9a70ac}
+.ev-format-copy .ev-format-items{display:flex;flex-wrap:wrap;gap:6px 0;color:#80548f;font-size:13px;padding-top:20px;margin-bottom:26px}
+.ev-format-items>span+span:before{content:"·";margin:0 12px;color:#a888b6}
+@media(hover:hover){.ev-format-visual-tabs>button:hover .ev-format-choice-photo>img{transform:scale(1.04);filter:saturate(1)}.ev-format-visual-tabs>button:hover .ev-format-choice-title{color:#502465}}
+@media(max-width:1050px){.ev-format-tabs.ev-format-visual-tabs{gap:20px}.ev-format-visual-tabs>button .ev-format-choice-title{font-size:17px}.ev-format-visual-tabs>button .ev-format-choice-note{font-size:12px}.ev-formats .ev-format-panel{gap:35px}}
+@media(max-width:760px){.ev-format-tabs.ev-format-visual-tabs{grid-template-columns:repeat(2,minmax(0,1fr));gap:25px 20px;margin-bottom:30px;overflow:visible}.ev-format-visual-tabs>button:nth-child(even){padding-top:0}.ev-format-visual-tabs>button .ev-format-choice-photo{aspect-ratio:1.25;border-radius:70px 70px 12px 12px}.ev-format-visual-tabs>button .ev-format-choice-title{font-size:17px;margin-top:13px}.ev-format-visual-tabs>button .ev-format-choice-note{font-size:12px;line-height:1.6;margin-top:5px}.ev-format-visual-tabs>button .ev-format-choice-line{margin-top:14px}.ev-format-choice-title>.icon{width:19px;height:19px}.ev-format-visual-tabs>button .ev-format-choice-index{width:24px;height:24px;font-size:9px;bottom:10px;left:10px}.ev-formats .ev-format-panel{padding-top:25px;gap:25px}.ev-formats .ev-format-panel img{border-radius:16px 50px 16px 16px}}
+@media(prefers-reduced-motion:reduce){.ev-format-choice-photo>img,.ev-format-choice-title>.icon,.ev-format-choice-line:after{transition:none}.ev-format-visual-tabs>button:hover .ev-format-choice-photo>img{transform:none}}
