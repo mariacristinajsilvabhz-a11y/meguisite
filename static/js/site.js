@@ -226,7 +226,7 @@
   let current = 0, paused = motion.matches, hovered = false, focused = false, timer;
   const schedule = () => {
     clearTimeout(timer);
-    if (!paused && !hovered && !focused && !document.hidden) timer = setTimeout(() => show(current + 1), 7000);
+    if (!paused && !hovered && !focused && !document.hidden) timer = setTimeout(() => show(current + 1), 5000);
   };
   const show = index => {
     current = (index + slides.length) % slides.length;
