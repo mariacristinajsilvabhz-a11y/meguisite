@@ -20,7 +20,7 @@
       <p class="lead">{{ product.description }}</p>
 
       <div class="tag-row">
-        {% for tag in product.tags %}<span>{{ tag }}</span>{% endfor %}
+        {% for tag in product.tags %}{% if tag|lower|replace('á','a') != 'personalizavel' %}<span>{{ tag }}</span>{% endif %}{% endfor %}
       </div>
 
       {% if product.id in cart_ids %}
@@ -81,7 +81,6 @@
       <div class="product-benefits">
         <span>✓ Atendimento consultivo</span>
         <span>✓ Personalização sob medida</span>
-        <span>✓ Sem pagamento online</span>
       </div>
     </div>
   </div>
