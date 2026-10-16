@@ -4,7 +4,8 @@
 .knit-stage-marca:after{content:"";position:absolute;left:27%;right:12%;bottom:16%;height:6%;border-radius:50%;background:radial-gradient(ellipse,#57346830,transparent 70%);filter:blur(7px);pointer-events:none}
 .knit-stage-marca .knit-stage-word{top:52px;color:#a880bc30;letter-spacing:-.075em}
 .knit-stage-marca .knit-stage-product{z-index:1;transform-origin:54% 25%}
-.knit-motion-toggle{position:absolute;left:20px;top:20px;z-index:3;display:flex;align-items:center;gap:7px;min-height:44px;padding:8px 11px;border:1px solid #aa85be66;border-radius:24px;background:#f5ecfaaf;color:#654174;font:inherit;font-size:11px;cursor:pointer}
+.knit-motion-toggle{position:absolute;right:20px;bottom:18px;z-index:3;display:flex;align-items:center;gap:7px;min-height:44px;padding:8px 11px;border:1px solid #aa85be66;border-radius:24px;background:#f5ecfaaf;color:#654174;font:inherit;font-size:11px;cursor:pointer}
+.knit-stage-marca .knit-stage-caption{bottom:78px}
 .knit-motion-toggle svg{width:15px;height:15px;fill:currentColor}
 .knit-motion-toggle .motion-play{display:none}
 .knit-motion-toggle[aria-pressed=true] .motion-play{display:block}
@@ -66,7 +67,7 @@
   .knit-stage-detail>img{width:56px;height:56px;border-width:3px}
   .knit-stage-detail figcaption{font-size:11px}
   .knit-stage-detail small{font-size:10px}
-  .knit-motion-toggle{left:12px;top:12px;padding-inline:9px;font-size:10px}
+  .knit-motion-toggle{right:12px;bottom:12px;padding-inline:9px;font-size:10px}
   .knit-edition-story h3{font-size:31px;line-height:1.14;margin:12px 0}
   .knit-edition-story p{font-size:15px;line-height:1.65;margin-bottom:14px}
   .knit-edition-options{margin-bottom:14px}
