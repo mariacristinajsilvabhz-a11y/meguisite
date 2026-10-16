@@ -6,6 +6,7 @@
  const panels=[...root.querySelectorAll('[data-ev-panel]')];
  const options=[...kit.querySelectorAll('[data-ev-item]')];
  const link=kit.querySelector('[data-ev-kit-link]');
+ const eventLabel=document.querySelector('[data-ev-event-label]');
  let eventName=(panels.find(panel=>!panel.hidden)||panels[0]).dataset.eventName;
  function updateKit(){
   const selected=options.filter(button=>button.getAttribute('aria-pressed')==='true').map(button=>button.dataset.evItem);
@@ -16,15 +17,15 @@
  }
  function select(key,focus=false){
   tabs.forEach(tab=>{const active=tab.dataset.evTab===key;tab.setAttribute('aria-selected',String(active));tab.tabIndex=active?0:-1;if(active&&focus)tab.focus();});
-  panels.forEach(panel=>{panel.hidden=panel.dataset.evPanel!==key;if(!panel.hidden)eventName=panel.dataset.eventName;});
+  panels.forEach(panel=>{panel.hidden=panel.dataset.evPanel!==key;if(!panel.hidden){eventName=panel.dataset.eventName;if(eventLabel)eventLabel.textContent=panel.dataset.eventLabel;}});
   updateKit();
  }
  tabs.forEach((tab,index)=>{
   tab.addEventListener('click',()=>select(tab.dataset.evTab));
   tab.addEventListener('keydown',event=>{
    let next;
-   if(event.key==='ArrowRight')next=(index+1)%tabs.length;
-   if(event.key==='ArrowLeft')next=(index-1+tabs.length)%tabs.length;
+   if(event.key==='ArrowRight'||event.key==='ArrowDown')next=(index+1)%tabs.length;
+   if(event.key==='ArrowLeft'||event.key==='ArrowUp')next=(index-1+tabs.length)%tabs.length;
    if(event.key==='Home')next=0;
    if(event.key==='End')next=tabs.length-1;
    if(next===undefined)return;
@@ -32,5 +33,6 @@
   });
  });
  options.forEach(button=>button.addEventListener('click',()=>{const active=button.getAttribute('aria-pressed')!=='true';button.setAttribute('aria-pressed',String(active));button.querySelector('b').textContent=active?'✓':'+';updateKit();}));
+ document.querySelectorAll('[data-ev-pick]').forEach(trigger=>trigger.addEventListener('click',()=>{const option=options.find(button=>button.dataset.evItem===trigger.dataset.evPick);if(!option)return;option.setAttribute('aria-pressed','true');option.querySelector('b').textContent='✓';updateKit();}));
  updateKit();
 })();
