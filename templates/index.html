@@ -1,5 +1,84 @@
 {% extends "base.html" %}
 {% block title %}Megui Personalizados — sua marca em tudo{% endblock %}
+{% block extra_head %}
+<style>
+{% raw %}
+
+/* A focused, branded product showroom. ID scope protects the other sections. */
+#malharia{padding-top:54px;background:#eee5f3}
+#malharia .knit-immersive{position:relative;isolation:isolate;padding:clamp(22px,4vw,58px);border-radius:28px;background:radial-gradient(ellipse at var(--light-x,80%) var(--light-y,15%),#59336b66,transparent 55%),linear-gradient(135deg,#25152f,#17111f 75%);box-shadow:0 30px 70px #34164422,inset 0 1px 0 #edceff26;color:#f5eafa;overflow:hidden}
+#malharia .knit-immersive:before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.18;background-image:radial-gradient(#dcc0ed 0.6px,transparent 0.6px);background-size:23px 23px;mask-image:linear-gradient(135deg,transparent 25%,#000)}
+#malharia .knit-intro{display:grid;grid-template-columns:1.3fr .7fr;gap:30px;align-items:center;margin-bottom:38px}
+#malharia .knit-overline{display:block;color:#c2a3d2;font-size:10px;letter-spacing:.14em;line-height:1.7;margin-bottom:22px}
+#malharia .knit-intro h2{font-size:clamp(34px,4vw,56px);letter-spacing:-.055em;line-height:1.1;color:#f8f0fc;margin:0 0 22px;font-weight:700}
+#malharia .knit-intro h2 em{font-style:normal;color:#cea2e8}
+#malharia .knit-intro p{color:#c2b0cb;max-width:47ch;font-size:15px;line-height:1.8;margin:0}
+#malharia .knit-brand-sculpture{position:relative;display:grid;place-items:center;min-height:265px;isolation:isolate;color:#e8c5fc;background:radial-gradient(ellipse,#b77de22b,transparent 66%)}
+#malharia .knit-brand-sculpture>.icon{width:125px;height:155px;filter:drop-shadow(0 0 20px #c998ef66);transform:rotate(18deg);animation:knit-brand-breathe 7s ease-in-out infinite}
+#malharia .knit-brand-orbit{position:absolute;width:90%;height:52%;border:1px solid #c39bd24d;border-radius:50%;transform:rotate(-28deg);box-shadow:0 0 25px #b57bde0d}
+#malharia .knit-brand-orbit:after{content:"";position:absolute;top:17%;left:12%;width:6px;height:6px;border-radius:50%;background:#deb3f8;box-shadow:0 0 16px #d49bf8}
+#malharia .orbit-two{width:72%;height:82%;transform:rotate(29deg);border-color:#b88ece26}
+#malharia .knit-brand-note{position:absolute;bottom:0;right:8%;color:#aa89bc;font-size:9px;letter-spacing:.12em;line-height:1.8;text-align:right}
+#malharia .knit-edition-tabs{gap:12px;margin:0 0 28px}
+#malharia .knit-edition-tabs button{min-width:0;align-items:center;gap:12px;padding:18px 16px;min-height:90px;border:1px solid #b794cb33;border-radius:14px;background:#ffffff04;color:#b49dc0;box-shadow:inset 0 1px 0 #ffffff06;transition:background .25s,border-color .25s,transform .25s,box-shadow .25s}
+#malharia .knit-edition-tabs button:after{display:none}
+#malharia .knit-edition-tabs button[aria-selected=true]{background:linear-gradient(130deg,#724c88,#473056);border-color:#d6aaed8c;color:#fff;box-shadow:0 8px 28px #0002,inset 0 1px 0 #edd0ff40}
+#malharia .knit-tab-index{display:grid;place-items:center;flex:none;width:28px;height:28px;border-radius:8px;background:#b48ac11a;color:#c8a3d9;font-size:10px}
+#malharia .knit-edition-tabs strong{font-size:18px;line-height:1.3}
+#malharia .knit-edition-tabs small{font-size:11px;line-height:1.5;color:inherit;opacity:.8}
+#malharia .knit-edition-tabs .icon{width:17px;height:17px;flex:none}
+#malharia .knit-edition-panel{gap:clamp(24px,4vw,54px);grid-template-columns:.9fr 1.1fr;align-items:center}
+#malharia .knit-edition-panel[hidden]{display:none}
+#malharia .knit-edition-story{padding:18px 0}
+#malharia .knit-edition-kicker{color:#bd92d5;font-size:9px;letter-spacing:.11em}
+#malharia .knit-edition-story h3{color:#f3eaf8;font-size:clamp(32px,3.2vw,45px);line-height:1.14;margin:18px 0}
+#malharia .knit-edition-story h3 em{color:#c89fe0}
+#malharia .knit-edition-story p{color:#c5b4ce;font-size:15px;line-height:1.8;margin-bottom:20px}
+#malharia .knit-edition-options{color:#c3a1d2;font-size:11px;margin-bottom:24px}
+#malharia .knit-edition-cta{background:#dfc3ef;color:#2f193d;border:1px solid #edd8f7;border-radius:10px;box-shadow:0 8px 26px #0002;min-height:48px;padding:13px 18px;font-size:12px}
+#malharia .knit-edition-cta:hover{background:#f0ddfb}
+#malharia .knit-edition-signature{color:#af92bf;font-size:10px;margin-top:22px}
+#malharia .knit-edition-signature .icon{color:#c89fe0}
+#malharia .knit-edition-stage{height:460px;min-width:0;border-radius:22px;border:1px solid #cba6df44;background:radial-gradient(ellipse at 50% 38%,#f3e7fb,#c4a5d6 68%,#a184b4);box-shadow:inset 0 1px 0 #fff8,0 20px 40px #0002;overflow:hidden}
+#malharia .knit-edition-stage:before{inset:12% 7% 20%;border-color:#80509b30}
+#malharia .knit-stage-word{font-size:clamp(60px,6.5vw,95px);top:48px;color:#80509b20;letter-spacing:-.06em;z-index:0}
+#malharia .knit-stage-marca .knit-stage-word{top:48px;color:#80509b20}
+#malharia .knit-stage-edition{top:20px;right:20px;color:#674278;font-size:9px}
+#malharia .knit-stage-butterfly{position:absolute;top:20px;left:20px;color:#75468b;z-index:2}
+#malharia .knit-stage-butterfly .icon{width:27px;height:34px}
+#malharia .knit-stage-product{z-index:1;right:4%;top:9%;width:92%;height:72%;object-fit:contain;filter:drop-shadow(0 18px 12px #39204930)}
+#malharia .knit-stage-detail{bottom:18px;left:18px;padding:9px 14px 9px 9px;gap:10px;max-width:calc(100% - 36px);background:#f5eafaDC;border:1px solid #fff8;border-radius:13px;box-shadow:0 6px 20px #4b295a17}
+#malharia .knit-stage-detail>img{width:58px;height:58px;border-width:2px;flex:none}
+#malharia .knit-stage-detail figcaption{font-size:11px;color:#573365}
+#malharia .knit-stage-detail small{font-size:9px;color:#7b598d}
+#malharia .knit-stage-caption{display:none}
+#malharia .knit-stage-encontro{display:block;min-height:0}
+#malharia .knit-stage-encontro .knit-stage-product{position:absolute;top:16%;right:5%;width:90%;height:61%;aspect-ratio:auto;object-fit:contain;border-radius:12px;mix-blend-mode:normal}
+#malharia .knit-stage-encontro .knit-stage-detail{position:absolute;margin:0;min-height:0;padding:9px 14px 9px 9px}
+#malharia .knit-edition-tabs button:focus-visible,#malharia .knit-edition-cta:focus-visible{outline:3px solid #ebc6ff;outline-offset:4px}
+@media(hover:hover){#malharia .knit-edition-tabs button:hover{transform:translateY(-3px);border-color:#c799e096;background-color:#ffffff0d}}
+@keyframes knit-brand-breathe{0%,100%{transform:translateY(0) rotate(18deg)}50%{transform:translateY(-9px) rotate(12deg)}}
+@media(max-width:1000px){#malharia .knit-edition-tabs button{padding:14px 10px;gap:8px}#malharia .knit-edition-tabs strong{font-size:16px}#malharia .knit-tab-index{width:23px;height:26px}#malharia .knit-edition-tabs .icon{display:none}#malharia .knit-edition-stage{height:410px}}
+@media(max-width:760px){
+ #malharia{padding-top:28px}#malharia .knit-immersive{padding:23px 17px;border-radius:20px}
+ #malharia .knit-intro{grid-template-columns:1fr;gap:0;margin-bottom:24px;position:relative}
+ #malharia .knit-intro-copy{position:relative;z-index:1}#malharia .knit-overline{font-size:8px;letter-spacing:.08em;padding-right:36px;margin-bottom:15px}
+ #malharia .knit-intro h2{font-size:clamp(29px,7.6vw,42px);max-width:85%;margin-bottom:16px}#malharia .knit-intro p{font-size:14px;line-height:1.7;max-width:none}
+ #malharia .knit-brand-sculpture{position:absolute;top:5px;right:-5px;min-height:115px;width:90px;opacity:.85;pointer-events:none}#malharia .knit-brand-sculpture>.icon{width:49px;height:62px}#malharia .knit-brand-note{display:none}
+ #malharia .knit-edition-tabs{gap:6px;margin-bottom:20px}#malharia .knit-edition-tabs button{min-height:65px;justify-content:center;text-align:center;padding:12px 4px;border-radius:10px}#malharia .knit-tab-index{display:none}
+ #malharia .knit-edition-tabs strong{font-size:13px;letter-spacing:-.03em}#malharia .knit-edition-tabs small{font-size:9px;margin-top:4px;line-height:1.4}
+ #malharia .knit-edition-panel{grid-template-columns:1fr;gap:18px}#malharia .knit-edition-stage{grid-row:1;height:310px;max-width:440px;width:100%;border-radius:16px;box-sizing:border-box}
+ #malharia .knit-stage-word,#malharia .knit-stage-marca .knit-stage-word{font-size:65px;top:40px}#malharia .knit-stage-product{top:8%;height:70%;width:90%;right:5%}
+ #malharia .knit-stage-detail{bottom:12px;left:12px;padding:6px 10px 6px 6px;max-width:calc(100% - 24px)}#malharia .knit-stage-detail>img{width:42px;height:42px}#malharia .knit-stage-detail figcaption{font-size:10px}#malharia .knit-stage-detail small{font-size:8px}
+ #malharia .knit-stage-edition{font-size:8px;top:16px;right:16px}#malharia .knit-stage-butterfly{left:16px;top:14px}#malharia .knit-stage-butterfly .icon{width:22px;height:28px}
+ #malharia .knit-edition-story{padding:0}#malharia .knit-edition-story h3{font-size:31px;margin:12px 0}#malharia .knit-edition-story p{font-size:14px;line-height:1.75;margin-bottom:16px}#malharia .knit-edition-options{margin-bottom:18px;font-size:10px}#malharia .knit-edition-cta{width:100%;justify-content:space-between;box-sizing:border-box}#malharia .knit-edition-signature{margin-top:16px}
+ #malharia .knit-stage-encontro .knit-stage-detail{margin:0;padding:6px 10px 6px 6px;min-height:0}
+}
+@media(prefers-reduced-motion:reduce){#malharia .knit-brand-sculpture>.icon,#malharia .knit-stage-product,#malharia .knit-edition-panel{animation:none!important}#malharia .knit-edition-tabs button{transition:none;transform:none}}
+
+{% endraw %}
+</style>
+{% endblock %}
 {% block content %}
 {% from '_icons.html' import icon %}
 {% from '_video_preview.html' import video_preview %}
@@ -45,7 +124,11 @@
 
 <section class="section knit-studio" id="malharia">
  <div class="container">
-  <div class="section-heading split-heading"><div><h2>Malha que veste.<br>Personalização que marca.</h2></div><p>É na confecção em malha que está a nossa especialidade. Do tecido à peça, pensamos no uso, no caimento e na identidade de cada projeto.</p></div>
+  <div class="knit-immersive" data-knit-immersive>
+  <div class="knit-intro">
+   <div class="knit-intro-copy"><span class="knit-overline">CONFECÇÃO PRÓPRIA / POSSIBILIDADES REAIS</span><h2>Malha que veste.<br>Personalização<br>que <em>marca.</em></h2><p>Do tecido à peça, a sua identidade ganha forma. Explore o que podemos criar para a sua marca, sua equipe ou seu encontro.</p></div>
+   <div class="knit-brand-sculpture" aria-hidden="true"><span class="knit-brand-orbit"></span><span class="knit-brand-orbit orbit-two"></span>{{ icon('butterfly') }}<span class="knit-brand-note">O JEITO MEGUI<br>DE DAR ASAS À SUA IDEIA.</span></div>
+  </div>
   {% set knit_editions = [
    ('marca','01','Sua marca','Camisetas com identidade','DO SEU JEITO, DO TECIDO À ESTAMPA','Uma ideia que<br>dá para <em>vestir.</em>','Básicas, babylooks e modelagens que levam a identidade da sua marca para o dia a dia. A gente conversa sobre tecido, caimento e personalização para encontrar a peça certa.','Básicas · Babylooks · Estampas','img/inicio/camiseta-megui-movimento-v3.webp','Camiseta preta Megui com caimento em movimento','img/tecidos/detalhe-trama-v9.webp','Trama e toque',url_for('category',slug='vestuario'),'Explorar camisetas'),
    ('equipe','02','Sua equipe','Conforto para representar','PRESENÇA EM CADA DIA DE TRABALHO','Quem veste,<br><em>representa.</em>','Uma equipe tem ritmo, rotina e identidade. Camisetas, polos e uniformes pensados para acompanhar quem trabalha e apresentar bem a sua marca.','Camisetas · Polos · Uniformes','img/inicio/polo.webp','Polo preta Megui com detalhes lilás na gola','img/tecidos/detalhe-gola-v9.webp','Gola e acabamento',url_for('b2b') ~ '#uniformes','Conhecer os uniformes'),
@@ -60,9 +143,10 @@
    {% for key,number,label,subtitle,kicker,title,description,details,photo,alt,detail,detail_label,href,action in knit_editions %}
    <div class="knit-edition-panel" role="tabpanel" id="knit-panel-{{ key }}" aria-labelledby="knit-tab-{{ key }}" tabindex="0" {% if not loop.first %}hidden{% endif %}>
     <div class="knit-edition-story"><span class="knit-edition-kicker">{{ kicker }}</span><h3>{{ title|safe }}</h3><p>{{ description }}</p><span class="knit-edition-options">{{ details }}</span><a href="{{ href }}" class="knit-edition-cta">{{ action }} {{ icon('arrow') }}</a><span class="knit-edition-signature">{{ icon('butterfly') }} Confecção própria. Identidade sua.</span></div>
-    <div class="knit-edition-stage knit-stage-{{ key }}"><span class="knit-stage-word" aria-hidden="true">MALHA</span><span class="knit-stage-edition" aria-hidden="true">MEGUI / {{ number }}</span><img class="knit-stage-product" src="{{ url_for('static',filename=photo) }}" alt="{{ alt }}" width="1200" height="1200" loading="lazy"><figure class="knit-stage-detail"><img src="{{ url_for('static',filename=detail) }}" alt="Referência ilustrativa de detalhe: {{ detail_label|lower }}" width="1200" height="800" loading="lazy"><figcaption>{{ detail_label }}<small>Referência de acabamento</small></figcaption></figure><span class="knit-stage-caption">Do tecido à peça.<br>Cuidado em cada escolha.</span></div>
+    <div class="knit-edition-stage knit-stage-{{ key }}"><span class="knit-stage-butterfly" aria-hidden="true">{{ icon('butterfly') }}</span><span class="knit-stage-word" aria-hidden="true">MALHA</span><span class="knit-stage-edition" aria-hidden="true">MEGUI / {{ number }}</span><img class="knit-stage-product" src="{{ url_for('static',filename=photo) }}" alt="{{ alt }}" width="1200" height="1200" loading="lazy"><figure class="knit-stage-detail"><img src="{{ url_for('static',filename=detail) }}" alt="Referência ilustrativa de detalhe: {{ detail_label|lower }}" width="1200" height="800" loading="lazy"><figcaption>{{ detail_label }}<small>Referência de acabamento</small></figcaption></figure><span class="knit-stage-caption">Do tecido à peça.<br>Cuidado em cada escolha.</span></div>
    </div>
    {% endfor %}
+  </div>
   </div>
   <aside class="pouch-editorial" id="saquinhos" aria-labelledby="pouch-title">
    <figure class="pouch-editorial-photo"><img src="{{ url_for('static',filename='img/inicio/saquinhos-malha-referencias-v3.webp') }}" alt="Saquinhos de malha lilás, preto e cru em diferentes tamanhos, incluindo uma embalagem para camiseta" width="1200" height="800" loading="lazy" decoding="async"><figcaption>Referências ilustrativas. Formatos definidos para o seu projeto.</figcaption></figure>
@@ -220,4 +304,28 @@
     </div>
   </div>
 </section>
+
+<script>
+// One light update per frame; only fine pointers, with no motion for reduced-motion users.
+(() => {
+ const studio = document.querySelector('[data-knit-immersive]');
+ if (!studio || !matchMedia('(hover:hover) and (pointer:fine)').matches || matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+ let frame = 0, x = 80, y = 15;
+ studio.addEventListener('pointermove', event => {
+  const bounds = studio.getBoundingClientRect();
+  x = (event.clientX - bounds.left) / bounds.width * 100;
+  y = (event.clientY - bounds.top) / bounds.height * 100;
+  if (!frame) frame = requestAnimationFrame(() => {
+   studio.style.setProperty('--light-x', `${x}%`);
+   studio.style.setProperty('--light-y', `${y}%`);
+   frame = 0;
+  });
+ }, {passive:true});
+ studio.addEventListener('pointerleave', () => {
+  if (frame) cancelAnimationFrame(frame);
+  frame = 0;
+  studio.style.removeProperty('--light-x');studio.style.removeProperty('--light-y');
+ });
+})();
+</script>
 {% endblock %}
