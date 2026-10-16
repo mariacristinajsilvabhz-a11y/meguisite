@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css', v='carousel-20261001-v2') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/design-system.css', v='garment-photos-20261015-v26') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/mockup-integration.css', v='20261002-v1') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/brand-experience.css',v='20261016-v9') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/brand-experience.css',v='20261016-v10') }}">
   {% block extra_head %}{% endblock %}
 </head>
 <body{% if request.endpoint == 'b2b' %} class="corporate-page"{% elif request.endpoint == 'events' %} class="events-page"{% endif %}{% if request.endpoint not in ['products', 'category', 'product', 'create_art', 'events'] %} data-scroll-experience{% endif %}>
@@ -117,7 +117,7 @@
   <script src="{{ url_for('static', filename='js/motion.js', v='quality-flight-20261015-v22') }}"></script>
   <a class="whatsapp-float" href="https://wa.me/{{ whatsapp_number }}?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20falar%20com%20a%20Megui." target="_blank" rel="noopener" aria-label="Falar com a Megui pelo WhatsApp — abre em outra aba"><span class="whatsapp-float-label">Fale com a Megui</span>{{ icon('whatsapp') }}</a>
   <button class="back-to-top" type="button" data-back-to-top aria-label="Voltar ao topo" hidden><span aria-hidden="true">↑</span></button>
-  <script defer src="{{ url_for('static',filename='js/brand-experience.js',v='20261015-v2') }}"></script>
+  <script defer src="{{ url_for('static',filename='js/brand-experience.js',v='20261016-v3') }}"></script>
   {% block extra_scripts %}{% endblock %}
 </body>
 </html>
