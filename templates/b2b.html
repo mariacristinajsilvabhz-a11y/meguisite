@@ -1,14 +1,24 @@
 {% extends "base.html" %}
 {% block title %}Para empresas de todo tamanho — Megui{% endblock %}
-{% block extra_head %}<link rel="stylesheet" href="{{ url_for('static',filename='css/enterprise-studio.css',v='20261016-v1') }}">{% endblock %}
+{% block extra_head %}<link rel="stylesheet" href="{{ url_for('static',filename='css/enterprise-studio.css',v='20261016-v2') }}">{% endblock %}
 {% block content %}
 {% from '_icons.html' import icon %}
-<section class="enterprise-hero" id="empresas">
- <div class="container enterprise-hero-grid">
-  <div class="enterprise-hero-copy"><span class="enterprise-kicker">{{ icon('butterfly') }} PARA QUEM EMPREENDE. DE TODO TAMANHO.</span><h1>Do balcão<br>à diretoria.<br><span>A sua marca<br>vai junto.</span></h1><p>Na camisa de quem atende. No avental de quem faz. Na agenda de quem decide. Personalizados para apresentar bem a sua empresa — e fazer sentido no seu orçamento.</p><a class="enterprise-cta" href="https://wa.me/{{ whatsapp_number }}?text={{ 'Olá! Quero planejar uniformes e personalizados para minha empresa. Podemos conversar sobre opções para meu orçamento?'|urlencode }}" target="_blank" rel="noopener">Vamos pensar no seu negócio {{ icon('arrow') }}</a><a class="enterprise-hero-explore" href="#possibilidades">Veja onde sua marca pode aparecer ↓</a></div>
-  <figure class="enterprise-cover"><img src="{{ url_for('static',filename='img/empresas/agenda-social-tecnologia-v1.webp') }}" alt="Agenda executiva, camisa social branca, caneta e assistente de voz sobre uma mesa de trabalho" width="1536" height="1024" fetchpriority="high" decoding="async"><figcaption><span>UMA IDENTIDADE, MUITAS POSSIBILIDADES.</span><strong>O cuidado aparece<br>antes da primeira conversa.</strong></figcaption><span class="enterprise-cover-note">A próxima marca<br>pode ser a sua.</span></figure>
+<section class="enterprise-hero enterprise-hero-b2b" id="empresas">
+ <div class="container enterprise-business-layout">
+  <div class="enterprise-business-copy">
+   <div class="enterprise-business-kicker"><span class="enterprise-business-kicker-mark">{% include '_brand_butterfly.html' %}</span><span>MEGUI PARA EMPRESAS</span><span class="enterprise-kicker-rule"></span><span>PRODUÇÃO & PERSONALIZAÇÃO</span></div>
+   <h1>Sua operação tem uma identidade.<span> A gente coloca ela em movimento.</span></h1>
+   <p class="enterprise-business-lead">Uniformes para quem está na linha de frente. Materiais para apresentar sua marca. Brindes para criar conexões. Da pequena equipe às demandas corporativas.</p>
+   <div class="enterprise-business-actions"><a class="enterprise-business-primary" href="https://wa.me/{{ whatsapp_number }}?text={{ 'Olá, Megui! Quero solicitar uma proposta para minha empresa. Posso informar os produtos, a quantidade e o prazo?'|urlencode }}" target="_blank" rel="noopener">Solicitar proposta para minha empresa</a><span>Atendimento para projetos sob medida</span></div>
+   <div class="enterprise-business-capabilities" aria-label="Soluções corporativas"><span>Uniformes e malharia</span><span>Brindes e kits</span><span>Projetos em volume</span><span>Licitações e especificações</span></div>
+  </div>
+  <div class="enterprise-business-gallery" aria-label="Aplicações dos produtos Megui em empresas">
+   <figure class="enterprise-business-photo enterprise-business-main"><img src="{{ url_for('static',filename='img/empresas/equipe-pastelaria-v1.webp') }}" alt="Equipe de atendimento com camisetas e aventais personalizados" width="1536" height="1024" fetchpriority="high"><figcaption><span>01 / QUEM FAZ ACONTECER</span><strong>Uniformização com identidade.</strong></figcaption></figure>
+   <figure class="enterprise-business-photo enterprise-business-side"><img src="{{ url_for('static',filename='img/empresas/agenda-social-tecnologia-v1.webp') }}" alt="Agenda executiva, camisa social e tecnologia para aplicações corporativas" width="1536" height="1024"><figcaption>02 / CORPORATIVO & PRESENTES</figcaption></figure>
+   <div class="enterprise-business-stamp"><span>MEGUI</span><strong>Feito para o seu negócio.</strong><small>Confeccionamos. Personalizamos. Conectamos.</small></div>
+  </div>
  </div>
- <nav class="container enterprise-wayfinding" aria-label="Explore soluções para sua empresa"><a href="#uniformes">Vestir a equipe <span>↗</span></a><a href="#presentes">Presentear com intenção <span>↗</span></a><a href="#transporte">Levar a marca mais longe <span>↗</span></a><a href="#seu-orcamento">Planejar o investimento <span>↗</span></a></nav>
+ <div class="container enterprise-business-index"><span class="enterprise-business-index-title">Onde podemos atuar</span><div><a href="#uniformes"><strong>01</strong> Uniformes</a><a href="#presentes"><strong>02</strong> Kits e brindes</a><a href="#transporte"><strong>03</strong> Soluções especiais</a><a href="#seu-orcamento"><strong>04</strong> Planejamento</a></div></div>
 </section>
 
 <section class="enterprise-possibilities" id="possibilidades">
