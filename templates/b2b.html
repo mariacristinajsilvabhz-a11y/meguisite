@@ -2,8 +2,8 @@
 {% from '_icons.html' import icon %}
 {% block title %}Sua marca em cada detalhe — Empresas | Megui{% endblock %}
 {% block extra_head %}
-<link rel="stylesheet" href="{{ url_for('static',filename='css/b2b-atelier.css',v='20261016-studio-02') }}">
-<script defer src="{{ url_for('static',filename='js/b2b-studio.js',v='20261016-studio-02') }}"></script>
+<link rel="stylesheet" href="{{ url_for('static',filename='css/b2b-atelier.css',v='20261016-detail-03') }}">
+<script defer src="{{ url_for('static',filename='js/b2b-studio.js',v='20261016-detail-03') }}"></script>
 {% endblock %}
 {% block content %}
 {% macro talk(text, label, primary=false) %}<a class="{{ 'empresa-button' if primary else 'empresa-link' }}" href="https://wa.me/{{ whatsapp_number }}?text={{ text|urlencode }}" target="_blank" rel="noopener">{{ icon('whatsapp') if primary else '' }}{{ label }}{{ icon('arrow') }}</a>{% endmacro %}
