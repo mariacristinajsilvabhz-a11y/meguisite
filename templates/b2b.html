@@ -2,18 +2,23 @@
 {% block title %}Empresas — Megui{% endblock %}
 {% block content %}
 {% from '_icons.html' import icon %}
-<section class="b2b-visual-hero">
+<section class="b2b-visual-hero corporate-brand-hero" id="empresas">
   <div class="container b2b-visual-grid">
-    <div class="b2b-visual-copy"><span class="eyebrow corporate-eyebrow">{{ icon('butterfly') }} EMPRESAS</span><h1>Vista sua equipe.<br><span>Fortaleça sua marca.</span></h1><p>Confecção e personalização em malha para vestir sua equipe. Uniformes, camisetas e saquinhos, com brindes e comunicação visual para completar o projeto.</p>
+    <div class="b2b-visual-copy"><span class="eyebrow corporate-eyebrow">{{ icon('butterfly') }} FEITO PARA A SUA EMPRESA</span><h1>A sua marca<br>merece <span>ser vista.</span></h1><p>Na equipe que veste. No presente que fica. No espaço que comunica. Começamos pela confecção em malha e reunimos os personalizados que fazem sentido para o seu negócio.</p>
       <div class="corporate-actions"><a class="corporate-action-primary" href="https://wa.me/{{ whatsapp_number }}?text=Ol%C3%A1!%20Quero%20cotar%20um%20projeto%20para%20minha%20empresa." target="_blank" rel="noopener"><span>Pedir uma cotação</span>{{ icon('arrow') }}</a><a class="corporate-action-secondary" href="#uniformes">{{ icon('vestuario') }} Ver uniformes</a></div>
-      <p class="corporate-hero-signature"><span></span>Da escolha do produto ao acabamento.<br>Seu projeto, com a identidade da sua marca.</p>
+      <div class="corporate-brand-note"><span>CONFECÇÃO PRÓPRIA</span><p>Do tecido à personalização.<br>Uma identidade em cada escolha.</p></div>
     </div>
-    <div class="corporate-hero-gallery" aria-label="Vestuário, brindes e comunicação visual">
-      <a class="corporate-hero-main" href="#uniformes"><img src="{{ url_for('static',filename='img/acervo/2026/future-pro-estudio-v2.webp') }}" alt="Camiseta Future Pro em manequim invisível" fetchpriority="high"><span><small>VESTUÁRIO / FUTURE PRO</small><strong>Identidade em cada peça.</strong><em>Camiseta personalizada · visualização do produto</em></span></a>
-      <a class="corporate-hero-detail" href="{{ url_for('portfolio_view') }}"><img src="{{ url_for('static',filename='img/acervo/2026/band-kit-estudio-v6.webp') }}" alt="Visualização do kit de brindes personalizados para a Band Minas"><span><span><small>BRINDES / BAND MINAS</small><strong>Presença no dia a dia.</strong></span>{{ icon('arrow') }}</span></a>
-      <a class="corporate-hero-detail" href="{{ url_for('events') }}"><img src="{{ url_for('static',filename='img/acervo/2026/samba-do-maestro-sem-marca-v3.webp') }}" alt="Comunicação visual no evento Samba do Maestro"><span><span><small>EVENTOS / SAMBA DO MAESTRO</small><strong>Uma marca que ocupa o espaço.</strong></span>{{ icon('arrow') }}</span></a>
+    <div class="corporate-brand-stage" aria-label="Exemplos de vestuário, brindes e comunicação visual da Megui">
+      <span class="corporate-stage-heading" aria-hidden="true">PRESENÇA<br>QUE MARCA.</span>
+      <span class="corporate-stage-edition">MEGUI / EMPRESAS</span>
+      <a class="corporate-composition-garment" href="#uniformes"><img src="{{ url_for('static',filename='img/acervo/2026/future-pro-estudio-v2.webp') }}" alt="Camiseta preta Future Pro personalizada em manequim invisível" width="1200" height="1200" fetchpriority="high"><span><small>01 / VESTIR</small><strong>A identidade vai com a equipe.</strong><em>Future Pro · visualização do produto</em></span>{{ icon('arrow') }}</a>
+      <a class="corporate-composition-gifts" href="{{ url_for('portfolio_view') }}"><img src="{{ url_for('static',filename='img/acervo/2026/band-kit-estudio-v6.webp') }}" alt="Kit com camiseta, copos e canecas personalizados para Band Minas" width="1200" height="800"><span><small>02 / PRESENTEAR</small><strong>Uma lembrança que fica.</strong><em>Band Minas · visualização de produtos</em></span>{{ icon('arrow') }}</a>
+      <a class="corporate-composition-event" href="{{ url_for('events') }}"><img src="{{ url_for('static',filename='img/acervo/2026/samba-do-maestro-sem-marca-v3.webp') }}" alt="Aplicação de comunicação visual no evento Samba do Maestro" width="1200" height="800"><span><small>03 / COMUNICAR</small><strong>Sua marca ocupa o espaço.</strong><em>Samba do Maestro</em></span>{{ icon('arrow') }}</a>
+      <span class="corporate-stage-seal">{{ icon('butterfly') }}<span>DA IDEIA<br>À PRESENÇA.</span></span>
     </div>
   </div>
+  <div class="container corporate-brand-routes"><span>COMO SUA MARCA<br>PODE APARECER?</span><a href="#uniformes"><span>01</span><strong>Na rotina da equipe</strong>{{ icon('arrow') }}</a><a href="{{ url_for('products') }}?q=kit"><span>02</span><strong>Em um presente especial</strong>{{ icon('arrow') }}</a><a href="{{ url_for('events') }}"><span>03</span><strong>No seu próximo evento</strong>{{ icon('arrow') }}</a></div>
+
   <div class="container corporate-explore">
     <div class="corporate-explore-label">{{ icon('butterfly') }}<span>CONHEÇA O JEITO MEGUI DE FAZER</span><i aria-hidden="true"></i></div>
     <div class="garment-story" data-garment-story>
