@@ -49,27 +49,7 @@ WHATSAPP_NUMBER = re.sub(r"\D", "", _raw_whatsapp)
 if WHATSAPP_NUMBER in {"31984912083", "5531984912083"}:
     WHATSAPP_NUMBER = PRIMARY_WHATSAPP
 
-CATEGORIES = [
-    {"slug": "vestuario", "name": "Vestuário", "description": "Camisetas, moletons, uniformes, bonés, aventais e jalecos.", "icon": "M"},
-    {"slug": "bolsas-acessorios", "name": "Bolsas & Acessórios", "description": "Mochilas, nécessaires, ecobags, sacolas e acessórios.", "icon": "◇"},
-    {"slug": "brindes", "name": "Brindes", "description": "Copos, squeezes, canecas, kits e presentes corporativos.", "icon": "✦"},
-    {"slug": "corporativo", "name": "Corporativo", "description": "Soluções para eventos, equipes, campanhas e kits empresariais.", "icon": "▦"},
-    {"slug": "grafica", "name": "Meg Gráfica", "description": "Materiais gráficos e comunicação visual para sua marca.", "icon": "▤"},
-    {"slug": "eventos", "name": "Eventos", "description": "Camisetas, brindes e comunicação visual para feiras, festas e ações promocionais.", "icon": "✦"},
-    {"slug": "destaques", "name": "Destaques", "description": "Produtos com alta procura e ótimo potencial de marca.", "icon": "★"},
-]
-
-CATEGORY_IMAGES = {
-    "brindes": ["img/produtos/squeeze-megui.webp", "img/produtos/caneca-megui.webp"],
-    "bolsas-acessorios": ["img/produtos/mochila-megui.webp"],
-    "vestuario": ["img/produtos/camiseta-megui.webp"],
-    "corporativo": ["img/produtos/kit-corporativo-megui.webp"],
-    "grafica": ["img/produtos/wind-banner-megui.webp"],
-    "eventos": ["img/inicio/eventos.webp"],
-    "destaques": ["img/produtos/caneca-megui.webp", "img/produtos/camiseta-megui.webp"],
-}
-for category_item in CATEGORIES:
-    category_item["images"] = CATEGORY_IMAGES[category_item["slug"]]
+from catalog_taxonomy import CATEGORIES, CATEGORY_MAP, COLLECTIONS, SUBCATEGORY_MAP, classify, matches
 
 TRUSTED_BRANDS = [
     {"name": "Band Minas", "image": "band-minas.png"},
@@ -182,6 +162,10 @@ PRODUCTS = [
 ]
 
 
+for _product in PRODUCTS:
+    _classification = classify({'nome':_product['name'],'categoria_original':_product['category']})
+    _product.update(category=_classification['categoria'],subcategory=_classification['subcategoria'])
+
 def get_product(product_id):
     if hub_catalog.enabled and product_id >= 1_000_000_000:
         return hub_catalog.get(product_id-1_000_000_000)
@@ -189,7 +173,7 @@ def get_product(product_id):
 
 
 def get_category(slug):
-    return next((c for c in CATEGORIES if c["slug"] == slug), None)
+    return next((c for c in CATEGORIES + COLLECTIONS if c["slug"] == slug), None)
 
 
 def cart():
@@ -237,9 +221,7 @@ def stock_priority(product):
 
 
 def matches_category(product, slug):
-    if slug == "eventos":
-        return product["category"] in {"vestuario", "brindes", "grafica", "corporativo"}
-    return product["category"] == slug
+    return matches(product, slug)
 
 
 def order_by_stock(products):
@@ -249,12 +231,8 @@ def order_by_stock(products):
 
 @app.get("/")
 def home():
-    homepage_images = {
-        "brindes": "copo-termico", "bolsas-acessorios": "ecobag",
-        "vestuario": "moletom", "corporativo": "caderno",
-        "grafica": "papelaria", "destaques": "bone", "eventos": "eventos",
-    }
-    home_categories = [dict(category, images=[f"img/inicio/{homepage_images[category['slug']]}.webp"]) for category in CATEGORIES]
+    home_slugs = ['vestuario','bolsas-acessorios','copos-garrafas','papelaria','tecnologia','grafica']
+    home_categories = [dict(CATEGORY_MAP[slug],images=[CATEGORY_MAP[slug]['homepage_image']]) for slug in home_slugs]
     try:
         items = hub_catalog.list(limit=6, vitrine=True)[0] if hub_catalog.enabled else order_by_stock(PRODUCTS)[:6]
     except CatalogUnavailable:
@@ -275,15 +253,26 @@ def render_catalog(category_slug=""):
         abort(404)
     query = request.args.get("q", "").strip()[:160]
     page = max(1, request.args.get("pagina", 1, type=int) or 1)
+    subtype = request.args.get('subcategoria','').strip()
+    if subtype and subtype not in SUBCATEGORY_MAP:abort(404)
+    if subtype and category_slug in CATEGORY_MAP and SUBCATEGORY_MAP[subtype][0]!=category_slug:
+        return redirect(url_for('category',slug=SUBCATEGORY_MAP[subtype][0],subcategoria=subtype,q=query or None))
     if hub_catalog.enabled:
-        items, pagination = hub_catalog.list(category_slug, query, page)
+        items, pagination, facets = hub_catalog.listing(category_slug, query, page, subtype=subtype)
     else:
-        items = [p for p in PRODUCTS if not category_slug or matches_category(p, category_slug)]
+        all_items = PRODUCTS
         if query:
-            items = [p for p in items if all(t.lower() in (p['name']+' '+p['sku']).lower() for t in query.split())]
+            all_items = [p for p in all_items if all(t.lower() in (p['name']+' '+p['sku']).lower() for t in query.split())]
+        items = [p for p in all_items if matches_category(p, category_slug)]
+        facets = {'categorias':[dict(slug=c['slug'],total=sum(p['category']==c['slug'] for p in all_items)) for c in CATEGORIES],
+                  'subcategorias':[dict(slug=sub['slug'],name=sub['name'],total=sum(p.get('subcategory')==sub['slug'] for p in items)) for c in CATEGORIES for sub in c['subcategories'] if any(p.get('subcategory')==sub['slug'] for p in items)]}
+        if subtype:items=[p for p in items if p.get('subcategory')==subtype]
         items = order_by_stock(items)
         pagination = {"total": len(items), "pagina": 1, "paginas": 1}
-    return render_template("products.html", products=items, active_category=active_category, pagination=pagination, query=query)
+    category_counts = {c['slug']:c['total'] for c in facets.get('categorias',[])}
+    subcategories = facets.get('subcategorias',[])
+    return render_template("products.html", products=items, active_category=active_category, pagination=pagination, query=query,
+                           active_subtype=subtype,subcategories=subcategories,category_counts=category_counts,collections=COLLECTIONS)
 
 
 @app.get("/produtos")

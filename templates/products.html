@@ -21,8 +21,8 @@
  <nav class="container catalog-intents catalog-product-shortcuts" aria-label="Atalhos de produtos"><span class="catalog-shortcuts-label">Encontre seu<br><strong>ponto de partida.</strong></span>
   <a class="catalog-shortcut" href="{{ url_for('category',slug='vestuario') }}"><span class="catalog-shortcut-icon">{{ icon('tshirt') }}</span><span class="catalog-shortcut-title">Roupas & <br>uniformes</span><span class="catalog-shortcut-arrow">{{ icon('arrow') }}</span></a>
   <a class="catalog-shortcut" href="{{ url_for('category',slug='bolsas-acessorios') }}"><span class="catalog-shortcut-icon">{{ icon('bag') }}</span><span class="catalog-shortcut-title">Bolsas & <br>acessórios</span><span class="catalog-shortcut-arrow">{{ icon('arrow') }}</span></a>
-  <a class="catalog-shortcut" href="{{ url_for('category',slug='brindes') }}"><span class="catalog-shortcut-icon">{{ icon('bottle') }}</span><span class="catalog-shortcut-title">Copos & <br>brindes</span><span class="catalog-shortcut-arrow">{{ icon('arrow') }}</span></a>
-  <a class="catalog-shortcut" href="{{ url_for('category',slug='corporativo') }}"><span class="catalog-shortcut-icon">{{ icon('kit') }}</span><span class="catalog-shortcut-title">Papelaria & <br>kits</span><span class="catalog-shortcut-arrow">{{ icon('arrow') }}</span></a>
+  <a class="catalog-shortcut" href="{{ url_for('category',slug='copos-garrafas') }}"><span class="catalog-shortcut-icon">{{ icon('bottle') }}</span><span class="catalog-shortcut-title">Copos & <br>garrafas</span><span class="catalog-shortcut-arrow">{{ icon('arrow') }}</span></a>
+  <a class="catalog-shortcut" href="{{ url_for('category',slug='papelaria') }}"><span class="catalog-shortcut-icon">{{ icon('kit') }}</span><span class="catalog-shortcut-title">Papelaria & <br>escritório</span><span class="catalog-shortcut-arrow">{{ icon('arrow') }}</span></a>
  </nav>
 </section>
 
@@ -31,15 +31,18 @@
     <aside class="filters">
       <h2>Categorias</h2>
       <a class="{% if not active_category %}active{% endif %}" href="{{ url_for('products') }}">{{ icon('grid') }} Todos os produtos</a>
-      {% for category in categories %}
-        <a class="{% if active_category and active_category.slug == category.slug %}active{% endif %}" data-category="{{ category.slug }}" href="{{ url_for('category', slug=category.slug) }}">{{ icon(category.slug) }} {{ category.name }}</a>
+      {% for category in categories if category_counts.get(category.slug,1)>0 or (active_category and active_category.slug==category.slug) %}
+        <a class="{% if active_category and active_category.slug == category.slug %}active{% endif %}" data-category="{{ category.slug }}" href="{{ url_for('category', slug=category.slug) }}">{{ icon(category.icon) }} <span>{{ category.name }}</span>{% if category.slug in category_counts %}<small>{{ category_counts[category.slug] }}</small>{% endif %}</a>
       {% endfor %}
+      <h2 class="catalog-collection-title">Por ocasião</h2>
+      {% for collection in collections if collection.slug in ['corporativo','eventos'] %}<a class="{% if active_category and active_category.slug==collection.slug %}active{% endif %}" href="{{ url_for('category',slug=collection.slug) }}">{{ icon('eventos' if collection.slug=='eventos' else 'corporativo') }} {{ collection.name }}</a>{% endfor %}
     </aside>
 
     <div>
       <form class="catalog-query" action="{{ request.path }}" method="get">
         {% if request.args.get('categoria') %}<input type="hidden" name="categoria" value="{{ request.args.get('categoria') }}">{% endif %}
         <label for="full-catalog-query">Já tem uma ideia? Encontre aqui.</label><div><input id="full-catalog-query" name="q" value="{{ query }}" placeholder="Ex.: caneca, camiseta, ecobag…"><button class="btn btn-primary" type="submit">Buscar</button></div>
+        <div class="catalog-type-filter"><label for="catalog-subtype">Tipo de produto<select id="catalog-subtype" name="subcategoria"><option value="">Todos os tipos{% if active_category %} de {{ active_category.name|lower }}{% endif %}</option>{% for sub in subcategories %}<option value="{{ sub.slug }}" {% if active_subtype==sub.slug %}selected{% endif %}>{{ sub.name }} ({{ sub.total }})</option>{% endfor %}</select></label><button class="catalog-filter-apply" type="submit">Aplicar filtro {{ icon('arrow') }}</button>{% if active_subtype or query %}<a class="catalog-clear" href="{{ url_for('category',slug=active_category.slug) if active_category else url_for('products') }}">Limpar filtros</a>{% endif %}</div>
       </form>
       <div class="catalog-toolbar">
         <div id="catalog-result-count" role="status" aria-live="polite"><strong>{{ "{:,}".format(pagination.total).replace(",", ".") }}</strong> pontos de partida para criar</div>
@@ -58,11 +61,11 @@
       </div>
       {% if pagination.paginas > 1 %}
       <nav class="catalog-pagination" aria-label="Páginas do catálogo">
-        {% if pagination.pagina > 1 %}<a class="btn btn-secondary" href="{{ url_for(request.endpoint, slug=active_category.slug if request.endpoint == 'category' else none, categoria=request.args.get('categoria') or none, q=query or none, pagina=pagination.pagina-1) }}">← Anterior</a>{% endif %}
+        {% if pagination.pagina > 1 %}<a class="btn btn-secondary" href="{{ url_for(request.endpoint, slug=active_category.slug if request.endpoint == 'category' else none, categoria=request.args.get('categoria') or none, q=query or none, subcategoria=active_subtype or none, pagina=pagination.pagina-1) }}">← Anterior</a>{% endif %}
         <span>Página {{ pagination.pagina }} de {{ pagination.paginas }}</span>
-        {% if pagination.pagina < pagination.paginas %}<a class="btn btn-primary" href="{{ url_for(request.endpoint, slug=active_category.slug if request.endpoint == 'category' else none, categoria=request.args.get('categoria') or none, q=query or none, pagina=pagination.pagina+1) }}">Próxima →</a>{% endif %}
+        {% if pagination.pagina < pagination.paginas %}<a class="btn btn-primary" href="{{ url_for(request.endpoint, slug=active_category.slug if request.endpoint == 'category' else none, categoria=request.args.get('categoria') or none, q=query or none, subcategoria=active_subtype or none, pagina=pagination.pagina+1) }}">Próxima →</a>{% endif %}
       </nav>{% endif %}
-      <div id="empty-search" class="empty-state" {% if products %}hidden{% endif %}>{{ icon('search') }}<h2>Nenhum produto nesta categoria.</h2><p>Veja as sugestões da busca ou explore o catálogo completo.</p><a class="btn btn-secondary" href="{{ url_for('products') }}">Ver todos os produtos</a></div>
+      <div id="empty-search" class="empty-state" {% if products %}hidden{% endif %}>{{ icon('search') }}<h2>Nenhum produto para esta seleção.</h2><p>Veja as sugestões da busca ou explore o catálogo completo.</p><a class="btn btn-secondary" href="{{ url_for('products') }}">Ver todos os produtos</a></div>
     </div>
   </div>
 </section>

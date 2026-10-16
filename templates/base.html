@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/brand-whispers.css', v='20261016-v1') }}">
   {% block extra_head %}{% endblock %}
   <link rel="stylesheet" href="{{ url_for('static', filename='css/mobile-refinement.css', v='20261016-v3') }}">
-  <link rel="stylesheet" href="{{ url_for('static',filename='css/product-studio.css',v='20261016-atalhos-v4') }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/product-studio.css',v='20261016-taxonomia-v5') }}">
 </head>
 <body{% if request.endpoint == 'b2b' %} class="corporate-page"{% elif request.endpoint == 'events' %} class="events-page"{% elif request.endpoint in ['products', 'category'] %} class="catalog-experience"{% endif %}{% if request.endpoint not in ['products', 'category', 'product', 'create_art', 'events'] %} data-scroll-experience{% endif %}>
   {% from '_icons.html' import icon %}
@@ -43,7 +43,7 @@
           <div class="dropdown-panel">
             <a href="{{ url_for('textiles') }}">{{ icon('tshirt') }} Tecidos & materiais</a>
             {% for category in categories %}
-              <a data-category="{{ category.slug }}" href="{{ url_for('category', slug=category.slug) }}">{{ icon(category.slug) }} {{ category.name }}</a>
+              <a data-category="{{ category.slug }}" href="{{ url_for('category', slug=category.slug) }}">{{ icon(category.icon) }} {{ category.name }}</a>
             {% endfor %}
           </div>
         </div>
@@ -73,7 +73,7 @@
     <div class="container discovery-inner">
       {% include '_search.html' %}
       <div class="discovery-links" aria-label="Atalhos de categorias">
-        {% for category in categories[:3] %}<a data-category="{{ category.slug }}" href="{{ url_for('category', slug=category.slug) }}">{{ icon(category.slug) }} {{ category.name }}</a>{% endfor %}
+        {% for category in categories[:3] %}<a data-category="{{ category.slug }}" href="{{ url_for('category', slug=category.slug) }}">{{ icon(category.icon) }} {{ category.name }}</a>{% endfor %}
       </div>
     </div>
   </div>

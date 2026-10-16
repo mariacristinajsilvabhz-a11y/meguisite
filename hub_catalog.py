@@ -52,9 +52,15 @@ class HubCatalog:
             if cached and time.monotonic()-cached[0]<86400:return cached[1]
             raise CatalogUnavailable() from error
 
+    def listing(self,category='',query='',page=1,limit=48,vitrine=False,subtype=''):
+        params={'categoria':category,'q':query,'pagina':page,'limite':limit,'vitrine':int(vitrine)}
+        if subtype:params['subcategoria']=subtype
+        data=self.fetch('/api/site/catalogo',params)
+        return [adapt(p) for p in data['produtos'] if int(p.get('estoque') or 0)>0],data['paginacao'],data.get('filtros',{})
+
     def list(self,category='',query='',page=1,limit=48,vitrine=False):
-        data=self.fetch('/api/site/catalogo',{'categoria':category,'q':query,'pagina':page,'limite':limit,'vitrine':int(vitrine)})
-        return [adapt(p) for p in data['produtos'] if int(p.get('estoque') or 0)>0],data['paginacao']
+        items,pagination,_=self.listing(category,query,page,limit,vitrine)
+        return items,pagination
 
     def get(self,hub_id):
         data=self.fetch('/api/site/catalogo/'+str(hub_id))
@@ -101,7 +107,7 @@ def adapt(p):
     gallery=list(dict.fromkeys(url for url in [image]+[safe_image(v) for v in p.get('imagens',[])] if url))
     return {'variants':variants,'gallery':gallery,'id':1_000_000_000+int(p['id']),'hub_id':int(p['id']),
             'slug':'hub-'+str(p['id']),'name':p['nome'].removesuffix(' — '+str(p.get('sku_mestre') or '')),'sku':p.get('sku_mestre') or str(p['id']),
-            'category':p.get('categoria') or 'brindes','line':p.get('linha_negocio') or 'Megui Personalizados',
+            'category':p.get('categoria') or 'outros','subcategory':p.get('subcategoria') or '','line':p.get('linha_negocio') or 'Megui Personalizados',
             'short':description[:160] or 'Personalização para sua marca. Consulte acabamentos e disponibilidade.',
             'description':description or 'Consulte nossa equipe para definir a quantidade, a personalização e o prazo deste produto.',
             'tags':[p.get('categoria_original') or 'Personalizável'],
