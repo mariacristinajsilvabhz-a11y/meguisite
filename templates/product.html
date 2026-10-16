@@ -45,12 +45,24 @@
         <form action="{{ url_for('add_to_quote', product_id=product.id) }}" method="post">
           <input type="hidden" name="next" value="{{ request.path }}">
           {% if product.variants %}
-          <label>Cor / opção
+          <div class="variant-picker">
+            <div class="variant-picker-heading"><strong>Cores e opções disponíveis</strong><span data-variant-selected aria-live="polite">Selecione uma opção</span></div>
+            <div class="variant-swatches" role="group" aria-label="Escolher cor ou opção">
+              {% for variant in product.variants %}
+              <button type="button" class="variant-swatch" data-variant-choice="{{ variant.id }}" data-variant-name="{{ variant.color or ('Opção ' ~ loop.index) }}" aria-pressed="false" {% if variant.stock <= 0 %}disabled title="Indisponível"{% endif %}>
+                <span class="variant-swatch-dot" aria-hidden="true"></span>
+                <span class="variant-swatch-name">{{ variant.color or ('Opção ' ~ loop.index) }}</span>
+                {% if variant.stock <= 0 %}<span class="variant-unavailable">Indisponível</span>{% endif %}
+              </button>
+              {% endfor %}
+            </div>
+            <label class="variant-fallback-label">Opção selecionada
             <select name="variant_id" data-catalog-variant required>
               {% if product.variants|length > 1 %}<option value="">Escolha uma opção</option>{% endif %}
               {% for variant in product.variants %}<option value="{{ variant.id }}" data-image="{{ variant.image }}" data-color="{{ variant.color }}" {% if variant.stock <= 0 %}disabled{% endif %}>{{ variant.color or ('Opção ' ~ loop.index) }}{% if variant.stock <= 0 %} — indisponível{% endif %}</option>{% endfor %}
             </select>
-          </label>
+            </label>
+          </div>
           {% endif %}
           <label>
             Quantidade desejada
@@ -76,5 +88,5 @@
 </section>
 {% endblock %}
 
-{% block extra_head %}<link rel="stylesheet" href="{{ url_for('static',filename='css/catalog-gallery.css',v='20261016-v1') }}">{% endblock %}
-{% block extra_scripts %}<script defer src="{{ url_for('static',filename='js/catalog-gallery.js',v='20261016-v2') }}"></script>{% endblock %}
+{% block extra_head %}<link rel="stylesheet" href="{{ url_for('static',filename='css/catalog-gallery.css',v='20261016-v3') }}">{% endblock %}
+{% block extra_scripts %}<script defer src="{{ url_for('static',filename='js/catalog-gallery.js',v='20261016-v3') }}"></script>{% endblock %}
