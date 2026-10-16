@@ -2,15 +2,23 @@
 {% block title %}{% if active_category %}{{ active_category.name }}{% else %}Produtos{% endif %} — Megui{% endblock %}
 {% block content %}
 {% from '_icons.html' import icon %}
-<section class="page-hero">
-  <div class="container">
-    <span class="eyebrow">CATÁLOGO MEGUI</span>
-    <h1>{% if active_category %}{{ active_category.name }}{% else %}Produtos{% endif %}</h1>
-    <p>{% if active_category %}{{ active_category.description }}{% else %}Encontre o produto, escolha os detalhes e monte sua lista para personalizar.{% endif %}</p>
+<section class="catalog-invitation" aria-labelledby="catalog-title">
+ <div class="container catalog-invitation-grid">
+  <div class="catalog-invitation-copy"><span class="catalog-kicker">PEÇAS PARA GANHAR A SUA IDENTIDADE</span>
+   <h1 id="catalog-title">{% if active_category %}{{ active_category.name }}.<br><em>Do seu jeito.</em>{% else %}Uma peça.<br><em>Mil jeitos de ser sua.</em>{% endif %}</h1>
+   <p>Seu logo. Uma frase que só vocês entendem. A cor que tem tudo a ver com a sua marca. Escolha o ponto de partida — a gente cria o resto com você.</p>
+   <a class="catalog-start-link" href="#escolher-produtos">Encontre sua próxima ideia <span aria-hidden="true">↓</span></a>
   </div>
+  <div class="catalog-inspiration" aria-label="Exemplos ilustrativos de personalização Megui">
+   <figure class="catalog-inspiration-main"><img src="{{ url_for('static',filename='img/produtos/kit-corporativo-megui.webp') }}" alt="Visualização de kit com produtos personalizados com a marca Megui" width="1000" height="1000" decoding="async"><figcaption>Uma identidade.<br><strong>Em cada detalhe.</strong></figcaption></figure>
+   <figure class="catalog-inspiration-note"><img src="{{ url_for('static',filename='img/produtos/caneca-megui.webp') }}" alt="Visualização de caneca personalizada Megui" width="1000" height="1000" decoding="async"><figcaption>o próximo pode ser o seu ↗</figcaption></figure>
+   <span class="catalog-inspiration-label">Exemplos ilustrativos · Aplicação sob consulta</span>
+  </div>
+ </div>
+ <nav class="container catalog-intents" aria-label="Encontre produtos para sua ocasião"><span>O QUE VOCÊ QUER CRIAR?</span><a href="{{ url_for('category',slug='corporativo') }}">Uma marca presente ↗</a><a href="{{ url_for('category',slug='vestuario') }}">Uma equipe com identidade ↗</a><a href="{{ url_for('products',q='caneca') }}">Um presente com significado ↗</a><a href="{{ url_for('category',slug='eventos') }}">Um encontro inesquecível ↗</a></nav>
 </section>
 
-<section class="section catalog-section">
+<section class="section catalog-section" id="escolher-produtos">
   <div class="container catalog-layout">
     <aside class="filters">
       <h2>Categorias</h2>
@@ -23,10 +31,10 @@
     <div>
       <form class="catalog-query" action="{{ request.path }}" method="get">
         {% if request.args.get('categoria') %}<input type="hidden" name="categoria" value="{{ request.args.get('categoria') }}">{% endif %}
-        <label for="full-catalog-query">Buscar no catálogo completo</label><div><input id="full-catalog-query" name="q" value="{{ query }}" placeholder="Nome, código ou categoria"><button class="btn btn-primary" type="submit">Buscar</button></div>
+        <label for="full-catalog-query">Já tem uma ideia? Encontre aqui.</label><div><input id="full-catalog-query" name="q" value="{{ query }}" placeholder="Ex.: caneca, camiseta, ecobag…"><button class="btn btn-primary" type="submit">Buscar</button></div>
       </form>
       <div class="catalog-toolbar">
-        <div id="catalog-result-count" role="status" aria-live="polite"><strong>{{ "{:,}".format(pagination.total).replace(",", ".") }}</strong> produtos para seu projeto</div>
+        <div id="catalog-result-count" role="status" aria-live="polite"><strong>{{ "{:,}".format(pagination.total).replace(",", ".") }}</strong> pontos de partida para criar</div>
         <div class="catalog-view-controls" aria-label="Visualização dos produtos">
           <button type="button" data-view="grid" aria-pressed="true" aria-label="Mostrar em grade">{{ icon('grid') }}</button>
           <button type="button" data-view="list" aria-pressed="false" aria-label="Mostrar em lista">{{ icon('list') }}</button>

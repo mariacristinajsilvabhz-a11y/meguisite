@@ -143,6 +143,7 @@
 @media(prefers-reduced-motion:reduce){.welcome-carousel .carousel-slide.is-active{animation:none}}
 {% endraw %}
 </style>
+<link rel="stylesheet" href="{{ url_for('static',filename='css/knit-journal.css',v='20261016-v1') }}">
 {% endblock %}
 {% block content %}
 {% from '_icons.html' import icon %}
@@ -224,14 +225,21 @@
  </div>
  </div>
  <div class="container">
-  <section class="knit-discovery" id="saquinhos" aria-labelledby="knit-discovery-title">
-   <div class="knit-discovery-heading"><div><span class="knit-discovery-eyebrow">OUTROS JEITOS DE USAR A MALHA</span><h2 id="knit-discovery-title">A camiseta é<br>só o começo.</h2></div><p>O mesmo universo de malhas abre espaço para roupas de descanso, peças infantis, acessórios e embalagens. Cada ideia pede um toque, uma estrutura e um caimento.</p></div>
-   <div class="knit-discovery-grid">
-    <figure class="knit-discovery-packaging"><img src="{{ url_for('static',filename='img/inicio/saquinhos-malha-referencias-v3.webp') }}" alt="Referência ilustrativa de saquinhos de malha lilás, preto e cru, em diferentes tamanhos" width="1200" height="800" loading="lazy"><figcaption><span class="knit-discovery-number">01 / EMBALAR & GUARDAR</span><h3>A embalagem continua útil.</h3><p>Saquinhos para produtos, presentes e kits. Depois da entrega, podem guardar acessórios e organizar pequenos objetos.</p></figcaption></figure>
-    <div class="knit-discovery-possibilities"><div class="knit-discovery-texture"><img src="{{ url_for('static',filename='img/tecidos/malha-estruturada.webp') }}" alt="Referência ilustrativa de textura e caimento de uma malha lilás" width="1200" height="800" loading="lazy"></div><span class="knit-discovery-number">02 / VESTIR & ACOMPANHAR</span><h3>Já pensou nessas peças?</h3><ul><li>Regatas e vestidos</li><li>Pijamas e roupas de bebê</li><li>Moletons e conjuntos</li><li>Toucas, faixas e bandanas</li><li>Capas de almofada em malha</li></ul></div>
-    <div class="knit-discovery-benefits"><span class="knit-discovery-number">03 / POR QUE ESCOLHER MALHA?</span><dl><dt>Conforto no contato.</dt><dd>Bases com toque macio fazem diferença nas peças que ficam próximas da pele.</dd><dt>Liberdade para se mover.</dt><dd>A construção em laçadas pode favorecer a flexibilidade. A composição e a modelagem completam essa escolha.</dd><dt>Uma base, vários caminhos.</dt><dd>Malhas leves, encorpadas ou texturizadas permitem explorar roupas, acessórios e embalagens com propostas diferentes.</dd></dl></div>
+  <section class="knit-discovery knit-journal" id="saquinhos" aria-labelledby="knit-discovery-title">
+   <div class="knit-discovery-heading"><div><span class="knit-discovery-eyebrow">CADERNO DE POSSIBILIDADES / MALHA</span><h2 id="knit-discovery-title">A camiseta é<br>só o começo.</h2></div><p>Tem ideia que vira roupa. Tem ideia que vira presente. E tem embalagem que você guarda muito depois de abrir.</p></div>
+   <div class="knit-journal-columns">
+    <article class="knit-journal-story">
+     <figure class="knit-polaroid"><img src="{{ url_for('static',filename='img/inicio/saquinhos-malha-referencias-v3.webp') }}" alt="Referência ilustrativa de saquinhos de malha lilás, preto e cru" width="1200" height="800" loading="lazy"><figcaption>feito para guardar mais que um presente.</figcaption><span class="knit-paper-tape" aria-hidden="true"></span></figure>
+     <span class="knit-journal-kicker">01 / EMBALAR & GUARDAR</span><h3>A embalagem<br>também faz parte.</h3><p>Saquinhos para produtos, presentes e kits. Depois da entrega, continuam por perto: guardando acessórios, memórias e pequenos objetos.</p><a class="knit-journal-link" href="https://wa.me/{{ whatsapp_number }}?text={{ 'Olá! Quero criar saquinhos personalizados em malha.'|urlencode }}" target="_blank" rel="noopener">Quero criar meus saquinhos {{ icon('arrow') }}</a>
+    </article>
+    <article class="knit-idea-feed" aria-labelledby="knit-feed-title">
+     <div class="knit-feed-profile"><span aria-hidden="true">{{ icon('butterfly') }}</span><div><strong>Megui · caderno de ideias</strong><small>ideias para salvar e tirar do papel</small></div><span class="knit-feed-dots" aria-hidden="true">···</span></div>
+     <figure><img src="{{ url_for('static',filename='img/tecidos/malha-estruturada.webp') }}" alt="Referência ilustrativa de malha lilás com textura e caimento" width="1200" height="800" loading="lazy"><figcaption>um toque. muitas possibilidades.</figcaption></figure>
+     <div class="knit-feed-caption"><span class="knit-journal-kicker">02 / VESTIR & ACOMPANHAR</span><h3 id="knit-feed-title">Já imaginou<br>essa malha em…</h3><ul><li>pijamas & roupas de bebê</li><li>regatas, vestidos & conjuntos</li><li>toucas, faixas & bandanas</li><li>capas de almofada & acessórios</li></ul><a class="knit-journal-link" href="{{ url_for('textiles') }}">Encontrar uma base para minha ideia {{ icon('arrow') }}</a></div>
+    </article>
+    <aside class="knit-field-notes" aria-labelledby="knit-notes-title"><div class="knit-notes-masthead"><span>DO ATELIÊ</span>{{ icon('butterfly') }}</div><span class="knit-journal-kicker">03 / POR DENTRO DA ESCOLHA</span><h3 id="knit-notes-title">Por que<br><em>malha?</em></h3><dl><dt><span>01.</span> Conforto no contato.</dt><dd>Bases com toque macio para peças que ficam próximas da pele.</dd><dt><span>02.</span> Liberdade de movimento.</dt><dd>A construção em laçadas pode favorecer a flexibilidade. Composição e modelagem completam a escolha.</dd><dt><span>03.</span> Uma base, vários caminhos.</dt><dd>Leve, encorpada ou texturizada: a malha encontra espaço em roupas, acessórios e embalagens.</dd></dl><p class="knit-notes-signature">A melhor base é a que faz sentido<br>para o que você quer criar.</p></aside>
    </div>
-   <div class="knit-discovery-footer"><small>As fotos são ilustrativas. Composição, gramatura e viabilidade são definidas para cada projeto.</small><div><a href="{{ url_for('textiles') }}">Explorar as bases e os tecidos {{ icon('arrow') }}</a><a href="https://wa.me/{{ whatsapp_number }}?text={{ 'Olá! Quero desenvolver uma peça em malha. Podemos conversar sobre as possibilidades?'|urlencode }}" target="_blank" rel="noopener">Tenho outra ideia {{ icon('arrow') }}</a></div></div>
+   <div class="knit-discovery-footer"><small>Fotos ilustrativas. Composição, gramatura e viabilidade são definidas para cada projeto.</small><div><a href="{{ url_for('textiles') }}">Explorar tecidos & materiais {{ icon('arrow') }}</a><a href="https://wa.me/{{ whatsapp_number }}?text={{ 'Olá! Quero desenvolver uma peça em malha. Podemos conversar sobre as possibilidades?'|urlencode }}" target="_blank" rel="noopener">Tenho outra ideia {{ icon('arrow') }}</a></div></div>
   </section>
  </div>
 </section>
@@ -272,9 +280,9 @@
     <div class="section-heading split-heading">
       <div>
         <span class="eyebrow">CONTINUE EXPLORANDO</span>
-        <h2>Sua próxima ideia começa aqui.</h2>
+        <h2>Pode ser a sua marca aqui.</h2>
       </div>
-      <p>Malha, brindes e outras possibilidades. A gente alinha quantidade, acabamento e prazo com você.</p>
+      <p>Escolha uma peça. Imagine sua cor, sua mensagem, seu logo. Vamos criar a combinação que faz sentido para você.</p>
     </div>
 
     <div class="product-grid">

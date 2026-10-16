@@ -64,6 +64,7 @@ class VariantTests(unittest.TestCase):
                 self.assertEqual(session['quote_cart']['1000000042:8']['qty'],50)
             client.post('/orcamento/remover/1000000042:7')
             self.assertNotIn(b'6520-AZU',client.get('/orcamento').data)
+        self.assertNotIn(b'>6520-AZU<',detail.data);self.assertNotIn(b'>6520-VD<',detail.data)
         adapted=adapt(product)
         self.assertEqual(len(adapted['gallery']),3)
         self.assertEqual(adapted['variants'][2]['image'],'')

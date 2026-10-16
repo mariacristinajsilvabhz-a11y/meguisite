@@ -1,26 +1,16 @@
-<article class="product-card">
+<article class="product-card product-merch product-merch--{{ (loop.index0 if loop is defined else 0) % 4 }}">
   <a class="product-visual visual-{{ product.visual }}" href="{{ url_for('product', slug=product.slug) }}" aria-label="{{ product.name }}">
     {% if product.image_url %}<img class="real-product-photo" src="{{ product.image_url }}" alt="{{ product.name }}" loading="lazy">{% elif product.images %}<div class="catalog-photo-set">{% for image in product.images %}<img src="{{ url_for('static', filename=image) }}" alt="{{ product.name }} — item de referência do kit" loading="lazy">{% endfor %}</div>{% elif product.image %}    <img src="{{ url_for('static', filename=product.image) }}" alt="{{ product.name }}{% if product.image_reference %} — mockup ilustrativo{% endif %}" loading="lazy">{% else %}<span class="product-photo-pending">Imagem em breve</span>{% endif %}
     {% if product.image_reference %}<span class="photo-reference-label">Mockup ilustrativo</span>{% endif %}
   </a>
   <div class="product-body">
-    <div class="product-meta">{{ product.line }} • {{ product.sku }}</div>
+    <div class="product-meta"><span>{{ 'Uma ideia para vestir' if product.category == 'vestuario' else 'Para levar sua identidade' if product.category == 'bolsas-acessorios' else 'Um detalhe que fica' if product.category == 'brindes' else 'Sua marca em cada detalhe' }}</span></div>
     <h3><a href="{{ url_for('product', slug=product.slug) }}">{{ product.name }}</a></h3>
-    <p>{{ product.short }}</p>
-    {% if product.variants|default([])|length > 1 %}<span class="product-meta">{{ product.variants|selectattr('stock','gt',0)|list|length }} opções disponíveis</span>{% endif %}
+    {% set available_colors = product.variants|default([])|selectattr('stock','gt',0)|list %}
+    {% if available_colors %}<div class="product-color-peeks" aria-label="Cores disponíveis de {{ product.name }}">{% for variant in available_colors[:7] %}<a href="{{ url_for('product',slug=product.slug,opcao=variant.id) }}" aria-label="Escolher {{ variant.color or ('opção ' ~ loop.index) }}" title="{{ variant.color or ('Opção ' ~ loop.index) }}">{% if variant.swatch %}<span class="product-color-dot" style="--product-color:{{ variant.swatch }}" aria-hidden="true"></span>{% elif variant.image %}<img src="{{ variant.image }}" alt="" width="24" height="24" loading="lazy">{% else %}<span class="product-color-unknown" aria-hidden="true">?</span>{% endif %}</a>{% endfor %}{% if available_colors|length > 7 %}<a class="product-color-more" href="{{ url_for('product',slug=product.slug) }}" aria-label="Ver todas as {{ available_colors|length }} opções">+{{ available_colors|length - 7 }}</a>{% endif %}</div>{% endif %}
     <div class="product-actions">
-      <a class="product-details" href="{{ url_for('product', slug=product.slug) }}">Ver detalhes</a>
-      {% if product.id in cart_ids %}
-        <a class="mini-quote is-added" href="{{ url_for('quote_view') }}" title="Ver ou editar este produto no orçamento">✓ Adicionado</a>
-      {% else %}
-      {% if product.variants|default([])|length > 1 %}<a class="mini-quote" href="{{ url_for('product',slug=product.slug) }}">Escolher cor ↗</a>{% else %}
-      <form class="quick-quote-form" action="{{ url_for('add_to_quote', product_id=product.id) }}" method="post">
-        <input type="hidden" name="qty" value="1">
-        <input type="hidden" name="next" value="{{ request.path }}">
-          <button class="mini-quote" type="submit">+ Orçamento</button>
-      </form>
-      {% endif %}
-      {% endif %}
+      <a class="product-create-link" href="{{ url_for('product',slug=product.slug) }}">Quero do meu jeito <span aria-hidden="true">↗</span></a>
+      {% if product.id in cart_ids %}<a class="product-selected" href="{{ url_for('quote_view') }}">✓ Na sua seleção</a>{% endif %}
     </div>
   </div>
 </article>

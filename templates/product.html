@@ -17,7 +17,6 @@
     <div class="product-info">
       <span class="eyebrow">{{ product.line }}</span>
       <h1>{{ product.name }}</h1>
-      <div class="sku">{{ product.sku }}</div>
       <p class="lead">{{ product.description }}</p>
 
       <div class="tag-row">
@@ -49,7 +48,7 @@
           <label>Cor / opção
             <select name="variant_id" data-catalog-variant required>
               {% if product.variants|length > 1 %}<option value="">Escolha uma opção</option>{% endif %}
-              {% for variant in product.variants %}<option value="{{ variant.id }}" data-image="{{ variant.image }}" data-color="{{ variant.color }}" {% if variant.stock <= 0 %}disabled{% endif %}>{{ variant.color or variant.sku }} · {{ variant.sku }}{% if variant.stock <= 0 %} — indisponível{% endif %}</option>{% endfor %}
+              {% for variant in product.variants %}<option value="{{ variant.id }}" data-image="{{ variant.image }}" data-color="{{ variant.color }}" {% if variant.stock <= 0 %}disabled{% endif %}>{{ variant.color or ('Opção ' ~ loop.index) }}{% if variant.stock <= 0 %} — indisponível{% endif %}</option>{% endfor %}
             </select>
           </label>
           {% endif %}
@@ -78,4 +77,4 @@
 {% endblock %}
 
 {% block extra_head %}<link rel="stylesheet" href="{{ url_for('static',filename='css/catalog-gallery.css',v='20261016-v1') }}">{% endblock %}
-{% block extra_scripts %}<script defer src="{{ url_for('static',filename='js/catalog-gallery.js',v='20261016-v1') }}"></script>{% endblock %}
+{% block extra_scripts %}<script defer src="{{ url_for('static',filename='js/catalog-gallery.js',v='20261016-v2') }}"></script>{% endblock %}

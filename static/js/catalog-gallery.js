@@ -18,4 +18,9 @@
   const option = select.selectedOptions[0];
   if (option) show(option.dataset.image, option.dataset.color);
  });
+ if (select) {
+  const requested = new URLSearchParams(location.search).get('opcao');
+  const option = [...select.options].find(option => option.value === requested && !option.disabled);
+  if (option) { select.value = option.value; select.dispatchEvent(new Event('change')); }
+ }
 })();

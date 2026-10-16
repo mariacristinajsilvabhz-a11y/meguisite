@@ -18,8 +18,9 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/brand-whispers.css', v='20261016-v1') }}">
   {% block extra_head %}{% endblock %}
   <link rel="stylesheet" href="{{ url_for('static', filename='css/mobile-refinement.css', v='20261016-v3') }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/product-studio.css',v='20261016-v1') }}">
 </head>
-<body{% if request.endpoint == 'b2b' %} class="corporate-page"{% elif request.endpoint == 'events' %} class="events-page"{% endif %}{% if request.endpoint not in ['products', 'category', 'product', 'create_art', 'events'] %} data-scroll-experience{% endif %}>
+<body{% if request.endpoint == 'b2b' %} class="corporate-page"{% elif request.endpoint == 'events' %} class="events-page"{% elif request.endpoint in ['products', 'category'] %} class="catalog-experience"{% endif %}{% if request.endpoint not in ['products', 'category', 'product', 'create_art', 'events'] %} data-scroll-experience{% endif %}>
   {% from '_icons.html' import icon %}
   <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false"><defs><symbol id="megui-butterfly" viewBox="0 0 125 154">{% include '_brand_butterfly.html' %}</symbol></defs></svg>
   <div class="top-strip">Confecção própria • Malha & personalização • Empresas & eventos</div>
