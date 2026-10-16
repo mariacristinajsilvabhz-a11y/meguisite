@@ -6,10 +6,10 @@
 @media(prefers-reduced-motion:reduce){}
 
 /* Material-library editorial composition: open surfaces and a numbered index. */
-#materiais{background:#ded0e7;padding-block:65px}
+#materiais{background:#eee7f2;padding-block:65px}
 #materiais .textile-gateway-layout{grid-template-columns:1.05fr .95fr;gap:clamp(30px,6vw,85px)}
 #materiais .textile-samplebook{margin:0;padding:0;background:none;border:0;box-shadow:none;overflow:visible}
-#materiais .textile-samplebook>img{display:block;width:100%;height:490px;object-fit:cover;border-radius:0}
+#materiais .textile-samplebook>img{display:block;width:100%;height:490px;object-fit:cover;border-radius:6px 70px 6px 6px;box-shadow:0 20px 35px #4f345d1a}
 #materiais .textile-samplebook>figcaption{display:flex;justify-content:space-between;gap:18px;padding:17px 0 0;color:#765b82;font-size:10px;letter-spacing:.06em}
 #materiais .textile-samplebook>small{font-size:9px;color:#8b7196;margin-top:12px}
 #materiais h2{font-size:clamp(37px,3.8vw,55px);font-weight:500;line-height:1.08;letter-spacing:-.05em;margin:24px 0}
@@ -23,17 +23,19 @@
 #materiais .textile-faq summary{font-size:12px;padding:14px 28px 14px 0;font-weight:500}
 #materiais .textile-faq summary:after{right:0}
 #materiais .textile-faq p{padding:0 20px 16px 0}
-#materiais .textile-primary{margin-top:9px;background:#392344;border:0;border-radius:0;font-size:12px;padding:15px 20px;box-shadow:none}
+#materiais .textile-primary{margin-top:9px;background:#392344;border:0;border-radius:7px;font-size:12px;padding:15px 20px;box-shadow:none}
 #textile-page{background:#eee7f2}
 #textile-page .textile-hero{gap:75px;padding-block:45px 75px}
 #textile-page h1{font-weight:500;font-size:clamp(42px,5vw,70px);line-height:1.06;letter-spacing:-.055em}
 #textile-page .textile-hero-art{display:block;margin:0;min-height:0;background:none;isolation:auto}
-#textile-page .textile-hero-art>img{width:100%;height:380px;object-fit:cover;display:block}
+#textile-page .textile-hero-art>img{width:100%;height:380px;object-fit:cover;display:block;border-radius:60px 6px 6px 6px;box-shadow:0 16px 35px #49325417}
 #textile-page .textile-hero-art>figcaption{font-size:9px;letter-spacing:.15em;padding-top:16px;color:#997ba6}
 #textile-page .textile-section-head h2,#textile-page .textile-bottom-faq h2{font-weight:500}
 #textile-page .textile-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 50px}
-#textile-page .textile-card{display:grid;grid-template-columns:105px 1fr;gap:24px;align-items:start;border:0;border-top:1px solid #c9b4d5;padding:27px 0;background:none;box-shadow:none;border-radius:0;overflow:visible}
-#textile-page .textile-card-sample{height:150px;margin-top:4px;overflow:hidden}
+#textile-page .textile-card{display:grid;grid-template-columns:105px 1fr;gap:24px;align-items:start;border:0;padding:27px 0;background:none;box-shadow:none;border-radius:0;overflow:visible}
+#textile-page .textile-card-sample{height:150px;margin-top:4px;overflow:hidden;border-radius:5px 28px 5px 5px;box-shadow:3px 9px 18px #4932541f}
+#textile-page #piquet .textile-card-sample,#textile-page #tricoline .textile-card-sample{border-radius:3px}
+#textile-page #moletom .textile-card-sample{border-radius:30px 5px 5px 5px}
 #textile-page .textile-card-sample>span{font-size:7px;letter-spacing:.04em;top:0;left:0;right:0;padding:7px 5px;background:#392746;color:#f2e7f8;border-radius:0}
 #textile-page .textile-card-sample>.icon{height:29px;width:24px;right:10px;bottom:10px}
 #textile-page .textile-card-sample:after{background:linear-gradient(100deg,#fff1,transparent 70%)}
@@ -46,11 +48,11 @@
 #textile-page .textile-choose:hover{color:#3c2149;background:none}
 #textile-page .textile-filters{gap:0}
 #textile-page .textile-filters button{border:0;border-bottom:2px solid transparent;border-radius:0;background:transparent;padding:12px 14px;color:#94779f}
-#textile-page .textile-filters button[aria-pressed=true]{background:#e4d7eb;border-bottom-color:#6f4683;color:#4c315c}
-#textile-page .textile-primary{border:0;border-radius:0;background:#3d2849;box-shadow:none}
-#textile-page input,#textile-page select,#textile-page textarea{border-radius:0;background:#f7f1fa;border-color:#c8b1d4;box-shadow:none}
+#textile-page .textile-filters button[aria-pressed=true]{background:none;border-bottom-color:#6f4683;color:#4c315c}
+#textile-page .textile-primary{border:0;border-radius:7px;background:#3d2849;box-shadow:none}
+#textile-page input,#textile-page select,#textile-page textarea{border-radius:6px;background:#f8f3fa;border-color:#d8c8e1;box-shadow:0 3px 10px #55316d05}
 #textile-page .textile-form{background:none;border:0;border-radius:0;padding:0 22px 0 0}
-#textile-page .textile-summary{border:0;border-radius:0;box-shadow:none;background:#33243f;padding:30px}
+#textile-page .textile-summary{border:0;border-radius:8px 32px 8px 8px;box-shadow:0 16px 32px #35204717;background:#33243f;padding:30px}
 #textile-page .textile-summary h3{font-weight:500}
 #textile-page .textile-summary h3>span{background:none;border:1px solid #9d7bb359;border-radius:0}
 #textile-page .textile-summary .textile-primary{background:#d7b9e7;color:#352140}
