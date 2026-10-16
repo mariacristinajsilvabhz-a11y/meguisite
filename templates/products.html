@@ -6,15 +6,19 @@
  <div class="container catalog-invitation-grid">
   <div class="catalog-invitation-copy"><span class="catalog-kicker">PEÇAS PARA GANHAR A SUA IDENTIDADE</span>
    <h1 id="catalog-title">{% if active_category %}{{ active_category.name }}.<br><em>Do seu jeito.</em>{% else %}Uma peça.<br><em>Mil jeitos de ser sua.</em>{% endif %}</h1>
-   <p>Seu logo. Uma frase que só vocês entendem. A cor que tem tudo a ver com a sua marca. Escolha o ponto de partida — a gente cria o resto com você.</p>
-   <a class="catalog-start-link" href="#escolher-produtos">Encontre sua próxima ideia <span aria-hidden="true">↓</span></a>
+   <p>Camisetas, bolsas, canecas, papelaria e muito mais. Encontre a peça, escolha a cor e leve a sua identidade para cada detalhe.</p>
+   <a class="catalog-start-link" href="#escolher-produtos">Explorar produtos <span aria-hidden="true">↓</span></a>
   </div>
-  <div class="catalog-inspiration" aria-label="Ideias de personalização">
-   <figure class="catalog-inspiration-main"><img src="{{ url_for('static',filename='img/empresas/agenda-social-tecnologia-v1.webp') }}" alt="Agenda personalizada, camisa social e assistente de voz" width="1000" height="1000" decoding="async"><figcaption>Uma identidade.<br><strong>Em cada detalhe.</strong></figcaption></figure>
-   <figure class="catalog-inspiration-note"><img src="{{ url_for('static',filename='img/empresas/caneca-novas-ideias-v1.webp') }}" alt="Caneca personalizada" width="1000" height="1000" decoding="async"><figcaption>o próximo pode ser o seu ↗</figcaption></figure>
+  <div class="catalog-object-stage" aria-label="Papelaria, canecas e acessórios personalizados">
+   <span class="catalog-object-orbit" aria-hidden="true"></span>
+   <span class="catalog-object-butterfly" aria-hidden="true">{{ icon('butterfly') }}</span>
+   <img class="catalog-object-notebook" src="{{ url_for('static',filename='img/inicio/caderno.webp') }}" alt="Caderno lilás personalizado com caneta" width="1000" height="1000" fetchpriority="high">
+   <img class="catalog-object-mug" src="{{ url_for('static',filename='img/empresas/caneca-novas-ideias-v1.webp') }}" alt="Caneca com estampa colorida" width="1254" height="1254" fetchpriority="high">
+   <img class="catalog-object-cap" src="{{ url_for('static',filename='img/inicio/bone.webp') }}" alt="Boné preto com bordado lilás" width="1000" height="1000" decoding="async">
+   <span class="catalog-object-caption">A sua identidade.<br><strong>Em muitas possibilidades.</strong></span>
   </div>
  </div>
- <nav class="container catalog-intents" aria-label="Encontre produtos para sua ocasião"><h2>O que você<br>quer criar?</h2><a href="{{ url_for('category',slug='corporativo') }}">Uma marca presente ↗</a><a href="{{ url_for('category',slug='vestuario') }}">Uma equipe com identidade ↗</a><a href="{{ url_for('products',q='caneca') }}">Um presente com significado ↗</a><a href="{{ url_for('category',slug='eventos') }}">Um encontro inesquecível ↗</a></nav>
+ <nav class="container catalog-intents catalog-product-shortcuts" aria-label="Atalhos de produtos"><span class="catalog-shortcuts-label">Encontre seu<br><strong>ponto de partida.</strong></span><a href="{{ url_for('category',slug='vestuario') }}">Roupas & uniformes <span aria-hidden="true">↗</span></a><a href="{{ url_for('category',slug='bolsas-acessorios') }}">Bolsas & acessórios <span aria-hidden="true">↗</span></a><a href="{{ url_for('category',slug='brindes') }}">Copos & brindes <span aria-hidden="true">↗</span></a><a href="{{ url_for('category',slug='corporativo') }}">Papelaria & kits <span aria-hidden="true">↗</span></a></nav>
 </section>
 
 <section class="section catalog-section" id="escolher-produtos">
