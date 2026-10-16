@@ -1,24 +1,20 @@
 {% extends "base.html" %}
 {% block title %}Para empresas de todo tamanho — Megui{% endblock %}
-{% block extra_head %}<link rel="stylesheet" href="{{ url_for('static',filename='css/enterprise-studio.css',v='20261016-v3') }}">{% endblock %}
+{% block extra_head %}<link rel="stylesheet" href="{{ url_for('static',filename='css/enterprise-studio.css',v='20261016-v4') }}">{% endblock %}
 {% block content %}
 {% from '_icons.html' import icon %}
-<section class="enterprise-hero enterprise-hero-b2b" id="empresas">
- <div class="container enterprise-business-layout">
-  <div class="enterprise-business-copy">
-   <div class="enterprise-business-kicker"><span class="enterprise-business-kicker-mark">{{ icon('butterfly') }}</span><span>MEGUI PARA EMPRESAS</span><span class="enterprise-kicker-rule"></span><span>PRODUÇÃO & PERSONALIZAÇÃO</span></div>
-   <h1>Sua operação tem uma identidade.<span> A gente coloca ela em movimento.</span></h1>
-   <p class="enterprise-business-lead">Uniformes para quem está na linha de frente. Materiais para apresentar sua marca. Brindes para criar conexões. Da pequena equipe às demandas corporativas.</p>
-   <div class="enterprise-business-actions"><a class="enterprise-business-primary" href="https://wa.me/{{ whatsapp_number }}?text={{ 'Olá, Megui! Quero solicitar uma proposta para minha empresa. Posso informar os produtos, a quantidade e o prazo?'|urlencode }}" target="_blank" rel="noopener">Solicitar proposta para minha empresa</a><span>Atendimento para projetos sob medida</span></div>
-   <div class="enterprise-business-capabilities" aria-label="Soluções corporativas"><span>Uniformes e malharia</span><span>Brindes e kits</span><span>Projetos em volume</span><span>Licitações e especificações</span></div>
+<section class="enterprise-hero enterprise-b2b-refined" id="empresas">
+ <div class="container enterprise-refined-layout">
+  <div class="enterprise-refined-copy">
+   <div class="enterprise-refined-overline">{{ icon('butterfly') }} <span>MEGUI PARA NEGÓCIOS</span></div>
+   <h1>Sua marca no dia a dia de quem faz acontecer.</h1>
+   <p>Da camiseta da equipe ao kit de uma grande ação. Confeccionamos e personalizamos peças para empresas, com soluções pensadas para cada necessidade, quantidade e orçamento.</p>
+   <a class="enterprise-refined-cta" href="https://wa.me/{{ whatsapp_number }}?text={{ 'Olá, Megui! Quero fazer um orçamento para minha empresa. Gostaria de falar sobre produtos, quantidades e prazos.'|urlencode }}" target="_blank" rel="noopener">Conversar sobre meu projeto</a>
+   <div class="enterprise-refined-facts"><span><strong>Confecção própria</strong> em malharia</span><span><strong>Personalização</strong> de diferentes produtos</span><span><strong>Projetos</strong> para empresas e eventos</span></div>
   </div>
-  <div class="enterprise-business-gallery" aria-label="Aplicações dos produtos Megui em empresas">
-   <figure class="enterprise-business-photo enterprise-business-main"><img src="{{ url_for('static',filename='img/empresas/equipe-pastelaria-v1.webp') }}" alt="Equipe de atendimento com camisetas e aventais personalizados" width="1536" height="1024" fetchpriority="high"><figcaption><span>01 / QUEM FAZ ACONTECER</span><strong>Uniformização com identidade.</strong></figcaption></figure>
-   <figure class="enterprise-business-photo enterprise-business-side"><img src="{{ url_for('static',filename='img/empresas/agenda-social-tecnologia-v1.webp') }}" alt="Agenda executiva, camisa social e tecnologia para aplicações corporativas" width="1536" height="1024"><figcaption>02 / CORPORATIVO & PRESENTES</figcaption></figure>
-   <div class="enterprise-business-stamp"><span>MEGUI</span><strong>Feito para o seu negócio.</strong><small>Confeccionamos. Personalizamos. Conectamos.</small></div>
-  </div>
+  <figure class="enterprise-refined-visual"><img src="{{ url_for('static',filename='img/empresas/equipe-pastelaria-v1.webp') }}" width="1536" height="1024" alt="Equipe de pastelaria trabalhando com uniformes personalizados" fetchpriority="high"><figcaption><span class="enterprise-refined-visual-tag">UNIFORMES & IDENTIDADE</span><span>Gente de verdade faz o negócio acontecer.</span></figcaption></figure>
  </div>
- <div class="container enterprise-business-index"><span class="enterprise-business-index-title">Onde podemos atuar</span><div><a href="#uniformes"><strong>01</strong> Uniformes</a><a href="#presentes"><strong>02</strong> Kits e brindes</a><a href="#transporte"><strong>03</strong> Soluções especiais</a><a href="#seu-orcamento"><strong>04</strong> Planejamento</a></div></div>
+ <div class="container enterprise-refined-paths" aria-label="Áreas de atuação"><a href="#uniformes"><span>01</span> Uniformes e malharia</a><a href="#presentes"><span>02</span> Brindes corporativos</a><a href="#transporte"><span>03</span> Projetos especiais</a><a href="#seu-orcamento"><span>04</span> Planejar uma compra</a></div>
 </section>
 
 <section class="enterprise-possibilities" id="possibilidades">
