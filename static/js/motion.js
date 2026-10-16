@@ -183,7 +183,7 @@
       index = (next + frames.length) % frames.length;
       frames.forEach((frame, i) => {frame.classList.toggle('is-active', i === index);frame.setAttribute('aria-hidden',String(i !== index));});
       [...controls.children].forEach((dot, i) => markDot(dot, i === index));
-      showcase.querySelector('[data-shirt-caption]').textContent = showcase.dataset.shirtCaptionMode === 'name' ? frames[index].dataset.shirtBrand : `${frames[index].dataset.shirtBrand} · Visualização de personalização`;
+      showcase.querySelector('[data-shirt-caption]').textContent = showcase.dataset.shirtCaptionMode === 'name' ? frames[index].dataset.shirtBrand : frames[index].dataset.shirtBrand;
     };
     frames.forEach((frame, i) => controls.append(makeDot(`Ver camiseta ${frame.dataset.shirtBrand}`, () => {holdUntil = Date.now() + 8000;show(i);})));show(0);
     showcase.addEventListener('focusin', () => focused = Boolean(showcase.querySelector(':focus-visible')));

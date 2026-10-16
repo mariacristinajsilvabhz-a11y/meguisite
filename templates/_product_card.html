@@ -1,7 +1,7 @@
 <article class="product-card product-merch product-merch--{{ (loop.index0 if loop is defined else 0) % 4 }}">
   <a class="product-visual visual-{{ product.visual }}" href="{{ url_for('product', slug=product.slug) }}" aria-label="{{ product.name }}">
-    {% if product.image_url %}<img class="real-product-photo" src="{{ product.image_url }}" alt="{{ product.name }}" loading="lazy">{% elif product.images %}<div class="catalog-photo-set">{% for image in product.images %}<img src="{{ url_for('static', filename=image) }}" alt="{{ product.name }} — item de referência do kit" loading="lazy">{% endfor %}</div>{% elif product.image %}    <img src="{{ url_for('static', filename=product.image) }}" alt="{{ product.name }}{% if product.image_reference %} — mockup ilustrativo{% endif %}" loading="lazy">{% else %}<span class="product-photo-pending">Imagem em breve</span>{% endif %}
-    {% if product.image_reference %}<span class="photo-reference-label">Mockup ilustrativo</span>{% endif %}
+    {% if product.image_url %}<img class="real-product-photo" src="{{ product.image_url }}" alt="{{ product.name }}" loading="lazy">{% elif product.images %}<div class="catalog-photo-set">{% for image in product.images %}<img src="{{ url_for('static', filename=image) }}" alt="{{ product.name }} — item de referência do kit" loading="lazy">{% endfor %}</div>{% elif product.image %}    <img src="{{ url_for('static', filename=product.image) }}" alt="{{ product.name }}" loading="lazy">{% else %}<span class="product-photo-pending">Imagem em breve</span>{% endif %}
+
   </a>
   <div class="product-body">
     <div class="product-meta"><span>{{ 'Uma ideia para vestir' if product.category == 'vestuario' else 'Para levar sua identidade' if product.category == 'bolsas-acessorios' else 'Um detalhe que fica' if product.category == 'brindes' else 'Sua marca em cada detalhe' }}</span></div>

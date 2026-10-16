@@ -1,0 +1,27 @@
+{
+  "ferramenta": "image_gen, modo integrado",
+  "uso": "Assets da página de Empresas e do cabeçalho de Produtos",
+  "criterios": [
+    "Sem a logo da Megui nas novas propostas de produtos",
+    "Não são apresentados como cases ou entregas a clientes",
+    "As marcas dos cases existentes permanecem nos trabalhos do acervo"
+  ],
+  "assets": [
+    {
+      "arquivo": "agenda-social-tecnologia-v1.webp",
+      "prompt_resumido": "Agenda executiva, social branca, caneta e assistente de voz. Remover os símbolos Megui; substituir por SUA MARCA na agenda e na camisa; preservar mesa, luz e textura."
+    },
+    {
+      "arquivo": "equipe-pastelaria-v1.webp",
+      "prompt_resumido": "Equipe de pastelaria. Substituir a marca Megui dos aventais por PASTEL DA CASA com desenho de pastel; preservar pessoas, mãos, ambiente e luz."
+    },
+    {
+      "arquivo": "capas-encosto-transporte-v1.webp",
+      "prompt_resumido": "Capas têxteis em bancos de ônibus. Remover Megui e aplicar SUA EMPRESA em azul-marinho; preservar costuras, tecido e banco."
+    },
+    {
+      "arquivo": "caneca-novas-ideias-v1.webp",
+      "prompt_resumido": "Caneca branca sem logo Megui. Estampa bom dia, novas ideias. com roxo, lilás e laranja; preservar objeto e transparência."
+    }
+  ]
+}

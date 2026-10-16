@@ -79,3 +79,21 @@
 .product-card.product-merch .product-color-peeks img { width: 22px; height: 22px; border-radius: 50%; }
 .product-color-unknown { font-size: 11px; color: #907988; }
 .product-card.product-merch .product-color-peeks > a.product-color-more { width: auto; min-width: 25px; font-size: 10px; color: #81637a; text-decoration: none; }
+/* Mais voz de marca e leitura real: títulos, pergunta e caminhos deixam de ser rodapé. */
+.catalog-invitation { background: linear-gradient(115deg,#eadcf1,#f3eaf1 65%,#f1e4d9); }
+.catalog-invitation h1 { font-size: clamp(38px,3.9vw,58px); font-weight: 700; }
+.catalog-invitation h1 em { font-family: 'Manrope',sans-serif; font-style: normal; font-weight: 700; color: #9862aa; letter-spacing: -.055em; }
+.catalog-invitation-copy > p { font-size: 16px; color: #74567e; max-width: 43ch; }
+.catalog-start-link { font-size: 15px; font-weight: 600; color: #744782; }
+.catalog-kicker { font-size: 11px; color: #84618f; }
+.catalog-inspiration { height: 345px; }
+.catalog-inspiration-main { background: #dfcde3; }
+.catalog-inspiration-main img { object-fit: cover; padding: 0; mix-blend-mode: normal; }
+.catalog-inspiration-main::after { content: ''; position: absolute; inset: 45% 0 0; background: linear-gradient(transparent,#23172a9c); pointer-events: none; }
+.catalog-inspiration-main figcaption { color: #fff; font-size: 15px; z-index: 1; }
+.catalog-inspiration-note figcaption { font-family: 'DM Sans',sans-serif; font-style: normal; font-size: 14px; font-weight: 500; }
+.catalog-intents { flex-wrap: wrap; gap: 8px 28px; padding-top: 20px; padding-bottom: 22px; }
+.catalog-intents > h2 { margin: 0 12px 0 0; color: #70407f; font-family: 'Manrope',sans-serif; font-size: 24px; line-height: 1.12; letter-spacing: -.045em; }
+.catalog-intents a { font-size: 14px; font-weight: 500; color: #80538d; }
+@media(max-width:1100px) { .catalog-intents > h2 { flex-basis: 100%; margin-bottom: 7px; } .catalog-intents > h2 br { display: none; } }
+@media(max-width:600px) { .catalog-invitation h1 { font-size: 36px; } .catalog-invitation-copy > p { font-size: 15px; } .catalog-kicker { font-size: 10px; } .catalog-inspiration { height: 255px; } .catalog-inspiration-note img { height: 125px; } .catalog-intents > h2 { font-size: 24px; margin-bottom: 10px; } .catalog-intents a { font-size: 13px; } .catalog-intents { gap: 5px 19px; } .catalog-inspiration-main figcaption { font-size: 13px; left: 14px; bottom: 13px; } }

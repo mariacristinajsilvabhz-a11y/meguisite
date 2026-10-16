@@ -5,13 +5,13 @@
   <nav class="container breadcrumbs" aria-label="Você está aqui"><a href="{{ url_for('home') }}">Início</a><span aria-hidden="true">/</span><a href="{{ url_for('products') }}">Produtos</a><span aria-hidden="true">/</span><span aria-current="page">{{ product.name }}</span></nav>
   <div class="container product-page-grid">
     <div class="product-gallery{% if product.gallery %} has-catalog-gallery{% endif %} visual-{{ product.visual }}">
-      {% if product.image_url %}<img class="real-product-photo" data-catalog-main src="{{ product.image_url }}" alt="{{ product.name }}" decoding="async">{% elif product.images %}<div class="catalog-photo-set catalog-photo-set-large">{% for image in product.images %}<img src="{{ url_for('static', filename=image) }}" alt="{{ product.name }} — item de referência do kit">{% endfor %}</div>{% elif product.image %}      <img class="real-product-photo" src="{{ url_for('static', filename=product.image) }}" alt="{{ product.name }}{% if product.image_reference %} — mockup ilustrativo{% endif %}">{% else %}<span class="product-photo-pending">Imagem em breve</span>{% endif %}
+      {% if product.image_url %}<img class="real-product-photo" data-catalog-main src="{{ product.image_url }}" alt="{{ product.name }}" decoding="async">{% elif product.images %}<div class="catalog-photo-set catalog-photo-set-large">{% for image in product.images %}<img src="{{ url_for('static', filename=image) }}" alt="{{ product.name }} — item de referência do kit">{% endfor %}</div>{% elif product.image %}      <img class="real-product-photo" src="{{ url_for('static', filename=product.image) }}" alt="{{ product.name }}">{% else %}<span class="product-photo-pending">Imagem em breve</span>{% endif %}
       {% if product.gallery|default([])|length > 1 %}
       <div class="catalog-thumbnails" aria-label="Fotos e cores de {{ product.name }}">
         {% for photo in product.gallery %}<button type="button" data-catalog-photo="{{ photo }}" aria-label="Ver foto {{ loop.index }} de {{ product.name }}" aria-pressed="{{ 'true' if loop.first else 'false' }}"><img src="{{ photo }}" alt="" loading="lazy" decoding="async"></button>{% endfor %}
       </div>
       {% endif %}
-      {% if product.image_reference %}<span class="photo-reference-label">Mockup ilustrativo · Personalização sob consulta</span>{% endif %}
+
     </div>
 
     <div class="product-info">

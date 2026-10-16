@@ -35,5 +35,5 @@ PORTFOLIO = RECENT_WORKS + PORTFOLIO
 DESIGN_PROJECTS = [
     {"title": "AMAGIS", "text": "Proposta de sacochila com a identidade do projeto e marcas participantes.", "image": "img/acervo/2026/amagis-projeto.webp"},
     {"title": "Senac", "text": "Apresentação de sacochila personalizada para Santos na Ladeira.", "image": "img/acervo/2026/senac-sacochila-projeto.webp"},
-    {"title": "Circuito das Indústrias", "text": "Visualização da sacochila antes da produção.", "image": "img/acervo/2026/circuito-industrias-projeto.webp"},
+    {"title": "Circuito das Indústrias", "text": "Projeto de sacochila personalizada.", "image": "img/acervo/2026/circuito-industrias-projeto.webp"},
 ]
