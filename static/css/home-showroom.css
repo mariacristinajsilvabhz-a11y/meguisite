@@ -1,0 +1,60 @@
+/* Product stage: perspective layers, responsive light and tactile depth. */
+#megui-opening{padding:22px 0 20px;background:#eee5f3}
+#megui-opening .welcome-carousel{width:min(1440px,calc(100% - 48px));border-radius:24px;background:#21152d;border:1px solid #dbc3ed66;box-shadow:0 24px 60px #42215126;overflow:hidden;isolation:isolate}
+#megui-opening .carousel-slide{position:relative;display:grid;grid-template-columns:1fr 1.05fr;align-items:center;min-height:560px;background:radial-gradient(ellipse at 75% 40%,#6d438857,transparent 65%),linear-gradient(120deg,#21132e,#352044);overflow:hidden;isolation:isolate}
+#megui-opening .carousel-slide[hidden]{display:none}
+#megui-opening .carousel-slide:before{content:'';position:absolute;inset:0;background-image:linear-gradient(#d8b3ec0a 1px,transparent 1px),linear-gradient(90deg,#d8b3ec0a 1px,transparent 1px);background-size:60px 60px;mask-image:linear-gradient(90deg,transparent,#000);z-index:-1;pointer-events:none}
+#megui-opening .carousel-copy{position:relative;z-index:3;padding:48px 20px 52px clamp(28px,4.5vw,70px);min-width:0}
+#megui-opening .carousel-kicker{display:flex;align-items:center;gap:12px;font-size:10px;letter-spacing:.12em;color:#c39bd9;margin-bottom:25px;line-height:1.6}
+#megui-opening .carousel-kicker .icon{color:#d6b2e9;width:27px;height:32px;flex:none}
+#megui-opening .carousel-copy h1,#megui-opening .carousel-copy h2{color:#fbf1ff;font-size:clamp(38px,4.3vw,66px);letter-spacing:-.06em;line-height:1.08;margin:0 0 26px;max-width:10ch;text-wrap:initial}
+#megui-opening .carousel-copy h1>span,#megui-opening .carousel-copy h2>span{color:#ce9ee8}
+#megui-opening .carousel-copy p{font-size:15px;line-height:1.85;color:#bfaccb;max-width:42ch;margin:0 0 30px}
+#megui-opening .carousel-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+#megui-opening .carousel-cta{background:#dfc1ef;color:#351a43;border:1px solid #ecd7f6;box-shadow:0 8px 22px #0a00192a;border-radius:10px;padding:15px 18px;min-height:50px;font-size:12px;gap:20px}
+#megui-opening .carousel-cta:after{display:none}
+#megui-opening .cta-direction{color:#5a326d;border-left-color:#936ea866}
+#megui-opening .carousel-talk{color:#dfc8eb;border:1px solid #b28ac654;background:#ffffff06;border-radius:10px;min-height:50px;padding:13px 16px;font-size:12px}
+#megui-opening .carousel-art{position:relative;min-width:0;height:490px;padding:0;margin:25px 30px 25px 0;background:transparent!important;border:0;border-radius:0;overflow:visible;perspective:1000px;transform-style:preserve-3d;transform:rotateX(var(--scene-rx,0deg)) rotateY(var(--scene-ry,0deg));transition:transform .3s ease-out;isolation:isolate}
+#megui-opening .carousel-art:before{content:'';position:absolute;inset:2% -4% 8%;border-radius:50%;background:radial-gradient(ellipse at var(--scene-x,50%) var(--scene-y,40%),#e4b7fd90,#b783d641 35%,transparent 68%);filter:blur(9px);pointer-events:none;transform:translateZ(-40px)}
+#megui-opening .carousel-art>img{position:absolute;z-index:2;inset:2% 3% 10%;width:94%!important;height:86%!important;max-height:none!important;object-fit:contain!important;border-radius:0;transform:translateZ(42px);filter:drop-shadow(10px 25px 20px #0c001c66);animation:opening-levitate 6s ease-in-out infinite;animation-play-state:paused}
+#megui-opening.is-opening-visible .is-active .carousel-art>img{animation-play-state:running}
+#megui-opening .opening-orbit{position:absolute;left:5%;right:5%;top:15%;height:64%;border:1px solid #d8b1ef66;border-radius:50%;transform:rotateZ(-24deg) rotateY(25deg) translateZ(-20px);box-shadow:inset 0 0 35px #d6a5eb0b,0 0 20px #b888d515;pointer-events:none}
+#megui-opening .opening-orbit:after{content:'';position:absolute;top:11%;left:13%;width:8px;height:8px;border-radius:50%;background:#e1c0f2;box-shadow:0 0 20px #cf8fed}
+#megui-opening .opening-orbit-two{left:14%;right:14%;top:3%;height:86%;transform:rotateZ(36deg) rotateY(-30deg) translateZ(-25px);border-color:#be8eda36}
+#megui-opening .opening-floor{position:absolute;bottom:6%;left:15%;width:70%;height:21%;border-radius:50%;transform:rotateX(65deg);border:1px solid #d1a4eb55;background:radial-gradient(ellipse,#ab79c546,#40254d55,transparent 70%);box-shadow:0 0 30px #be80e02a;pointer-events:none}
+#megui-opening .opening-mark{position:absolute;right:2%;top:4%;z-index:3;display:grid;place-items:center;width:65px;height:76px;color:#d9b3ee;transform:rotate(15deg) translateZ(60px)}
+#megui-opening .opening-mark .icon{width:42px;height:55px;filter:drop-shadow(0 0 15px #c291df55)}
+#megui-opening .opening-caption{position:absolute;z-index:3;left:5%;bottom:7%;padding:12px 17px;max-width:70%;border-radius:10px;background:#23142fdc;border:1px solid #c89cdd55;box-shadow:0 8px 25px #0e061e26;transform:translateZ(70px);font-size:10px;color:#e3c6f0;text-align:left}
+#megui-opening .opening-caption>span{display:block;font-size:8px;letter-spacing:.15em;color:#ae8bc0;margin-bottom:7px}
+#megui-opening .opening-caption>strong{font-size:10px;letter-spacing:.06em;line-height:1.6;font-weight:500}
+#megui-opening .slide-faith .carousel-art>img{inset:10% 6% 15%;height:72%!important;width:88%!important;border-radius:18px;object-fit:cover!important}
+#megui-opening .carousel-toolbar{display:flex;align-items:center;justify-content:space-between;gap:20px;background:#ffffff03;border-top:1px solid #c799de22;padding:16px clamp(24px,4vw,60px);min-height:76px}
+#megui-opening .opening-prompt{font-size:9px;letter-spacing:.14em;color:#9778aa}
+#megui-opening .carousel-dots{display:flex;gap:8px;justify-content:center;align-items:center;padding:0;margin:0}
+#megui-opening .carousel-dots>button{display:flex;gap:9px;align-items:center;justify-content:center;width:auto;height:auto;min-height:42px;border-radius:8px;border:1px solid #c8a5dc26;background:transparent;color:#b99bc9;opacity:1;padding:10px 16px;font:inherit;font-size:11px;box-shadow:none;cursor:pointer}
+#megui-opening .carousel-dots>button span{font-size:9px;color:#9777ab}
+#megui-opening .carousel-dots>button.is-current{background:#65417d;color:#f2e6fa;border-color:#b68ccc88;transform:none}
+#megui-opening .carousel-dots>button.is-current span{color:#d2b0e4}
+#megui-opening .welcome-shortcuts{margin:18px auto 0;max-width:1380px;width:calc(100% - 64px);gap:10px}
+#megui-opening .welcome-shortcuts>a{border-radius:11px;padding:15px 14px;background:#f4ebf9;border:1px solid #d3bfdf;box-shadow:none}
+#megui-opening .welcome-shortcuts .shortcut-icon{background:#e3cfef;border-radius:8px}
+#megui-opening :is(a,button):focus-visible{outline:3px solid #b984d4;outline-offset:4px}
+@keyframes opening-levitate{0%,100%{transform:translate3d(0,0,42px) rotateZ(-2deg)}50%{transform:translate3d(3px,-13px,55px) rotateZ(1deg)}}
+@media(max-width:1100px){#megui-opening .carousel-slide{min-height:490px}#megui-opening .carousel-art{height:410px;margin-right:20px}#megui-opening .carousel-copy{padding-left:32px}#megui-opening .carousel-copy h1,#megui-opening .carousel-copy h2{font-size:48px}#megui-opening .opening-prompt{display:none}#megui-opening .carousel-toolbar{justify-content:center}}
+@media(max-width:760px){
+ #megui-opening{padding-top:12px}#megui-opening .welcome-carousel{width:calc(100% - 24px);border-radius:18px}
+ #megui-opening .carousel-slide{grid-template-columns:1fr;min-height:0;gap:0}#megui-opening .carousel-copy{padding:25px 23px 0}
+ #megui-opening .carousel-kicker{font-size:8px;letter-spacing:.07em;gap:9px;margin-bottom:17px}#megui-opening .carousel-kicker .icon{width:23px;height:27px}
+ #megui-opening .carousel-copy h1,#megui-opening .carousel-copy h2{font-size:clamp(34px,9vw,44px);max-width:none;line-height:1.08;margin-bottom:16px}
+ #megui-opening .carousel-copy p{font-size:13px;line-height:1.75;max-width:none;margin-bottom:18px}
+ #megui-opening .carousel-actions{gap:8px;margin-top:0}#megui-opening .carousel-actions>a{flex:1 1 125px;min-height:44px;font-size:11px;padding:11px 12px;gap:9px}
+ #megui-opening .carousel-art{height:275px;width:calc(100% - 32px);max-width:410px;margin:8px auto 6px;padding:0;transform:none!important}
+ #megui-opening .carousel-art>img{height:86%!important;max-height:none!important;width:94%!important;inset:0 3% 10%}
+ #megui-opening .opening-caption{left:4%;bottom:3%;padding:9px 12px;max-width:72%}#megui-opening .opening-caption>span{font-size:7px;margin-bottom:4px}#megui-opening .opening-caption>strong{font-size:8px}
+ #megui-opening .opening-mark{top:0;right:0;width:45px;height:50px}#megui-opening .opening-mark .icon{width:28px;height:36px}
+ #megui-opening .slide-faith .carousel-art>img{height:74%!important;width:88%!important;inset:8% 6% 15%}
+ #megui-opening .carousel-toolbar{padding:11px 10px;min-height:60px}#megui-opening .carousel-dots{gap:5px;width:100%}#megui-opening .carousel-dots>button{font-size:10px;padding:9px 7px;min-height:38px;flex:1;gap:4px}#megui-opening .carousel-dots>button span{display:none}
+ #megui-opening .welcome-shortcuts{width:calc(100% - 32px);gap:8px;margin-top:12px}#megui-opening .welcome-shortcuts>a{padding:12px 9px;gap:9px}#megui-opening .welcome-shortcuts strong{font-size:11px}#megui-opening .welcome-shortcuts small{font-size:9px}
+}
+@media(prefers-reduced-motion:reduce){#megui-opening .carousel-art,#megui-opening .carousel-art>img{animation:none!important;transition:none!important;transform:none!important}#megui-opening .carousel-slide{animation:none!important}}

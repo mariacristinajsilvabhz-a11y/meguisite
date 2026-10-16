@@ -39,6 +39,7 @@
         <div class="nav-dropdown">
           <a href="{{ url_for('products') }}">Produtos</a>
           <div class="dropdown-panel">
+            <a href="{{ url_for('textiles') }}">{{ icon('tshirt') }} Tecidos & materiais</a>
             {% for category in categories %}
               <a data-category="{{ category.slug }}" href="{{ url_for('category', slug=category.slug) }}">{{ icon(category.slug) }} {{ category.name }}</a>
             {% endfor %}

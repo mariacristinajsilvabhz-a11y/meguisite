@@ -4,6 +4,7 @@ from decimal import Decimal, InvalidOperation
 from urllib.parse import quote
 from flask import Flask, render_template, request, redirect, url_for, session, abort, jsonify
 from hub_catalog import HubCatalog, CatalogUnavailable
+from textile_data import FABRICS
 from content_data import HISTORICAL_BRANDS, PORTFOLIO, PRODUCTION_VIDEOS, RECENT_WORKS, DESIGN_PROJECTS
 
 from mockup_3d import mockup_3d
@@ -257,6 +258,11 @@ def home():
         app.logger.warning("Página inicial sem vitrine: catálogo do Hub indisponível")
         items = []
     return render_template("index.html", products=items, home_categories=home_categories)
+
+
+@app.get("/tecidos")
+def textiles():
+    return render_template("textiles.html", fabrics=FABRICS)
 
 
 def render_catalog(category_slug=""):
