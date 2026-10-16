@@ -6,6 +6,8 @@
   <meta name="theme-color" content="#171219">
   <meta name="description" content="Megui Personalizados — confecção e personalização em malha. Camisetas, uniformes, saquinhos, eventos, brindes e comunicação visual.">
   <title>{% block title %}Megui Personalizados{% endblock %}</title>
+  <link id="megui-favicon" rel="icon" type="image/svg+xml" href="{{ url_for('static',filename='ui/favicon-butterfly.svg',v='20261016-v1') }}" data-logo="{{ url_for('static',filename='img/logo-megui-oficial.png') }}">
+  <script defer src="{{ url_for('static',filename='js/favicon.js',v='20261016-v1') }}"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
