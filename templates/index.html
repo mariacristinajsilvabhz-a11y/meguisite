@@ -5,9 +5,18 @@
 {% raw %}
 
 /* A focused, branded product showroom. ID scope protects the other sections. */
-#malharia{padding-top:54px;background:#eee5f3}
-#malharia .knit-immersive{position:relative;isolation:isolate;padding:clamp(22px,4vw,58px);border-radius:28px;background:radial-gradient(ellipse at var(--light-x,80%) var(--light-y,15%),#59336b66,transparent 55%),linear-gradient(135deg,#25152f,#17111f 75%);box-shadow:0 30px 70px #34164422,inset 0 1px 0 #edceff26;color:#f5eafa;overflow:hidden}
-#malharia .knit-immersive:before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.18;background-image:radial-gradient(#dcc0ed 0.6px,transparent 0.6px);background-size:23px 23px;mask-image:linear-gradient(135deg,transparent 25%,#000)}
+#malharia{padding:0;background:#eee5f3}
+#malharia .knit-flow{position:relative;isolation:isolate;background:linear-gradient(180deg,#eee5f3 0,#d7c3e3 200px,#855f99 380px,#392846 520px,#201727 700px);overflow:hidden}
+#malharia .knit-flow:after{content:"";display:block;height:90px;background:linear-gradient(180deg,#201727,#493653 35%,#aa8dbb 72%,#eee5f3)}
+#malharia .knit-flow>.container{position:relative;z-index:1}
+#malharia .knit-atmosphere{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+#malharia .knit-flying-butterfly{position:absolute;left:var(--flight-left);top:var(--flight-top);color:#e8ccfa;opacity:var(--flight-opacity,.12);animation:knit-background-flight var(--flight-duration,23s) ease-in-out infinite alternate;animation-delay:var(--flight-delay,0s);will-change:transform}
+#malharia .knit-flying-butterfly>.icon{width:var(--flight-size,75px);height:calc(var(--flight-size,75px) * 1.23);animation:knit-background-wings 4.5s ease-in-out infinite alternate;animation-delay:var(--flight-delay,0s)}
+#malharia .pouch-editorial{margin-top:0}
+@keyframes knit-background-flight{0%{transform:translate3d(-25px,18px,0) rotate(-14deg)}45%{transform:translate3d(36px,-24px,0) rotate(7deg)}100%{transform:translate3d(85px,-80px,0) rotate(22deg)}}
+@keyframes knit-background-wings{0%,100%{transform:perspective(400px) rotateY(-22deg) rotate(-5deg)}50%{transform:perspective(400px) rotateY(25deg) rotate(4deg)}}
+#malharia .knit-immersive{position:relative;isolation:isolate;padding:54px 0 15px;border:0;border-radius:0;background:none;box-shadow:none;color:#f5eafa;overflow:visible}
+#malharia .knit-immersive:before{display:none}
 #malharia .knit-intro{display:grid;grid-template-columns:1.3fr .7fr;gap:30px;align-items:center;margin-bottom:38px}
 #malharia .knit-overline{display:block;color:#c2a3d2;font-size:10px;letter-spacing:.14em;line-height:1.7;margin-bottom:22px}
 #malharia .knit-intro h2{font-size:clamp(34px,4vw,56px);letter-spacing:-.055em;line-height:1.1;color:#f8f0fc;margin:0 0 22px;font-weight:700}
@@ -58,9 +67,22 @@
 #malharia .knit-edition-tabs button:focus-visible,#malharia .knit-edition-cta:focus-visible{outline:3px solid #ebc6ff;outline-offset:4px}
 @media(hover:hover){#malharia .knit-edition-tabs button:hover{transform:translateY(-3px);border-color:#c799e096;background-color:#ffffff0d}}
 @keyframes knit-brand-breathe{0%,100%{transform:translateY(0) rotate(18deg)}50%{transform:translateY(-9px) rotate(12deg)}}
+#malharia .knit-intro h2{color:#37203f}
+#malharia .knit-intro h2 em{color:#814895}
+#malharia .knit-intro p{color:#432e50}
+#malharia .knit-overline{color:#765081}
+#malharia .knit-brand-sculpture{background:none;color:#87509a;opacity:.7}
+#malharia .knit-brand-sculpture>.icon{filter:none}
+#malharia .knit-brand-orbit{display:none}
+#malharia .knit-brand-note{color:#775083}
+#malharia .knit-edition-tabs button{background:#28183370;color:#eadcf2;border-color:#e0bfea2b;box-shadow:none}
+
 @media(max-width:1000px){#malharia .knit-edition-tabs button{padding:14px 10px;gap:8px}#malharia .knit-edition-tabs strong{font-size:16px}#malharia .knit-tab-index{width:23px;height:26px}#malharia .knit-edition-tabs .icon{display:none}#malharia .knit-edition-stage{height:410px}}
 @media(max-width:760px){
- #malharia{padding-top:28px}#malharia .knit-immersive{padding:23px 17px;border-radius:20px}
+ #malharia{padding-top:0}#malharia .knit-immersive{padding:28px 0 12px;border-radius:0}
+ #malharia .knit-flow{background:linear-gradient(180deg,#eee5f3 0,#d7c3e3 140px,#815e95 300px,#30203d 420px,#201727 590px)}
+ #malharia .knit-flow:after{height:65px}
+ #malharia .knit-flying-butterfly:nth-child(n+4){display:none}
  #malharia .knit-intro{grid-template-columns:1fr;gap:0;margin-bottom:24px;position:relative}
  #malharia .knit-intro-copy{position:relative;z-index:1}#malharia .knit-overline{font-size:8px;letter-spacing:.08em;padding-right:36px;margin-bottom:15px}
  #malharia .knit-intro h2{font-size:clamp(29px,7.6vw,42px);max-width:85%;margin-bottom:16px}#malharia .knit-intro p{font-size:14px;line-height:1.7;max-width:none}
@@ -74,7 +96,7 @@
  #malharia .knit-edition-story{padding:0}#malharia .knit-edition-story h3{font-size:31px;margin:12px 0}#malharia .knit-edition-story p{font-size:14px;line-height:1.75;margin-bottom:16px}#malharia .knit-edition-options{margin-bottom:18px;font-size:10px}#malharia .knit-edition-cta{width:100%;justify-content:space-between;box-sizing:border-box}#malharia .knit-edition-signature{margin-top:16px}
  #malharia .knit-stage-encontro .knit-stage-detail{margin:0;padding:6px 10px 6px 6px;min-height:0}
 }
-@media(prefers-reduced-motion:reduce){#malharia .knit-brand-sculpture>.icon,#malharia .knit-stage-product,#malharia .knit-edition-panel{animation:none!important}#malharia .knit-edition-tabs button{transition:none;transform:none}}
+@media(prefers-reduced-motion:reduce){#malharia .knit-brand-sculpture>.icon,#malharia .knit-stage-product,#malharia .knit-edition-panel,#malharia .knit-flying-butterfly,#malharia .knit-flying-butterfly>.icon{animation:none!important;will-change:auto}#malharia .knit-edition-tabs button{transition:none;transform:none}}
 
 {% endraw %}
 </style>
@@ -123,6 +145,12 @@
 {% include '_client_marquee.html' %}
 
 <section class="section knit-studio" id="malharia">
+ <div class="knit-flow" data-knit-flow>
+  <div class="knit-atmosphere" aria-hidden="true">
+   {% for left,top,size,duration,delay,opacity in [('4%','34%',60,26,-8,'.10'),('83%','29%',95,32,-19,'.12'),('46%','53%',115,29,-13,'.07'),('11%','76%',48,24,-4,'.13'),('86%','81%',70,28,-17,'.10')] %}
+   <span class="knit-flying-butterfly" style="--flight-left:{{ left }};--flight-top:{{ top }};--flight-size:{{ size }}px;--flight-duration:{{ duration }}s;--flight-delay:{{ delay }}s;--flight-opacity:{{ opacity }}">{{ icon('butterfly') }}</span>
+   {% endfor %}
+  </div>
  <div class="container">
   <div class="knit-immersive" data-knit-immersive>
   <div class="knit-intro">
@@ -148,6 +176,9 @@
    {% endfor %}
   </div>
   </div>
+ </div>
+ </div>
+ <div class="container">
   <aside class="pouch-editorial" id="saquinhos" aria-labelledby="pouch-title">
    <figure class="pouch-editorial-photo"><img src="{{ url_for('static',filename='img/inicio/saquinhos-malha-referencias-v3.webp') }}" alt="Saquinhos de malha lilás, preto e cru em diferentes tamanhos, incluindo uma embalagem para camiseta" width="1200" height="800" loading="lazy" decoding="async"><figcaption>Referências ilustrativas. Formatos definidos para o seu projeto.</figcaption></figure>
    <div class="pouch-editorial-copy">
@@ -306,26 +337,21 @@
 </section>
 
 <script>
-// One light update per frame; only fine pointers, with no motion for reduced-motion users.
 (() => {
- const studio = document.querySelector('[data-knit-immersive]');
- if (!studio || !matchMedia('(hover:hover) and (pointer:fine)').matches || matchMedia('(prefers-reduced-motion:reduce)').matches) return;
- let frame = 0, x = 80, y = 15;
- studio.addEventListener('pointermove', event => {
-  const bounds = studio.getBoundingClientRect();
-  x = (event.clientX - bounds.left) / bounds.width * 100;
-  y = (event.clientY - bounds.top) / bounds.height * 100;
-  if (!frame) frame = requestAnimationFrame(() => {
-   studio.style.setProperty('--light-x', `${x}%`);
-   studio.style.setProperty('--light-y', `${y}%`);
-   frame = 0;
+ const flow = document.querySelector('[data-knit-flow]');
+ if (!flow) return;
+ const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+ let visible = false;
+ const refresh = () => {
+  const paused = !visible || document.hidden || reduced.matches;
+  flow.querySelectorAll('.knit-flying-butterfly, .knit-flying-butterfly > .icon').forEach(el => {
+   el.style.animationPlayState = paused ? 'paused' : 'running';
   });
- }, {passive:true});
- studio.addEventListener('pointerleave', () => {
-  if (frame) cancelAnimationFrame(frame);
-  frame = 0;
-  studio.style.removeProperty('--light-x');studio.style.removeProperty('--light-y');
- });
+ };
+ new IntersectionObserver(entries => { visible = entries[0].isIntersecting; refresh(); }, {threshold:0}).observe(flow);
+ document.addEventListener('visibilitychange', refresh);
+ reduced.addEventListener('change', refresh);
+ refresh();
 })();
 </script>
 {% endblock %}
