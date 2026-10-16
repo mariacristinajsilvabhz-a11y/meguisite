@@ -48,3 +48,24 @@
 @media(max-width:1000px) { #malharia .knit-journal-columns { gap: 23px; grid-template-columns: 1fr 1fr; } #malharia .knit-field-notes { grid-column: 1/-1; margin-top: 15px; padding: 0 20px 10px; } #malharia .knit-field-notes h3 br { display: none; } #malharia .knit-field-notes dl { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); column-gap: 25px; } #malharia .knit-field-notes dt { grid-row: 1; } #malharia .knit-field-notes dd { grid-row: 2; } #malharia .knit-notes-signature br { display: none; } }
 @media(max-width:600px) { #malharia .knit-journal { padding-top: 25px; } #malharia .knit-journal .knit-discovery-heading { grid-template-columns: 1fr; gap: 16px; margin-bottom: 29px; } #malharia .knit-journal-columns { grid-template-columns: 1fr; gap: 28px; } #malharia .knit-journal-story { max-width: 440px; margin-inline: auto; } #malharia .knit-polaroid { margin-right: 14px; margin-left: 10px; } #malharia .knit-idea-feed { margin: 0 0 0 8%; max-width: 410px; } #malharia .knit-idea-feed figure img { aspect-ratio: 1.65; } #malharia .knit-feed-caption { padding-bottom: 9px; } #malharia .knit-feed-caption h3 br { display: none; } #malharia .knit-field-notes { margin-top: 0; padding: 0 16px 8px; } #malharia .knit-field-notes::before { inset: 0 0 0 0; } #malharia .knit-field-notes dl { display: block; } #malharia .knit-field-notes h3 { font-size: 32px; margin-bottom: 18px; } #malharia .knit-field-notes dd { margin-bottom: 14px; } #malharia .knit-field-notes .knit-notes-signature { margin-top: 15px; } #malharia .knit-journal .knit-discovery-footer { padding-top: 20px; } }
 @media(prefers-reduced-motion:reduce) { #malharia .knit-journal * { scroll-behavior: auto; } }
+
+/* Ateliê legível + chamadas de ação claras, mantendo estética editorial. */
+#malharia .knit-field-notes{padding:16px 20px 22px!important;background:#f7f3ed!important;border:1px solid #d7c8c0!important;border-radius:4px 18px 4px 4px!important;box-shadow:0 10px 25px #32203b12!important}
+#malharia .knit-field-notes::before{display:none!important}
+#malharia .knit-notes-masthead{color:#463b3b!important;border-top-color:#645568!important;border-bottom-color:#c6bac5!important}
+#malharia .knit-journal .knit-field-notes .knit-journal-kicker{color:#66516c!important}
+#malharia .knit-field-notes h3{color:#302338!important}
+#malharia .knit-field-notes dt{color:#302a31!important;font-weight:750!important}
+#malharia .knit-field-notes dt span{color:#745183!important}
+#malharia .knit-field-notes dd{color:#4d454f!important;font-size:12.5px!important;line-height:1.75!important}
+#malharia .knit-field-notes .knit-notes-signature{color:#594262!important;font-weight:600!important}
+#malharia .knit-journal-link,#malharia .knit-discovery-footer a{display:inline-flex!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;min-height:43px!important;padding:10px 14px!important;border:1px solid #a67ab8!important;border-radius:9px!important;background:#fff!important;color:#5b356b!important;font-weight:750!important;font-size:12px!important;text-decoration:none!important;transition:background-color .18s,color .18s,transform .18s!important}
+#malharia .knit-journal-story .knit-journal-link{background:#744c87!important;border-color:#744c87!important;color:#fff!important}
+#malharia .knit-journal-link:hover,#malharia .knit-discovery-footer a:hover{background:#eee0f5!important;color:#472451!important;transform:translateY(-1px)}
+#malharia .knit-journal-story .knit-journal-link:hover{background:#613d74!important;color:#fff!important}
+#malharia .knit-feed-caption .knit-journal-link{margin-top:16px!important;font-size:11px!important}
+#malharia .knit-journal .knit-discovery-footer{align-items:center!important;gap:15px!important}
+#malharia .knit-journal .knit-discovery-footer>div{gap:10px!important}
+#malharia .knit-journal .knit-discovery-footer>div a:first-child{background:#744c87!important;color:#fff!important;border-color:#744c87!important}
+#malharia .knit-journal .knit-discovery-footer>div a:first-child:hover{background:#613d74!important}
+@media(max-width:600px){#malharia .knit-field-notes{padding:17px!important}#malharia .knit-discovery-footer>div{display:flex!important;flex-direction:column!important;align-items:stretch!important}#malharia .knit-discovery-footer>div a{width:100%!important}}
