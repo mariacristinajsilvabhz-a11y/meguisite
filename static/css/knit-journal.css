@@ -69,3 +69,21 @@
 #malharia .knit-journal .knit-discovery-footer>div a:first-child{background:#744c87!important;color:#fff!important;border-color:#744c87!important}
 #malharia .knit-journal .knit-discovery-footer>div a:first-child:hover{background:#613d74!important}
 @media(max-width:600px){#malharia .knit-field-notes{padding:17px!important}#malharia .knit-discovery-footer>div{display:flex!important;flex-direction:column!important;align-items:stretch!important}#malharia .knit-discovery-footer>div a{width:100%!important}}
+
+/* Revisão de contraste e tipografia da seção Caderno de ideias */
+#malharia .knit-feed-profile{gap:12px!important;padding:15px 17px!important;min-height:68px!important;background:#f9f5fb!important}
+#malharia .knit-feed-profile>span:first-child{width:36px!important;height:36px!important;flex:0 0 36px!important}
+#malharia .knit-feed-profile .icon{width:19px!important;height:22px!important}
+#malharia .knit-feed-profile>div{min-width:0}
+#malharia .knit-feed-profile strong{font-size:14px!important;line-height:1.3!important;font-weight:750!important;color:#302039!important}
+#malharia .knit-feed-profile small{font-size:11.5px!important;line-height:1.45!important;color:#574360!important;margin-top:3px!important}
+#malharia .knit-feed-dots{font-size:19px!important;color:#60476e!important}
+#malharia .knit-journal .knit-discovery-heading h2,#malharia .knit-journal-story h3,#malharia .knit-feed-caption h3{color:#302039!important}
+#malharia .knit-journal .knit-discovery-heading>p,#malharia .knit-journal-story>p{color:#504058!important}
+#malharia .knit-journal .knit-journal-kicker{color:#725481!important;font-size:10px!important;letter-spacing:.075em!important;font-weight:650!important}
+#malharia .knit-feed-caption ul{color:#4f4058!important;font-size:12.5px!important}
+#malharia .knit-feed-caption li::before{color:#8b599f!important}
+#malharia .knit-discovery-footer>small{color:#67516f!important;font-size:10.5px!important}
+#malharia .knit-field-notes .knit-journal-kicker,#malharia .knit-notes-masthead>span{color:#53445a!important}
+#malharia .knit-field-notes .knit-notes-signature{color:#49354f!important}
+@media(max-width:600px){#malharia .knit-feed-profile strong{font-size:13px!important}#malharia .knit-feed-profile small{font-size:11px!important}}
