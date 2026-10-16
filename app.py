@@ -1,5 +1,9 @@
 import os
 import re
+import uuid
+import json
+from urllib.request import Request, urlopen
+from urllib.error import HTTPError, URLError
 from decimal import Decimal, InvalidOperation
 from urllib.parse import quote
 from flask import Flask, render_template, request, redirect, url_for, session, abort, jsonify
@@ -411,6 +415,37 @@ def clear_quote():
 
 @app.post("/orcamento/whatsapp")
 def send_whatsapp():
+    name = request.form.get("name", "").strip()
+    email = request.form.get("email", "").strip().lower()
+    phone = re.sub(r"\D", "", request.form.get("phone", ""))
+    errors = {}
+    if len(name) < 2: errors["name"] = "Informe seu nome."
+    if not re.fullmatch(r"[^\s@]+@[^\s@]+\.[^\s@]+", email): errors["email"] = "Digite um e-mail válido."
+    if not 10 <= len(phone) <= 13: errors["phone"] = "Informe um telefone com DDD."
+    if not cart(): errors["items"] = "Adicione pelo menos um produto."
+    if errors:
+        return render_template("quote.html",items=list(cart().values()),form_errors=errors,form_data=request.form),422
+    request_id=session.get("quote_request_id")
+    if not request_id:
+        request_id=str(uuid.uuid4())
+        session["quote_request_id"]=request_id
+    base=os.getenv("MEGUI_HUB_URL","").rstrip("/")
+    token=os.getenv("SITE_CATALOG_TOKEN","")
+    if not base or not token:
+        return render_template("quote.html",items=list(cart().values()),
+          config_error="Solicitação temporariamente indisponível. Tente novamente.",form_data=request.form),503
+    payload={"request_id":request_id,"name":name,"email":email,"phone":phone,
+      "company":request.form.get("company",""),"deadline":request.form.get("deadline",""),
+      "notes":request.form.get("general_notes",""),"items":list(cart().values())}
+    req=Request(base+"/api/site/solicitacao",data=json.dumps(payload).encode("utf-8"),
+      headers={"Authorization":"Bearer "+token,"Content-Type":"application/json"},method="POST")
+    try:
+        with urlopen(req,timeout=16) as response:
+            info=json.load(response)
+    except (HTTPError,URLError,TimeoutError,ValueError):
+        return render_template("quote.html",items=list(cart().values()),
+          config_error="Não foi possível registrar agora. Seus itens continuam salvos; tente novamente.",form_data=request.form),503
+    number=info.get("numero","")
     if not WHATSAPP_NUMBER:
         return render_template(
             "quote.html",
@@ -427,6 +462,9 @@ def send_whatsapp():
 
     if name:
         lines.append(f"Nome: {name}")
+    lines.append(f"E-mail: {email}")
+    lines.append(f"Telefone: {phone}")
+    lines.append(f"Solicitação provisória: {number}")
     if company:
         lines.append(f"Empresa: {company}")
     if deadline:
@@ -446,6 +484,10 @@ def send_whatsapp():
     lines.extend(["", "Pode me ajudar com valores, personalização e prazo?"])
 
     message = "\n".join(lines)
+    session["quote_request_id"]=str(uuid.uuid4())
+    session["quote_cart"]={}
+    session.modified=True
+
     whatsapp_url = f"https://wa.me/{WHATSAPP_NUMBER}?text={quote(message)}"
     return redirect(whatsapp_url)
 

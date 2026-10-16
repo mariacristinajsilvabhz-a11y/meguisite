@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block title %}Meu orçamento — Megui{% endblock %}
+{% block extra_head %}<style>.quote-field-error{display:block;color:#a62b51;font-size:12px;font-weight:700;margin-top:4px}.send-quote-card input:invalid{border-color:#ad6584}.send-quote-card label{color:#302038}</style>{% endblock %}
 {% block content %}
 <section class="page-hero compact">
   <div class="container">
@@ -62,14 +63,16 @@
         <div class="config-warning">{{ config_error }}</div>
       {% endif %}
 
-      <form action="{{ url_for('send_whatsapp') }}" method="post">
-        <label>Seu nome<input name="name" required placeholder="Nome"></label>
+      <form action="{{ url_for('send_whatsapp') }}" method="post" class="quote-contact-form">
+        <label>Seu nome *<input name="name" required minlength="2" value="{{ (form_data or {}).get('name','') }}" placeholder="Nome completo">{% if (form_errors or {}).get('name') %}<span class="quote-field-error">{{ form_errors.name }}</span>{% endif %}</label>
+        <label>E-mail *<input type="email" name="email" required autocomplete="email" value="{{ (form_data or {}).get('email','') }}" placeholder="voce@exemplo.com">{% if (form_errors or {}).get('email') %}<span class="quote-field-error">{{ form_errors.email }}</span>{% endif %}</label>
+        <label>Telefone / WhatsApp com DDD *<input type="tel" name="phone" required minlength="10" maxlength="20" autocomplete="tel" value="{{ (form_data or {}).get('phone','') }}" placeholder="(31) 99999-9999">{% if (form_errors or {}).get('phone') %}<span class="quote-field-error">{{ form_errors.phone }}</span>{% endif %}</label>
         <label>Empresa<input name="company" placeholder="Nome da empresa"></label>
         <label>Prazo desejado<input name="deadline" placeholder="Ex.: até 20/10"></label>
         <label>Observações gerais<textarea name="general_notes" rows="4" placeholder="Conte um pouco sobre o projeto..."></textarea></label>
         <button class="btn btn-primary btn-full" type="submit">Enviar pelo WhatsApp</button>
       </form>
-      <small>Sem pagamento online. A Megui confirma valores, personalização e prazo no atendimento.</small>
+      <small>Seus dados serão usados para registrar a solicitação e entrar em contato sobre o orçamento.</small>
     </aside>
     {% endif %}
   </div>
