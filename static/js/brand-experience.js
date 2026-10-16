@@ -28,3 +28,29 @@ document.querySelectorAll('[data-knit-editions]').forEach(studio => {
   });
  });
 });
+
+// O loop só trabalha enquanto a peça está visível; a pausa permanece entre abas.
+(() => {
+ const stage = document.querySelector('.knit-stage-marca');
+ if (!stage) return;
+ const button = stage.querySelector('.knit-motion-toggle');
+ const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+ let visible = false;
+ const refresh = () => {
+  stage.classList.toggle('is-in-view', visible && !document.hidden && !reduced.matches);
+  if (button) button.hidden = reduced.matches;
+ };
+ const observer = new IntersectionObserver(entries => {
+  visible = entries[0].isIntersecting;
+  refresh();
+ }, {threshold: .25});
+ observer.observe(stage);
+ button?.addEventListener('click', () => {
+  const paused = stage.classList.toggle('motion-paused');
+  button.setAttribute('aria-pressed', String(paused));
+  button.setAttribute('aria-label', `${paused ? 'Retomar' : 'Pausar'} movimento da camiseta`);
+ });
+ document.addEventListener('visibilitychange', refresh);
+ reduced.addEventListener('change', refresh);
+ refresh();
+})();
