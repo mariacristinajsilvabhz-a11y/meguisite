@@ -64,7 +64,17 @@
    </div>
    {% endfor %}
   </div>
-  <div class="knit-pouches" id="saquinhos"><div class="pouch-copy"><span class="pouch-kicker">{{ icon('butterfly') }} SAQUINHOS DE MALHA</span><h3>Uma embalagem.<br><em>Um cuidado a mais.</em></h3><p>A apresentação também conta uma história. Saquinhos macios e reutilizáveis para valorizar presentes, reunir kits e acompanhar seus produtos.</p><div class="pouch-use-notes"><span>Presentes & lembranças</span><span>Kits & produtos</span><span>Cores & tamanhos sob medida</span></div><a class="text-link" href="https://wa.me/{{ whatsapp_number }}?text=Ol%C3%A1!%20Quero%20conhecer%20os%20saquinhos%20de%20malha%20personalizados%20da%20Megui." target="_blank" rel="noopener"><span>Personalizar meus saquinhos</span> {{ icon('arrow') }}</a><small class="pouch-custom-note">Escolhemos juntos tamanho, cor e personalização.</small></div><figure class="pouch-visual"><img src="{{ url_for('static',filename='img/inicio/saquinhos-malha-referencias-v3.webp') }}" alt="Referências de saquinhos de malha em lilás, preto e cru, com diferentes tamanhos e fechamento por cordão" width="1200" height="800" loading="lazy" decoding="async"><figcaption>Referências ilustrativas de formatos e usos. Detalhes são definidos no seu projeto.</figcaption></figure></div>
+  <aside class="pouch-editorial" id="saquinhos" aria-labelledby="pouch-title">
+   <figure class="pouch-editorial-photo"><img src="{{ url_for('static',filename='img/inicio/saquinhos-malha-referencias-v3.webp') }}" alt="Saquinhos de malha lilás, preto e cru em diferentes tamanhos, incluindo uma embalagem para camiseta" width="1200" height="800" loading="lazy" decoding="async"><figcaption>Referências ilustrativas. Formatos definidos para o seu projeto.</figcaption></figure>
+   <div class="pouch-editorial-copy">
+    <span class="pouch-editorial-label">A MALHA VAI ALÉM DE VESTIR</span>
+    <h3 id="pouch-title">A malha também <em>embala.</em></h3>
+    <p>Saquinhos macios e reutilizáveis que levam a sua identidade até a apresentação. Para entregar uma peça, reunir um kit ou dar outro significado a um presente.</p>
+    <ul class="pouch-editorial-uses" aria-label="Possibilidades dos saquinhos"><li>Presentes</li><li>Kits & produtos</li><li>Lembranças de eventos</li></ul>
+    <a class="pouch-editorial-link" href="https://wa.me/{{ whatsapp_number }}?text=Ol%C3%A1!%20Quero%20personalizar%20saquinhos%20de%20malha.%20Podemos%20conversar%20sobre%20tamanho%2C%20cor%20e%20estampa%3F" target="_blank" rel="noopener">Vamos pensar na sua embalagem {{ icon('arrow') }}</a>
+    <small>Tamanho, cor e personalização escolhidos com você.</small>
+   </div>
+  </aside>
  </div>
 </section>
 <section class="section knit-materials"><div class="container knit-material-grid"><figure><img src="{{ url_for('static',filename='img/tecidos/detalhe-trama-v9.webp') }}" alt="Referência ilustrativa do toque, da trama e do caimento de uma malha" width="1200" height="800" loading="lazy"><figcaption>Referência ilustrativa de textura. A malha é definida para cada projeto.</figcaption></figure><div><span class="eyebrow">A ESCOLHA DO TECIDO FAZ PARTE DO RESULTADO</span><h2>Começa na malha.<br>Aparece em cada detalhe.</h2><p>Toque, composição, gramatura, modelagem e acabamento precisam conversar com o uso da peça. A gente ajuda a fazer essa escolha.</p><div class="knit-material-notes"><span>Malhas para diferentes propostas</span><span>Golas, costuras e acabamentos</span><span>Personalização alinhada à peça</span></div><a class="text-link" href="{{ url_for('b2b') }}#materiais">Conhecer os materiais e acabamentos {{ icon('arrow') }}</a></div></div></section>

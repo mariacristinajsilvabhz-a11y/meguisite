@@ -182,3 +182,33 @@
   .knit-edition-stage{height:260px}
 }
 @media(prefers-reduced-motion:reduce){.knit-motion-toggle{display:none}.knit-stage-marca .knit-stage-product,.knit-stage-marca:after{animation:none}}
+
+/* Saquinhos como continuidade editorial, com respiro entre os destaques. */
+.pouch-editorial{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:52px;align-items:center;margin-top:38px;padding-top:30px;border-top:1px solid #c5a9d455;scroll-margin-top:110px}
+.pouch-editorial-photo{position:relative;min-width:0;margin:0}
+.pouch-editorial-photo img{display:block;width:100%;height:270px;object-fit:contain;mix-blend-mode:multiply;mask-image:linear-gradient(to right,transparent,#000 9%,#000 91%,transparent)}
+.pouch-editorial-photo figcaption{font-size:10px;line-height:1.6;color:#82698d;text-align:center;margin-top:6px}
+.pouch-editorial-copy{min-width:0;padding:8px 0}
+.pouch-editorial-label{font-size:10px;line-height:1.6;letter-spacing:.12em;color:#8c639f;font-weight:650}
+.pouch-editorial-copy h3{font-size:clamp(28px,2.8vw,36px);line-height:1.2;letter-spacing:-.04em;color:#482954;margin:12px 0 14px;text-wrap:balance}
+.pouch-editorial-copy h3 em{font-style:normal;color:#87529d}
+.pouch-editorial-copy p{font-size:15px;line-height:1.75;color:#796183;max-width:51ch;margin:0 0 16px}
+.pouch-editorial-uses{list-style:none;display:flex;flex-wrap:wrap;gap:8px 18px;padding:0;margin:0 0 16px;color:#755184;font-size:12px;line-height:1.6}
+.pouch-editorial-uses li{display:flex;align-items:center;gap:7px}
+.pouch-editorial-uses li:before{content:"";width:4px;height:4px;border-radius:50%;background:#a77abb;flex:none}
+.pouch-editorial-link{display:inline-flex;align-items:center;gap:18px;min-height:44px;padding:6px 0;border-bottom:1px solid #a880b9;color:#674078;text-decoration:none;font-size:14px;font-weight:650;line-height:1.5}
+.pouch-editorial-link .icon{width:18px;height:18px;flex:none;transition:transform .2s}
+.pouch-editorial-link:hover{color:#3c214a}.pouch-editorial-link:hover .icon{transform:translateX(4px)}
+.pouch-editorial-copy>small{display:block;font-size:11px;line-height:1.6;color:#8a7195;margin-top:9px}
+@media(max-width:1000px) and (min-width:761px){.pouch-editorial{gap:28px}.pouch-editorial-photo img{height:250px}}
+@media(max-width:760px){
+ .pouch-editorial{grid-template-columns:minmax(0,1fr);gap:12px;margin-top:22px;padding-top:22px}
+ .pouch-editorial-photo img{height:190px;max-width:390px;margin:auto}
+ .pouch-editorial-photo figcaption{font-size:10px;max-width:34ch;margin:4px auto 0}
+ .pouch-editorial-copy{padding:8px 0 0}
+ .pouch-editorial-copy h3{font-size:27px;margin:10px 0 12px}
+ .pouch-editorial-copy p{font-size:15px;line-height:1.65;margin-bottom:12px;max-width:none}
+ .pouch-editorial-uses{gap:6px 15px;font-size:12px;margin-bottom:12px}
+ .pouch-editorial-link{font-size:13px;gap:12px}
+}
+@media(prefers-reduced-motion:reduce){.pouch-editorial-link .icon{transition:none}.pouch-editorial-link:hover .icon{transform:none}}
