@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/mockup-integration.css', v='20261002-v1') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/brand-experience.css',v='20261016-v14') }}">
   {% block extra_head %}{% endblock %}
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/mobile-refinement.css', v='20261016-v2') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/mobile-refinement.css', v='20261016-v3') }}">
 </head>
 <body{% if request.endpoint == 'b2b' %} class="corporate-page"{% elif request.endpoint == 'events' %} class="events-page"{% endif %}{% if request.endpoint not in ['products', 'category', 'product', 'create_art', 'events'] %} data-scroll-experience{% endif %}>
   {% from '_icons.html' import icon %}

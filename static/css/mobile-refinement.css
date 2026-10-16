@@ -212,3 +212,30 @@
  .pouch-editorial-link{font-size:13px;gap:12px}
 }
 @media(prefers-reduced-motion:reduce){.pouch-editorial-link .icon{transition:none}.pouch-editorial-link:hover .icon{transform:none}}
+
+/* Cada produto e sua legenda compartilham uma célula; o movimento tem respiro. */
+.idea-showcase{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 28px;align-content:start;height:auto;max-width:none;width:100%;min-width:0;isolation:isolate}
+.idea-showcase .idea-visual-label{position:static;grid-column:1/-1;order:0;padding:0 0 2px;font-size:10px;line-height:1.7}
+.idea-showcase .idea-product{position:relative;inset:auto;width:100%;height:auto;min-width:0;transform:none;align-self:start;gap:10px;transition:none}
+.idea-showcase .idea-shirt{order:1}
+.idea-showcase .idea-notebook{order:2}
+.idea-showcase .idea-bag{order:3}
+.idea-showcase .idea-cup{order:4}
+.idea-showcase .idea-product img{display:block;flex:none;width:100%;height:190px;object-fit:contain;transform-origin:center;transition:transform .35s var(--megui-ease)}
+.idea-showcase .idea-product span{display:flex;align-items:center;justify-content:space-between;align-self:stretch;width:100%;min-height:44px;gap:8px;white-space:normal;line-height:1.5;font-size:12px;padding:8px 0;margin:0;border-bottom:1px solid #bfa2cf80;text-align:left;box-sizing:border-box}
+.idea-showcase .idea-product span .icon{flex:none;margin-left:auto}
+.idea-showcase .idea-signature{position:static;grid-column:1/-1;order:5;justify-content:center;transform:none;white-space:normal;min-height:32px;margin:0;padding-top:2px;font-size:11px;text-align:center}
+.idea-showcase .idea-orbit{inset:80px 6px 80px;opacity:.5;pointer-events:none}
+@media(hover:hover){.idea-showcase .idea-product:hover{transform:none}.idea-showcase .idea-product:hover img{transform:translateY(-4px) rotate(-1deg)}}
+@media(max-width:1050px) and (min-width:761px){.idea-showcase{gap:18px}.idea-showcase .idea-product img{height:170px}}
+@media(max-width:760px){
+ .idea-showcase{height:auto;max-width:440px;gap:16px 22px;margin:auto}
+ .idea-showcase .idea-visual-label{font-size:9px;padding-bottom:4px}
+ .idea-showcase .idea-product{gap:8px}
+ .idea-showcase .idea-product img{height:clamp(126px,35vw,155px)}
+ .idea-showcase .idea-product span{font-size:12px;min-height:44px}
+ .idea-showcase .idea-signature{padding-top:4px}
+ .idea-showcase .idea-orbit{inset:68px 4px 68px;opacity:.35}
+ .idea-layout{gap:26px}
+}
+@media(prefers-reduced-motion:reduce){.idea-showcase .idea-product img{transition:none}.idea-showcase .idea-product:hover img{transform:none}}
