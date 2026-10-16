@@ -111,7 +111,30 @@
 </section>
 {% endif %}
 
-<section class="section home-pathways"><div class="container"><div class="section-heading split-heading"><div><span class="eyebrow">A MESMA MEGUI. POSSIBILIDADES DIFERENTES.</span><h2>O que a gente<br>vai criar junto?</h2></div><p>Para a rotina de uma equipe ou para um encontro que merece ser lembrado. Seu projeto começa pelo que faz sentido para você.</p></div><div class="home-project-paths"><a href="{{ url_for('b2b') }}"><span class="home-path-number">01 / EMPRESAS</span><img src="{{ url_for('static',filename='img/inicio/polo.webp') }}" alt="Polo personalizada Megui" width="1000" height="1000" loading="lazy"><div><h3>Vista a equipe.<br>Apresente sua marca.</h3><p>Uniformes, brindes e comunicação visual para o seu negócio.</p><strong>Conheça as possibilidades {{ icon('arrow') }}</strong></div></a><a href="{{ url_for('events') }}"><span class="home-path-number">02 / EVENTOS</span><img src="{{ url_for('static',filename='img/inicio/eventos.webp') }}" alt="Credencial, pulseiras e copo personalizados para um encontro" width="1000" height="1000" loading="lazy"><div><h3>Reúna as pessoas.<br>Leve a história adiante.</h3><p>Festas, encontros religiosos, congressos e movimentos.</p><strong>Encontre o seu evento {{ icon('arrow') }}</strong></div></a></div></div></section>
+<section class="section home-idea" id="sua-ideia" aria-labelledby="idea-title">
+  <div class="container">
+    <div class="idea-layout">
+      <div class="idea-showcase" aria-label="Explore algumas possibilidades de personalização">
+        <span class="idea-orbit" aria-hidden="true"></span>
+        <span class="idea-visual-label">MATERIAIS DIFERENTES.<br>A SUA IDENTIDADE EM TODOS.</span>
+        <a class="idea-product idea-shirt" href="{{ url_for('category',slug='vestuario') }}"><img src="{{ url_for('static',filename='img/produtos/camiseta-megui.webp') }}" alt="Camiseta preta personalizada Megui" width="1000" height="1000" loading="lazy"><span>Vista sua ideia {{ icon('arrow') }}</span></a>
+        <a class="idea-product idea-bag" href="{{ url_for('category',slug='bolsas-acessorios') }}"><img src="{{ url_for('static',filename='img/inicio/ecobag.webp') }}" alt="Ecobag personalizada" width="1000" height="1000" loading="lazy"><span>Leve sua marca {{ icon('arrow') }}</span></a>
+        <a class="idea-product idea-notebook" href="{{ url_for('category',slug='grafica') }}"><img src="{{ url_for('static',filename='img/inicio/caderno.webp') }}" alt="Caderno com personalização Megui" width="1000" height="1000" loading="lazy"><span>Dê forma à mensagem {{ icon('arrow') }}</span></a>
+        <a class="idea-product idea-cup" href="{{ url_for('category',slug='brindes') }}"><img src="{{ url_for('static',filename='img/inicio/copo-termico.webp') }}" alt="Copo térmico personalizado" width="1000" height="1000" loading="lazy"><span>Faça parte da rotina {{ icon('arrow') }}</span></a>
+        <span class="idea-signature" aria-hidden="true">{{ icon('butterfly') }} feito para representar.</span>
+      </div>
+      <div class="idea-copy">
+        <span class="idea-eyebrow">O CATÁLOGO É SÓ O COMEÇO</span>
+        <h2 id="idea-title">Você imagina.<br>A gente cria<br><em>com você.</em></h2>
+        <p>Uma peça para sua marca, um presente com significado ou um kit que ninguém pensou ainda. A personalização começa no que você quer contar.</p>
+        <div class="idea-invitation"><h3>Não encontrou por aqui?</h3><p>Mande uma referência, um rascunho ou conte sua ideia. Vamos avaliar materiais, formatos e possibilidades para tirar seu projeto do papel.</p></div>
+        <a class="idea-cta" href="https://wa.me/{{ whatsapp_number }}?text={{ 'Olá! Tenho uma ideia de produto personalizado e quero desenvolver com a Megui.'|urlencode }}" target="_blank" rel="noopener">{{ icon('whatsapp') }} <span>Quero conversar sobre minha ideia</span> {{ icon('arrow') }}</a>
+        <span class="idea-cta-note">Conversa direta com quem entende de personalização.</span>
+      </div>
+    </div>
+    <div class="idea-footer"><span>Uma marca. Muitas possibilidades.</span><nav aria-label="Mais possibilidades para seu projeto"><a href="{{ url_for('b2b') }}">Para sua empresa {{ icon('arrow') }}</a><a href="{{ url_for('events') }}">Para seu evento {{ icon('arrow') }}</a><a href="{{ url_for('products') }}">Explore o catálogo {{ icon('arrow') }}</a></nav></div>
+  </div>
+</section>
 
 <section class="section home-clients">
   <div class="container">
