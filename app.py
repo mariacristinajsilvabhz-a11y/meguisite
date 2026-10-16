@@ -446,10 +446,6 @@ def send_whatsapp():
         return render_template("quote.html",items=list(cart().values()),
           config_error="Não foi possível registrar agora. Seus itens continuam salvos; tente novamente.",form_data=request.form),503
     number=info.get("numero","")
-    session["quote_request_id"]=str(uuid.uuid4())
-    session["quote_cart"]={}
-    session.modified=True
-
     if not WHATSAPP_NUMBER:
         return render_template(
             "quote.html",
@@ -488,6 +484,10 @@ def send_whatsapp():
     lines.extend(["", "Pode me ajudar com valores, personalização e prazo?"])
 
     message = "\n".join(lines)
+    session["quote_request_id"]=str(uuid.uuid4())
+    session["quote_cart"]={}
+    session.modified=True
+
     whatsapp_url = f"https://wa.me/{WHATSAPP_NUMBER}?text={quote(message)}"
     return redirect(whatsapp_url)
 
