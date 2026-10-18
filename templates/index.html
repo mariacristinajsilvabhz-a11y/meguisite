@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block title %}Megui Personalizados — sua marca em tudo{% endblock %}
 {% block extra_head %}
+<link rel="stylesheet" href="{{ url_for('static',filename='css/real-work.css',v='20261018') }}">
 <style>
 {% raw %}
 
@@ -153,9 +154,9 @@
     <div class="carousel-slides" aria-live="off">
       {% set slides = [
         {'theme':'knit','tag':'MALHA É A NOSSA ESPECIALIDADE','title':'Da malha','accent':'à sua ideia.','text':'Confecção própria e personalização para transformar tecido em camisetas, uniformes, peças para eventos e saquinhos com identidade.','image':'img/inicio/camiseta-megui-movimento-v3.webp','alt':'Camiseta preta Megui em manequim invisível, com dobras e caimento em movimento','cta':'Explorar a malha','href':'#malharia','label':'malha e confecção própria'},
-        {'theme':'wear','tag':'CONFECÇÃO PARA EQUIPES & MARCAS','title':'Uma equipe.','accent':'Uma identidade.','text':'Da camiseta ao uniforme. Modelagem, tecido e personalização alinhados à rotina e à apresentação da sua equipe.','image':'img/inicio/carousel-uniformes.webp','alt':'jaqueta e camisa personalizadas Megui','cta':'Explorar vestuário','href':url_for('category',slug='vestuario'),'label':'vestuário e uniformes'},
-        {'theme':'faith','tag':'CAMISETAS PARA ENCONTROS & MOVIMENTOS','title':'Uma mensagem.','accent':'Muitas pessoas.','text':'Vista o tema do seu encontro. Camisetas e itens personalizados para reunir o grupo em uma identidade.','image':'img/eventos/grupo-igreja.webp','alt':'grupo reunido com camisetas pretas e lilás','cta':'Conhecer as possibilidades','href':url_for('events') ~ '#movimentos','label':'encontros religiosos'},
-        {'theme':'events','tag':'COPOS, KITS & ITENS PARA EVENTOS','title':'Além da camiseta.','accent':'O encontro completo.','text':'Copos, garrafas, bolsas, credenciais e outros personalizados para acompanhar o público e levar a lembrança do evento adiante.','image':'img/inicio/eventos.webp','alt':'Copo reutilizável lilás, credencial com cordão e pulseiras personalizados para eventos','cta':'Compor os itens do evento','href':url_for('events') ~ '#compor','label':'copos e itens para eventos'}
+        {'theme':'wear','tag':'CONFECÇÃO PARA EQUIPES & MARCAS','title':'Uma equipe.','accent':'Uma identidade.','text':'Da camiseta ao uniforme. Modelagem, tecido e personalização alinhados à rotina e à apresentação da sua equipe.','image':'img/trabalhos/time-uniformizado.webp','alt':'Time de futebol vestindo uniformes personalizados','cta':'Explorar vestuário','href':url_for('category',slug='vestuario'),'label':'vestuário e uniformes'},
+        {'theme':'faith','tag':'CAMISETAS PARA ENCONTROS & MOVIMENTOS','title':'Uma mensagem.','accent':'Muitas pessoas.','text':'Vista o tema do seu encontro. Camisetas e itens personalizados para reunir o grupo em uma identidade.','image':'img/trabalhos/encontro-religioso.webp','alt':'Encontro religioso com músico de camiseta verde personalizada e participantes ao fundo','cta':'Conhecer as possibilidades','href':url_for('events') ~ '#formatos','label':'encontros religiosos'},
+        {'theme':'events','tag':'COPOS, KITS & ITENS PARA EVENTOS','title':'Além da camiseta.','accent':'O encontro completo.','text':'Copos, garrafas, bolsas, credenciais e outros personalizados para acompanhar o público e levar a lembrança do evento adiante.','image':'img/trabalhos/copos-personalizados.webp','alt':'Copos pretos com personalização branca para eventos','cta':'Compor os itens do evento','href':url_for('events') ~ '#compor','label':'copos e itens para eventos'}
       ] %}
       {% for slide in slides %}
       <article class="carousel-slide slide-{{ slide.theme }} {% if loop.first %}is-active{% endif %}" data-carousel-slide role="group" aria-roledescription="banner" aria-label="{{ loop.index }} de {{ loop.length }}" {% if not loop.first %}hidden inert{% endif %}>
@@ -204,7 +205,7 @@
   {% set knit_editions = [
    ('marca','01','Sua marca','Camisetas com identidade','DO SEU JEITO, DO TECIDO À ESTAMPA','Uma ideia que<br>dá para <em>vestir.</em>','Básicas, babylooks e modelagens que levam a identidade da sua marca para o dia a dia. A gente conversa sobre tecido, caimento e personalização para encontrar a peça certa.','Básicas · Babylooks · Estampas','img/inicio/camiseta-megui-movimento-v3.webp','Camiseta preta Megui com caimento em movimento','img/tecidos/detalhe-trama-v9.webp','Trama e toque',url_for('category',slug='vestuario'),'Explorar camisetas'),
    ('equipe','02','Sua equipe','Conforto para representar','PRESENÇA EM CADA DIA DE TRABALHO','Quem veste,<br><em>representa.</em>','Uma equipe tem ritmo, rotina e identidade. Camisetas, polos e uniformes pensados para acompanhar quem trabalha e apresentar bem a sua marca.','Camisetas · Polos · Uniformes','img/inicio/polo.webp','Polo preta Megui com detalhes lilás na gola','img/tecidos/detalhe-gola-v9.webp','Gola e acabamento',url_for('b2b') ~ '#uniformes','Conhecer os uniformes'),
-   ('encontro','03','Seu encontro','Uma identidade em comum','UMA MENSAGEM QUE APROXIMA','Um encontro.<br><em>Muitas histórias.</em>','Retiros, congressos e movimentos ganham uma identidade que reúne o grupo. Peças que vestem a mensagem e continuam fazendo parte da história depois do evento.','Retiros · Congressos · Movimentos','img/acervo/2026/escola-de-cura-manequim-v3.webp','Camiseta e peças embaladas do projeto Escola de Cura','img/tecidos/detalhe-costura-v9.webp','Costura e cuidado',url_for('events') ~ '#movimentos','Personalizar meu encontro')
+   ('encontro','03','Seu encontro','Uma identidade em comum','UMA MENSAGEM QUE APROXIMA','Um encontro.<br><em>Muitas histórias.</em>','Retiros, congressos e movimentos ganham uma identidade que reúne o grupo. Peças que vestem a mensagem e continuam fazendo parte da história depois do evento.','Retiros · Congressos · Movimentos','img/acervo/2026/escola-de-cura-manequim-v3.webp','Camiseta e peças embaladas do projeto Escola de Cura','img/tecidos/detalhe-costura-v9.webp','Costura e cuidado',url_for('events') ~ '#formatos','Personalizar meu encontro')
   ] %}
   <div class="knit-editions" data-knit-editions>
    <div class="knit-edition-tabs" role="tablist" aria-label="Escolha para quem criar em malha">
@@ -329,7 +330,7 @@
   </div>
 </section>
 
-<section class="section home-work-section"><div class="container"><div class="section-heading split-heading"><div><span class="eyebrow">FEITO PARA IR ALÉM DA IDEIA</span><h2>Marcas, eventos e trabalhos reais.</h2></div><a class="text-link" href="{{ url_for('portfolio_view') }}">Ver todos os trabalhos →</a></div><div class="acervo-gallery homepage-work-gallery" data-gallery-autoplay="false">{% for work in [recent_works[5],recent_works[3],recent_works[1],recent_works[0],recent_works[2],recent_works[7]] %}<figure><a href="{{ url_for('portfolio_view') }}"><img src="{{ url_for('static',filename=work.presentation_image|default(work.image)) }}" alt="{{ work.title }} — {{ 'produto personalizado' if work.presentation_image else 'trabalho personalizado' }}" width="900" height="675" loading="lazy" decoding="async"></a><figcaption><strong>{{ work.title }}</strong><span>{{ work.kind|capitalize }}</span></figcaption></figure>{% endfor %}</div></div></section>
+<section class="section home-work-section"><div class="container"><div class="section-heading split-heading"><div><span class="eyebrow">FEITO PARA IR ALÉM DA IDEIA</span><h2>Marcas, eventos e trabalhos reais.</h2></div><a class="text-link" href="{{ url_for('portfolio_view') }}">Ver todos os trabalhos →</a></div><div class="acervo-gallery homepage-work-gallery" data-gallery-autoplay="false">{% for work in [highlight_works[0],highlight_works[4],highlight_works[5],highlight_works[3],highlight_works[7],highlight_works[9]] %}<figure><a href="{{ url_for('portfolio_view') }}"><img src="{{ url_for('static',filename=work.presentation_image|default(work.image)) }}" alt="{{ work.title }} — {{ 'produto personalizado' if work.presentation_image else 'trabalho personalizado' }}" width="900" height="675" loading="lazy" decoding="async"></a><figcaption><strong>{{ work.title }}</strong><span>{{ work.kind|capitalize }}</span></figcaption></figure>{% endfor %}</div></div></section>
 
 {% if reviews %}
 <section class="section">
@@ -363,7 +364,7 @@
 
 <section class="section">
   <div class="container video-teaser">
-    <div class="home-process-preview">{{ video_preview('video/serigrafia-v2.mp4', 'img/acervo/serigrafia-capa-v2.jpg', 'Serigrafia em produção') }}</div>
+    <div class="home-process-preview">{{ video_preview(production_videos[0].video, production_videos[0].poster, production_videos[0].title) }}</div>
     <div>
       <span class="eyebrow">CONFECÇÃO & PERSONALIZAÇÃO</span>
       <h2>Do tecido<br>à sua identidade.</h2>
