@@ -3,80 +3,104 @@
  const intro = document.querySelector('[data-cinema-intro]');
  if (!intro) return;
  const stage = intro.querySelector('.cinema-stage');
- const video = intro.querySelector('[data-cinema-video]');
- const source = video.querySelector('source');
+ const photos = Array.from(intro.querySelectorAll('.cinema-photo'));
  const sheet = document.querySelector('.home-content-sheet');
+ const controls = intro.querySelector('[data-photo-controls]');
  const toggle = intro.querySelector('[data-cinema-toggle]');
  const label = toggle.querySelector('[data-cinema-toggle-label]');
  const symbol = toggle.querySelector('[data-cinema-toggle-symbol]');
+ const caption = intro.querySelector('[data-photo-caption]');
+ const counter = intro.querySelector('[data-photo-count]');
  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
  const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+ const loaded = new Map();
+ let index = 0;
  let userPaused = false;
  let userStarted = false;
  let inView = true;
  let covered = false;
  let frame = 0;
- let failed = false;
- const updateButton = () => {
-  const playing = !video.paused && !video.ended;
-  label.textContent = playing ? 'Pausar vídeo' : 'Reproduzir vídeo';
+ let timer;
+ let request = 0;
+ const allowed = () => !userPaused && !document.hidden && inView && !covered &&
+  (userStarted || (!reduced.matches && !(connection && connection.saveData)));
+ const load = n => {
+  if (loaded.has(n)) return loaded.get(n);
+  const img = photos[n];
+  const promise = new Promise(resolve => {
+   if (img.complete && img.naturalWidth) { resolve(true); return; }
+   img.addEventListener('load', () => resolve(true), {once:true});
+   img.addEventListener('error', () => resolve(false), {once:true});
+   if (img.dataset.src) { img.src = img.dataset.src; delete img.dataset.src; }
+   else if (img.complete) resolve(false);
+  });
+  loaded.set(n, promise);
+  return promise;
+ };
+ const sync = () => {
+  clearTimeout(timer);
+  const playing = allowed();
+  label.textContent = playing ? 'Pausar fotos' : 'Reproduzir fotos';
   symbol.textContent = playing ? 'Ⅱ' : '▶';
-  toggle.setAttribute('aria-label', playing ? 'Pausar vídeo de produção' : 'Reproduzir vídeo de produção');
+  toggle.setAttribute('aria-label', playing ? 'Pausar troca de fotos' : 'Reproduzir troca de fotos');
   toggle.setAttribute('aria-pressed', String(playing));
- };
- const ensureSource = () => {
-  if (!source.getAttribute('src')) {
-   source.src = source.dataset.cinemaSrc;
-   video.load();
+  if (playing) {
+   load((index + 1) % photos.length);
+   timer = setTimeout(() => show(index + 1), 6500);
   }
  };
- const syncPlayback = () => {
-  if (failed) return;
-  const autoAllowed = !reduced.matches && !(connection && connection.saveData);
-  if (!inView || covered || document.hidden || userPaused || (!autoAllowed && !userStarted)) {
-   video.pause();
-  } else {
-   ensureSource();
-   const promise = video.play();
-   if (promise && promise.catch) promise.catch(updateButton);
+ const show = async target => {
+  clearTimeout(timer);
+  const token = ++request;
+  for (let tries = 0; tries < photos.length; tries++) {
+   const next = ((target + tries) % photos.length + photos.length) % photos.length;
+   const ready = await load(next);
+   if (token !== request) return;
+   if (!ready) continue;
+   photos[index].classList.remove('is-active');
+   photos[next].classList.add('is-active');
+   index = next;
+   caption.textContent = photos[index].dataset.photoTitle;
+   counter.textContent = `${String(index + 1).padStart(2,'0')} / ${String(photos.length).padStart(2,'0')}`;
+   sync();
+   return;
   }
-  updateButton();
+  userPaused = true;
+  sync();
  };
  const measure = () => {
   frame = 0;
   const rect = stage.getBoundingClientRect();
   const sheetTop = sheet.getBoundingClientRect().top;
-  const progress = Math.max(0, Math.min(1, (rect.bottom - sheetTop) / Math.max(1, rect.height)));
+  const p = Math.max(0, Math.min(1, (rect.bottom - sheetTop) / Math.max(1, rect.height)));
   const wasCovered = covered;
   covered = sheetTop <= rect.top + 2;
-  stage.style.setProperty('--cinema-copy-opacity', reduced.matches ? '1' : String(Math.max(0, 1 - progress * 1.65)));
-  stage.style.setProperty('--cinema-copy-shift', reduced.matches ? '0px' : `${-progress * 28}px`);
-  if (covered !== wasCovered) syncPlayback();
+  stage.style.setProperty('--cinema-cover-opacity', String(p * p * (3 - 2 * p)));
+  stage.style.setProperty('--cinema-copy-opacity', String(Math.max(0, 1 - p * 1.65)));
+  stage.style.setProperty('--cinema-copy-shift', reduced.matches ? '0px' : `${-p * 28}px`);
+  if (covered !== wasCovered) sync();
  };
  const schedule = () => { if (!frame) frame = requestAnimationFrame(measure); };
- toggle.hidden = false;
+ controls.hidden = false;
  toggle.addEventListener('click', () => {
-  if (video.paused) { userPaused = false; userStarted = true; }
-  else { userPaused = true; userStarted = false; }
-  syncPlayback();
+  if (allowed()) { userPaused = true; userStarted = false; }
+  else { userPaused = false; userStarted = true; }
+  sync();
  });
- video.addEventListener('playing', () => { video.classList.add('is-playing'); updateButton(); });
- video.addEventListener('pause', updateButton);
- const fail = () => { failed = true; video.classList.remove('is-playing'); toggle.hidden = true; };
- video.addEventListener('error', fail);
- source.addEventListener('error', fail);
+ intro.querySelector('[data-photo-prev]').addEventListener('click', () => show(index - 1));
+ intro.querySelector('[data-photo-next]').addEventListener('click', () => show(index + 1));
  if ('IntersectionObserver' in window) {
-  new IntersectionObserver(entries => { inView = entries[0].isIntersecting; syncPlayback(); }, {threshold:0}).observe(intro);
+  new IntersectionObserver(entries => { inView = entries[0].isIntersecting; sync(); }, {threshold:0}).observe(intro);
  }
- document.addEventListener('visibilitychange', syncPlayback);
+ document.addEventListener('visibilitychange', sync);
  window.addEventListener('scroll', schedule, {passive:true});
  window.addEventListener('resize', schedule, {passive:true});
- if (reduced.addEventListener) reduced.addEventListener('change', () => { userStarted = false; schedule(); syncPlayback(); });
+ if (reduced.addEventListener) reduced.addEventListener('change', () => { userStarted = false; schedule(); sync(); });
  const header = document.querySelector('.site-header');
  const sizeHeader = () => {
   if (header) document.body.style.setProperty('--cinema-top', `${header.getBoundingClientRect().height}px`);
   schedule();
  };
  if (header && 'ResizeObserver' in window) new ResizeObserver(sizeHeader).observe(header);
- sizeHeader(); measure(); syncPlayback();
+ sizeHeader(); measure(); sync();
 })();

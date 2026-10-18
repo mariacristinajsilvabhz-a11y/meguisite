@@ -1,10 +1,16 @@
 <section class="cinema-intro" data-cinema-intro aria-labelledby="cinema-heading">
  <div class="cinema-stage">
   <div class="cinema-background" aria-hidden="true">
-   <img class="cinema-poster" src="{{ url_for('static',filename='img/abertura/impressao-megui-v1.webp',v='20261018-hq2') }}" alt="" fetchpriority="high" width="480" height="864">
-   <video class="cinema-video" data-cinema-video muted loop playsinline preload="metadata" poster="{{ url_for('static',filename='img/abertura/impressao-megui-v1.webp',v='20261018-hq2') }}" tabindex="-1">
-    <source data-cinema-src="{{ url_for('static',filename='video/abertura/impressao-megui-v1.mp4',v='20261018-hq2') }}" type="video/mp4">
-   </video>
+   <img class="cinema-photo is-active" src="{{ url_for('static',filename='img/inicio/time-futebol-real-20261018.jpeg') }}" data-photo-title="Uniformes que entram em campo." style="object-position:50% 42%" alt="" width="1280" height="853" decoding="async" fetchpriority="high">
+   <img class="cinema-photo" data-src="{{ url_for('static',filename='img/mostruario/escola-de-cura-estudio-v1.webp') }}" data-photo-title="Camisetas para reunir pessoas." style="object-position:65% 50%" alt="" width="1536" height="1024" decoding="async">
+   <img class="cinema-photo" data-src="{{ url_for('static',filename='img/mostruario/camiseta-future-pro-estudio-v1.webp') }}" data-photo-title="A identidade da sua equipe." style="object-position:65% 50%" alt="" width="1536" height="1024" decoding="async">
+   <img class="cinema-photo" data-src="{{ url_for('static',filename='img/trabalhos/encontro-religioso.webp') }}" data-photo-title="Uma mensagem que veste o encontro." style="object-position:60% 50%" alt="" width="1536" height="1024" decoding="async">
+   <img class="cinema-photo" data-src="{{ url_for('static',filename='img/mostruario/kit-band-minas-estudio-v1.webp') }}" data-photo-title="Personalizados para a Band Minas." style="object-position:65% 50%" alt="" width="1536" height="1024" decoding="async">
+   <img class="cinema-photo" data-src="{{ url_for('static',filename='img/mostruario/cadernos-senac-estudio-v1.webp') }}" data-photo-title="Papelaria personalizada para o Senac." style="object-position:65% 50%" alt="" width="1536" height="1024" decoding="async">
+   <img class="cinema-photo" data-src="{{ url_for('static',filename='img/mostruario/sacochila-circuito-estudio-v1.webp') }}" data-photo-title="Sacochilas para o Circuito das Indústrias." style="object-position:65% 50%" alt="" width="1536" height="1024" decoding="async">
+   <img class="cinema-photo" data-src="{{ url_for('static',filename='img/mostruario/garrafas-senac-estudio-v1.webp') }}" data-photo-title="Garrafas que levam a marca adiante." style="object-position:65% 50%" alt="" width="1536" height="1024" decoding="async">
+   <img class="cinema-photo" data-src="{{ url_for('static',filename='img/mostruario/necessaires-estudio-v1.webp') }}" data-photo-title="Personalização em cada detalhe." style="object-position:65% 50%" alt="" width="1536" height="1024" decoding="async">
+   <img class="cinema-photo" data-src="{{ url_for('static',filename='img/mostruario/chaveiros-estudio-v1.webp') }}" data-photo-title="Lembranças com identidade." style="object-position:65% 50%" alt="" width="1536" height="1024" decoding="async">
   </div>
   <div class="cinema-light" aria-hidden="true"></div>
   <div class="container cinema-inner">
@@ -18,9 +24,14 @@
     </div>
    </div>
    <div class="cinema-bottom">
-    <a class="cinema-discover" href="#descubra-megui"><span class="cinema-discover-line" aria-hidden="true"></span><span>O processo é só o começo.</span><span aria-hidden="true">↓</span></a>
-    <div class="cinema-process"><span>POR DENTRO DA MEGUI</span><strong>Personalização em produção.</strong></div>
-    <button class="cinema-toggle" type="button" data-cinema-toggle aria-label="Reproduzir vídeo de produção" aria-pressed="false" hidden><span data-cinema-toggle-label>Reproduzir vídeo</span><span data-cinema-toggle-symbol aria-hidden="true">▶</span></button>
+    <a class="cinema-discover" href="#descubra-megui"><span class="cinema-discover-line" aria-hidden="true"></span><span>Conheça as possibilidades.</span><span aria-hidden="true">↓</span></a>
+    <div class="cinema-process"><span>FEITO PELA MEGUI</span><strong data-photo-caption>Uniformes que entram em campo.</strong></div>
+    <div class="cinema-photo-controls" hidden data-photo-controls role="group" aria-label="Fotos dos nossos trabalhos">
+     <button type="button" data-photo-prev aria-label="Foto anterior">‹</button>
+     <span class="cinema-photo-count" data-photo-count>01 / 10</span>
+     <button type="button" data-photo-next aria-label="Próxima foto">›</button>
+     <button class="cinema-toggle" type="button" data-cinema-toggle aria-pressed="false"><span data-cinema-toggle-label>Pausar fotos</span><span data-cinema-toggle-symbol aria-hidden="true">Ⅱ</span></button>
+    </div>
    </div>
   </div>
  </div>
