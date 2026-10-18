@@ -9,7 +9,7 @@ from urllib.parse import quote
 from flask import Flask, render_template, request, redirect, url_for, session, abort, jsonify
 from hub_catalog import HubCatalog, CatalogUnavailable
 from textile_data import FABRICS
-from content_data import HISTORICAL_BRANDS, PORTFOLIO, PRODUCTION_VIDEOS, RECENT_WORKS, DESIGN_PROJECTS, HIGHLIGHT_WORKS
+from content_data import HISTORICAL_BRANDS, PORTFOLIO, PRODUCTION_VIDEOS, RECENT_WORKS, DESIGN_PROJECTS
 
 from mockup_3d import mockup_3d
 
@@ -202,7 +202,6 @@ def inject_global():
         "historical_brands": HISTORICAL_BRANDS,
         "portfolio": PORTFOLIO,
         "recent_works": RECENT_WORKS,
-        "highlight_works": HIGHLIGHT_WORKS,
         "design_projects": DESIGN_PROJECTS,
         "production_videos": PRODUCTION_VIDEOS,
         "hub_catalog_enabled": hub_catalog.enabled,
