@@ -4,6 +4,7 @@
 {% block extra_head %}
 <link rel="stylesheet" href="{{ url_for('static',filename='css/b2b-atelier.css',v='20261016-correcoes-04') }}">
 <script defer src="{{ url_for('static',filename='js/b2b-studio.js',v='20261016-correcoes-04') }}"></script>
+<link rel="stylesheet" href="{{ url_for('static',filename='css/mostruario.css',v='20261018-v1') }}">
 {% endblock %}
 {% block content %}
 {% macro talk(text, label, primary=false) %}<a class="{{ 'empresa-button' if primary else 'empresa-link' }}" href="https://wa.me/{{ whatsapp_number }}?text={{ text|urlencode }}" target="_blank" rel="noopener">{{ icon('whatsapp') if primary else '' }}{{ label }}{{ icon('arrow') }}</a>{% endmacro %}
@@ -49,7 +50,7 @@
 </section>
 <section class="empresa-gifts" id="presentes" aria-labelledby="gifts-title"><div class="container empresa-gift-grid">
  <div class="empresa-gift-copy"><span class="empresa-kicker">ALÉM DO UNIFORME</span><h2 id="gifts-title">Sua marca faz parte<br><em>dos bons momentos.</em></h2><p>Na mesa de trabalho, no café ou no presente de boas-vindas. Personalizados que acompanham clientes e colaboradores.</p><div class="empresa-gift-tags"><span>Agendas & papelaria</span><span>Garrafas & canecas</span><span>Alexa & power bank</span><span>Mochilas & kits</span></div>{{ talk('Olá, Megui! Quero montar um kit corporativo. Podemos conversar sobre os produtos e o orçamento?', 'Montar um kit com a Megui', true) }}<small>Produtos e personalização sujeitos à disponibilidade.</small></div>
- <div class="empresa-gift-art"><figure><img src="{{ url_for('static',filename='img/empresas/agenda-social-tecnologia-v1.webp') }}" alt="Composição de agenda, camisa social e caixa de som inteligente para presente corporativo" loading="lazy" width="1536" height="1024"><figcaption>Do primeiro dia na equipe à próxima conquista.</figcaption></figure><img class="empresa-gift-mug" src="{{ url_for('static',filename='img/empresas/caneca-novas-ideias-v1.webp') }}" alt="Caneca personalizada com mensagem de bom dia" loading="lazy" width="1254" height="1254"></div>
+ <div class="empresa-gift-art"><figure><img src="{{ url_for('static',filename='img/mostruario/kit-band-minas-estudio-v1.webp') }}" alt="Kit Band Minas com copos personalizados, bolsa e chaveiro" loading="lazy" width="1536" height="1024"><figcaption>Do primeiro dia na equipe à próxima conquista.</figcaption></figure><img class="empresa-gift-mug" src="{{ url_for('static',filename='img/empresas/caneca-novas-ideias-v1.webp') }}" alt="Caneca personalizada com mensagem de bom dia" loading="lazy" width="1254" height="1254"></div>
 </div></section>
 <section class="empresa-everyday container" id="seu-negocio" aria-labelledby="everyday-title">
  <div class="empresa-section-heading"><div><span class="empresa-kicker">PARA QUEM EMPREENDE. PARA QUEM CRESCE.</span><h2 id="everyday-title">Seu negócio tem espaço <em>aqui.</em></h2></div><p>Cada negócio tem uma identidade. Criamos personalizados que combinam com a sua equipe, sua rotina e seus objetivos.</p></div>

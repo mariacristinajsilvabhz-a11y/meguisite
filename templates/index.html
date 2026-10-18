@@ -202,10 +202,14 @@
 {% endraw %}
 </style>
 <link rel="stylesheet" href="{{ url_for('static',filename='css/knit-journal.css',v='20261016-v3') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/mostruario.css',v='20261018-v1') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/cinema-opening.css',v='20261018-v1') }}">
 {% endblock %}
 {% block content %}
 {% from '_icons.html' import icon %}
 {% from '_video_preview.html' import video_preview %}
+{% include '_cinema_opening.html' %}
+<div class="home-content-sheet" id="descubra-megui">
 <section class="home-welcome" id="megui-theme-slides" aria-label="Conheça as possibilidades da Megui">
   <div class="welcome-carousel" aria-roledescription="carrossel" aria-label="Produtos personalizados" data-welcome-carousel>
     <div class="carousel-slides" aria-live="off">
@@ -219,7 +223,7 @@
       <article class="carousel-slide slide-{{ slide.theme }} {% if loop.first %}is-active{% endif %}" data-carousel-slide role="group" aria-roledescription="banner" aria-label="{{ loop.index }} de {{ loop.length }}" {% if not loop.first %}hidden inert{% endif %}>
         <div class="carousel-copy">
           <span class="carousel-kicker">{{ icon('butterfly','carousel-butterfly') }} {{ slide.tag }}</span>
-          <{% if loop.first %}h1{% else %}h2{% endif %}>{{ slide.title }}<br><span>{{ slide.accent }}</span></{% if loop.first %}h1{% else %}h2{% endif %}>
+          <h2>{{ slide.title }}<br><span>{{ slide.accent }}</span></h2>
           <p>{{ slide.text }}</p>
           {% if slide.details %}<span class="carousel-theme-details">{{ slide.details }}</span>{% endif %}
           <div class="carousel-actions">
@@ -261,9 +265,9 @@
    <div class="knit-brand-sculpture" aria-hidden="true"><span class="knit-brand-orbit"></span><span class="knit-brand-orbit orbit-two"></span>{{ icon('butterfly') }}<span class="knit-brand-note">O JEITO MEGUI<br>DE DAR ASAS À SUA IDEIA.</span></div>
   </div>
   {% set knit_editions = [
-   ('marca','01','Sua marca','Camisetas com identidade','DO SEU JEITO, DO TECIDO À ESTAMPA','Uma ideia que<br>dá para <em>vestir.</em>','Básicas, babylooks e modelagens que levam a identidade da sua marca para o dia a dia. A gente conversa sobre tecido, caimento e personalização para encontrar a peça certa.','Básicas · Babylooks · Estampas','img/inicio/camiseta-megui-movimento-v3.webp','Camiseta preta Megui com caimento em movimento','img/tecidos/detalhe-trama-v9.webp','Trama e toque',url_for('category',slug='vestuario'),'Explorar camisetas'),
+   ('marca','01','Sua marca','Camisetas com identidade','DO SEU JEITO, DO TECIDO À ESTAMPA','Uma ideia que<br>dá para <em>vestir.</em>','Básicas, babylooks e modelagens que levam a identidade da sua marca para o dia a dia. A gente conversa sobre tecido, caimento e personalização para encontrar a peça certa.','Básicas · Babylooks · Estampas','img/mostruario/camiseta-future-pro-estudio-v1.webp','Camiseta preta com a estampa Future Pro, em vista traseira','img/tecidos/detalhe-trama-v9.webp','Trama e toque',url_for('category',slug='vestuario'),'Explorar camisetas'),
    ('equipe','02','Sua equipe','Conforto para representar','PRESENÇA EM CADA DIA DE TRABALHO','Quem veste,<br><em>representa.</em>','Uma equipe tem ritmo, rotina e identidade. Camisetas, polos e uniformes pensados para acompanhar quem trabalha e apresentar bem a sua marca.','Camisetas · Polos · Uniformes','img/inicio/polo.webp','Polo preta Megui com detalhes lilás na gola','img/tecidos/detalhe-gola-v9.webp','Gola e acabamento',url_for('b2b') ~ '#uniformes','Conhecer os uniformes'),
-   ('encontro','03','Seu encontro','Uma identidade em comum','UMA MENSAGEM QUE APROXIMA','Um encontro.<br><em>Muitas histórias.</em>','Retiros, congressos e movimentos ganham uma identidade que reúne o grupo. Peças que vestem a mensagem e continuam fazendo parte da história depois do evento.','Retiros · Congressos · Movimentos','img/acervo/2026/escola-de-cura-manequim-v3.webp','Camiseta e peças embaladas do projeto Escola de Cura','img/tecidos/detalhe-costura-v9.webp','Costura e cuidado',url_for('events') ~ '#movimentos','Personalizar meu encontro')
+   ('encontro','03','Seu encontro','Uma identidade em comum','UMA MENSAGEM QUE APROXIMA','Um encontro.<br><em>Muitas histórias.</em>','Retiros, congressos e movimentos ganham uma identidade que reúne o grupo. Peças que vestem a mensagem e continuam fazendo parte da história depois do evento.','Retiros · Congressos · Movimentos','img/mostruario/camiseta-iprv-estudio-v1.webp','Frente e costas de camiseta comemorativa IPRV','img/tecidos/detalhe-costura-v9.webp','Costura e cuidado',url_for('events') ~ '#movimentos','Personalizar meu encontro')
   ] %}
   <div class="knit-editions" data-knit-editions>
    <div class="knit-edition-tabs" role="tablist" aria-label="Escolha para quem criar em malha">
@@ -316,7 +320,7 @@
     <div class="category-grid home-category-grid">
       {% set extra_categories = [
         {'slug':'uniformes','name':'Uniformes','description':'Modelos para saúde, gastronomia, atendimento e equipes operacionais.','images':['img/inicio/uniformes-colecao-v8.webp'],'href':url_for('b2b') ~ '#uniformes','link_label':'Conhecer os modelos'},
-        {'slug':'kits-personalizados','name':'Kits personalizados','description':'Combine produtos e crie uma entrega especial para equipes, clientes e eventos.','images':['img/eventos/kits-evento-v4.webp'],'href':url_for('products',q='kit'),'link_label':'Explorar os kits'}
+        {'slug':'kits-personalizados','name':'Kits personalizados','description':'Combine produtos e crie uma entrega especial para equipes, clientes e eventos.','images':['img/mostruario/kit-band-minas-estudio-v1.webp'],'href':url_for('products',q='kit'),'link_label':'Explorar os kits'}
       ] %}
       {% for category in home_categories + extra_categories %}
       <a class="category-card category-with-photo" data-category="{{ category.slug }}" href="{{ category.href if category.href is defined else (url_for('events') if category.slug == 'eventos' else url_for('category', slug=category.slug)) }}">
@@ -475,4 +479,7 @@
  paint();refresh();
 })();
 </script>
+</div>
 {% endblock %}
+
+{% block extra_scripts %}<script defer src="{{ url_for('static',filename='js/cinema-opening.js',v='20261018-v1') }}"></script>{% endblock %}

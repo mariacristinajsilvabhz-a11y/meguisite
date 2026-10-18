@@ -1,0 +1,4 @@
+/* Keep full artwork visible within the existing column geometry. */
+img[src*="/img/mostruario/"]{object-fit:contain!important;mix-blend-mode:normal!important}
+.empresa-gift-art figure:has(img[src*="/img/mostruario/"]){background:#eee7f0}
+.ev-project-image:has(img[src*="/img/mostruario/"]),.ev-format-panel figure:has(img[src*="/img/mostruario/"]){background:#eee7f0}

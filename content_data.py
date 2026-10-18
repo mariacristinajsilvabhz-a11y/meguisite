@@ -37,3 +37,10 @@ DESIGN_PROJECTS = [
     {"title": "Senac", "text": "Apresentação de sacochila personalizada para Santos na Ladeira.", "image": "img/acervo/2026/senac-sacochila-projeto.webp"},
     {"title": "Circuito das Indústrias", "text": "Projeto de sacochila personalizada.", "image": "img/acervo/2026/circuito-industrias-projeto.webp"},
 ]
+
+
+# Apresentações do mostruário aprovadas em 18/10/2026; fontes originais preservadas.
+MOSTRUARIO_PRESENTATIONS = {'Senac Minas': 'img/mostruario/cadernos-senac-estudio-v1.webp', 'Circuito das Indústrias': 'img/mostruario/sacochila-circuito-estudio-v1.webp', 'Escola de Cura': 'img/mostruario/escola-de-cura-estudio-v1.webp', 'Future Pro': 'img/mostruario/camiseta-future-pro-estudio-v1.webp', 'Senac · garrafas personalizadas': 'img/mostruario/garrafas-senac-estudio-v1.webp', 'Nécessaires personalizadas': 'img/mostruario/necessaires-estudio-v1.webp', 'Chaveiros personalizados': 'img/mostruario/chaveiros-estudio-v1.webp', 'Band Minas': 'img/mostruario/kit-band-minas-estudio-v1.webp'}
+for _work in PORTFOLIO:
+    if _work["title"] in MOSTRUARIO_PRESENTATIONS:
+        _work["presentation_image"] = MOSTRUARIO_PRESENTATIONS[_work["title"]]

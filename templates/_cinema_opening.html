@@ -1,0 +1,27 @@
+<section class="cinema-intro" data-cinema-intro aria-labelledby="cinema-heading">
+ <div class="cinema-stage">
+  <div class="cinema-background" aria-hidden="true">
+   <img class="cinema-poster" src="{{ url_for('static',filename='img/abertura/impressao-megui-v1.webp') }}" alt="" fetchpriority="high" width="480" height="864">
+   <video class="cinema-video" data-cinema-video muted loop playsinline preload="metadata" poster="{{ url_for('static',filename='img/abertura/impressao-megui-v1.webp') }}" tabindex="-1">
+    <source data-cinema-src="{{ url_for('static',filename='video/abertura/impressao-megui-v1.mp4') }}" type="video/mp4">
+   </video>
+  </div>
+  <div class="cinema-light" aria-hidden="true"></div>
+  <div class="container cinema-inner">
+   <div class="cinema-copy">
+    <span class="cinema-kicker">{{ icon('butterfly') }} MALHARIA & PERSONALIZAÇÃO · DESDE 2020</span>
+    <h1 id="cinema-heading">É aqui que<br>a sua marca<br><em>ganha forma.</em></h1>
+    <p>Da malha à personalização, o cuidado aparece em cada detalhe. Para vestir equipes, reunir pessoas e levar sua ideia mais longe.</p>
+    <div class="cinema-actions">
+     <a class="cinema-primary" href="https://wa.me/{{ whatsapp_number }}?text={{ 'Olá, Megui! Quero conversar sobre um projeto de personalizados.'|urlencode }}" target="_blank" rel="noopener">Vamos criar seu projeto {{ icon('arrow') }}</a>
+     <a class="cinema-catalog" href="{{ url_for('products') }}">Explorar os produtos {{ icon('arrow') }}</a>
+    </div>
+   </div>
+   <div class="cinema-bottom">
+    <a class="cinema-discover" href="#descubra-megui"><span class="cinema-discover-line" aria-hidden="true"></span><span>O processo é só o começo.</span><span aria-hidden="true">↓</span></a>
+    <div class="cinema-process"><span>POR DENTRO DA MEGUI</span><strong>Personalização em produção.</strong></div>
+    <button class="cinema-toggle" type="button" data-cinema-toggle aria-label="Reproduzir vídeo de produção" aria-pressed="false" hidden><span data-cinema-toggle-label>Reproduzir vídeo</span><span data-cinema-toggle-symbol aria-hidden="true">▶</span></button>
+   </div>
+  </div>
+ </div>
+</section>

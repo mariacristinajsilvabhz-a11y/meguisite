@@ -1,0 +1,40 @@
+/* Home-only: a sticky production film, covered by the following page surface. */
+.home-cinema{--cinema-top:86px;--cinema-height:clamp(540px,calc(100svh - 86px),940px);background:#eee5f3}
+.home-cinema main{overflow:clip;isolation:isolate}
+.home-cinema .cinema-intro{height:calc(var(--cinema-height) * 2);position:relative;z-index:0;background:#201b29}
+.home-cinema .cinema-stage{height:var(--cinema-height);position:sticky;top:var(--cinema-top);overflow:hidden;background:#201b29;color:#fff}
+.home-cinema .cinema-background,.home-cinema .cinema-light{position:absolute;inset:0;pointer-events:none}
+.home-cinema .cinema-background{overflow:hidden}
+.home-cinema .cinema-poster,.home-cinema .cinema-video{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:52% 48%;filter:saturate(.8);opacity:.9}
+.home-cinema .cinema-video{opacity:0;transition:opacity .5s ease}
+.home-cinema .cinema-video.is-playing{opacity:.9}
+.home-cinema .cinema-light{background:linear-gradient(90deg,rgba(20,14,28,.9) 0%,rgba(29,18,39,.77) 36%,rgba(32,20,45,.31) 69%,rgba(26,17,35,.22)),linear-gradient(0deg,rgba(24,16,34,.75),transparent 40%,rgba(23,17,31,.18));z-index:1}
+.home-cinema .cinema-inner{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;height:100%;padding-block:52px 104px}
+.home-cinema .cinema-copy{max-width:660px;opacity:var(--cinema-copy-opacity,1);transform:translateY(var(--cinema-copy-shift,0px));will-change:opacity,transform}
+.home-cinema .cinema-kicker{display:flex;align-items:center;gap:12px;font-size:10px;line-height:1.7;letter-spacing:.14em;color:#e1c6eb;margin-bottom:26px}
+.home-cinema .cinema-kicker .icon{width:22px;height:27px;flex:none}
+.home-cinema #cinema-heading{font-family:"Manrope",sans-serif;font-size:clamp(48px,6.1vw,88px);line-height:1.045;letter-spacing:-.06em;font-weight:600;margin:0 0 26px;color:#fcf7ff;max-width:12ch;text-wrap:balance}
+.home-cinema #cinema-heading em{font-style:normal;color:#dab8ec}
+.home-cinema .cinema-copy>p{max-width:42ch;font-size:16px;line-height:1.8;color:#ece0f0;margin:0}
+.home-cinema .cinema-actions{display:flex;align-items:center;gap:16px 28px;flex-wrap:wrap;margin-top:32px}
+.home-cinema .cinema-primary,.home-cinema .cinema-catalog{display:inline-flex;align-items:center;justify-content:space-between;gap:26px;min-height:52px;text-decoration:none;font-size:13px;line-height:1.5;font-weight:600}
+.home-cinema .cinema-primary{background:#e0c2f0;color:#312039;padding:15px 22px;border:1px solid #ead6f5;border-radius:8px;box-shadow:0 7px 22px #0e081b20;transition:background .2s ease}
+.home-cinema .cinema-primary:hover{background:#f0dcfa}
+.home-cinema .cinema-catalog{color:#f3e9f9;border-bottom:1px solid #d2b2e180;min-height:43px}
+.home-cinema .cinema-actions .icon{width:18px;height:18px;flex:none}
+.home-cinema .cinema-bottom{display:flex;align-items:center;gap:24px;position:absolute;bottom:36px;left:0;right:0}
+.home-cinema .cinema-discover{display:flex;align-items:center;gap:12px;color:#e2cfeb;font-size:11px;text-decoration:none;min-height:44px}
+.home-cinema .cinema-discover-line{height:1px;width:42px;background:#c7a3d6;display:block}
+.home-cinema .cinema-process{display:grid;gap:6px;margin-left:auto;text-align:right}
+.home-cinema .cinema-process>span{font-size:8px;letter-spacing:.13em;color:#cfb9dc}
+.home-cinema .cinema-process>strong{font-size:11px;font-weight:400;color:#f1e7f6}
+.home-cinema .cinema-toggle{display:flex;align-items:center;gap:12px;min-height:44px;background:#281e35aa;border:1px solid #ddc4e34d;color:#ecddf4;border-radius:7px;padding:10px 13px;font:inherit;font-size:10px;cursor:pointer}
+.home-cinema .cinema-toggle[hidden]{display:none}
+.home-cinema .cinema-primary:focus-visible,.home-cinema .cinema-catalog:focus-visible,.home-cinema .cinema-discover:focus-visible,.home-cinema .cinema-toggle:focus-visible{outline:3px solid #e9c9fa;outline-offset:5px}
+.home-cinema .home-content-sheet{position:relative;z-index:3;margin-top:calc(-1 * var(--cinema-height));border-radius:36px 36px 0 0;background:#eee5f3;box-shadow:0 -16px 45px #160d211c;overflow:clip;scroll-margin-top:100px;min-height:100vh}
+.home-cinema .home-content-sheet>.home-welcome{margin-top:0;padding-top:32px}
+.home-cinema .home-content-sheet:before{content:"";display:block;width:42px;height:3px;border-radius:3px;background:#b399bd;margin:15px auto -11px;opacity:.6}
+@media(min-width:1500px){.home-cinema .cinema-poster,.home-cinema .cinema-video{object-position:52% 46%}}
+@media(max-width:900px){.home-cinema{--cinema-top:76px;--cinema-height:clamp(540px,calc(100svh - 76px),850px)}.home-cinema .cinema-inner{padding-top:42px}.home-cinema .cinema-copy{max-width:540px}.home-cinema .cinema-background{opacity:.9}.home-cinema .cinema-process{display:none}.home-cinema .cinema-toggle{margin-left:auto}}
+@media(max-width:600px){.home-cinema{--cinema-top:70px;--cinema-height:clamp(610px,calc(100svh - 70px),860px)}.home-cinema .cinema-light{background:linear-gradient(90deg,#1c1523ba,#281a3780),linear-gradient(0deg,#1c1424d9 0%,#21182d44 55%,#1f162388)}.home-cinema .cinema-poster,.home-cinema .cinema-video{object-position:50% 48%}.home-cinema .cinema-inner{padding-top:32px;padding-bottom:110px}.home-cinema .cinema-kicker{font-size:8px;letter-spacing:.08em;gap:9px;margin-bottom:23px}.home-cinema #cinema-heading{font-size:clamp(46px,12vw,66px);margin-bottom:22px;line-height:1.08}.home-cinema .cinema-copy>p{font-size:14px;line-height:1.75;max-width:35ch}.home-cinema .cinema-actions{gap:12px 20px;margin-top:25px}.home-cinema .cinema-primary{padding:14px 17px;min-height:50px;font-size:12px;gap:18px}.home-cinema .cinema-catalog{font-size:12px;gap:14px;min-height:40px}.home-cinema .cinema-bottom{bottom:28px;gap:12px;flex-wrap:wrap}.home-cinema .cinema-discover{font-size:9px;gap:8px}.home-cinema .cinema-discover-line{width:20px}.home-cinema .cinema-toggle{padding:8px 10px;font-size:9px;gap:8px}.home-cinema .home-content-sheet{border-radius:25px 25px 0 0}.home-cinema .home-content-sheet>.home-welcome{padding-top:27px}}
+@media(prefers-reduced-motion:reduce){.home-cinema .cinema-copy{opacity:1!important;transform:none!important;will-change:auto}.home-cinema .cinema-video,.home-cinema .cinema-primary{transition:none}}
