@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Megui Personalizados — sua marca em tudo{% endblock %}
+{% block title %}Megui Personalizados - sua marca em tudo{% endblock %}
 {% block extra_head %}
 <style>
 {% raw %}
@@ -124,7 +124,7 @@
 #malharia .knit-discovery-texture{height:185px;max-width:260px;margin:8px auto 44px;transform:rotate(-3deg)}
 #malharia .knit-discovery-texture>img{display:block;width:100%;height:100%;object-fit:cover;border-radius:35px 4px 4px 4px;box-shadow:0 12px 22px #4c2c5f17}
 #malharia .knit-discovery-possibilities ul{list-style:none;padding:0;margin:0;display:grid;gap:8px;font-size:13px;color:#7d618b;line-height:1.6}
-#malharia .knit-discovery-possibilities li:before{content:"·";margin-right:9px;color:#a17cb3}
+#malharia .knit-discovery-possibilities li:before{content:"�";margin-right:9px;color:#a17cb3}
 #malharia .knit-discovery-benefits{padding:8px 0 0 15px}
 #malharia .knit-discovery-benefits dl{margin:24px 0 0}
 #malharia .knit-discovery-benefits dt{font-size:17px;line-height:1.4;letter-spacing:-.025em;color:#614071;font-weight:600;margin:0 0 8px}
@@ -143,19 +143,77 @@
 @media(prefers-reduced-motion:reduce){.welcome-carousel .carousel-slide.is-active{animation:none}}
 {% endraw %}
 </style>
+<style>
+{% raw %}
+/* Compositions scoped to the opening carousel; every subject has its own setting. */
+#megui-theme-slides .welcome-carousel{background:#e9e0ef}
+#megui-theme-slides .carousel-slide{position:relative;isolation:isolate;grid-template-columns:43% 57%;min-height:490px;overflow:hidden}
+#megui-theme-slides .carousel-slide[hidden]{display:none}
+#megui-theme-slides .carousel-copy{padding:42px 22px 42px clamp(28px,4vw,58px)}
+#megui-theme-slides .carousel-copy h1,#megui-theme-slides .carousel-copy h2{font-size:clamp(40px,4.3vw,66px);line-height:1.08;margin:20px 0}
+#megui-theme-slides .carousel-copy p{font-size:16px;line-height:1.7;max-width:38ch}
+#megui-theme-slides .carousel-art{position:relative;min-width:0;display:flex;align-items:center;justify-content:center;padding:35px 32px 35px 14px;isolation:isolate}
+#megui-theme-slides .carousel-art img{position:relative;z-index:1;max-width:100%;box-shadow:none}
+#megui-theme-slides .carousel-theme-decoration{position:absolute;z-index:0;pointer-events:none}
+#megui-theme-slides .carousel-theme-details{display:block;font-size:12px;font-weight:700;letter-spacing:.06em;color:#536956;margin:-10px 0 25px}
+#megui-theme-slides .carousel-theme-caption{position:absolute;z-index:2;inset:auto 35px 26px auto;background:none;backdrop-filter:none;border:0;border-radius:0;color:#486452;font-size:11px;padding:0}
+#megui-theme-slides .slide-football{background:linear-gradient(115deg,#eee6f3 0%,#e6ebe1 100%)}
+#megui-theme-slides .slide-football .carousel-copy h1>span{color:#43634b}
+#megui-theme-slides .slide-football .carousel-copy p{color:#4e5851}
+#megui-theme-slides .slide-football .carousel-cta{background:#354d3c;color:#fff}
+#megui-theme-slides .slide-football .carousel-art>img{width:100%;height:auto!important;max-height:none;aspect-ratio:1280/853;object-fit:contain!important;border-radius:5px}
+#megui-theme-slides .slide-football .carousel-theme-decoration{inset:24px 14px 46px 0;border:1px solid #63836938;border-radius:4px;transform:rotate(-3deg)}
+#megui-theme-slides .slide-football .carousel-theme-decoration:before{content:"";position:absolute;left:50%;top:0;bottom:0;border-left:1px solid #63836938}
+#megui-theme-slides .slide-football .carousel-theme-decoration:after{content:"";position:absolute;left:50%;top:50%;width:95px;height:95px;border:1px solid #63836938;border-radius:50%;transform:translate(-50%,-50%)}
+#megui-theme-slides .slide-wear{background:linear-gradient(110deg,#f0eaf2,#e0d2eb)}
+#megui-theme-slides .slide-wear .carousel-theme-decoration{inset:35px 38px 35px 16px;background:#cab6d34a;border-radius:46% 46% 5px 5px}
+#megui-theme-slides .slide-wear .carousel-art>img{object-fit:contain!important;aspect-ratio:3/2;border-radius:0;filter:drop-shadow(0 15px 16px #5739611a)}
+#megui-theme-slides .slide-wear .carousel-theme-decoration:after{content:"CONFEC��O / IDENTIDADE";position:absolute;bottom:12px;right:15px;font-size:9px;letter-spacing:.15em;color:#73577c}
+#megui-theme-slides .slide-faith{background:linear-gradient(115deg,#f0e6e8,#e6d2e5)}
+#megui-theme-slides .slide-faith .carousel-copy h2>span{color:#85526f}
+#megui-theme-slides .slide-faith .carousel-copy p{color:#6d5266}
+#megui-theme-slides .slide-faith .carousel-art>img{object-fit:contain!important;max-height:410px;height:auto!important;width:100%;border-radius:90px 8px 8px 8px}
+#megui-theme-slides .slide-faith .carousel-theme-decoration{width:65%;height:85%;right:18px;top:7%;border:1px solid #af79904a;border-radius:50% 50% 5px 5px;transform:rotate(7deg)}
+#megui-theme-slides .slide-events{background:radial-gradient(ellipse at 85% 80%,#cdb0e7,transparent 65%),#eae1f3}
+#megui-theme-slides .slide-events .carousel-art>img{object-fit:contain!important;max-height:420px;height:auto!important;width:100%;border-radius:0;filter:drop-shadow(0 16px 14px #66458020)}
+#megui-theme-slides .slide-events .carousel-theme-decoration{width:70%;height:63%;top:18%;right:10%;border:2px solid #b695cf63;border-radius:44% 56% 61% 39%;transform:rotate(-15deg)}
+#megui-theme-slides .slide-events .carousel-theme-decoration:after{content:"";position:absolute;inset:14px -22px -14px 22px;border:1px solid #a47ec455;border-radius:inherit;transform:rotate(18deg)}
+@media(max-width:1000px) and (min-width:761px){
+ #megui-theme-slides .carousel-slide{grid-template-columns:45% 55%;min-height:460px}
+ #megui-theme-slides .carousel-copy{padding:32px 15px 32px 30px}
+ #megui-theme-slides .carousel-copy h1,#megui-theme-slides .carousel-copy h2{font-size:43px}
+ #megui-theme-slides .carousel-art{padding-right:24px}
+}
+@media(max-width:760px){
+ #megui-theme-slides .carousel-slide{grid-template-columns:1fr;min-height:0}
+ #megui-theme-slides .carousel-copy{padding:24px 22px 12px}
+ #megui-theme-slides .carousel-copy h1,#megui-theme-slides .carousel-copy h2{font-size:clamp(34px,9.2vw,44px);margin:14px 0}
+ #megui-theme-slides .carousel-copy p{font-size:14px;line-height:1.65;margin-bottom:18px;max-width:none}
+ #megui-theme-slides .carousel-theme-details{font-size:11px;margin:-4px 0 15px}
+ #megui-theme-slides .carousel-art{padding:14px 22px 30px;min-height:0}
+ #megui-theme-slides .carousel-theme-caption{right:22px;bottom:9px;font-size:9px}
+ #megui-theme-slides .slide-football .carousel-art>img{height:auto!important;max-height:none!important;aspect-ratio:1280/853;object-fit:contain!important;background:transparent}
+ #megui-theme-slides .slide-football .carousel-theme-decoration{inset:7px 16px 28px;border-radius:3px;transform:rotate(-2deg)}
+ #megui-theme-slides .slide-wear .carousel-art>img,#megui-theme-slides .slide-events .carousel-art>img{height:220px!important;max-height:220px;object-fit:contain!important;background:none}
+ #megui-theme-slides .slide-wear .carousel-theme-decoration{inset:10px 28px 25px;border-radius:46% 46% 5px 5px}
+ #megui-theme-slides .slide-faith .carousel-art>img{height:250px!important;max-height:250px;object-fit:contain!important;background:none;border-radius:55px 5px 5px 5px}
+ #megui-theme-slides .carousel-kicker{font-size:9px;letter-spacing:.08em}
+}
+{% endraw %}
+</style>
 <link rel="stylesheet" href="{{ url_for('static',filename='css/knit-journal.css',v='20261016-v3') }}">
 {% endblock %}
 {% block content %}
 {% from '_icons.html' import icon %}
 {% from '_video_preview.html' import video_preview %}
-<section class="home-welcome" aria-label="Conheça as possibilidades da Megui">
+<section class="home-welcome" id="megui-theme-slides" aria-label="Conhe�a as possibilidades da Megui">
   <div class="welcome-carousel" aria-roledescription="carrossel" aria-label="Produtos personalizados" data-welcome-carousel>
     <div class="carousel-slides" aria-live="off">
       {% set slides = [
-        {'theme':'knit','tag':'MALHA É A NOSSA ESPECIALIDADE','title':'Da malha','accent':'à sua ideia.','text':'Confecção própria e personalização para transformar tecido em camisetas, uniformes, peças para eventos e saquinhos com identidade.','image':'img/inicio/camiseta-megui-movimento-v3.webp','alt':'Camiseta preta Megui em manequim invisível, com dobras e caimento em movimento','cta':'Explorar a malha','href':'#malharia','label':'malha e confecção própria'},
-        {'theme':'wear','tag':'CONFECÇÃO PARA EQUIPES & MARCAS','title':'Uma equipe.','accent':'Uma identidade.','text':'Da camiseta ao uniforme. Modelagem, tecido e personalização alinhados à rotina e à apresentação da sua equipe.','image':'img/inicio/carousel-uniformes.webp','alt':'jaqueta e camisa personalizadas Megui','cta':'Explorar vestuário','href':url_for('category',slug='vestuario'),'label':'vestuário e uniformes'},
-        {'theme':'faith','tag':'CAMISETAS PARA ENCONTROS & MOVIMENTOS','title':'Uma mensagem.','accent':'Muitas pessoas.','text':'Vista o tema do seu encontro. Camisetas e itens personalizados para reunir o grupo em uma identidade.','image':'img/trabalhos/encontro-religioso.webp','alt':'Encontro religioso com músico vestindo camiseta verde personalizada','cta':'Conhecer as possibilidades','href':url_for('events') ~ '#movimentos','label':'encontros religiosos'},
-        {'theme':'events','tag':'COPOS, KITS & ITENS PARA EVENTOS','title':'Além da camiseta.','accent':'O encontro completo.','text':'Copos, garrafas, bolsas, credenciais e outros personalizados para acompanhar o público e levar a lembrança do evento adiante.','image':'img/inicio/eventos.webp','alt':'Copo reutilizável lilás, credencial com cordão e pulseiras personalizados para eventos','cta':'Compor os itens do evento','href':url_for('events') ~ '#compor','label':'copos e itens para eventos'}
+        {'theme':'football','tag':'UNIFORMES PARA QUEM JOGA JUNTO','title':'Seu time.','accent':'Sua identidade.','text':'As cores, o escudo e a hist�ria do seu time entram em campo com voc�. Uniformes personalizados para vestir a equipe dentro e fora do jogo.','image':'img/inicio/time-futebol-real-20261018.jpeg','alt':'Time de futebol reunido no campo, usando uniformes personalizados brancos e azuis produzidos pela Megui','cta':'Uniformizar meu time','href':'https://wa.me/' ~ whatsapp_number ~ '?text=' ~ ('Ol�! Quero um or�amento de uniformes personalizados para meu time de futebol.'|urlencode),'label':'time de futebol','details':'Escudo � Nomes � Numera��o','caption':'Juntos, dentro e fora de campo.'},
+        {'theme':'wear','tag':'CONFEC��O PARA EQUIPES & MARCAS','title':'Uma equipe.','accent':'Uma identidade.','text':'Da camiseta ao uniforme. Modelagem, tecido e personaliza��o alinhados � rotina e � apresenta��o da sua equipe.','image':'img/inicio/carousel-uniformes.webp','alt':'jaqueta e camisa personalizadas Megui','cta':'Explorar vestu�rio','href':url_for('category',slug='vestuario'),'label':'vestu�rio e uniformes'},
+        {'theme':'faith','tag':'CAMISETAS PARA ENCONTROS & MOVIMENTOS','title':'Uma mensagem.','accent':'Muitas pessoas.','text':'Vista o tema do seu encontro. Camisetas e itens personalizados para reunir o grupo em uma identidade.','image':'img/trabalhos/encontro-religioso.webp','alt':'Encontro religioso com m�sico vestindo camiseta verde personalizada','cta':'Conhecer as possibilidades','href':url_for('events') ~ '#movimentos','label':'encontros religiosos'},
+        {'theme':'events','tag':'COPOS, KITS & ITENS PARA EVENTOS','title':'Al�m da camiseta.','accent':'O encontro completo.','text':'Copos, garrafas, bolsas, credenciais e outros personalizados para acompanhar o p�blico e levar a lembran�a do evento adiante.','image':'img/inicio/eventos.webp','alt':'Copo reutiliz�vel lil�s, credencial com cord�o e pulseiras personalizados para eventos','cta':'Compor os itens do evento','href':url_for('events') ~ '#compor','label':'copos e itens para eventos'}
       ] %}
       {% for slide in slides %}
       <article class="carousel-slide slide-{{ slide.theme }} {% if loop.first %}is-active{% endif %}" data-carousel-slide role="group" aria-roledescription="banner" aria-label="{{ loop.index }} de {{ loop.length }}" {% if not loop.first %}hidden inert{% endif %}>
@@ -163,12 +221,13 @@
           <span class="carousel-kicker">{{ icon('butterfly','carousel-butterfly') }} {{ slide.tag }}</span>
           <{% if loop.first %}h1{% else %}h2{% endif %}>{{ slide.title }}<br><span>{{ slide.accent }}</span></{% if loop.first %}h1{% else %}h2{% endif %}>
           <p>{{ slide.text }}</p>
+          {% if slide.details %}<span class="carousel-theme-details">{{ slide.details }}</span>{% endif %}
           <div class="carousel-actions">
             <a class="carousel-cta" href="{{ slide.href }}">{{ slide.cta }}<span class="cta-direction" aria-hidden="true">{{ icon('arrow') }}</span></a>
             <a class="carousel-talk" href="https://wa.me/{{ whatsapp_number }}" target="_blank" rel="noopener">{{ icon('whatsapp') }}<span>Vamos conversar</span></a>
           </div>
         </div>
-        <figure class="carousel-art"><img src="{{ url_for('static', filename=slide.image) }}" alt="{{ slide.alt }}" width="1440" height="960" {% if loop.first %}fetchpriority="high"{% endif %} decoding="async"></figure>
+        <figure class="carousel-art"><span class="carousel-theme-decoration" aria-hidden="true"></span><img src="{{ url_for('static', filename=slide.image) }}" alt="{{ slide.alt }}" width="{{ 1280 if loop.first else 1440 }}" height="{{ 853 if loop.first else 960 }}" {% if loop.first %}fetchpriority="high"{% endif %} decoding="async">{% if slide.caption %}<figcaption class="carousel-theme-caption">{{ slide.caption }}</figcaption>{% endif %}</figure>
       </article>
       {% endfor %}
     </div>
@@ -179,7 +238,7 @@
     </div>
   </div>
   <nav class="welcome-shortcuts" aria-label="Explore a Megui">
-    <a href="{{ url_for('products') }}"><span class="shortcut-icon">{{ icon('brindes') }}</span><div><strong>Encontre seu produto</strong><small>Explore o catálogo</small></div>{{ icon('arrow') }}</a>
+    <a href="{{ url_for('products') }}"><span class="shortcut-icon">{{ icon('brindes') }}</span><div><strong>Encontre seu produto</strong><small>Explore o cat�logo</small></div>{{ icon('arrow') }}</a>
     <a href="{{ url_for('b2b') }}"><span class="shortcut-icon">{{ icon('corporativo') }}</span><div><strong>Para sua empresa</strong><small>Uniformes, brindes e projetos</small></div>{{ icon('arrow') }}</a>
     <a href="{{ url_for('events') }}"><span class="shortcut-icon">{{ icon('eventos') }}</span><div><strong>Para o seu evento</strong><small>Encontros, kits e camisetas</small></div>{{ icon('arrow') }}</a>
     <a href="https://wa.me/{{ whatsapp_number }}" target="_blank" rel="noopener"><span class="shortcut-icon">{{ icon('whatsapp') }}</span><div><strong>Conte sua ideia</strong><small>A gente ajuda a criar</small></div>{{ icon('arrow') }}</a>
@@ -198,13 +257,13 @@
  <div class="container">
   <div class="knit-immersive" data-knit-immersive>
   <div class="knit-intro">
-   <div class="knit-intro-copy"><span class="knit-overline">CONFECÇÃO PRÓPRIA / POSSIBILIDADES REAIS</span><h2>Malha que veste.<br>Personalização<br>que <em>marca.</em></h2><p>Do tecido à peça, a sua identidade ganha forma. Explore o que podemos criar para a sua marca, sua equipe ou seu encontro.</p></div>
-   <div class="knit-brand-sculpture" aria-hidden="true"><span class="knit-brand-orbit"></span><span class="knit-brand-orbit orbit-two"></span>{{ icon('butterfly') }}<span class="knit-brand-note">O JEITO MEGUI<br>DE DAR ASAS À SUA IDEIA.</span></div>
+   <div class="knit-intro-copy"><span class="knit-overline">CONFEC��O PR�PRIA / POSSIBILIDADES REAIS</span><h2>Malha que veste.<br>Personaliza��o<br>que <em>marca.</em></h2><p>Do tecido � pe�a, a sua identidade ganha forma. Explore o que podemos criar para a sua marca, sua equipe ou seu encontro.</p></div>
+   <div class="knit-brand-sculpture" aria-hidden="true"><span class="knit-brand-orbit"></span><span class="knit-brand-orbit orbit-two"></span>{{ icon('butterfly') }}<span class="knit-brand-note">O JEITO MEGUI<br>DE DAR ASAS � SUA IDEIA.</span></div>
   </div>
   {% set knit_editions = [
-   ('marca','01','Sua marca','Camisetas com identidade','DO SEU JEITO, DO TECIDO À ESTAMPA','Uma ideia que<br>dá para <em>vestir.</em>','Básicas, babylooks e modelagens que levam a identidade da sua marca para o dia a dia. A gente conversa sobre tecido, caimento e personalização para encontrar a peça certa.','Básicas · Babylooks · Estampas','img/inicio/camiseta-megui-movimento-v3.webp','Camiseta preta Megui com caimento em movimento','img/tecidos/detalhe-trama-v9.webp','Trama e toque',url_for('category',slug='vestuario'),'Explorar camisetas'),
-   ('equipe','02','Sua equipe','Conforto para representar','PRESENÇA EM CADA DIA DE TRABALHO','Quem veste,<br><em>representa.</em>','Uma equipe tem ritmo, rotina e identidade. Camisetas, polos e uniformes pensados para acompanhar quem trabalha e apresentar bem a sua marca.','Camisetas · Polos · Uniformes','img/inicio/polo.webp','Polo preta Megui com detalhes lilás na gola','img/tecidos/detalhe-gola-v9.webp','Gola e acabamento',url_for('b2b') ~ '#uniformes','Conhecer os uniformes'),
-   ('encontro','03','Seu encontro','Uma identidade em comum','UMA MENSAGEM QUE APROXIMA','Um encontro.<br><em>Muitas histórias.</em>','Retiros, congressos e movimentos ganham uma identidade que reúne o grupo. Peças que vestem a mensagem e continuam fazendo parte da história depois do evento.','Retiros · Congressos · Movimentos','img/acervo/2026/escola-de-cura-manequim-v3.webp','Camiseta e peças embaladas do projeto Escola de Cura','img/tecidos/detalhe-costura-v9.webp','Costura e cuidado',url_for('events') ~ '#movimentos','Personalizar meu encontro')
+   ('marca','01','Sua marca','Camisetas com identidade','DO SEU JEITO, DO TECIDO � ESTAMPA','Uma ideia que<br>d� para <em>vestir.</em>','B�sicas, babylooks e modelagens que levam a identidade da sua marca para o dia a dia. A gente conversa sobre tecido, caimento e personaliza��o para encontrar a pe�a certa.','B�sicas � Babylooks � Estampas','img/inicio/camiseta-megui-movimento-v3.webp','Camiseta preta Megui com caimento em movimento','img/tecidos/detalhe-trama-v9.webp','Trama e toque',url_for('category',slug='vestuario'),'Explorar camisetas'),
+   ('equipe','02','Sua equipe','Conforto para representar','PRESEN�A EM CADA DIA DE TRABALHO','Quem veste,<br><em>representa.</em>','Uma equipe tem ritmo, rotina e identidade. Camisetas, polos e uniformes pensados para acompanhar quem trabalha e apresentar bem a sua marca.','Camisetas � Polos � Uniformes','img/inicio/polo.webp','Polo preta Megui com detalhes lil�s na gola','img/tecidos/detalhe-gola-v9.webp','Gola e acabamento',url_for('b2b') ~ '#uniformes','Conhecer os uniformes'),
+   ('encontro','03','Seu encontro','Uma identidade em comum','UMA MENSAGEM QUE APROXIMA','Um encontro.<br><em>Muitas hist�rias.</em>','Retiros, congressos e movimentos ganham uma identidade que re�ne o grupo. Pe�as que vestem a mensagem e continuam fazendo parte da hist�ria depois do evento.','Retiros � Congressos � Movimentos','img/acervo/2026/escola-de-cura-manequim-v3.webp','Camiseta e pe�as embaladas do projeto Escola de Cura','img/tecidos/detalhe-costura-v9.webp','Costura e cuidado',url_for('events') ~ '#movimentos','Personalizar meu encontro')
   ] %}
   <div class="knit-editions" data-knit-editions>
    <div class="knit-edition-tabs" role="tablist" aria-label="Escolha para quem criar em malha">
@@ -216,8 +275,8 @@
    </div>
    {% for key,number,label,subtitle,kicker,title,description,details,photo,alt,detail,detail_label,href,action in knit_editions %}
    <div class="knit-edition-panel" role="tabpanel" id="knit-panel-{{ key }}" aria-labelledby="knit-tab-{{ key }}" tabindex="0" {% if not loop.first %}hidden{% endif %}>
-    <div class="knit-edition-story"><span class="knit-edition-kicker">{{ kicker }}</span><h3>{{ title|safe }}</h3><p>{{ description }}</p><span class="knit-edition-options">{{ details }}</span><a href="{{ href }}" class="knit-edition-cta">{{ action }} {{ icon('arrow') }}</a><span class="knit-edition-signature">{{ icon('butterfly') }} Confecção própria. Identidade sua.</span></div>
-    <div class="knit-edition-stage knit-stage-{{ key }}"><span class="knit-stage-butterfly" aria-hidden="true">{{ icon('butterfly') }}</span><span class="knit-stage-word" aria-hidden="true">MALHA</span><span class="knit-stage-edition" aria-hidden="true">MEGUI / {{ number }}</span><img class="knit-stage-product" src="{{ url_for('static',filename=photo) }}" alt="{{ alt }}" width="1200" height="1200" loading="lazy"><figure class="knit-stage-detail"><img src="{{ url_for('static',filename=detail) }}" alt="detalhe: {{ detail_label|lower }}" width="1200" height="800" loading="lazy"><figcaption>{{ detail_label }}<small>Referência de acabamento</small></figcaption></figure><span class="knit-stage-caption">Do tecido à peça.<br>Cuidado em cada escolha.</span></div>
+    <div class="knit-edition-story"><span class="knit-edition-kicker">{{ kicker }}</span><h3>{{ title|safe }}</h3><p>{{ description }}</p><span class="knit-edition-options">{{ details }}</span><a href="{{ href }}" class="knit-edition-cta">{{ action }} {{ icon('arrow') }}</a><span class="knit-edition-signature">{{ icon('butterfly') }} Confec��o pr�pria. Identidade sua.</span></div>
+    <div class="knit-edition-stage knit-stage-{{ key }}"><span class="knit-stage-butterfly" aria-hidden="true">{{ icon('butterfly') }}</span><span class="knit-stage-word" aria-hidden="true">MALHA</span><span class="knit-stage-edition" aria-hidden="true">MEGUI / {{ number }}</span><img class="knit-stage-product" src="{{ url_for('static',filename=photo) }}" alt="{{ alt }}" width="1200" height="1200" loading="lazy"><figure class="knit-stage-detail"><img src="{{ url_for('static',filename=detail) }}" alt="detalhe: {{ detail_label|lower }}" width="1200" height="800" loading="lazy"><figcaption>{{ detail_label }}<small>Refer�ncia de acabamento</small></figcaption></figure><span class="knit-stage-caption">Do tecido � pe�a.<br>Cuidado em cada escolha.</span></div>
    </div>
    {% endfor %}
   </div>
@@ -226,20 +285,20 @@
  </div>
  <div class="container">
   <section class="knit-discovery knit-journal" id="saquinhos" aria-labelledby="knit-discovery-title">
-   <div class="knit-discovery-heading"><div><span class="knit-discovery-eyebrow">CADERNO DE POSSIBILIDADES / MALHA</span><h2 id="knit-discovery-title">A camiseta é<br>só o começo.</h2></div><p>Tem ideia que vira roupa. Tem ideia que vira presente. E tem embalagem que você guarda muito depois de abrir.</p></div>
+   <div class="knit-discovery-heading"><div><span class="knit-discovery-eyebrow">CADERNO DE POSSIBILIDADES / MALHA</span><h2 id="knit-discovery-title">A camiseta �<br>s� o come�o.</h2></div><p>Tem ideia que vira roupa. Tem ideia que vira presente. E tem embalagem que voc� guarda muito depois de abrir.</p></div>
    <div class="knit-journal-columns">
     <article class="knit-journal-story">
-     <figure class="knit-polaroid"><img src="{{ url_for('static',filename='img/inicio/saquinhos-malha-referencias-v3.webp') }}" alt="saquinhos de malha lilás, preto e cru" width="1200" height="800" loading="lazy"><figcaption>feito para guardar mais que um presente.</figcaption><span class="knit-paper-tape" aria-hidden="true"></span></figure>
-     <span class="knit-journal-kicker">01 / EMBALAR & GUARDAR</span><h3>A embalagem<br>também faz parte.</h3><p>Saquinhos para produtos, presentes e kits. Depois da entrega, continuam por perto: guardando acessórios, memórias e pequenos objetos.</p><a class="knit-journal-link" href="https://wa.me/{{ whatsapp_number }}?text={{ 'Olá! Quero criar saquinhos personalizados em malha.'|urlencode }}" target="_blank" rel="noopener">Quero criar meus saquinhos {{ icon('arrow') }}</a>
+     <figure class="knit-polaroid"><img src="{{ url_for('static',filename='img/inicio/saquinhos-malha-referencias-v3.webp') }}" alt="saquinhos de malha lil�s, preto e cru" width="1200" height="800" loading="lazy"><figcaption>feito para guardar mais que um presente.</figcaption><span class="knit-paper-tape" aria-hidden="true"></span></figure>
+     <span class="knit-journal-kicker">01 / EMBALAR & GUARDAR</span><h3>A embalagem<br>tamb�m faz parte.</h3><p>Saquinhos para produtos, presentes e kits. Depois da entrega, continuam por perto: guardando acess�rios, mem�rias e pequenos objetos.</p><a class="knit-journal-link" href="https://wa.me/{{ whatsapp_number }}?text={{ 'Ol�! Quero criar saquinhos personalizados em malha.'|urlencode }}" target="_blank" rel="noopener">Quero criar meus saquinhos {{ icon('arrow') }}</a>
     </article>
     <article class="knit-idea-feed" aria-labelledby="knit-feed-title">
-     <div class="knit-feed-profile"><span aria-hidden="true">{{ icon('butterfly') }}</span><div><strong>Megui · caderno de ideias</strong><small>ideias para salvar e tirar do papel</small></div><span class="knit-feed-dots" aria-hidden="true">···</span></div>
-     <figure><img src="{{ url_for('static',filename='img/tecidos/malha-estruturada.webp') }}" alt="malha lilás com textura e caimento" width="1200" height="800" loading="lazy"><figcaption>um toque. muitas possibilidades.</figcaption></figure>
-     <div class="knit-feed-caption"><span class="knit-journal-kicker">02 / VESTIR & ACOMPANHAR</span><h3 id="knit-feed-title">Já imaginou<br>essa malha em…</h3><ul><li>pijamas & roupas de bebê</li><li>regatas, vestidos & conjuntos</li><li>toucas, faixas & bandanas</li><li>capas de almofada & acessórios</li></ul><a class="knit-journal-link" href="{{ url_for('textiles') }}">Encontrar uma base para minha ideia {{ icon('arrow') }}</a></div>
+     <div class="knit-feed-profile"><span aria-hidden="true">{{ icon('butterfly') }}</span><div><strong>Megui � caderno de ideias</strong><small>ideias para salvar e tirar do papel</small></div><span class="knit-feed-dots" aria-hidden="true">���</span></div>
+     <figure><img src="{{ url_for('static',filename='img/tecidos/malha-estruturada.webp') }}" alt="malha lil�s com textura e caimento" width="1200" height="800" loading="lazy"><figcaption>um toque. muitas possibilidades.</figcaption></figure>
+     <div class="knit-feed-caption"><span class="knit-journal-kicker">02 / VESTIR & ACOMPANHAR</span><h3 id="knit-feed-title">J� imaginou<br>essa malha em.</h3><ul><li>pijamas & roupas de beb�</li><li>regatas, vestidos & conjuntos</li><li>toucas, faixas & bandanas</li><li>capas de almofada & acess�rios</li></ul><a class="knit-journal-link" href="{{ url_for('textiles') }}">Encontrar uma base para minha ideia {{ icon('arrow') }}</a></div>
     </article>
-    <aside class="knit-field-notes" aria-labelledby="knit-notes-title"><div class="knit-notes-masthead"><span>DO ATELIÊ</span>{{ icon('butterfly') }}</div><span class="knit-journal-kicker">03 / POR DENTRO DA ESCOLHA</span><h3 id="knit-notes-title">Por que<br><em>malha?</em></h3><dl><dt><span>01.</span> Conforto no contato.</dt><dd>Bases com toque macio para peças que ficam próximas da pele.</dd><dt><span>02.</span> Liberdade de movimento.</dt><dd>A construção em laçadas pode favorecer a flexibilidade. Composição e modelagem completam a escolha.</dd><dt><span>03.</span> Uma base, vários caminhos.</dt><dd>Leve, encorpada ou texturizada: a malha encontra espaço em roupas, acessórios e embalagens.</dd></dl><p class="knit-notes-signature">A melhor base é a que faz sentido<br>para o que você quer criar.</p></aside>
+    <aside class="knit-field-notes" aria-labelledby="knit-notes-title"><div class="knit-notes-masthead"><span>DO ATELI�</span>{{ icon('butterfly') }}</div><span class="knit-journal-kicker">03 / POR DENTRO DA ESCOLHA</span><h3 id="knit-notes-title">Por que<br><em>malha?</em></h3><dl><dt><span>01.</span> Conforto no contato.</dt><dd>Bases com toque macio para pe�as que ficam pr�ximas da pele.</dd><dt><span>02.</span> Liberdade de movimento.</dt><dd>A constru��o em la�adas pode favorecer a flexibilidade. Composi��o e modelagem completam a escolha.</dd><dt><span>03.</span> Uma base, v�rios caminhos.</dt><dd>Leve, encorpada ou texturizada: a malha encontra espa�o em roupas, acess�rios e embalagens.</dd></dl><p class="knit-notes-signature">A melhor base � a que faz sentido<br>para o que voc� quer criar.</p></aside>
    </div>
-   <div class="knit-discovery-footer"><small>Composição, gramatura e viabilidade são definidas para cada projeto.</small><div><a href="{{ url_for('textiles') }}">Explorar tecidos & materiais {{ icon('arrow') }}</a><a href="https://wa.me/{{ whatsapp_number }}?text={{ 'Olá! Quero desenvolver uma peça em malha. Podemos conversar sobre as possibilidades?'|urlencode }}" target="_blank" rel="noopener">Tenho outra ideia {{ icon('arrow') }}</a></div></div>
+   <div class="knit-discovery-footer"><small>Composi��o, gramatura e viabilidade s�o definidas para cada projeto.</small><div><a href="{{ url_for('textiles') }}">Explorar tecidos & materiais {{ icon('arrow') }}</a><a href="https://wa.me/{{ whatsapp_number }}?text={{ 'Ol�! Quero desenvolver uma pe�a em malha. Podemos conversar sobre as possibilidades?'|urlencode }}" target="_blank" rel="noopener">Tenho outra ideia {{ icon('arrow') }}</a></div></div>
   </section>
  </div>
 </section>
@@ -250,24 +309,24 @@
     <div class="section-heading split-heading">
       <div>
         <span class="eyebrow">PARA COMPLETAR O SEU PROJETO</span>
-        <h2>Da confecção aos complementos.</h2>
+        <h2>Da confec��o aos complementos.</h2>
       </div>
-      <a class="text-link" href="{{ url_for('products') }}">Ver todos os produtos →</a>
+      <a class="text-link" href="{{ url_for('products') }}">Ver todos os produtos </a>
     </div>
     <div class="category-grid home-category-grid">
       {% set extra_categories = [
-        {'slug':'uniformes','name':'Uniformes','description':'Modelos para saúde, gastronomia, atendimento e equipes operacionais.','images':['img/inicio/uniformes-colecao-v8.webp'],'href':url_for('b2b') ~ '#uniformes','link_label':'Conhecer os modelos'},
+        {'slug':'uniformes','name':'Uniformes','description':'Modelos para sa�de, gastronomia, atendimento e equipes operacionais.','images':['img/inicio/uniformes-colecao-v8.webp'],'href':url_for('b2b') ~ '#uniformes','link_label':'Conhecer os modelos'},
         {'slug':'kits-personalizados','name':'Kits personalizados','description':'Combine produtos e crie uma entrega especial para equipes, clientes e eventos.','images':['img/eventos/kits-evento-v4.webp'],'href':url_for('products',q='kit'),'link_label':'Explorar os kits'}
       ] %}
       {% for category in home_categories + extra_categories %}
       <a class="category-card category-with-photo" data-category="{{ category.slug }}" href="{{ category.href if category.href is defined else (url_for('events') if category.slug == 'eventos' else url_for('category', slug=category.slug)) }}">
         <div class="category-photo-stage category-photo-{{ category.slug }} {% if category.images|length > 1 %}category-photo-pair{% endif %}">
           {% for image in category.images %}<img src="{{ url_for('static', filename=image) }}" alt="" loading="lazy">{% endfor %}
-          <span class="category-photo-action" aria-hidden="true">↗</span>
+          <span class="category-photo-action" aria-hidden="true">?</span>
         </div>
         <div class="category-photo-copy"><h3>{{ category.name }}</h3>
         <p>{{ category.description }}</p>
-        <span class="category-link">{{ category.link_label|default('Explorar categoria') }} →</span></div>
+        <span class="category-link">{{ category.link_label|default('Explorar categoria') }} </span></div>
       </a>
       {% endfor %}
     </div>
@@ -282,7 +341,7 @@
         <span class="eyebrow">CONTINUE EXPLORANDO</span>
         <h2>Pode ser a sua marca aqui.</h2>
       </div>
-      <p>Escolha uma peça. Imagine sua cor, sua mensagem, seu logo. Vamos criar a combinação que faz sentido para você.</p>
+      <p>Escolha uma pe�a. Imagine sua cor, sua mensagem, seu logo. Vamos criar a combina��o que faz sentido para voc�.</p>
     </div>
 
     <div class="product-grid">
@@ -297,63 +356,63 @@
 <section class="section home-idea" id="sua-ideia" aria-labelledby="idea-title">
   <div class="container">
     <div class="idea-layout">
-      <div class="idea-showcase" aria-label="Explore algumas possibilidades de personalização">
+      <div class="idea-showcase" aria-label="Explore algumas possibilidades de personaliza��o">
         <span class="idea-orbit" aria-hidden="true"></span>
         <span class="idea-visual-label">MATERIAIS DIFERENTES.<br>A SUA IDENTIDADE EM TODOS.</span>
         <a class="idea-product idea-shirt" href="{{ url_for('category',slug='vestuario') }}"><img src="{{ url_for('static',filename='img/produtos/camiseta-megui.webp') }}" alt="Camiseta preta personalizada Megui" width="1000" height="1000" loading="lazy"><span>Vista sua ideia {{ icon('arrow') }}</span></a>
         <a class="idea-product idea-bag" href="{{ url_for('category',slug='bolsas-acessorios') }}"><img src="{{ url_for('static',filename='img/inicio/ecobag.webp') }}" alt="Ecobag personalizada" width="1000" height="1000" loading="lazy"><span>Leve sua marca {{ icon('arrow') }}</span></a>
-        <a class="idea-product idea-notebook" href="{{ url_for('category',slug='grafica') }}"><img src="{{ url_for('static',filename='img/inicio/caderno.webp') }}" alt="Caderno com personalização Megui" width="1000" height="1000" loading="lazy"><span>Dê forma à mensagem {{ icon('arrow') }}</span></a>
-        <a class="idea-product idea-cup" href="{{ url_for('category',slug='brindes') }}"><img src="{{ url_for('static',filename='img/inicio/copo-termico.webp') }}" alt="Copo térmico personalizado" width="1000" height="1000" loading="lazy"><span>Faça parte da rotina {{ icon('arrow') }}</span></a>
+        <a class="idea-product idea-notebook" href="{{ url_for('category',slug='grafica') }}"><img src="{{ url_for('static',filename='img/inicio/caderno.webp') }}" alt="Caderno com personaliza��o Megui" width="1000" height="1000" loading="lazy"><span>D� forma � mensagem {{ icon('arrow') }}</span></a>
+        <a class="idea-product idea-cup" href="{{ url_for('category',slug='brindes') }}"><img src="{{ url_for('static',filename='img/inicio/copo-termico.webp') }}" alt="Copo t�rmico personalizado" width="1000" height="1000" loading="lazy"><span>Fa�a parte da rotina {{ icon('arrow') }}</span></a>
         <span class="idea-signature" aria-hidden="true">{{ icon('butterfly') }} feito para representar.</span>
       </div>
       <div class="idea-copy">
-        <span class="idea-eyebrow">O CATÁLOGO É SÓ O COMEÇO</span>
-        <h2 id="idea-title">Você imagina.<br>A gente cria<br><em>com você.</em></h2>
-        <p>Uma peça para sua marca, um presente com significado ou um kit que ninguém pensou ainda. A personalização começa no que você quer contar.</p>
-        <div class="idea-invitation"><h3>Não encontrou por aqui?</h3><p>Mande uma referência, um rascunho ou conte sua ideia. Vamos avaliar materiais, formatos e possibilidades para tirar seu projeto do papel.</p></div>
-        <a class="idea-cta" href="https://wa.me/{{ whatsapp_number }}?text={{ 'Olá! Tenho uma ideia de produto personalizado e quero desenvolver com a Megui.'|urlencode }}" target="_blank" rel="noopener">{{ icon('whatsapp') }} <span>Quero conversar sobre minha ideia</span> {{ icon('arrow') }}</a>
-        <span class="idea-cta-note">Conversa direta com quem entende de personalização.</span>
+        <span class="idea-eyebrow">O CAT�LOGO � S� O COME�O</span>
+        <h2 id="idea-title">Voc� imagina.<br>A gente cria<br><em>com voc�.</em></h2>
+        <p>Uma pe�a para sua marca, um presente com significado ou um kit que ningu�m pensou ainda. A personaliza��o come�a no que voc� quer contar.</p>
+        <div class="idea-invitation"><h3>N�o encontrou por aqui?</h3><p>Mande uma refer�ncia, um rascunho ou conte sua ideia. Vamos avaliar materiais, formatos e possibilidades para tirar seu projeto do papel.</p></div>
+        <a class="idea-cta" href="https://wa.me/{{ whatsapp_number }}?text={{ 'Ol�! Tenho uma ideia de produto personalizado e quero desenvolver com a Megui.'|urlencode }}" target="_blank" rel="noopener">{{ icon('whatsapp') }} <span>Quero conversar sobre minha ideia</span> {{ icon('arrow') }}</a>
+        <span class="idea-cta-note">Conversa direta com quem entende de personaliza��o.</span>
       </div>
     </div>
-    <div class="idea-footer"><span>Uma marca. Muitas possibilidades.</span><nav aria-label="Mais possibilidades para seu projeto"><a href="{{ url_for('b2b') }}">Para sua empresa {{ icon('arrow') }}</a><a href="{{ url_for('events') }}">Para seu evento {{ icon('arrow') }}</a><a href="{{ url_for('products') }}">Explore o catálogo {{ icon('arrow') }}</a></nav></div>
+    <div class="idea-footer"><span>Uma marca. Muitas possibilidades.</span><nav aria-label="Mais possibilidades para seu projeto"><a href="{{ url_for('b2b') }}">Para sua empresa {{ icon('arrow') }}</a><a href="{{ url_for('events') }}">Para seu evento {{ icon('arrow') }}</a><a href="{{ url_for('products') }}">Explore o cat�logo {{ icon('arrow') }}</a></nav></div>
   </div>
 </section>
 
 <section class="section home-clients">
   <div class="container">
     <div class="section-heading centered-heading">
-      <span class="eyebrow">QUEM JÁ CONFIOU NA MEGUI</span>
-      <h2>Marcas e projetos que fazem parte da nossa história.</h2>
+      <span class="eyebrow">QUEM J� CONFIOU NA MEGUI</span>
+      <h2>Marcas e projetos que fazem parte da nossa hist�ria.</h2>
     </div>
     {% include '_client_logos.html' %}
   </div>
 </section>
 
-<section class="section home-work-section"><div class="container"><div class="section-heading split-heading"><div><span class="eyebrow">FEITO PARA IR ALÉM DA IDEIA</span><h2>Marcas, eventos e trabalhos reais.</h2></div><a class="text-link" href="{{ url_for('portfolio_view') }}">Ver todos os trabalhos →</a></div><div class="acervo-gallery homepage-work-gallery" data-gallery-autoplay="false">{% for work in [recent_works[5],recent_works[3],recent_works[1],recent_works[0],recent_works[2],recent_works[7]] %}<figure><a href="{{ url_for('portfolio_view') }}"><img src="{{ url_for('static',filename=work.presentation_image|default(work.image)) }}" alt="{{ work.title }} — {{ 'produto personalizado' if work.presentation_image else 'trabalho personalizado' }}" width="900" height="675" loading="lazy" decoding="async"></a><figcaption><strong>{{ work.title }}</strong><span>{{ work.kind|capitalize }}</span></figcaption></figure>{% endfor %}</div></div></section>
+<section class="section home-work-section"><div class="container"><div class="section-heading split-heading"><div><span class="eyebrow">FEITO PARA IR AL�M DA IDEIA</span><h2>Marcas, eventos e trabalhos reais.</h2></div><a class="text-link" href="{{ url_for('portfolio_view') }}">Ver todos os trabalhos </a></div><div class="acervo-gallery homepage-work-gallery" data-gallery-autoplay="false">{% for work in [recent_works[5],recent_works[3],recent_works[1],recent_works[0],recent_works[2],recent_works[7]] %}<figure><a href="{{ url_for('portfolio_view') }}"><img src="{{ url_for('static',filename=work.presentation_image|default(work.image)) }}" alt="{{ work.title }} - {{ 'produto personalizado' if work.presentation_image else 'trabalho personalizado' }}" width="900" height="675" loading="lazy" decoding="async"></a><figcaption><strong>{{ work.title }}</strong><span>{{ work.kind|capitalize }}</span></figcaption></figure>{% endfor %}</div></div></section>
 
 {% if reviews %}
 <section class="section">
   <div class="container split-content">
     <div>
-      <span class="eyebrow">AVALIAÇÕES</span>
-      <h2 class="display-small">Confiança se constrói na entrega.</h2>
-      <p class="muted-copy">Conheça a experiência de quem já personalizou com a Megui.</p>
+      <span class="eyebrow">AVALIA��ES</span>
+      <h2 class="display-small">Confian�a se constr�i na entrega.</h2>
+      <p class="muted-copy">Conhe�a a experi�ncia de quem j� personalizou com a Megui.</p>
     </div>
     <div class="review-shell">
       {% if reviews %}
         {% for review in reviews %}
           <article class="review-card">
-            <div class="stars">★★★★★</div>
-            <p>“{{ review.text }}”</p>
+            <div class="stars">?????</div>
+            <p>"{{ review.text }}"</p>
             <strong>{{ review.name }}</strong>
             <span>{{ review.company }}</span>
           </article>
         {% endfor %}
       {% else %}
         <div class="review-placeholder">
-          <span>★★★★★</span>
-          <strong>Avaliações reais em breve</strong>
-          <p>O componente já está pronto para receber os depoimentos dos clientes da Megui.</p>
+          <span>?????</span>
+          <strong>Avalia��es reais em breve</strong>
+          <p>O componente j� est� pronto para receber os depoimentos dos clientes da Megui.</p>
         </div>
       {% endif %}
     </div>
@@ -363,12 +422,12 @@
 
 <section class="section">
   <div class="container video-teaser">
-    <div class="home-process-preview">{{ video_preview('video/serigrafia-v2.mp4', 'img/acervo/serigrafia-capa-v2.jpg', 'Serigrafia em produção') }}</div>
+    <div class="home-process-preview">{{ video_preview('video/serigrafia-v2.mp4', 'img/acervo/serigrafia-capa-v2.jpg', 'Serigrafia em produ��o') }}</div>
     <div>
-      <span class="eyebrow">CONFECÇÃO & PERSONALIZAÇÃO</span>
-      <h2>Do tecido<br>à sua identidade.</h2>
-      <p>Veja a personalização em produção e conheça o cuidado que acompanha as peças da Megui.</p>
-      <a class="btn btn-secondary" href="{{ url_for('videos') }}">Ver vídeos</a>
+      <span class="eyebrow">CONFEC��O & PERSONALIZA��O</span>
+      <h2>Do tecido<br>� sua identidade.</h2>
+      <p>Veja a personaliza��o em produ��o e conhe�a o cuidado que acompanha as pe�as da Megui.</p>
+      <a class="btn btn-secondary" href="{{ url_for('videos') }}">Ver v�deos</a>
     </div>
   </div>
 </section>
@@ -376,12 +435,12 @@
 <section class="section">
   <div class="container quote-banner">
     <div>
-      <span class="eyebrow eyebrow-light">MONTE SUA SELEÇÃO</span>
-      <h2>Escolha vários itens.<br>Peça tudo de uma vez.</h2>
+      <span class="eyebrow eyebrow-light">MONTE SUA SELE��O</span>
+      <h2>Escolha v�rios itens.<br>Pe�a tudo de uma vez.</h2>
     </div>
     <div>
-      <p>Adicione os produtos ao carrinho de orçamento, informe quantidade e personalização e envie a lista completa para o atendimento.</p>
-      <a class="btn btn-light" href="{{ url_for('products') }}">Começar meu orçamento</a>
+      <p>Adicione os produtos ao carrinho de or�amento, informe quantidade e personaliza��o e envie a lista completa para o atendimento.</p>
+      <a class="btn btn-light" href="{{ url_for('products') }}">Come�ar meu or�amento</a>
     </div>
   </div>
 </section>
