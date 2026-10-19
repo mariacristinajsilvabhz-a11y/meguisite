@@ -3,6 +3,7 @@
  const intro = document.querySelector('[data-cinema-intro]');
  if (!intro) return;
  const stage = intro.querySelector('.cinema-stage');
+ const sheet = document.querySelector('.home-content-sheet');
  const photos = Array.from(intro.querySelectorAll('.cinema-photo'));
  const controls = intro.querySelector('[data-photo-controls]');
  const toggle = intro.querySelector('[data-cinema-toggle]');
@@ -77,7 +78,12 @@
   const eased = p * p * (3 - 2 * p);
   const wasCovered = covered;
   covered = p >= .995 || rect.bottom <= top;
-  stage.style.setProperty('--cinema-reveal-radius', `${(eased * 75).toFixed(3)}%`);
+  // Keep the next section aligned behind the circle until it joins normal flow.
+  const shift = Math.min(0, rect.top - (introRect.bottom - rect.height));
+  const radius = Math.hypot(rect.width, rect.height) * .51 * eased;
+  sheet.style.setProperty('--cinema-sheet-shift', reduced.matches ? '0px' : `${shift.toFixed(2)}px`);
+  sheet.style.setProperty('--cinema-sheet-clip', reduced.matches || p >= .999 ? 'none' : `circle(${radius.toFixed(2)}px at 50% ${(rect.height / 2).toFixed(2)}px)`);
+  sheet.inert = !reduced.matches && p < .999;
   stage.inert = covered;
   if (covered !== wasCovered) sync();
  };
