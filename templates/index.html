@@ -144,111 +144,18 @@
 @media(prefers-reduced-motion:reduce){.welcome-carousel .carousel-slide.is-active{animation:none}}
 {% endraw %}
 </style>
-<style>
-{% raw %}
-/* Compositions scoped to the opening carousel; every subject has its own setting. */
-#megui-theme-slides .welcome-carousel{background:#e9e0ef}
-#megui-theme-slides .carousel-slide{position:relative;isolation:isolate;grid-template-columns:43% 57%;min-height:490px;overflow:hidden}
-#megui-theme-slides .carousel-slide[hidden]{display:none}
-#megui-theme-slides .carousel-copy{padding:42px 22px 42px clamp(28px,4vw,58px)}
-#megui-theme-slides .carousel-copy h1,#megui-theme-slides .carousel-copy h2{font-size:clamp(40px,4.3vw,66px);line-height:1.08;margin:20px 0}
-#megui-theme-slides .carousel-copy p{font-size:16px;line-height:1.7;max-width:38ch}
-#megui-theme-slides .carousel-art{position:relative;min-width:0;display:flex;align-items:center;justify-content:center;padding:35px 32px 35px 14px;isolation:isolate}
-#megui-theme-slides .carousel-art img{position:relative;z-index:1;max-width:100%;box-shadow:none}
-#megui-theme-slides .carousel-theme-decoration{position:absolute;z-index:0;pointer-events:none}
-#megui-theme-slides .carousel-theme-details{display:block;font-size:12px;font-weight:700;letter-spacing:.06em;color:#536956;margin:-10px 0 25px}
-#megui-theme-slides .carousel-theme-caption{position:absolute;z-index:2;inset:auto 35px 26px auto;background:none;backdrop-filter:none;border:0;border-radius:0;color:#486452;font-size:11px;padding:0}
-#megui-theme-slides .slide-football{background:linear-gradient(115deg,#eee6f3 0%,#e6ebe1 100%)}
-#megui-theme-slides .slide-football .carousel-copy h1>span{color:#43634b}
-#megui-theme-slides .slide-football .carousel-copy p{color:#4e5851}
-#megui-theme-slides .slide-football .carousel-cta{background:#354d3c;color:#fff}
-#megui-theme-slides .slide-football .carousel-art>img{width:100%;height:auto!important;max-height:none;aspect-ratio:1280/853;object-fit:contain!important;border-radius:5px}
-#megui-theme-slides .slide-football .carousel-theme-decoration{inset:24px 14px 46px 0;border:1px solid #63836938;border-radius:4px;transform:rotate(-3deg)}
-#megui-theme-slides .slide-football .carousel-theme-decoration:before{content:"";position:absolute;left:50%;top:0;bottom:0;border-left:1px solid #63836938}
-#megui-theme-slides .slide-football .carousel-theme-decoration:after{content:"";position:absolute;left:50%;top:50%;width:95px;height:95px;border:1px solid #63836938;border-radius:50%;transform:translate(-50%,-50%)}
-#megui-theme-slides .slide-wear{background:linear-gradient(110deg,#f0eaf2,#e0d2eb)}
-#megui-theme-slides .slide-wear .carousel-theme-decoration{inset:35px 38px 35px 16px;background:#cab6d34a;border-radius:46% 46% 5px 5px}
-#megui-theme-slides .slide-wear .carousel-art>img{object-fit:contain!important;aspect-ratio:3/2;border-radius:0;filter:drop-shadow(0 15px 16px #5739611a)}
-#megui-theme-slides .slide-wear .carousel-theme-decoration:after{content:"CONFECÇÃO / IDENTIDADE";position:absolute;bottom:12px;right:15px;font-size:9px;letter-spacing:.15em;color:#73577c}
-#megui-theme-slides .slide-faith{background:linear-gradient(115deg,#f0e6e8,#e6d2e5)}
-#megui-theme-slides .slide-faith .carousel-copy h2>span{color:#85526f}
-#megui-theme-slides .slide-faith .carousel-copy p{color:#6d5266}
-#megui-theme-slides .slide-faith .carousel-art>img{object-fit:contain!important;max-height:410px;height:auto!important;width:100%;border-radius:90px 8px 8px 8px}
-#megui-theme-slides .slide-faith .carousel-theme-decoration{width:65%;height:85%;right:18px;top:7%;border:1px solid #af79904a;border-radius:50% 50% 5px 5px;transform:rotate(7deg)}
-#megui-theme-slides .slide-events{background:radial-gradient(ellipse at 85% 80%,#cdb0e7,transparent 65%),#eae1f3}
-#megui-theme-slides .slide-events .carousel-art>img{object-fit:contain!important;max-height:420px;height:auto!important;width:100%;border-radius:0;filter:drop-shadow(0 16px 14px #66458020)}
-#megui-theme-slides .slide-events .carousel-theme-decoration{width:70%;height:63%;top:18%;right:10%;border:2px solid #b695cf63;border-radius:44% 56% 61% 39%;transform:rotate(-15deg)}
-#megui-theme-slides .slide-events .carousel-theme-decoration:after{content:"";position:absolute;inset:14px -22px -14px 22px;border:1px solid #a47ec455;border-radius:inherit;transform:rotate(18deg)}
-@media(max-width:1000px) and (min-width:761px){
- #megui-theme-slides .carousel-slide{grid-template-columns:45% 55%;min-height:460px}
- #megui-theme-slides .carousel-copy{padding:32px 15px 32px 30px}
- #megui-theme-slides .carousel-copy h1,#megui-theme-slides .carousel-copy h2{font-size:43px}
- #megui-theme-slides .carousel-art{padding-right:24px}
-}
-@media(max-width:760px){
- #megui-theme-slides .carousel-slide{grid-template-columns:1fr;min-height:0}
- #megui-theme-slides .carousel-copy{padding:24px 22px 12px}
- #megui-theme-slides .carousel-copy h1,#megui-theme-slides .carousel-copy h2{font-size:clamp(34px,9.2vw,44px);margin:14px 0}
- #megui-theme-slides .carousel-copy p{font-size:14px;line-height:1.65;margin-bottom:18px;max-width:none}
- #megui-theme-slides .carousel-theme-details{font-size:11px;margin:-4px 0 15px}
- #megui-theme-slides .carousel-art{padding:14px 22px 30px;min-height:0}
- #megui-theme-slides .carousel-theme-caption{right:22px;bottom:9px;font-size:9px}
- #megui-theme-slides .slide-football .carousel-art>img{height:auto!important;max-height:none!important;aspect-ratio:1280/853;object-fit:contain!important;background:transparent}
- #megui-theme-slides .slide-football .carousel-theme-decoration{inset:7px 16px 28px;border-radius:3px;transform:rotate(-2deg)}
- #megui-theme-slides .slide-wear .carousel-art>img,#megui-theme-slides .slide-events .carousel-art>img{height:220px!important;max-height:220px;object-fit:contain!important;background:none}
- #megui-theme-slides .slide-wear .carousel-theme-decoration{inset:10px 28px 25px;border-radius:46% 46% 5px 5px}
- #megui-theme-slides .slide-faith .carousel-art>img{height:250px!important;max-height:250px;object-fit:contain!important;background:none;border-radius:55px 5px 5px 5px}
- #megui-theme-slides .carousel-kicker{font-size:9px;letter-spacing:.08em}
-}
-{% endraw %}
-</style>
+
 <link rel="stylesheet" href="{{ url_for('static',filename='css/knit-journal.css',v='20261016-v3') }}">
 <link rel="stylesheet" href="{{ url_for('static',filename='css/mostruario.css',v='20261018-v1') }}">
 <link rel="stylesheet" href="{{ url_for('static',filename='css/cinema-opening.css',v='20261019-blend-text-v9') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/services-discovery.css',v='20261019-v1') }}">
 {% endblock %}
 {% block content %}
 {% from '_icons.html' import icon %}
 {% from '_video_preview.html' import video_preview %}
 {% include '_cinema_opening.html' %}
 <div class="home-content-sheet" id="descubra-megui">
-<section class="home-welcome" id="megui-theme-slides" aria-label="Conheça as possibilidades da Megui">
-  <div class="welcome-carousel" aria-roledescription="carrossel" aria-label="Produtos personalizados" data-welcome-carousel>
-    <div class="carousel-slides" aria-live="off">
-      {% set slides = [
-        {'theme':'football','tag':'UNIFORMES PARA QUEM JOGA JUNTO','title':'Seu time.','accent':'Sua identidade.','text':'As cores, o escudo e a história do seu time entram em campo com você. Uniformes personalizados para vestir a equipe dentro e fora do jogo.','image':'img/inicio/time-futebol-real-20261018.jpeg','alt':'Time de futebol reunido no campo, usando uniformes personalizados brancos e azuis produzidos pela Megui','cta':'Uniformizar meu time','href':'https://wa.me/' ~ whatsapp_number ~ '?text=' ~ ('Olá! Quero um orçamento de uniformes personalizados para meu time de futebol.'|urlencode),'label':'time de futebol','details':'Escudo · Nomes · Numeração','caption':'Juntos, dentro e fora de campo.'},
-        {'theme':'wear','tag':'CONFECÇÃO PARA EQUIPES & MARCAS','title':'Uma equipe.','accent':'Uma identidade.','text':'Da camiseta ao uniforme. Modelagem, tecido e personalização alinhados à rotina e à apresentação da sua equipe.','image':'img/inicio/carousel-uniformes.webp','alt':'jaqueta e camisa personalizadas Megui','cta':'Explorar vestuário','href':url_for('category',slug='vestuario'),'label':'vestuário e uniformes'},
-        {'theme':'faith','tag':'CAMISETAS PARA ENCONTROS & MOVIMENTOS','title':'Uma mensagem.','accent':'Muitas pessoas.','text':'Vista o tema do seu encontro. Camisetas e itens personalizados para reunir o grupo em uma identidade.','image':'img/trabalhos/encontro-religioso.webp','alt':'Encontro religioso com músico vestindo camiseta verde personalizada','cta':'Conhecer as possibilidades','href':url_for('events') ~ '#movimentos','label':'encontros religiosos'},
-        {'theme':'events','tag':'COPOS, KITS & ITENS PARA EVENTOS','title':'Além da camiseta.','accent':'O encontro completo.','text':'Copos, garrafas, bolsas, credenciais e outros personalizados para acompanhar o público e levar a lembrança do evento adiante.','image':'img/inicio/eventos.webp','alt':'Copo reutilizável lilás, credencial com cordão e pulseiras personalizados para eventos','cta':'Compor os itens do evento','href':url_for('events') ~ '#compor','label':'copos e itens para eventos'}
-      ] %}
-      {% for slide in slides %}
-      <article class="carousel-slide slide-{{ slide.theme }} {% if loop.first %}is-active{% endif %}" data-carousel-slide role="group" aria-roledescription="banner" aria-label="{{ loop.index }} de {{ loop.length }}" {% if not loop.first %}hidden inert{% endif %}>
-        <div class="carousel-copy">
-          <span class="carousel-kicker">{{ icon('butterfly','carousel-butterfly') }} {{ slide.tag }}</span>
-          <h2>{{ slide.title }}<br><span>{{ slide.accent }}</span></h2>
-          <p>{{ slide.text }}</p>
-          {% if slide.details %}<span class="carousel-theme-details">{{ slide.details }}</span>{% endif %}
-          <div class="carousel-actions">
-            <a class="carousel-cta" href="{{ slide.href }}">{{ slide.cta }}<span class="cta-direction" aria-hidden="true">{{ icon('arrow') }}</span></a>
-            <a class="carousel-talk" href="https://wa.me/{{ whatsapp_number }}" target="_blank" rel="noopener">{{ icon('whatsapp') }}<span>Vamos conversar</span></a>
-          </div>
-        </div>
-        <figure class="carousel-art"><span class="carousel-theme-decoration" aria-hidden="true"></span><img src="{{ url_for('static', filename=slide.image) }}" alt="{{ slide.alt }}" width="{{ 1280 if loop.first else 1440 }}" height="{{ 853 if loop.first else 960 }}" {% if loop.first %}fetchpriority="high"{% endif %} decoding="async">{% if slide.caption %}<figcaption class="carousel-theme-caption">{{ slide.caption }}</figcaption>{% endif %}</figure>
-      </article>
-      {% endfor %}
-    </div>
-    <div class="carousel-toolbar">
-      <div class="gallery-dots carousel-dots" aria-label="Escolher banner">
-        {% for slide in slides %}<button{% if loop.first %} class="is-current"{% endif %} type="button" data-carousel-to="{{ loop.index0 }}" aria-label="Ver banner de {{ slide.label }}"{% if loop.first %} aria-current="true"{% endif %}></button>{% endfor %}
-      </div>
-    </div>
-  </div>
-  <nav class="welcome-shortcuts" aria-label="Explore a Megui">
-    <a href="{{ url_for('products') }}"><span class="shortcut-icon">{{ icon('brindes') }}</span><div><strong>Encontre seu produto</strong><small>Explore o catálogo</small></div>{{ icon('arrow') }}</a>
-    <a href="{{ url_for('b2b') }}"><span class="shortcut-icon">{{ icon('corporativo') }}</span><div><strong>Para sua empresa</strong><small>Uniformes, brindes e projetos</small></div>{{ icon('arrow') }}</a>
-    <a href="{{ url_for('events') }}"><span class="shortcut-icon">{{ icon('eventos') }}</span><div><strong>Para o seu evento</strong><small>Encontros, kits e camisetas</small></div>{{ icon('arrow') }}</a>
-    <a href="https://wa.me/{{ whatsapp_number }}" target="_blank" rel="noopener"><span class="shortcut-icon">{{ icon('whatsapp') }}</span><div><strong>Conte sua ideia</strong><small>A gente ajuda a criar</small></div>{{ icon('arrow') }}</a>
-  </nav>
-</section>
+{% include '_services_discovery.html' %}
 
 {% include '_client_marquee.html' %}
 
@@ -308,35 +215,6 @@
  </div>
 </section>
 
-
-<section class="section section-soft">
-  <div class="container">
-    <div class="section-heading split-heading">
-      <div>
-        <span class="eyebrow">PARA COMPLETAR O SEU PROJETO</span>
-        <h2>Da confecção aos complementos.</h2>
-      </div>
-      <a class="text-link" href="{{ url_for('products') }}">Ver todos os produtos →</a>
-    </div>
-    <div class="category-grid home-category-grid">
-      {% set extra_categories = [
-        {'slug':'uniformes','name':'Uniformes','description':'Modelos para saúde, gastronomia, atendimento e equipes operacionais.','images':['img/inicio/uniformes-colecao-v8.webp'],'href':url_for('b2b') ~ '#uniformes','link_label':'Conhecer os modelos'},
-        {'slug':'kits-personalizados','name':'Kits personalizados','description':'Combine produtos e crie uma entrega especial para equipes, clientes e eventos.','images':['img/mostruario/kit-band-minas-estudio-v1.webp'],'href':url_for('products',q='kit'),'link_label':'Explorar os kits'}
-      ] %}
-      {% for category in home_categories + extra_categories %}
-      <a class="category-card category-with-photo" data-category="{{ category.slug }}" href="{{ category.href if category.href is defined else (url_for('events') if category.slug == 'eventos' else url_for('category', slug=category.slug)) }}">
-        <div class="category-photo-stage category-photo-{{ category.slug }} {% if category.images|length > 1 %}category-photo-pair{% endif %}">
-          {% for image in category.images %}<img src="{{ url_for('static', filename=image) }}" alt="" loading="lazy">{% endfor %}
-          <span class="category-photo-action" aria-hidden="true">↗</span>
-        </div>
-        <div class="category-photo-copy"><h3>{{ category.name }}</h3>
-        <p>{{ category.description }}</p>
-        <span class="category-link">{{ category.link_label|default('Explorar categoria') }} →</span></div>
-      </a>
-      {% endfor %}
-    </div>
-  </div>
-</section>
 
 {% if products %}
 <section class="section">
@@ -483,4 +361,4 @@
 </div>
 {% endblock %}
 
-{% block extra_scripts %}<script defer src="{{ url_for('static',filename='js/cinema-opening.js',v='20261019-blend-text-v9') }}"></script>{% endblock %}
+{% block extra_scripts %}<script defer src="{{ url_for('static',filename='js/services-discovery.js',v='20261019-v1') }}"></script><script defer src="{{ url_for('static',filename='js/cinema-opening.js',v='20261019-blend-text-v9') }}"></script>{% endblock %}

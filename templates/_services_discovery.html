@@ -1,0 +1,34 @@
+<section class="services-discovery" id="possibilidades" aria-labelledby="services-title" data-services-discovery>
+ <div class="container">
+  <header class="services-heading">
+   <div><span class="services-eyebrow">DA CONFECÇÃO AOS PERSONALIZADOS</span><h2 id="services-title">Sua ideia tem<br><em>muitas formas.</em></h2></div>
+   <p>Nossa especialidade é a malha.<br>E as possibilidades vão muito além dela.<br><strong>Explore o que podemos criar para você.</strong></p>
+  </header>
+  {% set services = [
+   ('malha','Camisetas e malha','Camisetas, polos, babylooks e moletons.','img/inicio/camiseta-megui-movimento-v3.webp','Camiseta preta personalizada, em manequim invisível',url_for('category',slug='vestuario'),'CONFECÇÃO PRÓPRIA'),
+   ('uniformes','Uniformes profissionais','Sociais, jalecos, aventais e uniformes operacionais.','img/inicio/social-manga-longa-manequim.webp','Camisa social branca em manequim invisível',url_for('b2b') ~ '#uniformes','PARA REPRESENTAR'),
+   ('saquinhos','Saquinhos e embalagens','Malha, embalagens e peças sob medida.','img/inicio/servicos/saquinhos-v1.webp','Saquinhos de malha cru, lilás e preto',url_for('home') ~ '#saquinhos','FEITOS PARA GUARDAR'),
+   ('bolsas','Bolsas e mochilas','Ecobags, sacochilas, mochilas e nécessaires.','img/produtos/mochila-megui.webp','Mochila preta personalizada',url_for('category',slug='bolsas-acessorios'),'PARA LEVAR JUNTO'),
+   ('copos','Copos e garrafas','Canecas, squeezes, copos e térmicos.','img/produtos/squeeze-megui.webp','Squeeze branco personalizado',url_for('category',slug='copos-garrafas'),'NO RITMO DO DIA'),
+   ('kits','Papelaria e kits','Cadernos, agendas, impressos e kits corporativos.','img/produtos/kit-corporativo-megui.webp','Kit com caderno, caneta e cordão',url_for('category',slug='papelaria'),'DETALHES QUE MARCAM'),
+   ('tech','Tecnologia','Power banks, áudio e acessórios personalizados.','img/inicio/servicos/tecnologia-v1.webp','Power bank lilás e caixa de som preta',url_for('category',slug='tecnologia'),'IDEIAS CONECTADAS'),
+   ('eventos','Eventos e comunicação','Wind banners, credenciais, pulseiras e materiais gráficos.','img/inicio/eventos.webp','Credencial, copo e pulseiras para eventos',url_for('events'),'PARA REUNIR PESSOAS')
+  ] %}
+  <div class="services-collection">
+   <svg class="services-thread" viewBox="0 0 1200 620" preserveAspectRatio="none" aria-hidden="true"><path d="M-35 185C120 90 215 255 370 178S615 95 770 174 1015 247 1240 145M-25 492C135 400 218 570 370 489S610 403 768 482 1030 560 1240 465"/></svg>
+   <div class="services-grid">
+    {% for key,title,description,photo,alt,href,kicker in services %}
+    <a class="service-item service-item-{{ key }}" href="{{ href }}" data-service-item>
+     <div class="service-visual" aria-hidden="true">
+      <span class="service-orb"></span><span class="service-floor-shadow"></span>
+      <img class="service-object" src="{{ url_for('static',filename=photo) }}" alt="" width="800" height="800" loading="lazy" decoding="async">
+      {% if key == 'copos' %}<img class="service-object service-object-secondary" src="{{ url_for('static',filename='img/produtos/caneca-megui.webp') }}" alt="" width="800" height="800" loading="lazy" decoding="async">{% endif %}
+     </div>
+     <div class="service-info"><span class="service-kicker">{{ kicker }}</span><h3>{{ title }}<span class="service-direction" aria-hidden="true">↗</span></h3><p>{{ description }}</p></div>
+    </a>
+    {% endfor %}
+   </div>
+  </div>
+  <footer class="services-footer"><p>Uma peça, uma equipe ou um evento inteiro.<br><strong>A gente encontra o jeito de personalizar.</strong></p><a href="https://wa.me/{{ whatsapp_number }}?text={{ 'Olá! Tenho uma ideia de personalizado e quero conversar sobre as possibilidades.'|urlencode }}" target="_blank" rel="noopener">Conte sua ideia {{ icon('arrow') }}</a></footer>
+ </div>
+</section>

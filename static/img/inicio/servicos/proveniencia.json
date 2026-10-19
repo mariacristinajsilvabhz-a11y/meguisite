@@ -1,0 +1,19 @@
+{
+  "tool": "image_gen",
+  "assets": [
+    {
+      "file": "static/img/inicio/servicos/saquinhos-v1.webp",
+      "prompt": "Use case: product-mockup / background-extraction. Website category illustration with true TRANSPARENT alpha background. Photorealistic commercial product cutout of three SMALL PREMIUM COTTON KNIT DRAWSTRING POUCHES, sizes staggered, one natural ecru larger behind, one lilac medium, one black small in front. Soft realistic cotton jersey grain and braided cotton drawcords, fabric folds, full pouches visible. Three-quarter view, sculptural natural arrangement. Premium accessible textile manufacturing. NO logos, text, monograms, label writing, additional objects, hands or people. Visual language: tactile professional studio product photography, convincing volume like a high-quality 3D product render but natural, not cartoon plastic. Soft directional studio lighting; no cast floor shadow or background plane, just delicate object self-shadows. Centered square composition, object fills 80 percent with at least 10 percent margin every side so it can emerge from a CSS circle without cropping. No circle, podium, scenery, typography or decorative shapes inside image. One transparent product-group asset."
+    },
+    {
+      "file": "static/img/inicio/servicos/tecnologia-v1.webp",
+      "prompt": "Use case: product-mockup / background-extraction. Website category illustration with true TRANSPARENT alpha background. Photorealistic commercial product cutout of a slim matte lilac portable POWER BANK with subtle small charging status LEDs, beside a compact black cylindrical BLUETOOTH SPEAKER, both generic and unbranded. Arrange as two complementary objects in a three-quarter view with generous clear silhouette separation, charging ports realistic. Fully visible objects with believable materials and mild natural reflections. NO logos, text, brand names, labels, cables, hands or people. Visual language: tactile professional studio product photography, convincing volume like a high-quality 3D product render but natural, not cartoon plastic. Soft directional studio lighting; no cast floor shadow or background plane, just delicate object self-shadows. Centered square composition, object fills 80 percent with at least 10 percent margin every side so it can emerge from a CSS circle without cropping. No circle, podium, scenery, typography or decorative shapes inside image. One transparent product-group asset."
+    }
+  ],
+  "ux_references": [
+    "https://www.nngroup.com/articles/animation-usability/",
+    "https://www.nngroup.com/articles/tooltip-guidelines/",
+    "https://www.w3.org/WAI/WCAG22/Techniques/css/C39"
+  ],
+  "interaction": "Elevação e inclinação por ponteiro fino; conteúdo e navegação sempre disponíveis por toque e teclado. Respeita prefers-reduced-motion."
+}
