@@ -4,7 +4,6 @@
  if (!intro) return;
  const stage = intro.querySelector('.cinema-stage');
  const photos = Array.from(intro.querySelectorAll('.cinema-photo'));
- const sheet = document.querySelector('.home-content-sheet');
  const controls = intro.querySelector('[data-photo-controls]');
  const toggle = intro.querySelector('[data-cinema-toggle]');
  const label = toggle.querySelector('[data-cinema-toggle-label]');
@@ -71,12 +70,15 @@
  const measure = () => {
   frame = 0;
   const rect = stage.getBoundingClientRect();
-  const sheetTop = sheet.getBoundingClientRect().top;
-  const p = Math.max(0, Math.min(1, (rect.bottom - sheetTop) / Math.max(1, rect.height)));
+  const introRect = intro.getBoundingClientRect();
+  const top = parseFloat(getComputedStyle(stage).top) || 0;
+  const travel = Math.max(1, introRect.height - rect.height);
+  const p = reduced.matches ? 0 : Math.max(0, Math.min(1, (top - introRect.top) / travel));
+  const eased = p * p * (3 - 2 * p);
   const wasCovered = covered;
-  covered = sheetTop <= rect.top + 2;
-  stage.style.setProperty('--cinema-copy-opacity', String(Math.max(0, 1 - p * 1.65)));
-  stage.style.setProperty('--cinema-copy-shift', reduced.matches ? '0px' : `${-p * 28}px`);
+  covered = p >= .995 || rect.bottom <= top;
+  stage.style.setProperty('--cinema-reveal-radius', `${(eased * 75).toFixed(3)}%`);
+  stage.inert = covered;
   if (covered !== wasCovered) sync();
  };
  const schedule = () => { if (!frame) frame = requestAnimationFrame(measure); };
