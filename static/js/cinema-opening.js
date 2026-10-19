@@ -5,12 +5,6 @@
  const stage = intro.querySelector('.cinema-stage');
  const sheet = document.querySelector('.home-content-sheet');
  const photos = Array.from(intro.querySelectorAll('.cinema-photo'));
- const controls = intro.querySelector('[data-photo-controls]');
- const toggle = intro.querySelector('[data-cinema-toggle]');
- const label = toggle.querySelector('[data-cinema-toggle-label]');
- const symbol = toggle.querySelector('[data-cinema-toggle-symbol]');
- const caption = intro.querySelector('[data-photo-caption]');
- const counter = intro.querySelector('[data-photo-count]');
  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
  const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
  const loaded = new Map();
@@ -40,10 +34,6 @@
  const sync = () => {
   clearTimeout(timer);
   const playing = allowed();
-  label.textContent = playing ? 'Pausar fotos' : 'Reproduzir fotos';
-  symbol.textContent = playing ? 'Ⅱ' : '▶';
-  toggle.setAttribute('aria-label', playing ? 'Pausar troca de fotos' : 'Reproduzir troca de fotos');
-  toggle.setAttribute('aria-pressed', String(playing));
   if (playing) {
    load((index + 1) % photos.length);
    timer = setTimeout(() => show(index + 1), 2200);
@@ -60,8 +50,6 @@
    photos[index].classList.remove('is-active');
    photos[next].classList.add('is-active');
    index = next;
-   caption.textContent = photos[index].dataset.photoTitle;
-   counter.textContent = `${String(index + 1).padStart(2,'0')} / ${String(photos.length).padStart(2,'0')}`;
    sync();
    return;
   }
@@ -80,14 +68,13 @@
   if (covered !== wasCovered) sync();
  };
  const schedule = () => { if (!frame) frame = requestAnimationFrame(measure); };
- controls.hidden = false;
- toggle.addEventListener('click', () => {
+ stage.addEventListener('keydown', event => {
+  if (event.code !== 'Space' || event.target !== stage) return;
+  event.preventDefault();
   if (allowed()) { userPaused = true; userStarted = false; }
   else { userPaused = false; userStarted = true; }
   sync();
  });
- intro.querySelector('[data-photo-prev]').addEventListener('click', () => show(index - 1));
- intro.querySelector('[data-photo-next]').addEventListener('click', () => show(index + 1));
  if ('IntersectionObserver' in window) {
   new IntersectionObserver(entries => { inView = entries[0].isIntersecting; sync(); }, {threshold:0}).observe(intro);
  }

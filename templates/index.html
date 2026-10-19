@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block title %}Megui Personalizados — sua marca em tudo{% endblock %}
 {% block extra_head %}
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Cormorant+Garamond:ital,wght@1,600&display=swap" rel="stylesheet">
 <style>
 {% raw %}
 
@@ -203,7 +204,7 @@
 </style>
 <link rel="stylesheet" href="{{ url_for('static',filename='css/knit-journal.css',v='20261016-v3') }}">
 <link rel="stylesheet" href="{{ url_for('static',filename='css/mostruario.css',v='20261018-v1') }}">
-<link rel="stylesheet" href="{{ url_for('static',filename='css/cinema-opening.css',v='20261019-panoramas-v7') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/cinema-opening.css',v='20261019-type-v8') }}">
 {% endblock %}
 {% block content %}
 {% from '_icons.html' import icon %}
@@ -482,4 +483,4 @@
 </div>
 {% endblock %}
 
-{% block extra_scripts %}<script defer src="{{ url_for('static',filename='js/cinema-opening.js',v='20261019-panoramas-v7') }}"></script>{% endblock %}
+{% block extra_scripts %}<script defer src="{{ url_for('static',filename='js/cinema-opening.js',v='20261019-type-v8') }}"></script>{% endblock %}

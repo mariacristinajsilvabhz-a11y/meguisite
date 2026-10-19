@@ -1,5 +1,5 @@
 <section class="cinema-intro" data-cinema-intro aria-labelledby="cinema-heading">
- <div class="cinema-stage">
+ <div class="cinema-stage" tabindex="0" aria-label="Apresentação de produtos personalizados. Pressione espaço para pausar ou continuar as fotos." aria-keyshortcuts="Space">
   <div class="cinema-background" aria-hidden="true">
    <img class="cinema-photo is-active" src="{{ url_for('static',filename='img/inicio/abertura/camiseta-panoramica-v1.webp') }}" data-photo-title="A identidade da sua equipe." alt="" width="1672" height="941" decoding="async" fetchpriority="high">
    <img class="cinema-photo" data-src="{{ url_for('static',filename='img/inicio/abertura/kit-panoramica-v1.webp') }}" data-photo-title="Personalizados para a Band Minas." alt="" width="1672" height="941" decoding="async">
@@ -9,23 +9,7 @@
   <div class="cinema-light" aria-hidden="true"></div>
   <div class="container cinema-inner">
    <div class="cinema-copy">
-    <span class="cinema-kicker">{{ icon('butterfly') }} MALHARIA & PERSONALIZAÇÃO · DESDE 2020</span>
-    <h1 id="cinema-heading">É aqui que<br>a sua marca<br><em>ganha forma.</em></h1>
-    <p>Da malha à personalização, o cuidado aparece em cada detalhe. Para vestir equipes, reunir pessoas e levar sua ideia mais longe.</p>
-    <div class="cinema-actions">
-     <a class="cinema-primary" href="https://wa.me/{{ whatsapp_number }}?text={{ 'Olá, Megui! Quero conversar sobre um projeto de personalizados.'|urlencode }}" target="_blank" rel="noopener">Vamos criar seu projeto {{ icon('arrow') }}</a>
-     <a class="cinema-catalog" href="{{ url_for('products') }}">Explorar os produtos {{ icon('arrow') }}</a>
-    </div>
-   </div>
-   <div class="cinema-bottom">
-    <a class="cinema-discover" href="#descubra-megui"><span class="cinema-discover-line" aria-hidden="true"></span><span>Conheça as possibilidades.</span><span aria-hidden="true">↓</span></a>
-    <div class="cinema-process"><span>FEITO PELA MEGUI</span><strong data-photo-caption>A identidade da sua equipe.</strong></div>
-    <div class="cinema-photo-controls" hidden data-photo-controls role="group" aria-label="Fotos dos nossos trabalhos">
-     <button type="button" data-photo-prev aria-label="Foto anterior">‹</button>
-     <span class="cinema-photo-count" data-photo-count>01 / 04</span>
-     <button type="button" data-photo-next aria-label="Próxima foto">›</button>
-     <button class="cinema-toggle" type="button" data-cinema-toggle aria-pressed="false"><span data-cinema-toggle-label>Pausar fotos</span><span data-cinema-toggle-symbol aria-hidden="true">Ⅱ</span></button>
-    </div>
+    <h1 id="cinema-heading" aria-label="Sua marca em tudo."><span class="cinema-word-sua" aria-hidden="true">SUA</span><span class="cinema-word-marca" aria-hidden="true">MARCA</span><em class="cinema-word-signature" aria-hidden="true">em tudo.</em></h1>
    </div>
   </div>
  </div>
