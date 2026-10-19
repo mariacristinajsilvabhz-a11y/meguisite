@@ -3,6 +3,7 @@
   <div><span class="pouch-eyebrow">SAQUINHOS PERSONALIZADOS EM MALHA</span><h2 id="pouch-title">Um saquinho.<br><em>Muitos destinos.</em></h2></div>
   <p>A primeira impressão é só o começo.<br>Uma embalagem que acompanha o presente,<br>organiza a rotina e continua por perto.</p>
  </header>
+ <p class="pouch-play-hint">Escolha uma bolinha e descubra o que cabe nessa ideia. <span aria-hidden="true">↙</span></p>
  <div class="pouch-experience">
   <div class="pouch-scene">
    <span class="pouch-scene-word" aria-hidden="true">guardar.</span>
@@ -16,14 +17,14 @@
    <figure class="pouch-panel" id="pouch-panel-{{ key }}" role="tabpanel" aria-labelledby="pouch-tab-{{ key }}" tabindex="0" {% if not loop.first %}hidden{% endif %}>
     <span class="pouch-scene-index">0{{ loop.index }} / {{ title|upper }}</span>
     <img src="{{ url_for('static',filename=photo) }}?v=20261019-1" alt="{{ alt }}" width="1000" height="1000" loading="lazy" decoding="async">
-    <figcaption>{{ line }}</figcaption>
+    <figcaption><strong>{{ line }}</strong><span>{{ description }}</span></figcaption>
    </figure>
    {% endfor %}
   </div>
-  <div class="pouch-use-list" role="tablist" aria-label="Explore os usos dos saquinhos" aria-orientation="vertical">
+  <div class="pouch-use-list" role="tablist" aria-label="Explore os usos dos saquinhos" aria-orientation="horizontal">
    {% for key,title,line,description,photo,alt in uses %}
    <button type="button" id="pouch-tab-{{ key }}" class="pouch-use" role="tab" aria-controls="pouch-panel-{{ key }}" aria-selected="{{ 'true' if loop.first else 'false' }}" tabindex="{{ '0' if loop.first else '-1' }}">
-    <span class="pouch-use-number" aria-hidden="true">0{{ loop.index }}</span><span><strong>{{ title }}</strong><span class="pouch-use-description">{{ description }}</span></span><span class="pouch-use-mark" aria-hidden="true">↗</span>
+    <span class="pouch-bubble" aria-hidden="true"><span class="pouch-orb"></span><img src="{{ url_for('static',filename=photo) }}?v=20261019-1" alt="" width="400" height="400" loading="lazy" decoding="async"><span class="pouch-bubble-check">{{ icon('check') }}</span></span><strong>{{ title }}</strong>
    </button>
    {% endfor %}
   </div>
