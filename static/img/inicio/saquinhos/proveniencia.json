@@ -1,0 +1,11 @@
+{
+  "date": "2026-10-19",
+  "tool": "image_gen built-in",
+  "purpose": "Saquinhos em malha demonstrados em uso: sapatos, joias e perfumes",
+  "prompt_base": "Premium photorealistic product cutout for Megui knit drawstring pouches. Soft cotton jersey knit, neat stitched channel, cotton drawstrings, genuine transparent alpha background. No text, logos, floor or backdrop. Complete products with safe padding, soft product lighting.",
+  "subjects": {
+    "sapatos": "Large ivory jersey pouch with one white sneaker partly inside and another in front.",
+    "joias": "Small lilac knit pouches with gold necklace, ring and hoop earrings.",
+    "perfumes": "Black knit pouch with amber perfume bottle emerging, and sealed lilac pouch."
+  }
+}
