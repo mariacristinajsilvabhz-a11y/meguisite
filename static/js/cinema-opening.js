@@ -75,7 +75,6 @@
   const p = Math.max(0, Math.min(1, (rect.bottom - sheetTop) / Math.max(1, rect.height)));
   const wasCovered = covered;
   covered = sheetTop <= rect.top + 2;
-  stage.style.setProperty('--cinema-cover-opacity', String(p * p * (3 - 2 * p)));
   stage.style.setProperty('--cinema-copy-opacity', String(Math.max(0, 1 - p * 1.65)));
   stage.style.setProperty('--cinema-copy-shift', reduced.matches ? '0px' : `${-p * 28}px`);
   if (covered !== wasCovered) sync();
