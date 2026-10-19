@@ -13,10 +13,11 @@
  let userStarted = false;
  let inView = true;
  let covered = false;
+ let blending = false;
  let frame = 0;
  let timer;
  let request = 0;
- const allowed = () => !userPaused && !document.hidden && inView && !covered &&
+ const allowed = () => !userPaused && !document.hidden && inView && !covered && !blending &&
   (userStarted || (!reduced.matches && !(connection && connection.saveData)));
  const load = n => {
   if (loaded.has(n)) return loaded.get(n);
@@ -44,9 +45,13 @@
   const token = ++request;
   for (let tries = 0; tries < photos.length; tries++) {
    const next = ((target + tries) % photos.length + photos.length) % photos.length;
-   const ready = await load(next);
+   let ready = await load(next);
+   if (ready && photos[next].decode) {
+    try { await photos[next].decode(); } catch (_) { ready = false; }
+   }
    if (token !== request) return;
    if (!ready) continue;
+   if (!allowed()) return;
    photos[index].classList.remove('is-active');
    photos[next].classList.add('is-active');
    index = next;
@@ -62,16 +67,18 @@
   const sheetTop = sheet.getBoundingClientRect().top;
   const p = Math.max(0, Math.min(1, (rect.bottom - sheetTop) / Math.max(1, rect.height)));
   const blend = p * p * (3 - 2 * p);
-  stage.style.setProperty('--cinema-scroll-blur', `${(reduced.matches ? 0 : blend * 14).toFixed(2)}px`);
+  stage.style.setProperty('--cinema-scroll-blur', `${(reduced.matches ? 0 : blend * 10).toFixed(2)}px`);
   stage.style.setProperty('--cinema-scroll-opacity', (1 - blend * .45).toFixed(3));
   stage.style.setProperty('--cinema-tint-opacity', (blend * .48).toFixed(3));
   stage.style.setProperty('--cinema-text-opacity', Math.max(0, 1 - p * 1.5).toFixed(3));
   stage.style.setProperty('--cinema-text-blur', `${(reduced.matches ? 0 : blend * 4).toFixed(2)}px`);
   const wasCovered = covered;
+  const wasBlending = blending;
+  blending = p > .025;
   covered = sheetTop <= rect.top + 2;
   stage.style.setProperty('--cinema-photo-shift', reduced.matches ? '0px' : `${(p * rect.height * .08).toFixed(2)}px`);
   stage.inert = covered;
-  if (covered !== wasCovered) sync();
+  if (covered !== wasCovered || blending !== wasBlending) sync();
  };
  const schedule = () => { if (!frame) frame = requestAnimationFrame(measure); };
  stage.addEventListener('keydown', event => {

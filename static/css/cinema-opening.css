@@ -20,7 +20,7 @@
 .home-cinema .cinema-background{filter:blur(var(--cinema-scroll-blur,0px));opacity:var(--cinema-scroll-opacity,1)}
 .home-cinema .cinema-copy{filter:blur(var(--cinema-text-blur,0px));opacity:var(--cinema-text-opacity,1)}
 .home-cinema .cinema-stage:after{content:"";position:absolute;inset:0;z-index:3;background:#c9a3dc;opacity:var(--cinema-tint-opacity,0);pointer-events:none}
-.home-cinema .home-content-sheet:before{content:"";position:absolute;inset:auto -2px 100%;height:clamp(100px,18svh,190px);background:linear-gradient(to bottom,#c9a3dc00,#c9a3dc26 26%,#c9a3dc91 62%,#c9a3dc 100%);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);mask-image:linear-gradient(to bottom,transparent,#000 72%);pointer-events:none}
+.home-cinema .home-content-sheet:before{content:"";position:absolute;inset:auto -2px 100%;height:clamp(100px,18svh,190px);background:linear-gradient(to bottom,#c9a3dc00,#c9a3dc26 26%,#c9a3dc91 62%,#c9a3dc 100%);mask-image:linear-gradient(to bottom,transparent,#000 72%);pointer-events:none}
 @media(prefers-reduced-motion:reduce){.home-cinema .home-content-sheet:before{backdrop-filter:none;-webkit-backdrop-filter:none}}
 .home-cinema #megui-theme-slides .welcome-carousel,.home-cinema #megui-theme-slides .carousel-slide{background:transparent}
 @media(min-width:601px) and (max-width:900px){
