@@ -21,7 +21,7 @@
     <a class="service-item service-item-{{ key }}" href="{{ href }}" data-service-item>
      <div class="service-visual" aria-hidden="true">
       <span class="service-orb"></span><span class="service-floor-shadow"></span>
-      <img class="service-object" src="{{ url_for('static',filename=photo) }}" alt="" width="800" height="800" loading="lazy" decoding="async">
+      <img class="service-object" src="{{ url_for('static',filename=photo) }}?v=20261019-2" alt="" width="800" height="800" loading="lazy" decoding="async">
       {% if key == 'copos' %}<img class="service-object service-object-secondary" src="{{ url_for('static',filename='img/produtos/caneca-megui.webp') }}" alt="" width="800" height="800" loading="lazy" decoding="async">{% endif %}
      </div>
      <div class="service-info"><span class="service-kicker">{{ kicker }}</span><h3>{{ title }}<span class="service-direction" aria-hidden="true">↗</span></h3><p>{{ description }}</p></div>
