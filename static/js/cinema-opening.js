@@ -46,7 +46,7 @@
   toggle.setAttribute('aria-pressed', String(playing));
   if (playing) {
    load((index + 1) % photos.length);
-   timer = setTimeout(() => show(index + 1), 6500);
+   timer = setTimeout(() => show(index + 1), 2200);
   }
  };
  const show = async target => {
@@ -71,19 +71,11 @@
  const measure = () => {
   frame = 0;
   const rect = stage.getBoundingClientRect();
-  const introRect = intro.getBoundingClientRect();
-  const top = parseFloat(getComputedStyle(stage).top) || 0;
-  const travel = Math.max(1, introRect.height - rect.height);
-  const p = reduced.matches ? 0 : Math.max(0, Math.min(1, (top - introRect.top) / travel));
-  const eased = p * p * (3 - 2 * p);
+  const sheetTop = sheet.getBoundingClientRect().top;
+  const p = Math.max(0, Math.min(1, (rect.bottom - sheetTop) / Math.max(1, rect.height)));
   const wasCovered = covered;
-  covered = p >= .995 || rect.bottom <= top;
-  // Keep the next section aligned behind the circle until it joins normal flow.
-  const shift = Math.min(0, rect.top - (introRect.bottom - rect.height));
-  const radius = Math.hypot(rect.width, rect.height) * .51 * eased;
-  sheet.style.setProperty('--cinema-sheet-shift', reduced.matches ? '0px' : `${shift.toFixed(2)}px`);
-  sheet.style.setProperty('--cinema-sheet-clip', reduced.matches || p >= .999 ? 'none' : `circle(${radius.toFixed(2)}px at 50% ${(rect.height / 2).toFixed(2)}px)`);
-  sheet.inert = !reduced.matches && p < .999;
+  covered = sheetTop <= rect.top + 2;
+  stage.style.setProperty('--cinema-photo-shift', reduced.matches ? '0px' : `${(p * rect.height * .08).toFixed(2)}px`);
   stage.inert = covered;
   if (covered !== wasCovered) sync();
  };
