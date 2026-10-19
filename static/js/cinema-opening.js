@@ -97,6 +97,7 @@
  if (reduced.addEventListener) reduced.addEventListener('change', () => { userStarted = false; schedule(); sync(); });
  const header = document.querySelector('.site-header');
  const sizeHeader = () => {
+  document.body.style.setProperty('--cinema-entry-top', `${Math.max(0, intro.getBoundingClientRect().top + window.scrollY)}px`);
   if (header) document.body.style.setProperty('--cinema-top', `${header.getBoundingClientRect().height}px`);
   schedule();
  };

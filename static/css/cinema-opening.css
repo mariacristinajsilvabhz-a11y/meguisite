@@ -80,3 +80,6 @@
  .home-cinema .cinema-photo-controls>button{min-height:40px;min-width:40px}
  .home-cinema .cinema-photo-controls>.cinema-toggle{font-size:8px;padding:8px}
 }
+
+/* Account for the navigation and search above the opening on desktop. */
+@media(min-width:601px){.home-cinema{--cinema-height:clamp(540px,calc(100svh - var(--cinema-entry-top,210px)),940px)}}
