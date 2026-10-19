@@ -150,6 +150,7 @@
 <link rel="stylesheet" href="{{ url_for('static',filename='css/cinema-opening.css',v='20261019-seamless-v12') }}">
 <link rel="stylesheet" href="{{ url_for('static',filename='css/services-discovery.css',v='20261019-v1') }}">
 <link rel="stylesheet" href="{{ url_for('static',filename='css/pouch-studio.css',v='20261019-v1') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/knit-open-studio.css',v='20261019-v1') }}">
 {% endblock %}
 {% block content %}
 {% from '_icons.html' import icon %}
@@ -189,7 +190,7 @@
    {% for key,number,label,subtitle,kicker,title,description,details,photo,alt,detail,detail_label,href,action in knit_editions %}
    <div class="knit-edition-panel" role="tabpanel" id="knit-panel-{{ key }}" aria-labelledby="knit-tab-{{ key }}" tabindex="0" {% if not loop.first %}hidden{% endif %}>
     <div class="knit-edition-story"><span class="knit-edition-kicker">{{ kicker }}</span><h3>{{ title|safe }}</h3><p>{{ description }}</p><span class="knit-edition-options">{{ details }}</span><a href="{{ href }}" class="knit-edition-cta">{{ action }} {{ icon('arrow') }}</a><span class="knit-edition-signature">{{ icon('butterfly') }} Confecção própria. Identidade sua.</span></div>
-    <div class="knit-edition-stage knit-stage-{{ key }}"><span class="knit-stage-butterfly" aria-hidden="true">{{ icon('butterfly') }}</span><span class="knit-stage-word" aria-hidden="true">MALHA</span><span class="knit-stage-edition" aria-hidden="true">MEGUI / {{ number }}</span><img class="knit-stage-product" src="{{ url_for('static',filename=photo) }}" alt="{{ alt }}" width="1200" height="1200" loading="lazy"><figure class="knit-stage-detail"><img src="{{ url_for('static',filename=detail) }}" alt="detalhe: {{ detail_label|lower }}" width="1200" height="800" loading="lazy"><figcaption>{{ detail_label }}<small>Referência de acabamento</small></figcaption></figure><span class="knit-stage-caption">Do tecido à peça.<br>Cuidado em cada escolha.</span></div>
+    <div class="knit-edition-stage knit-stage-{{ key }}"><span class="knit-stage-butterfly" aria-hidden="true">{{ icon('butterfly') }}</span><span class="knit-stage-word" aria-hidden="true">{{ 'SUA MARCA' if key == 'marca' else 'MALHA' }}</span><span class="knit-stage-edition" aria-hidden="true">MEGUI / {{ number }}</span><img class="knit-stage-product" src="{{ url_for('static',filename=photo) }}" alt="{{ alt }}" width="1200" height="1200" loading="lazy"><figure class="knit-stage-detail"><img src="{{ url_for('static',filename=detail) }}" alt="detalhe: {{ detail_label|lower }}" width="1200" height="800" loading="lazy"><figcaption>{{ detail_label }}<small>Referência de acabamento</small></figcaption></figure>{% if key == 'marca' %}<span class="knit-open-note" aria-hidden="true">sua ideia ganha<br>forma e movimento.</span>{% endif %}<span class="knit-stage-caption">Do tecido à peça.<br>Cuidado em cada escolha.</span></div>
    </div>
    {% endfor %}
   </div>
