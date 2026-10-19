@@ -61,6 +61,12 @@
   const rect = stage.getBoundingClientRect();
   const sheetTop = sheet.getBoundingClientRect().top;
   const p = Math.max(0, Math.min(1, (rect.bottom - sheetTop) / Math.max(1, rect.height)));
+  const blend = p * p * (3 - 2 * p);
+  stage.style.setProperty('--cinema-scroll-blur', `${(reduced.matches ? 0 : blend * 14).toFixed(2)}px`);
+  stage.style.setProperty('--cinema-scroll-opacity', (1 - blend * .45).toFixed(3));
+  stage.style.setProperty('--cinema-tint-opacity', (blend * .48).toFixed(3));
+  stage.style.setProperty('--cinema-text-opacity', Math.max(0, 1 - p * 1.5).toFixed(3));
+  stage.style.setProperty('--cinema-text-blur', `${(reduced.matches ? 0 : blend * 4).toFixed(2)}px`);
   const wasCovered = covered;
   covered = sheetTop <= rect.top + 2;
   stage.style.setProperty('--cinema-photo-shift', reduced.matches ? '0px' : `${(p * rect.height * .08).toFixed(2)}px`);
