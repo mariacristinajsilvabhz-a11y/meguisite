@@ -55,3 +55,28 @@
 @media(max-width:900px){.home-cinema .cinema-photo-controls{margin-left:auto}.home-cinema .cinema-copy{max-width:600px}}
 @media(max-width:600px){.home-cinema .cinema-light{background:linear-gradient(90deg,#1a1125db,#21152d80),linear-gradient(0deg,#20142bf0,transparent 80%)}.home-cinema .cinema-photo{object-position:60% center!important}.home-cinema .cinema-photo-controls>.cinema-toggle{margin-left:0}.home-cinema .cinema-photo-controls{gap:2px}.home-cinema .cinema-bottom{gap:10px}.home-cinema .cinema-discover{font-size:10px}.home-cinema .cinema-discover-line{display:none}}
 @media(prefers-reduced-motion:reduce){.home-cinema .cinema-photo{transition:none}}
+
+/* Art-directed panoramas: copy and product occupy separate safe areas. */
+.home-cinema .cinema-photo{object-position:50% 50%}
+.home-cinema .cinema-copy{max-width:43%}
+.home-cinema #cinema-heading{font-size:clamp(44px,5.2vw,78px)}
+.home-cinema .cinema-light{background:linear-gradient(90deg,#170f2440,transparent 56%),linear-gradient(0deg,#17102199,transparent 20%)}
+@media(min-width:601px) and (max-width:900px){.home-cinema .cinema-copy{max-width:47%}.home-cinema #cinema-heading{font-size:44px}.home-cinema .cinema-copy>p{font-size:14px}.home-cinema .cinema-kicker{font-size:8px;letter-spacing:.07em}}
+@media(max-width:600px){
+ .home-cinema{--cinema-height:clamp(780px,calc(100svh - 70px),900px)}
+ .home-cinema .cinema-stage{background:#201b29}
+ .home-cinema .cinema-background{inset:0 0 auto;height:44%;transform:none}
+ .home-cinema .cinema-photo{object-fit:cover;object-position:85% 50%!important}
+ .home-cinema .cinema-light{background:linear-gradient(to bottom,transparent 28%,#201b2940 36%,#201b29 44%)}
+ .home-cinema .cinema-inner{justify-content:flex-start;padding-top:calc(var(--cinema-height) * .44);padding-bottom:88px}
+ .home-cinema .cinema-copy{max-width:none;width:100%}
+ .home-cinema .cinema-kicker{font-size:7px;letter-spacing:.065em;gap:7px;margin-bottom:12px}
+ .home-cinema #cinema-heading{font-size:clamp(33px,9vw,42px);line-height:1.07;margin-bottom:14px;max-width:none}
+ .home-cinema .cinema-copy>p{font-size:13px;line-height:1.6;max-width:39ch}
+ .home-cinema .cinema-actions{margin-top:17px;gap:10px 18px}
+ .home-cinema .cinema-primary{min-height:44px;padding:11px 14px;font-size:11px}
+ .home-cinema .cinema-catalog{font-size:11px;min-height:36px}
+ .home-cinema .cinema-bottom{bottom:17px;gap:7px}
+ .home-cinema .cinema-photo-controls>button{min-height:40px;min-width:40px}
+ .home-cinema .cinema-photo-controls>.cinema-toggle{font-size:8px;padding:8px}
+}
