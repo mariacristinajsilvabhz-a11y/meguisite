@@ -223,13 +223,16 @@
   const slides = [...root.querySelectorAll('[data-carousel-slide]')];
   const selectors = [...root.querySelectorAll('[data-carousel-to]')];
   const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const fabric = root.querySelector('[data-fabric-zoom]');
+  let exploring = false, fabricPinned = false;
   let current = 0, paused = motion.matches, hovered = false, focused = false, timer;
   const schedule = () => {
     clearTimeout(timer);
-    if (!paused && !hovered && !focused && !document.hidden) timer = setTimeout(() => show(current + 1), 2200);
+    if (!paused && !hovered && !focused && !exploring && !document.hidden) timer = setTimeout(() => show(current + 1), 2200);
   };
   const show = index => {
     current = (index + slides.length) % slides.length;
+    if (fabric && !slides[current].contains(fabric)) { fabricPinned = false; setFabricExploring(false); }
     slides.forEach((slide, i) => {
       slide.hidden = i !== current;
       slide.inert = i !== current;
@@ -242,11 +245,44 @@
     });
     schedule();
   };
+  const setFabricExploring = open => {
+    if (!fabric) return;
+    exploring = open;
+    fabric.classList.toggle('is-exploring', open);
+    fabric.setAttribute('aria-expanded', String(open));
+    fabric.setAttribute('aria-label', open ? 'Fechar ampliação da trama do tecido' : 'Ampliar os detalhes da trama do tecido');
+    if (!open) fabric.style.setProperty('--fabric-origin', '50% 50%');
+    schedule();
+  };
+  if (fabric) {
+    fabric.addEventListener('pointerenter', event => {
+      if (event.pointerType === 'mouse') setFabricExploring(true);
+    });
+    fabric.addEventListener('pointerleave', event => {
+      if (event.pointerType === 'mouse' && !fabricPinned) setFabricExploring(false);
+    });
+    fabric.addEventListener('pointermove', event => {
+      if (!exploring || event.pointerType !== 'mouse') return;
+      const rect = fabric.querySelector('.fabric-zoom-window').getBoundingClientRect();
+      const x = Math.min(100, Math.max(0, (event.clientX - rect.left) / rect.width * 100));
+      const y = Math.min(100, Math.max(0, (event.clientY - rect.top) / rect.height * 100));
+      fabric.style.setProperty('--fabric-origin', `${x}% ${y}%`);
+    });
+    fabric.addEventListener('click', () => { fabricPinned = !fabricPinned; setFabricExploring(fabricPinned); });
+    fabric.addEventListener('focus', () => setFabricExploring(true));
+    fabric.addEventListener('blur', () => { fabricPinned = false; setFabricExploring(false); });
+    fabric.addEventListener('keydown', event => {
+      if (event.key === 'Escape') { fabricPinned = false; setFabricExploring(false); }
+    });
+    document.addEventListener('pointerdown', event => {
+      if (exploring && !fabric.contains(event.target)) { fabricPinned = false; setFabricExploring(false); }
+    });
+  }
   selectors.forEach((button, i) => button.addEventListener('click', () => show(i)));
   // Deslize horizontal sem interferir na rolagem vertical ou nos links.
   let touchStart;
   root.addEventListener('touchstart', event => {
-    if (event.touches.length !== 1) { touchStart = null; return; }
+    if (event.touches.length !== 1 || event.target.closest('[data-fabric-zoom]')) { touchStart = null; return; }
     touchStart = { x: event.touches[0].clientX, y: event.touches[0].clientY };
   }, { passive: true });
   root.addEventListener('touchend', event => {

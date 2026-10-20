@@ -339,7 +339,7 @@
 .home-cinema .home-content-sheet{position:relative;background:#eee5f3;min-height:100vh}
 .home-cinema main{overflow:clip}
 </style>
-<link rel="stylesheet" href="{{ url_for('static',filename='css/home-signature.css',v='20261020-campaign-v7') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/home-signature.css',v='20261020-campaign-v8') }}">
 <link rel="stylesheet" href="{{ url_for('static',filename='css/services-discovery.css',v='20261019-v1') }}">
 <link rel="stylesheet" href="{{ url_for('static',filename='css/pouch-studio.css',v='20261019-orbit-v2') }}">
 <link rel="stylesheet" href="{{ url_for('static',filename='css/knit-open-studio.css',v='20261019-v1') }}">
@@ -384,10 +384,10 @@
      </div>
      <img src="{{ url_for('static', filename=slide.image) }}" alt="{{ slide.alt }}" width="{{ 1280 if loop.first else 1440 }}" height="{{ 853 if loop.first else 960 }}" {% if loop.first %}fetchpriority="high"{% endif %} decoding="async">
      {% if slide.theme == 'wear' %}
-     <div class="carousel-material-swatch" aria-hidden="true">
-      <img src="{{ url_for('static',filename='img/tecidos/detalhe-trama-v9.webp') }}" alt="" width="180" height="180" loading="lazy" decoding="async">
-      <span>Do tecido<br>à sua identidade.</span>
-     </div>
+     <button class="carousel-material-swatch fabric-zoom" type="button" data-fabric-zoom aria-expanded="false" aria-label="Ampliar os detalhes da trama do tecido">
+      <span class="fabric-zoom-window"><img src="{{ url_for('static',filename='img/tecidos/detalhe-trama-v9.webp') }}" alt="Detalhe ampliado dos fios e da trama de malhas clara e preta" width="1200" height="800" decoding="async" draggable="false"></span>
+      <span class="fabric-zoom-caption">{{ icon('search') }}<span>Explore a trama</span><small class="fabric-zoom-hint">Passe o mouse ou toque</small></span>
+     </button>
      {% endif %}
     </figure>
     <span class="carousel-maker-signature" aria-hidden="true"><span>MEGUI · DESDE 2020</span>{{ icon('butterfly') }}</span>
