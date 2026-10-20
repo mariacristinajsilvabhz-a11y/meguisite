@@ -339,6 +339,7 @@
 .home-cinema .home-content-sheet{position:relative;background:#eee5f3;min-height:100vh}
 .home-cinema main{overflow:clip}
 </style>
+<link rel="stylesheet" href="{{ url_for('static',filename='css/home-signature.css',v='20261020-depth-v1') }}">
 <link rel="stylesheet" href="{{ url_for('static',filename='css/services-discovery.css',v='20261019-v1') }}">
 <link rel="stylesheet" href="{{ url_for('static',filename='css/pouch-studio.css',v='20261019-orbit-v2') }}">
 <link rel="stylesheet" href="{{ url_for('static',filename='css/knit-open-studio.css',v='20261019-v1') }}">
@@ -370,7 +371,23 @@
      </div>
     </div>
     <figure class="carousel-art">
+     <div class="carousel-fabric-scene" aria-hidden="true">
+      <span class="carousel-fabric-back"></span>
+      <span class="carousel-fabric-fold"></span>
+      <svg class="carousel-fabric-seam" viewBox="0 0 760 500" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+       <path d="M 27 410 C 124 475, 235 433, 323 379 S 483 237, 552 207 S 686 135, 753 155"></path>
+       <path class="seam-inner" d="M 30 425 C 132 490, 245 446, 332 391 S 489 248, 560 218 S 689 145, 758 168"></path>
+      </svg>
+      <span class="carousel-ground-shadow"></span>
+     </div>
      <img src="{{ url_for('static', filename=slide.image) }}" alt="{{ slide.alt }}" width="{{ 1280 if loop.first else 1440 }}" height="{{ 853 if loop.first else 960 }}" {% if loop.first %}fetchpriority="high"{% endif %} decoding="async">
+     {% if slide.theme == 'wear' %}
+     <div class="carousel-material-swatch" aria-hidden="true">
+      <img src="{{ url_for('static',filename='img/tecidos/detalhe-trama-v9.webp') }}" alt="" width="180" height="180" loading="lazy" decoding="async">
+      <span>O tecido<br>faz a diferença</span>
+     </div>
+     {% endif %}
+     <span class="carousel-maker-signature" aria-hidden="true"><span>MEGUI · DESDE 2020</span>{{ icon('butterfly') }}</span>
     </figure>
    </article>
    {% endfor %}
