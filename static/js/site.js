@@ -250,7 +250,7 @@
     exploring = open;
     fabric.classList.toggle('is-exploring', open);
     fabric.setAttribute('aria-expanded', String(open));
-    fabric.setAttribute('aria-label', open ? 'Fechar ampliação da trama do tecido' : 'Ampliar os detalhes da trama do tecido');
+    fabric.setAttribute('aria-label', open ? 'Fechar ampliação da meia malha' : 'Ampliar os pontos da meia malha');
     if (!open) fabric.style.setProperty('--fabric-origin', '50% 50%');
     schedule();
   };

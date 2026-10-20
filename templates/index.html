@@ -339,7 +339,7 @@
 .home-cinema .home-content-sheet{position:relative;background:#eee5f3;min-height:100vh}
 .home-cinema main{overflow:clip}
 </style>
-<link rel="stylesheet" href="{{ url_for('static',filename='css/home-signature.css',v='20261020-campaign-v9') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/home-signature.css',v='20261020-campaign-v10') }}">
 <link rel="stylesheet" href="{{ url_for('static',filename='css/services-discovery.css',v='20261020-atelier-v1') }}">
 <link rel="stylesheet" href="{{ url_for('static',filename='css/pouch-studio.css',v='20261019-orbit-v2') }}">
 <link rel="stylesheet" href="{{ url_for('static',filename='css/knit-open-studio.css',v='20261019-v1') }}">
@@ -384,9 +384,9 @@
      </div>
      <img src="{{ url_for('static', filename=slide.image) }}" alt="{{ slide.alt }}" width="{{ 1280 if loop.first else 1440 }}" height="{{ 853 if loop.first else 960 }}" {% if loop.first %}fetchpriority="high"{% endif %} decoding="async">
      {% if slide.theme == 'wear' %}
-     <button class="carousel-material-swatch fabric-zoom" type="button" data-fabric-zoom aria-expanded="false" aria-label="Ampliar os detalhes da trama do tecido">
-      <span class="fabric-zoom-window"><img src="{{ url_for('static',filename='img/tecidos/detalhe-trama-v9.webp') }}" alt="Detalhe ampliado dos fios e da trama de malhas clara e preta" width="1200" height="800" decoding="async" draggable="false"></span>
-      <span class="fabric-zoom-caption">{{ icon('search') }}<span>Explore a trama</span><small class="fabric-zoom-hint">Passe o mouse ou toque</small></span>
+     <button class="carousel-material-swatch fabric-zoom" type="button" data-fabric-zoom aria-expanded="false" aria-label="Ampliar os pontos da meia malha">
+      <span class="fabric-zoom-window"><img src="{{ url_for('static',filename='img/tecidos/malha-encorpada.webp') }}" alt="Detalhe dos pontos em V da meia malha preta" width="1200" height="800" decoding="async" draggable="false"></span>
+      <span class="fabric-zoom-caption">{{ icon('search') }}<span>Veja a malha de perto</span><small class="fabric-zoom-hint">Passe o mouse ou toque</small></span>
      </button>
      {% endif %}
     </figure>
@@ -422,7 +422,7 @@
    <div class="knit-brand-sculpture" aria-hidden="true"><span class="knit-brand-orbit"></span><span class="knit-brand-orbit orbit-two"></span>{{ icon('butterfly') }}<span class="knit-brand-note">O JEITO MEGUI<br>DE DAR ASAS À SUA IDEIA.</span></div>
   </div>
   {% set knit_editions = [
-   ('marca','01','Sua marca','Camisetas com identidade','DO SEU JEITO, DO TECIDO À ESTAMPA','Uma ideia que<br>dá para <em>vestir.</em>','Básicas, babylooks e modelagens que levam a identidade da sua marca para o dia a dia. A gente conversa sobre tecido, caimento e personalização para encontrar a peça certa.','Básicas · Babylooks · Estampas','img/mostruario/camiseta-future-pro-recorte-v2.webp','Camiseta preta com a estampa Future Pro, em vista traseira','img/tecidos/detalhe-trama-v9.webp','Trama e toque',url_for('category',slug='vestuario'),'Explorar camisetas'),
+   ('marca','01','Sua marca','Camisetas com identidade','DO SEU JEITO, DO TECIDO À ESTAMPA','Uma ideia que<br>dá para <em>vestir.</em>','Básicas, babylooks e modelagens que levam a identidade da sua marca para o dia a dia. A gente conversa sobre tecido, caimento e personalização para encontrar a peça certa.','Básicas · Babylooks · Estampas','img/mostruario/camiseta-future-pro-recorte-v2.webp','Camiseta preta com a estampa Future Pro, em vista traseira','img/tecidos/malha-encorpada.webp','Trama e toque',url_for('category',slug='vestuario'),'Explorar camisetas'),
    ('equipe','02','Sua equipe','Conforto para representar','PRESENÇA EM CADA DIA DE TRABALHO','Quem veste,<br><em>representa.</em>','Uma equipe tem ritmo, rotina e identidade. Camisetas, polos e uniformes pensados para acompanhar quem trabalha e apresentar bem a sua marca.','Camisetas · Polos · Uniformes','img/inicio/polo.webp','Polo preta Megui com detalhes lilás na gola','img/tecidos/detalhe-gola-v9.webp','Gola e acabamento',url_for('b2b') ~ '#uniformes','Conhecer os uniformes'),
    ('encontro','03','Seu encontro','Uma identidade em comum','UMA MENSAGEM QUE APROXIMA','Um encontro.<br><em>Muitas histórias.</em>','Retiros, congressos e movimentos ganham uma identidade que reúne o grupo. Peças que vestem a mensagem e continuam fazendo parte da história depois do evento.','Retiros · Congressos · Movimentos','img/mostruario/camiseta-iprv-estudio-v1.webp','Frente e costas de camiseta comemorativa IPRV','img/tecidos/detalhe-costura-v9.webp','Costura e cuidado',url_for('events') ~ '#movimentos','Personalizar meu encontro')
   ] %}
