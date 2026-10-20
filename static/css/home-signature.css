@@ -156,3 +156,12 @@
  #megui-theme-slides .carousel-actions>.carousel-cta,#megui-theme-slides .carousel-actions>.carousel-talk{font-size:11px;padding:11px 13px;min-height:47px;gap:8px}
 }
 @media(prefers-reduced-motion:reduce){#megui-theme-slides .carousel-actions>a{transition:none}}
+
+/* Assinatura discreta no rodapé do slide, independente da fotografia. */
+#megui-theme-slides .carousel-slide>.carousel-maker-signature{position:absolute;right:32px;bottom:27px;opacity:.34;font-size:8px;font-weight:500;letter-spacing:.1em;gap:7px;pointer-events:none}
+#megui-theme-slides .carousel-slide>.carousel-maker-signature .icon{width:16px;height:20px}
+@media(max-width:760px){
+ .home-cinema #megui-theme-slides .carousel-slide{padding-bottom:94px}
+ #megui-theme-slides .carousel-slide>.carousel-maker-signature{right:20px;bottom:61px;font-size:7px;gap:5px;opacity:.32}
+ #megui-theme-slides .carousel-slide>.carousel-maker-signature .icon{width:12px;height:15px}
+}
