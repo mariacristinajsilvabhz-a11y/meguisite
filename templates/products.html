@@ -1,32 +1,35 @@
 {% extends "base.html" %}
 {% block title %}{% if active_category %}{{ active_category.name }}{% else %}Produtos{% endif %} — Megui{% endblock %}
+{% block final_head %}<link rel="stylesheet" href="{{ url_for('static',filename='css/catalog-discovery.css',v='20261020-v1') }}">{% endblock %}
 {% block content %}
 {% from '_icons.html' import icon %}
-<section class="catalog-invitation" aria-labelledby="catalog-title">
- <div class="container catalog-invitation-grid">
-  <div class="catalog-invitation-copy"><span class="catalog-kicker">PEÇAS PARA GANHAR A SUA IDENTIDADE</span>
-   <h1 id="catalog-title">{% if active_category %}{{ active_category.name }}.<br><em>Do seu jeito.</em>{% else %}Uma peça.<br><em>Mil jeitos de ser sua.</em>{% endif %}</h1>
-   <p>Camisetas, bolsas, canecas, papelaria e muito mais. Encontre a peça, escolha a cor e leve a sua identidade para cada detalhe.</p>
-   <a class="catalog-start-link" href="#escolher-produtos">Explorar produtos <span aria-hidden="true">↓</span></a>
+{% set exploring = not active_category and not query and not active_subtype %}
+<section class="catalog-opening{% if not exploring %} catalog-opening--compact{% endif %}" aria-labelledby="catalog-title">
+ <div class="container catalog-opening-grid">
+  <div class="catalog-opening-copy">
+   <span class="catalog-eyebrow">MEGUI · PERSONALIZADOS PARA A SUA HISTÓRIA</span>
+   <h1 id="catalog-title">{% if active_category %}{{ active_category.name }}.<br><em>Com a sua identidade.</em>{% elif query %}Sua próxima ideia<br><em>começa aqui.</em>{% else %}Sua marca.<br>Seu momento.<br><em>Seu jeito.</em>{% endif %}</h1>
+   <p>Da lembrança do “sim” à camiseta de uma equipe inteira. Peças que levam uma identidade, celebram encontros e fazem parte de histórias.</p>
+   <form class="catalog-hero-search" action="{{ url_for('products') }}" method="get" role="search">
+    <label for="idea-search">O que você quer personalizar?</label>
+    <div><input id="idea-search" type="search" name="q" value="{{ query }}" placeholder="Caneca, camiseta, nécessaire…"><button type="submit" aria-label="Buscar produtos">{{ icon('search') }}</button></div>
+   </form>
+   <div class="catalog-search-hints"><span>Comece por</span><a href="{{ url_for('category',slug='vestuario',subcategoria='camisetas') }}">camisetas</a><a href="{{ url_for('category',slug='copos-garrafas',subcategoria='canecas-xicaras') }}">canecas</a><a href="{{ url_for('category',slug='bolsas-acessorios',subcategoria='necessaires') }}">nécessaires</a></div>
+   <a class="catalog-browse-link" href="#escolher-produtos">Ver catálogo completo <span aria-hidden="true">↓</span></a>
   </div>
-  <div class="catalog-object-stage" aria-label="Papelaria, canecas e acessórios personalizados">
-   <span class="catalog-object-orbit" aria-hidden="true"></span>
-   <span class="catalog-object-butterfly" aria-hidden="true">{{ icon('butterfly') }}</span>
-   <img class="catalog-object-notebook" src="{{ url_for('static',filename='img/inicio/caderno.webp') }}" alt="Caderno lilás personalizado com caneta" width="1000" height="1000" fetchpriority="high">
-   <img class="catalog-object-mug" src="{{ url_for('static',filename='img/empresas/caneca-novas-ideias-v1.webp') }}" alt="Caneca com estampa colorida" width="1254" height="1254" fetchpriority="high">
-   <img class="catalog-object-cap" src="{{ url_for('static',filename='img/inicio/bone.webp') }}" alt="Boné preto com bordado lilás" width="1000" height="1000" decoding="async">
-   <span class="catalog-object-caption">A sua identidade.<br><strong>Em muitas possibilidades.</strong></span>
-  </div>
+  {% if exploring %}<div class="catalog-story-stage" aria-label="Diferentes peças para diferentes histórias">
+   <span class="catalog-story-ring" aria-hidden="true"></span>
+   <img class="catalog-story-book" src="{{ url_for('static',filename='img/inicio/caderno.webp') }}" alt="Caderno personalizado lilás" width="1000" height="1000" fetchpriority="high">
+   <img class="catalog-story-mug" src="{{ url_for('static',filename='img/empresas/caneca-novas-ideias-v1.webp') }}" alt="Caneca personalizada com arte colorida" width="1254" height="1254" fetchpriority="high">
+   <img class="catalog-story-bag" src="{{ url_for('static',filename='img/inicio/ecobag.webp') }}" alt="Ecobag personalizada" width="1000" height="1000">
+   <span class="catalog-story-label">feito para <em>marcar.</em><svg viewBox="0 0 125 154" aria-hidden="true"><use href="#megui-butterfly"></use></svg></span>
+   <span class="catalog-story-footnote">Uma ideia sua. Muitas possibilidades.</span>
+  </div>{% endif %}
  </div>
- <nav class="container catalog-intents catalog-product-shortcuts" aria-label="Atalhos de produtos"><span class="catalog-shortcuts-label">Encontre seu<br><strong>ponto de partida.</strong></span>
-  <a class="catalog-shortcut" href="{{ url_for('category',slug='vestuario') }}"><span class="catalog-shortcut-icon">{{ icon('tshirt') }}</span><span class="catalog-shortcut-title">Roupas & <br>uniformes</span><span class="catalog-shortcut-arrow">{{ icon('arrow') }}</span></a>
-  <a class="catalog-shortcut" href="{{ url_for('category',slug='bolsas-acessorios') }}"><span class="catalog-shortcut-icon">{{ icon('bag') }}</span><span class="catalog-shortcut-title">Bolsas & <br>acessórios</span><span class="catalog-shortcut-arrow">{{ icon('arrow') }}</span></a>
-  <a class="catalog-shortcut" href="{{ url_for('category',slug='copos-garrafas') }}"><span class="catalog-shortcut-icon">{{ icon('bottle') }}</span><span class="catalog-shortcut-title">Copos & <br>garrafas</span><span class="catalog-shortcut-arrow">{{ icon('arrow') }}</span></a>
-  <a class="catalog-shortcut" href="{{ url_for('category',slug='papelaria') }}"><span class="catalog-shortcut-icon">{{ icon('kit') }}</span><span class="catalog-shortcut-title">Papelaria & <br>escritório</span><span class="catalog-shortcut-arrow">{{ icon('arrow') }}</span></a>
- </nav>
 </section>
-
+{% if exploring %}{% include '_catalog_occasions.html' %}{% endif %}
 <section class="section catalog-section" id="escolher-produtos">
+  <div class="container catalog-heading"><div><span class="catalog-eyebrow">EXPLORE AS POSSIBILIDADES</span><h2>Encontre a peça.<br><em>Imagine com a sua identidade.</em></h2></div><p>Busque pelo nome ou explore por tipo de produto. Escolha seus favoritos e monte seu orçamento.</p></div>
   <div class="container catalog-layout">
     <aside class="filters">
       <h2>Categorias</h2>
@@ -38,14 +41,15 @@
       {% for collection in collections if collection.slug in ['corporativo','eventos'] %}<a class="{% if active_category and active_category.slug==collection.slug %}active{% endif %}" href="{{ url_for('category',slug=collection.slug) }}">{{ icon('eventos' if collection.slug=='eventos' else 'corporativo') }} {{ collection.name }}</a>{% endfor %}
     </aside>
 
-    <div>
+    <div class="catalog-results">
+      <label class="catalog-mobile-category" for="mobile-category">Categoria<select id="mobile-category" data-catalog-category><option value="{{ url_for('products') }}" {% if not active_category %}selected{% endif %}>Todos os produtos</option>{% for category in categories if category_counts.get(category.slug,1)>0 or (active_category and active_category.slug==category.slug) %}<option value="{{ url_for('category',slug=category.slug) }}" {% if active_category and active_category.slug==category.slug %}selected{% endif %}>{{ category.name }}</option>{% endfor %}</select></label>
       <form class="catalog-query" action="{{ request.path }}" method="get">
         {% if request.args.get('categoria') %}<input type="hidden" name="categoria" value="{{ request.args.get('categoria') }}">{% endif %}
-        <label for="full-catalog-query">Já tem uma ideia? Encontre aqui.</label><div><input id="full-catalog-query" name="q" value="{{ query }}" placeholder="Ex.: caneca, camiseta, ecobag…"><button class="btn btn-primary" type="submit">Buscar</button></div>
-        <div class="catalog-type-filter"><label for="catalog-subtype">Tipo de produto<select id="catalog-subtype" name="subcategoria"><option value="">Todos os tipos{% if active_category %} de {{ active_category.name|lower }}{% endif %}</option>{% for sub in subcategories %}<option value="{{ sub.slug }}" {% if active_subtype==sub.slug %}selected{% endif %}>{{ sub.name }} ({{ sub.total }})</option>{% endfor %}</select></label><button class="catalog-filter-apply" type="submit">Aplicar filtro {{ icon('arrow') }}</button>{% if active_subtype or query %}<a class="catalog-clear" href="{{ url_for('category',slug=active_category.slug) if active_category else url_for('products') }}">Limpar filtros</a>{% endif %}</div>
+        <label for="full-catalog-query">Buscar no catálogo</label><div><input type="search" id="full-catalog-query" name="q" value="{{ query }}" placeholder="Ex.: caneca, camiseta, ecobag…"><button class="btn btn-primary" type="submit">Buscar</button></div>
+        <div class="catalog-type-filter"><label for="catalog-subtype">Tipo de produto<select id="catalog-subtype" name="subcategoria"><option value="">Todos os tipos{% if active_category %} de {{ active_category.name|lower }}{% endif %}</option>{% for sub in subcategories %}<option value="{{ sub.slug }}" {% if active_subtype==sub.slug %}selected{% endif %}>{{ sub.name }} ({{ sub.total }})</option>{% endfor %}</select></label><button class="catalog-filter-apply" type="submit">Filtrar produtos</button>{% if active_subtype or query %}<a class="catalog-clear" href="{{ url_for('category',slug=active_category.slug) if active_category else url_for('products') }}">Limpar filtros</a>{% endif %}</div>
       </form>
       <div class="catalog-toolbar">
-        <div id="catalog-result-count" role="status" aria-live="polite"><strong>{{ "{:,}".format(pagination.total).replace(",", ".") }}</strong> pontos de partida para criar</div>
+        <div id="catalog-result-count" role="status" aria-live="polite"><strong>{{ "{:,}".format(pagination.total).replace(",", ".") }}</strong> {{ 'produto' if pagination.total == 1 else 'produtos' }}{% if query %} para “{{ query }}”{% endif %}</div>
         <div class="catalog-view-controls" aria-label="Visualização dos produtos">
           <button type="button" data-view="grid" aria-pressed="true" aria-label="Mostrar em grade">{{ icon('grid') }}</button>
           <button type="button" data-view="list" aria-pressed="false" aria-label="Mostrar em lista">{{ icon('list') }}</button>
@@ -69,4 +73,6 @@
     </div>
   </div>
 </section>
+<section class="catalog-concierge container"><div><span class="catalog-eyebrow">TEM ALGO DIFERENTE EM MENTE?</span><h2>Conta a sua ideia.<br><em>A gente cria o caminho.</em></h2><p>Um casamento, uma ação da empresa, uma festa ou um projeto que ainda está tomando forma. Vamos encontrar as peças com você.</p></div><a href="https://wa.me/{{ whatsapp_number }}?text={{ 'Olá! Estou explorando os produtos e gostaria de ajuda para escolher peças para o meu projeto.'|urlencode }}" target="_blank" rel="noopener"><small>DO SEU JEITO, COM A MEGUI</small><span>Vamos imaginar juntos <b aria-hidden="true">↗</b></span></a></section>
 {% endblock %}
+{% block extra_scripts %}<script defer src="{{ url_for('static',filename='js/catalog-discovery.js',v='20261020-v1') }}"></script>{% endblock %}

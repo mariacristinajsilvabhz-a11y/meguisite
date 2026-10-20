@@ -1,0 +1,54 @@
+{% set occasion_items = [
+ ('ideias','Todas as ideias','Cada história pede um detalhe.','Explore algumas possibilidades e encontre o começo da sua.',[
+ ('Camisetas & uniformes','Para vestir uma identidade','vestuario','camisetas','inicio/camiseta-megui-movimento-v3.webp'),
+ ('Bolsas & nécessaires','Para acompanhar a rotina','bolsas-acessorios','necessaires','mostruario/necessaires-estudio-v1.webp'),
+ ('Copos & canecas','Para brindar e lembrar','copos-garrafas','canecas-xicaras','empresas/caneca-novas-ideias-v1.webp'),
+ ('Cadernos & agendas','Para guardar novas ideias','papelaria','cadernos-agendas','inicio/caderno.webp')]),
+ ('empresas','Empresas','Sua marca, muito além do cartão.','Da equipe aos clientes, uma identidade que acompanha o dia a dia.',[
+ ('Vista a equipe','Camisetas & uniformes','vestuario','','mostruario/camiseta-future-pro-estudio-v1.webp'),
+ ('Receba com cuidado','Kits & presentes','kits-presentes','','mostruario/kit-band-minas-estudio-v1.webp'),
+ ('Esteja na rotina','Garrafas & squeezes','copos-garrafas','garrafas-squeezes','mostruario/garrafas-senac-estudio-v1.webp'),
+ ('Conecte sua marca','Tecnologia & eletrônicos','tecnologia','','inicio/alexa-senacx-3d-v1.webp')]),
+ ('casamentos','Casamentos','O “sim” passa. O carinho fica.','Para os padrinhos, os convidados e cada detalhe que vira lembrança.',[
+ ('Um mimo para guardar','Nécessaires','bolsas-acessorios','necessaires','mostruario/necessaires-estudio-v1.webp'),
+ ('Um brinde ao encontro','Copos & taças','copos-garrafas','copos-tacas','inicio/copo-termico.webp'),
+ ('Carinho que acompanha','Sacolas & sacochilas','bolsas-acessorios','sacolas-sacochilas','inicio/ecobag.webp'),
+ ('Uma lembrança do dia','Chaveiros','acessorios-utilidades','chaveiros','mostruario/chaveiros-estudio-v1.webp')]),
+ ('festas','Festas & eventos','Faça o encontro continuar na memória.','Aniversários, feiras, shows e celebrações com a sua assinatura.',[
+ ('Todo mundo no clima','Camisetas','vestuario','camisetas','inicio/camiseta-megui-movimento-v3.webp'),
+ ('Leve o evento junto','Sacolas & sacochilas','bolsas-acessorios','sacolas-sacochilas','mostruario/sacochila-circuito-estudio-v1.webp'),
+ ('Celebre cada encontro','Copos & taças','copos-garrafas','copos-tacas','inicio/copo-termico.webp'),
+ ('Dê forma à mensagem','Impressos & comunicação','grafica','','inicio/papelaria.webp')]),
+ ('turmas','Escolas & turmas','Uma turma. Muitas histórias em comum.','Da volta às aulas à formatura, peças para acompanhar cada conquista.',[
+ ('Vista o pertencimento','Camisetas','vestuario','camisetas','inicio/camiseta-encontro-manequim-v1.webp'),
+ ('Ideias para o futuro','Cadernos & agendas','papelaria','cadernos-agendas','mostruario/cadernos-senac-estudio-v1.webp'),
+ ('Um cuidado no dia a dia','Garrafas & squeezes','copos-garrafas','garrafas-squeezes','mostruario/garrafas-senac-estudio-v1.webp'),
+ ('Carinho por quem ensina','Kits & presentes','kits-presentes','','inicio/kit-professores-3d-v1.webp')]),
+ ('encontros','Grupos & encontros','Quando a gente se encontra, algo fica.','Igrejas, retiros, projetos e comunidades unidos também nos detalhes.',[
+ ('Vista o propósito','Camisetas','vestuario','camisetas','mostruario/camiseta-iprv-estudio-v1.webp'),
+ ('Guarde o que importa','Cadernos & agendas','papelaria','cadernos-agendas','mostruario/escola-de-cura-estudio-v1.webp'),
+ ('Leve boas memórias','Sacolas & sacochilas','bolsas-acessorios','sacolas-sacochilas','inicio/ecobag.webp'),
+ ('Compartilhe o cuidado','Canecas & xícaras','copos-garrafas','canecas-xicaras','empresas/caneca-novas-ideias-v1.webp')]),
+ ('presentes','Presentes','Tem carinho que merece ganhar forma.','Para agradecer, surpreender ou transformar uma data em lembrança.',[
+ ('Um presente por inteiro','Kits & presentes','kits-presentes','','mostruario/kit-band-minas-estudio-v1.webp'),
+ ('Carinho na pausa','Canecas & xícaras','copos-garrafas','canecas-xicaras','empresas/caneca-novas-ideias-v1.webp'),
+ ('Para levar por aí','Nécessaires','bolsas-acessorios','necessaires','mostruario/necessaires-estudio-v1.webp'),
+ ('Uma ideia todos os dias','Cadernos & agendas','papelaria','cadernos-agendas','inicio/caderno.webp')])
+] %}
+<section class="catalog-occasions container" aria-labelledby="occasion-title">
+ <div class="catalog-occasion-intro"><span class="catalog-eyebrow">COMECE PELO QUE VOCÊ QUER CELEBRAR</span><h2 id="occasion-title">Qual é a sua <em>ocasião?</em></h2></div>
+ <div class="catalog-occasion-tabs" aria-label="Inspirações por ocasião">
+ {% for id,label,title,description,items in occasion_items %}<a href="#occasion-{{ id }}" data-occasion="{{ id }}">{{ label }}</a>{% endfor %}
+ </div>
+ {% for id,label,title,description,items in occasion_items %}
+ <div class="catalog-occasion-panel" id="occasion-{{ id }}" data-occasion-panel="{{ id }}">
+  <div class="catalog-occasion-heading"><h3>{{ title }}</h3><p>{{ description }}</p></div>
+  <div class="catalog-idea-grid">
+   {% for title,subtitle,category,subtype,image in items %}
+   <a class="catalog-idea" href="{{ url_for('category',slug=category,subcategoria=subtype or none) }}#escolher-produtos"><span class="catalog-idea-image"><img src="{{ url_for('static',filename='img/'~image) }}" alt="" width="700" height="700" loading="lazy" decoding="async"><span class="catalog-idea-tag">Explorar</span></span><strong>{{ title }}</strong><span class="catalog-idea-subtitle">{{ subtitle }}</span></a>
+   {% endfor %}
+  </div>
+ </div>
+ {% endfor %}
+ <p class="catalog-inspiration-note">Uma inspiração para começar. Cada peça pode ganhar a identidade do seu projeto.</p>
+</section>
