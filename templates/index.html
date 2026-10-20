@@ -149,59 +149,190 @@
 <link rel="stylesheet" href="{{ url_for('static',filename='css/mostruario.css',v='20261018-v1') }}">
 <style>
 {% raw %}
-/* Compositions scoped to the opening carousel; every subject has its own setting. */
-#megui-theme-slides .welcome-carousel{background:#e9e0ef}
-#megui-theme-slides .carousel-slide{position:relative;isolation:isolate;grid-template-columns:43% 57%;min-height:490px;overflow:hidden}
-#megui-theme-slides .carousel-slide[hidden]{display:none}
-#megui-theme-slides .carousel-copy{padding:42px 22px 42px clamp(28px,4vw,58px)}
-#megui-theme-slides .carousel-copy h1,#megui-theme-slides .carousel-copy h2{font-size:clamp(40px,4.3vw,66px);line-height:1.08;margin:20px 0}
-#megui-theme-slides .carousel-copy p{font-size:16px;line-height:1.7;max-width:38ch}
-#megui-theme-slides .carousel-art{position:relative;min-width:0;display:flex;align-items:center;justify-content:center;padding:35px 32px 35px 14px;isolation:isolate}
-#megui-theme-slides .carousel-art img{position:relative;z-index:1;max-width:100%;box-shadow:none}
-#megui-theme-slides .carousel-theme-decoration{position:absolute;z-index:0;pointer-events:none}
-#megui-theme-slides .carousel-theme-details{display:block;font-size:12px;font-weight:700;letter-spacing:.06em;color:#536956;margin:-10px 0 25px}
-#megui-theme-slides .carousel-theme-caption{position:absolute;z-index:2;inset:auto 35px 26px auto;background:none;backdrop-filter:none;border:0;border-radius:0;color:#486452;font-size:11px;padding:0}
-#megui-theme-slides .slide-football{background:linear-gradient(115deg,#eee6f3 0%,#e6ebe1 100%)}
-#megui-theme-slides .slide-football .carousel-copy h1>span{color:#43634b}
-#megui-theme-slides .slide-football .carousel-copy p{color:#4e5851}
-#megui-theme-slides .slide-football .carousel-cta{background:#354d3c;color:#fff}
-#megui-theme-slides .slide-football .carousel-art>img{width:100%;height:auto!important;max-height:none;aspect-ratio:1280/853;object-fit:contain!important;border-radius:5px}
-#megui-theme-slides .slide-football .carousel-theme-decoration{inset:24px 14px 46px 0;border:1px solid #63836938;border-radius:4px;transform:rotate(-3deg)}
-#megui-theme-slides .slide-football .carousel-theme-decoration:before{content:"";position:absolute;left:50%;top:0;bottom:0;border-left:1px solid #63836938}
-#megui-theme-slides .slide-football .carousel-theme-decoration:after{content:"";position:absolute;left:50%;top:50%;width:95px;height:95px;border:1px solid #63836938;border-radius:50%;transform:translate(-50%,-50%)}
-#megui-theme-slides .slide-wear{background:linear-gradient(110deg,#f0eaf2,#e0d2eb)}
-#megui-theme-slides .slide-wear .carousel-theme-decoration{inset:35px 38px 35px 16px;background:#cab6d34a;border-radius:46% 46% 5px 5px}
-#megui-theme-slides .slide-wear .carousel-art>img{object-fit:contain!important;aspect-ratio:3/2;border-radius:0;filter:drop-shadow(0 15px 16px #5739611a)}
-#megui-theme-slides .slide-wear .carousel-theme-decoration:after{content:"CONFECÇÃO / IDENTIDADE";position:absolute;bottom:12px;right:15px;font-size:9px;letter-spacing:.15em;color:#73577c}
-#megui-theme-slides .slide-faith{background:linear-gradient(115deg,#f0e6e8,#e6d2e5)}
-#megui-theme-slides .slide-faith .carousel-copy h2>span{color:#85526f}
-#megui-theme-slides .slide-faith .carousel-copy p{color:#6d5266}
-#megui-theme-slides .slide-faith .carousel-art>img{object-fit:contain!important;max-height:410px;height:auto!important;width:100%;border-radius:90px 8px 8px 8px}
-#megui-theme-slides .slide-faith .carousel-theme-decoration{width:65%;height:85%;right:18px;top:7%;border:1px solid #af79904a;border-radius:50% 50% 5px 5px;transform:rotate(7deg)}
-#megui-theme-slides .slide-events{background:radial-gradient(ellipse at 85% 80%,#cdb0e7,transparent 65%),#eae1f3}
-#megui-theme-slides .slide-events .carousel-art>img{object-fit:contain!important;max-height:420px;height:auto!important;width:100%;border-radius:0;filter:drop-shadow(0 16px 14px #66458020)}
-#megui-theme-slides .slide-events .carousel-theme-decoration{width:70%;height:63%;top:18%;right:10%;border:2px solid #b695cf63;border-radius:44% 56% 61% 39%;transform:rotate(-15deg)}
-#megui-theme-slides .slide-events .carousel-theme-decoration:after{content:"";position:absolute;inset:14px -22px -14px 22px;border:1px solid #a47ec455;border-radius:inherit;transform:rotate(18deg)}
-@media(max-width:1000px) and (min-width:761px){
- #megui-theme-slides .carousel-slide{grid-template-columns:45% 55%;min-height:460px}
- #megui-theme-slides .carousel-copy{padding:32px 15px 32px 30px}
- #megui-theme-slides .carousel-copy h1,#megui-theme-slides .carousel-copy h2{font-size:43px}
- #megui-theme-slides .carousel-art{padding-right:24px}
+/* Megui | Editorial carousel, 20/10/2026. Everything is scoped to this homepage hero. */
+.home-cinema .home-welcome{padding:0 0 22px;background:#eee5f3;position:relative}
+#megui-theme-slides .welcome-carousel{width:100%;margin:0;border:0;border-radius:0;box-shadow:none;background:#eee5f3;overflow:hidden}
+#megui-theme-slides .carousel-slides{position:relative}
+#megui-theme-slides .carousel-slide{
+ --ink:#392744;--quiet:#705c7c;--accent:#74458a;--eyebrow:#674676;
+ position:relative;isolation:isolate;overflow:hidden;box-sizing:border-box;
+ display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:clamp(18px,2vw,36px);
+ min-height:clamp(525px,42vw,655px);padding:54px max(38px,calc((100vw - 1370px)/2)) 99px;
+ color:var(--ink);background:#ede4f1;align-items:center;
+}
+#megui-theme-slides .carousel-slide[hidden]{display:none!important}
+#megui-theme-slides .carousel-slide::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none}
+#megui-theme-slides .carousel-slide::after{content:"";position:absolute;inset:auto 1% 6% auto;font:800 clamp(160px,29vw,410px)/1 Manrope,sans-serif;letter-spacing:-.1em;color:var(--accent);opacity:.045;pointer-events:none;z-index:0}
+#megui-theme-slides .carousel-copy{padding:0;position:relative;z-index:3;max-width:590px;display:flex;flex-direction:column;align-items:flex-start}
+#megui-theme-slides .carousel-index{display:flex;align-items:center;gap:8px;margin:0 0 clamp(20px,2.5vw,36px);font:750 12px/1 Manrope,sans-serif;letter-spacing:.12em;color:var(--accent)}
+#megui-theme-slides .carousel-index span{opacity:.52;font-weight:500}
+#megui-theme-slides .carousel-index::after{content:"";width:48px;height:1px;background:currentColor;opacity:.45;margin-left:8px}
+#megui-theme-slides .carousel-kicker{display:flex;align-items:center;gap:11px;font:700 10px/1.5 Manrope,sans-serif;letter-spacing:.145em;color:var(--eyebrow);margin:0 0 15px}
+#megui-theme-slides .carousel-kicker .icon{width:19px;height:22px;flex:none;color:var(--accent)}
+#megui-theme-slides .carousel-copy h1,#megui-theme-slides .carousel-copy h2{font:800 clamp(51px,5.15vw,84px)/.98 Manrope,sans-serif;letter-spacing:-.07em;color:var(--ink);max-width:11.6ch;margin:0 0 24px;text-wrap:balance}
+#megui-theme-slides .carousel-copy h1>span,#megui-theme-slides .carousel-copy h2>span{
+ display:inline-block;font:italic 600 1.12em/1 "Cormorant Garamond",Georgia,serif;
+ letter-spacing:-.055em;color:var(--accent);margin-top:5px;white-space:normal;
+}
+#megui-theme-slides .carousel-copy>p{font:400 clamp(14px,1.05vw,16px)/1.75 "DM Sans",sans-serif;color:var(--quiet);max-width:46ch;margin:0}
+#megui-theme-slides .carousel-theme-details{display:block;font-size:11px;line-height:1.6;letter-spacing:.045em;color:var(--accent);margin:14px 0 0;font-weight:700}
+#megui-theme-slides .carousel-actions{margin:clamp(22px,2.7vw,34px) 0 0;gap:12px;max-width:510px}
+#megui-theme-slides .carousel-actions>a{border-radius:9px;min-height:51px;box-sizing:border-box;flex:0 1 auto;padding:12px 18px;gap:12px}
+#megui-theme-slides .carousel-actions>.carousel-cta{background:#392541;border:1px solid #392541;color:#fff;min-width:195px;justify-content:space-between}
+#megui-theme-slides .carousel-actions>.carousel-talk{background:transparent;border:1px solid #846b9275;color:#44314b;min-width:143px;justify-content:center}
+#megui-theme-slides .carousel-actions>.carousel-cta:hover{background:#5d3a6c;border-color:#5d3a6c}
+#megui-theme-slides .carousel-actions>.carousel-talk:hover{background:#ffffff70;border-color:#694a7c}
+#megui-theme-slides .carousel-art{position:relative;isolation:isolate;min-width:0;min-height:415px;height:100%;padding:0;margin:0;display:flex;align-items:center;justify-content:center;z-index:2;overflow:visible}
+#megui-theme-slides .carousel-art::before{content:"";position:absolute;z-index:-1;pointer-events:none;border-radius:50%}
+#megui-theme-slides .carousel-art img{
+ display:block;position:relative;z-index:1;width:100%;height:100%!important;max-height:none!important;
+ max-width:none;min-width:0;aspect-ratio:auto;object-fit:contain!important;object-position:center;
+ background:none!important;border:0;border-radius:0!important;box-shadow:none!important;
+ -webkit-mask-image:radial-gradient(ellipse 78% 78% at 52% 52%,#000 70%,transparent 100%);
+ mask-image:radial-gradient(ellipse 78% 78% at 52% 52%,#000 70%,transparent 100%);
+}
+#megui-theme-slides .carousel-art-index{position:absolute;z-index:0;top:-4%;right:0;font:800 clamp(150px,19vw,290px)/1 Manrope,sans-serif;letter-spacing:-.10em;color:var(--accent);opacity:.09;pointer-events:none}
+#megui-theme-slides .carousel-theme-decoration{position:absolute;inset:0;z-index:-1;pointer-events:none}
+#megui-theme-slides .carousel-art-tag{
+ position:absolute;bottom:23px;left:4%;z-index:3;display:inline-flex;align-items:center;gap:10px;
+ max-width:90%;padding:10px 0;border-top:1px solid currentColor;color:var(--accent);
+ font:700 10px/1.55 Manrope,sans-serif;letter-spacing:.1em;text-transform:uppercase;
+}
+#megui-theme-slides .carousel-art-tag::before{content:"";width:7px;height:7px;background:currentColor;border-radius:50%;flex:none}
+#megui-theme-slides .carousel-theme-caption{position:absolute;bottom:25px;right:5%;left:auto;z-index:3;padding:0;background:transparent;border:0;backdrop-filter:none;box-shadow:none;border-radius:0;color:var(--accent);font-size:10px;font-weight:600;letter-spacing:.03em}
+#megui-theme-slides .carousel-toolbar{position:absolute;z-index:6;bottom:0;left:50%;transform:translateX(-50%);
+ display:block;width:min(1275px,calc(100% - 76px));padding:0 0 21px;margin:0;background:transparent;border:0}
+#megui-theme-slides .carousel-dots{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;padding:0;align-items:stretch}
+#megui-theme-slides .carousel-dots button{
+ all:unset;box-sizing:border-box;position:relative;cursor:pointer;min-width:0;min-height:54px;padding:11px 4px 0;
+ display:flex;align-items:flex-start;gap:10px;flex-wrap:nowrap;color:var(--ink,#402c4d);
+ border-top:1px solid #6e54845c;opacity:.66;transition:opacity .25s,color .25s;
+ font-family:Manrope,sans-serif;
+}
+#megui-theme-slides .carousel-dots button::after{content:"";position:absolute;left:0;right:auto;top:-2px;width:0;height:3px;border-radius:2px;background:#6a4380;transform:none;transition:width .28s}
+#megui-theme-slides .carousel-dots button.is-current{opacity:1;color:#3e224d;font-weight:750}
+#megui-theme-slides .carousel-dots button.is-current::after{width:100%;transform:none}
+#megui-theme-slides .carousel-dots button:hover{opacity:1}
+#megui-theme-slides .carousel-dots button:focus-visible{outline:3px solid #87549e;outline-offset:4px}
+#megui-theme-slides .carousel-dot-number{flex:none;font-size:10px;font-weight:800;letter-spacing:.05em;line-height:1.7}
+#megui-theme-slides .carousel-dot-name{font-size:11px;font-weight:700;letter-spacing:.02em;line-height:1.7;white-space:normal;text-align:left}
+
+/* Slide 01 — futebol: real people, not a generic mockup. */
+#megui-theme-slides .slide-football{--ink:#24382c;--quiet:#49614e;--accent:#42684c;--eyebrow:#476951;background:#e7ebe4}
+#megui-theme-slides .slide-football::before{background:radial-gradient(ellipse 55% 70% at 78% 40%,#c8dac7 0%,transparent 88%),linear-gradient(105deg,#edf0e9 0%,#e5eee5 52%,#dbe6dc 100%)}
+#megui-theme-slides .slide-football::after{content:"01"}
+#megui-theme-slides .slide-football .carousel-art{margin-right:-6%;min-height:450px}
+#megui-theme-slides .slide-football .carousel-art img{object-position:55% 46%;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 12%,#000 93%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0%,#000 12%,#000 93%,transparent 100%)}
+#megui-theme-slides .slide-football .carousel-art::before{inset:7% 4% 12%;border:1px solid #3a765229;border-radius:48%}
+#megui-theme-slides .slide-football .carousel-art::after{content:"";position:absolute;inset:22% 19%;border:1px solid #4d82511f;border-radius:50%;z-index:-1}
+#megui-theme-slides .slide-football .carousel-actions>.carousel-cta{background:#284c35;border-color:#284c35}
+#megui-theme-slides .slide-football .carousel-actions>.carousel-cta:hover{background:#386648;border-color:#386648}
+#megui-theme-slides .slide-football .carousel-theme-caption{display:none}
+
+/* Slide 02 — garments as an open fashion editorial, free of framing. */
+#megui-theme-slides .slide-wear{--ink:#3e294a;--quiet:#6a5877;--accent:#85539e;--eyebrow:#725081;background:#ede4f2}
+#megui-theme-slides .slide-wear::before{background:radial-gradient(ellipse 58% 70% at 82% 35%,#d7c3e6 0%,transparent 83%),#ede4f2}
+#megui-theme-slides .slide-wear::after{content:"02"}
+#megui-theme-slides .slide-wear .carousel-art{transform:translateX(-1%)}
+#megui-theme-slides .slide-wear .carousel-art::before{inset:4% 15% 9%;background:radial-gradient(ellipse at 52% 48%,#d9c1e9 0%,#dfcce9 56%,transparent 74%);transform:rotate(-11deg)}
+#megui-theme-slides .slide-wear .carousel-theme-decoration::before{content:"";position:absolute;inset:19% 5% 19% 9%;border:1px solid #946aaa3c;border-radius:50%;transform:rotate(-25deg)}
+#megui-theme-slides .slide-wear .carousel-theme-decoration::after{content:"";position:absolute;width:10px;height:10px;right:12%;top:21%;border-radius:50%;background:#a27ab7}
+
+/* Slide 03 — invitation / collective experience. */
+#megui-theme-slides .slide-faith{--ink:#513545;--quiet:#785b6b;--accent:#986182;--eyebrow:#84556e;background:#f0e5eb}
+#megui-theme-slides .slide-faith::before{background:radial-gradient(ellipse 46% 76% at 75% 45%,#dec0d1 0%,transparent 83%),linear-gradient(110deg,#f6eff1,#eddde8)}
+#megui-theme-slides .slide-faith::after{content:"03"}
+#megui-theme-slides .slide-faith .carousel-art::before{inset:7% 12% 10%;border-radius:49% 49% 43% 43%;background:#d6b5cb75;transform:rotate(-7deg)}
+#megui-theme-slides .slide-faith .carousel-theme-decoration::before{content:"";position:absolute;inset:13% 17% 13% 7%;border:1px solid #aa738e66;border-radius:49% 49% 43% 43%;transform:rotate(-7deg)}
+#megui-theme-slides .slide-faith .carousel-art img{-webkit-mask-image:radial-gradient(ellipse 74% 75% at 52% 50%,#000 72%,transparent 100%);mask-image:radial-gradient(ellipse 74% 75% at 52% 50%,#000 72%,transparent 100%)}
+
+/* Slide 04 — celebratory products, playful orbit and negative space. */
+#megui-theme-slides .slide-events{--ink:#49284f;--quiet:#74517b;--accent:#8a4b9c;--eyebrow:#774488;background:#eadcf2}
+#megui-theme-slides .slide-events::before{background:radial-gradient(ellipse 63% 74% at 76% 38%,#d8b6eb 0%,transparent 80%),linear-gradient(115deg,#efe6f2,#ead7f1)}
+#megui-theme-slides .slide-events::after{content:"04"}
+#megui-theme-slides .slide-events .carousel-art::before{inset:6% 10% 8%;background:#d2a9e64d;transform:rotate(12deg);border-radius:52% 48% 42% 58%}
+#megui-theme-slides .slide-events .carousel-theme-decoration::before{content:"";position:absolute;inset:11% 8% 10%;border:1px dashed #8f57a157;border-radius:48% 52% 58% 42%;transform:rotate(16deg)}
+#megui-theme-slides .slide-events .carousel-theme-decoration::after{content:"";position:absolute;top:15%;right:12%;width:24px;height:24px;border:1px solid #a474b7;border-radius:50%;box-shadow:24px 13px 0 -9px #8a4b9c66}
+#megui-theme-slides .slide-events .carousel-art img{width:106%;max-width:106%}
+
+/* Fluid, low-profile shortcuts; the floating product gallery remains below. */
+#megui-theme-slides .welcome-shortcuts{width:min(1275px,calc(100% - 76px));grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin:0 auto;padding:18px 0 0}
+#megui-theme-slides .welcome-shortcuts>a{padding:14px 18px 12px;gap:11px;min-width:0;background:transparent;border:0;border-right:1px solid #a88cb62c;border-radius:0;box-shadow:none;transition:color .22s,transform .22s}
+#megui-theme-slides .welcome-shortcuts>a:first-child{padding-left:0}
+#megui-theme-slides .welcome-shortcuts>a:last-child{border-right:0}
+#megui-theme-slides .welcome-shortcuts .shortcut-icon{width:37px;height:37px;background:#dfcde9;color:#734887;border-radius:50%}
+#megui-theme-slides .welcome-shortcuts strong{font-size:12px;line-height:1.35;color:#50375c}
+#megui-theme-slides .welcome-shortcuts small{font-size:10px;margin-top:4px;line-height:1.35}
+#megui-theme-slides .welcome-shortcuts>a>.icon{width:15px;flex:none;color:#8a5b9f}
+#megui-theme-slides .welcome-shortcuts>a:hover{transform:translateY(-2px)}
+
+@media(min-width:1500px){
+ #megui-theme-slides .carousel-slide{grid-template-columns:minmax(0,.93fr) minmax(0,1.07fr)}
+ #megui-theme-slides .carousel-art{max-height:535px}
+}
+@media(min-width:761px) and (max-width:1120px){
+ #megui-theme-slides .carousel-slide{grid-template-columns:minmax(0,.94fr) minmax(0,1.06fr);gap:18px;padding:42px 32px 88px;min-height:505px}
+ #megui-theme-slides .carousel-copy h1,#megui-theme-slides .carousel-copy h2{font-size:clamp(49px,5.6vw,70px)}
+ #megui-theme-slides .carousel-art{min-height:375px}
+ #megui-theme-slides .carousel-actions>a{font-size:12px;padding:11px 12px;min-width:0}
+ #megui-theme-slides .carousel-actions>.carousel-talk{min-width:0}
+ #megui-theme-slides .carousel-dots{gap:10px}
+ #megui-theme-slides .carousel-toolbar{width:calc(100% - 64px)}
+ #megui-theme-slides .welcome-shortcuts{width:calc(100% - 64px)}
+ #megui-theme-slides .welcome-shortcuts>a{padding-inline:8px}
+ #megui-theme-slides .welcome-shortcuts small{display:none}
 }
 @media(max-width:760px){
- #megui-theme-slides .carousel-slide{grid-template-columns:1fr;min-height:0}
- #megui-theme-slides .carousel-copy{padding:24px 22px 12px}
- #megui-theme-slides .carousel-copy h1,#megui-theme-slides .carousel-copy h2{font-size:clamp(34px,9.2vw,44px);margin:14px 0}
- #megui-theme-slides .carousel-copy p{font-size:14px;line-height:1.65;margin-bottom:18px;max-width:none}
- #megui-theme-slides .carousel-theme-details{font-size:11px;margin:-4px 0 15px}
- #megui-theme-slides .carousel-art{padding:14px 22px 30px;min-height:0}
- #megui-theme-slides .carousel-theme-caption{right:22px;bottom:9px;font-size:9px}
- #megui-theme-slides .slide-football .carousel-art>img{height:auto!important;max-height:none!important;aspect-ratio:1280/853;object-fit:contain!important;background:transparent}
- #megui-theme-slides .slide-football .carousel-theme-decoration{inset:7px 16px 28px;border-radius:3px;transform:rotate(-2deg)}
- #megui-theme-slides .slide-wear .carousel-art>img,#megui-theme-slides .slide-events .carousel-art>img{height:220px!important;max-height:220px;object-fit:contain!important;background:none}
- #megui-theme-slides .slide-wear .carousel-theme-decoration{inset:10px 28px 25px;border-radius:46% 46% 5px 5px}
- #megui-theme-slides .slide-faith .carousel-art>img{height:250px!important;max-height:250px;object-fit:contain!important;background:none;border-radius:55px 5px 5px 5px}
- #megui-theme-slides .carousel-kicker{font-size:9px;letter-spacing:.08em}
+ .home-cinema .home-welcome{padding:0 0 16px}
+ #megui-theme-slides .welcome-carousel{width:100%;border:0;border-radius:0}
+ #megui-theme-slides .carousel-slide{display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;
+  gap:0;padding:25px 22px 89px;min-height:0}
+ #megui-theme-slides .carousel-copy{width:100%;max-width:none;flex:none}
+ #megui-theme-slides .carousel-index{margin-bottom:14px;font-size:10px}
+ #megui-theme-slides .carousel-index::after{width:33px}
+ #megui-theme-slides .carousel-kicker{font-size:9px;letter-spacing:.10em;gap:7px;margin-bottom:11px}
+ #megui-theme-slides .carousel-kicker .icon{width:15px;height:18px}
+ #megui-theme-slides .carousel-copy h1,#megui-theme-slides .carousel-copy h2{font-size:clamp(43px,10.5vw,61px);line-height:1.01;margin-bottom:12px;max-width:13ch}
+ #megui-theme-slides .carousel-copy h1>span,#megui-theme-slides .carousel-copy h2>span{font-size:1.03em;margin-top:3px}
+ #megui-theme-slides .carousel-copy>p{font-size:13px;line-height:1.62;max-width:49ch}
+ #megui-theme-slides .carousel-theme-details{font-size:10px;margin-top:8px}
+ #megui-theme-slides .carousel-actions{margin-top:16px;gap:9px;display:flex;flex-direction:row;align-items:stretch;max-width:none}
+ #megui-theme-slides .carousel-actions>a{flex:1 1 0;min-width:0!important;min-height:44px;padding:11px 10px;font-size:11px;line-height:1.3;gap:6px;justify-content:center}
+ #megui-theme-slides .carousel-actions>.carousel-cta{justify-content:space-between}
+ #megui-theme-slides .carousel-actions>.carousel-cta>.cta-direction{width:22px;flex:0 0 22px;padding-left:7px}
+ #megui-theme-slides .carousel-art{height:clamp(235px,44svh,370px);min-height:0;margin:15px -10px 0;align-self:stretch;flex:none}
+ #megui-theme-slides .carousel-art img{height:100%!important;max-height:none!important;width:100%;aspect-ratio:auto;object-fit:contain!important}
+ #megui-theme-slides .slide-football .carousel-art{margin:12px -18px 0;min-height:0;height:clamp(235px,38svh,330px)}
+ #megui-theme-slides .slide-wear .carousel-art{transform:none}
+ #megui-theme-slides .carousel-art-index{font-size:110px;top:0}
+ #megui-theme-slides .carousel-art-tag{font-size:8px;left:5%;bottom:1px;padding-top:7px}
+ #megui-theme-slides .carousel-theme-caption{display:none}
+ #megui-theme-slides .carousel-toolbar{bottom:0;width:calc(100% - 36px);padding:0 0 13px}
+ #megui-theme-slides .carousel-dots{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;padding:0}
+ #megui-theme-slides .carousel-dots button{min-height:48px;gap:4px;flex-direction:column;padding:9px 0 0}
+ #megui-theme-slides .carousel-dot-number{font-size:9px}
+ #megui-theme-slides .carousel-dot-name{font-size:9px;line-height:1.15}
+ #megui-theme-slides .welcome-shortcuts{width:calc(100% - 40px);grid-template-columns:repeat(2,minmax(0,1fr));padding:11px 0 0}
+ #megui-theme-slides .welcome-shortcuts>a{min-height:64px;padding:9px 8px!important;border-right:0;border-bottom:1px solid #a88cb63b;gap:8px}
+ #megui-theme-slides .welcome-shortcuts>a:nth-child(odd){border-right:1px solid #a88cb63b}
+ #megui-theme-slides .welcome-shortcuts>a:nth-last-child(-n+2){border-bottom:0}
+ #megui-theme-slides .welcome-shortcuts .shortcut-icon{width:29px;height:29px;flex:none}
+ #megui-theme-slides .welcome-shortcuts .shortcut-icon .icon{width:17px}
+ #megui-theme-slides .welcome-shortcuts strong{font-size:11px}
+ #megui-theme-slides .welcome-shortcuts small{display:none}
+ #megui-theme-slides .welcome-shortcuts>a>.icon{display:none}
+}
+@media(max-width:390px){
+ #megui-theme-slides .carousel-slide{padding:22px 17px 83px}
+ #megui-theme-slides .carousel-copy h1,#megui-theme-slides .carousel-copy h2{font-size:42px}
+ #megui-theme-slides .carousel-actions>a{font-size:10px;padding:9px 7px}
+ #megui-theme-slides .carousel-art{height:225px}
+ #megui-theme-slides .slide-football .carousel-art{height:225px}
+}
+@media(prefers-reduced-motion:reduce){
+ #megui-theme-slides .carousel-slide.is-active{animation:none}
+ #megui-theme-slides .carousel-dots button,#megui-theme-slides .carousel-dots button::after,#megui-theme-slides .welcome-shortcuts>a{transition:none}
+ #megui-theme-slides .welcome-shortcuts>a:hover{transform:none}
 }
 {% endraw %}
 </style>
@@ -226,9 +357,13 @@
         {'theme':'faith','tag':'CAMISETAS PARA ENCONTROS & MOVIMENTOS','title':'Uma mensagem.','accent':'Muitas pessoas.','text':'Vista o tema do seu encontro. Camisetas e itens personalizados para reunir o grupo em uma identidade.','image':'img/trabalhos/encontro-religioso.webp','alt':'Encontro religioso com músico vestindo camiseta verde personalizada','cta':'Conhecer as possibilidades','href':url_for('events') ~ '#movimentos','label':'encontros religiosos'},
         {'theme':'events','tag':'COPOS, KITS & ITENS PARA EVENTOS','title':'Além da camiseta.','accent':'O encontro completo.','text':'Copos, garrafas, bolsas, credenciais e outros personalizados para acompanhar o público e levar a lembrança do evento adiante.','image':'img/inicio/eventos.webp','alt':'Copo reutilizável lilás, credencial com cordão e pulseiras personalizados para eventos','cta':'Compor os itens do evento','href':url_for('events') ~ '#compor','label':'copos e itens para eventos'}
       ] %}
+      
+      {% set sections = ['Futebol','Uniformes','Encontros','Eventos'] %}
+      {% set signatures = ['O TIME VESTE UMA HISTÓRIA','CONFECÇÃO & IDENTIDADE','MEMÓRIAS EM COMUM','DETALHES QUE FICAM'] %}
       {% for slide in slides %}
       <article class="carousel-slide slide-{{ slide.theme }} {% if loop.first %}is-active{% endif %}" data-carousel-slide role="group" aria-roledescription="banner" aria-label="{{ loop.index }} de {{ loop.length }}" {% if not loop.first %}hidden inert{% endif %}>
         <div class="carousel-copy">
+          <span class="carousel-index" aria-hidden="true">0{{ loop.index }} <span>/ 04</span></span>
           <span class="carousel-kicker">{{ icon('butterfly','carousel-butterfly') }} {{ slide.tag }}</span>
           <{% if loop.first %}h1{% else %}h2{% endif %}>{{ slide.title }}<br><span>{{ slide.accent }}</span></{% if loop.first %}h1{% else %}h2{% endif %}>
           <p>{{ slide.text }}</p>
@@ -238,13 +373,23 @@
             <a class="carousel-talk" href="https://wa.me/{{ whatsapp_number }}" target="_blank" rel="noopener">{{ icon('whatsapp') }}<span>Vamos conversar</span></a>
           </div>
         </div>
-        <figure class="carousel-art"><span class="carousel-theme-decoration" aria-hidden="true"></span><img src="{{ url_for('static', filename=slide.image) }}" alt="{{ slide.alt }}" width="{{ 1280 if loop.first else 1440 }}" height="{{ 853 if loop.first else 960 }}" {% if loop.first %}fetchpriority="high"{% endif %} decoding="async">{% if slide.caption %}<figcaption class="carousel-theme-caption">{{ slide.caption }}</figcaption>{% endif %}</figure>
+        <figure class="carousel-art">
+          <span class="carousel-theme-decoration" aria-hidden="true"></span>
+          <span class="carousel-art-index" aria-hidden="true">0{{ loop.index }}</span>
+          <img src="{{ url_for('static', filename=slide.image) }}" alt="{{ slide.alt }}" width="{{ 1280 if loop.first else 1440 }}" height="{{ 853 if loop.first else 960 }}" {% if loop.first %}fetchpriority="high"{% endif %} decoding="async">
+          <span class="carousel-art-tag" aria-hidden="true">{{ signatures[loop.index0] }}</span>
+          {% if slide.caption %}<figcaption class="carousel-theme-caption">{{ slide.caption }}</figcaption>{% endif %}
+        </figure>
       </article>
       {% endfor %}
     </div>
     <div class="carousel-toolbar">
-      <div class="gallery-dots carousel-dots" aria-label="Escolher banner">
-        {% for slide in slides %}<button{% if loop.first %} class="is-current"{% endif %} type="button" data-carousel-to="{{ loop.index0 }}" aria-label="Ver banner de {{ slide.label }}"{% if loop.first %} aria-current="true"{% endif %}></button>{% endfor %}
+      <div class="gallery-dots carousel-dots" aria-label="Escolha o tema do banner">
+        {% for slide in slides %}
+        <button{% if loop.first %} class="is-current"{% endif %} type="button" data-carousel-to="{{ loop.index0 }}" aria-label="Mostrar banner sobre {{ slide.label }}"{% if loop.first %} aria-current="true"{% endif %}>
+          <span class="carousel-dot-number" aria-hidden="true">0{{ loop.index }}</span><span class="carousel-dot-name" aria-hidden="true">{{ sections[loop.index0] }}</span>
+        </button>
+        {% endfor %}
       </div>
     </div>
   </div>
