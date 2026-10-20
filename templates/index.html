@@ -339,7 +339,7 @@
 .home-cinema .home-content-sheet{position:relative;background:#eee5f3;min-height:100vh}
 .home-cinema main{overflow:clip}
 </style>
-<link rel="stylesheet" href="{{ url_for('static',filename='css/home-signature.css',v='20261020-campaign-v5') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/home-signature.css',v='20261020-campaign-v6') }}">
 <link rel="stylesheet" href="{{ url_for('static',filename='css/services-discovery.css',v='20261019-v1') }}">
 <link rel="stylesheet" href="{{ url_for('static',filename='css/pouch-studio.css',v='20261019-orbit-v2') }}">
 <link rel="stylesheet" href="{{ url_for('static',filename='css/knit-open-studio.css',v='20261019-v1') }}">
@@ -367,7 +367,7 @@
      <p>{{ slide.text }}</p>
      {% if slide.details %}<span class="carousel-theme-details">{{ slide.details }}</span>{% endif %}
      <div class="carousel-actions">
-      <a class="carousel-cta" href="{{ slide.href }}">{{ icon('butterfly') }}<span>{{ slide.cta }}</span></a>
+      <a class="carousel-cta" href="{{ slide.href }}">{{ icon('butterfly') }}{{ slide.cta }}</a>
       <a class="carousel-talk" href="https://wa.me/{{ whatsapp_number }}" target="_blank" rel="noopener">{{ icon('whatsapp') }}<span>Vamos conversar</span></a>
      </div>
     </div>
