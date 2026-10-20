@@ -187,3 +187,9 @@
  #megui-theme-slides .carousel-art .fabric-zoom.is-exploring .fabric-zoom-window{height:200px}
 }
 @media(prefers-reduced-motion:reduce){#megui-theme-slides .carousel-art .fabric-zoom,#megui-theme-slides .carousel-art .fabric-zoom .fabric-zoom-window,#megui-theme-slides .carousel-art .fabric-zoom .fabric-zoom-window img{transition:none}}
+
+/* Todos os temas da abertura usam produtos recortados no mesmo cenário. */
+#megui-theme-slides .slide-football .carousel-art,#megui-theme-slides .slide-faith .carousel-art{inset:28px 20px 84px 46%}
+#megui-theme-slides .slide-football .carousel-art>img,#megui-theme-slides .slide-faith .carousel-art>img{width:100%;height:100%!important;max-height:none!important;object-fit:contain!important;object-position:center;background:transparent!important;border:0!important;box-shadow:none!important;filter:none!important}
+#megui-theme-slides .slide-faith .carousel-art>img{width:89%}
+@media(max-width:760px){#megui-theme-slides .slide-football .carousel-art,#megui-theme-slides .slide-faith .carousel-art{inset:auto;height:230px}#megui-theme-slides .slide-football .carousel-art>img,#megui-theme-slides .slide-faith .carousel-art>img{height:100%!important;max-height:none!important;width:100%}}

@@ -13,6 +13,18 @@
     {
       "file": "static/img/inicio/eventos.webp",
       "prompt": "Use case: product-mockup. Homepage category photograph cutout on genuine transparent background. Official Megui logo reference. A neatly arranged black and lilac event badge on a lilac lanyard, two silicone event wristbands in lilac and black, and a lilac reusable event cup. Fully visible products with airy margins, commercial studio light and fine realistic textures. Print official Megui mark accurately retaining fine butterfly. Lilac black white only. No slogans, no additional objects or background."
+    },
+    {
+      "file": "static/img/inicio/uniforme-futebol-manequim-v1.webp",
+      "source_reference": "img/inicio/time-futebol-real-20261018.jpeg",
+      "tool": "image_gen",
+      "prompt": "Recriar conjunto de camisa e bermuda esportiva branca e azul em manequim invisível 3D com fundo transparente, usando o uniforme da referência."
+    },
+    {
+      "file": "static/img/inicio/camiseta-encontro-manequim-v1.webp",
+      "source_reference": "img/trabalhos/encontro-religioso.webp",
+      "tool": "image_gen",
+      "prompt": "Recriar camiseta verde de encontro religioso, com estampa bege nas costas, em manequim invisível 3D e fundo transparente, usando o produto da referência."
     }
   ]
 }
