@@ -19,6 +19,7 @@
   {% block extra_head %}{% endblock %}
   <link rel="stylesheet" href="{{ url_for('static', filename='css/mobile-refinement.css', v='20261016-v3') }}">
   <link rel="stylesheet" href="{{ url_for('static',filename='css/product-studio.css',v='20261016-taxonomia-v5') }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/product-cards.css',v='20261020-vitrine-v1') }}">
 </head>
 <body{% if request.endpoint == 'home' %} class="home-cinema"{% elif request.endpoint == 'b2b' %} class="corporate-page"{% elif request.endpoint == 'events' %} class="events-page"{% elif request.endpoint in ['products', 'category'] %} class="catalog-experience"{% endif %}{% if request.endpoint not in ['home', 'products', 'category', 'product', 'create_art', 'events'] %} data-scroll-experience{% endif %}>
   {% from '_icons.html' import icon %}
