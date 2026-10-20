@@ -1,12 +1,12 @@
 <section class="pouch-studio" id="saquinhos" aria-labelledby="pouch-title" data-pouch-studio>
  <header class="pouch-heading">
-  <div><span class="pouch-eyebrow">SAQUINHOS PERSONALIZADOS EM MALHA</span><h2 id="pouch-title">Um saquinho.<br><em>Muitos destinos.</em></h2></div>
-  <p>A primeira impressão é só o começo.<br>Uma embalagem que acompanha o presente,<br>organiza a rotina e continua por perto.</p>
+  <div><span class="pouch-eyebrow">DO NOSSO ATELIÊ PARA O SEU DIA A DIA</span><h2 id="pouch-title">Um saquinho.<br><em>Muitos destinos.</em><span class="pouch-title-note">feito para ir junto.</span></h2></div>
+  <p><span class="pouch-intro-label">TEM COISAS QUE A GENTE GUARDA.</span><strong>O presente passa.<br>O cuidado fica.</strong>Malha macia, um laço e a sua identidade. Uma embalagem que vira parte da rotina.</p>
  </header>
- <p class="pouch-play-hint">Escolha uma bolinha e descubra o que cabe nessa ideia. <span aria-hidden="true">↙</span></p>
+ <p class="pouch-play-hint"><span class="pouch-hint-dot" aria-hidden="true"></span>Toque em um destino. Veja o que cabe nessa ideia.</p>
  <div class="pouch-experience">
   <div class="pouch-scene">
-   <span class="pouch-scene-word" aria-hidden="true">guardar.</span>
+   <span class="pouch-scene-word" aria-hidden="true">vai com você.</span>
    {% set uses = [
     ('sapatos','Sapatos','Da mala ao armário, cada par no seu lugar.','Saquinho maior para acomodar calçados e separar os pares na bagagem.','img/inicio/saquinhos/sapatos-v1.webp','Saquinho de malha cru com tênis brancos'),
     ('joias','Joias e acessórios','Pequenos detalhes merecem um lugar especial.','Saquinhos menores para apresentar anéis, brincos e colares — e guardar depois.','img/inicio/saquinhos/joias-v1.webp','Saquinhos lilás com colar, brincos e anel'),
@@ -15,7 +15,7 @@
    ] %}
    {% for key,title,line,description,photo,alt in uses %}
    <figure class="pouch-panel" id="pouch-panel-{{ key }}" role="tabpanel" aria-labelledby="pouch-tab-{{ key }}" tabindex="0" {% if not loop.first %}hidden{% endif %}>
-    <span class="pouch-scene-index">0{{ loop.index }} / {{ title|upper }}</span>
+    <span class="pouch-scene-index">MALHA QUE ACOMPANHA / 0{{ loop.index }}</span>
     <img src="{{ url_for('static',filename=photo) }}?v=20261019-1" alt="{{ alt }}" width="1000" height="1000" loading="lazy" decoding="async">
     <figcaption><strong>{{ line }}</strong><span>{{ description }}</span></figcaption>
    </figure>
@@ -24,11 +24,11 @@
   <div class="pouch-use-list" role="tablist" aria-label="Explore os usos dos saquinhos" aria-orientation="horizontal">
    {% for key,title,line,description,photo,alt in uses %}
    <button type="button" id="pouch-tab-{{ key }}" class="pouch-use" role="tab" aria-controls="pouch-panel-{{ key }}" aria-selected="{{ 'true' if loop.first else 'false' }}" tabindex="{{ '0' if loop.first else '-1' }}">
-    <span class="pouch-bubble" aria-hidden="true"><span class="pouch-orb"></span><img src="{{ url_for('static',filename=photo) }}?v=20261019-1" alt="" width="400" height="400" loading="lazy" decoding="async"><span class="pouch-bubble-check">{{ icon('check') }}</span></span><strong>{{ title }}</strong>
+    <span class="pouch-bubble" aria-hidden="true"><span class="pouch-orb"></span><img src="{{ url_for('static',filename=photo) }}?v=20261019-1" alt="" width="400" height="400" loading="lazy" decoding="async"><span class="pouch-bubble-check">{{ icon('check') }}</span></span><span class="pouch-use-purpose" aria-hidden="true">0{{ loop.index }} / {{ ['LEVAR','CUIDAR','PROTEGER','PRESENTEAR'][loop.index0] }}</span><strong>{{ title }}</strong>
    </button>
    {% endfor %}
   </div>
  </div>
- <footer class="pouch-footer"><p><strong>O tamanho muda. O cuidado continua.</strong><span>Tamanhos, cores e personalização pensados para o que vai dentro.</span></p><a href="https://wa.me/{{ whatsapp_number }}?text={{ 'Olá! Quero criar saquinhos de malha personalizados. Podemos conversar sobre tamanhos, cores e usos?'|urlencode }}" target="_blank" rel="noopener">Quero personalizar meus saquinhos {{ icon('arrow') }}</a></footer>
+ <footer class="pouch-footer"><div class="pouch-footer-story"><span class="pouch-footer-kicker">A PRÓXIMA HISTÓRIA PODE SER A SUA</span><p>O tamanho muda.<br><strong>O seu jeito aparece.</strong></p><span>Escolha a cor, o tamanho e a personalização.<br>A gente cuida de dar forma.</span></div><a class="pouch-label-cta" href="https://wa.me/{{ whatsapp_number }}?text={{ 'Olá! Quero criar saquinhos de malha personalizados. Podemos conversar sobre tamanhos, cores e usos?'|urlencode }}" target="_blank" rel="noopener"><span class="pouch-label-hole" aria-hidden="true"></span><span class="pouch-label-copy"><small>FEITO EM MALHA. FEITO PARA VOCÊ.</small><strong>Vamos criar o seu?</strong><span>Converse com a Megui</span></span><span class="pouch-label-icon" aria-hidden="true">{{ icon('whatsapp') }}</span></a></footer>
  <div class="pouch-material-note"><span>Tem outra ideia em malha? Vamos encontrar uma base para ela.</span><a href="{{ url_for('textiles') }}">Conheça tecidos e materiais {{ icon('arrow') }}</a></div>
 </section>

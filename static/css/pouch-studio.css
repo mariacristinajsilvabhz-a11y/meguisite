@@ -51,3 +51,73 @@
 @media(max-width:1000px) and (min-width:701px){.pouch-studio .pouch-experience{height:545px}.pouch-studio .pouch-use{width:150px}.pouch-studio .pouch-bubble{width:132px;height:135px}.pouch-studio .pouch-orb{width:108px;height:108px;left:12px}.pouch-studio .pouch-use>strong{font-size:15px}.pouch-studio .pouch-scene{left:21%;width:58%;top:50px}.pouch-studio .pouch-panel>img{height:300px}.pouch-studio .pouch-panel>figcaption strong{font-size:23px}.pouch-studio .pouch-panel>figcaption>span{font-size:11px;max-width:33ch}.pouch-studio .pouch-use:nth-child(3){left:3%}.pouch-studio .pouch-use:nth-child(4){right:3%}}
 @media(max-width:700px){#saquinhos.pouch-studio{padding-top:38px;scroll-margin-top:88px}.pouch-studio .pouch-heading{display:block;margin-bottom:18px}.pouch-studio #pouch-title{font-size:41px;margin-top:13px}.pouch-studio .pouch-eyebrow{font-size:8px;letter-spacing:.09em}.pouch-studio .pouch-heading>p{font-size:13px;margin-top:18px;max-width:44ch}.pouch-studio .pouch-heading>p br{display:none}.pouch-studio .pouch-play-hint{font-size:10px;gap:5px;margin:21px 0 8px}.pouch-studio .pouch-experience{height:610px;max-width:460px;margin:auto}.pouch-studio .pouch-experience:before{inset:57px 13% 70px;transform:rotate(-12deg)}.pouch-studio .pouch-use{width:120px;gap:4px}.pouch-studio .pouch-use:nth-child(1){left:0;top:5px}.pouch-studio .pouch-use:nth-child(2){right:0;top:17px}.pouch-studio .pouch-use:nth-child(3){left:1%;bottom:8px}.pouch-studio .pouch-use:nth-child(4){right:0;bottom:0}.pouch-studio .pouch-bubble{width:108px;height:108px}.pouch-studio .pouch-orb{width:86px;height:86px;left:11px}.pouch-studio .pouch-use>strong{font-size:13px;max-width:15ch;padding-bottom:5px}.pouch-studio .pouch-bubble-check{width:21px;height:21px;border-width:2px;right:0}.pouch-studio .pouch-scene{left:0;top:165px;width:100%}.pouch-studio .pouch-scene-index{font-size:7px;margin:0}.pouch-studio .pouch-panel>img{height:205px;padding:0}.pouch-studio .pouch-panel>figcaption{margin-top:0;min-height:90px;max-width:31ch}.pouch-studio .pouch-panel>figcaption strong{font-size:23px;max-width:26ch}.pouch-studio .pouch-panel>figcaption>span{font-size:11px;max-width:32ch;margin-top:8px}.pouch-studio .pouch-scene-word{font-size:83px;top:18%}.pouch-studio .pouch-footer{display:block;padding:18px 0 20px;margin-top:0}.pouch-studio .pouch-footer>p{font-size:13px}.pouch-studio .pouch-footer>p span{font-size:11px}.pouch-studio .pouch-footer>a{max-width:none;min-height:48px;margin-top:17px;font-size:12px}.pouch-studio .pouch-material-note{display:block;font-size:10px}.pouch-studio .pouch-material-note>a{display:flex;margin-top:8px}}
 @media(prefers-reduced-motion:reduce){.pouch-studio .pouch-panel,.pouch-studio .pouch-bubble{animation:none}.pouch-studio .pouch-panel>img,.pouch-studio .pouch-bubble,.pouch-studio .pouch-orb,.pouch-studio .pouch-bubble-check,.pouch-studio .pouch-use>strong:after{transition:none;transform:none!important}}
+
+/* Ateliê de malha: linhas de costura, destinos flutuantes e uma etiqueta para criar. */
+#saquinhos.pouch-studio{padding-top:88px;padding-bottom:38px}
+.pouch-studio .pouch-heading{align-items:center;gap:70px;margin-bottom:0}
+.pouch-studio .pouch-eyebrow{font-size:10px;letter-spacing:.15em;color:#72517e}
+.pouch-studio #pouch-title{position:relative;font-size:clamp(44px,5.1vw,73px);line-height:1.03;margin-top:22px;padding-bottom:34px;letter-spacing:-.065em}
+.pouch-studio #pouch-title em{position:relative;display:inline-block;font-size:1.12em;z-index:0}
+.pouch-studio #pouch-title em:after{content:'';position:absolute;left:2%;right:-4%;bottom:4px;height:12px;background:#cbaedb70;border-radius:70% 30% 55% 45%;transform:rotate(-2deg);z-index:-1}
+.pouch-studio .pouch-title-note{position:absolute;right:-20px;bottom:0;transform:rotate(-6deg);font:italic 500 22px/1.1 'Cormorant Garamond',Georgia,serif;letter-spacing:0;color:#7f5e8a}
+.pouch-studio .pouch-heading>p{max-width:31ch;font:400 15px/1.8 Manrope,sans-serif;margin:18px 15px 0 0;color:#705879}
+.pouch-studio .pouch-intro-label{display:block;font:600 9px/1.6 Manrope,sans-serif;letter-spacing:.13em;margin-bottom:15px;color:#8b6c96}
+.pouch-studio .pouch-heading>p>strong{display:block;font:600 26px/1.25 Manrope,sans-serif;letter-spacing:-.045em;color:#4b3158;margin-bottom:16px}
+.pouch-studio .pouch-play-hint{justify-content:flex-start;width:max-content;margin:35px auto 0;gap:9px;font-size:12px;color:#795486}
+.pouch-studio .pouch-play-hint>.pouch-hint-dot{width:7px;height:7px;flex:none;border-radius:50%;background:#9262a1;box-shadow:0 0 0 5px #ad83be1f;transform:none}
+.pouch-studio .pouch-experience{height:620px;margin-top:6px}
+.pouch-studio .pouch-experience:before{inset:55px 11% 90px;border:1px dashed #b28ac34f;transform:rotate(-13deg);border-radius:46% 54% 61% 39% / 50% 42% 58% 50%}
+.pouch-studio .pouch-experience:after{content:'';position:absolute;inset:71px 12% 105px;border:1px solid #b48bc21c;transform:rotate(-13deg);border-radius:46% 54% 61% 39% / 50% 42% 58% 50%;pointer-events:none;z-index:-1}
+.pouch-studio .pouch-scene{left:23%;width:54%;top:35px;background:radial-gradient(ellipse at 50% 49%,#c8abd83b,transparent 62%)}
+.pouch-studio .pouch-scene-word{top:23%;font:italic 500 clamp(65px,8.7vw,125px)/.95 'Cormorant Garamond',Georgia,serif;letter-spacing:-.06em;color:#ae8ebd35;white-space:nowrap;transform:rotate(-7deg)}
+.pouch-studio .pouch-scene-index{font-size:9px;letter-spacing:.16em;margin-bottom:0;color:#8b6d98}
+.pouch-studio .pouch-panel>img{height:395px;padding-top:0;filter:drop-shadow(0 18px 18px #53356318)}
+.pouch-studio .pouch-panel>figcaption{margin:0 auto;max-width:40ch;min-height:120px}
+.pouch-studio .pouch-panel>figcaption strong{font:600 21px/1.4 Manrope,sans-serif;letter-spacing:-.045em;color:#4e335b;max-width:28ch}
+.pouch-studio .pouch-panel>figcaption>span{font:400 14px/1.75 Manrope,sans-serif;max-width:37ch;margin-top:12px;color:#765c81}
+.pouch-studio .pouch-use{gap:4px;width:190px}
+.pouch-studio .pouch-use:nth-child(1){left:1%;top:3px;transform:rotate(-5deg)}
+.pouch-studio .pouch-use:nth-child(2){right:0;top:60px;transform:rotate(5deg)}
+.pouch-studio .pouch-use:nth-child(3){left:5%;bottom:8px;transform:rotate(4deg)}
+.pouch-studio .pouch-use:nth-child(4){right:4%;bottom:0;transform:rotate(-4deg)}
+.pouch-studio .pouch-bubble{width:168px;height:159px;margin-bottom:7px}
+.pouch-studio .pouch-orb{width:130px;height:130px;left:19px;border-radius:48% 52% 42% 58% / 54% 43% 57% 46%;background:radial-gradient(circle at 35% 20%,#faf4eea0,var(--orb-b));outline:1px dashed #ae88bd77;outline-offset:7px;box-shadow:inset 0 0 0 5px #ffffff30,0 12px 22px #69437a10}
+.pouch-studio .pouch-use[aria-selected=true] .pouch-orb{outline:1px dashed #86529d;outline-offset:10px;box-shadow:inset 0 0 0 5px #ffffff50,0 12px 25px #784c8f20}
+.pouch-studio .pouch-use-purpose{font:600 9px/1.7 Manrope,sans-serif;letter-spacing:.13em;color:#8e7099}
+.pouch-studio .pouch-use>strong{font-size:19px;letter-spacing:-.045em;max-width:17ch;padding-bottom:6px}
+.pouch-studio .pouch-use>strong:after{height:1px;left:10%;right:10%}
+.pouch-studio .pouch-bubble-check{width:22px;height:22px;right:9px;border-width:2px}
+.pouch-studio .pouch-footer{position:relative;display:grid;grid-template-columns:1fr auto;gap:50px;align-items:center;border:0;border-top:1px dashed #ab83bc60;padding:42px 36px 24px;margin:0 0 0;background:radial-gradient(ellipse at 25% 50%,#f8f0eb88,transparent 65%)}
+.pouch-studio .pouch-footer-kicker{font:600 9px/1.5 Manrope,sans-serif;letter-spacing:.13em;color:#926e9e}
+.pouch-studio .pouch-footer-story>p{font:500 31px/1.2 Manrope,sans-serif;letter-spacing:-.05em;color:#4a3057;margin:14px 0}
+.pouch-studio .pouch-footer-story>p>strong{font:italic 600 1.25em/1.1 'Cormorant Garamond',Georgia,serif;color:#81518f}
+.pouch-studio .pouch-footer-story>span:last-child{font:400 14px/1.75 Manrope,sans-serif;color:#796281}
+.pouch-studio .pouch-footer>.pouch-label-cta{position:relative;display:flex;align-items:center;gap:23px;min-width:370px;min-height:132px;margin:0;padding:28px 30px 28px 53px;background:#593768;color:#fff;border:0;border-radius:9px 25px 25px 9px;box-shadow:8px 12px 0 #d6c0df66;text-decoration:none;transform:rotate(-3deg);transition:transform .25s,background .25s,box-shadow .25s}
+.pouch-studio .pouch-label-cta:before{content:'';position:absolute;inset:8px;border:1px dashed #d7b9e280;border-radius:4px 18px 18px 4px;pointer-events:none}
+.pouch-studio .pouch-label-hole{position:absolute;left:20px;top:calc(50% - 5px);width:10px;height:10px;border-radius:50%;background:#eee5f3;box-shadow:inset 1px 1px 2px #2d163e66,0 0 0 4px #ffffff18}
+.pouch-studio .pouch-label-copy{display:flex;flex-direction:column;gap:7px;position:relative}
+.pouch-studio .pouch-label-copy>small{font:500 8px/1.5 Manrope,sans-serif;letter-spacing:.12em;color:#dec9e7}
+.pouch-studio .pouch-label-copy>strong{font:600 26px/1.2 Manrope,sans-serif;letter-spacing:-.05em;color:#fff}
+.pouch-studio .pouch-label-copy>span{font:400 11px/1.4 Manrope,sans-serif;color:#e0cfe8}
+.pouch-studio .pouch-label-icon{display:grid;place-items:center;width:45px;height:45px;flex:none;border:1px solid #d5b7e26b;border-radius:50%;background:#ffffff0a}
+.pouch-studio .pouch-label-icon>.icon{width:23px;height:23px}
+.pouch-studio .pouch-label-cta:focus-visible{outline:3px solid #8f5fa2;outline-offset:8px}
+.pouch-studio .pouch-material-note{padding:25px 36px 0;font-size:12px;line-height:1.7}
+@media(hover:hover){.pouch-studio .pouch-footer>.pouch-label-cta:hover{background:#70447f;transform:rotate(0) translateY(-3px);box-shadow:5px 14px 0 #d6c0df66}.pouch-studio .pouch-use:hover .pouch-bubble{scale:1.06}}
+@media(max-width:1050px) and (min-width:701px){
+ .pouch-studio .pouch-heading{gap:35px}.pouch-studio #pouch-title{font-size:53px}.pouch-studio .pouch-heading>p{font-size:13px;max-width:30ch}.pouch-studio .pouch-heading>p>strong{font-size:23px}
+ .pouch-studio .pouch-use{width:150px}.pouch-studio .pouch-bubble{width:138px;height:140px}.pouch-studio .pouch-orb{width:108px;height:108px;left:15px}.pouch-studio .pouch-use>strong{font-size:16px}.pouch-studio .pouch-panel>img{height:360px}.pouch-studio .pouch-panel>figcaption strong{font-size:19px}.pouch-studio .pouch-panel>figcaption>span{font-size:13px}.pouch-studio .pouch-footer{padding-left:12px;padding-right:12px;gap:25px}.pouch-studio .pouch-footer>.pouch-label-cta{min-width:330px;padding-right:22px;gap:15px}.pouch-studio .pouch-label-copy>strong{font-size:24px}
+}
+@media(max-width:700px){
+ #saquinhos.pouch-studio{padding-top:50px;padding-bottom:24px}.pouch-studio .pouch-heading{display:block}.pouch-studio .pouch-eyebrow{font-size:8px;letter-spacing:.09em}.pouch-studio #pouch-title{font-size:clamp(38px,10vw,52px);margin-top:18px;padding-bottom:31px}.pouch-studio #pouch-title em:after{height:9px;right:0;bottom:0}.pouch-studio .pouch-title-note{font-size:19px;right:4%;bottom:0}
+ .pouch-studio .pouch-heading>p{margin:24px 0 0;max-width:36ch;font-size:14px;line-height:1.75}.pouch-studio .pouch-intro-label{font-size:8px;margin-bottom:8px}.pouch-studio .pouch-heading>p>strong{font-size:22px;line-height:1.25;margin-bottom:10px}.pouch-studio .pouch-heading>p>strong br{display:none}
+ .pouch-studio .pouch-play-hint{font-size:10px;gap:8px;margin:28px 0 8px;width:auto}.pouch-studio .pouch-play-hint>.pouch-hint-dot{width:5px;height:5px}
+ .pouch-studio .pouch-experience{height:680px;max-width:460px;margin:0 auto}.pouch-studio .pouch-experience:before{inset:67px 8% 80px;transform:rotate(-8deg)}.pouch-studio .pouch-experience:after{display:none}
+ .pouch-studio .pouch-use{width:125px;gap:2px}.pouch-studio .pouch-use:nth-child(1){left:0;top:4px}.pouch-studio .pouch-use:nth-child(2){right:0;top:19px}.pouch-studio .pouch-use:nth-child(3){left:1%;bottom:8px}.pouch-studio .pouch-use:nth-child(4){right:0;bottom:0}
+ .pouch-studio .pouch-bubble{width:108px;height:107px;margin-bottom:5px}.pouch-studio .pouch-orb{width:80px;height:80px;left:14px;outline-offset:5px}.pouch-studio .pouch-use[aria-selected=true] .pouch-orb{outline-offset:7px}.pouch-studio .pouch-use-purpose{font-size:7px;letter-spacing:.08em}.pouch-studio .pouch-use>strong{font-size:14px}.pouch-studio .pouch-bubble-check{width:20px;height:20px;right:0}
+ .pouch-studio .pouch-scene{left:0;top:186px;width:100%}.pouch-studio .pouch-scene-index{font-size:7px}.pouch-studio .pouch-panel>img{height:225px;padding:0}.pouch-studio .pouch-scene-word{font-size:72px;top:25%}.pouch-studio .pouch-panel>figcaption{max-width:30ch;min-height:120px;margin-top:0}.pouch-studio .pouch-panel>figcaption strong{font-size:17px;line-height:1.4;max-width:27ch}.pouch-studio .pouch-panel>figcaption>span{font-size:12px;line-height:1.7;max-width:32ch;margin-top:8px}
+ .pouch-studio .pouch-footer{display:flex;flex-direction:column;align-items:stretch;gap:26px;padding:28px 3px 20px;margin-top:16px}.pouch-studio .pouch-footer-kicker{font-size:8px}.pouch-studio .pouch-footer-story>p{font-size:28px;margin:12px 0}.pouch-studio .pouch-footer-story>span:last-child{font-size:13px}
+ .pouch-studio .pouch-footer>.pouch-label-cta{min-width:0;width:calc(100% - 7px);min-height:118px;gap:15px;padding:25px 20px 25px 44px;transform:rotate(-2deg);border-radius:8px 22px 22px 8px;box-shadow:6px 9px 0 #d6c0df66}.pouch-studio .pouch-label-copy>strong{font-size:24px}.pouch-studio .pouch-label-copy>small{font-size:7px;letter-spacing:.08em}.pouch-studio .pouch-label-copy>span{font-size:10px}.pouch-studio .pouch-label-hole{left:17px;width:8px;height:8px}.pouch-studio .pouch-label-icon{width:36px;height:36px;margin-left:auto}.pouch-studio .pouch-label-icon>.icon{width:20px;height:20px}
+ .pouch-studio .pouch-material-note{padding:18px 3px 0;font-size:11px}.pouch-studio .pouch-material-note>a{margin-top:10px}
+}
+@media(prefers-reduced-motion:reduce){.pouch-studio .pouch-label-cta{transition:none}.pouch-studio .pouch-footer>.pouch-label-cta:hover{transform:none}}
