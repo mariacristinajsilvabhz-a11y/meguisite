@@ -1,0 +1,14 @@
+<section class="section work-showcase" id="trabalhos-megui" aria-labelledby="work-showcase-title">
+ <div class="container">
+  <header class="work-showcase-heading"><div><span class="work-overline">DA NOSSA PRODUÇÃO PARA O MUNDO</span><h2 id="work-showcase-title">Cada marca,<br><em>uma história.</em></h2></div><div class="work-showcase-invite"><p>Tecnologia, malha, brindes e encontros.<br>Projetos com a identidade de quem confia na Megui.</p><a class="work-collection-link" href="{{ url_for('portfolio_view') }}"><span><small>CONHEÇA O ACERVO</small><strong>Explore os trabalhos</strong></span><b>{{ portfolio|length }}</b></a></div></header>
+  <div class="work-preview-grid">
+  {% for work in featured_works %}
+   <a class="work-preview {% if loop.first %}work-preview-feature{% endif %}" href="{{ url_for('portfolio_view') }}#{{ work.key if work.key else 'projetos' }}">
+    <div class="work-preview-photo"><img src="{{ url_for('static',filename=work.presentation_image|default(work.image)) }}" alt="{{ work.title }} — {{ 'produto personalizado' if work.presentation_image else 'foto do trabalho' }}" width="1000" height="750" loading="lazy" decoding="async"><span aria-hidden="true">0{{ loop.index }}</span></div>
+    <div class="work-preview-caption"><span>{{ work.kind }}</span><h3>{{ work.title }}</h3></div>
+   </a>
+  {% endfor %}
+  </div>
+  <div class="work-showcase-foot"><span>Do primeiro desenho ao trabalho pronto.</span><a href="{{ url_for('portfolio_view') }}#projetos">Veja os projetos e os registros do acervo</a></div>
+ </div>
+</section>

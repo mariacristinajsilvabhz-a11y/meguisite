@@ -1,0 +1,62 @@
+[
+  {
+    "asset": "alexa-senac-registro.webp",
+    "type": "fotografia do acervo, sem alteração visual; conversão para WebP",
+    "source": "https://drive.google.com/file/d/1i-Y7HG9gVuVaRjoYiQQCzQs1kPUj1Ayt/view",
+    "original_filename": "476B1B1F-CC40-4D25-8D2A-36110CB3CAEF.JPG"
+  },
+  {
+    "asset": "fones-fecomercio-registro.webp",
+    "type": "fotografia do acervo, sem alteração visual; conversão para WebP",
+    "source": "https://drive.google.com/file/d/1zET6GL0JJWEuwDrqIc_Ag8b2q2f_7GMf/view",
+    "original_filename": "3301B9A8-E814-4443-9F93-30D00CCA5FD6.JPG"
+  },
+  {
+    "asset": "kit-eepof-registro.webp",
+    "type": "fotografia do acervo, sem alteração visual; conversão para WebP",
+    "source": "https://drive.google.com/file/d/13zyqGeMPFMG9lw2ljdpFOjAWnTzIbKEV/view",
+    "original_filename": "F4A251DA-2E52-4569-A6AE-C5282B75053E.JPG"
+  },
+  {
+    "asset": "kit-infinix-registro.webp",
+    "type": "fotografia do acervo, sem alteração visual; conversão para WebP",
+    "source": "https://drive.google.com/file/d/1Rbhmxc8gloTB1r6Zmbla0DI-mZURQLiE/view",
+    "original_filename": "19f200f7-5a16-48f6-b7c1-590629e27a21.JPG"
+  },
+  {
+    "asset": "bottons-senac-registro.webp",
+    "type": "fotografia do acervo, sem alteração visual; conversão para WebP",
+    "source": "https://drive.google.com/file/d/1gDNI9Eoxa2Tzd0OlO0Zd-7HMWWeHSP-Q/view",
+    "original_filename": "1139FF42-1EC6-4C09-B726-268F73183E7B.JPG"
+  },
+  {
+    "asset": "virgin-mary-registro.webp",
+    "type": "fotografia do acervo, sem alteração visual; conversão para WebP",
+    "source": "https://drive.google.com/file/d/1CoWBT9_S8-bjVzity_jKlm612CMfxozS/view",
+    "original_filename": "E5370BA0-04DA-4ACA-9107-A47A169999EA.JPG"
+  },
+  {
+    "asset": "infinix-elevador-registro.webp",
+    "type": "fotografia do acervo, sem alteração visual; conversão para WebP",
+    "source": "https://drive.google.com/file/d/1dnVQTIHGU6czDnXOxgob-C6jZPOY5dX5/view",
+    "original_filename": "717B2717-1F49-4261-A530-F5EE32A05B29.JPG"
+  },
+  {
+    "asset": "alexa-apresentacao-v1.webp",
+    "type": "nova apresentação do produto, gerada a partir de fotos do trabalho",
+    "generator": "built-in image_gen",
+    "prompt": "Use case: product-mockup. Asset type: website portfolio product photograph recreated from the user's real commissioned work. Photorealistic editorial product photography, landscape 3:2. Believable everyday materials and slight natural imperfections, restrained daylight from a window, normal shadows, neutral color grade, tactile details. No people, no hands, no text overlay, no watermark, no CGI gloss, no dramatic luxury set, no floating products, no decorative props. Full product shapes must remain inside frame with safe margins. Keep brand marks and product colors true to reference; do not invent claims or extra features. On a plain light warm-gray matte desk near a softly blurred pale wall, photograph the two black Echo Pop speakers from references: one rear view slightly left to clearly show original white imprint 'Senac' with superscript X, below 'NaSemanaS', and one front view on right to show flat black woven round speaker face. Same half-spherical wedge geometry, buttons and slim lightbar. Match the imprint letter forms and capitalization from real reference. Frame from human desk height with subtle depth, soft slightly uneven window light; a small unlit or faint cyan lightbar only, not glow. Do not turn this into a render or add other devices."
+  },
+  {
+    "asset": "audio-apresentacao-v1.webp",
+    "type": "nova apresentação do produto, gerada a partir de fotos do trabalho",
+    "generator": "built-in image_gen",
+    "prompt": "Use case: product-mockup. Asset type: website portfolio product photograph recreated from the user's real commissioned work. Photorealistic editorial product photography, landscape 3:2. Believable everyday materials and slight natural imperfections, restrained daylight from a window, normal shadows, neutral color grade, tactile details. No people, no hands, no text overlay, no watermark, no CGI gloss, no dramatic luxury set, no floating products, no decorative props. Full product shapes must remain inside frame with safe margins. Keep brand marks and product colors true to reference; do not invent claims or extra features. Recreate exactly ONE black and silver over-ear headphone from reference, now upright and correctly oriented on a muted pale lilac tabletop. Keep black padded headband, black leatherette ear cups, silver circular trim and thin metal yokes faithful. Rotate branding to upright readable orientation. Show branded earcup facing camera in a relaxed three-quarter angle, carefully preserve the original white print: 'Fecomércio MG', below the Sesc and Senac marks and 'Sindicatos Empresariais', then small 'Sistema Comércio'. Use source print as the actual artwork reference; do not replace it with Megui. One subtle out-of-focus original black product box behind right, without unreadable prominent text. Ordinary commercial photo, not an invented luxury model. Keep headphones black, no lilac plastic."
+  },
+  {
+    "asset": "escola-apresentacao-v1.webp",
+    "type": "nova apresentação do produto, gerada a partir de fotos do trabalho",
+    "generator": "built-in image_gen",
+    "prompt": "Use case: product-mockup. Asset type: website portfolio product photograph recreated from the user's real commissioned work. Photorealistic editorial product photography, landscape 3:2. Believable everyday materials and slight natural imperfections, restrained daylight from a window, normal shadows, neutral color grade, tactile details. No people, no hands, no text overlay, no watermark, no CGI gloss, no dramatic luxury set, no floating products, no decorative props. Full product shapes must remain inside frame with safe margins. Keep brand marks and product colors true to reference; do not invent claims or extra features. Recreate this real school gift kit on a simple lightly textured beige tabletop: ONE black drawstring sacochila upright and softly slouched, plus ONE translucent frosted squeeze bottle with the same red screw cap and loop as reference. Preserve the same artwork on BOTH products exactly: red triangular symbol with turquoise and yellow outlines; turquoise initials 'E.E.P.O.F' and below 'Ensino em tempo integral'. Bag fabric is real soft black polyester with natural folds, not leather, actual drawstring construction. Bottle in foreground to right, bag in background to left, both logos readable without adding any words. No hand, shipping boxes or pile of caps. Honest daylight photograph of a finished order, not a shiny 3D render."
+  }
+]
