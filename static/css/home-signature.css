@@ -1,0 +1,241 @@
+/* MEGUI — CENÁRIO DE MALHA / assinatura visual da abertura
+   Camadas de tecido, luz e sombra: sem cards, molduras ou bolhas genéricas.
+   Isolado do catálogo e das demais páginas. */
+#megui-theme-slides .carousel-slide{
+  --fabric-base:#d7bce1;--fabric-deep:#8a669b;--fabric-thread:#9b78af;
+  --fabric-shadow:rgba(68,36,78,.26);
+  --fabric-high:rgba(255,255,255,.72);
+  min-height:clamp(525px,43vw,650px);
+}
+#megui-theme-slides .carousel-slide:before{
+  background:
+    radial-gradient(ellipse at 80% 51%,var(--glow,#d7c2df) 0%,transparent 62%),
+    linear-gradient(180deg,var(--surface) 0%,#eee5f3 100%);
+  inset:0;
+  opacity:1;
+}
+#megui-theme-slides .carousel-slide:after{
+  content:"";position:absolute;z-index:0;pointer-events:none;
+  left:0;bottom:0;width:100%;height:85px;
+  background:linear-gradient(to bottom,transparent 0%,#eee5f3 100%);
+}
+/* Copy: textile punctuation rather than an off-the-shelf banner separator. */
+#megui-theme-slides .carousel-copy{z-index:4}
+#megui-theme-slides .carousel-kicker{
+  position:relative;max-width:100%;
+  margin-bottom:26px;
+}
+#megui-theme-slides .carousel-kicker:after{
+  content:"";display:block;width:clamp(20px,4.4vw,58px);height:1px;
+  background:currentColor;opacity:.38;flex:none;margin-left:4px;
+}
+#megui-theme-slides .carousel-copy h1,
+#megui-theme-slides .carousel-copy h2{
+  margin-bottom:21px;
+}
+#megui-theme-slides .carousel-copy h1 span,
+#megui-theme-slides .carousel-copy h2 span{
+  position:relative;
+  text-shadow:0 7px 20px rgba(112,72,123,.10);
+}
+#megui-theme-slides .carousel-copy h1 span:after,
+#megui-theme-slides .carousel-copy h2 span:after{
+  content:"";position:absolute;pointer-events:none;
+  width:54%;height:7px;bottom:-6px;left:12%;
+  border-bottom:2px solid currentColor;border-radius:0 0 55% 50%;
+  opacity:.21;transform:rotate(-3deg);
+}
+#megui-theme-slides .carousel-actions>.carousel-cta{
+  box-shadow:0 8px 21px rgba(55,30,66,.16),inset 0 1px 0 rgba(255,255,255,.19);
+  transition:transform .25s ease,box-shadow .25s ease,background .25s ease;
+}
+#megui-theme-slides .carousel-actions>.carousel-cta:hover{
+  box-shadow:0 13px 25px rgba(55,30,66,.19);
+}
+/* Shadow composition. All elements intentionally sit BELOW the photograph. */
+#megui-theme-slides .carousel-art{isolation:isolate}
+#megui-theme-slides .carousel-art:before{opacity:.12}
+#megui-theme-slides .carousel-art .carousel-fabric-scene{
+  position:absolute;inset:0;z-index:0;pointer-events:none;overflow:visible;
+}
+#megui-theme-slides .carousel-art .carousel-fabric-back{
+  position:absolute;inset:11% 6% 10% 9%;
+  border-radius:42% 56% 36% 48% / 35% 43% 51% 54%;
+  transform:rotate(-9deg) skewX(-3deg);
+  background:
+    linear-gradient(112deg,rgba(255,255,255,.58) 0%,rgba(255,255,255,.07) 23%,
+       rgba(92,55,104,.14) 37%,rgba(255,255,255,.47) 55%,rgba(90,59,104,.13) 77%,
+       rgba(255,255,255,.36) 100%),
+    radial-gradient(ellipse at 24% 21%,rgba(255,255,255,.65),transparent 60%),
+    var(--fabric-base);
+  box-shadow:
+    14px 28px 42px -20px var(--fabric-shadow),
+    -12px 14px 37px -24px var(--fabric-shadow),
+    inset 14px 10px 32px rgba(255,255,255,.32),
+    inset -24px -18px 38px rgba(82,49,96,.07);
+  opacity:.75;
+}
+#megui-theme-slides .carousel-art .carousel-fabric-fold{
+  position:absolute;inset:18% 1% 18% 16%;
+  border-radius:57% 42% 51% 46% / 35% 52% 30% 60%;
+  transform:rotate(-14deg) skewX(4deg);
+  background:linear-gradient(137deg,transparent 31%,rgba(255,255,255,.45) 42%,
+     rgba(86,55,98,.16) 53%,rgba(255,255,255,.08) 64%,transparent 76%);
+  filter:blur(7px);opacity:.72;
+}
+#megui-theme-slides .carousel-art .carousel-fabric-seam{
+  position:absolute;inset:-1% -4% -4% 0;width:104%;height:106%;
+  color:var(--fabric-thread);
+  fill:none;stroke:currentColor;pointer-events:none;
+  stroke-width:1.25;stroke-linecap:round;stroke-linejoin:round;
+  overflow:visible;opacity:.35;
+}
+#megui-theme-slides .carousel-fabric-seam .seam-inner{
+  stroke-width:.9;stroke-dasharray:1.4 9;opacity:.7;
+}
+#megui-theme-slides .carousel-art .carousel-ground-shadow{
+  position:absolute;z-index:1;left:22%;bottom:8%;width:64%;height:11%;
+  border-radius:50%;
+  background:var(--fabric-shadow);
+  filter:blur(23px);transform:rotate(-6deg);
+  opacity:.53;
+}
+#megui-theme-slides .carousel-art>img{
+  z-index:2;position:relative;
+  filter:drop-shadow(10px 16px 14px rgba(45,25,52,.07));
+}
+#megui-theme-slides .carousel-art .carousel-maker-signature{
+  position:absolute;z-index:3;right:5%;bottom:7%;
+  display:flex;align-items:center;justify-content:flex-end;gap:10px;
+  color:var(--accent);font:700 9px/1.5 Manrope,sans-serif;
+  letter-spacing:.14em;text-transform:uppercase;
+  pointer-events:none;opacity:.82;
+}
+#megui-theme-slides .carousel-maker-signature:before{
+  content:"";display:block;width:34px;height:1px;background:currentColor;opacity:.45;
+}
+#megui-theme-slides .carousel-maker-signature .icon{
+  height:23px;width:19px;flex:none;
+}
+/* A physical knit sample is the hero's one purposeful overlapping detail. */
+#megui-theme-slides .carousel-material-swatch{
+  position:absolute;z-index:4;bottom:8%;left:4%;
+  display:flex;align-items:center;gap:11px;pointer-events:none;
+  transform:rotate(-8deg);
+}
+#megui-theme-slides .carousel-material-swatch img{
+  display:block!important;position:static;
+  width:94px!important;height:94px!important;max-height:94px!important;min-height:0!important;
+  aspect-ratio:1!important;object-fit:cover!important;
+  border-radius:49% 51% 47% 53%;background:#efe7f0;
+  -webkit-mask-image:none!important;mask-image:none!important;
+  box-shadow:0 12px 28px rgba(47,26,54,.23),0 0 0 5px rgba(255,255,255,.62)!important;
+  filter:none!important;
+}
+#megui-theme-slides .carousel-material-swatch span{
+  max-width:80px;font:700 9px/1.6 Manrope,sans-serif;letter-spacing:.07em;
+  text-transform:uppercase;color:var(--accent);
+}
+/* Four contexts, one Megui visual language. */
+#megui-theme-slides .slide-football{
+  --fabric-base:#c3d3c3;--fabric-deep:#54765c;
+  --fabric-thread:#7c9b7e;--fabric-shadow:rgba(36,70,42,.28);
+}
+#megui-theme-slides .slide-football .carousel-fabric-back{
+  inset:12% 4% 18% 13%;opacity:.50;transform:rotate(-5deg);
+}
+#megui-theme-slides .slide-football .carousel-ground-shadow{
+  left:15%;width:79%;height:14%;bottom:10%;filter:blur(29px);
+}
+#megui-theme-slides .slide-football .carousel-art>img{
+  filter:drop-shadow(7px 13px 12px rgba(30,59,37,.06));
+}
+#megui-theme-slides .slide-wear{
+  --fabric-base:#ceb0da;--fabric-thread:#9168a9;
+  --fabric-shadow:rgba(64,31,89,.30);
+}
+#megui-theme-slides .slide-wear .carousel-fabric-back{
+  inset:7% 5% 12% 10%;opacity:.8;
+}
+#megui-theme-slides .slide-wear .carousel-ground-shadow{bottom:8%;opacity:.68}
+#megui-theme-slides .slide-wear .carousel-art>img{
+  filter:drop-shadow(11px 21px 17px rgba(52,24,64,.15));
+}
+#megui-theme-slides .slide-faith{
+  --fabric-base:#dfc0cc;--fabric-thread:#b4869b;
+  --fabric-shadow:rgba(87,46,65,.23);
+}
+#megui-theme-slides .slide-faith .carousel-fabric-back{
+  inset:12% 8% 12% 7%;opacity:.56;transform:rotate(7deg);
+}
+#megui-theme-slides .slide-faith .carousel-fabric-fold{transform:rotate(5deg)}
+#megui-theme-slides .slide-faith .carousel-ground-shadow{bottom:10%;opacity:.45}
+#megui-theme-slides .slide-events{
+  --fabric-base:#cda4e0;--fabric-thread:#986eb0;
+  --fabric-shadow:rgba(86,43,105,.31);
+}
+#megui-theme-slides .slide-events .carousel-fabric-back{
+  inset:6% 10% 7% 13%;transform:rotate(9deg);opacity:.70;
+}
+#megui-theme-slides .slide-events .carousel-art>img{
+  filter:drop-shadow(13px 25px 15px rgba(66,32,75,.24))!important;
+}
+#megui-theme-slides .slide-events .carousel-ground-shadow{
+  width:60%;left:23%;bottom:8%;height:10%;opacity:.73;
+}
+/* Light, floating motion only for product imagery; photojournalism stays still. */
+@media(hover:hover) and (prefers-reduced-motion:no-preference){
+ #megui-theme-slides .carousel-slide.is-active.slide-events .carousel-art>img,
+ #megui-theme-slides .carousel-slide.is-active.slide-wear .carousel-art>img{
+   animation:megui-object-settle .85s cubic-bezier(.2,.74,.22,1) both;
+ }
+}
+@keyframes megui-object-settle{
+ from{opacity:.58;transform:translateY(11px) scale(.985)}
+ to{opacity:1;transform:translateY(0) scale(1)}
+}
+/* Desktop-to-mobile: no image overlap with the text or the centered controls. */
+@media(max-width:1050px) and (min-width:761px){
+ #megui-theme-slides .carousel-fabric-seam{opacity:.26}
+ #megui-theme-slides .carousel-maker-signature{font-size:8px}
+ #megui-theme-slides .carousel-material-swatch{bottom:5%;left:2%}
+ #megui-theme-slides .carousel-material-swatch img{width:76px!important;height:76px!important}
+ #megui-theme-slides .carousel-material-swatch span{display:none}
+}
+@media(max-width:760px){
+ #megui-theme-slides .carousel-slide{min-height:0}
+ #megui-theme-slides .carousel-slide:after{height:52px}
+ #megui-theme-slides .carousel-kicker{margin-bottom:15px}
+ #megui-theme-slides .carousel-kicker:after{width:24px}
+ #megui-theme-slides .carousel-copy h1 span:after,
+ #megui-theme-slides .carousel-copy h2 span:after{height:4px;bottom:-4px}
+ #megui-theme-slides .carousel-art .carousel-fabric-back{inset:9% 6% 10% 11%;opacity:.62}
+ #megui-theme-slides .carousel-art .carousel-fabric-fold{inset:19% 8% 20% 15%;filter:blur(5px)}
+ #megui-theme-slides .carousel-art .carousel-fabric-seam{opacity:.27}
+ #megui-theme-slides .carousel-art .carousel-ground-shadow{
+   left:20%;bottom:7%;width:62%;height:11%;filter:blur(13px);opacity:.52;
+ }
+ #megui-theme-slides .carousel-art .carousel-maker-signature{
+   bottom:2%;right:5%;gap:5px;font-size:7px;letter-spacing:.07em
+ }
+ #megui-theme-slides .carousel-maker-signature:before{width:18px}
+ #megui-theme-slides .carousel-maker-signature .icon{width:14px;height:18px}
+ #megui-theme-slides .carousel-material-swatch{left:0;bottom:6%}
+ #megui-theme-slides .carousel-material-swatch img{
+  width:62px!important;height:62px!important;max-height:62px!important;
+  box-shadow:0 7px 14px rgba(43,23,52,.18),0 0 0 3px rgba(255,255,255,.64)!important;
+ }
+ #megui-theme-slides .carousel-material-swatch span{display:none}
+ #megui-theme-slides .slide-events .carousel-art>img{
+  filter:drop-shadow(6px 12px 9px rgba(66,32,75,.19))!important;
+ }
+}
+@media(max-width:420px){
+ #megui-theme-slides .carousel-material-swatch{left:1%;bottom:8%}
+ #megui-theme-slides .carousel-material-swatch img{width:52px!important;height:52px!important;max-height:52px!important}
+ #megui-theme-slides .carousel-art .carousel-maker-signature{right:0;bottom:3%;font-size:7px}
+}
+@media(prefers-reduced-motion:reduce){
+ #megui-theme-slides .carousel-slide.is-active .carousel-art>img{animation:none!important}
+ #megui-theme-slides .carousel-material-swatch{transform:none}
+}
