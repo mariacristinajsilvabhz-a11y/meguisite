@@ -1,34 +1,35 @@
 <section class="services-discovery" id="possibilidades" aria-labelledby="services-title" data-services-discovery>
  <div class="container">
   <header class="services-heading">
-   <div><span class="services-eyebrow">DA CONFECÇÃO AOS PERSONALIZADOS</span><h2 id="services-title">Sua ideia tem<br><em>muitas formas.</em></h2></div>
-   <p>Nossa especialidade é a malha.<br>E as possibilidades vão muito além dela.<br><strong>Explore o que podemos criar para você.</strong></p>
+   <div class="services-heading-title"><span class="services-eyebrow">DA CONFECÇÃO AOS PERSONALIZADOS</span><h2 id="services-title">Sua ideia tem<br><em>muitas formas.</em></h2><span class="services-title-stitch" aria-hidden="true"></span></div>
+   <div class="services-heading-story"><span class="services-maker-mark">{{ icon('butterfly') }} <span>COMEÇA NA MALHA.<br> GANHA O SEU JEITO.</span></span><p>Da camiseta que veste sua equipe ao detalhe que acompanha um presente. Com <strong>confecção própria e personalização</strong>, criamos peças para fazer parte da sua história.</p></div>
   </header>
   {% set services = [
-   ('malha','Camisetas e malha','Camisetas, polos, babylooks e moletons.','img/inicio/camiseta-megui-movimento-v3.webp','Camiseta preta personalizada, em manequim invisível',url_for('category',slug='vestuario'),'CONFECÇÃO PRÓPRIA'),
-   ('uniformes','Uniformes profissionais','Sociais, jalecos, aventais e uniformes operacionais.','img/inicio/social-manga-longa-manequim.webp','Camisa social branca em manequim invisível',url_for('b2b') ~ '#uniformes','PARA REPRESENTAR'),
-   ('saquinhos','Saquinhos e embalagens','Malha, embalagens e peças sob medida.','img/inicio/servicos/saquinhos-v1.webp','Saquinhos de malha cru, lilás e preto',url_for('home') ~ '#saquinhos','FEITOS PARA GUARDAR'),
-   ('bolsas','Bolsas e mochilas','Ecobags, sacochilas, mochilas e nécessaires.','img/produtos/mochila-megui.webp','Mochila preta personalizada',url_for('category',slug='bolsas-acessorios'),'PARA LEVAR JUNTO'),
-   ('copos','Copos e garrafas','Canecas, squeezes, copos e térmicos.','img/produtos/squeeze-megui.webp','Squeeze branco personalizado',url_for('category',slug='copos-garrafas'),'NO RITMO DO DIA'),
-   ('kits','Papelaria e kits','Cadernos, agendas, impressos e kits corporativos.','img/produtos/kit-corporativo-megui.webp','Kit com caderno, caneta e cordão',url_for('category',slug='papelaria'),'DETALHES QUE MARCAM'),
-   ('tech','Tecnologia','Power banks, áudio e acessórios personalizados.','img/inicio/servicos/tecnologia-v1.webp','Power bank lilás e caixa de som preta',url_for('category',slug='tecnologia'),'IDEIAS CONECTADAS'),
-   ('eventos','Eventos e comunicação','Wind banners, credenciais, pulseiras e materiais gráficos.','img/inicio/eventos.webp','Credencial, copo e pulseiras para eventos',url_for('events'),'PARA REUNIR PESSOAS')
+   ('malha','Camisetas','e malha','Da escolha da peça à estampa: camisetas, polos, babylooks e moletons para vestir a identidade da sua marca.','img/inicio/camiseta-megui-movimento-v3.webp',url_for('category',slug='vestuario'),'NOSSA ESPECIALIDADE','Confecção própria','sua marca veste bem.'),
+   ('uniformes','Uniformes','profissionais','Do atendimento à operação, peças que apresentam sua equipe e acompanham a rotina de quem faz acontecer.','img/inicio/social-manga-longa-manequim.webp',url_for('b2b') ~ '#colecoes','PRESENÇA NO DIA A DIA','Sociais · Jalecos · Aventais',''),
+   ('saquinhos','Saquinhos','e embalagens','Joias, perfumes, calçados ou um presente especial. Embalagens em malha que protegem e valorizam o que vai dentro.','img/inicio/servicos/saquinhos-v1.webp',url_for('home') ~ '#saquinhos','O CUIDADO COMEÇA POR FORA','Tamanhos e personalização sob medida','um cuidado a mais.'),
+   ('bolsas','Bolsas','e mochilas','Para o trabalho, para um passeio, para levar sua marca mais longe. Uma companhia útil que continua em uso.','img/produtos/mochila-megui.webp',url_for('category',slug='bolsas-acessorios'),'SUA MARCA VAI JUNTO','Ecobags · Mochilas · Nécessaires',''),
+   ('copos','Copos','e garrafas','Do primeiro café à pausa no trabalho. Personalizados que encontram espaço na rotina de quem recebe.','img/produtos/squeeze-megui.webp',url_for('category',slug='copos-garrafas'),'PRESENTES NA ROTINA','Canecas · Squeezes · Térmicos','todo dia, por perto.'),
+   ('kits','Papelaria','e kits','Boas-vindas à equipe, um agradecimento ou uma nova parceria. Combine peças para transformar a ocasião em um presente.','img/produtos/kit-corporativo-megui.webp',url_for('category',slug='papelaria'),'PENSADO EM CADA DETALHE','Cadernos · Agendas · Kits corporativos',''),
+   ('tech','Tecnologia','personalizada','Energia para o celular, som para o dia e a sua identidade em acessórios que fazem sentido para quem usa.','img/inicio/servicos/tecnologia-v1.webp',url_for('category',slug='tecnologia'),'UTILIDADE QUE CONECTA','Power banks · Áudio · Acessórios',''),
+   ('eventos','Eventos','e comunicação','Da credencial ao brinde que fica de lembrança. Uma identidade em comum para encontros, feiras e celebrações.','img/inicio/eventos.webp',url_for('events'),'ENCONTROS QUE DEIXAM MARCA','Wind banners · Credenciais · Pulseiras','feito para reunir.')
   ] %}
   <div class="services-collection">
-   <svg class="services-thread" viewBox="0 0 1200 620" preserveAspectRatio="none" aria-hidden="true"><path d="M-35 185C120 90 215 255 370 178S615 95 770 174 1015 247 1240 145M-25 492C135 400 218 570 370 489S610 403 768 482 1030 560 1240 465"/></svg>
+   <svg class="services-thread" viewBox="0 0 1200 780" preserveAspectRatio="none" aria-hidden="true"><path d="M-35 155C120 60 215 225 370 148S615 65 770 144 1015 217 1240 115M-25 550C135 458 218 628 370 547S610 461 768 540 1030 618 1240 523"/></svg>
    <div class="services-grid">
-    {% for key,title,description,photo,alt,href,kicker in services %}
+    {% for key,title,accent,description,photo,href,kicker,details,note in services %}
     <a class="service-item service-item-{{ key }}" href="{{ href }}" data-service-item>
      <div class="service-visual" aria-hidden="true">
       <span class="service-orb"></span><span class="service-floor-shadow"></span>
       <img class="service-object" src="{{ url_for('static',filename=photo) }}?v=20261019-2" alt="" width="800" height="800" loading="lazy" decoding="async">
       {% if key == 'copos' %}<img class="service-object service-object-secondary" src="{{ url_for('static',filename='img/produtos/caneca-megui.webp') }}" alt="" width="800" height="800" loading="lazy" decoding="async">{% endif %}
+      {% if note %}<span class="service-handnote">{{ note }}</span>{% endif %}
      </div>
-     <div class="service-info"><span class="service-kicker">{{ kicker }}</span><h3>{{ title }}<span class="service-direction" aria-hidden="true">↗</span></h3><p>{{ description }}</p></div>
+     <div class="service-info"><span class="service-kicker">{{ kicker }}</span><h3><span>{{ title }}<em>{{ accent }}</em></span><span class="service-direction" aria-hidden="true">↗</span></h3><p>{{ description }}</p><span class="service-details">{{ details }}</span></div>
     </a>
     {% endfor %}
    </div>
   </div>
-  <footer class="services-footer"><p>Uma peça, uma equipe ou um evento inteiro.<br><strong>A gente encontra o jeito de personalizar.</strong></p><a href="https://wa.me/{{ whatsapp_number }}?text={{ 'Olá! Tenho uma ideia de personalizado e quero conversar sobre as possibilidades.'|urlencode }}" target="_blank" rel="noopener">Conte sua ideia {{ icon('arrow') }}</a></footer>
+  <footer class="services-footer"><div><span class="services-footer-note">E se a sua ideia misturar tudo isso?</span><p>Conte o que você tem em mente.<br><strong>A gente pensa nas possibilidades com você.</strong></p></div><a href="https://wa.me/{{ whatsapp_number }}?text={{ 'Olá! Tenho uma ideia de personalizado e quero conversar sobre as possibilidades.'|urlencode }}" target="_blank" rel="noopener"><span>Vamos criar juntos</span>{{ icon('arrow') }}</a></footer>
  </div>
 </section>
