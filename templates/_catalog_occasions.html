@@ -45,7 +45,7 @@
   <div class="catalog-occasion-heading"><h3>{{ title }}</h3><p>{{ description }}</p></div>
   <div class="catalog-idea-grid">
    {% for title,subtitle,category,subtype,image in items %}
-   <a class="catalog-idea" href="{{ url_for('category',slug=category,subcategoria=subtype or none) }}#escolher-produtos"><span class="catalog-idea-image"><img src="{{ url_for('static',filename='img/'~image) }}" alt="" width="700" height="700" loading="lazy" decoding="async"><span class="catalog-idea-tag">Explorar</span></span><strong>{{ title }}</strong><span class="catalog-idea-subtitle">{{ subtitle }}</span></a>
+   <a class="catalog-idea" href="{{ url_for('home',_anchor='malharia') if category=='vestuario' else url_for('category',slug=category,subcategoria=subtype or none,_anchor='escolher-produtos') }}"><span class="catalog-idea-image"><img src="{{ url_for('static',filename='img/'~image) }}" alt="" width="700" height="700" loading="lazy" decoding="async"><span class="catalog-idea-tag">Explorar</span></span><strong>{{ title }}</strong><span class="catalog-idea-subtitle">{{ subtitle }}</span></a>
    {% endfor %}
   </div>
  </div>

@@ -14,7 +14,7 @@
     <label for="idea-search">O que você quer personalizar?</label>
     <div><input id="idea-search" type="search" name="q" value="{{ query }}" placeholder="Caneca, camiseta, nécessaire…"><button type="submit" aria-label="Buscar produtos">{{ icon('search') }}</button></div>
    </form>
-   <div class="catalog-search-hints"><span>Comece por</span><a href="{{ url_for('category',slug='vestuario',subcategoria='camisetas') }}">camisetas</a><a href="{{ url_for('category',slug='copos-garrafas',subcategoria='canecas-xicaras') }}">canecas</a><a href="{{ url_for('category',slug='bolsas-acessorios',subcategoria='necessaires') }}">nécessaires</a></div>
+   <div class="catalog-search-hints"><span>Comece por</span><a href="{{ url_for('home',_anchor='malharia') }}">camisetas</a><a href="{{ url_for('category',slug='copos-garrafas',subcategoria='canecas-xicaras') }}">canecas</a><a href="{{ url_for('category',slug='bolsas-acessorios',subcategoria='necessaires') }}">nécessaires</a></div>
    <a class="catalog-browse-link" href="#escolher-produtos">Ver catálogo completo <span aria-hidden="true">↓</span></a>
   </div>
   {% if exploring %}<div class="catalog-story-stage" aria-label="Diferentes peças para diferentes histórias">
