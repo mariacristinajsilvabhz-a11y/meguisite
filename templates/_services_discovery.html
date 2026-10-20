@@ -30,6 +30,9 @@
     {% endfor %}
    </div>
   </div>
-  <footer class="services-footer"><div><span class="services-footer-note">E se a sua ideia misturar tudo isso?</span><p>Conte o que você tem em mente.<br><strong>A gente pensa nas possibilidades com você.</strong></p></div><a href="https://wa.me/{{ whatsapp_number }}?text={{ 'Olá! Tenho uma ideia de personalizado e quero conversar sobre as possibilidades.'|urlencode }}" target="_blank" rel="noopener"><span>Vamos criar juntos</span>{{ icon('arrow') }}</a></footer>
+  <footer class="services-footer">
+   <div class="services-invitation"><span class="services-invitation-kicker">DA INSPIRAÇÃO AO SEU PROJETO</span><h3>Agora, imagine<br><em>com a sua marca.</em></h3><p>Conte o que você quer personalizar. A gente ajuda a escolher as peças e os detalhes do seu projeto.</p></div>
+   <div class="services-contact"><span class="services-contact-note">Pode começar com uma ideia<br>ou uma referência.</span><a class="services-contact-button" href="https://wa.me/{{ whatsapp_number }}?text={{ 'Olá! Gostei das possibilidades do site e quero conversar sobre meu projeto de personalizados.'|urlencode }}" target="_blank" rel="noopener">{{ icon('whatsapp') }}<span><small>CONVERSE COM A MEGUI</small><strong>Quero personalizar</strong></span>{{ icon('arrow') }}</a><span class="services-contact-caption">Atendimento direto pelo WhatsApp.</span></div>
+  </footer>
  </div>
 </section>

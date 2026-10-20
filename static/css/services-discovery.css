@@ -42,39 +42,50 @@
 .services-discovery .service-item-copos .service-handnote{top:-28px;right:0;transform:rotate(6deg)}
 .services-discovery .service-item-eventos .service-handnote{top:-28px;right:0;transform:rotate(-5deg)}
 .services-discovery .service-info{text-align:left;position:relative;z-index:3;padding:0 5px}
-.services-discovery .service-kicker{display:block;font-size:9px;font-weight:700;letter-spacing:.1em;color:#79568a;margin-bottom:11px;line-height:1.5}
+.services-discovery .service-kicker{display:block;font-size:10px;font-weight:700;letter-spacing:.08em;color:#79568a;margin-bottom:11px;line-height:1.5}
 .services-discovery .service-info h3{display:block;position:relative;font:700 25px/1.12 "Manrope",sans-serif;letter-spacing:-.045em;color:#35203f;margin:0 0 14px}
 .services-discovery .service-info h3 em{display:block;font:italic 400 1.22em/1.06 "Cormorant Garamond",Georgia,serif;letter-spacing:-.035em;color:#714687;overflow-wrap:anywhere;margin-top:1px}
 .services-discovery .service-info h3>span:first-child{display:block}
 .services-discovery .service-direction{position:absolute;right:0;top:3px;display:grid;place-items:center;width:29px;height:29px;border:1px solid #926ca540;border-radius:50%;font:400 17px/1 "DM Sans",sans-serif;color:#74468a;transition:transform .25s,background .25s,border-color .25s}
-.services-discovery .service-info p{font-size:14px;line-height:1.75;margin:0;color:#634c6f;max-width:31ch;text-wrap:pretty}
-.services-discovery .service-details{display:block;margin-top:13px;padding-top:10px;font-size:10px;font-weight:500;line-height:1.6;color:#78578b;position:relative}
+.services-discovery .service-info p{font-size:17px;line-height:1.7;margin:0;color:#634c6f;max-width:31ch;text-wrap:pretty}
+.services-discovery .service-details{display:block;margin-top:13px;padding-top:10px;font-size:12px;font-weight:500;line-height:1.6;color:#78578b;position:relative}
 .services-discovery .service-details:before{content:"";position:absolute;left:0;top:0;width:28px;border-top:1px solid #9a78ac60}
 .services-discovery .service-item-malha .service-details{font-weight:700}
 .services-discovery .service-item:focus-visible{outline:3px solid #75458d;--lift:-10px}
-.services-discovery .services-footer{display:flex;align-items:center;justify-content:space-between;gap:30px;margin-top:45px;padding-top:30px;border-top:1px dashed #82589a40}
-.services-discovery .services-footer-note{display:block;font:italic 600 29px/1.15 "Cormorant Garamond",Georgia,serif;color:#744d85;margin-bottom:9px}
-.services-discovery .services-footer p{font-size:14px;line-height:1.75;color:#624b6d;margin:0}
-.services-discovery .services-footer p strong{font-weight:500;color:#41294d}
-.services-discovery .services-footer>a{display:inline-flex;align-items:center;justify-content:space-between;gap:25px;min-height:51px;padding:9px 10px 9px 23px;font:700 13px/1.5 "Manrope",sans-serif;color:#49275b;background:#d9c4e680;border:1px solid #b99acb;border-radius:28px;text-decoration:none;transition:background .25s}
-.services-discovery .services-footer>a .icon{width:31px;height:31px;padding:7px;border-radius:50%;background:#f4edf7;color:#68417e}
+.services-discovery .services-footer{position:relative;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(300px,.8fr);align-items:center;gap:70px;margin-top:54px;padding:42px 0 12px;border-top:1px dashed #82589a50}
+.services-discovery .services-invitation-kicker{display:block;font:700 10px/1.6 "Manrope",sans-serif;letter-spacing:.12em;color:#79568a;margin-bottom:18px}
+.services-discovery .services-invitation h3{font:700 clamp(30px,3.2vw,43px)/1.12 "Manrope",sans-serif;letter-spacing:-.05em;color:#35203f;margin:0 0 19px}
+.services-discovery .services-invitation h3 em{display:inline-block;font:italic 600 1.26em/1.08 "Cormorant Garamond",Georgia,serif;letter-spacing:-.035em;color:#714687}
+.services-discovery .services-invitation p{font-size:17px;line-height:1.7;max-width:44ch;margin:0;color:#624b6d}
+.services-discovery .services-contact{position:relative;max-width:390px;width:100%;justify-self:end}
+.services-discovery .services-contact-note{display:block;font:italic 400 25px/1.05 "Cormorant Garamond",Georgia,serif;color:#78548a;margin:0 0 21px 20px;transform:rotate(-3deg)}
+.services-discovery .services-contact-button{position:relative;display:flex;align-items:center;justify-content:space-between;gap:17px;min-height:96px;padding:21px 24px;color:#3e244e;background:#d6bde6;border:1px solid #b998ce;border-radius:9px 28px 28px 9px;box-shadow:0 5px 0 #b99dca,0 13px 28px #5b36751a;transform:rotate(-1deg);text-decoration:none;transition:transform .25s,box-shadow .25s,background .25s}
+.services-discovery .services-contact-button:before{content:"";position:absolute;inset:6px;border:1px dashed #916ca880;border-radius:5px 23px 23px 5px;pointer-events:none}
+.services-discovery .services-contact-button>span{flex:1;min-width:0}
+.services-discovery .services-contact-button small{display:block;font:700 9px/1.6 "Manrope",sans-serif;letter-spacing:.09em;margin-bottom:5px;color:#68477b}
+.services-discovery .services-contact-button strong{display:block;font:700 20px/1.3 "Manrope",sans-serif;letter-spacing:-.035em}
+.services-discovery .services-contact-button>.icon{width:30px;height:30px;flex:none}
+.services-discovery .services-contact-button>.icon:last-child{width:22px;height:22px}
+.services-discovery .services-contact-button:focus-visible{outline:3px solid #75458d;outline-offset:6px}
+.services-discovery .services-contact-caption{display:block;font-size:12px;line-height:1.6;color:#78578b;margin:17px 0 0 20px}
 @media(hover:hover) and (pointer:fine){
  .services-discovery .service-item:hover{--lift:-12px}
  .services-discovery .service-item:hover .service-orb{transform:translateX(-50%) scale(1.05);box-shadow:0 18px 35px #61387920}
  .services-discovery .service-item:hover .service-object{filter:drop-shadow(0 23px 13px #3b234c35)}
  .services-discovery .service-item:hover .service-direction{transform:rotate(12deg);background:#dbc6e9;border-color:#a77fbf}
- .services-discovery .services-footer>a:hover{background:#d4bbE4}
+ .services-discovery .services-contact-button:hover{background:#ceb0e0;transform:rotate(0) translateY(-3px);box-shadow:0 7px 0 #b99dca,0 17px 30px #5b367522}
 }
 @media(max-width:1050px) and (min-width:701px){
  .services-discovery .services-heading{gap:40px}
  .services-discovery .services-grid{gap:32px 22px}
+ .services-discovery .services-footer{gap:30px;grid-template-columns:minmax(0,1fr) minmax(290px,1fr)}
  .services-discovery .service-visual{height:202px}
  .services-discovery .service-object{height:195px!important}
  .services-discovery .service-orb{width:140px!important}
  .services-discovery .service-item-copos .service-object-secondary{height:130px!important}
  .services-discovery .service-info h3{font-size:21px}
  .services-discovery .service-kicker{font-size:8px;letter-spacing:.05em}
- .services-discovery .service-info p{font-size:13px}
+ .services-discovery .service-info p{font-size:16px}
  .services-discovery .service-handnote{font-size:18px;max-width:130px;right:-5px}
 }
 @media(max-width:700px){
@@ -98,24 +109,32 @@
  .services-discovery .service-object{height:166px!important;bottom:4px!important}
  .services-discovery .service-item-copos .service-object-secondary{height:110px!important}
  .services-discovery .service-floor-shadow{width:94px;bottom:0}
- .services-discovery .service-handnote{font-size:17px;max-width:80px;right:-2px;top:-13px!important}
+ .services-discovery .service-handnote{font-size:16px;max-width:120px;right:-2px;top:-28px!important}
  .services-discovery .service-handnote:after{width:14px;height:15px;margin:3px 0 0 14px}
  .services-discovery .service-info{padding:0}
- .services-discovery .service-kicker{font-size:8px;letter-spacing:.04em;margin-bottom:9px;min-height:24px}
+ .services-discovery .service-kicker{font-size:9px;letter-spacing:.04em;margin-bottom:9px;min-height:27px}
  .services-discovery .service-info h3{font-size:clamp(18px,4.7vw,23px);margin-bottom:12px}
  .services-discovery .service-info h3 em{font-size:1.18em}
  .services-discovery .service-direction{width:22px;height:22px;font-size:13px}
- .services-discovery .service-info p{font-size:13px;line-height:1.7}
- .services-discovery .service-details{font-size:10px;line-height:1.65;margin-top:11px}
+ .services-discovery .service-info p{font-size:15px;line-height:1.65}
+ .services-discovery .service-details{font-size:12px;line-height:1.65;margin-top:11px}
  .services-discovery .services-thread{display:none}
- .services-discovery .services-footer{display:block;margin-top:30px;padding-top:24px}
- .services-discovery .services-footer-note{font-size:27px;max-width:24ch}
- .services-discovery .services-footer p{font-size:13px}
- .services-discovery .services-footer>a{font-size:12px;margin-top:18px}
+ .services-discovery .services-footer{grid-template-columns:1fr;gap:27px;margin-top:35px;padding-top:29px}
+ .services-discovery .services-invitation-kicker{font-size:9px;margin-bottom:15px}
+ .services-discovery .services-invitation h3{font-size:clamp(28px,7.7vw,38px);margin-bottom:16px}
+ .services-discovery .services-invitation p{font-size:15px;line-height:1.7}
+ .services-discovery .services-contact{max-width:390px;justify-self:start}
+ .services-discovery .services-contact-note{font-size:23px;margin-bottom:18px;margin-left:12px}
+ .services-discovery .services-contact-button{padding:20px;gap:13px;min-height:91px;margin-right:4px}
+ .services-discovery .services-contact-button strong{font-size:19px}
+ .services-discovery .services-contact-button>.icon{width:27px;height:27px}
+ .services-discovery .services-contact-caption{margin-left:12px}
+
 }
 @media(prefers-reduced-motion:reduce){
- .services-discovery .service-item,.services-discovery .service-orb,.services-discovery .service-object,.services-discovery .service-direction,.services-discovery .services-footer>a{transition:none!important}
+ .services-discovery .service-item,.services-discovery .service-orb,.services-discovery .service-object,.services-discovery .service-direction,.services-discovery .services-contact-button{transition:none!important}
  .services-discovery .service-item{--lift:0px!important;--tilt-x:0deg!important;--tilt-y:0deg!important;--drift-x:0px!important;--drift-y:0px!important}
  .services-discovery .service-item:hover .service-orb{transform:translateX(-50%)}
  .services-discovery .service-direction{transform:none!important}
+ .services-discovery .services-contact-button:hover{transform:rotate(-1deg)}
 }
