@@ -1,14 +1,21 @@
 /* A company identity, shown in an ordinary moment beyond the workplace. */
-#malharia #knit-panel-marca{grid-template-columns:.8fr 1.2fr;gap:40px;align-items:center;padding:12px 0 35px}
-#malharia #knit-panel-marca .knit-edition-story{position:relative;z-index:2;padding:5px 0 5px 15px;border-left:2px solid #c5a4d7}
-#malharia #knit-panel-marca .knit-edition-story h3{font:650 clamp(40px,4.4vw,62px)/1.05 Manrope,sans-serif;letter-spacing:-.055em;margin:22px 0;color:#35213f}
-#malharia #knit-panel-marca .knit-edition-story h3 em{font:italic 600 1.24em/1 'Cormorant Garamond',Georgia,serif;color:#87569b;letter-spacing:-.04em}
-#malharia #knit-panel-marca .knit-edition-story>p{font-size:16px;line-height:1.8;max-width:35ch;color:#5c4268}
-#malharia #knit-panel-marca .knit-edition-kicker{font-size:10px;letter-spacing:.1em;color:#7b568b}
-#malharia #knit-panel-marca .knit-edition-options{font-size:12px;letter-spacing:.015em;color:#775483;margin:22px 0}
-#malharia #knit-panel-marca .knit-edition-cta{background:#77478d;color:#fff;border:0;border-radius:40px;padding:14px 24px;min-height:49px;gap:28px;box-shadow:none;font-size:13px}
-#malharia #knit-panel-marca .knit-edition-cta:hover{background:#5e3472}
-#malharia #knit-panel-marca .knit-edition-signature{font-size:10px;color:#7b5c89;margin-top:22px}
+#malharia #knit-panel-marca{grid-template-columns:.82fr 1.18fr;gap:50px;align-items:center;padding:12px 0 35px}
+#malharia #knit-panel-marca .knit-edition-story{position:relative;z-index:2;padding:5px 0;border:0}
+#malharia #knit-panel-marca .knit-edition-story h3{font:650 clamp(37px,3.65vw,53px)/1.05 Manrope,sans-serif;letter-spacing:-.055em;margin:20px 0 24px;color:#35213f}
+#malharia #knit-panel-marca .knit-edition-story h3 em{font:italic 600 1.2em/1 'Cormorant Garamond',Georgia,serif;color:#87569b;letter-spacing:-.04em}
+#malharia #knit-panel-marca .knit-edition-story>p{font-size:16px;line-height:1.8;max-width:37ch;margin:13px 0 26px;color:#5c4268}
+#malharia #knit-panel-marca .knit-edition-kicker{font-size:10px;letter-spacing:.09em;line-height:1.7;color:#7b568b}
+#malharia #knit-panel-marca .knit-brand-thesis{display:block;font:600 16px/1.65 "Manrope",sans-serif;letter-spacing:-.025em;color:#4f325e}
+#malharia #knit-panel-marca .knit-brand-thesis em{font-style:normal;color:#7a4e90}
+#malharia #knit-panel-marca .knit-brand-cta{position:relative;display:inline-flex;align-items:center;gap:15px;max-width:100%;min-height:80px;padding:17px 25px 17px 20px;color:#4a2b5b;background:#e2cfee;border:1px solid #bca0cd;border-bottom-width:4px;border-radius:7px 22px 22px 7px;box-shadow:0 8px 20px #63407612;text-decoration:none;transition:background .2s,transform .2s}
+#malharia #knit-panel-marca .knit-brand-cta:before{content:"";position:absolute;inset:6px;border:1px dashed #9674a970;border-radius:3px 17px 17px 3px;pointer-events:none}
+#malharia #knit-panel-marca .knit-brand-cta>.icon{width:27px;height:27px;flex:none}
+#malharia #knit-panel-marca .knit-brand-cta>span{min-width:0}
+#malharia #knit-panel-marca .knit-brand-cta small{display:block;font:700 8px/1.6 "Manrope",sans-serif;letter-spacing:.06em;color:#79558c;margin-bottom:4px}
+#malharia #knit-panel-marca .knit-brand-cta strong{display:block;font:700 16px/1.35 "Manrope",sans-serif;letter-spacing:-.025em}
+#malharia #knit-panel-marca .knit-brand-cta:focus-visible{outline:3px solid #75458d;outline-offset:5px}
+#malharia #knit-panel-marca .knit-brand-service{display:block;font-size:12px;line-height:1.7;max-width:35ch;color:#7b5c89;margin-top:14px}
+@media(hover:hover){#malharia #knit-panel-marca .knit-brand-cta:hover{background:#d7bce7;transform:translateY(-2px)}}
 #malharia #knit-panel-marca .knit-stage-marca{height:auto;min-width:0;border:0;border-radius:0;box-shadow:none;background:none;overflow:visible}
 #malharia #knit-panel-marca .knit-stage-marca:before,#malharia #knit-panel-marca .knit-stage-marca:after{content:none}
 #malharia #knit-panel-marca .knit-brand-scene{position:relative;margin:0;padding-bottom:37px}
@@ -22,9 +29,9 @@
  #malharia #knit-panel-marca .knit-lifestyle-photo{border-radius:10px 35px 10px 10px}
  #malharia #knit-panel-marca .knit-brand-scene{padding-bottom:33px}
  #malharia #knit-panel-marca .knit-brand-scene figcaption{left:7px;font-size:11px}
- #malharia #knit-panel-marca .knit-edition-story{margin-top:8px;padding:4px 0 6px 14px}
- #malharia #knit-panel-marca .knit-edition-story h3{font-size:43px;margin:15px 0}
- #malharia #knit-panel-marca .knit-edition-story>p{max-width:46ch;font-size:15px;line-height:1.75}
- #malharia #knit-panel-marca .knit-edition-options{margin:17px 0}
- #malharia #knit-panel-marca .knit-edition-signature{margin-top:17px}
+ #malharia #knit-panel-marca .knit-edition-story{margin-top:8px;padding:4px 0 6px}
+ #malharia #knit-panel-marca .knit-edition-story h3{font-size:clamp(35px,9.5vw,43px);margin:15px 0 21px}
+ #malharia #knit-panel-marca .knit-edition-story>p{max-width:46ch;font-size:15px;line-height:1.75;margin:12px 0 23px}
 }
+
+@media(prefers-reduced-motion:reduce){#malharia #knit-panel-marca .knit-brand-cta{transition:none}#malharia #knit-panel-marca .knit-brand-cta:hover{transform:none}}

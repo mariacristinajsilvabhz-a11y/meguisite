@@ -342,7 +342,7 @@
 <link rel="stylesheet" href="{{ url_for('static',filename='css/home-signature.css',v='20261020-campaign-v11') }}">
 <link rel="stylesheet" href="{{ url_for('static',filename='css/services-discovery.css',v='20261020-butterfly-v1') }}">
 <link rel="stylesheet" href="{{ url_for('static',filename='css/pouch-studio.css',v='20261020-atelier-v3') }}">
-<link rel="stylesheet" href="{{ url_for('static',filename='css/knit-open-studio.css',v='20261020-lifestyle-v1') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/knit-open-studio.css',v='20261020-brand-strategy-v2') }}">
 {% endblock %}
 {% block content %}
 {% from '_icons.html' import icon %}
@@ -425,7 +425,7 @@
    <div class="knit-brand-sculpture" aria-hidden="true"><span class="knit-brand-orbit"></span><span class="knit-brand-orbit orbit-two"></span>{{ icon('butterfly') }}<span class="knit-brand-note">O JEITO MEGUI<br>DE DAR ASAS À SUA IDEIA.</span></div>
   </div>
   {% set knit_editions = [
-   ('marca','01','Sua marca','Camisetas com identidade','SUA IDENTIDADE ALÉM DA EMPRESA','Sua marca<br>vai <em>junto.</em>','No almoço, no trajeto ou na pausa para o café: o uniforme leva a identidade da sua empresa para outros lugares. Camisetas personalizadas fazem sua marca participar do dia a dia.','Camisetas · Identidade · Presença','img/mostruario/equipe-uniformizada-restaurante-v3.webp','Três colegas uniformizados com camisetas Future Pro durante um almoço em um restaurante','img/tecidos/malha-encorpada.webp','Trama e toque',url_for('category',slug='vestuario'),'Explorar camisetas'),
+   ('marca','01','Sua marca','Camisetas com identidade','UNIFORME TAMBÉM É PRESENÇA DE MARCA','Sua marca<br>além da <em>fachada.</em>','No almoço, no trajeto, na pausa para o café. O uniforme apresenta sua empresa mesmo quando ninguém está falando sobre ela.','Camisetas e polos com a identidade da sua empresa.','img/mostruario/equipe-uniformizada-restaurante-v3.webp','Três colegas uniformizados com camisetas Future Pro durante um almoço em um restaurante','img/tecidos/malha-encorpada.webp','Trama e toque','https://wa.me/' ~ whatsapp_number ~ '?text=' ~ ('Olá! Quero criar camisetas e uniformes com a identidade da minha empresa. Podemos conversar sobre modelos, cores e personalização?'|urlencode),'Quero vestir minha marca'),
    ('equipe','02','Sua equipe','Conforto para representar','PRESENÇA EM CADA DIA DE TRABALHO','Quem veste,<br><em>representa.</em>','Uma equipe tem ritmo, rotina e identidade. Camisetas, polos e uniformes pensados para acompanhar quem trabalha e apresentar bem a sua marca.','Camisetas · Polos · Uniformes','img/inicio/polo.webp','Polo preta Megui com detalhes lilás na gola','img/tecidos/detalhe-gola-v9.webp','Gola e acabamento',url_for('b2b') ~ '#uniformes','Conhecer os uniformes'),
    ('encontro','03','Seu encontro','Uma identidade em comum','UMA MENSAGEM QUE APROXIMA','Um encontro.<br><em>Muitas histórias.</em>','Retiros, congressos e movimentos ganham uma identidade que reúne o grupo. Peças que vestem a mensagem e continuam fazendo parte da história depois do evento.','Retiros · Congressos · Movimentos','img/mostruario/camiseta-iprv-estudio-v1.webp','Frente e costas de camiseta comemorativa IPRV','img/tecidos/detalhe-costura-v9.webp','Costura e cuidado',url_for('events') ~ '#movimentos','Personalizar meu encontro')
   ] %}
@@ -439,10 +439,15 @@
    </div>
    {% for key,number,label,subtitle,kicker,title,description,details,photo,alt,detail,detail_label,href,action in knit_editions %}
    <div class="knit-edition-panel" role="tabpanel" id="knit-panel-{{ key }}" aria-labelledby="knit-tab-{{ key }}" tabindex="0" {% if not loop.first %}hidden{% endif %}>
-    <div class="knit-edition-story"><span class="knit-edition-kicker">{{ kicker }}</span><h3>{{ title|safe }}</h3><p>{{ description }}</p><span class="knit-edition-options">{{ details }}</span><a href="{{ href }}" class="knit-edition-cta">{{ action }} {{ icon('arrow') }}</a><span class="knit-edition-signature">{{ icon('butterfly') }} Confecção própria. Identidade sua.</span></div>
+    <div class="knit-edition-story"><span class="knit-edition-kicker">{{ kicker }}</span><h3>{{ title|safe }}</h3>
+     {% if key == 'marca' %}
+     <span class="knit-brand-thesis">A equipe veste. <em>A marca circula.</em></span><p>{{ description }}</p>
+     <a href="{{ href }}" class="knit-brand-cta" target="_blank" rel="noopener">{{ icon('whatsapp') }}<span><small>VAMOS CRIAR PARA SUA EMPRESA</small><strong>{{ action }}</strong></span></a><span class="knit-brand-service">{{ details }}</span>
+     {% else %}<p>{{ description }}</p><span class="knit-edition-options">{{ details }}</span><a href="{{ href }}" class="knit-edition-cta">{{ action }} {{ icon('arrow') }}</a><span class="knit-edition-signature">{{ icon('butterfly') }} Confecção própria. Identidade sua.</span>{% endif %}
+    </div>
     <div class="knit-edition-stage knit-stage-{{ key }}">
      {% if key == 'marca' %}
-     <figure class="knit-brand-scene"><img class="knit-lifestyle-photo" src="{{ url_for('static',filename=photo) }}" alt="{{ alt }}" width="1536" height="1024" loading="lazy" decoding="async"><figcaption>{{ icon('butterfly') }} Sua identidade, além da empresa.</figcaption></figure>
+     <figure class="knit-brand-scene"><img class="knit-lifestyle-photo" src="{{ url_for('static',filename=photo) }}" alt="{{ alt }}" width="1536" height="1024" loading="lazy" decoding="async"><figcaption>{{ icon('butterfly') }} Na rotina da equipe, a marca continua presente.</figcaption></figure>
      {% else %}<span class="knit-stage-butterfly" aria-hidden="true">{{ icon('butterfly') }}</span><span class="knit-stage-word" aria-hidden="true">{{ 'SUA MARCA' if key == 'marca' else 'MALHA' }}</span><span class="knit-stage-edition" aria-hidden="true">MEGUI / {{ number }}</span><img class="knit-stage-product" src="{{ url_for('static',filename=photo) }}" alt="{{ alt }}" width="1200" height="1200" loading="lazy"><figure class="knit-stage-detail"><img src="{{ url_for('static',filename=detail) }}" alt="detalhe: {{ detail_label|lower }}" width="1200" height="800" loading="lazy"><figcaption>{{ detail_label }}<small>Referência de acabamento</small></figcaption></figure><span class="knit-stage-caption">Do tecido à peça.<br>Cuidado em cada escolha.</span>{% endif %}
     </div>
    </div>
