@@ -239,3 +239,56 @@
  #megui-theme-slides .carousel-slide.is-active .carousel-art>img{animation:none!important}
  #megui-theme-slides .carousel-material-swatch{transform:none}
 }
+
+
+/* Acabamento aprovado: bloco único arredondado, com sombra difusa e respiro. */
+.home-cinema #megui-theme-slides{
+  padding:clamp(14px,2vw,26px) 0 clamp(14px,2.2vw,29px);
+}
+.home-cinema #megui-theme-slides .welcome-carousel{
+  width:min(1460px,calc(100% - 52px));
+  margin:0 auto;
+  overflow:visible;
+  border:0;
+  border-radius:32px;
+  box-shadow:none;
+  background:transparent;
+}
+.home-cinema #megui-theme-slides .carousel-slides{
+  border-radius:32px;
+  overflow:visible;
+}
+.home-cinema #megui-theme-slides .carousel-slide{
+  box-sizing:border-box;
+  border-radius:32px;
+  border:1px solid rgba(255,255,255,.66);
+  overflow:hidden;
+  box-shadow:
+    0 24px 64px -24px rgba(61,38,73,.20),
+    0 9px 25px -14px rgba(61,38,73,.15),
+    inset 0 1px 0 rgba(255,255,255,.40);
+}
+.home-cinema #megui-theme-slides .carousel-slide::before,
+.home-cinema #megui-theme-slides .carousel-slide::after{
+  border-radius:inherit;
+}
+@media (max-width:760px){
+  .home-cinema #megui-theme-slides{
+    padding:10px 0 19px;
+  }
+  .home-cinema #megui-theme-slides .welcome-carousel{
+    width:calc(100% - 22px);
+    border-radius:22px;
+  }
+  .home-cinema #megui-theme-slides .carousel-slides{
+    border-radius:22px;
+  }
+  .home-cinema #megui-theme-slides .carousel-slide{
+    border-radius:22px;
+    border-color:rgba(255,255,255,.60);
+    box-shadow:
+      0 16px 40px -17px rgba(61,38,73,.19),
+      0 6px 18px -11px rgba(61,38,73,.15),
+      inset 0 1px 0 rgba(255,255,255,.38);
+  }
+}
