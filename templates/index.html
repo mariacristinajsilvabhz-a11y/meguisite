@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block title %}Megui Personalizados — sua marca em tudo{% endblock %}
 {% block extra_head %}
+<link rel="stylesheet" href="{{ url_for('static',filename='css/fabric-details.css',v='20261020-v1') }}">
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Cormorant+Garamond:ital,wght@1,600&display=swap" rel="stylesheet">
 <style>
 {% raw %}
@@ -347,7 +348,7 @@
 {% endblock %}
 {% block content %}
 {% from '_icons.html' import icon %}
-{% from '_video_preview.html' import video_preview %}
+
 <section class="home-welcome" id="megui-theme-slides" aria-label="Conheça as possibilidades da Megui">
  <div class="welcome-carousel" aria-roledescription="carrossel" aria-label="Produtos personalizados" data-welcome-carousel>
   <div class="carousel-slides" aria-live="off">
@@ -546,17 +547,7 @@
 </section>
 {% endif %}
 
-<section class="section">
-  <div class="container video-teaser">
-    <div class="home-process-preview">{{ video_preview('video/serigrafia-v2.mp4', 'img/acervo/serigrafia-capa-v2.jpg', 'Serigrafia em produção') }}</div>
-    <div>
-      <span class="eyebrow">CONFECÇÃO & PERSONALIZAÇÃO</span>
-      <h2>Do tecido<br>à sua identidade.</h2>
-      <p>Veja a personalização em produção e conheça o cuidado que acompanha as peças da Megui.</p>
-      <a class="btn btn-secondary" href="{{ url_for('videos') }}">Ver vídeos</a>
-    </div>
-  </div>
-</section>
+{% include '_fabric_details.html' %}
 
 <section class="section">
   <div class="container quote-banner">
@@ -604,4 +595,4 @@
 </div>
 {% endblock %}
 
-{% block extra_scripts %}<script defer src="{{ url_for('static',filename='js/pouch-studio.js',v='20261020-atelier-v3') }}"></script><script defer src="{{ url_for('static',filename='js/services-discovery.js',v='20261020-butterfly-v1') }}"></script>{% endblock %}
+{% block extra_scripts %}<script defer src="{{ url_for('static',filename='js/fabric-details.js',v='20261020-v1') }}"></script><script defer src="{{ url_for('static',filename='js/pouch-studio.js',v='20261020-atelier-v3') }}"></script><script defer src="{{ url_for('static',filename='js/services-discovery.js',v='20261020-butterfly-v1') }}"></script>{% endblock %}

@@ -1,0 +1,29 @@
+<section class="fabric-details" id="por-dentro-da-peca" aria-labelledby="fabric-details-title">
+  <div class="container">
+    <header class="fabric-details-heading">
+      <div><span class="eyebrow">A DIFERENÇA MORA NO DETALHE</span><h2 id="fabric-details-title">Pode olhar<br><em>de perto.</em></h2></div>
+      <p>Uma peça vai além da estampa.<br>Explore o que faz parte dela.</p>
+    </header>
+    <div class="fabric-inspector" data-fabric-inspector>
+      {% for key, title, photo, alt, description in [
+        ('malha','O toque começa aqui.','malha-encorpada.webp','Ampliação dos pontos em V da meia malha preta','A estrutura da meia malha em detalhe. A escolha do tecido acompanha o uso, o caimento e a proposta da sua peça.'),
+        ('gola','Um acabamento que aparece.','detalhe-gola-v9.webp','Gola de camiseta preta com ribana e acabamento interno','Ribana, formato e acabamento fazem parte da composição da camiseta. A gente ajuda a escolher o conjunto para o seu projeto.'),
+        ('costura','Cada ponto faz parte.','detalhe-costura-v9.webp','Detalhe da costura e da barra de uma camiseta preta','Barra, união e acabamento das peças também merecem atenção. São detalhes que completam o resultado da confecção.')
+      ] %}
+      <div class="fabric-inspector-panel" id="fabric-panel-{{ key }}" role="tabpanel" aria-labelledby="fabric-tab-{{ key }}" {% if not loop.first %}hidden{% endif %}>
+        <img src="{{ url_for('static',filename='img/tecidos/' ~ photo) }}" alt="{{ alt }}" width="1200" height="800" loading="lazy" decoding="async">
+        <span class="fabric-inspector-note" aria-hidden="true">MEGUI / POR DENTRO DA PEÇA <span>0{{ loop.index }}</span></span>
+        <div class="fabric-inspector-caption"><h3>{{ title }}</h3><p>{{ description }}</p></div>
+      </div>
+      {% endfor %}
+      <div class="fabric-inspector-controls">
+        <div class="fabric-inspector-tabs" role="tablist" aria-label="Explore os detalhes da peça">
+          {% for key, label, photo in [('malha','A malha','malha-encorpada.webp'),('gola','A gola','detalhe-gola-v9.webp'),('costura','A costura','detalhe-costura-v9.webp')] %}
+          <button type="button" id="fabric-tab-{{ key }}" role="tab" aria-controls="fabric-panel-{{ key }}" aria-selected="{{ 'true' if loop.first else 'false' }}" tabindex="{{ '0' if loop.first else '-1' }}"><img src="{{ url_for('static',filename='img/tecidos/' ~ photo) }}" alt="" width="64" height="64" loading="lazy"><span>{{ label }}<small>Explorar detalhe</small></span><span class="fabric-tab-arrow" aria-hidden="true">↗</span></button>
+          {% endfor %}
+        </div>
+        <a class="fabric-inspector-contact" href="https://wa.me/{{ whatsapp_number }}?text=Ol%C3%A1!%20Quero%20conversar%20sobre%20tecidos%20e%20acabamentos%20para%20minhas%20pe%C3%A7as." target="_blank" rel="noopener">Vamos pensar na sua peça?<span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </div>
+</section>

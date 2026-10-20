@@ -1,0 +1,33 @@
+.fabric-details{padding:64px 0 72px;background:#eee5f3;color:#27182f}
+.fabric-details-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;margin-bottom:30px}
+.fabric-details-heading .eyebrow{color:#765384;font-size:10px;letter-spacing:.13em}
+.fabric-details-heading h2{font-size:clamp(42px,5vw,72px);letter-spacing:-.055em;line-height:1.02;margin:15px 0 0;font-weight:700;color:#27182f}
+.fabric-details-heading h2 em{font-family:'Cormorant Garamond',Georgia,serif;color:#81518f;font-weight:600}
+.fabric-details-heading>p{font-size:16px;line-height:1.7;color:#715e7a;margin:0 0 6px}
+.fabric-inspector{min-width:0}
+.fabric-inspector-panel{position:relative;height:clamp(390px,39vw,530px);border-radius:28px;overflow:hidden;background:#252327;isolation:isolate}
+.fabric-inspector-panel[hidden]{display:none}
+.fabric-inspector-panel:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,#0003,transparent 30%,#0001 40%,#09070bdd);z-index:1;pointer-events:none}
+.fabric-inspector-panel>img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 45%;transition:transform .7s ease}
+.fabric-inspector-panel:hover>img{transform:scale(1.045)}
+.fabric-inspector-note{position:absolute;z-index:2;top:25px;left:30px;right:30px;display:flex;justify-content:space-between;color:#f7eafa;font-size:10px;letter-spacing:.13em}
+.fabric-inspector-note>span{border:1px solid #f7eafa66;border-radius:50%;width:33px;height:33px;display:grid;place-items:center;letter-spacing:0}
+.fabric-inspector-caption{position:absolute;z-index:2;left:36px;right:36px;bottom:29px;color:#fff}
+.fabric-inspector-caption h3{font-size:clamp(25px,2.8vw,38px);line-height:1.12;letter-spacing:-.035em;color:#fff;margin:0 0 12px}
+.fabric-inspector-caption p{font-size:15px;line-height:1.65;color:#e6dce9;max-width:65ch;margin:0}
+.fabric-inspector-controls{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-top:20px}
+.fabric-inspector-tabs{display:flex;gap:8px;flex:1;min-width:0}
+.fabric-inspector-tabs button{font:inherit;display:flex;align-items:center;gap:12px;min-height:80px;flex:1;border:1px solid transparent;border-radius:18px;background:transparent;padding:12px;color:#715e7a;cursor:pointer;text-align:left;transition:background .2s,border-color .2s}
+.fabric-inspector-tabs button[aria-selected=true]{background:#e1cee9;border-color:#c9a9d6;color:#33213e}
+.fabric-inspector-tabs button:hover{background:#e5d7eb}
+.fabric-inspector-tabs button>img{width:47px;height:47px;border-radius:50%;object-fit:cover;border:2px solid #f8f1fc}
+.fabric-inspector-tabs button>span{font-size:16px;font-weight:600;white-space:nowrap}
+.fabric-inspector-tabs small{display:block;font-size:10px;font-weight:400;margin-top:3px;color:#765e80}
+.fabric-inspector-tabs .fabric-tab-arrow{margin-left:auto;align-self:flex-start;font-size:17px;font-weight:400}
+.fabric-inspector-contact{display:flex;align-items:center;gap:18px;color:#51315f;font-size:14px;font-weight:600;text-decoration:none;padding:8px 0;white-space:nowrap}
+.fabric-inspector-contact>span{display:grid;place-items:center;width:45px;height:45px;border-radius:50%;background:#744784;color:#fff;font-size:23px;transition:transform .2s,background .2s}
+.fabric-inspector-contact:hover>span{transform:rotate(45deg);background:#573263}
+.fabric-inspector-tabs button:focus-visible,.fabric-inspector-contact:focus-visible{outline:3px solid #845394;outline-offset:4px}
+@media(max-width:1000px){.fabric-inspector-controls{align-items:stretch;flex-direction:column;gap:10px}.fabric-inspector-contact{align-self:flex-end}.fabric-inspector-tabs{width:100%}}
+@media(max-width:600px){.fabric-details{padding:38px 0 44px}.fabric-details-heading{display:block;margin-bottom:22px}.fabric-details-heading h2{font-size:49px}.fabric-details-heading>p{font-size:14px;margin-top:18px}.fabric-inspector-panel{height:410px;border-radius:20px}.fabric-inspector-note{top:18px;left:20px;right:20px;font-size:8px}.fabric-inspector-caption{left:20px;right:20px;bottom:24px}.fabric-inspector-caption h3{font-size:28px;max-width:13ch}.fabric-inspector-caption p{font-size:13px;line-height:1.65}.fabric-inspector-tabs{gap:4px}.fabric-inspector-tabs button{padding:9px 5px;min-height:96px;flex-direction:column;gap:7px;text-align:center;border-radius:14px}.fabric-inspector-tabs button>img{height:36px;width:36px}.fabric-inspector-tabs button>span{font-size:13px}.fabric-inspector-tabs small{font-size:8px}.fabric-inspector-tabs .fabric-tab-arrow{display:none}.fabric-inspector-contact{font-size:13px}.fabric-inspector-contact>span{width:39px;height:39px}}
+@media(prefers-reduced-motion:reduce){.fabric-inspector-panel>img,.fabric-inspector-contact>span{transition:none}.fabric-inspector-panel:hover>img{transform:none}}
