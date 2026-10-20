@@ -122,3 +122,37 @@
 .home-cinema .site-header .header-actions .quote-button{background:#6d4180;color:#fff;border:0;border-bottom:2px solid #4b2b59;border-radius:4px;box-shadow:none;transform:none}
 .home-cinema .site-header .header-actions .quote-button:hover{background:#563266;box-shadow:none;transform:none}
 .home-cinema .site-header .quote-count{background:#ffffff20;box-shadow:none;border-radius:3px}
+/* Fotos no próprio cenário: sem placas, inclinação ou sombras de separação. */
+#megui-theme-slides .carousel-art:before,
+#megui-theme-slides .slide-football .carousel-art:before,
+#megui-theme-slides .slide-faith .carousel-art:before,
+#megui-theme-slides .carousel-fabric-scene{display:none!important}
+#megui-theme-slides .carousel-art>img,
+#megui-theme-slides .slide-wear .carousel-art>img,
+#megui-theme-slides .slide-football .carousel-art>img,
+#megui-theme-slides .slide-faith .carousel-art>img,
+#megui-theme-slides .slide-events .carousel-art>img{box-shadow:none!important;filter:none!important;transform:none!important;border-radius:0!important}
+#megui-theme-slides .carousel-material-swatch{box-shadow:none;transform:none;background:transparent;padding:0;gap:10px}
+#megui-theme-slides .carousel-material-swatch img{border-radius:8px!important}
+/* Dois botões da mesma família: cor, forma e ícones consistentes. */
+#megui-theme-slides .carousel-actions{gap:11px;align-items:stretch}
+#megui-theme-slides .carousel-actions>.carousel-cta,
+#megui-theme-slides .carousel-actions>.carousel-talk{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:49px;padding:12px 18px;border:1px solid transparent;border-radius:14px 14px 14px 5px;background:#593768;color:#fff;box-shadow:none;text-decoration:none;font:600 12px/1.4 Manrope,sans-serif;letter-spacing:0;transform:none;transition:background .18s,color .18s,border-color .18s}
+#megui-theme-slides .carousel-actions>.carousel-talk{background:#e4d6eb;color:#51335f;border-color:#d7c2e0}
+#megui-theme-slides .carousel-actions>.carousel-cta>.icon{display:block;width:17px;height:22px;flex:none}
+#megui-theme-slides .carousel-actions>.carousel-talk>.icon{display:block;width:19px;height:19px;flex:none}
+#megui-theme-slides .carousel-actions>.carousel-cta:hover{background:#754687;border-color:transparent;transform:none;box-shadow:none}
+#megui-theme-slides .carousel-actions>.carousel-talk:hover{background:#d7c2e1;color:#40234e;border-color:#c1a4ce;transform:none;box-shadow:none}
+#megui-theme-slides .carousel-actions>a:focus-visible{outline:2px solid #80528f;outline-offset:4px}
+/* Somente bolinhas centrais; os nomes permanecem nos rótulos acessíveis. */
+#megui-theme-slides .carousel-dots{width:auto;gap:0}
+#megui-theme-slides .carousel-dots button,
+#megui-theme-slides .carousel-dots button.is-current,
+#megui-theme-slides .carousel-dots button:hover{width:36px;min-width:36px;height:44px;padding:0;background:transparent;border-radius:12px;gap:0}
+#megui-theme-slides .carousel-dots button:after{width:6px;height:6px;border-radius:50%;opacity:.4}
+#megui-theme-slides .carousel-dots button.is-current:after{width:8px;height:8px;border-radius:50%;opacity:1}
+@media(max-width:760px){
+ #megui-theme-slides .carousel-actions{gap:8px;flex-wrap:wrap}
+ #megui-theme-slides .carousel-actions>.carousel-cta,#megui-theme-slides .carousel-actions>.carousel-talk{font-size:11px;padding:11px 13px;min-height:47px;gap:8px}
+}
+@media(prefers-reduced-motion:reduce){#megui-theme-slides .carousel-actions>a{transition:none}}

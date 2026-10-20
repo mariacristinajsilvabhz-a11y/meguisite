@@ -226,7 +226,7 @@
   let current = 0, paused = motion.matches, hovered = false, focused = false, timer;
   const schedule = () => {
     clearTimeout(timer);
-    if (!paused && !hovered && !focused && !document.hidden) timer = setTimeout(() => show(current + 1), 3000);
+    if (!paused && !hovered && !focused && !document.hidden) timer = setTimeout(() => show(current + 1), 2200);
   };
   const show = index => {
     current = (index + slides.length) % slides.length;
@@ -257,9 +257,15 @@
     touchStart = null;
   }, { passive: true });
   root.addEventListener('touchcancel', () => { touchStart = null; }, { passive: true });
-  root.addEventListener('mouseenter', () => { hovered = true; schedule(); });
-  root.addEventListener('mouseleave', () => { hovered = false; schedule(); });
-  root.addEventListener('focusin', () => { focused = true; schedule(); });
+  root.addEventListener('mouseover', event => {
+    const nextHover = Boolean(event.target.closest('.carousel-actions a'));
+    if (nextHover !== hovered) { hovered = nextHover; schedule(); }
+  });
+  root.addEventListener('mouseout', event => {
+    const nextHover = Boolean(event.relatedTarget && root.contains(event.relatedTarget) && event.relatedTarget.closest('.carousel-actions a'));
+    if (nextHover !== hovered) { hovered = nextHover; schedule(); }
+  });
+  root.addEventListener('focusin', event => { focused = event.target.matches(':focus-visible'); schedule(); });
   root.addEventListener('focusout', event => { if (!root.contains(event.relatedTarget)) { focused = false; schedule(); } });
   root.addEventListener('keydown', event => {
     if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') { event.preventDefault(); show(current + (event.key === 'ArrowRight' ? 1 : -1)); }
