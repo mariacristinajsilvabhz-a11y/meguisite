@@ -226,7 +226,7 @@
   let current = 0, paused = motion.matches, hovered = false, focused = false, timer;
   const schedule = () => {
     clearTimeout(timer);
-    if (!paused && !hovered && !focused && !document.hidden) timer = setTimeout(() => show(current + 1), 5000);
+    if (!paused && !hovered && !focused && !document.hidden) timer = setTimeout(() => show(current + 1), 3000);
   };
   const show = index => {
     current = (index + slides.length) % slides.length;
@@ -243,6 +243,20 @@
     schedule();
   };
   selectors.forEach((button, i) => button.addEventListener('click', () => show(i)));
+  // Deslize horizontal sem interferir na rolagem vertical ou nos links.
+  let touchStart;
+  root.addEventListener('touchstart', event => {
+    if (event.touches.length !== 1) { touchStart = null; return; }
+    touchStart = { x: event.touches[0].clientX, y: event.touches[0].clientY };
+  }, { passive: true });
+  root.addEventListener('touchend', event => {
+    if (!touchStart || !event.changedTouches.length) return;
+    const dx = event.changedTouches[0].clientX - touchStart.x;
+    const dy = event.changedTouches[0].clientY - touchStart.y;
+    if (Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy) * 1.5) show(current + (dx < 0 ? 1 : -1));
+    touchStart = null;
+  }, { passive: true });
+  root.addEventListener('touchcancel', () => { touchStart = null; }, { passive: true });
   root.addEventListener('mouseenter', () => { hovered = true; schedule(); });
   root.addEventListener('mouseleave', () => { hovered = false; schedule(); });
   root.addEventListener('focusin', () => { focused = true; schedule(); });
