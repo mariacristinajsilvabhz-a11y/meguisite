@@ -1,12 +1,16 @@
 /* An open collection, with typographic accents and details borrowed from making. */
 .home-cinema .services-discovery{position:relative;isolation:isolate;padding:72px 0 56px;background:transparent;color:#35203f;scroll-margin-top:100px;overflow:clip}
 .services-discovery .services-heading{display:grid;grid-template-columns:1.3fr 1fr;align-items:end;gap:70px;margin-bottom:32px}
-.services-discovery .services-heading-title{position:relative;padding-bottom:19px}
+.services-discovery .services-heading-title{position:relative;padding-bottom:25px}
 .services-discovery .services-eyebrow{display:block;font-size:10px;font-weight:700;letter-spacing:.14em;color:#644174;margin-bottom:22px}
 .services-discovery #services-title{font-family:"Manrope",sans-serif;font-size:clamp(39px,4.7vw,66px);font-weight:700;line-height:1.04;letter-spacing:-.06em;margin:0;color:#35203f}
 .services-discovery #services-title em{display:inline-block;position:relative;font-family:"Cormorant Garamond",Georgia,serif;font-size:1.22em;font-weight:600;letter-spacing:-.045em;color:#704085}
-.services-discovery .services-title-stitch{display:block;width:124px;border-bottom:1px dashed #8d639d80;margin-top:22px;transform:rotate(-3deg)}
-.services-discovery .services-title-stitch:after{content:"";display:block;position:absolute;right:-12px;bottom:-4px;width:17px;height:8px;border:1px solid #8d639d80;border-radius:50%;transform:rotate(-32deg)}
+.services-discovery .services-title-lead{display:inline-block}
+.services-discovery .service-letter-i{position:relative;display:inline-block}
+.services-discovery .service-i-dot{position:absolute;left:67%;top:.18em;width:.085em;height:.085em;border-radius:50%;background:currentColor;transform:translateX(-50%)}
+.services-discovery .service-butterfly{position:absolute;top:0;left:0;width:34px;height:42px;z-index:4;color:#76468f;pointer-events:none;opacity:0;transform-origin:77% 73%;filter:drop-shadow(0 2px 2px #5d34751a)}
+.services-discovery .service-butterfly.is-ready{opacity:.92;will-change:transform}
+.services-discovery .service-butterfly-wings{display:block;width:100%;height:100%;transform-origin:77% 73%;backface-visibility:visible}
 .services-discovery .services-heading-story{max-width:39ch;justify-self:end;padding-bottom:22px}
 .services-discovery .services-maker-mark{display:flex;align-items:center;gap:12px;margin-bottom:16px;color:#79528b;font:700 9px/1.6 "Manrope",sans-serif;letter-spacing:.12em}
 .services-discovery .services-maker-mark .icon{width:33px;height:33px;transform:rotate(-12deg);opacity:.7}
@@ -79,10 +83,10 @@
 @media(max-width:700px){
  .home-cinema .services-discovery{padding:40px 0 35px}
  .services-discovery .services-heading{display:block;margin-bottom:20px}
- .services-discovery .services-heading-title{padding-bottom:0}
+ .services-discovery .services-heading-title{padding-bottom:23px}
+ .services-discovery .service-butterfly{width:28px;height:35px}
  .services-discovery .services-eyebrow{font-size:8px;letter-spacing:.1em;margin-bottom:17px}
  .services-discovery #services-title{font-size:clamp(35px,9.5vw,52px)}
- .services-discovery .services-title-stitch{width:85px;margin-top:16px}
  .services-discovery .services-heading-story{max-width:none;margin-top:23px;padding-bottom:0}
  .services-discovery .services-maker-mark{font-size:8px;gap:9px;margin-bottom:10px}
  .services-discovery .services-maker-mark .icon{width:25px;height:25px}
@@ -133,6 +137,8 @@
  .services-discovery .service-item:nth-child(even) .service-info{grid-column:1;grid-row:1;padding-left:12px}
 }
 @media(prefers-reduced-motion:reduce){
+ .services-discovery .service-butterfly{display:none}
+ .services-discovery .service-i-dot{opacity:1!important}
  .services-discovery .service-item,.services-discovery .service-orb,.services-discovery .service-object,.services-discovery .service-open,.services-discovery .services-contact-button{transition:none!important}
  .services-discovery .service-item{--lift:0px!important;--tilt-x:0deg!important;--tilt-y:0deg!important;--drift-x:0px!important;--drift-y:0px!important}
  .services-discovery .service-item:hover .service-orb{transform:translateX(-50%)}
