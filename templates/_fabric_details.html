@@ -18,11 +18,11 @@
       {% endfor %}
       <div class="fabric-inspector-controls">
         <div class="fabric-inspector-tabs" role="tablist" aria-label="Explore os detalhes da peça">
-          {% for key, label, photo in [('malha','A malha','malha-encorpada.webp'),('gola','A gola','detalhe-gola-v9.webp'),('costura','A costura','detalhe-costura-v9.webp')] %}
-          <button type="button" id="fabric-tab-{{ key }}" role="tab" aria-controls="fabric-panel-{{ key }}" aria-selected="{{ 'true' if loop.first else 'false' }}" tabindex="{{ '0' if loop.first else '-1' }}"><img src="{{ url_for('static',filename='img/tecidos/' ~ photo) }}" alt="" width="64" height="64" loading="lazy"><span>{{ label }}<small>Explorar detalhe</small></span><span class="fabric-tab-arrow" aria-hidden="true">↗</span></button>
+          {% for key, label, note, photo in [('malha','A malha','TOQUE & TEXTURA','malha-encorpada.webp'),('gola','A gola','FORMA & ACABAMENTO','detalhe-gola-v9.webp'),('costura','A costura','UNIÃO & CUIDADO','detalhe-costura-v9.webp')] %}
+          <button type="button" id="fabric-tab-{{ key }}" role="tab" aria-label="{{ label }}" aria-controls="fabric-panel-{{ key }}" aria-selected="{{ 'true' if loop.first else 'false' }}" tabindex="{{ '0' if loop.first else '-1' }}"><span class="fabric-sample"><img src="{{ url_for('static',filename='img/tecidos/' ~ photo) }}" alt="" width="80" height="80" loading="lazy"></span><span class="fabric-tab-copy"><small>{{ note }}</small><strong>{{ label }}</strong><span class="fabric-tab-state" aria-hidden="true"><span class="fabric-state-open">Ver de perto</span><span class="fabric-state-active">Em foco</span></span></span><span class="fabric-sample-number" aria-hidden="true">0{{ loop.index }}</span></button>
           {% endfor %}
         </div>
-        <a class="fabric-inspector-contact" href="https://wa.me/{{ whatsapp_number }}?text=Ol%C3%A1!%20Quero%20conversar%20sobre%20tecidos%20e%20acabamentos%20para%20minhas%20pe%C3%A7as." target="_blank" rel="noopener">Vamos pensar na sua peça?<span aria-hidden="true">↗</span></a>
+        <a class="fabric-inspector-contact" href="https://wa.me/{{ whatsapp_number }}?text=Ol%C3%A1!%20Quero%20conversar%20sobre%20tecidos%20e%20acabamentos%20para%20minhas%20pe%C3%A7as." target="_blank" rel="noopener"><span class="fabric-contact-mark" aria-hidden="true">{{ icon('butterfly') }}</span><span class="fabric-contact-copy"><small>DO DETALHE À SUA IDEIA</small><strong>Vamos criar<br>a sua peça?</strong></span><span class="fabric-contact-arrow" aria-hidden="true">↗</span></a>
       </div>
     </div>
   </div>
