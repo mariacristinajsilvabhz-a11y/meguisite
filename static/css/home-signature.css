@@ -115,3 +115,10 @@
 #megui-theme-slides .carousel-actions>.carousel-talk:hover{color:#75468a;transform:none}
 #megui-theme-slides .carousel-actions>.carousel-talk .icon{display:none}
 @media(max-width:760px){#megui-theme-slides .carousel-actions>.carousel-cta{padding:12px 15px;font-size:11px}}
+/* O cabeçalho acompanha as ações da abertura. */
+.home-cinema .site-header .header-actions .create-art-button{background:transparent;color:#654274;border:0;border-radius:0;box-shadow:none;backdrop-filter:none;padding:10px 5px;min-height:44px;transform:none}
+.home-cinema .site-header .header-actions .create-art-button:before{display:none}
+.home-cinema .site-header .header-actions .create-art-button:hover{color:#41234f;background:transparent;box-shadow:none;transform:none}
+.home-cinema .site-header .header-actions .quote-button{background:#6d4180;color:#fff;border:0;border-bottom:2px solid #4b2b59;border-radius:4px;box-shadow:none;transform:none}
+.home-cinema .site-header .header-actions .quote-button:hover{background:#563266;box-shadow:none;transform:none}
+.home-cinema .site-header .quote-count{background:#ffffff20;box-shadow:none;border-radius:3px}
