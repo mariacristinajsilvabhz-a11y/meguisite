@@ -193,3 +193,12 @@
 #megui-theme-slides .slide-football .carousel-art>img,#megui-theme-slides .slide-faith .carousel-art>img{width:100%;height:100%!important;max-height:none!important;object-fit:contain!important;object-position:center;background:transparent!important;border:0!important;box-shadow:none!important;filter:none!important}
 #megui-theme-slides .slide-faith .carousel-art>img{width:89%}
 @media(max-width:760px){#megui-theme-slides .slide-football .carousel-art,#megui-theme-slides .slide-faith .carousel-art{inset:auto;height:230px}#megui-theme-slides .slide-football .carousel-art>img,#megui-theme-slides .slide-faith .carousel-art>img{height:100%!important;max-height:none!important;width:100%}}
+
+/* Novos produtos seguem a composição aberta da campanha, sem placas ou sombras. */
+#megui-theme-slides .slide-senac .carousel-art>img,
+#megui-theme-slides .slide-tech .carousel-art>img,
+#megui-theme-slides .slide-teachers .carousel-art>img{width:100%;height:100%!important;object-fit:contain!important;object-position:center;filter:none!important;box-shadow:none!important}
+#megui-theme-slides .slide-senac .carousel-copy h2 span{color:#477d92}
+#megui-theme-slides .slide-senac:before{background:radial-gradient(ellipse at 83% 55%,#d9e7ea 0,transparent 60%)}
+#megui-theme-slides .slide-teachers .carousel-copy h2 span{font-size:1em}
+@media(max-width:760px){#megui-theme-slides .carousel-dots button{width:34px;min-width:34px}}

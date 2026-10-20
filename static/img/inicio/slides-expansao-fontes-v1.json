@@ -1,0 +1,36 @@
+[
+  {
+    "asset": "img/inicio/alexa-senacx-3d-v1.webp",
+    "type": "recriação de produto em 3D",
+    "generator": "built-in image_gen",
+    "references": [
+      {
+        "title": "A054C919-4757-413F-9619-528399450AD7.JPG",
+        "url": "https://drive.google.com/file/d/1WklLM37aVeyC-LVBKMjHG0jtnE1QTy44/view"
+      },
+      {
+        "title": "476B1B1F-CC40-4D25-8D2A-36110CB3CAEF.JPG",
+        "url": "https://drive.google.com/file/d/1i-Y7HG9gVuVaRjoYiQQCzQs1kPUj1Ayt/view"
+      }
+    ],
+    "prompt": "Use case: product-mockup. Asset type: transparent product cutout for Megui website carousel. Refined hyperrealistic 3D catalog render, isolated on truly transparent alpha background, soft neutral studio lighting, no ground, no podium, no backdrop, no ground shadow, no rectangular plate, no people, no headline. Landscape 3:2 composition tightly filled with the products but leave 7% safe margin all edges. Products crisp detailed premium materials, coherent correct geometry. Recreate exactly the two black Echo Pop Alexa speakers from these two real work photographs, same half-spherical rounded wedge shape, flat circular black fabric speaker face, black rear shell with three molded buttons and lightbar. Show two views together: at upper left a unit rear-facing to clearly display the original white imprint from the reference; lower right a front-facing unit showing the black fabric and subtle cyan lightbar. Preserve the ORIGINAL print on rear unit verbatim: bold 'Senac' with small superscript 'X', below 'NaSemanaS', same typographic layout as reference. Do not substitute the generic Senac orange logo; this is the SenacX event mark on the real product. NO wooden table, boxes, hands or background from references. Both units similar size, arranged diagonal with slight overlap."
+  },
+  {
+    "asset": "img/inicio/powerbank-fones-intra-3d-v1.webp",
+    "type": "recriação de produto em 3D",
+    "generator": "built-in image_gen",
+    "references": [
+      "static/img/logo-megui-oficial.png"
+    ],
+    "prompt": "Use case: precise-object-edit. Website carousel transparent product cutout. Edit reference 1: REPLACE the entire large over-ear HEADPHONE with a SMALL TRUE WIRELESS IN-EAR EARBUD SET: two tiny lilac silicone-tipped earbuds with short stems, one resting inside an open pocket-sized oval lilac charging case, the other floating naturally just above the other charging slot to show the tiny eartip. KEEP the white Megui power bank and its accurate logo, USB ports and LEDs. Charging case about HALF the power bank length, earbuds each about one-sixth the powerbank length, realistic small product sizes. Both power bank and earbud case MUST be dominant and clearly readable: arrange white power bank upright leaning at rear right and lilac open charging case in front left with the two small earbuds. Small official Megui logo from reference2 printed on case front. Refined realistic 3D studio product render, transparent alpha background, no floor, podium, backdrop, shadows, no people, no headline or extra text. Wide 3:2 composition centered and closely framed with 8% safe margins. Absolutely no headphones, no headband, no over-ear earcups."
+  },
+  {
+    "asset": "img/inicio/kit-professores-3d-v1.webp",
+    "type": "recriação de produto em 3D",
+    "generator": "built-in image_gen",
+    "references": [
+      "static/img/logo-megui-oficial.png"
+    ],
+    "prompt": "Use case: product-mockup. Asset type: transparent product cutout for Megui website carousel. Refined hyperrealistic 3D catalog render, isolated on truly transparent alpha background, soft neutral studio lighting, no ground, no podium, no backdrop, no ground shadow, no rectangular plate, no people, no headline. Landscape 3:2 composition tightly filled with the products but leave 7% safe margin all edges. Products crisp detailed premium materials, coherent correct geometry. Create a thoughtful teacher appreciation gift kit consisting of natural cream canvas tote bag upright behind, a lilac spiral notebook in front left, a white ceramic mug in front right and a slim lilac pen lying diagonally across notebook. Coordinated lilac, cream and deep plum. Bag printed with a delicate lilac line drawing of an open book with tiny butterfly and clear Portuguese inscription 'Ensinar transforma.' Mug has the same inscription and butterfly. Notebook has a discreet small Megui logo matching reference image in bottom corner and the single word 'Ideias' on cover. No ribbons, no flowers, no additional props. All four products fully visible, balanced studio composition suitable as product cutout, no floor, no ground shadow."
+  }
+]
