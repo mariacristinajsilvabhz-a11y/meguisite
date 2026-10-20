@@ -13,8 +13,8 @@
 .services-discovery .services-heading-story p{font-size:15px;line-height:1.85;margin:0;color:#634b6d}
 .services-discovery .services-heading-story strong{font-weight:600;color:#41294c}
 .services-discovery .services-collection{position:relative}
-.services-discovery .services-thread{position:absolute;inset:14px -3% auto;width:106%;height:800px;fill:none;stroke:#774e8e;stroke-width:1;stroke-dasharray:3 5;opacity:.16;pointer-events:none}
-.services-discovery .services-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:38px 34px;position:relative;z-index:1;padding-top:18px}
+.services-discovery .services-thread{position:absolute;inset:14px -3% auto;width:106%;height:660px;fill:none;stroke:#774e8e;stroke-width:1;stroke-dasharray:3 5;opacity:.16;pointer-events:none}
+.services-discovery .services-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:52px 34px;position:relative;z-index:1;padding-top:18px}
 .services-discovery .service-item{--lift:0px;--tilt-x:0deg;--tilt-y:0deg;--drift-x:0px;--drift-y:0px;display:block;min-width:0;text-decoration:none;color:inherit;outline-offset:8px;border-radius:12px;padding:0 0 8px;touch-action:manipulation;-webkit-tap-highlight-color:#86569e22}
 .services-discovery .service-item:nth-child(4n+2){padding-top:26px}
 .services-discovery .service-item:nth-child(4n+4){padding-top:15px}
@@ -36,22 +36,13 @@
 .services-discovery .service-item-kits .service-object{height:211px;bottom:3px;rotate:-6deg}
 .services-discovery .service-item-tech .service-object{height:214px;bottom:2px;rotate:6deg}
 .services-discovery .service-item-eventos .service-object{height:213px;bottom:4px;rotate:-5deg}
-.services-discovery .service-handnote{position:absolute;z-index:4;right:-4px;top:-28px;max-width:150px;color:#78548a;font:italic 400 21px/1.05 "Cormorant Garamond",Georgia,serif;transform:rotate(7deg);pointer-events:none}
-.services-discovery .service-handnote:after{content:"";display:block;width:25px;height:24px;margin:6px 0 0 18px;border-left:1px solid #926aa680;border-bottom:1px solid #926aa680;border-radius:0 0 0 100%;transform:rotate(-15deg)}
-.services-discovery .service-item-saquinhos .service-handnote{top:-28px;right:1px;transform:rotate(-6deg)}
-.services-discovery .service-item-copos .service-handnote{top:-28px;right:0;transform:rotate(6deg)}
-.services-discovery .service-item-eventos .service-handnote{top:-28px;right:0;transform:rotate(-5deg)}
-.services-discovery .service-info{text-align:left;position:relative;z-index:3;padding:0 5px}
-.services-discovery .service-kicker{display:block;font-size:10px;font-weight:700;letter-spacing:.08em;color:#79568a;margin-bottom:11px;line-height:1.5}
-.services-discovery .service-info h3{display:block;position:relative;font:700 25px/1.12 "Manrope",sans-serif;letter-spacing:-.045em;color:#35203f;margin:0 0 14px}
-.services-discovery .service-info h3 em{display:block;font:italic 400 1.22em/1.06 "Cormorant Garamond",Georgia,serif;letter-spacing:-.035em;color:#714687;overflow-wrap:anywhere;margin-top:1px}
-.services-discovery .service-info h3>span:first-child{display:block}
-.services-discovery .service-direction{position:absolute;right:0;top:3px;display:grid;place-items:center;width:29px;height:29px;border:1px solid #926ca540;border-radius:50%;font:400 17px/1 "DM Sans",sans-serif;color:#74468a;transition:transform .25s,background .25s,border-color .25s}
-.services-discovery .service-info p{font-size:17px;line-height:1.7;margin:0;color:#634c6f;max-width:31ch;text-wrap:pretty}
-.services-discovery .service-details{display:block;margin-top:13px;padding-top:10px;font-size:12px;font-weight:500;line-height:1.6;color:#78578b;position:relative}
-.services-discovery .service-details:before{content:"";position:absolute;left:0;top:0;width:28px;border-top:1px solid #9a78ac60}
-.services-discovery .service-item-malha .service-details{font-weight:700}
+.services-discovery .service-info{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:12px;position:relative;z-index:3;padding:0 2px}
+.services-discovery .service-info h3{min-width:0;font:700 clamp(22px,2.1vw,27px)/1.12 "Manrope",sans-serif;letter-spacing:-.05em;color:#35203f;margin:0}
+.services-discovery .service-info h3 em{display:block;font:italic 400 1.17em/1.08 "Cormorant Garamond",Georgia,serif;letter-spacing:-.035em;color:#714687;margin-top:4px}
+.services-discovery .service-open{position:relative;display:grid;place-items:center;min-width:47px;min-height:44px;padding:9px 12px;background:#dcc7e9;color:#503060;border:1px solid #bfa0d1;border-radius:5px 13px 13px 5px;box-shadow:0 3px 0 #bca0cb,0 6px 12px #6c438c0c;font:700 12px/1 "Manrope",sans-serif;transform:rotate(-3deg);transition:transform .25s,background .25s,box-shadow .25s}
+.services-discovery .service-open:before{content:"";position:absolute;inset:4px;border:1px dashed #9670aa70;border-radius:2px 9px 9px 2px;pointer-events:none}
 .services-discovery .service-item:focus-visible{outline:3px solid #75458d;--lift:-10px}
+.services-discovery .service-item:focus-visible .service-open{transform:rotate(0);background:#cdb0de}
 .services-discovery .services-footer{position:relative;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(300px,.8fr);align-items:center;gap:70px;margin-top:54px;padding:42px 0 12px;border-top:1px dashed #82589a50}
 .services-discovery .services-invitation-kicker{display:block;font:700 10px/1.6 "Manrope",sans-serif;letter-spacing:.12em;color:#79568a;margin-bottom:18px}
 .services-discovery .services-invitation h3{font:700 clamp(30px,3.2vw,43px)/1.12 "Manrope",sans-serif;letter-spacing:-.05em;color:#35203f;margin:0 0 19px}
@@ -72,21 +63,18 @@
  .services-discovery .service-item:hover{--lift:-12px}
  .services-discovery .service-item:hover .service-orb{transform:translateX(-50%) scale(1.05);box-shadow:0 18px 35px #61387920}
  .services-discovery .service-item:hover .service-object{filter:drop-shadow(0 23px 13px #3b234c35)}
- .services-discovery .service-item:hover .service-direction{transform:rotate(12deg);background:#dbc6e9;border-color:#a77fbf}
+ .services-discovery .service-item:hover .service-open{transform:rotate(0) translateY(-2px);background:#d1b6e1;box-shadow:0 5px 0 #bca0cb,0 8px 16px #6c438c15}
  .services-discovery .services-contact-button:hover{background:#ceb0e0;transform:rotate(0) translateY(-3px);box-shadow:0 7px 0 #b99dca,0 17px 30px #5b367522}
 }
 @media(max-width:1050px) and (min-width:701px){
  .services-discovery .services-heading{gap:40px}
- .services-discovery .services-grid{gap:32px 22px}
+ .services-discovery .services-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 42px}
  .services-discovery .services-footer{gap:30px;grid-template-columns:minmax(0,1fr) minmax(290px,1fr)}
  .services-discovery .service-visual{height:202px}
  .services-discovery .service-object{height:195px!important}
  .services-discovery .service-orb{width:140px!important}
  .services-discovery .service-item-copos .service-object-secondary{height:130px!important}
- .services-discovery .service-info h3{font-size:21px}
- .services-discovery .service-kicker{font-size:8px;letter-spacing:.05em}
- .services-discovery .service-info p{font-size:16px}
- .services-discovery .service-handnote{font-size:18px;max-width:130px;right:-5px}
+ .services-discovery .service-info h3{font-size:26px}
 }
 @media(max-width:700px){
  .home-cinema .services-discovery{padding:40px 0 35px}
@@ -109,15 +97,9 @@
  .services-discovery .service-object{height:166px!important;bottom:4px!important}
  .services-discovery .service-item-copos .service-object-secondary{height:110px!important}
  .services-discovery .service-floor-shadow{width:94px;bottom:0}
- .services-discovery .service-handnote{font-size:16px;max-width:120px;right:-2px;top:-28px!important}
- .services-discovery .service-handnote:after{width:14px;height:15px;margin:3px 0 0 14px}
- .services-discovery .service-info{padding:0}
- .services-discovery .service-kicker{font-size:9px;letter-spacing:.04em;margin-bottom:9px;min-height:27px}
- .services-discovery .service-info h3{font-size:clamp(18px,4.7vw,23px);margin-bottom:12px}
- .services-discovery .service-info h3 em{font-size:1.18em}
- .services-discovery .service-direction{width:22px;height:22px;font-size:13px}
- .services-discovery .service-info p{font-size:15px;line-height:1.65}
- .services-discovery .service-details{font-size:12px;line-height:1.65;margin-top:11px}
+ .services-discovery .service-info{padding:0;gap:10px}
+ .services-discovery .service-info h3{font-size:23px;margin:0}
+ .services-discovery .service-info h3 em{font-size:1.17em}
  .services-discovery .services-thread{display:none}
  .services-discovery .services-footer{grid-template-columns:1fr;gap:27px;margin-top:35px;padding-top:29px}
  .services-discovery .services-invitation-kicker{font-size:9px;margin-bottom:15px}
@@ -131,10 +113,29 @@
  .services-discovery .services-contact-caption{margin-left:12px}
 
 }
+@media(min-width:601px) and (max-width:700px){
+ .services-discovery .service-info{display:block}
+ .services-discovery .service-open{display:inline-grid;margin-top:15px;min-width:54px}
+}
+@media(max-width:600px){
+ .services-discovery .services-grid{grid-template-columns:1fr;gap:23px;padding-top:8px}
+ .services-discovery .service-item:nth-child(n){display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1fr);align-items:center;gap:20px;padding:0}
+ .services-discovery .service-visual{height:194px;margin:0}
+ .services-discovery .service-object{height:183px!important;bottom:4px!important}
+ .services-discovery .service-orb{width:124px!important;bottom:4px}
+ .services-discovery .service-item-copos .service-object-secondary{height:120px!important}
+ .services-discovery .service-info{display:block}
+ .services-discovery .service-info h3{font-size:clamp(22px,5.8vw,28px)}
+ .services-discovery .service-info h3 em{font-size:1.15em;line-height:1.1}
+ .services-discovery .service-open{display:inline-grid;min-width:60px;min-height:44px;font-size:13px;margin-top:17px}
+ .services-discovery .service-item:nth-child(even){grid-template-columns:minmax(0,1fr) minmax(0,.9fr)}
+ .services-discovery .service-item:nth-child(even) .service-visual{grid-column:2;grid-row:1}
+ .services-discovery .service-item:nth-child(even) .service-info{grid-column:1;grid-row:1;padding-left:12px}
+}
 @media(prefers-reduced-motion:reduce){
- .services-discovery .service-item,.services-discovery .service-orb,.services-discovery .service-object,.services-discovery .service-direction,.services-discovery .services-contact-button{transition:none!important}
+ .services-discovery .service-item,.services-discovery .service-orb,.services-discovery .service-object,.services-discovery .service-open,.services-discovery .services-contact-button{transition:none!important}
  .services-discovery .service-item{--lift:0px!important;--tilt-x:0deg!important;--tilt-y:0deg!important;--drift-x:0px!important;--drift-y:0px!important}
  .services-discovery .service-item:hover .service-orb{transform:translateX(-50%)}
- .services-discovery .service-direction{transform:none!important}
  .services-discovery .services-contact-button:hover{transform:rotate(-1deg)}
+ .services-discovery .service-item:hover .service-open{transform:rotate(-3deg)}
 }
