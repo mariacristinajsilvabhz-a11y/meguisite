@@ -21,10 +21,12 @@
   <link rel="stylesheet" href="{{ url_for('static',filename='css/product-studio.css',v='20261016-taxonomia-v5') }}">
   <link rel="stylesheet" href="{{ url_for('static',filename='css/product-cards.css',v='20261020-vitrine-v2') }}">
   {% block final_head %}{% endblock %}
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/experience-refinement.css',v='20261021-v1') }}">
 </head>
 <body{% if request.endpoint == 'home' %} class="home-cinema"{% elif request.endpoint == 'b2b' %} class="corporate-page"{% elif request.endpoint == 'events' %} class="events-page"{% elif request.endpoint in ['products', 'category'] %} class="catalog-experience"{% endif %}{% if request.endpoint not in ['home', 'products', 'category', 'product', 'create_art', 'events'] %} data-scroll-experience{% endif %}>
   {% from '_icons.html' import icon %}
   <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false"><defs><symbol id="megui-butterfly" viewBox="0 0 125 154">{% include '_brand_butterfly.html' %}</symbol></defs></svg>
+  <a class="skip-content" href="#main-content">Pular para o conteúdo</a>
   <div class="top-strip">Confecção própria • Malha & personalização • Empresas & eventos</div>
 
   <header class="site-header">
@@ -41,7 +43,7 @@
       <nav id="main-nav" class="main-nav" aria-label="Navegação principal">
         <a href="{{ url_for('home') }}" {% if request.endpoint == 'home' %}aria-current="page"{% endif %}>Início</a>
         <div class="nav-dropdown">
-          <a href="{{ url_for('products') }}">Produtos</a>
+          <a href="{{ url_for('products') }}" {% if request.endpoint in ['products','category','product'] %}aria-current="page"{% endif %}>Produtos</a>
           <div class="dropdown-panel">
             <a href="{{ url_for('textiles') }}">{{ icon('tshirt') }} Tecidos & materiais</a>
             {% for category in categories %}
@@ -79,7 +81,7 @@
       </div>
     </div>
   </div>
-  <main>{% block content %}{% endblock %}</main>
+  <main id="main-content" tabindex="-1">{% block content %}{% endblock %}</main>
   <div class="quote-toast" role="status" aria-live="polite" hidden>
     <span class="toast-symbol">{{ icon('check') }}</span>
     <div><strong>Adicionado ao orçamento</strong><span class="toast-name"></span></div>
@@ -95,7 +97,7 @@
       </div>
       <div>
         <h3>Explore</h3>
-        <a href="{{ url_for('products') }}">Produtos</a>
+        <a href="{{ url_for('products') }}" {% if request.endpoint in ['products','category','product'] %}aria-current="page"{% endif %}>Produtos</a>
         <a href="{{ url_for('b2b') }}">Empresas</a>
         <a href="{{ url_for('events') }}">Eventos</a>
         <a href="{{ url_for('videos') }}">Vídeos</a>
@@ -121,7 +123,7 @@
     <p class="video-load-error" role="status" hidden>Não foi possível carregar o vídeo. <a class="video-direct-link" href="#" target="_blank" rel="noopener">Abrir vídeo em outra aba ↗</a></p>
   </dialog>
   <script id="search-product-data" data-remote="{{ 'true' if hub_catalog_enabled else 'false' }}" type="application/json">{{ search_products|tojson }}</script>
-  <script src="{{ url_for('static', filename='js/site.js', v='carousel-20261020-v10') }}"></script>
+  <script src="{{ url_for('static', filename='js/site.js', v='20261021-review-v1') }}"></script>
   <script src="{{ url_for('static', filename='js/motion.js', v='quality-flight-20261016-v23') }}"></script>
   <a class="whatsapp-float" href="https://wa.me/{{ whatsapp_number }}?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20falar%20com%20a%20Megui." target="_blank" rel="noopener" aria-label="Falar com a Megui pelo WhatsApp — abre em outra aba"><span class="whatsapp-float-label">Fale com a Megui</span>{{ icon('whatsapp') }}</a>
   <button class="back-to-top" type="button" data-back-to-top aria-label="Voltar ao topo" hidden><span aria-hidden="true">↑</span></button>
@@ -130,3 +132,4 @@
   {% block extra_scripts %}{% endblock %}
 </body>
 </html>
+

@@ -7,6 +7,18 @@
     nav?.classList.toggle('open', open);
   });
 
+  const closeMenu = (restoreFocus = false) => {
+    menuButton?.setAttribute('aria-expanded', 'false');
+    nav?.classList.remove('open');
+    if (restoreFocus) menuButton?.focus();
+  };
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && nav?.classList.contains('open')) closeMenu(true);
+  });
+  document.addEventListener('click', event => {
+    if (nav?.classList.contains('open') && !nav.contains(event.target) && !menuButton.contains(event.target)) closeMenu();
+  });
+
   const normalize = value => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
   const shell = document.querySelector('[data-product-search]');
   const input = shell?.querySelector('input');
@@ -42,21 +54,20 @@
     const query = normalize(input.value);
     const terms = query.split(/\s+/).filter(Boolean);
     clear.hidden = !query;
-    if (grid && !remoteSearch) {
-      let visible = 0;
-      grid.querySelectorAll(':scope > [data-search]').forEach(item => {
-        const text = normalize(item.dataset.search);
-        item.hidden = !terms.every(term => text.includes(term));
-        if (!item.hidden) visible++;
-      });
-      if (empty) empty.hidden = visible !== 0;
-      const count = document.querySelector('#catalog-result-count');
-      count.textContent = `${visible} ${visible === 1 ? 'produto' : 'produtos'}${query ? ' nesta seleção' : ' para sua marca'}`;
-    }
     list.replaceChildren();
     active = -1;
+    matches = [];
     input.removeAttribute('aria-activedescendant');
     if (!query) { closeSearch(); return; }
+    const feedback = shell.querySelector('.search-feedback');
+    const allResults = shell.querySelector('.search-all-results');
+    const noResults = shell.querySelector('.search-no-results');
+    allResults.href = '/produtos?q=' + encodeURIComponent(input.value.trim());
+    noResults.hidden = true;
+    feedback.hidden = !remoteSearch;
+    feedback.textContent = 'Buscando produtos…';
+    dropdown.hidden = false;
+    input.setAttribute('aria-expanded', 'true');
     let candidates=products;
     if (remoteSearch) {
       searchRequest?.abort(); searchRequest=new AbortController();
@@ -65,9 +76,16 @@
         if (!response.ok) throw new Error('Busca indisponível');
         candidates=(await response.json()).produtos;
         if (version!==searchVersion)return;
-      } catch(error) { if(error.name==='AbortError')return;closeSearch();return; }
+      } catch(error) {
+        if(error.name==='AbortError' || version!==searchVersion)return;
+        feedback.hidden = false;
+        feedback.textContent = 'Não foi possível carregar as sugestões. Tente novamente ou abra a busca completa.';
+        return;
+      }
     }
+    feedback.hidden = true;
     matches = candidates.filter(product => {
+      if (remoteSearch) return true;
       const text = normalize(`${product.name} ${product.sku} ${product.line} ${product.short}`);
       return terms.every(term => text.includes(term));
     }).sort((a, b) => {
@@ -92,7 +110,7 @@
       const name = document.createElement('strong');
       name.textContent = product.name;
       const detail = document.createElement('small');
-      detail.textContent = `${product.line} · ${product.sku}`;
+      detail.textContent = 'Personalize com a sua identidade';
       description.append(name, detail);
       const arrow = document.createElement('span');
       arrow.className = 'suggestion-arrow';
@@ -106,7 +124,10 @@
     dropdown.hidden = false;
     input.setAttribute('aria-expanded', 'true');
   };
-  input?.addEventListener('input', () => { clearTimeout(searchTimer); searchTimer=setTimeout(renderSearch,220); });
+  input?.addEventListener('input', () => {
+    searchVersion++; searchRequest?.abort(); matches = []; closeSearch();
+    clearTimeout(searchTimer); searchTimer=setTimeout(renderSearch,220);
+  });
   input?.addEventListener('focus', renderSearch);
   clear?.addEventListener('click', () => { input.value = ''; renderSearch(); input.focus(); });
   input?.addEventListener('keydown', event => {
@@ -117,7 +138,7 @@
       if (!matches.length) return;
       select(event.key === 'ArrowDown' ? (active + 1) % matches.length : (active <= 0 ? matches.length - 1 : active - 1));
     }
-    if (event.key === 'Enter' && remoteSearch && active < 0) { event.preventDefault(); window.location.assign('/produtos?q='+encodeURIComponent(input.value)); return; }
+    if (event.key === 'Enter' && active < 0 && input.value.trim()) { event.preventDefault(); window.location.assign('/produtos?q='+encodeURIComponent(input.value)); return; }
     if (event.key === 'Enter' && !dropdown.hidden && matches.length) {
       event.preventDefault();
       window.location.assign(matches[active < 0 ? 0 : active].url);
@@ -147,6 +168,7 @@
         const response = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
         if (!response.ok) throw new Error('Falha no envio');
         const result = await response.json();
+        document.querySelector('.quote-button')?.setAttribute('aria-label', `Meu orçamento: ${result.count} itens`);
         document.querySelectorAll('.quote-count').forEach(count => { count.textContent = result.count; count.classList.remove('count-pop'); void count.offsetWidth; count.classList.add('count-pop'); });
         const added = document.createElement('a');
         added.className = 'mini-quote is-added';
@@ -310,3 +332,4 @@
   motion.addEventListener('change', () => { paused = motion.matches; schedule(); });
   show(0);
 })();
+

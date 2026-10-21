@@ -1,11 +1,13 @@
 {% from '_icons.html' import icon %}
-<div class="search-shell" data-product-search>
+<form class="search-shell" data-product-search action="{{ url_for('products') }}" method="get" role="search">
   {{ icon('search') }}
-  <input id="catalog-search" type="search" placeholder="O que você quer personalizar?" aria-label="Buscar produtos" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="search-suggestions" autocomplete="off">
+  <input id="catalog-search" name="q" type="search" placeholder="O que você quer personalizar?" aria-label="Buscar produtos" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="search-suggestions" autocomplete="off">
   <button class="search-clear" type="button" aria-label="Limpar busca" hidden>{{ icon('close') }}</button>
   <div class="search-dropdown" hidden>
     <span class="search-caption">PRODUTOS ENCONTRADOS</span>
     <ul id="search-suggestions" role="listbox" aria-label="Sugestões de produtos"></ul>
+    <p class="search-feedback" role="status" hidden></p>
+    <a class="search-all-results" href="{{ url_for('products') }}">Ver todos os resultados <span aria-hidden="true">→</span></a>
     <p class="search-no-results" hidden>Nenhum produto encontrado. Tente outro nome.</p>
   </div>
-</div>
+</form>

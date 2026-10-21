@@ -5,7 +5,7 @@ import json
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
 from decimal import Decimal, InvalidOperation
-from urllib.parse import quote
+from urllib.parse import quote, urlsplit
 from flask import Flask, render_template, request, redirect, url_for, session, abort, jsonify
 from hub_catalog import HubCatalog, CatalogUnavailable
 from textile_data import FABRICS
@@ -359,12 +359,50 @@ def add_to_quote(product_id):
         return jsonify(count=cart_count(), name=product["name"], quote_url=url_for("quote_view"))
 
     next_url = request.form.get("next")
-    return redirect(next_url or url_for("quote_view"))
+    if not next_url or not next_url.startswith("/") or next_url.startswith("//") or urlsplit(next_url).netloc or "\\" in next_url:
+        next_url = url_for("quote_view")
+    return redirect(next_url)
+
+
+def quote_items():
+    items = []
+    for saved in cart().values():
+        item = dict(saved)
+        try:
+            product = get_product(item['product_id'])
+        except CatalogUnavailable:
+            product = None
+        if product:
+            item['url'] = url_for('product', slug=product['slug'])
+            variant_id = str(item.get('cart_key', '')).partition(':')[2]
+            variant = next((v for v in product.get('variants', []) if str(v['id']) == variant_id), {})
+            item['image'] = variant.get('image') or product.get('image_url') or (url_for('static', filename=product['image']) if product.get('image') else '')
+        items.append(item)
+    return items
+
+
+def save_quote_edits():
+    quote_cart = cart()
+    for key, item in quote_cart.items():
+        if 'qty_' + key in request.form:
+            try:
+                item['qty'] = max(1, min(int(request.form['qty_' + key]), 99999))
+            except ValueError:
+                pass
+            item['notes'] = request.form.get('notes_' + key, '').strip()[:500]
+    session['quote_cart'] = quote_cart
+    session.modified = True
+
+
+@app.post('/orcamento/salvar')
+def save_quote():
+    save_quote_edits()
+    return render_template('quote.html', items=quote_items(), form_data=request.form, saved=True)
 
 
 @app.get("/orcamento")
 def quote_view():
-    items = list(cart().values())
+    items = quote_items()
     return render_template("quote.html", items=items)
 
 
@@ -389,11 +427,12 @@ def update_quote(product_id):
 
 @app.post("/orcamento/remover/<product_id>")
 def remove_from_quote(product_id):
+    save_quote_edits()
     quote_cart = cart()
     quote_cart.pop(str(product_id), None)
     session["quote_cart"] = quote_cart
     session.modified = True
-    return redirect(url_for("quote_view"))
+    return render_template("quote.html", items=quote_items(), form_data=request.form)
 
 
 @app.post("/orcamento/limpar")
@@ -405,6 +444,7 @@ def clear_quote():
 
 @app.post("/orcamento/whatsapp")
 def send_whatsapp():
+    save_quote_edits()
     name = request.form.get("name", "").strip()
     email = request.form.get("email", "").strip().lower()
     phone = re.sub(r"\D", "", request.form.get("phone", ""))
@@ -414,7 +454,7 @@ def send_whatsapp():
     if not 10 <= len(phone) <= 13: errors["phone"] = "Informe um telefone com DDD."
     if not cart(): errors["items"] = "Adicione pelo menos um produto."
     if errors:
-        return render_template("quote.html",items=list(cart().values()),form_errors=errors,form_data=request.form),422
+        return render_template("quote.html",items=quote_items(),form_errors=errors,form_data=request.form),422
     request_id=session.get("quote_request_id")
     if not request_id:
         request_id=str(uuid.uuid4())
@@ -422,7 +462,7 @@ def send_whatsapp():
     base=os.getenv("MEGUI_HUB_URL","").rstrip("/")
     token=os.getenv("SITE_CATALOG_TOKEN","")
     if not base or not token:
-        return render_template("quote.html",items=list(cart().values()),
+        return render_template("quote.html",items=quote_items(),
           config_error="Solicitação temporariamente indisponível. Tente novamente.",form_data=request.form),503
     payload={"request_id":request_id,"name":name,"email":email,"phone":phone,
       "company":request.form.get("company",""),"deadline":request.form.get("deadline",""),
@@ -433,13 +473,13 @@ def send_whatsapp():
         with urlopen(req,timeout=16) as response:
             info=json.load(response)
     except (HTTPError,URLError,TimeoutError,ValueError):
-        return render_template("quote.html",items=list(cart().values()),
+        return render_template("quote.html",items=quote_items(),
           config_error="Não foi possível registrar agora. Seus itens continuam salvos; tente novamente.",form_data=request.form),503
     number=info.get("numero","")
     if not WHATSAPP_NUMBER:
         return render_template(
             "quote.html",
-            items=list(cart().values()),
+            items=quote_items(),
             config_error="Configure a variável WHATSAPP_NUMBER no Render para ativar o envio.",
         )
 
@@ -522,3 +562,4 @@ if __name__ == "__main__":
 
 
 # deploy-sync: versão visual e comercial completa 2026-09-30
+
