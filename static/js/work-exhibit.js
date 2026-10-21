@@ -5,6 +5,7 @@
   const panels = [...root.querySelectorAll('.work-exhibit-panel')];
   const status = root.querySelector('.work-exhibit-status');
   const select = (choice, focus = false) => {
+    root.querySelector('[data-work-position]').textContent = String(choices.indexOf(choice) + 1).padStart(2, '0') + ' / ' + String(choices.length).padStart(2, '0');
     const panelId = choice.getAttribute('aria-controls');
     choices.forEach(button => button.setAttribute('aria-pressed', String(button === choice)));
     panels.forEach(panel => { panel.hidden = panel.id !== panelId; });
@@ -16,6 +17,25 @@
     if (bounds.left < rail.left) reel.scrollLeft -= rail.left - bounds.left + 8;
     else if (bounds.right > rail.right) reel.scrollLeft += bounds.right - rail.right + 8;
   };
+  root.querySelectorAll('[data-work-step]').forEach(button => {
+    button.addEventListener('click', () => {
+      const current = choices.findIndex(choice => choice.getAttribute('aria-pressed') === 'true');
+      select(choices[(current + Number(button.dataset.workStep) + choices.length) % choices.length]);
+    });
+  });
+  const dialog = root.querySelector('.work-exhibit-lightbox');
+  root.querySelectorAll('[data-work-enlarge]').forEach(button => {
+    button.addEventListener('click', () => {
+      const source = button.closest('.work-exhibit-panel').querySelector('.work-exhibit-image > img');
+      const enlarged = dialog.querySelector('img');
+      enlarged.src = source.currentSrc || source.src;
+      enlarged.alt = source.alt;
+      dialog.querySelector('h3').textContent = source.alt;
+      dialog.showModal();
+    });
+  });
+  dialog.querySelector('[data-work-close]').addEventListener('click', () => dialog.close());
+  dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
   choices.forEach((choice,index) => {
     choice.addEventListener('click', () => {
       select(choice);
