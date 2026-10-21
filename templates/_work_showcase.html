@@ -1,14 +1,36 @@
-<section class="section work-showcase" id="trabalhos-megui" aria-labelledby="work-showcase-title">
+<section class="work-exhibit" id="trabalhos-megui" aria-labelledby="work-showcase-title" data-work-exhibit>
  <div class="container">
-  <header class="work-showcase-heading"><div><span class="work-overline">DA NOSSA PRODUÇÃO PARA O MUNDO</span><h2 id="work-showcase-title">Cada marca,<br><em>uma história.</em></h2></div><div class="work-showcase-invite"><p>Tecnologia, malha, brindes e encontros.<br>Projetos com a identidade de quem confia na Megui.</p><a class="work-collection-link" href="{{ url_for('portfolio_view') }}"><span><small>CONHEÇA O ACERVO</small><strong>Explore os trabalhos</strong></span><b>{{ portfolio|length }}</b></a></div></header>
-  <div class="work-preview-grid">
-  {% for work in featured_works %}
-   <a class="work-preview {% if loop.first %}work-preview-feature{% endif %}" href="{{ url_for('portfolio_view') }}#{{ work.key if work.key else 'projetos' }}">
-    <div class="work-preview-photo"><img src="{{ url_for('static',filename=work.presentation_image|default(work.image)) }}" alt="{{ work.title }} — {{ 'produto personalizado' if work.presentation_image else 'foto do trabalho' }}" width="1000" height="750" loading="lazy" decoding="async"><span aria-hidden="true">0{{ loop.index }}</span></div>
-    <div class="work-preview-caption"><span>{{ work.kind }}</span><h3>{{ work.title }}</h3></div>
-   </a>
-  {% endfor %}
+  <header class="work-exhibit-header">
+   <div><span class="work-exhibit-eyebrow">MEGUI / TRABALHOS QUE GANHAM O MUNDO</span><h2 id="work-showcase-title">Tem Megui <span>por aí.</span></h2></div>
+   <div class="work-exhibit-intro"><p>Na roupa de uma equipe.<br>Na lembrança de um encontro.<br><strong>No detalhe que leva uma marca.</strong></p><a href="{{ url_for('portfolio_view') }}">Conheça nosso portfólio <span aria-hidden="true">↗</span></a></div>
+  </header>
+  <div class="work-exhibit-stage">
+   {% for work in featured_works %}
+   {% set title_parts = work.title.split(' · ') %}
+   <article class="work-exhibit-panel" id="work-panel-{{ loop.index }}" aria-labelledby="work-title-{{ loop.index }}" {% if not loop.first %}hidden{% endif %}>
+    <div class="work-exhibit-image"><img src="{{ url_for('static',filename=work.image) }}" alt="{{ work.title }}" loading="lazy" decoding="async" width="1000" height="1000"><span class="work-exhibit-photo-note">ACERVO MEGUI</span></div>
+    <div class="work-exhibit-story">
+     <div class="work-exhibit-index"><span>PROJETO EM FOCO</span><span>{{ '%02d'|format(loop.index) }} <i>/ {{ '%02d'|format(featured_works|length) }}</i></span></div>
+     <span class="work-exhibit-kind">{{ work.kind }}</span>
+     <h3 id="work-title-{{ loop.index }}">{{ title_parts[0] }}</h3>
+     {% if title_parts|length > 1 %}<p class="work-exhibit-piece">{{ title_parts[1] }}</p>{% endif %}
+     <p class="work-exhibit-description">{{ work.text }}</p>
+     <a class="work-exhibit-project" href="{{ url_for('portfolio_view',_anchor=work.key if work.key else 'projetos') }}"><span>Conhecer este trabalho</span><span aria-hidden="true">+</span></a>
+     <div class="work-exhibit-signature"><svg viewBox="0 0 125 154" aria-hidden="true"><use href="#megui-butterfly"></use></svg><span>Uma identidade.<br><strong>Um jeito de fazer.</strong></span></div>
+    </div>
+   </article>
+   {% endfor %}
   </div>
-  <div class="work-showcase-foot"><span>Do primeiro desenho ao trabalho pronto.</span><a href="{{ url_for('portfolio_view') }}#projetos">Veja os projetos e os registros do acervo</a></div>
+  <div class="work-exhibit-browse"><p>Outras marcas. <strong>Outras possibilidades.</strong></p><span>Escolha um trabalho abaixo</span></div>
+  <div class="work-exhibit-reel" aria-label="Escolha o trabalho em destaque">
+   {% for work in featured_works %}
+   <button type="button" class="work-exhibit-choice" data-work-choice="{{ loop.index }}" aria-pressed="{{ 'true' if loop.first else 'false' }}" aria-controls="work-panel-{{ loop.index }}" aria-label="Ver {{ work.title }}">
+    <span class="work-exhibit-thumb"><img src="{{ url_for('static',filename=work.image) }}" alt="" width="240" height="180" loading="lazy" decoding="async"></span>
+    <span class="work-exhibit-choice-name">{{ work.title.split(' · ')[0] }}</span><span class="work-exhibit-choice-type">{{ work.title.split(' · ')[1] if ' · ' in work.title else work.kind|lower }}</span>
+   </button>
+   {% endfor %}
+  </div>
+  <p class="work-exhibit-status sr-only" role="status" aria-live="polite"></p>
+  <div class="work-exhibit-end"><span>A próxima ideia pode ser a sua.</span><a href="https://wa.me/{{ whatsapp_number }}?text={{ 'Olá! Vi os trabalhos da Megui e quero conversar sobre um projeto personalizado.'|urlencode }}" target="_blank" rel="noopener">Vamos criar juntos <span aria-hidden="true">↗</span></a></div>
  </div>
 </section>
