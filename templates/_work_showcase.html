@@ -34,7 +34,7 @@
    </article>
    {% endfor %}
   </div>
-  <div class="work-exhibit-browse"><p>Outras marcas. <strong>Outras possibilidades.</strong></p><div class="work-exhibit-navigation"><span data-work-position>01 / {{ '%02d'|format(featured_works|length) }}</span><button type="button" data-work-step="-1" aria-label="Trabalho anterior"><svg viewBox="0 0 28 24" aria-hidden="true"><path d="M23 12H5m7-7-7 7 7 7"/></svg></button><button type="button" data-work-step="1" aria-label="Próximo trabalho"><svg viewBox="0 0 28 24" aria-hidden="true"><path d="M5 12h18m-7-7 7 7-7 7"/></svg></button></div></div>
+  <div class="work-exhibit-browse"><p>Outras marcas. <strong>Outras possibilidades.</strong></p><div class="work-exhibit-navigation"><span data-work-position>01 / {{ '%02d'|format(featured_works|length) }}</span><button type="button" data-work-step="-1" aria-label="Trabalho anterior"><svg viewBox="0 0 28 24" aria-hidden="true"><path d="M17 4 7 12l10 8 3-4.5-5-3.5 5-3.5Z"/></svg></button><button type="button" data-work-step="1" aria-label="Próximo trabalho"><svg viewBox="0 0 28 24" aria-hidden="true"><path d="m11 4 10 8-10 8-3-4.5 5-3.5-5-3.5Z"/></svg></button></div></div>
   <div class="work-exhibit-reel" aria-label="Escolha o trabalho em destaque">
    {% for work in featured_works %}
    <button type="button" class="work-exhibit-choice" data-work-choice="{{ loop.index }}" aria-pressed="{{ 'true' if loop.first else 'false' }}" aria-controls="work-panel-{{ loop.index }}" aria-label="Ver {{ work.title }}">
