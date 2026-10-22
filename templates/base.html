@@ -23,7 +23,7 @@
   {% block final_head %}{% endblock %}
   <link rel="stylesheet" href="{{ url_for('static',filename='css/experience-refinement.css',v='20261021-v1') }}">
 </head>
-<body{% if request.endpoint == 'home' %} class="home-cinema"{% elif request.endpoint == 'b2b' %} class="corporate-page"{% elif request.endpoint == 'events' %} class="events-page"{% elif request.endpoint in ['products', 'category'] %} class="catalog-experience"{% endif %}{% if request.endpoint not in ['home', 'products', 'category', 'product', 'create_art', 'events'] %} data-scroll-experience{% endif %}>
+<body{% if request.endpoint == 'home' %} class="home-cinema"{% elif request.endpoint == 'b2b' %} class="corporate-page"{% elif request.endpoint == 'events' %} class="events-page"{% elif request.endpoint in ['products', 'category'] %} class="catalog-experience"{% endif %}{% if request.endpoint not in ['home', 'products', 'category', 'product', 'create_art', 'outside_box', 'events'] %} data-scroll-experience{% endif %}>
   {% from '_icons.html' import icon %}
   <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false"><defs><symbol id="megui-butterfly" viewBox="0 0 125 154">{% include '_brand_butterfly.html' %}</symbol></defs></svg>
   <a class="skip-content" href="#main-content">Pular para o conteúdo</a>
@@ -60,11 +60,9 @@
       </nav>
 
       <div class="header-actions">
-        {% if config['MOCKUP_STUDIO_ENABLED'] %}
-        <a class="create-art-button" href="{{ url_for('create_art') }}" {% if request.endpoint == 'create_art' %}aria-current="page"{% endif %}>
-          {{ icon('create-art') }}<span>Criar arte</span>
+        <a class="create-art-button" href="{{ url_for('outside_box') }}" {% if request.endpoint == 'outside_box' %}aria-current="page"{% endif %}>
+          {{ icon('kit') }}<span>Fora da caixa</span>
         </a>
-        {% endif %}
         <a class="quote-button" href="{{ url_for('quote_view') }}" aria-label="Meu orçamento: {{ cart_count }} itens">
           {{ icon('cart') }} Orçamento
           <span class="quote-count">{{ cart_count }}</span>

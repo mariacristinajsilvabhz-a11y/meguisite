@@ -524,7 +524,12 @@ def send_whatsapp():
 
 @app.get("/criar-arte")
 def create_art():
-    return render_template("mockups.html")
+    return redirect(url_for("outside_box"))
+
+
+@app.get("/fora-da-caixa")
+def outside_box():
+    return render_template("outside_box.html")
 
 
 @app.get("/empresas-licitacoes")

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Fora da caixa — Projetos sob medida | Megui{% endblock %}
+{% block final_head %}<link rel="stylesheet" href="{{ url_for('static', filename='css/outside-box.css', v='1') }}">{% endblock %}
+{% block content %}
+<div class="outside-box">
+ <section class="outside-intro container">
+  <div class="outside-copy"><span class="outside-kicker">MEGUI / PROJETOS SOB MEDIDA</span><h1>Fora da caixa<span>.</span></h1><p class="outside-lead">Sua ideia não precisa caber no catálogo.</p><p>Uma peça diferente, um kit com a sua história ou algo que você ainda nem sabe como chamar. Conte para a gente: vamos explorar as possibilidades juntos.</p><a class="outside-start" href="#novo-projeto">Vamos criar juntos</a></div>
+  <div class="outside-label"><svg aria-hidden="true" viewBox="0 0 125 154"><use href="#megui-butterfly"/></svg><span>FEITO DE IDEIAS</span><strong>Você imagina.<br>A gente cria<br>com você.</strong><small>Do primeiro rascunho aos detalhes.</small></div>
+ </section>
+ <section class="outside-workspace container" aria-labelledby="project-heading">
+  <aside class="outside-guidance"><span class="outside-kicker">COMECE DO SEU JEITO</span><h2>Não precisa<br>ter tudo pronto.</h2><p>Uma referência, um problema para resolver ou só uma vontade de fazer diferente já é um começo.</p><ul><li>Uma peça com medidas ou materiais especiais</li><li>Um kit pensado para uma ocasião</li><li>Uma embalagem que faz parte do presente</li><li>Uma ideia que você não encontrou por aqui</li></ul><div class="outside-next"><h3>E depois?</h3><p>A conversa continua no WhatsApp. Nossa equipe avalia materiais, personalização, quantidade e prazo com você antes de preparar uma proposta.</p><p>Tem fotos, desenhos ou uma logo? Você pode enviar as referências por lá.</p></div></aside>
+  <form id="novo-projeto" class="outside-form" data-whatsapp="{{ whatsapp_number }}">
+   <span class="outside-kicker">SEU PRÓXIMO PROJETO</span><h2 id="project-heading">O que você tem em mente?</h2><p>Os campos com * são obrigatórios.</p>
+   <label for="project-idea">Conte sua ideia *<textarea id="project-idea" name="idea" required minlength="10" maxlength="1800" rows="5" placeholder="O que você gostaria de criar? Para quem é e como será usado?"></textarea></label>
+   <div class="outside-fields"><label for="project-quantity">Quantidade aproximada<input id="project-quantity" name="quantity" maxlength="80" placeholder="Ex.: 50 peças ou ainda não sei"></label><label for="project-deadline">Quando você precisa?<input id="project-deadline" name="deadline" maxlength="80" placeholder="Ex.: dezembro ou sem data definida"></label></div>
+   <label for="project-budget">Investimento que tem em mente <span>(opcional)</span><input id="project-budget" name="budget" maxlength="100" placeholder="Pode ser um valor total ou por peça"></label>
+   <div class="outside-contact"><h3>Como podemos chamar você?</h3><label for="project-name">Nome *<input id="project-name" name="name" autocomplete="name" required maxlength="100"></label><div class="outside-fields"><label for="project-email">E-mail *<input id="project-email" name="email" type="email" autocomplete="email" required maxlength="150"></label><label for="project-phone">Telefone / WhatsApp *<input id="project-phone" name="phone" type="tel" autocomplete="tel" required pattern="[+0-9() .-]{10,25}" title="Informe seu telefone com DDD." maxlength="25" placeholder="(31) 99999-9999"></label></div></div>
+   <button class="outside-submit" type="submit">Conversar sobre meu projeto</button><p class="outside-note">Você será direcionado ao WhatsApp com o resumo preenchido. Revise a mensagem e toque em enviar para iniciar a conversa.</p>
+   <noscript><p>Para preencher o resumo, ative o JavaScript ou <a href="https://wa.me/{{ whatsapp_number }}">converse diretamente no WhatsApp</a>.</p></noscript>
+  </form>
+ </section>
+</div>
+<script defer src="{{ url_for('static', filename='js/outside-box.js', v='1') }}"></script>
+{% endblock %}
