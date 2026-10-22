@@ -61,3 +61,7 @@ body.catalog-experience .product-grid.list-view .product-card.product-merch h3{m
  body.catalog-experience .product-grid .product-card.product-merch h3{font-size:15px}.catalog-assistance{display:block;font-size:13px;padding:20px 0 26px}.catalog-assistance a{margin-top:6px}
  body.catalog-experience .product-grid.list-view .product-card.product-merch{grid-template-columns:110px minmax(0,1fr)}
 }
+/* Mantém o campo de busca largo apesar das regras legadas de formulários. */
+.catalog-experience .catalog-query .catalog-search-field{display:block;min-width:0}
+.catalog-experience .catalog-query .catalog-search-field>div{display:flex;width:100%;gap:8px}
+.catalog-experience .catalog-query .catalog-search-field input{flex:1;width:100%;min-width:0;max-width:none}
