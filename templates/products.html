@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block title %}{% if active_category %}{{ active_category.name }}{% else %}Produtos{% endif %} — Megui{% endblock %}
-{% block final_head %}<link rel="stylesheet" href="{{ url_for('static',filename='css/catalog-discovery.css',v='20261022-compact-v2') }}">{% endblock %}
+{% block final_head %}<link rel="stylesheet" href="{{ url_for('static',filename='css/catalog-discovery.css',v='20261022-sidebar-v3') }}">{% endblock %}
 {% block content %}
 {% from '_icons.html' import icon %}
 <section class="catalog-desk" aria-labelledby="catalog-title">
@@ -12,12 +12,14 @@
 <section class="section catalog-section" id="escolher-produtos" aria-label="Catálogo de produtos">
   <div class="container catalog-layout">
     <nav class="filters" aria-label="Categorias de produtos">
+      <h2>Categorias</h2>
+      {% set category_icons = {'tecnologia':'electronics','casa-cozinha':'kitchen','cuidados-pessoais':'care','lazer-esportes':'sport','acessorios-utilidades':'keyring','pets':'paw'} %}
 
-      <a class="{% if not active_category %}active{% endif %}" href="{{ url_for('products') }}">Todos os produtos</a>
+      <a class="{% if not active_category %}active{% endif %}" href="{{ url_for('products') }}">{{ icon('grid') }} <span>Todos os produtos</span></a>
       {% for category in categories if category_counts.get(category.slug,1)>0 or (active_category and active_category.slug==category.slug) %}
-        <a class="{% if active_category and active_category.slug == category.slug %}active{% endif %}" data-category="{{ category.slug }}" href="{{ url_for('category', slug=category.slug) }}"><span>{{ category.name }}</span>{% if category.slug in category_counts %}<small>{{ category_counts[category.slug] }}</small>{% endif %}</a>
+        <a class="{% if active_category and active_category.slug == category.slug %}active{% endif %}" data-category="{{ category.slug }}" href="{{ url_for('category', slug=category.slug) }}">{{ icon(category_icons.get(category.slug, category.icon)) }} <span>{{ category.name }}</span>{% if category.slug in category_counts %}<small>{{ category_counts[category.slug] }}</small>{% endif %}</a>
       {% endfor %}
-      {% for collection in collections if collection.slug in ['corporativo','eventos'] %}<a class="{% if active_category and active_category.slug==collection.slug %}active{% endif %}" href="{{ url_for('category',slug=collection.slug) }}">{{ collection.name }}</a>{% endfor %}
+      {% for collection in collections if collection.slug in ['corporativo','eventos'] %}<a class="{% if active_category and active_category.slug==collection.slug %}active{% endif %}" href="{{ url_for('category',slug=collection.slug) }}">{{ icon('eventos' if collection.slug == 'eventos' else 'corporativo') }} <span>{{ collection.name }}</span></a>{% endfor %}
     </nav>
 
     <div class="catalog-results">
