@@ -7,9 +7,12 @@
 .catalog-eyebrow{font:700 10px/1.5 Manrope,sans-serif;letter-spacing:.14em;color:#816091}
 .catalog-desk h1{font:800 clamp(28px,3vw,43px)/1.15 Manrope,sans-serif;letter-spacing:-.05em;color:#29232f;margin:9px 0}
 .catalog-desk p{font:400 14px/1.6 'DM Sans',sans-serif;color:#706278;margin:0}
-.catalog-help{display:grid;gap:6px;flex-shrink:0;padding-left:24px;border-left:1px solid #d9c7e3;color:#77677f;font-size:12px;text-decoration:none}
-.catalog-help strong{display:flex;align-items:center;gap:24px;color:#704987;font:700 14px/1.5 Manrope,sans-serif}
-.catalog-help strong span{font-size:23px;color:#9671b0}
+.catalog-help{display:grid;gap:5px;flex-shrink:0;min-width:244px;padding:15px 18px 15px 22px;border:1px solid #c9add9;border-radius:18px 18px 6px 18px;background:#e9dcf0;color:#725e7c;font:500 11px/1.5 Manrope,sans-serif;text-decoration:none;box-shadow:0 6px 18px #59346f0a;transition:background .2s,border-color .2s,box-shadow .2s}
+.catalog-help strong{display:flex;align-items:center;justify-content:space-between;gap:24px;color:#4c315d;font:750 16px/1.5 Manrope,sans-serif;letter-spacing:-.025em}
+.catalog-help strong span{display:grid;place-items:center;width:34px;height:34px;border:1px solid #bfa1d0;border-radius:50%;background:transparent;font:400 25px/1 Manrope,sans-serif;color:#86589e;transition:transform .2s}
+.catalog-help:hover{background:#dfcce9;border-color:#aa83bf;box-shadow:0 8px 20px #59346f12}
+.catalog-help:hover strong span{transform:translate(2px,-2px)}
+@media(prefers-reduced-motion:reduce){.catalog-help,.catalog-help strong span{transition:none}.catalog-help:hover strong span{transform:none}}
 .catalog-experience .catalog-section{padding:0 0 32px;background:#f4eff6;scroll-margin-top:110px}
 .catalog-experience .catalog-layout{display:flex;flex-direction:column;gap:18px}
 .catalog-experience .catalog-layout .filters{position:static;display:flex;align-items:center;flex-wrap:nowrap;gap:6px;width:100%;max-height:none;overflow-x:auto;overflow-y:hidden;padding:10px 2px 14px;margin:0;border:0;border-bottom:1px solid #dfd2e7;border-radius:0;background:transparent;scrollbar-width:thin;scrollbar-color:#c6add5 transparent}
