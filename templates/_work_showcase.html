@@ -18,7 +18,7 @@
    {% for work in featured_works %}
    {% set title_parts = work.title.split(' · ') %}
    <article class="work-exhibit-panel" id="work-panel-{{ loop.index }}" aria-labelledby="work-title-{{ loop.index }}" {% if not loop.first %}hidden{% endif %}>
-    <div class="work-exhibit-image"><img src="{{ url_for('static',filename=work.image) }}" alt="{{ work.title }}" loading="lazy" decoding="async" width="1000" height="1000"><span class="work-exhibit-photo-note">ACERVO MEGUI <b>/ {{ '%02d'|format(loop.index) }}</b></span><button type="button" class="work-exhibit-enlarge" data-work-enlarge aria-label="Ampliar foto: {{ work.title }}"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6.5"/><path d="m15 15 5 5M7 10h6m-3-3v6"/></svg><span>Ver de perto</span></button></div>
+    <div class="work-exhibit-image"><img src="{{ url_for('static',filename=work.presentation_image|default(work.image)) }}" alt="{{ work.title }}" loading="lazy" decoding="async" width="1000" height="1000"><span class="work-exhibit-photo-note">ACERVO MEGUI <b>/ {{ '%02d'|format(loop.index) }}</b></span><button type="button" class="work-exhibit-enlarge" data-work-enlarge aria-label="Ampliar foto: {{ work.title }}"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6.5"/><path d="m15 15 5 5M7 10h6m-3-3v6"/></svg><span>Ver de perto</span></button></div>
     <div class="work-exhibit-story">
      <div class="work-exhibit-index"><span>PROJETO EM FOCO</span><span>{{ '%02d'|format(loop.index) }} <i>/ {{ '%02d'|format(featured_works|length) }}</i></span></div>
      <span class="work-exhibit-kind">{{ work.kind }}</span>
@@ -38,7 +38,7 @@
   <div class="work-exhibit-reel" aria-label="Escolha o trabalho em destaque">
    {% for work in featured_works %}
    <button type="button" class="work-exhibit-choice" data-work-choice="{{ loop.index }}" aria-pressed="{{ 'true' if loop.first else 'false' }}" aria-controls="work-panel-{{ loop.index }}" aria-label="Ver {{ work.title }}">
-    <span class="work-exhibit-thumb"><span class="work-exhibit-thumb-index" aria-hidden="true">{{ '%02d'|format(loop.index) }}</span><img src="{{ url_for('static',filename=work.image) }}" alt="" width="240" height="180" loading="lazy" decoding="async"></span>
+    <span class="work-exhibit-thumb"><span class="work-exhibit-thumb-index" aria-hidden="true">{{ '%02d'|format(loop.index) }}</span><img src="{{ url_for('static',filename=work.presentation_image|default(work.image)) }}" alt="" width="240" height="180" loading="lazy" decoding="async"></span>
     <span class="work-exhibit-choice-name">{{ work.title.split(' · ')[0] }}</span><span class="work-exhibit-choice-type">{{ work.title.split(' · ')[1] if ' · ' in work.title else work.kind|lower }}</span>
    </button>
    {% endfor %}

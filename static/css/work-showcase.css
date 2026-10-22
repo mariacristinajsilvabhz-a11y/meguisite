@@ -145,3 +145,9 @@
 .work-exhibit-navigation button:active{transform:scale(.95)}
 @media(max-width:650px){.work-exhibit-navigation{gap:8px;flex-shrink:0}.work-exhibit-navigation button{width:44px;height:44px}}
 @media(prefers-reduced-motion:reduce){.work-exhibit-navigation button{transition:none}}
+
+/* Preserve the complete studio framing across desktop and mobile. */
+.work-exhibit-image{background:#eee9f2}
+.work-exhibit-image>img{object-fit:contain;object-position:center}
+.work-exhibit-thumb{background:#eee9f2}
+.work-exhibit-thumb img{object-fit:contain;object-position:center}
