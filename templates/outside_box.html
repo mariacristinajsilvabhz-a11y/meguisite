@@ -1,24 +1,26 @@
 {% extends "base.html" %}
-{% block title %}Fora da caixa — Projetos sob medida | Megui{% endblock %}
-{% block final_head %}<link rel="stylesheet" href="{{ url_for('static', filename='css/outside-box.css', v='1') }}">{% endblock %}
+{% block title %}Fora da caixa — Vamos criar algo seu? | Megui{% endblock %}
+{% block final_head %}<link rel="stylesheet" href="{{ url_for('static', filename='css/outside-box.css', v='2') }}">{% endblock %}
 {% block content %}
 <div class="outside-box">
  <section class="outside-intro container">
-  <div class="outside-copy"><span class="outside-kicker">MEGUI / PROJETOS SOB MEDIDA</span><h1>Fora da caixa<span>.</span></h1><p class="outside-lead">Sua ideia não precisa caber no catálogo.</p><p>Uma peça diferente, um kit com a sua história ou algo que você ainda nem sabe como chamar. Conte para a gente: vamos explorar as possibilidades juntos.</p><a class="outside-start" href="#novo-projeto">Vamos criar juntos</a></div>
-  <div class="outside-label"><svg aria-hidden="true" viewBox="0 0 125 154"><use href="#megui-butterfly"/></svg><span>FEITO DE IDEIAS</span><strong>Você imagina.<br>A gente cria<br>com você.</strong><small>Do primeiro rascunho aos detalhes.</small></div>
+  <div><span class="outside-kicker">MEGUI · ATELIÊ DE POSSIBILIDADES</span><h1>Ideias boas<br>não cabem <em>na caixa.</em></h1><p>Um presente que ninguém esperava. Uma peça que ainda não existe. Ou só aquela vontade de fazer diferente.</p><a class="outside-start" href="#novo-projeto">Vamos tirar sua ideia do papel <span aria-hidden="true">✳</span></a><small>Não precisa saber tudo. A gente descobre junto.</small></div>
+  <div class="idea-collage" aria-hidden="true"><div class="collage-note">e se a gente<br><em>inventasse?</em><svg viewBox="0 0 220 25"><path d="M8 17 Q100 2 210 12 M32 23 Q130 8 190 18"/></svg></div><div class="fabric-tag">FEITO DO<br><b>seu jeito.</b></div><span class="collage-spark">✳</span><svg class="collage-butterfly" viewBox="0 0 125 154"><use href="#megui-butterfly"/></svg><span class="collage-caption">um pouquinho de ousadia faz bem.</span></div>
  </section>
- <section class="outside-workspace container" aria-labelledby="project-heading">
-  <aside class="outside-guidance"><span class="outside-kicker">COMECE DO SEU JEITO</span><h2>Não precisa<br>ter tudo pronto.</h2><p>Uma referência, um problema para resolver ou só uma vontade de fazer diferente já é um começo.</p><ul><li>Uma peça com medidas ou materiais especiais</li><li>Um kit pensado para uma ocasião</li><li>Uma embalagem que faz parte do presente</li><li>Uma ideia que você não encontrou por aqui</li></ul><div class="outside-next"><h3>E depois?</h3><p>A conversa continua no WhatsApp. Nossa equipe avalia materiais, personalização, quantidade e prazo com você antes de preparar uma proposta.</p><p>Tem fotos, desenhos ou uma logo? Você pode enviar as referências por lá.</p></div></aside>
-  <form id="novo-projeto" class="outside-form" data-whatsapp="{{ whatsapp_number }}">
-   <span class="outside-kicker">SEU PRÓXIMO PROJETO</span><h2 id="project-heading">O que você tem em mente?</h2><p>Os campos com * são obrigatórios.</p>
-   <label for="project-idea">Conte sua ideia *<textarea id="project-idea" name="idea" required minlength="10" maxlength="1800" rows="5" placeholder="O que você gostaria de criar? Para quem é e como será usado?"></textarea></label>
-   <div class="outside-fields"><label for="project-quantity">Quantidade aproximada<input id="project-quantity" name="quantity" maxlength="80" placeholder="Ex.: 50 peças ou ainda não sei"></label><label for="project-deadline">Quando você precisa?<input id="project-deadline" name="deadline" maxlength="80" placeholder="Ex.: dezembro ou sem data definida"></label></div>
-   <label for="project-budget">Investimento que tem em mente <span>(opcional)</span><input id="project-budget" name="budget" maxlength="100" placeholder="Pode ser um valor total ou por peça"></label>
-   <div class="outside-contact"><h3>Como podemos chamar você?</h3><label for="project-name">Nome *<input id="project-name" name="name" autocomplete="name" required maxlength="100"></label><div class="outside-fields"><label for="project-email">E-mail *<input id="project-email" name="email" type="email" autocomplete="email" required maxlength="150"></label><label for="project-phone">Telefone / WhatsApp *<input id="project-phone" name="phone" type="tel" autocomplete="tel" required pattern="[+0-9() .-]{10,25}" title="Informe seu telefone com DDD." maxlength="25" placeholder="(31) 99999-9999"></label></div></div>
-   <button class="outside-submit" type="submit">Conversar sobre meu projeto</button><p class="outside-note">Você será direcionado ao WhatsApp com o resumo preenchido. Revise a mensagem e toque em enviar para iniciar a conversa.</p>
-   <noscript><p>Para preencher o resumo, ative o JavaScript ou <a href="https://wa.me/{{ whatsapp_number }}">converse diretamente no WhatsApp</a>.</p></noscript>
+ <section class="outside-workspace container" aria-label="Crie seu projeto">
+  <aside class="idea-board"><div class="board-top"><span class="outside-kicker">SUA IDEIA ESTÁ GANHANDO FORMA</span><span class="board-dot"></span></div>
+   <div class="idea-scene" aria-hidden="true"><span class="scene-star">✳</span><span class="scene-orbit"></span><svg class="idea-parcel" viewBox="0 0 360 300"><g class="parcel-lid"><path d="M55 108 176 52 306 105 185 165Z" fill="#d7b9ec" stroke="#795694" stroke-width="2"/><path d="m116 80 128 57 26-13-126-56Z" fill="#f5e49c"/></g><path d="m55 119 130 57 121-60v111l-121 62-130-58Z" fill="#b58acd" stroke="#795694" stroke-width="2"/><path d="m185 176 121-60v111l-121 62Z" fill="#9871b5"/><path d="m116 146 28 12v111l-28-12Z" fill="#f5e49c"/><path d="m70 137 102 45v85L70 223Z" fill="none" stroke="#f6eafa" stroke-dasharray="4 5"/><text x="198" y="221" fill="#fff5ff" font-size="18" font-family="sans-serif" transform="rotate(-26 198 221)">MEGUI</text></svg><span class="parcel-sticker">sua próxima<br><b>boa ideia</b></span><svg class="scene-butterfly" viewBox="0 0 125 154"><use href="#megui-butterfly"/></svg></div>
+   <p id="board-caption">Tudo começa com um “e se…”.</p><div id="idea-tags" class="idea-tags" aria-label="Suas escolhas"></div><p class="board-foot">Você traz a vontade.<br>A Megui entra com as possibilidades.</p>
+  </aside>
+  <form id="novo-projeto" class="outside-form" data-whatsapp="{{ whatsapp_number }}" novalidate>
+   <div class="journey-top"><span id="step-count">01 / 07</span><span id="step-label">A faísca</span><span>NO SEU RITMO</span></div><div class="journey-track" aria-hidden="true"><span id="journey-fill"></span></div>
+   <div id="question-panel"></div><p id="step-error" class="step-error" role="alert"></p>
+   <div class="journey-controls"><button type="button" id="previous-step" class="previous-step" hidden>Voltar</button><button type="button" id="next-step" class="outside-submit">Continuar <span aria-hidden="true">✳</span></button></div>
+   <p class="outside-note" id="journey-note">Uma escolha de cada vez. Você pode mudar de ideia.</p>
+   <noscript><p>Ative o JavaScript para explorar as perguntas ou <a href="https://wa.me/{{ whatsapp_number }}">converse diretamente com a Megui no WhatsApp</a>.</p></noscript>
   </form>
  </section>
+ <div class="outside-after container"><span aria-hidden="true">✳</span><p><strong>Da ideia à possibilidade real.</strong> Depois, nossa equipe conversa com você sobre materiais, personalização, quantidades e prazos. O projeto e o orçamento são definidos juntos.</p></div>
 </div>
-<script defer src="{{ url_for('static', filename='js/outside-box.js', v='1') }}"></script>
+<script defer src="{{ url_for('static', filename='js/outside-box.js', v='2') }}"></script>
 {% endblock %}
