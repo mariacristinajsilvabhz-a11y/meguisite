@@ -39,7 +39,7 @@
  <div class="uniform-gallery" role="tablist" aria-label="Explore as linhas de uniformes">
  {% for key,label,ico,title,description,img,img2,alt,alt2,detail in looks %}
   <button type="button" role="tab" class="uniform-piece uniform-piece-{{ key }}" id="tab-{{ key }}" aria-controls="look-{{ key }}" aria-selected="{{ 'true' if loop.first else 'false' }}" tabindex="{{ '0' if loop.first else '-1' }}">
-   <span class="uniform-index" aria-hidden="true">0{{ loop.index }}</span><span class="uniform-art"><img src="{{ url_for('static',filename='img/inicio/' ~ img) }}" alt="" loading="lazy" width="880" height="1100">{% if key == 'profissionais' %}<img src="{{ url_for('static',filename='img/inicio/' ~ img2) }}" alt="" loading="lazy" width="880" height="1100">{% endif %}</span>
+   <span class="uniform-art"><img src="{{ url_for('static',filename='img/inicio/' ~ img) }}" alt="" loading="lazy" width="880" height="1100">{% if key == 'profissionais' %}<img src="{{ url_for('static',filename='img/inicio/' ~ img2) }}" alt="" loading="lazy" width="880" height="1100">{% endif %}</span>
    <span class="uniform-label"><strong>{{ label }}</strong><span aria-hidden="true">+</span></span><small>{{ detail }}</small>
   </button>
  {% endfor %}
