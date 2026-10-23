@@ -1,5 +1,5 @@
 (() => {
-  const list = document.querySelector('.empresa-tabs');
+  const list = document.querySelector('.uniform-gallery');
   if (!list) return;
   const tabs = [...list.querySelectorAll('[role="tab"]')];
   const activate = tab => {

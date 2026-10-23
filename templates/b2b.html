@@ -2,8 +2,8 @@
 {% from '_icons.html' import icon %}
 {% block title %}Sua marca em cada detalhe — Empresas | Megui{% endblock %}
 {% block extra_head %}
-<link rel="stylesheet" href="{{ url_for('static',filename='css/b2b-atelier.css',v='20261023-negocios-01') }}">
-<script defer src="{{ url_for('static',filename='js/b2b-studio.js',v='20261023-negocios-01') }}"></script>
+<link rel="stylesheet" href="{{ url_for('static',filename='css/b2b-atelier.css',v='20261023-mostruario-02') }}">
+<script defer src="{{ url_for('static',filename='js/b2b-studio.js',v='20261023-mostruario-02') }}"></script>
 <link rel="stylesheet" href="{{ url_for('static',filename='css/mostruario.css',v='20261018-v1') }}">
 {% endblock %}
 {% block content %}
@@ -29,22 +29,26 @@
  <div class="container empresa-routes" aria-label="Nossas soluções"><a href="#colecoes">{{ icon('tshirt') }} Uniformes & malharia {{ icon('arrow') }}</a><a href="#presentes">{{ icon('brindes') }} Brindes & tecnologia {{ icon('arrow') }}</a><a href="#seu-negocio">{{ icon('corporativo') }} Soluções para sua empresa {{ icon('arrow') }}</a></div>
 </section>
 <section class="empresa-collections container" id="colecoes" aria-labelledby="collections-title">
- <div class="empresa-section-heading"><div><span class="empresa-kicker">VESTIR BEM É PARTE DO TRABALHO</span><h2 id="collections-title">Uma equipe.<br><em>Muitas possibilidades.</em></h2></div><p>Da recepção à produção, encontramos a peça que combina com a rotina da sua equipe.</p></div>
+ <div class="empresa-section-heading"><div><span class="empresa-kicker">VESTIR BEM É PARTE DO TRABALHO</span><h2 id="collections-title">Qual é o jeito<br><em>da sua equipe?</em></h2></div><p>Explore as peças. Escolha uma linha e descubra como levar sua marca para a rotina de quem faz acontecer.</p></div>
  {% set looks = [
  ('polos', 'Polos & camisetas', 'tshirt', 'Malha é a nossa especialidade.', 'Polos, camisetas e babylooks para o atendimento, a ação promocional ou o dia a dia. Conforto e identidade em cada peça.', 'polo.webp', 'babylook-manequim.webp', 'Polo preta personalizada', 'Babylook preta personalizada', 'Polos • Camisetas • Babylooks'),
  ('sociais', 'Camisas sociais', 'corporativo', 'Presença em cada atendimento.', 'Camisas de manga curta ou longa para escritórios, recepções e equipes comerciais. Uma apresentação alinhada à sua empresa.', 'social-manga-longa-manequim.webp', 'social-manga-curta-manequim.webp', 'Camisa social branca de manga longa', 'Camisa social lilás de manga curta', 'Manga curta • Manga longa'),
  ('jalecos', 'Jalecos', 'tshirt', 'Cuidado também na apresentação.', 'Jalecos personalizados para clínicas, laboratórios, estética e outras equipes. Consulte modelos, tecidos e opções para sua atividade.', 'jaleco-manequim.webp', none, 'Jaleco branco personalizado em manequim invisível', '', 'Clínicas • Laboratórios • Estética'),
  ('profissionais', 'Uniformes profissionais', 'tshirt', 'Para quem faz acontecer.', 'Aventais e uniformes para cozinhas, comércios e operações. Conte o que sua equipe precisa: ajudamos a definir o modelo e a personalização.', 'uniforme-chef-sem-fundo-v5.png', 'uniforme-industrial-sem-fundo-v5.png', 'Uniforme profissional para cozinha', 'Uniforme operacional', 'Gastronomia • Comércio • Operação')
  ] %}
- <div class="empresa-tabs" role="tablist" aria-label="Escolha uma linha de uniformes">
- {% for key,label,ico,title,description,img,img2,alt,alt2,detail in looks %}<button type="button" role="tab" id="tab-{{ key }}" aria-controls="look-{{ key }}" aria-selected="{{ 'true' if loop.first else 'false' }}" tabindex="{{ '0' if loop.first else '-1' }}">{{ icon(ico) }}{{ label }}</button>{% endfor %}
- </div>
- <div class="empresa-lookbook">
+ <div class="uniform-gallery" role="tablist" aria-label="Explore as linhas de uniformes">
  {% for key,label,ico,title,description,img,img2,alt,alt2,detail in looks %}
- <div class="empresa-panel" id="look-{{ key }}" role="tabpanel" aria-labelledby="tab-{{ key }}" tabindex="0" {% if not loop.first %}hidden{% endif %}>
-  <div class="empresa-panel-art {{ 'empresa-panel-photo' if key == 'profissionais' else '' }}"><span class="empresa-panel-disc" aria-hidden="true"></span><img src="{{ url_for('static',filename='img/inicio/' ~ img) }}" alt="{{ alt }}" loading="lazy" width="880" height="1100">{% if img2 %}<img src="{{ url_for('static',filename='img/inicio/' ~ img2) }}" alt="{{ alt2 }}" loading="lazy" width="880" height="1100">{% endif %}</div>
-  <div class="empresa-panel-copy"><span class="empresa-kicker">{{ detail }}</span><h3>{{ title }}</h3><p>{{ description }}</p>{{ talk('Olá! Quero cotar ' ~ label|lower ~ ' para minha equipe.', 'Quero essa linha para minha equipe') }}{% if key == 'polos' %}<a class="empresa-fabric-link" href="{{ url_for('textiles') }}">Conheça os tecidos e materiais {{ icon('arrow') }}</a>{% endif %}</div>
+  <button type="button" role="tab" class="uniform-piece uniform-piece-{{ key }}" id="tab-{{ key }}" aria-controls="look-{{ key }}" aria-selected="{{ 'true' if loop.first else 'false' }}" tabindex="{{ '0' if loop.first else '-1' }}">
+   <span class="uniform-index" aria-hidden="true">0{{ loop.index }}</span><span class="uniform-art"><img src="{{ url_for('static',filename='img/inicio/' ~ img) }}" alt="" loading="lazy" width="880" height="1100">{% if key == 'profissionais' %}<img src="{{ url_for('static',filename='img/inicio/' ~ img2) }}" alt="" loading="lazy" width="880" height="1100">{% endif %}</span>
+   <span class="uniform-label"><strong>{{ label }}</strong><span aria-hidden="true">+</span></span><small>{{ detail }}</small>
+  </button>
+ {% endfor %}
  </div>
+ <div class="uniform-details">
+ {% for key,label,ico,title,description,img,img2,alt,alt2,detail in looks %}
+  <div class="uniform-detail" id="look-{{ key }}" role="tabpanel" aria-labelledby="tab-{{ key }}" tabindex="0" {% if not loop.first %}hidden{% endif %}>
+   <div class="uniform-detail-title"><span class="empresa-kicker">ESCOLHIDA POR VOCÊ</span><h3>{{ title }}</h3></div><div class="uniform-detail-copy"><p>{{ description }}</p><div class="uniform-detail-actions"><a class="uniform-cta" href="https://wa.me/{{ whatsapp_number }}?text={{ ('Olá, Megui! Quero cotar ' ~ label|lower ~ ' para minha equipe.')|urlencode }}" target="_blank" rel="noopener">{{ icon('whatsapp') }} Vamos vestir minha equipe</a>{% if key == 'polos' %}<a class="uniform-material" href="{{ url_for('textiles') }}">Explorar tecidos</a>{% endif %}</div></div>
+  </div>
  {% endfor %}
  </div>
 </section>
