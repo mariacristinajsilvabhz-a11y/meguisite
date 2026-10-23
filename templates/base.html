@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="{{ url_for('static',filename='css/product-cards.css',v='20261020-vitrine-v2') }}">
   {% block final_head %}{% endblock %}
   <link rel="stylesheet" href="{{ url_for('static',filename='css/experience-refinement.css',v='20261021-v1') }}">
-  <link rel="stylesheet" href="{{ url_for('static',filename='css/header-modern.css',v='20261023-v1') }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/header-modern.css',v='20261023-v2') }}">
 </head>
 <body{% if request.endpoint == 'home' %} class="home-cinema"{% elif request.endpoint == 'b2b' %} class="corporate-page"{% elif request.endpoint == 'events' %} class="events-page"{% elif request.endpoint in ['products', 'category'] %} class="catalog-experience"{% endif %}{% if request.endpoint not in ['home', 'products', 'category', 'product', 'create_art', 'outside_box', 'events'] %} data-scroll-experience{% endif %}>
   {% from '_icons.html' import icon %}
