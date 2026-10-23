@@ -44,3 +44,33 @@
   cta.href='https://wa.me/'+cta.dataset.whatsapp+'?text='+encodeURIComponent(project.message);
  }));
 })();
+
+(() => {
+ const explorer=document.querySelector('.business-explorer');
+ if(!explorer)return;
+ const tabs=[...explorer.querySelectorAll('[role="tab"]')];
+ function activate(tab){tabs.forEach(item=>{const selected=item===tab;item.setAttribute('aria-selected',String(selected));item.tabIndex=selected?0:-1;document.getElementById(item.getAttribute('aria-controls')).hidden=!selected;});}
+ tabs.forEach((tab,index)=>{
+  tab.addEventListener('click',()=>activate(tab));
+  tab.addEventListener('keydown',event=>{
+   let next;
+   if(['ArrowRight','ArrowDown'].includes(event.key))next=(index+1)%tabs.length;
+   if(['ArrowLeft','ArrowUp'].includes(event.key))next=(index-1+tabs.length)%tabs.length;
+   if(event.key==='Home')next=0;
+   if(event.key==='End')next=tabs.length-1;
+   if(next===undefined)return;
+   event.preventDefault();activate(tabs[next]);tabs[next].focus();
+  });
+ });
+ explorer.querySelectorAll('[data-business-item]').forEach(button=>button.addEventListener('click',()=>{
+  const selected=button.getAttribute('aria-pressed')!=='true';
+  button.setAttribute('aria-pressed',String(selected));button.querySelector('span').textContent=selected?'✓':'+';
+  const panel=button.closest('.business-panel');
+  const items=[...panel.querySelectorAll('[data-business-item][aria-pressed="true"]')].map(item=>item.dataset.businessItem);
+  panel.querySelector('.business-feedback').textContent=items.length?`No seu projeto: ${items.join(' + ')}.`:'Pode combinar opções ou conversar para decidir.';
+  const message=`Olá, Megui! Meu segmento é ${panel.dataset.sector}. ${items.length?'Tenho interesse em: '+items.join(', ')+'.':'Quero conhecer as possibilidades.'} Podemos conversar sobre meu projeto?`;
+  const cta=panel.querySelector('.business-cta');
+  cta.href='https://wa.me/'+explorer.dataset.whatsapp+'?text='+encodeURIComponent(message);
+  cta.querySelector('span').textContent=items.length?'Conversar sobre minha seleção':'Planejar meu projeto';
+ }));
+})();

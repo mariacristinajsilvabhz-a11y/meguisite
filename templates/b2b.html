@@ -2,8 +2,8 @@
 {% from '_icons.html' import icon %}
 {% block title %}Sua marca em cada detalhe — Empresas | Megui{% endblock %}
 {% block extra_head %}
-<link rel="stylesheet" href="{{ url_for('static',filename='css/b2b-atelier.css',v='20261016-correcoes-04') }}">
-<script defer src="{{ url_for('static',filename='js/b2b-studio.js',v='20261016-correcoes-04') }}"></script>
+<link rel="stylesheet" href="{{ url_for('static',filename='css/b2b-atelier.css',v='20261023-negocios-01') }}">
+<script defer src="{{ url_for('static',filename='js/b2b-studio.js',v='20261023-negocios-01') }}"></script>
 <link rel="stylesheet" href="{{ url_for('static',filename='css/mostruario.css',v='20261018-v1') }}">
 {% endblock %}
 {% block content %}
@@ -53,10 +53,24 @@
  <div class="empresa-gift-art"><figure><img src="{{ url_for('static',filename='img/mostruario/kit-band-minas-estudio-v1.webp') }}" alt="Kit Band Minas com copos personalizados, bolsa e chaveiro" loading="lazy" width="1536" height="1024"><figcaption>Do primeiro dia na equipe à próxima conquista.</figcaption></figure><img class="empresa-gift-mug" src="{{ url_for('static',filename='img/empresas/caneca-novas-ideias-v1.webp') }}" alt="Caneca personalizada com mensagem de bom dia" loading="lazy" width="1254" height="1254"></div>
 </div></section>
 <section class="empresa-everyday container" id="seu-negocio" aria-labelledby="everyday-title">
- <div class="empresa-section-heading"><div><span class="empresa-kicker">PARA QUEM EMPREENDE. PARA QUEM CRESCE.</span><h2 id="everyday-title">Seu negócio tem espaço <em>aqui.</em></h2></div><p>Cada negócio tem uma identidade. Criamos personalizados que combinam com a sua equipe, sua rotina e seus objetivos.</p></div>
- <div class="empresa-stories">
- <a class="empresa-story empresa-story-food" href="https://wa.me/{{ whatsapp_number }}?text={{ 'Olá! Quero uniformes e aventais para meu comércio.'|urlencode }}" target="_blank" rel="noopener"><img src="{{ url_for('static',filename='img/empresas/equipe-pastelaria-v1.webp') }}" alt="Equipe de uma pastelaria com camisetas e aventais personalizados" loading="lazy" width="1536" height="1024"><span><strong>Quem atende com carinho,<br>também veste sua marca.</strong><span>Camisetas, aventais e uniformes {{ icon('arrow') }}</span></span></a>
- <div class="empresa-specials"><div class="empresa-transport"><img src="{{ url_for('static',filename='img/empresas/capas-encosto-transporte-v1.webp') }}" alt="Capas personalizadas para encostos de bancos de ônibus" loading="lazy" width="1536" height="1024"><div><span class="empresa-kicker">SUA MARCA EM MOVIMENTO</span><h3>Até no próximo destino.</h3><p>Capas de bancos, bolsas e personalizados para transporte e excursões.</p>{{ talk('Olá! Quero cotar capas para bancos de ônibus e personalizados para transporte.', 'Conversar sobre meu projeto') }}</div></div><div class="empresa-tenders">{{ icon('corporativo') }}<div><h3>Empresas, instituições e licitações.</h3><p>Envie a especificação, as quantidades e o prazo para avaliarmos sua demanda.</p>{{ talk('Olá, Megui! Tenho uma demanda institucional ou de licitação e quero enviar as especificações para avaliação.', 'Enviar especificações') }}</div></div></div>
+ <div class="empresa-section-heading"><div><span class="empresa-kicker">PARA QUEM EMPREENDE. PARA QUEM CRESCE.</span><h2 id="everyday-title">Seu negócio tem espaço <em>aqui.</em></h2></div><p>Escolha sua área e descubra o que combina com a sua rotina. Depois, junte as ideias que têm a cara da sua marca.</p></div>
+ {% set sectors = [
+ ('comercio','Comércio & gastronomia','tshirt','Quem atende com carinho também veste sua marca.','Da cozinha ao balcão, peças que acompanham o ritmo da equipe e deixam sua identidade presente em cada atendimento.','img/empresas/equipe-pastelaria-v1.webp','Equipe de pastelaria com camisetas e aventais personalizados',['Camisetas','Aventais','Uniformes']),
+ ('transporte','Transporte & turismo','bag','Sua marca vai junto. Em cada destino.','Capas para encostos, bolsas e personalizados para receber passageiros e acompanhar a próxima viagem.','img/empresas/capas-encosto-transporte-v1.webp','Capas personalizadas para encostos de ônibus',['Capas de encosto','Bolsas','Kits de viagem']),
+ ('institucional','Empresas & instituições','corporativo','Uma demanda. Muitas possibilidades.','Uniformes e personalizados para equipes, ações institucionais e licitações. Avaliamos os itens conforme as especificações, as quantidades e o prazo.','img/mostruario/kit-band-minas-estudio-v1.webp','Kit personalizado Band Minas com bolsa, copos e chaveiro',['Uniformes','Brindes corporativos','Tenho uma especificação'])
+ ] %}
+ <div class="business-explorer" data-whatsapp="{{ whatsapp_number }}">
+  <div class="business-selector"><span class="business-instruction">01 / QUAL É A SUA ÁREA?</span><div class="business-tabs" role="tablist" aria-label="Explore soluções por área">
+  {% for key,label,ico,title,description,img,alt,items in sectors %}<button type="button" role="tab" id="business-tab-{{ key }}" aria-controls="business-panel-{{ key }}" aria-selected="{{ 'true' if loop.first else 'false' }}" tabindex="{{ '0' if loop.first else '-1' }}">{{ icon(ico) }}<span>{{ label }}</span><span class="business-tab-dot" aria-hidden="true"></span></button>{% endfor %}
+  </div><a class="business-other" href="{{ url_for('outside_box') }}">Meu negócio é diferente {{ icon('butterfly') }}</a></div>
+  <div class="business-stage">
+  {% for key,label,ico,title,description,img,alt,items in sectors %}
+   <div class="business-panel" id="business-panel-{{ key }}" role="tabpanel" aria-labelledby="business-tab-{{ key }}" data-sector="{{ label }}" {% if not loop.first %}hidden{% endif %}>
+    <figure class="business-visual"><img src="{{ url_for('static',filename=img) }}" alt="{{ alt }}" loading="lazy" width="1536" height="1024"><figcaption>{{ icon('butterfly') }} Sua identidade, em cada detalhe.</figcaption><span class="business-number" aria-hidden="true">0{{ loop.index }}</span></figure>
+    <div class="business-copy"><span class="empresa-kicker">FEITO PARA A SUA ROTINA</span><h3>{{ title }}</h3><p>{{ description }}</p><span class="business-instruction">02 / O QUE COMBINA COM SEU PROJETO?</span><div class="business-items" role="group" aria-label="Selecione os itens para {{ label|lower }}">{% for item in items %}<button type="button" aria-pressed="false" data-business-item="{{ item }}"><span aria-hidden="true">+</span>{{ item }}</button>{% endfor %}</div><p class="business-feedback" aria-live="polite">Pode combinar opções ou conversar para decidir.</p><a class="business-cta" href="https://wa.me/{{ whatsapp_number }}?text={{ ('Olá, Megui! Quero conhecer as soluções para ' ~ label|lower ~ '. Podemos conversar?')|urlencode }}" target="_blank" rel="noopener">{{ icon('whatsapp') }}<span>Planejar meu projeto</span></a><small>Modelos, materiais e quantidades definidos com você.</small></div>
+   </div>
+  {% endfor %}
+  </div>
  </div>
 </section>
 <section class="empresa-trust container" aria-labelledby="trust-title"><span class="empresa-kicker">HISTÓRIAS QUE JÁ SE CRUZARAM COM A NOSSA</span><h2 id="trust-title">Marcas que confiaram na Megui.</h2><div class="empresa-brand-line">{% for brand in trusted_brands if brand.name in ['Band Minas','Sesc','Cemig','Resultado Final','Senac Minas','Future Pro'] %}<img src="{{ url_for('static',filename='img/clientes/' ~ brand.image) }}" alt="{{ brand.name }}" loading="lazy">{% endfor %}</div><a class="empresa-link" href="{{ url_for('portfolio_view') }}">Veja nossos trabalhos {{ icon('arrow') }}</a></section>
