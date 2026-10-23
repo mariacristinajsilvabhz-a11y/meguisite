@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="{{ url_for('static',filename='css/product-cards.css',v='20261020-vitrine-v2') }}">
   {% block final_head %}{% endblock %}
   <link rel="stylesheet" href="{{ url_for('static',filename='css/experience-refinement.css',v='20261021-v1') }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/header-modern.css',v='20261023-v1') }}">
 </head>
 <body{% if request.endpoint == 'home' %} class="home-cinema"{% elif request.endpoint == 'b2b' %} class="corporate-page"{% elif request.endpoint == 'events' %} class="events-page"{% elif request.endpoint in ['products', 'category'] %} class="catalog-experience"{% endif %}{% if request.endpoint not in ['home', 'products', 'category', 'product', 'create_art', 'outside_box', 'events'] %} data-scroll-experience{% endif %}>
   {% from '_icons.html' import icon %}
@@ -29,7 +30,7 @@
   <a class="skip-content" href="#main-content">Pular para o conteúdo</a>
   <div class="top-strip">Confecção própria • Malha & personalização • Empresas & eventos</div>
 
-  <header class="site-header">
+  <header class="site-header modern-header">
     <div class="container header-inner">
       <a class="brand" href="{{ url_for('home') }}" aria-label="Megui Personalizados - início">
         <img class="brand-official" src="{{ url_for('static', filename='img/logo-megui-oficial.png') }}" alt="Megui Personalizados">
@@ -61,7 +62,7 @@
 
       <div class="header-actions">
         <a class="create-art-button" href="{{ url_for('outside_box') }}" {% if request.endpoint == 'outside_box' %}aria-current="page"{% endif %}>
-          {{ icon('kit') }}<span>Fora da caixa</span>
+          {{ icon('butterfly') }}<span>Fora da caixa</span>
         </a>
         <a class="quote-button" href="{{ url_for('quote_view') }}" aria-label="Meu orçamento: {{ cart_count }} itens">
           {{ icon('cart') }} Orçamento
