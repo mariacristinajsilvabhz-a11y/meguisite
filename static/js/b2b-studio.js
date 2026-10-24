@@ -1,5 +1,5 @@
 (() => {
-  const list = document.querySelector('.uniform-gallery');
+  const list = document.querySelector('.uniform-studio-tabs');
   if (!list) return;
   const tabs = [...list.querySelectorAll('[role="tab"]')];
   const activate = tab => {
@@ -22,6 +22,15 @@
       event.preventDefault();
       activate(tabs[next]);
       tabs[next].focus();
+    });
+  });
+  document.querySelectorAll('[data-uniform-select]').forEach(button => {
+    button.addEventListener('click', () => {
+      const tab = tabs.find(item => item.id === 'uniform-tab-' + button.dataset.uniformSelect);
+      if (!tab) return;
+      activate(tab);
+      tab.focus({ preventScroll: true });
+      list.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'center' });
     });
   });
 })();

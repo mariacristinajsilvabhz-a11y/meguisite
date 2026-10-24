@@ -3,8 +3,11 @@
 {% block title %}Sua marca em cada detalhe — Empresas | Megui{% endblock %}
 {% block extra_head %}
 <link rel="stylesheet" href="{{ url_for('static',filename='css/b2b-atelier.css',v='20261023-mostruario-02') }}">
-<script defer src="{{ url_for('static',filename='js/b2b-studio.js',v='20261023-mostruario-02') }}"></script>
+<script defer src="{{ url_for('static',filename='js/b2b-studio.js',v='20261024-uniformes-01') }}"></script>
 <link rel="stylesheet" href="{{ url_for('static',filename='css/mostruario.css',v='20261018-v1') }}">
+{% endblock %}
+{% block final_head %}
+<link rel="stylesheet" href="{{ url_for('static',filename='css/uniform-studio.css',v='20261024-01') }}">
 {% endblock %}
 {% block content %}
 {% macro talk(text, label, primary=false) %}<a class="{{ 'empresa-button' if primary else 'empresa-link' }}" href="https://wa.me/{{ whatsapp_number }}?text={{ text|urlencode }}" target="_blank" rel="noopener">{{ icon('whatsapp') if primary else '' }}{{ label }}{{ icon('arrow') }}</a>{% endmacro %}
@@ -28,30 +31,7 @@
  </div>
  <div class="container empresa-routes" aria-label="Nossas soluções"><a href="#colecoes">{{ icon('tshirt') }} Uniformes & malharia {{ icon('arrow') }}</a><a href="#presentes">{{ icon('brindes') }} Brindes & tecnologia {{ icon('arrow') }}</a><a href="#seu-negocio">{{ icon('corporativo') }} Soluções para sua empresa {{ icon('arrow') }}</a></div>
 </section>
-<section class="empresa-collections container" id="colecoes" aria-labelledby="collections-title">
- <div class="empresa-section-heading"><div><span class="empresa-kicker">VESTIR BEM É PARTE DO TRABALHO</span><h2 id="collections-title">Qual é o jeito<br><em>da sua equipe?</em></h2></div><p>Explore as peças. Escolha uma linha e descubra como levar sua marca para a rotina de quem faz acontecer.</p></div>
- {% set looks = [
- ('polos', 'Polos & camisetas', 'tshirt', 'Malha é a nossa especialidade.', 'Polos, camisetas e babylooks para o atendimento, a ação promocional ou o dia a dia. Conforto e identidade em cada peça.', 'polo.webp', 'babylook-manequim.webp', 'Polo preta personalizada', 'Babylook preta personalizada', 'Polos • Camisetas • Babylooks'),
- ('sociais', 'Camisas sociais', 'corporativo', 'Presença em cada atendimento.', 'Camisas de manga curta ou longa para escritórios, recepções e equipes comerciais. Uma apresentação alinhada à sua empresa.', 'social-manga-longa-manequim.webp', 'social-manga-curta-manequim.webp', 'Camisa social branca de manga longa', 'Camisa social lilás de manga curta', 'Manga curta • Manga longa'),
- ('jalecos', 'Jalecos', 'tshirt', 'Cuidado também na apresentação.', 'Jalecos personalizados para clínicas, laboratórios, estética e outras equipes. Consulte modelos, tecidos e opções para sua atividade.', 'jaleco-manequim.webp', none, 'Jaleco branco personalizado em manequim invisível', '', 'Clínicas • Laboratórios • Estética'),
- ('profissionais', 'Uniformes profissionais', 'tshirt', 'Para quem faz acontecer.', 'Aventais e uniformes para cozinhas, comércios e operações. Conte o que sua equipe precisa: ajudamos a definir o modelo e a personalização.', 'uniforme-chef-sem-fundo-v5.png', 'uniforme-industrial-sem-fundo-v5.png', 'Uniforme profissional para cozinha', 'Uniforme operacional', 'Gastronomia • Comércio • Operação')
- ] %}
- <div class="uniform-gallery" role="tablist" aria-label="Explore as linhas de uniformes">
- {% for key,label,ico,title,description,img,img2,alt,alt2,detail in looks %}
-  <button type="button" role="tab" class="uniform-piece uniform-piece-{{ key }}" id="tab-{{ key }}" aria-controls="look-{{ key }}" aria-selected="{{ 'true' if loop.first else 'false' }}" tabindex="{{ '0' if loop.first else '-1' }}">
-   <span class="uniform-art"><img src="{{ url_for('static',filename='img/inicio/' ~ img) }}" alt="" loading="lazy" width="880" height="1100">{% if key == 'profissionais' %}<img src="{{ url_for('static',filename='img/inicio/' ~ img2) }}" alt="" loading="lazy" width="880" height="1100">{% endif %}</span>
-   <span class="uniform-label"><strong>{{ label }}</strong><span aria-hidden="true">+</span></span><small>{{ detail }}</small>
-  </button>
- {% endfor %}
- </div>
- <div class="uniform-details">
- {% for key,label,ico,title,description,img,img2,alt,alt2,detail in looks %}
-  <div class="uniform-detail" id="look-{{ key }}" role="tabpanel" aria-labelledby="tab-{{ key }}" tabindex="0" {% if not loop.first %}hidden{% endif %}>
-   <div class="uniform-detail-title"><span class="empresa-kicker">ESCOLHIDA POR VOCÊ</span><h3>{{ title }}</h3></div><div class="uniform-detail-copy"><p>{{ description }}</p><div class="uniform-detail-actions"><a class="uniform-cta" href="https://wa.me/{{ whatsapp_number }}?text={{ ('Olá, Megui! Quero cotar ' ~ label|lower ~ ' para minha equipe.')|urlencode }}" target="_blank" rel="noopener">{{ icon('whatsapp') }} Vamos vestir minha equipe</a>{% if key == 'polos' %}<a class="uniform-material" href="{{ url_for('textiles') }}">Explorar tecidos</a>{% endif %}</div></div>
-  </div>
- {% endfor %}
- </div>
-</section>
+{% include '_uniform_studio.html' %}
 <section class="empresa-gifts" id="presentes" aria-labelledby="gifts-title"><div class="container empresa-gift-grid">
  <div class="empresa-gift-copy"><span class="empresa-kicker">ALÉM DO UNIFORME</span><h2 id="gifts-title">Sua marca faz parte<br><em>dos bons momentos.</em></h2><p>Na mesa de trabalho, no café ou no presente de boas-vindas. Personalizados que acompanham clientes e colaboradores.</p><div class="empresa-gift-tags"><span>Agendas & papelaria</span><span>Garrafas & canecas</span><span>Alexa & power bank</span><span>Mochilas & kits</span></div>{{ talk('Olá, Megui! Quero montar um kit corporativo. Podemos conversar sobre os produtos e o orçamento?', 'Montar um kit com a Megui', true) }}<small>Produtos e personalização sujeitos à disponibilidade.</small></div>
  <div class="empresa-gift-art"><figure><img src="{{ url_for('static',filename='img/mostruario/kit-band-minas-estudio-v1.webp') }}" alt="Kit Band Minas com copos personalizados, bolsa e chaveiro" loading="lazy" width="1536" height="1024"><figcaption>Do primeiro dia na equipe à próxima conquista.</figcaption></figure><img class="empresa-gift-mug" src="{{ url_for('static',filename='img/empresas/caneca-novas-ideias-v1.webp') }}" alt="Caneca personalizada com mensagem de bom dia" loading="lazy" width="1254" height="1254"></div>

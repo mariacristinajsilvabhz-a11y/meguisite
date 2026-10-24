@@ -1,0 +1,57 @@
+{% set uniforms = [
+  ('corporativo', 'Corporativo', 'Sua identidade em cada atendimento.', 'Polos, camisetas e camisas sociais para recepções, escritórios, lojas e equipes comerciais. Combinamos a apresentação da sua marca com a rotina de quem veste.', ['Polos e babylooks', 'Camisas sociais', 'Camisetas'], [('polo.webp', 'Polo preta personalizada com detalhes lilás'), ('social-manga-curta-manequim.webp', 'Camisa social lilás de manga curta'), ('social-manga-longa-manequim.webp', 'Camisa social branca de manga longa')], 'Cores, modelagem e aplicação da marca pensadas em conjunto.'),
+  ('saude', 'Saúde e estética', 'Cuidado que também se veste.', 'Jalecos e conjuntos para clínicas, consultórios, laboratórios e espaços de beleza. Vamos definir os modelos e tecidos conforme a atividade da sua equipe.', ['Jalecos', 'Scrubs e conjuntos', 'Estética e bem-estar'], [('jaleco-manequim.webp', 'Jaleco branco personalizado'), ('uniforme-saude-v4.webp', 'Conjunto profissional azul-marinho com blusa e calça')], 'Comprimento, mangas e bolsos de acordo com o modelo escolhido.'),
+  ('gastronomia', 'Gastronomia', 'Da cozinha ao salão, a mesma identidade.', 'Dólmãs, aventais e camisetas para restaurantes, cafeterias, padarias e equipes de atendimento. Peças que fazem parte da experiência que seu negócio entrega.', ['Dólmãs', 'Aventais', 'Camisetas de atendimento'], [('uniforme-chef-sem-fundo-v5.png', 'Dólmã branca com avental preto e calça profissional'), ('polo.webp', 'Polo preta para equipe de atendimento')], 'Uma combinação de peças para cada função da sua equipe.'),
+  ('operacao', 'Operação e serviços', 'Para quem coloca tudo em movimento.', 'Macacões, camisas e calças profissionais para manutenção, logística e serviços. Conte as necessidades da sua operação para avaliarmos a composição do uniforme.', ['Macacões', 'Camisas profissionais', 'Calças'], [('uniforme-industrial-sem-fundo-v5.png', 'Macacão profissional azul-marinho'), ('social-manga-curta-manequim.webp', 'Camisa profissional de manga curta')], 'Modelos e materiais definidos conforme as necessidades da atividade.'),
+  ('equipes', 'Eventos e equipes', 'Uma equipe. Muitas formas de vestir.', 'Camisetas, polos e babylooks para ações promocionais, encontros e eventos. A malharia própria da Megui dá forma às cores e à personalidade do seu projeto.', ['Camisetas', 'Babylooks', 'Polos'], [('camiseta-megui-movimento-v3.webp', 'Camiseta preta com estampa Megui'), ('babylook-manequim.webp', 'Babylook preta personalizada'), ('polo.webp', 'Polo preta com acabamento lilás')], 'Estampa, cores e distribuição dos tamanhos planejadas com você.')
+] %}
+<section class="uniform-studio container" id="colecoes" aria-labelledby="collections-title">
+  <header class="uniform-studio-heading">
+    <div><span class="empresa-kicker">CONFECÇÃO E PERSONALIZAÇÃO</span><h2 id="collections-title">Uniformes com a<br><em>identidade da sua equipe.</em></h2></div>
+    <span class="uniform-signature" aria-hidden="true">{{ icon('butterfly') }}</span>
+    <p>Da escolha do tecido aos detalhes da personalização, cada peça faz parte da sua marca.</p>
+  </header>
+  <div class="uniform-studio-tabs" role="tablist" aria-label="Linhas de uniformes">
+    {% for key, label, title, description, types, photos, note in uniforms %}
+    <button type="button" role="tab" id="uniform-tab-{{ key }}" aria-controls="uniform-panel-{{ key }}" aria-selected="{{ 'true' if loop.first else 'false' }}" tabindex="{{ '0' if loop.first else '-1' }}">{{ label }}</button>
+    {% endfor %}
+  </div>
+  <div class="uniform-studio-layout">
+    <div class="uniform-studio-stage">
+      {% for key, label, title, description, types, photos, note in uniforms %}
+      <div class="uniform-studio-panel" id="uniform-panel-{{ key }}" role="tabpanel" aria-labelledby="uniform-tab-{{ key }}" tabindex="0" {% if not loop.first %}hidden{% endif %}>
+        <div class="uniform-studio-garments uniform-studio-garments--{{ key }}">
+          {% for photo, alt in photos %}<img src="{{ url_for('static',filename='img/inicio/' ~ photo) }}" alt="{{ alt }}" loading="lazy" decoding="async" width="880" height="1100">{% endfor %}
+        </div>
+        <div class="uniform-studio-copy">
+          <span class="empresa-kicker">{{ label }}</span><h3>{{ title }}</h3><p>{{ description }}</p>
+          <ul class="uniform-studio-types" aria-label="Opções da linha">{% for type in types %}<li>{{ type }}</li>{% endfor %}</ul>
+          <p class="uniform-studio-note">{{ icon('butterfly') }} {{ note }}</p>
+          <a class="uniform-studio-cta" href="https://wa.me/{{ whatsapp_number }}?text={{ ('Olá, Megui! Quero uniformizar minha equipe. Tenho interesse na linha ' ~ label ~ '. Podemos conversar sobre modelos, tecidos e personalização?')|urlencode }}" target="_blank" rel="noopener">{{ icon('whatsapp') }} Quero uniformizar minha equipe</a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <aside class="uniform-studio-quality" aria-labelledby="uniform-quality-title">
+      <span class="empresa-kicker">O CUIDADO DA MEGUI</span>
+      <h3 id="uniform-quality-title">Qualidade que aparece de perto.</h3>
+      <p class="uniform-quality-intro">Explore os detalhes que ajudam a construir uma boa peça.</p>
+      {% for title, photo, alt, description, expanded in [
+        ('Tecido e caimento', 'img/tecidos/malha-encorpada.webp', 'Textura da meia malha preta em detalhe', 'O toque, a estrutura e o caimento orientam a escolha. Ajudamos a encontrar o tecido que combina com o uso e a proposta do uniforme.', 'Na malharia, conheça as opções de meia malha para camisetas e babylooks. Para outras peças, consulte os tecidos disponíveis.'),
+        ('Cuidado em cada costura', 'img/tecidos/detalhe-costura-v9.webp', 'Detalhe da barra e da costura de uma peça lilás', 'Golas, barras e união das peças merecem a mesma atenção que a estampa. O acabamento também faz parte da apresentação da sua equipe.', 'Modelagem, mangas, golas e bolsos são definidos conforme a peça. Converse com a Megui sobre os detalhes do seu projeto.'),
+        ('Sua marca nos detalhes', 'img/inicio/polo.webp', 'Polo Megui com personalização no peito e detalhes lilás', 'Cores e personalização conectam o uniforme à sua identidade. Planejamos a posição e o tamanho da aplicação com você.', 'Envie sua logo e conte o resultado que imagina. Avaliamos a técnica de personalização adequada ao tecido e ao modelo escolhidos.')
+      ] %}
+      <details class="uniform-quality-detail">
+        <summary><span class="uniform-quality-photo"><img src="{{ url_for('static',filename=photo) }}" alt="{{ alt }}" loading="lazy" width="240" height="190"></span><span class="uniform-quality-text"><strong>{{ title }}</strong><span>{{ description }}</span><small><span class="uniform-quality-open">Explorar detalhe</span><span class="uniform-quality-close">Fechar detalhe</span><b aria-hidden="true">+</b></small></span></summary>
+        <p>{{ expanded }}</p>
+      </details>
+      {% endfor %}
+      <a class="uniform-studio-fabric" href="{{ url_for('textiles') }}">Conheça nossa malharia e os tecidos</a>
+    </aside>
+  </div>
+  <div class="uniform-studio-lineup" role="group" aria-label="Conheça outras linhas de uniformes">
+    {% for key, label, photo, caption in [('saude','Saúde e estética','jaleco-manequim.webp','Jalecos e conjuntos'), ('gastronomia','Gastronomia','uniforme-chef-sem-fundo-v5.png','Dólmãs e aventais'), ('operacao','Operação e serviços','uniforme-industrial-sem-fundo-v5.png','Uniformes operacionais'), ('equipes','Eventos e equipes','camiseta-megui-movimento-v3.webp','Camisetas para equipes')] %}
+    <button type="button" data-uniform-select="{{ key }}" aria-label="Explorar {{ label }}"><img src="{{ url_for('static',filename='img/inicio/' ~ photo) }}" alt="" loading="lazy" width="220" height="240"><span>{{ caption }}</span><small>Conhecer a linha</small></button>
+    {% endfor %}
+  </div>
+</section>
