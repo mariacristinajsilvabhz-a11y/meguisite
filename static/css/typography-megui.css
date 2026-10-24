@@ -1,0 +1,103 @@
+/* Identidade tipográfica Megui — títulos expressivos, leitura confortável. */
+:root {
+  --megui-font-body: "Sora", sans-serif;
+  --megui-font-display: "Space Grotesk", sans-serif;
+}
+html body {
+  font-family: var(--megui-font-body);
+}
+body :is(button, input, textarea, select) {
+  font-family: var(--megui-font-body);
+}
+/* A página já possui escalas de título próprias. Preservamos essas dimensões
+   e substituímos apenas a família tipográfica, inclusive em regras com font shorthand. */
+body main :is(h1, h2, h3, h4),
+body .site-footer :is(h2, h3, h4),
+body .video-dialog-heading :is(h1, h2) {
+  font-family: var(--megui-font-display) !important;
+  font-optical-sizing: auto;
+}
+/* As chamadas em destaque também precisam conversar com os títulos. */
+body main :is(.display-small, .section-heading h2) {
+  font-family: var(--megui-font-display) !important;
+}
+/* Legibilidade da navegação, sem ampliar os blocos nem perder espaço para a marca. */
+body .modern-header .main-nav {
+  font-family: var(--megui-font-body);
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1.45;
+  letter-spacing: -0.025em;
+  gap: 2px;
+}
+body .modern-header .main-nav > a,
+body .modern-header .nav-dropdown > a {
+  padding-inline: 10px;
+}
+body .modern-header .dropdown-panel a {
+  font-family: var(--megui-font-body);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+}
+body .site-header.modern-header .header-actions a.create-art-button,
+body .site-header.modern-header .header-actions a.quote-button {
+  font-family: var(--megui-font-body);
+  font-size: 13px;
+  font-weight: 650;
+  letter-spacing: -0.025em;
+}
+body .top-strip {
+  font-family: var(--megui-font-body);
+  font-size: 11px;
+}
+/* Evita que a fonte maior provoque aperto em notebooks. */
+@media (min-width: 1001px) and (max-width: 1350px) {
+  body .modern-header .header-inner {
+    gap: 12px;
+    width: calc(100% - 32px);
+  }
+  body .modern-header .main-nav {
+    font-size: 13px;
+    gap: 0;
+  }
+  body .modern-header .main-nav > a,
+  body .modern-header .nav-dropdown > a {
+    padding-inline: 7px;
+  }
+  body .modern-header .header-actions {
+    gap: 7px;
+    margin-left: 0;
+    padding-left: 12px;
+  }
+  body .site-header.modern-header .header-actions a.create-art-button,
+  body .site-header.modern-header .header-actions a.quote-button {
+    font-size: 12px;
+    padding-inline: 11px;
+  }
+}
+@media (max-width: 1000px) {
+  body .modern-header .main-nav {
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    gap: 5px;
+  }
+  body .modern-header .dropdown-panel a {
+    font-size: 14px;
+  }
+  body .site-header.modern-header .header-actions a.create-art-button {
+    font-size: 12px;
+  }
+  body .site-header.modern-header .header-actions a.quote-button {
+    font-size: 0;
+  }
+}
+@media (max-width: 480px) {
+  body .site-header.modern-header .header-actions a.create-art-button {
+    font-size: 11px;
+  }
+  body .top-strip {
+    font-size: 10px;
+  }
+}
