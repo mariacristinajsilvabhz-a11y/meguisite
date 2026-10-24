@@ -7,11 +7,11 @@
 ] %}
 <section class="uniform-studio container" id="colecoes" aria-labelledby="collections-title">
   <header class="uniform-studio-heading">
-    <div><span class="empresa-kicker">CONFECÇÃO E PERSONALIZAÇÃO</span><h2 id="collections-title">Agora imagine sua equipe<br><em>com a identidade certa.</em></h2></div>
+    <div><span class="empresa-kicker">CONFECÇÃO E PERSONALIZAÇÃO</span><h2 id="collections-title">Muitas rotinas.<br><em>A mesma atenção.</em></h2></div>
     <span class="uniform-signature" aria-hidden="true">{{ icon('butterfly') }}</span>
     <p>Explore as linhas e descubra possibilidades para sua rotina. Depois, olhe de perto o que faz diferença no tecido, na costura e na personalização.</p>
   </header>
-  <div class="uniform-studio-tabs" role="tablist" aria-label="Linhas de uniformes">
+  <div class="uniform-showroom"><div class="uniform-studio-tabs" role="tablist" aria-label="Linhas de uniformes">
     {% for key, label, title, description, types, photos, note in uniforms %}
     <button type="button" role="tab" id="uniform-tab-{{ key }}" aria-controls="uniform-panel-{{ key }}" aria-selected="{{ 'true' if loop.first else 'false' }}" tabindex="{{ '0' if loop.first else '-1' }}">{{ label }}</button>
     {% endfor %}
@@ -32,7 +32,10 @@
       </div>
       {% endfor %}
     </div>
-    <aside class="uniform-studio-quality" aria-labelledby="uniform-quality-title">
+
+  </div>
+</div></section>
+<section class="quality-chapter" aria-labelledby="uniform-quality-title"><div class="container">    <div class="uniform-studio-quality" aria-labelledby="uniform-quality-title">
       <span class="empresa-kicker">O CUIDADO DA MEGUI</span>
       <h3 id="uniform-quality-title">Qualidade que aparece de perto.</h3>
       <p class="uniform-quality-intro">Explore os detalhes que ajudam a construir uma boa peça.</p>
@@ -47,11 +50,4 @@
       </details>
       {% endfor %}
       <a class="uniform-studio-fabric" href="{{ url_for('textiles') }}">Conheça nossa malharia e os tecidos</a>
-    </aside>
-  </div>
-  <div class="uniform-studio-lineup" role="group" aria-label="Conheça outras linhas de uniformes">
-    {% for key, label, photo, caption in [('saude','Saúde e estética','jaleco-manequim.webp','Jalecos e conjuntos'), ('gastronomia','Gastronomia','uniforme-chef-sem-fundo-v5.png','Dólmãs e aventais'), ('operacao','Operação e serviços','uniforme-industrial-sem-fundo-v5.png','Uniformes operacionais'), ('equipes','Eventos e equipes','camiseta-megui-movimento-v3.webp','Camisetas para equipes')] %}
-    <button type="button" data-uniform-select="{{ key }}" aria-label="Explorar {{ label }}"><img src="{{ url_for('static',filename='img/inicio/' ~ photo) }}" alt="" loading="lazy" width="220" height="240"><span>{{ caption }}</span><small>Conhecer a linha</small></button>
-    {% endfor %}
-  </div>
-</section>
+    </div></div></section>

@@ -3,41 +3,36 @@
 {% block title %}O que sua equipe comunica? — Uniformes e empresas | Megui{% endblock %}
 {% block extra_head %}
 <link rel="stylesheet" href="{{ url_for('static',filename='css/b2b-atelier.css',v='20261023-mostruario-02') }}">
-<script defer src="{{ url_for('static',filename='js/b2b-studio.js',v='20261024-jornada-01') }}"></script>
+<script defer src="{{ url_for('static',filename='js/b2b-studio.js',v='20261024-design-02') }}"></script>
 <link rel="stylesheet" href="{{ url_for('static',filename='css/mostruario.css',v='20261018-v1') }}">
 {% endblock %}
 {% block final_head %}
-<link rel="stylesheet" href="{{ url_for('static',filename='css/empresa-journey.css',v='20261024-01') }}">
 <link rel="stylesheet" href="{{ url_for('static',filename='css/uniform-studio.css',v='20261024-01') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/empresa-journey.css',v='20261024-design-02') }}">
 {% endblock %}
 {% block content %}
 {% macro talk(text, label, primary=false) %}<a class="{{ 'empresa-button' if primary else 'empresa-link' }}" href="https://wa.me/{{ whatsapp_number }}?text={{ text|urlencode }}" target="_blank" rel="noopener">{{ icon('whatsapp') if primary else '' }}{{ label }}{{ icon('arrow') }}</a>{% endmacro %}
 <div class="empresa-studio">
-<section class="empresa-intro" aria-labelledby="empresa-title">
- <div class="container empresa-intro-grid">
-  <div class="empresa-intro-copy">
-   <span class="empresa-kicker">{{ icon('butterfly') }} UM NOVO OLHAR PARA A SUA EQUIPE</span>
-   <h1 id="empresa-title">Se sua equipe é a cara<br>da sua empresa,<br><em>o que ela comunica?</em></h1>
-   <p>Pense no primeiro atendimento, na reunião, na entrega. O uniforme que acompanha esses momentos representa a empresa que você está construindo?</p>
-   <div class="empresa-actions"><a class="empresa-button" href="#novo-olhar">Quero imaginar essa mudança {{ icon('butterfly') }}</a>{{ talk('Olá, Megui! Já sei o que preciso e quero um orçamento para minha empresa.', 'Já quero um orçamento') }}</div>
-   <div class="empresa-origin"><span class="empresa-origin-line"></span>Confecção própria em malharia <strong>desde 2020</strong></div>
+<section class="brand-opening" aria-labelledby="empresa-title">
+ <div class="container">
+  <div class="brand-opening-top"><span class="empresa-kicker">MEGUI / UNIFORMES & IDENTIDADE</span><span>Da primeira equipe à próxima fase.</span></div>
+  <h1 id="empresa-title">O que sua equipe veste<br><em>tem a cara da sua empresa?</em></h1>
+  <div class="brand-composition">
+   <div class="brand-opening-note"><span class="brand-handwritten">Imagine diferente.</span><p>Uma nova cor. Um caimento melhor. A sua marca presente em cada atendimento.</p><a class="empresa-button" href="#novo-olhar">Encontre seu novo uniforme {{ icon('butterfly') }}</a><a class="empresa-link" href="#colecoes">Já sei o que procuro</a></div>
+   <div class="brand-garments"><span class="brand-orbit" aria-hidden="true"></span><img class="brand-garment-back" src="{{ url_for('static',filename='img/inicio/social-manga-curta-manequim.webp') }}" alt="Camisa social lilás personalizada" fetchpriority="high" width="880" height="1100"><img class="brand-garment-front" src="{{ url_for('static',filename='img/inicio/polo.webp') }}" alt="Polo Megui preta com detalhes lilás" fetchpriority="high" width="1000" height="1000"><span class="brand-fabric-label">{{ icon('butterfly') }} sua marca,<br>em boa companhia.</span></div>
+   <div class="brand-materials"><a href="#uniform-quality-title" class="brand-swatch"><img src="{{ url_for('static',filename='img/tecidos/detalhe-costura-v9.webp') }}" alt="Costura da malha lilás em detalhe" width="240" height="240"><span>O cuidado está<br><strong>no detalhe.</strong><small>Explore o acabamento +</small></span></a><div class="brand-color-thread" aria-hidden="true"><i></i><i></i><i></i><span>cores que conversam</span></div></div>
   </div>
-  <div class="empresa-look" aria-label="Coleção de vestuário profissional">
-   <span class="empresa-look-word" aria-hidden="true">MEGUI</span>
-   <img class="empresa-look-polo" src="{{ url_for('static',filename='img/inicio/polo.webp') }}" alt="Polo preta com acabamento lilás" fetchpriority="high" width="1000" height="1000">
-   <img class="empresa-look-social" src="{{ url_for('static',filename='img/inicio/social-manga-curta-manequim.webp') }}" alt="Camisa social lilás em manequim invisível" fetchpriority="high" width="880" height="1100">
-   <span class="empresa-look-caption">Conforto para trabalhar.<br><strong>Identidade para se destacar.</strong></span>
-   <span class="empresa-look-butterfly" aria-hidden="true">{{ icon('butterfly') }}</span>
-  </div>
+  <div class="brand-opening-bottom"><span>CONFECÇÃO PRÓPRIA EM MALHARIA · DESDE 2020</span><a href="#novo-olhar">Uma mudança começa com um novo olhar <span aria-hidden="true">↓</span></a></div>
  </div>
 </section>
 <section class="empresa-discovery container" id="novo-olhar" aria-labelledby="discovery-title">
- <div class="empresa-discovery-heading"><span class="empresa-kicker">TALVEZ A MUDANÇA COMECE AQUI</span><h2 id="discovery-title">Sua empresa evoluiu.<br><em>A apresentação da equipe acompanhou?</em></h2><p>Às vezes, a vontade de renovar começa num detalhe: uma peça que perdeu a cor, uma equipe que cresceu ou uma marca que merece aparecer mais. Qual momento se parece com o seu?</p></div>
- <div class="empresa-moments" role="group" aria-label="O momento da sua equipe">
+ <div class="empresa-discovery-heading"><span class="empresa-kicker">TALVEZ A MUDANÇA COMECE AQUI</span><h2 id="discovery-title">Talvez você não precise<br><em>esperar mais para mudar.</em></h2><p>O primeiro uniforme, uma renovação ou novos integrantes. Toque no momento da sua empresa e explore um novo começo.</p></div>
+ <div class="moment-workbench"><div class="moment-controls"><span class="empresa-kicker">ESCOLHA SEU MOMENTO</span><div class="empresa-moments" role="group" aria-label="O momento da sua equipe">
   <button type="button" data-moment="primeiro" aria-pressed="false"><span>{{ icon('tshirt') }}</span><strong>Ainda não temos uniforme</strong><small>Quero imaginar minha equipe com a nossa identidade.</small></button>
   <button type="button" data-moment="renovar" aria-pressed="false"><span>{{ icon('butterfly') }}</span><strong>Está na hora de renovar</strong><small>Quero que as peças acompanhem a fase da empresa.</small></button>
   <button type="button" data-moment="crescer" aria-pressed="false"><span>{{ icon('corporativo') }}</span><strong>A equipe está crescendo</strong><small>Quero manter a identidade entre pessoas e funções.</small></button>
  </div>
+ </div><div class="moment-visual" data-moment-scene=""><span class="moment-visual-caption">UM NOVO CAPÍTULO PARA SUA MARCA</span><div class="moment-visual-products"><img src="{{ url_for('static',filename='img/inicio/polo.webp') }}" alt="Polo personalizada" width="1000" height="1000"><img src="{{ url_for('static',filename='img/inicio/social-manga-curta-manequim.webp') }}" alt="Camisa social personalizada" width="880" height="1100"><img src="{{ url_for('static',filename='img/inicio/babylook-manequim.webp') }}" alt="Babylook personalizada" width="880" height="1100"></div><span class="moment-scene-label" id="moment-scene-label">Sua equipe. Sua identidade.</span><span class="moment-seal" aria-hidden="true">{{ icon('butterfly') }}</span></div></div>
  <div class="empresa-discovery-answer"><div aria-live="polite" aria-atomic="true"><span class="empresa-kicker">DO DESEJO À POSSIBILIDADE</span><h3 id="moment-title">Imagine sua marca em movimento.</h3><p id="moment-copy">Do primeiro uniforme à renovação de uma equipe inteira, o ponto de partida é o mesmo: entender quem veste, como trabalha e o que sua marca quer comunicar.</p></div><a class="empresa-button" href="#colecoes">Encontrar o estilo da minha equipe {{ icon('butterfly') }}</a></div>
 </section>
 {% include '_uniform_studio.html' %}
@@ -69,7 +64,7 @@
 </section>
 
 <section class="empresa-next" aria-labelledby="next-title"><div class="container empresa-next-grid">
- <div class="empresa-next-copy"><span class="empresa-kicker">DO SEU JEITO. COM A MEGUI.</span><h2 id="next-title">Já imaginou sua equipe<br><em>nessa nova fase?</em></h2><p>Vamos transformar essa ideia em uma proposta. Conte o que precisa, a quantidade aproximada e quando pretende receber. A Megui ajuda a definir modelos, materiais e personalização.</p><div class="empresa-next-art" aria-hidden="true"><img src="{{ url_for('static',filename='img/inicio/babylook-manequim.webp') }}" alt="" width="880" height="1100" loading="lazy"><span>{{ icon('butterfly') }}</span><img src="{{ url_for('static',filename='img/empresas/caneca-novas-ideias-v1.webp') }}" alt="" width="1254" height="1254" loading="lazy"><span class="empresa-next-note">a sua marca<br><strong>ganha forma aqui.</strong></span></div></div>
+ <div class="empresa-next-copy"><span class="empresa-kicker">DO SEU JEITO. COM A MEGUI.</span><h2 id="next-title">Já imaginou sua equipe<br><em>nessa nova fase?</em></h2><p>Vamos transformar essa ideia em uma proposta. Conte o que precisa, a quantidade aproximada e quando pretende receber. A Megui ajuda a definir modelos, materiais e personalização.</p><div class="project-ticket"><span>PRÓXIMO PROJETO</span><strong>A sua empresa.</strong><span>{{ icon('butterfly') }} Feito com você. Feito pela Megui.</span></div></div>
  <div class="empresa-next-start"><h3>Vamos preparar seu orçamento?</h3><div class="empresa-project-options" role="group" aria-label="Escolha o tipo de projeto"><button type="button" class="is-selected" data-project="equipe" aria-pressed="true">{{ icon('tshirt') }} Vestir minha equipe {{ icon('arrow') }}</button><button type="button" data-project="presentes" aria-pressed="false">{{ icon('brindes') }} Presentear e surpreender {{ icon('arrow') }}</button><button type="button" data-project="especial" aria-pressed="false">{{ icon('create-art') }} Tenho uma ideia diferente {{ icon('arrow') }}</button></div><p class="empresa-project-description" id="project-description" aria-live="polite">Conte como é a rotina da sua equipe. A gente ajuda a escolher as peças e a personalização.</p><a class="empresa-button" id="empresa-project-cta" data-whatsapp="{{ whatsapp_number }}" href="https://wa.me/{{ whatsapp_number }}?text={{ 'Olá, Megui! Quero criar uniformes para minha equipe. Podemos conversar sobre os modelos e a personalização?'|urlencode }}" target="_blank" rel="noopener">{{ icon('whatsapp') }} Conversar sobre meu orçamento {{ icon('arrow') }}</a><span class="empresa-next-signature">Ainda não sabe todos os detalhes? Comece pelo que já imaginou.</span></div>
 </div></section>
 </div>

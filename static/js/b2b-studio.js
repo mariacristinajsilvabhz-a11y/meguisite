@@ -106,6 +106,10 @@
  buttons.forEach(button => button.addEventListener('click', () => {
   selected = button.dataset.moment;
   const moment = moments[selected];
+  const scene = document.querySelector('[data-moment-scene]');
+  if (scene) scene.dataset.momentScene = selected;
+  const sceneLabel = document.getElementById('moment-scene-label');
+  if (sceneLabel) sceneLabel.textContent = {primeiro:'O começo de uma identidade.',renovar:'Uma nova fase. Um novo olhar.',crescer:'Mais pessoas. A mesma marca.'}[selected];
   buttons.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
   title.textContent = moment.title;
   copy.textContent = moment.copy;
