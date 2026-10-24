@@ -7,7 +7,7 @@
  function show(url, color = '') {
   if (!url) return;
   if (main) main.src = url;
-  if (main) main.alt = originalAlt + (color ? ` — ${color}` : '');
+  if (main) main.alt = originalAlt + (color ? `, cor ${color}` : '');
   buttons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.catalogPhoto === url)));
  }
  buttons.forEach(button => button.addEventListener('click', () => {
