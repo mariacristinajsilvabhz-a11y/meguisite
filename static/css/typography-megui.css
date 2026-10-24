@@ -101,3 +101,31 @@ body .top-strip {
     font-size: 10px;
   }
 }
+
+/* Acabamento editorial: marcadores pequenos em vez de traços decorativos. */
+body :is(.section-heading, .page-hero, .contact-intro) > .eyebrow,
+body .section-heading > div > .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+body :is(.section-heading, .page-hero, .contact-intro) > .eyebrow::before,
+body .section-heading > div > .eyebrow::before {
+  content: "";
+  display: inline-block;
+  flex: 0 0 7px;
+  width: 7px;
+  height: 7px;
+  border: 0;
+  border-radius: 50%;
+  background: #ab80be;
+  box-shadow: none;
+  transform: none;
+}
+body .home-idea .idea-eyebrow::before,
+body #malharia .knit-overline::before,
+body #malharia .knit-discovery-eyebrow::before {
+  content: none;
+  display: none;
+}
+/* O efeito de borboleta da marca e os indicadores funcionais seguem intactos. */
