@@ -23,7 +23,7 @@
       photo.classList.toggle('is-active', selected);
       photo.setAttribute('aria-hidden', String(!selected));
     });
-    count.textContent = `0${index + 1} — 03`;
+    count.textContent = `0${index + 1} / 03`;
     name.textContent = names[model];
   }
   function sync() {
