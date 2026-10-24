@@ -83,3 +83,38 @@
   cta.querySelector('span').textContent=items.length?'Conversar sobre minha seleção':'Planejar meu projeto';
  }));
 })();
+
+// Preserve the visitor's stated need in uniform enquiries, without storing personal data.
+(() => {
+ const buttons = [...document.querySelectorAll('[data-moment]')];
+ const title = document.getElementById('moment-title');
+ const copy = document.getElementById('moment-copy');
+ const finalCta = document.getElementById('empresa-project-cta');
+ if (!buttons.length || !title || !copy || !finalCta) return;
+ const moments = {
+  primeiro: {title:'O primeiro uniforme já pode ter a sua cara.', copy:'Imagine as cores da sua marca no atendimento e nas entregas. Comece pelas funções da equipe: abaixo, explore os modelos e descubra como dar unidade sem abrir mão da rotina de cada pessoa.', message:'Quero desenvolver o primeiro uniforme da minha equipe.'},
+  renovar: {title:'Uma nova fase merece uma nova apresentação.', copy:'O que você gostaria de mudar: caimento, cores, conforto ou acabamento? Explore as peças abaixo e veja de perto os detalhes que podemos considerar na renovação.', message:'Quero renovar os uniformes da minha equipe.'},
+  crescer: {title:'Sua equipe cresce. A identidade continua.', copy:'Novas pessoas e funções podem pedir peças diferentes com a mesma linguagem. Explore as linhas abaixo e conte quais modelos sua equipe já usa para avaliarmos as possibilidades.', message:'Minha equipe está crescendo e quero planejar os uniformes.'}
+ };
+ let selected;
+ const uniformLinks = [...document.querySelectorAll('.uniform-studio-cta')];
+ const originals = new Map(uniformLinks.map(link => [link, link.href]));
+ function updateFinal() {
+  if (!selected || document.querySelector('[data-project][aria-pressed="true"]')?.dataset.project !== 'equipe') return;
+  finalCta.href = 'https://wa.me/' + finalCta.dataset.whatsapp + '?text=' + encodeURIComponent('Olá, Megui! ' + moments[selected].message + ' Podemos conversar sobre modelos, quantidades e prazo para um orçamento?');
+ }
+ buttons.forEach(button => button.addEventListener('click', () => {
+  selected = button.dataset.moment;
+  const moment = moments[selected];
+  buttons.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+  title.textContent = moment.title;
+  copy.textContent = moment.copy;
+  uniformLinks.forEach(link => {
+   const url = new URL(originals.get(link));
+   url.searchParams.set('text', url.searchParams.get('text') + ' ' + moment.message);
+   link.href = url.toString();
+  });
+  updateFinal();
+ }));
+ document.querySelectorAll('[data-project]').forEach(button => button.addEventListener('click', updateFinal));
+})();
