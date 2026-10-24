@@ -38,7 +38,7 @@ app.secret_key = os.environ.get("SECRET_KEY", "troque-esta-chave-no-render")
 PRIMARY_WHATSAPP = "5531994888250"
 ADMIN_PHONE = "5531993181939"
 CONTACT_EMAIL = "contatomegui@gmail.com"
-CONTACT_ADDRESS = "Avenida Seis, nº 31 — Água Branca, Contagem - MG"
+CONTACT_ADDRESS = "Avenida Seis, nº 31, Água Branca, Contagem - MG"
 COMPANY_CNPJ = "45.833.844/0001-51"
 
 _raw_whatsapp = os.environ.get("WHATSAPP_NUMBER", PRIMARY_WHATSAPP)
@@ -346,7 +346,7 @@ def add_to_quote(product_id):
     quote_cart[key] = {
         "product_id": product["id"],
         "cart_key": key,
-        "name": product["name"] + (" — " + variant["color"] if variant and variant["color"] else ""),
+        "name": product["name"] + (" (" + variant["color"] + ")" if variant and variant["color"] else ""),
         "sku": variant["sku"] if variant else product["sku"],
         "qty": qty,
         "notes": notes,
@@ -504,7 +504,7 @@ def send_whatsapp():
 
     lines.append("Itens:")
     for item in cart().values():
-        lines.append(f"• {item['qty']}x {item['name']} — SKU {item['sku']}")
+        lines.append(f"• {item['qty']}x {item['name']}; SKU {item['sku']}")
         if item.get("notes"):
             lines.append(f"  Observação: {item['notes']}")
 
