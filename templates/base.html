@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#171219">
-  <meta name="description" content="Megui Personalizados — confecção e personalização em malha. Camisetas, uniformes, saquinhos, eventos, brindes e comunicação visual.">
+  <meta name="description" content="Megui Personalizados: confecção e personalização em malha. Camisetas, uniformes, saquinhos, eventos, brindes e comunicação visual.">
   <title>{% block title %}Megui Personalizados{% endblock %}</title>
   <link id="megui-favicon" rel="icon" type="image/svg+xml" href="{{ url_for('static',filename='ui/favicon-butterfly.svg',v='20261016-v1') }}" data-logo="{{ url_for('static',filename='img/logo-megui-oficial.png') }}">
   <script defer src="{{ url_for('static',filename='js/favicon.js',v='20261016-v1') }}"></script>
@@ -125,7 +125,7 @@
   <script id="search-product-data" data-remote="{{ 'true' if hub_catalog_enabled else 'false' }}" type="application/json">{{ search_products|tojson }}</script>
   <script src="{{ url_for('static', filename='js/site.js', v='20261021-review-v1') }}"></script>
   <script src="{{ url_for('static', filename='js/motion.js', v='quality-flight-20261016-v23') }}"></script>
-  <a class="whatsapp-float" href="https://wa.me/{{ whatsapp_number }}?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20falar%20com%20a%20Megui." target="_blank" rel="noopener" aria-label="Falar com a Megui pelo WhatsApp — abre em outra aba"><span class="whatsapp-float-label">Fale com a Megui</span>{{ icon('whatsapp') }}</a>
+  <a class="whatsapp-float" href="https://wa.me/{{ whatsapp_number }}?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20falar%20com%20a%20Megui." target="_blank" rel="noopener" aria-label="Falar com a Megui pelo WhatsApp (abre em outra aba)"><span class="whatsapp-float-label">Fale com a Megui</span>{{ icon('whatsapp') }}</a>
   <button class="back-to-top" type="button" data-back-to-top aria-label="Voltar ao topo" hidden><span aria-hidden="true">↑</span></button>
   <script defer src="{{ url_for('static',filename='js/brand-experience.js',v='20261016-v4') }}"></script>
   <script defer src="{{ url_for('static', filename='js/brand-whispers.js', v='20261016-v2') }}"></script>
