@@ -148,6 +148,7 @@
 
 <link rel="stylesheet" href="{{ url_for('static',filename='css/knit-journal.css',v='20261016-v3') }}">
 <link rel="stylesheet" href="{{ url_for('static',filename='css/mostruario.css',v='20261018-v1') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/home-editorial-refresh.css',v='20261024-v1') }}">
 <style>
 {% raw %}
 /* Abertura Megui — apresentação fluida, sem molduras, preserva imagens originais. */
@@ -461,7 +462,7 @@
 
 
 {% if products %}
-<section class="section">
+<section class="section home-editorial-products">
   <div class="container">
     <div class="section-heading split-heading">
       <div>
@@ -505,7 +506,7 @@
   </div>
 </section>
 
-<section class="section home-clients">
+<section class="section home-clients home-editorial-clients">
   <div class="container">
     <div class="section-heading centered-heading">
       <span class="eyebrow">QUEM JÁ CONFIOU NA MEGUI</span>
@@ -518,7 +519,7 @@
 {% include '_work_showcase.html' %}
 
 {% if reviews %}
-<section class="section">
+<section class="section home-editorial-reviews">
   <div class="container split-content">
     <div>
       <span class="eyebrow">AVALIAÇÕES</span>
@@ -549,7 +550,7 @@
 
 {% include '_fabric_details.html' %}
 
-<section class="section">
+<section class="section home-editorial-finale">
   <div class="container quote-banner">
     <div>
       <span class="eyebrow eyebrow-light">MONTE SUA SELEÇÃO</span>
