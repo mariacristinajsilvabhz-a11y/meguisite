@@ -10,7 +10,7 @@
     choices.forEach(button => button.setAttribute('aria-pressed', String(button === choice)));
     panels.forEach(panel => { panel.hidden = panel.id !== panelId; });
     const panel = panels.find(item => item.id === panelId);
-    status.textContent = 'Em destaque: ' + panel.querySelector('h3').textContent + (panel.querySelector('.work-exhibit-piece') ? ' — ' + panel.querySelector('.work-exhibit-piece').textContent : '');
+    status.textContent = 'Em destaque: ' + panel.querySelector('h3').textContent + (panel.querySelector('.work-exhibit-piece') ? ': ' + panel.querySelector('.work-exhibit-piece').textContent : '');
     if (focus) choice.focus({preventScroll:true});
     const reel = root.querySelector('.work-exhibit-reel');
     const bounds = choice.getBoundingClientRect(), rail = reel.getBoundingClientRect();
