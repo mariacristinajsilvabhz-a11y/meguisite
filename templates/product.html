@@ -1,11 +1,11 @@
 {% extends "base.html" %}
-{% block title %}{{ product.name }} — Megui{% endblock %}
+{% block title %}{{ product.name }} | Megui{% endblock %}
 {% block content %}
 <section class="product-page">
   <nav class="container breadcrumbs" aria-label="Você está aqui"><a href="{{ url_for('home') }}">Início</a><span aria-hidden="true">/</span><a href="{{ url_for('products') }}">Produtos</a><span aria-hidden="true">/</span><span aria-current="page">{{ product.name }}</span></nav>
   <div class="container product-page-grid">
     <div class="product-gallery{% if product.gallery %} has-catalog-gallery{% endif %} visual-{{ product.visual }}">
-      {% if product.image_url %}<img class="real-product-photo" data-catalog-main src="{{ product.image_url }}" alt="{{ product.name }}" decoding="async">{% elif product.images %}<div class="catalog-photo-set catalog-photo-set-large">{% for image in product.images %}<img src="{{ url_for('static', filename=image) }}" alt="{{ product.name }} — item de referência do kit">{% endfor %}</div>{% elif product.image %}      <img class="real-product-photo" src="{{ url_for('static', filename=product.image) }}" alt="{{ product.name }}">{% else %}<span class="product-photo-pending">Imagem em breve</span>{% endif %}
+      {% if product.image_url %}<img class="real-product-photo" data-catalog-main src="{{ product.image_url }}" alt="{{ product.name }}" decoding="async">{% elif product.images %}<div class="catalog-photo-set catalog-photo-set-large">{% for image in product.images %}<img src="{{ url_for('static', filename=image) }}" alt="{{ product.name }} (referência do kit)">{% endfor %}</div>{% elif product.image %}      <img class="real-product-photo" src="{{ url_for('static', filename=product.image) }}" alt="{{ product.name }}">{% else %}<span class="product-photo-pending">Imagem em breve</span>{% endif %}
       {% if product.gallery|default([])|length > 1 %}
       <div class="catalog-thumbnails" aria-label="Fotos e cores de {{ product.name }}">
         {% for photo in product.gallery %}<button type="button" data-catalog-photo="{{ photo }}" aria-label="Ver foto {{ loop.index }} de {{ product.name }}" aria-pressed="{{ 'true' if loop.first else 'false' }}"><img src="{{ photo }}" alt="" loading="lazy" decoding="async"></button>{% endfor %}
@@ -59,7 +59,7 @@
             <label class="variant-fallback-label">Opção selecionada
             <select name="variant_id" data-catalog-variant required>
               {% if product.variants|length > 1 %}<option value="">Escolha uma opção</option>{% endif %}
-              {% for variant in product.variants %}<option value="{{ variant.id }}" data-image="{{ variant.image }}" data-color="{{ variant.color }}" {% if variant.stock <= 0 %}disabled{% endif %}>{{ variant.color or ('Opção ' ~ loop.index) }}{% if variant.stock <= 0 %} — indisponível{% endif %}</option>{% endfor %}
+              {% for variant in product.variants %}<option value="{{ variant.id }}" data-image="{{ variant.image }}" data-color="{{ variant.color }}" {% if variant.stock <= 0 %}disabled{% endif %}>{{ variant.color or ('Opção ' ~ loop.index) }}{% if variant.stock <= 0 %} (indisponível){% endif %}</option>{% endfor %}
             </select>
             </label>
           </div>
