@@ -7,8 +7,9 @@
 <link rel="stylesheet" href="{{ url_for('static',filename='css/mostruario.css',v='20261018-v1') }}">
 {% endblock %}
 {% block final_head %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&amp;display=swap">
 <link rel="stylesheet" href="{{ url_for('static',filename='css/uniform-studio.css',v='20261024-01') }}">
-<link rel="stylesheet" href="{{ url_for('static',filename='css/empresa-journey.css',v='20261024-design-02') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/empresa-journey.css',v='20261024-sora-01') }}">
 {% endblock %}
 {% block content %}
 {% macro talk(text, label, primary=false) %}<a class="{{ 'empresa-button' if primary else 'empresa-link' }}" href="https://wa.me/{{ whatsapp_number }}?text={{ text|urlencode }}" target="_blank" rel="noopener">{{ icon('whatsapp') if primary else '' }}{{ label }}{{ icon('arrow') }}</a>{% endmacro %}
