@@ -3,7 +3,7 @@
 .home-editorial-products .split-heading{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(260px,.65fr);gap:clamp(32px,7vw,120px);align-items:end;margin-bottom:44px}
 .home-editorial-products .split-heading>div{position:relative}
 .home-editorial-products .eyebrow{display:flex;align-items:center;gap:12px;font-size:11px;letter-spacing:.14em;color:#855a98}
-.home-editorial-products .eyebrow:before{content:"";width:35px;height:1px;background:#a47db7}
+.home-editorial-products .eyebrow:before{content:"";width:7px;height:7px;border-radius:50%;background:#a47db7}
 .home-editorial-products .section-heading h2{max-width:13ch;font-family:"Space Grotesk",sans-serif!important;font-size:clamp(48px,6.2vw,88px);font-weight:600;line-height:.98;letter-spacing:-.075em;text-wrap:balance;color:#382141}
 .home-editorial-products .split-heading>p{max-width:35ch;border-left:2px solid #b58dcb;padding:12px 0 12px 24px;margin:0 0 6px;font-size:16px;line-height:1.8;color:#705c7a}
 .home-editorial-products .product-grid{gap:clamp(12px,1.8vw,25px);align-items:stretch}
