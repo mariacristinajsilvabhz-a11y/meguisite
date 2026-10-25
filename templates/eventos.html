@@ -1,50 +1,207 @@
 {% extends 'base.html' %}
 {% from '_icons.html' import icon %}
-{% block title %}Eventos personalizados | Megui{% endblock %}
-{% block extra_head %}<link rel="stylesheet" href="{{ url_for('static',filename='css/eventos.css',v='20261016-detalhes-v5') }}"><link rel="stylesheet" href="{{ url_for('static',filename='css/mostruario.css',v='20261018-v1') }}"><link rel="stylesheet" href="{{ url_for('static',filename='css/eventos-recorte-20261025.css',v='20261025-v1') }}">
+{% block title %}Eventos que ficam na memória | Megui Personalizados{% endblock %}
+{% block final_head %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600;1,700&display=swap">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/eventos-editorial-20261025.css',v='20261025-v1') }}">
 {% endblock %}
+
 {% block content %}
-<div class="ev-experience">
-<section class="ev-opening" aria-labelledby="ev-title">
- <div class="ev-container ev-opening-grid">
-  <div class="ev-opening-copy"><span class="ev-eyebrow">{{ icon('butterfly') }} MEGUI · PERSONALIZADOS PARA EVENTOS</span><h1 id="ev-title">FEITO PRA<br><em>REUNIR.</em></h1><p>Tem a camiseta que une o grupo.<br>O kit que dá boas-vindas.<br>E os detalhes que viram lembrança.</p><div class="ev-opening-actions"><a class="ev-cta" href="#compor"><span>Vamos criar o seu?<small>Do tema às peças do evento</small></span><i>{{ icon('arrow') }}</i></a><a class="ev-text-link" href="#formatos">Descubra as possibilidades {{ icon('arrow') }}</a></div><div class="ev-origin"><span></span> Nossa especialidade é malha.<br>As possibilidades vão muito além.</div></div>
-  <div class="ev-collage"><div class="ev-orbit" aria-hidden="true"></div><span class="ev-collage-word" aria-hidden="true">JUNTOS.</span><figure class="ev-photo-people"><img src="{{ url_for('static',filename='img/acervo/camisetas-em-uso.jpg') }}" width="1400" height="1426" alt="Camisetas personalizadas em uso durante um evento" fetchpriority="high"><figcaption>IDENTIDADE QUE VESTE O ENCONTRO</figcaption></figure><figure class="ev-photo-detail"><img src="{{ url_for('static',filename='img/mostruario/garrafas-senac-estudio-v1.webp') }}" width="900" height="1600" alt="Garrafa laranja personalizada do projeto Senac NaSemanaS" data-ev-cutout><figcaption>E acompanha depois.</figcaption></figure><div class="ev-seal" aria-hidden="true"><span>VESTIR · VIVER</span>{{ icon('butterfly') }}<span>LEVAR COM VOCÊ</span></div><span class="ev-photo-note">Encontros de verdade.<br>Personalizados com identidade.</span></div>
- </div>
- <div class="ev-ribbon" aria-label="Camisetas, kits, sacochilas, copos e comunicação visual"><div class="ev-ribbon-track">{% for repeat in range(2) %}<span{% if repeat %} aria-hidden="true"{% endif %}>CAMISETAS {{ icon('butterfly') }} KITS {{ icon('butterfly') }} SACOCHILAS {{ icon('butterfly') }} COPOS {{ icon('butterfly') }} COMUNICAÇÃO VISUAL {{ icon('butterfly') }}</span>{% endfor %}</div></div>
-</section>
+<div class="ev-experience ev-artdirection">
+  <section class="ev-cover" aria-labelledby="ev-title">
+    <div class="ev-wrap ev-cover-layout">
+      <div class="ev-cover-copy">
+        <span class="ev-kicker"><span class="ev-kicker-wing" aria-hidden="true">{{ icon('butterfly') }}</span> MEGUI / EVENTOS & EXPERIÊNCIAS</span>
+        <h1 id="ev-title">O evento passa.<br><em>O que fica é a experiência.</em></h1>
+        <p>Tem a camiseta que une um grupo, o kit que dá boas-vindas e aquele detalhe que todo mundo leva para casa. A gente transforma a identidade do seu encontro em algo que dá para viver.</p>
+        <div class="ev-cover-actions">
+          <a class="ev-signature-cta" href="#compor">
+            <span><small>COMECE PELA SUA IDEIA</small>Vamos criar seu evento</span>
+            <span class="ev-cta-wing" aria-hidden="true">{{ icon('butterfly') }}</span>
+          </a>
+          <a class="ev-watch-work" href="#destaques"><span class="ev-watch-icon" aria-hidden="true"></span> Conheça alguns projetos</a>
+        </div>
+        <div class="ev-cover-note"><span>VESTIR</span><span>RECEBER</span><span>CELEBRAR</span><span>LEMBRAR</span></div>
+      </div>
+      <div class="ev-cover-art">
+        <figure class="ev-cover-live">
+          <img src="{{ url_for('static',filename='img/acervo/2026/samba-do-maestro-sem-marca-v3.webp') }}" alt="Público acompanhando o Samba do Maestro; capas de grade personalizadas pela Megui identificam o evento" fetchpriority="high" decoding="async">
+          <figcaption><strong>SAMBA DO MAESTRO</strong><span>Identidade presente no espaço, junto às pessoas.</span></figcaption>
+        </figure>
+        <figure class="ev-cover-object">
+          <img src="{{ url_for('static',filename='img/trabalhos/2026/samba-do-maestro-estudio-20261022.webp') }}" alt="Capa de grade personalizada produzida para o Samba do Maestro" loading="lazy" decoding="async" data-ev-cutout>
+          <figcaption>DO PROJETO AO EVENTO REAL</figcaption>
+        </figure>
+        <div class="ev-cover-stamp" aria-hidden="true">{{ icon('butterfly') }}</div>
+        <span class="ev-cover-photo-label">UM TRABALHO QUE FAZ PARTE DO MOMENTO</span>
+      </div>
+    </div>
+    <div class="ev-wrap ev-cover-foot"><p>Não é só sobre o que entregamos. É sobre onde cada peça vai chegar.</p><span aria-hidden="true" class="ev-cover-tiny-wing">{{ icon('butterfly') }}</span></div>
+  </section>
 
-{% set formats = [
- ('fe','Fé & comunidade','Retiros, congressos e encontros religiosos.','Uma mensagem que acompanha o grupo.','O tema do encontro pode vestir participantes e voluntários e estar presente nas lembranças. Pense em camisetas, sacochilas e itens que levem a mensagem da comunidade.','um encontro religioso','img/mostruario/camiseta-iprv-estudio-v1.webp','Camiseta comemorativa IPRV, frente e costas','Camisetas · Sacochilas · Lembranças'),
- ('cultura','Festas & cultura','Celebrações, shows e festivais.','A festa começa na identidade.','Da camiseta da equipe ao copo do público: cores, arte e personalização para conectar a organização, o espaço e quem vem celebrar.','uma festa ou evento cultural','img/acervo/camisetas-em-uso.jpg','Camisetas com a identidade de um evento em uso','Camisetas · Copos · Sinalização'),
- ('congresso','Feiras & congressos','Marcas, ideias e novas conexões.','Receber bem é parte da experiência.','Camisetas para identificar a equipe, credenciais para circular e kits para acompanhar o participante. Uma identidade presente em cada ponto de contato.','uma feira ou congresso','img/mostruario/cadernos-senac-estudio-v1.webp','Cadernos personalizados Senac NaSemanaS','Credenciais · Cadernos · Kits'),
- ('esporte','Esporte & equipes','Corridas, desafios e encontros ao ar livre.','O time junto, do início ao fim.','Camisetas para o grupo, garrafas para acompanhar o ritmo e sacochilas para levar o essencial. Conte o tipo de atividade para alinharmos materiais e modelos.','um evento esportivo','img/mostruario/camiseta-future-pro-estudio-v1.webp','Camiseta preta personalizada com a marca Future Pro','Camisetas · Garrafas · Sacochilas')
-] %}
-<section class="ev-formats ev-container" id="formatos" data-ev-formats aria-labelledby="ev-formats-title">
- <div class="ev-section-intro"><div><span class="ev-eyebrow">QUAL É A OCASIÃO?</span><h2 id="ev-formats-title">Cada evento,<br><em>um universo.</em></h2></div><p>O que reúne vocês muda.<br>O cuidado com os detalhes continua.<br>Escolha o seu encontro para explorar.</p></div>
- <div class="ev-format-grid"><div class="ev-format-tabs" role="tablist" aria-label="Tipo de evento" aria-orientation="vertical">{% for key,label,subtitle,title,description,event_name,photo,alt,items in formats %}<button type="button" role="tab" id="ev-tab-{{ key }}" aria-controls="ev-panel-{{ key }}" aria-selected="{{ 'true' if loop.first else 'false' }}" tabindex="{{ '0' if loop.first else '-1' }}" data-ev-tab="{{ key }}"><span class="ev-tab-number">0{{ loop.index }}</span><span class="ev-tab-label"><strong>{{ label }}</strong><small>{{ subtitle }}</small></span><i>{{ icon('arrow') }}</i></button>{% endfor %}</div>
- <div class="ev-format-panels">{% for key,label,subtitle,title,description,event_name,photo,alt,items in formats %}<div class="ev-format-panel" id="ev-panel-{{ key }}" role="tabpanel" tabindex="0" aria-labelledby="ev-tab-{{ key }}" data-ev-panel="{{ key }}" data-event-name="{{ event_name }}" data-event-label="{{ label }}"{% if not loop.first %} hidden{% endif %}><figure><img src="{{ url_for('static',filename=photo) }}" alt="{{ alt }}" loading="lazy" width="900" height="1200" {% if key in ['congresso','esporte'] %}data-ev-cutout{% endif %}></figure><div class="ev-format-copy"><span class="ev-eyebrow">{{ label }}</span><h3>{{ title }}</h3><p>{{ description }}</p><span class="ev-format-items">{{ items }}</span><a class="ev-text-link" href="#compor">Pensar nos itens {{ icon('arrow') }}</a></div></div>{% endfor %}</div></div>
-</section>
+  <section class="ev-moments" id="experiencia" aria-labelledby="ev-moments-title">
+    <div class="ev-wrap">
+      <div class="ev-moments-heading">
+        <span class="ev-kicker">ANTES, DURANTE E DEPOIS DO ENCONTRO</span>
+        <h2 id="ev-moments-title">Toda lembrança boa<br><em>começa nos detalhes.</em></h2>
+        <p>Não se trata de escolher brindes aleatoriamente. Cada peça pode cumprir um papel na experiência de quem participa.</p>
+      </div>
+      <div class="ev-moments-composition">
+        <article class="ev-moment ev-moment-wear">
+          <div class="ev-moment-copy">
+            <span class="ev-moment-word">Vestir.</span>
+            <h3>O grupo se reconhece.</h3>
+            <p>Uma camiseta pode identificar uma equipe, reunir pessoas e levar a mensagem do evento para além daquele dia.</p>
+            <a href="#compor" data-ev-pick="Camisetas" class="ev-moment-choose">Camisetas e peças em malha <span aria-hidden="true">{{ icon('butterfly') }}</span></a>
+          </div>
+          <img src="{{ url_for('static',filename='img/trabalhos/2026/virgin-mary-estudio-20261022.webp') }}" alt="Camisetas personalizadas Virgin Mary com estampas azul e vermelha" loading="lazy" decoding="async">
+        </article>
+        <article class="ev-moment ev-moment-welcome">
+          <div class="ev-moment-photo">
+            <img src="{{ url_for('static',filename='img/mostruario/cadernos-senac-estudio-v1.webp') }}" alt="Cadernos personalizados Senac NaSemanaS para recepção de participantes" loading="lazy" decoding="async" data-ev-cutout>
+          </div>
+          <div class="ev-moment-copy">
+            <span class="ev-moment-word">Receber.</span>
+            <h3>O cuidado começa na chegada.</h3>
+            <p>Kits, cadernos, credenciais e pequenos gestos de boas-vindas.</p>
+            <a href="#compor" data-ev-pick="Cadernos e kits" class="ev-moment-choose">Pensar em kits <span aria-hidden="true">{{ icon('butterfly') }}</span></a>
+          </div>
+        </article>
+        <article class="ev-moment ev-moment-remember">
+          <div class="ev-moment-photo">
+            <img src="{{ url_for('static',filename='img/mostruario/kit-band-minas-estudio-v1.webp') }}" alt="Kit Band Minas com copos e acessórios personalizados" loading="lazy" decoding="async" data-ev-cutout>
+          </div>
+          <div class="ev-moment-copy">
+            <span class="ev-moment-word">Lembrar.</span>
+            <h3>O evento termina. A marca fica.</h3>
+            <p>Brindes e lembranças pensados para continuar fazendo parte do dia a dia.</p>
+            <a href="#compor" data-ev-pick="Copos e garrafas" class="ev-moment-choose">Criar lembranças <span aria-hidden="true">{{ icon('butterfly') }}</span></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
 
-<section class="ev-details" aria-labelledby="ev-details-title"><div class="ev-container">
- <div class="ev-details-heading"><span class="ev-eyebrow">A SUA IDENTIDADE, EM CADA ESCOLHA</span><h2 id="ev-details-title">Veste o grupo.<br><em>Conecta os detalhes.</em></h2><p>Começa na malha, nosso forte. E segue em peças<br>para receber, acompanhar e surpreender.</p></div>
- <div class="ev-project-gallery">
-  <a class="ev-project ev-project-shirts" href="#compor" data-ev-pick="Camisetas"><div class="ev-project-image"><img src="{{ url_for('static',filename='img/mostruario/escola-de-cura-estudio-v1.webp') }}" width="900" height="1600" alt="Camisetas da Escola de Cura com estampa dourada, embaladas para entrega" loading="lazy" data-ev-cutout><span>{{ icon('arrow') }}</span></div><span class="ev-project-type">01 / PARA VESTIR</span><h3>Camisetas com propósito.</h3><p>Escola de Cura · camisetas personalizadas</p></a>
-  <a class="ev-project ev-project-kits" href="#compor" data-ev-pick="Cadernos e kits"><div class="ev-project-image"><img src="{{ url_for('static',filename='img/mostruario/cadernos-senac-estudio-v1.webp') }}" width="900" height="1600" alt="Cadernos pretos e laranja personalizados para o Senac, em composição de estúdio" loading="lazy" data-ev-cutout><span>{{ icon('arrow') }}</span></div><span class="ev-project-type">02 / PARA RECEBER</span><h3>Boas-vindas em forma de kit.</h3><p>Senac · papelaria personalizada</p></a>
-  <a class="ev-project ev-project-gifts" href="#compor" data-ev-pick="Copos e garrafas"><div class="ev-project-image"><img src="{{ url_for('static',filename='img/mostruario/kit-band-minas-estudio-v1.webp') }}" width="1200" height="1600" alt="Copos, bolsa e chaveiro personalizados da Band Minas" loading="lazy" data-ev-cutout><span>{{ icon('arrow') }}</span></div><span class="ev-project-type">03 / PARA LEVAR JUNTO</span><h3>A marca fica na lembrança.</h3><p>Band Minas · brindes e acessórios</p></a>
- </div>
- <div class="ev-craft-note">{{ icon('butterfly') }}<p>Da arte à escolha dos materiais,<br><strong>vamos pensar no conjunto com você.</strong></p><a class="ev-text-link" href="{{ url_for('portfolio_view') }}">Mais trabalhos da Megui {{ icon('arrow') }}</a></div>
-</div></section>
+  {% set highlights = [
+   ('minions','img/acervo/2026/minions-run-sem-marca-v3.webp','Minions Run','Eventos que ganham as ruas.','Comunicação visual em uso durante a corrida, acompanhando atletas e participantes.','Banners e sinalização','REGISTRO REAL DO EVENTO',false),
+   ('circuito','img/trabalhos/2026/circuito-industrias-estudio-20261022.webp','Circuito das Indústrias','Cor, identidade e movimento.','Sacochilas personalizadas para o Circuito das Indústrias.','Sacochilas e bolsas','SACOCHILAS PERSONALIZADAS',true),
+   ('bottons','img/trabalhos/2026/bottons-senac-estudio-20261022.webp','SenacX','Um detalhe que reúne todo mundo.','Bottons em laranja e preto para o NaSemanaS.','Lembranças e nécessaires','BOTTONS PARA ENCONTROS',false),
+   ('cura','img/mostruario/escola-de-cura-estudio-v1.webp','Escola de Cura','Uma mensagem em cada peça.','Camisetas estampadas e embaladas para um projeto de comunidade.','Camisetas','VESTUÁRIO PERSONALIZADO',false),
+   ('eepof','img/trabalhos/2026/kit-eepof-estudio-20261022.webp','E.E.P.O.F','Um kit para acompanhar a jornada.','Sacochila e squeeze personalizados com a identidade do projeto escolar.','Cadernos e kits','KITS PARA GRUPOS',true),
+   ('garrafas','img/mostruario/garrafas-senac-estudio-v1.webp','Senac Minas','O brinde que segue na rotina.','Garrafas laranja com identidade NaSemanaS.','Copos e garrafas','BRINDES PERSONALIZADOS',true)
+  ] %}
+  <section class="ev-showcase" id="destaques" aria-labelledby="ev-showcase-title">
+    <div class="ev-wrap">
+      <div class="ev-showcase-intro">
+        <div><span class="ev-kicker">O NOSSO TRABALHO, NA VIDA REAL</span><h2 id="ev-showcase-title">Projetos feitos<br>para <em>serem vividos.</em></h2></div>
+        <p>De encontros de marca a corridas e projetos de comunidade. Aqui estão algumas peças que já tiveram história fora da nossa produção.</p>
+      </div>
+      <div class="ev-curated-grid">
+        {% for key,photo,brand,headline,description,pick,caption,cutout in highlights %}
+        <article class="ev-curated-piece ev-curated-{{ key }}">
+          <button class="ev-curated-photo" type="button" data-ev-enlarge data-ev-title="{{ brand }} — {{ headline }}" data-ev-image="{{ url_for('static',filename=photo) }}"
+            aria-label="Ampliar fotografia de {{ brand }}">
+            <img src="{{ url_for('static',filename=photo) }}" alt="{{ description }}" loading="lazy" decoding="async" {% if cutout %}data-ev-cutout{% endif %}>
+            <span class="ev-curated-zoom" aria-hidden="true">VER DE PERTO</span>
+          </button>
+          <div class="ev-curated-info">
+            <span>{{ caption }}</span>
+            <h3>{{ brand }}</h3>
+            <p><strong>{{ headline }}</strong> {{ description }}</p>
+            <a href="#compor" data-ev-pick="{{ pick }}">Quero algo nessa proposta <span aria-hidden="true">{{ icon('butterfly') }}</span></a>
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+      <div class="ev-showcase-explore">
+        <p>Esses são só alguns capítulos do que já fizemos.</p>
+        <a href="{{ url_for('portfolio_view') }}">Explorar o portfólio completo <span aria-hidden="true">{{ icon('butterfly') }}</span></a>
+      </div>
+    </div>
+  </section>
 
-<section class="ev-beyond" aria-labelledby="ev-beyond-title"><div class="ev-container ev-beyond-grid">
- <div class="ev-beyond-intro"><span class="ev-eyebrow">O ENCONTRO CONTINUA NOS DETALHES</span><h2 id="ev-beyond-title">Pense além<br><em>da camiseta.</em></h2><p>Para chegar, se identificar, guardar o essencial e levar um pouco do evento para casa.</p><a class="ev-signpost" href="#compor" data-ev-pick="Banners e sinalização"><span>{{ icon('banner') }}</span><strong>O espaço também<br>entra no clima.</strong><small>Banners & sinalização {{ icon('arrow') }}</small></a></div>
- <div class="ev-beyond-photo"><span class="ev-handnote">um cuidado que vai junto.</span><a href="#compor" data-ev-pick="Sacochilas e bolsas"><img src="{{ url_for('static',filename='img/mostruario/necessaires-estudio-v1.webp') }}" alt="Nécessaires bege personalizadas com bordado branco e acabamento em zíper" width="1290" height="1406" loading="lazy"><span class="ev-photo-chip">PARA LEVAR O ESSENCIAL {{ icon('arrow') }}</span></a><div class="ev-beyond-caption"><h3>Pequenos itens.<br>Um cuidado que aparece.</h3><p>Nécessaires, bolsas e sacochilas para compor o kit com a identidade do encontro.</p></div></div>
- <div class="ev-arrival"><div class="ev-pass-wrap" aria-hidden="true"><div class="ev-pass-cord"></div><div class="ev-pass"><span class="ev-pass-slot"></span><span class="ev-pass-top">O SEU EVENTO</span>{{ icon('butterfly') }}<strong>EU FAÇO<br>PARTE.</strong><span class="ev-pass-bottom">PARTICIPANTE <b>01</b></span></div></div><h3>A experiência<br>começa na chegada.</h3><p>Credenciais e pulseiras para identificar quem participa e quem faz acontecer.</p><a class="ev-text-link" href="#compor" data-ev-pick="Credenciais e pulseiras">Pensar na recepção {{ icon('arrow') }}</a></div>
-</div></section>
+  {% set event_formats = [
+    ('empresa','Empresas & equipes','Celebrar com a própria identidade.','Confraternizações, ações internas, lançamentos e encontros de equipes. Kits, uniformes e brindes combinam com projetos de vários tamanhos.','img/trabalhos/2026/kit-infinix-estudio-20261022.webp','Kit corporativo Infinix com copo, caderno e caneta personalizados','Camisetas · Kits · Copos · Credenciais','um evento corporativo','Cadernos e kits',true),
+    ('casamento','Casamentos & celebrações','Os detalhes que contam a história de vocês.','Lembranças, nécessaires, taças, chinelos e peças personalizadas para receber quem participa. A fotografia ao lado é uma referência de acabamento, não o registro de um casamento.','img/acervo/2026/necessaires-personalizadas.webp','Nécessaires personalizadas em ambiente real, referência de acabamento para lembranças','Taças · Chinelos · Nécessaires · Lembranças','um casamento ou celebração','Taças e chinelos',false),
+    ('comunidade','Fé & comunidade','Uma mensagem que todo mundo leva junto.','Congressos, retiros, encontros religiosos e celebrações de grupos. Camisetas e lembranças ajudam a criar pertencimento.','img/mostruario/camiseta-iprv-estudio-v1.webp','Camisetas comemorativas IPRV, frente e costas','Camisetas · Sacochilas · Lembranças','um encontro religioso','Camisetas',false),
+    ('esporte','Esporte & movimento','Uma identidade que acompanha a energia do grupo.','Corridas, desafios e encontros esportivos com camisetas, bolsas, garrafas e sinalização para orientar o público.','img/mostruario/sacochila-circuito-estudio-v1.webp','Sacochila rosa Circuito das Indústrias','Camisetas · Sacochilas · Garrafas','um evento esportivo','Sacochilas e bolsas',true),
+    ('cultura','Festas & cultura','O cenário também faz parte da festa.','Shows, festivais e encontros culturais em que a identidade ocupa o espaço e chega até quem participa.','img/trabalhos/2026/samba-do-maestro-estudio-20261022.webp','Capa de grade personalizada do Samba do Maestro','Camisetas · Copos · Comunicação visual','uma festa ou evento cultural','Banners e sinalização',true)
+  ] %}
+  <section class="ev-worlds" id="formatos" data-ev-formats aria-labelledby="ev-worlds-title">
+    <div class="ev-wrap">
+      <div class="ev-worlds-heading">
+        <span class="ev-kicker">CADA ENCONTRO TEM SEU UNIVERSO</span>
+        <h2 id="ev-worlds-title">Que tipo de história<br><em>vamos contar?</em></h2>
+        <p>Uma festa íntima ou um evento com centenas de pessoas. A gente pensa na personalização a partir do que faz sentido para a ocasião.</p>
+      </div>
+      <div class="ev-worlds-switcher" role="tablist" aria-label="Tipo de evento">
+        {% for key,label,title,description,photo,alt,products,event_name,pick,cutout in event_formats %}
+        <button type="button" role="tab" id="ev-tab-{{ key }}" aria-controls="ev-panel-{{ key }}" aria-selected="{{ 'true' if loop.first else 'false' }}" tabindex="{{ '0' if loop.first else '-1' }}" data-ev-tab="{{ key }}">{{ label }}</button>
+        {% endfor %}
+      </div>
+      <div class="ev-worlds-panels">
+        {% for key,label,title,description,photo,alt,products,event_name,pick,cutout in event_formats %}
+        <article class="ev-world-panel" id="ev-panel-{{ key }}" role="tabpanel" tabindex="0" aria-labelledby="ev-tab-{{ key }}" data-ev-panel="{{ key }}" data-event-name="{{ event_name }}" data-event-label="{{ label }}" {% if not loop.first %}hidden{% endif %}>
+          <div class="ev-world-image">
+            <img src="{{ url_for('static',filename=photo) }}" alt="{{ alt }}" loading="lazy" decoding="async" {% if cutout %}data-ev-cutout{% endif %}>
+            <span>{{ label }}</span>
+          </div>
+          <div class="ev-world-copy">
+            <span class="ev-kicker">UMA PROPOSTA PARA {{ label|upper }}</span>
+            <h3>{{ title }}</h3>
+            <p>{{ description }}</p>
+            <strong>{{ products }}</strong>
+            <a class="ev-world-action" href="#compor" data-ev-pick="{{ pick }}">Quero pensar nesse tipo de evento <span aria-hidden="true">{{ icon('butterfly') }}</span></a>
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
 
-<section class="ev-start" id="compor" aria-labelledby="ev-start-title"><div class="ev-container ev-start-grid">
- <div class="ev-start-copy"><span class="ev-eyebrow">A PRÓXIMA IDEIA PODE SER A SUA</span><h2 id="ev-start-title">Bora fazer<br><em>acontecer?</em></h2><p>Já tem tema, data e quantidade de pessoas?<br>Ou está começando a imaginar?<br>A gente conversa a partir daí.</p><div class="ev-current-event"><span>ESTAMOS PENSANDO EM</span><strong data-ev-event-label>Fé & comunidade</strong><a href="#formatos">Trocar o tipo de evento {{ icon('arrow') }}</a></div><span class="ev-start-butterfly" aria-hidden="true">{{ icon('butterfly') }}</span></div>
- <div class="ev-ticket" data-ev-kit data-whatsapp="{{ whatsapp_number }}"><div class="ev-ticket-top"><span class="ev-eyebrow">SEU EVENTO COMEÇA AQUI</span>{{ icon('eventos') }}</div><h3>O que vai com vocês?</h3><p class="ev-ticket-help">Marque as ideias que fazem sentido.</p><div class="ev-kit-options" aria-label="Itens para o evento">{% for item,ico in [('Camisetas','tshirt'),('Sacochilas e bolsas','bag'),('Copos e garrafas','bottle'),('Cadernos e kits','kit'),('Credenciais e pulseiras','eventos'),('Banners e sinalização','banner')] %}<button type="button" data-ev-item="{{ item }}" aria-pressed="{{ 'true' if loop.first else 'false' }}">{{ icon(ico) }}<span>{{ item }}</span><b aria-hidden="true">{{ '✓' if loop.first else '+' }}</b></button>{% endfor %}</div><div class="ev-selection"><span data-ev-selection-count role="status" aria-live="polite">1 item selecionado</span><p data-ev-selection>Camisetas</p></div><div class="ev-ticket-bottom"><a class="ev-cta" data-ev-kit-link href="https://wa.me/{{ whatsapp_number }}?text={{ 'Olá, Megui! Quero conversar sobre camisetas e personalizados para um evento.'|urlencode }}" target="_blank" rel="noopener"><span>Levar minha ideia para a Megui</span><i>{{ icon('whatsapp') }}</i></a><small>Vamos alinhar modelos, quantidades e prazo no atendimento.</small></div></div>
-</div></section>
+  <section class="ev-start" id="compor" aria-labelledby="ev-start-title">
+    <div class="ev-wrap ev-start-layout">
+      <div class="ev-start-copy">
+        <span class="ev-kicker">CHEGOU A VEZ DA SUA IDEIA</span>
+        <h2 id="ev-start-title">E se o próximo<br><em>fosse o seu?</em></h2>
+        <p>Já sabe o tipo de evento, mas ainda está escolhendo os itens? Monte uma primeira ideia aqui. A Megui ajuda a pensar nos materiais, na personalização e nas possibilidades.</p>
+        <div class="ev-current-event"><small>IMAGINANDO AGORA</small><strong data-ev-event-label>Empresas & equipes</strong><a href="#formatos">Quero explorar outras ocasiões</a></div>
+        <div class="ev-start-decoration" aria-hidden="true">{{ icon('butterfly') }}</div>
+      </div>
+      <div class="ev-ticket" data-ev-kit data-whatsapp="{{ whatsapp_number }}">
+        <div class="ev-ticket-header"><span class="ev-kicker">O SEU EVENTO, DO SEU JEITO</span><span class="ev-ticket-mark" aria-hidden="true">{{ icon('butterfly') }}</span></div>
+        <h3>O que você imagina<br>para esse dia?</h3>
+        <p class="ev-ticket-helper">Escolha algumas ideias para começar. Você pode marcar mais de uma.</p>
+        <div class="ev-kit-options" aria-label="Escolha os itens que deseja personalizar">
+          {% for item,ico in [('Camisetas','tshirt'),('Sacochilas e bolsas','bag'),('Copos e garrafas','bottle'),('Cadernos e kits','kit'),('Credenciais e pulseiras','eventos'),('Banners e sinalização','banner'),('Taças e chinelos','kit'),('Lembranças e nécessaires','bag')] %}
+          <button type="button" data-ev-item="{{ item }}" aria-pressed="{{ 'true' if loop.first else 'false' }}">
+            {{ icon(ico) }}<span>{{ item }}</span><b aria-hidden="true">{{ '✓' if loop.first else '+' }}</b>
+          </button>
+          {% endfor %}
+        </div>
+        <div class="ev-selected">
+          <span data-ev-selection-count role="status" aria-live="polite">1 item selecionado</span>
+          <p data-ev-selection>Camisetas</p>
+        </div>
+        <div class="ev-ticket-footer">
+          <a class="ev-talk-action" data-ev-kit-link href="https://wa.me/{{ whatsapp_number }}?text={{ 'Olá, Megui! Quero conversar sobre camisetas e personalizados para um evento.'|urlencode }}" target="_blank" rel="noopener">
+            <span>Conversar com a Megui sobre meu evento</span>
+            <span aria-hidden="true">{{ icon('butterfly') }}</span>
+          </a>
+          <small>Sem compromisso. Vamos alinhar opções, quantidades e prazo.</small>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
+<dialog class="ev-image-dialog" data-ev-dialog aria-labelledby="ev-dialog-title">
+  <div class="ev-dialog-head"><h2 id="ev-dialog-title">Detalhes do trabalho</h2><button type="button" data-ev-dialog-close>Fechar <span aria-hidden="true">×</span></button></div>
+  <img alt="" decoding="async">
+</dialog>
 {% endblock %}
-{% block extra_scripts %}<script defer src="{{ url_for('static',filename='js/eventos.js',v='20261016-detalhes-v5') }}"></script><script defer src="{{ url_for('static',filename='js/meg-work-cutouts-20261025.js',v='20261025-v2') }}"></script>{% endblock %}
+
+{% block extra_scripts %}
+<script defer src="{{ url_for('static',filename='js/eventos.js',v='20261016-detalhes-v5') }}"></script>
+<script defer src="{{ url_for('static',filename='js/meg-work-cutouts-20261025.js',v='20261025-v2') }}"></script>
+<script defer src="{{ url_for('static',filename='js/eventos-editorial-20261025.js',v='20261025-v1') }}"></script>
+{% endblock %}
