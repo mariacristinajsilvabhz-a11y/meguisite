@@ -621,3 +621,40 @@
     max-width:calc(100% - 56px);
   }
 }
+
+/* Visualizador da fotografia original ou da apresentação de estúdio.
+   Sem bloco redundante "Ver registro do trabalho" por projeto. */
+.work-lightbox{
+  width:min(1020px,94vw);max-width:94dvh;
+  box-sizing:border-box;padding:clamp(12px,2vw,24px);
+  border:1px solid #d6c0df;border-radius:22px;
+  background:#f2ecf4;color:#40264b;
+  box-shadow:0 32px 90px #1d112b77;
+}
+.work-lightbox::backdrop{
+  background:#1f1727cf;backdrop-filter:blur(8px);
+}
+.work-lightbox .work-lightbox-bar{
+  display:flex;align-items:center;justify-content:space-between;gap:15px;
+}
+.work-lightbox .work-lightbox-bar h2{
+  font:650 22px/1.25 "Space Grotesk",sans-serif!important;
+  letter-spacing:-.045em;color:#442550;margin:0;
+}
+.work-lightbox button{
+  flex:none;min-height:42px;border:0;border-radius:11px;
+  padding:10px 16px;background:#6b3e80;color:#fff;
+  font:600 12px/1.4 "Sora",sans-serif;cursor:pointer;
+}
+.work-lightbox>img{
+  display:block;width:100%;height:auto;max-height:70dvh;
+  margin:17px auto 0;object-fit:contain;
+}
+.work-lightbox>p{
+  margin:12px 0 0;font:400 11px/1.5 "Sora",sans-serif;color:#786384;
+}
+@media(max-width:560px){
+  .work-lightbox{padding:12px;border-radius:13px}
+  .work-lightbox .work-lightbox-bar h2{font-size:16px}
+  .work-lightbox button{min-height:39px;padding:9px 12px;font-size:11px}
+}
