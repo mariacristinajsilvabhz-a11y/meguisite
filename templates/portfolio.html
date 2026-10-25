@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="{{ url_for('static',filename='css/mostruario.css',v='20261018-v1') }}">
 <link rel="stylesheet" href="{{ url_for('static',filename='css/work-showcase.css',v='20261020-v1') }}">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,600;1,700&display=swap">
-<link rel="stylesheet" href="{{ url_for('static',filename='css/portfolio-signature-20261025.css',v='20261025-v4') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/portfolio-signature-20261025.css',v='20261025-v5') }}">
 {% endblock %}
 {% block content %}
 {% set feature_titles = ['SenacX · Alexas personalizadas','Infinix · kit corporativo','Fecomércio MG · fones','Band Minas'] %}
@@ -148,16 +148,76 @@
   </div>
 </section>
 
-<section class="portfolio-heritage" aria-labelledby="portfolio-heritage-title">
+<section class="portfolio-heritage heritage-chapter" id="acervo-historico" aria-labelledby="portfolio-heritage-title">
     <div class="container">
-      <div class="portfolio-heritage-heading">
-        <div><span class="portfolio-kicker">DESDE 2020, HISTÓRIAS EM CADA PEÇA</span><h2 id="portfolio-heritage-title">Nossa história também<br><em>tem acervo.</em></h2></div>
-        <p>Antes do nome Megui, atuávamos como Freedom. Esses registros fazem parte da nossa trajetória e mostram como nosso trabalho vem evoluindo.</p>
+      <header class="heritage-chapter-heading">
+        <div class="heritage-chapter-heading-main">
+          <span class="portfolio-kicker">NOSSO ACERVO / CAPÍTULO DE ORIGEM</span>
+          <h2 id="portfolio-heritage-title">O primeiro capítulo<br><em>continua aqui.</em></h2>
+        </div>
+        <div class="heritage-chapter-intro">
+          <span class="heritage-chapter-mark" aria-hidden="true">{{ icon('butterfly') }}</span>
+          <p>Antes do nome Megui, nosso trabalho já tinha história. Na época Freedom, cada projeto trazia uma identidade diferente e ajudava a construir o caminho que seguimos hoje.</p>
+          <span class="heritage-chapter-note">FOTOGRAFIAS DO ACERVO REAL · 2021—2022</span>
+        </div>
+      </header>
+
+      <div class="heritage-timeline" role="list" aria-label="Linha do tempo da trajetória Megui">
+        <div class="heritage-milestone" role="listitem">
+          <span class="heritage-milestone-dot" aria-hidden="true"></span>
+          <span class="heritage-milestone-date">2020</span>
+          <strong>O início</strong>
+          <p>Começamos nossa história com confecção e personalização.</p>
+        </div>
+        <div class="heritage-milestone" role="listitem">
+          <span class="heritage-milestone-dot" aria-hidden="true"></span>
+          <span class="heritage-milestone-date">2021</span>
+          <strong>Primeiros registros</strong>
+          <p>Brindes, impressos e identidades da fase Freedom.</p>
+        </div>
+        <div class="heritage-milestone" role="listitem">
+          <span class="heritage-milestone-dot" aria-hidden="true"></span>
+          <span class="heritage-milestone-date">2022</span>
+          <strong>Mais histórias</strong>
+          <p>Personalizações presentes em novos materiais.</p>
+        </div>
+        <div class="heritage-milestone heritage-milestone-current" role="listitem">
+          <span class="heritage-milestone-dot" aria-hidden="true"></span>
+          <span class="heritage-milestone-date">HOJE</span>
+          <strong>Megui Personalizados</strong>
+          <p>Um acervo que continua crescendo a cada trabalho.</p>
+        </div>
       </div>
-      <div class="archive-grid">
+
+      <div class="heritage-gallery-heading">
+        <span><span class="heritage-gallery-signet" aria-hidden="true">✳</span> ARQUIVO DE TRABALHOS</span>
+        <span>{{ historical_brands|length }} PROJETOS PRESERVADOS</span>
+      </div>
+
+      <div class="heritage-gallery">
         {% for brand in historical_brands %}
-        <article class="archive-card"><a href="{{ url_for('static', filename=brand.image) }}" target="_blank" rel="noopener" aria-label="Ver trabalho para {{ brand.name }}"><img src="{{ url_for('static', filename=brand.image) }}" alt="{{ brand.work }} para {{ brand.name }}, acervo Freedom" loading="lazy"></a><div><span class="archive-date">ACERVO FREEDOM / {{ brand.year }}</span><h3>{{ brand.name }}</h3><p>{{ brand.work }}</p></div></article>
+        <article class="heritage-project">
+          <a class="heritage-project-photo" data-work-zoom href="{{ url_for('static', filename=brand.image) }}" target="_blank" rel="noopener" aria-label="Ampliar foto do trabalho {{ brand.work }} para {{ brand.name }}">
+            <img src="{{ url_for('static', filename=brand.image) }}" alt="{{ brand.work }} para {{ brand.name }}, fotografia original da fase Freedom" loading="lazy" decoding="async">
+            <span class="heritage-photo-note" aria-hidden="true">REGISTRO ORIGINAL <span>↗</span></span>
+          </a>
+          <div class="heritage-project-copy">
+            <div class="heritage-project-meta">
+              <span>ARQUIVO {{ '%02d'|format(loop.index) }}</span>
+              <span>FREEDOM / {{ brand.year }}</span>
+            </div>
+            <h3>{{ brand.name }}</h3>
+            <span class="heritage-project-kind">{{ brand.work }}</span>
+            <p>{{ brand.story|default(brand.work) }}</p>
+          </div>
+        </article>
         {% endfor %}
+      </div>
+
+      <div class="heritage-chapter-end">
+        <span class="heritage-chapter-end-icon" aria-hidden="true">{{ icon('butterfly') }}</span>
+        <p>Os nomes mudam. A vontade de fazer algo único continua.</p>
+        <a href="#projetos-destaque">Conhecer os projetos atuais <span aria-hidden="true">↗</span></a>
       </div>
     </div>
   </section>
