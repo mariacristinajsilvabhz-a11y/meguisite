@@ -1066,3 +1066,67 @@
   .mw-filter-tabs button,.mw-piece-request,.mw-piece-request svg,
   .mw-expand,.mw-finale-cta){transition:none!important}
 }
+
+
+/* 26/10: produto recortado = produto protagonista, não foto sobre fundo lilás.
+   O próprio arquivo de estúdio recebe recorte progressivo quando elegível.
+   Fotos de eventos, ambientes e arquivo histórico continuam documentais. */
+.meg-work .mw-lead-photo,
+.meg-work .mw-feature-image,
+.meg-work .mw-piece-image{
+  background:transparent;
+}
+.meg-work .mw-hero-small,
+.meg-work .mw-hero-small img{
+  background:transparent;
+}
+.meg-work .mw-hero-small:has(img[data-mw-cutout]){
+  box-shadow:none;
+  border-radius:0;
+  padding:0;
+  overflow:visible;
+}
+.meg-work .mw-hero-small:has(img[data-mw-cutout]) img{
+  border-radius:0;
+}
+.meg-work .mw-lead-project{
+  background:transparent;
+  overflow:visible;
+  border-radius:0;
+}
+.meg-work .mw-lead-photo:has(img[data-mw-cutout]),
+.meg-work .mw-feature-image:has(img[data-mw-cutout]),
+.meg-work .mw-piece-image:has(img[data-mw-cutout]){
+  background:none!important;
+  box-shadow:none!important;
+  border:0!important;
+  border-radius:0!important;
+  overflow:visible;
+}
+.meg-work .mw-lead-photo:has(img[data-mw-cutout]) img,
+.meg-work .mw-feature-image:has(img[data-mw-cutout]) img,
+.meg-work .mw-piece-image:has(img[data-mw-cutout]) img{
+  background:transparent!important;
+  mix-blend-mode:normal!important;
+}
+.meg-work .mw-lead-photo:has(img[data-mw-cutout]) img{padding:0}
+.meg-work .mw-feature-image:has(img[data-mw-cutout]) img,
+.meg-work .mw-piece-image:has(img[data-mw-cutout]) img{padding:0}
+.meg-work .mw-feature-image:has(img[data-mw-cutout]) .mw-image-enlarge,
+.meg-work .mw-piece-image:has(img[data-mw-cutout]) .mw-piece-image-zoom{
+  bottom:6px;right:6px;
+}
+.meg-work .mw-lead-story{
+  background:#e8dcee;
+  border-radius:16px 34px 16px 34px;
+}
+.meg-work .mw-archive-piece>a{background:transparent}
+@media(max-width:850px){
+  .meg-work .mw-lead-story{border-radius:16px 16px 27px 16px}
+}
+@media(hover:hover){
+  .meg-work .mw-feature-image:has(img[data-mw-cutout]):hover img,
+  .meg-work .mw-piece-image:has(img[data-mw-cutout]):hover img{
+    transform:translateY(-5px) scale(1.02);
+  }
+}
