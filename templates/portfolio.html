@@ -3,7 +3,7 @@
 {% block title %}Trabalhos & bastidores | Portfólio Megui Personalizados{% endblock %}
 {% block final_head %}
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600;1,700&display=swap">
-<link rel="stylesheet" href="{{ url_for('static',filename='css/meg-work-atelier-20261025.css',v='20261025-signature-v1') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/meg-work-atelier-20261025.css',v='20261025-signature-v2') }}">
 {% endblock %}
 
 {% macro watch(film, position='lead') -%}
@@ -48,7 +48,7 @@
           <img src="{{ url_for('static',filename='img/acervo/camisetas-em-uso.jpg') }}" alt="Camisetas personalizadas em uso durante um evento real" fetchpriority="high" decoding="async">
         </div>
         <div class="mw-hero-small" aria-hidden="true">
-          <img src="{{ url_for('static',filename='img/acervo/2026/senac-cadernos-estudio-v2.webp') }}" alt="" loading="lazy">
+          <img src="{{ url_for('static',filename='img/acervo/2026/senac-cadernos-estudio-v2.webp') }}" alt="" loading="lazy" data-mw-cutout>
         </div>
         <div class="mw-hero-insignia" aria-hidden="true">{{ icon('butterfly') }}</div>
         <span class="mw-hero-handnote">feito para viver fora da fábrica</span>
@@ -90,7 +90,7 @@
           <a href="{{ url_for('static',filename=featured_main.presentation_image|default(featured_main.image)) }}"
              data-mw-zoom data-mw-zoom-title="{{ featured_main.title }}" aria-label="Ampliar fotografia do projeto {{ featured_main.title }}" target="_blank" rel="noopener">
             <img src="{{ url_for('static',filename=featured_main.presentation_image|default(featured_main.image)) }}"
-                 alt="Alexa personalizada para o projeto SenacX" loading="lazy" decoding="async">
+                 alt="Alexa personalizada para o projeto SenacX" loading="lazy" decoding="async" data-mw-cutout>
           </a>
           <span class="mw-lead-photo-tag">ESTÚDIO DE PROJETOS MEGUI</span>
         </div>
@@ -110,7 +110,7 @@
           <a class="mw-feature-image" href="{{ url_for('static',filename=work.presentation_image|default(work.image)) }}"
              data-mw-zoom data-mw-zoom-title="{{ work.title }}" target="_blank" rel="noopener" aria-label="Ampliar fotografia de {{ work.title }}">
             <img src="{{ url_for('static',filename=work.presentation_image|default(work.image)) }}"
-                 alt="{{ work.title }} — {{ work.kind|lower }}" loading="lazy" decoding="async">
+                 alt="{{ work.title }} — {{ work.kind|lower }}" loading="lazy" decoding="async" {% if name in ['Infinix · kit corporativo','Fecomércio MG · fones'] %}data-mw-cutout{% endif %}>
             <span class="mw-image-enlarge" aria-hidden="true">VER DE PERTO</span>
           </a>
           <div class="mw-feature-copy">
@@ -195,7 +195,7 @@
             data-mw-zoom data-mw-zoom-title="{{ work.title }}" target="_blank" rel="noopener"
             aria-label="Ver imagem ampliada do trabalho {{ work.title }}">
             <img src="{{ url_for('static',filename=work.presentation_image|default(work.image)) }}"
-              alt="{{ work.title }} — {{ work.kind|lower }}" loading="lazy" decoding="async">
+              alt="{{ work.title }} — {{ work.kind|lower }}" loading="lazy" decoding="async" {% if work.presentation_image is defined and work.title not in ['Nécessaires personalizadas','Virgin Mary · camisetas','Escola de Cura','E.E.P.O.F · kit escolar'] %}data-mw-cutout{% endif %}>
             <span class="mw-piece-image-zoom" aria-hidden="true">AMPLIAR</span>
           </a>
           <div class="mw-piece-body">
@@ -257,6 +257,7 @@
 {% endblock %}
 
 {% block extra_scripts %}
+<script defer src="{{ url_for('static',filename='js/meg-work-cutouts-20261025.js',v='20261025-v1') }}"></script>
 <script>
 (() => {
   const root = document.querySelector('.meg-work');
