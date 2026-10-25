@@ -980,3 +980,109 @@
 @media(prefers-reduced-motion:reduce){
   .portfolio-signature-page .heritage-project-photo{transition:none!important}
 }
+
+/* CTA Instagram pós-galeria: aparece somente após revelar todos os trabalhos.
+   Assinatura da Megui, sem alterar o alinhamento uniforme dos projetos. */
+.portfolio-signature-page .portfolio-instagram-wrap{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:15px;
+  margin:clamp(37px,5vw,62px) auto 0;
+  text-align:center;
+}
+.portfolio-signature-page .portfolio-instagram-wrap[hidden]{
+  display:none!important;
+}
+.portfolio-signature-page .portfolio-instagram-note{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  font:700 10px/1.5 "Sora",sans-serif;
+  letter-spacing:.11em;
+  color:#875b97;
+}
+.portfolio-signature-page .portfolio-instagram-note:before,
+.portfolio-signature-page .portfolio-instagram-note:after{
+  content:"";
+  display:block;
+  width:22px;
+  height:1px;
+  background:#b995c6;
+}
+.portfolio-signature-page .portfolio-instagram-link{
+  display:inline-flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:22px;
+  min-height:68px;
+  max-width:100%;
+  box-sizing:border-box;
+  padding:9px 9px 9px 22px;
+  border:1px solid #9e76ae;
+  border-radius:13px 24px 13px 24px;
+  background:#eee0f2;
+  box-shadow:0 7px 0 #b18fc019,inset 0 1px 0 #fffc;
+  color:#502c5e;
+  text-decoration:none;
+  transition:transform .24s ease,box-shadow .24s ease,background-color .24s ease;
+}
+.portfolio-signature-page .portfolio-instagram-copy{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  text-align:left;
+  gap:3px;
+}
+.portfolio-signature-page .portfolio-instagram-copy small{
+  font:700 9px/1.5 "Sora",sans-serif;
+  letter-spacing:.11em;
+  color:#9167a1;
+}
+.portfolio-signature-page .portfolio-instagram-copy strong{
+  font:650 clamp(15px,1.4vw,18px)/1.35 "Sora",sans-serif;
+  letter-spacing:-.035em;
+  color:#462450;
+}
+.portfolio-signature-page .portfolio-instagram-stamp{
+  position:relative;
+  display:grid;
+  place-items:center;
+  flex:0 0 49px;
+  width:49px;
+  height:49px;
+  border-radius:11px 17px 11px 17px;
+  background:#714386;
+  color:#f7effa;
+}
+.portfolio-signature-page .portfolio-instagram-stamp .icon{
+  width:28px;
+  height:28px;
+  transition:transform .3s ease;
+}
+.portfolio-signature-page .portfolio-instagram-stamp .portfolio-instagram-arrow{
+  position:absolute;
+  right:4px;
+  bottom:2px;
+  font:600 13px/1 "Sora",sans-serif;
+}
+@media(hover:hover){
+  .portfolio-signature-page .portfolio-instagram-link:hover{
+    transform:translateY(-3px);
+    background:#e7d1ed;
+    box-shadow:0 12px 21px #6746761d;
+  }
+  .portfolio-signature-page .portfolio-instagram-link:hover .portfolio-instagram-stamp .icon{
+    transform:rotate(-12deg) translateY(-2px);
+  }
+}
+@media(max-width:560px){
+  .portfolio-signature-page .portfolio-instagram-note{font-size:9px}
+  .portfolio-signature-page .portfolio-instagram-link{gap:13px;padding-left:15px;min-height:64px;}
+  .portfolio-signature-page .portfolio-instagram-copy strong{font-size:14px;}
+  .portfolio-signature-page .portfolio-instagram-stamp{flex-basis:44px;width:44px;height:44px;}
+}
+@media(prefers-reduced-motion:reduce){
+  .portfolio-signature-page .portfolio-instagram-link,
+  .portfolio-signature-page .portfolio-instagram-stamp .icon{transition:none!important}
+}
