@@ -544,7 +544,8 @@ def events():
 
 @app.get("/videos")
 def videos():
-    return render_template("videos.html")
+    # Os vídeos agora fazem parte do portfólio principal. Preserva links antigos.
+    return redirect(url_for("portfolio_view") + "#processos", code=302)
 
 
 @app.get("/trabalhos")
