@@ -56,3 +56,77 @@ STUDIO_PRESENTATIONS_20261022 = {'SenacX · Alexas personalizadas': 'img/trabalh
 for _work in PORTFOLIO:
     if _work["title"] in STUDIO_PRESENTATIONS_20261022:
         _work["presentation_image"] = STUDIO_PRESENTATIONS_20261022[_work["title"]]
+
+# Curadoria de Trabalhos — Megui, 25/10/2026.
+# A ordem prioriza os 12 projetos de destaque e preserva todo o acervo existente.
+# Sem arquivos inventados: cada caminho abaixo já era utilizado no projeto.
+# 'image_strategy' orienta futuras edições fotográficas; não gera nem altera imagens.
+PRODUCTION_WORKS = [
+    {"title":"Comunicação visual em produção","kind":"APLICAÇÃO & ACABAMENTO","text":"Da preparação à aplicação de vinil: um registro real da comunicação visual em produção.","image":"img/acervo/comunicacao-visual.jpg","video":"video/comunicacao-visual.mp4","tags":"eventos bastidores","key":"comunicacao-visual-producao"},
+    {"title":"Confecção de bolsas","kind":"CORTE & COSTURA","text":"Da etapa de corte à costura: um registro do processo de confecção de bolsas personalizadas.","image":"img/acervo/confeccao-bolsas.jpg","video":"video/confeccao-bolsas.mp4","tags":"brindes bastidores","key":"confeccao-bolsas"}
+]
+PORTFOLIO.extend(PRODUCTION_WORKS)
+
+PORTFOLIO_CURATORIAL_ORDER = [
+        "SenacX · Alexas personalizadas",
+        "Infinix · kit corporativo",
+        "Fecomércio MG · fones",
+        "Samba do Maestro",
+        "Circuito das Indústrias",
+        "Future Pro",
+        "Escola de Cura",
+        "Senac Minas",
+        "Senac · garrafas personalizadas",
+        "Virgin Mary · camisetas",
+        "Band Minas",
+        "Infinix · comunicação visual",
+        "SenacX · bottons",
+        "E.E.P.O.F · kit escolar",
+        "Nécessaires personalizadas",
+        "Chaveiros personalizados",
+        "Minions Run",
+        "Camisetas que acompanham o evento",
+        "Uniformes em volume",
+        "Comunicação visual em produção",
+        "O processo por trás da estampa",
+        "Confecção de bolsas",
+        "Da estampa à camiseta"
+]
+
+PORTFOLIO_EDITORIAL = {
+    "SenacX · Alexas personalizadas": {"kind":"TECNOLOGIA & BRINDES","text":"A identidade NaSemanaS aplicada a Alexas Echo Pop: tecnologia personalizada para acompanhar a rotina.","tags":"tecnologia brindes","image_strategy":"apresentação","priority":"destaque"},
+    "Infinix · kit corporativo": {"kind":"BRINDES & PAPELARIA","text":"Copo, caderno e caneta em um conjunto personalizado com a identidade Infinix.","tags":"brindes","image_strategy":"apresentação","priority":"destaque"},
+    "Fecomércio MG · fones": {"kind":"TECNOLOGIA PERSONALIZADA","text":"Fones com a identidade do Sistema Comércio. Um brinde funcional, pensado para continuar em uso.","tags":"tecnologia brindes","image_strategy":"apresentação","priority":"destaque"},
+    "Samba do Maestro": {"kind":"EVENTOS & COMUNICAÇÃO VISUAL","text":"Capas de grade que levaram a identidade do Samba do Maestro ao espaço do evento.","tags":"eventos","image_strategy":"registro","priority":"destaque"},
+    "Circuito das Indústrias": {"kind":"SACOCHILAS PERSONALIZADAS","text":"Sacochilas personalizadas em volume, registradas durante a preparação e a produção das peças.","tags":"brindes eventos bastidores","image_strategy":"apresentação","priority":"destaque"},
+    "Future Pro": {"kind":"VESTUÁRIO PERSONALIZADO","text":"Camiseta com a identidade Future Pro aplicada à malha. Marca e acabamento no mesmo projeto.","tags":"vestuario","image_strategy":"apresentação","priority":"destaque"},
+    "Escola de Cura": {"kind":"CAMISETAS PARA MOVIMENTOS","text":"Camisetas estampadas e embaladas para reunir mensagem, identidade e pertencimento.","tags":"vestuario eventos","image_strategy":"apresentação","priority":"destaque"},
+    "Senac Minas": {"kind":"BRINDES & PAPELARIA","text":"Cadernos personalizados para o projeto NaSemanaS, levando a identidade do Senac aos materiais do encontro.","tags":"brindes","image_strategy":"apresentação","priority":"destaque"},
+    "Senac · garrafas personalizadas": {"kind":"BRINDES CORPORATIVOS","text":"Garrafas personalizadas com a identidade do Senac, reunidas em um pedido de brindes.","tags":"brindes","image_strategy":"apresentação","priority":"destaque"},
+    "Virgin Mary · camisetas": {"kind":"VESTUÁRIO PERSONALIZADO","text":"Camisetas claras com estampa azul e vermelha. Detalhes de malha, gola e aplicação no produto pronto.","tags":"vestuario","image_strategy":"apresentação","priority":"destaque"},
+    "Band Minas": {"kind":"BRINDES CORPORATIVOS","text":"Copos e itens personalizados que levam a identidade da Band Minas para além da tela.","tags":"brindes","image_strategy":"apresentação","priority":"destaque"},
+    "Infinix · comunicação visual": {"kind":"COMUNICAÇÃO VISUAL EM USO","text":"A identidade da Infinix aplicada às portas de elevador, ocupando um espaço real de circulação.","tags":"eventos","image_strategy":"registro","priority":"destaque"},
+    "SenacX · bottons": {"kind":"BRINDES PARA ENCONTROS","text":"Bottons em laranja e preto para o projeto NaSemanaS. Pequenos detalhes que identificam o encontro.","tags":"eventos brindes","image_strategy":"apresentação","priority":"acervo"},
+    "E.E.P.O.F · kit escolar": {"kind":"KITS ESCOLARES","text":"Sacochila e squeeze personalizados com a mesma identidade, em um conjunto para o dia a dia escolar.","tags":"brindes","image_strategy":"apresentação","priority":"acervo"},
+    "Nécessaires personalizadas": {"kind":"BOLSAS & ACESSÓRIOS","text":"Nécessaires personalizadas: identidade aplicada a peças práticas para diferentes rotinas.","tags":"brindes","image_strategy":"apresentação","priority":"acervo"},
+    "Chaveiros personalizados": {"kind":"LEMBRANÇAS & PRESENTES","text":"Chaveiros personalizados com nomes e mensagens, pensados para lembranças e ações especiais.","tags":"brindes","image_strategy":"apresentação","priority":"acervo"},
+    "Minions Run": {"kind":"CORRIDAS & EVENTOS","text":"Capas de grade personalizadas em uso durante a Minions Run, acompanhando o percurso do evento.","tags":"eventos","image_strategy":"registro","priority":"acervo"},
+    "Camisetas que acompanham o evento": {"kind":"VESTUÁRIO EM USO","text":"Camisetas personalizadas vestidas por participantes de um evento. A peça faz parte do momento.","tags":"vestuario eventos","image_strategy":"registro","priority":"acervo"},
+    "Uniformes em volume": {"kind":"UNIFORMES PARA EQUIPES","text":"Peças personalizadas em volume, reunidas para vestir equipes com identidade visual.","tags":"vestuario bastidores","image_strategy":"registro","priority":"acervo"},
+    "Comunicação visual em produção": {"kind":"APLICAÇÃO & ACABAMENTO","text":"Da preparação à aplicação de vinil: um registro real da comunicação visual em produção.","tags":"eventos bastidores","image_strategy":"registro","priority":"acervo"},
+    "O processo por trás da estampa": {"kind":"BASTIDORES DA ESTAMPARIA","text":"A preparação e a aplicação da estampa antes da peça pronta, em registro real de produção.","tags":"vestuario bastidores","image_strategy":"registro","priority":"acervo"},
+    "Confecção de bolsas": {"kind":"CORTE & COSTURA","text":"Da etapa de corte à costura: um registro do processo de confecção de bolsas personalizadas.","tags":"brindes bastidores","image_strategy":"registro","priority":"acervo"},
+    "Da estampa à camiseta": {"kind":"BASTIDORES DA PERSONALIZAÇÃO","text":"Estampas sendo aplicadas em camisetas durante a produção de peças em volume.","tags":"vestuario bastidores","image_strategy":"registro","priority":"acervo"},
+}
+for _work in PORTFOLIO:
+    _editorial = PORTFOLIO_EDITORIAL.get(_work["title"])
+    if _editorial:
+        _work.update(_editorial)
+
+    # Para fotos de evento e bastidores, priorizamos o registro autêntico.
+    # A versão tratada permanece disponível para usos futuros.
+    if _work.get("image_strategy") == "registro" and _work.get("presentation_image"):
+        _work["studio_image"] = _work.pop("presentation_image")
+
+_portfolio_rank = {title: index for index, title in enumerate(PORTFOLIO_CURATORIAL_ORDER)}
+PORTFOLIO.sort(key=lambda _work: _portfolio_rank.get(_work["title"], len(_portfolio_rank)))
