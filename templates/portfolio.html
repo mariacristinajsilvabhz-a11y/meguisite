@@ -42,25 +42,142 @@
 @media(prefers-reduced-motion:reduce){.work-project-cta{transition:none}}
 </style><link rel="stylesheet" href="{{ url_for('static',filename='css/portfolio-editorial-20261025.css',v='20261025-v2') }}">{% endblock %}
 {% block content %}
+{% set feature_titles = ['SenacX · Alexas personalizadas','Infinix · kit corporativo','Fecomércio MG · fones','Band Minas'] %}
+{% set stories = [
+ ('SenacX · Alexas personalizadas','SENAC / NA SEMANAS','Quando tecnologia também comunica identidade.','A identidade do projeto NaSemanaS aplicada às Alexas Echo Pop. Um objeto pensado para seguir na rotina e continuar levando a marca para além do encontro.','Alexa Echo Pop personalizada','01'),
+ ('Infinix · kit corporativo','INFINIX / KIT DE MARCA','Três objetos. Uma presença de marca.','Um conjunto com copo, caderno e caneta personalizados. A mesma identidade aparece em diferentes momentos de uso, em uma apresentação coordenada.','Copo, caderno e caneta','02'),
+ ('Fecomércio MG · fones','SISTEMA COMÉRCIO / BRINDES','Uma marca também se faz presente no cotidiano.','Fones personalizados com a identidade do Sistema Comércio, envolvendo Fecomércio MG, Sesc, Senac e sindicatos empresariais. Tecnologia e aplicação da marca em um só projeto.','Fones personalizados','03'),
+ ('Band Minas','BAND MINAS / CORPORATIVO','A identidade continua depois do encontro.','Copos e outros itens personalizados com a identidade da Band Minas. Objetos de uso diário que prolongam a presença da marca.','Copos e brindes personalizados','04')
+] %}
+<div class="portfolio-studio portfolio-signature-page">
+  <section class="portfolio-intro" aria-labelledby="portfolio-page-title">
+    <div class="container portfolio-intro-layout">
+      <div class="portfolio-intro-copy">
+        <span class="portfolio-kicker"><span class="portfolio-kicker-star" aria-hidden="true">{{ icon('butterfly') }}</span> MEGUI / NOSSO PORTFÓLIO</span>
+        <h1 id="portfolio-page-title">Não é só<br>personalizar.<br><em>É fazer parte.</em></h1>
+        <p>Na rotina de uma equipe, no encontro de uma marca ou na lembrança de um evento. Conheça os projetos que saíram da nossa produção para ganhar o mundo.</p>
+        <div class="portfolio-intro-actions">
+          <a href="#projetos-destaque" class="portfolio-intro-link">Conhecer projetos <span aria-hidden="true">↘</span></a>
+          <span class="portfolio-intro-count"><strong>{{ portfolio|length }}</strong> projetos e registros do acervo</span>
+        </div>
+      </div>
+      <div class="portfolio-intro-visual">
+        <div class="portfolio-intro-photo">
+          <img src="{{ url_for('static',filename='img/acervo/camisetas-em-uso.jpg') }}" alt="Camisetas personalizadas em uso em um evento real" fetchpriority="high">
+        </div>
+        <span class="portfolio-photo-stamp">FEITO POR NÓS.<br>VIVIDO POR VOCÊS.</span>
+        <span class="portfolio-intro-butterfly" aria-hidden="true">{{ icon('butterfly') }}</span>
+        <span class="portfolio-photo-caption">01 / DA NOSSA PRODUÇÃO PARA O DIA A DIA</span>
+      </div>
+    </div>
+  </section>
+  {% include '_client_marquee.html' %}
 
-<div class="portfolio-studio">
-<section class="work-page-hero"><div class="container work-hero-layout"><div><span class="work-overline">FEITO PELA MEGUI · DO PROJETO À ENTREGA</span><h1>Cada projeto,<br><em>uma identidade.</em></h1><p>Na camiseta de uma equipe, no presente de um encontro ou no detalhe de uma marca. Cada trabalho tem uma história para mostrar.</p><a class="work-hero-jump" href="#projetos"><span><small>CONHEÇA O QUE PRODUZIMOS</small>Explorar trabalhos</span><b aria-hidden="true">↘</b></a><div class="work-intro-note"><strong>{{ portfolio|length }}</strong><span>projetos e registros de produção<br>para conhecer de perto</span></div></div><div class="work-hero-collage"><span class="work-hero-brandmark" aria-hidden="true">{{ icon('butterfly') }}</span><span class="work-hero-note" aria-hidden="true">Cada detalhe conta.</span><a class="work-cover-large" href="#projetos"><img src="{{ url_for('static',filename='img/acervo/camisetas-em-uso.jpg') }}" alt="Camisetas personalizadas em uso durante um evento" fetchpriority="high"><span>Personalização que faz parte<br><strong>de momentos reais.</strong></span></a><a class="work-cover-small" href="#alexa-senac"><img src="{{ url_for('static',filename='img/trabalhos/2026/alexa-apresentacao-v1.webp') }}" alt="Alexas personalizadas para o SenacX"><span>Tecnologia com identidade ↗</span></a></div></div></section>
-{% include '_client_marquee.html' %}
-<section class="section work-projects" id="projetos"><div class="container"><header class="work-projects-heading"><div><span class="work-overline">ACERVO DE TRABALHOS REAIS</span><h2>Feito na Megui.<br>Visto por aí.</h2></div><p>Uniformes, brindes, eventos e bastidores. Projetos diferentes, todos com um detalhe em comum: a identidade de quem pediu.</p></header><label class="work-search"><span>Buscar no portfólio</span><input type="search" id="work-search" placeholder="Ex.: Senac, camisetas, kits…" autocomplete="off"></label><div class="project-filters" aria-label="Explorar trabalhos por tema">{% for key,label in [('todos','Todos'),('vestuario','Vestuário'),('brindes','Brindes & kits'),('tecnologia','Tecnologia'),('eventos','Eventos & comunicação'),('bastidores','Registros & produção')] %}<button type="button" data-work-filter="{{ key }}" aria-pressed="{{ 'true' if loop.first else 'false' }}">{{ label }}</button>{% endfor %}<span class="project-filter-count" data-work-count role="status" aria-live="polite">{{ portfolio|length }} trabalhos</span></div><p class="work-empty" hidden>Nenhum trabalho encontrado. Tente outro nome ou selecione “Todos”.</p><div class="portfolio-grid work-project-grid">
-{% for work in portfolio %}
-{% set kind = work.kind|upper %}
-<article id="{{ work.key if work.key else 'projeto-' ~ loop.index }}" class="portfolio-card work-project {% if work.portrait %}work-project-portrait{% endif %}" data-work-tags="{{ work.tags if work.tags else ('eventos ' if 'EVENT' in kind or 'CORRIDA' in kind or 'MOVIMENTO' in kind or 'COMUNICAÇÃO' in kind else '') ~ ('vestuario ' if 'VESTU' in kind or 'CAMISETA' in kind or 'EQUIPE' in kind or 'ESTAMP' in kind else '') ~ ('brindes ' if 'BRINDE' in kind or 'BOLSA' in kind or 'PAPELARIA' in kind or 'LEMBRAN' in kind else '') ~ ('bastidores ' if 'BASTIDOR' in kind or 'PRODUÇÃO' in kind else '') }}">
-{% if work.video %}{{ video_preview(work.video, work.image, work.title) }}{% else %}<a data-work-zoom class="work-project-image" href="{{ url_for('static',filename=work.presentation_image|default(work.image)) }}" target="_blank" rel="noopener" aria-label="Ampliar imagem: {{ work.title }}"><img src="{{ url_for('static',filename=work.presentation_image|default(work.image)) }}" alt="{{ work.title }}: {{ 'produto personalizado' if work.presentation_image else 'registro do trabalho' }}" width="1200" height="900" loading="lazy" decoding="async"></a>{% endif %}
-<div class="portfolio-copy"><span class="work-overline">{{ work.kind }}{% if work.year %} · {{ work.year }}{% endif %}</span><h3>{{ work.title }}</h3><p>{{ work.text }}</p> src="{{ url_for('static',filename=work.image) }}" alt="Foto original do trabalho {{ work.title }}" width="1152" height="2048" loading="lazy"></a></details>{% endif %}<a class="work-project-cta" href="https://wa.me/{{ whatsapp_number }}?text={{ ('Olá! Vi o trabalho “' ~ work.title ~ '” no site e gostaria de um projeto semelhante.')|urlencode }}" target="_blank" rel="noopener"><span><small>GOSTOU DESTE TRABALHO?</small>Quero um projeto assim</span><b aria-hidden="true">↗</b></a></div>
-</article>
-{% endfor %}
-</div><div class="work-more-wrap"><button type="button" class="work-more" hidden>Ver mais trabalhos <span aria-hidden="true">＋</span></button></div></div></section>
-<section class="section section-soft"><div class="container"><div class="section-heading"><span class="eyebrow">NOSSA TRAJETÓRIA</span><h2>Marcas presentes desde os primeiros passos.</h2><p class="muted-copy">Trabalhos registrados entre 2021 e 2022, quando nossa operação ainda se chamava Freedom.</p></div><div class="archive-grid">
-{% for brand in historical_brands %}<article class="archive-card"><a href="{{ url_for('static', filename=brand.image) }}" target="_blank" rel="noopener"><img src="{{ url_for('static', filename=brand.image) }}" alt="{{ brand.work }} para {{ brand.name }}, fase Freedom" loading="lazy"></a><div><span class="archive-date">ACERVO FREEDOM · {{ brand.year }}</span><h3>{{ brand.name }}</h3><p>{{ brand.work }}</p></div></article>{% endfor %}
-</div></div></section>
-<section class="section"><div class="container quote-banner"><span class="work-end-butterfly" aria-hidden="true">{{ icon('butterfly') }}</span><div><span class="eyebrow eyebrow-light">O PRÓXIMO PROJETO PODE SER O SEU</span><h2>Sua marca também<br>pode estar aqui.</h2></div><div><p>Conte o que você precisa produzir. A Megui ajuda a escolher produtos, aplicações e acabamentos.</p><a class="work-final-cta" href="https://wa.me/{{ whatsapp_number }}"><span><small>VAMOS CRIAR JUNTOS</small>Conversar sobre meu projeto</span><b aria-hidden="true">↗</b></a></div></div></section>
+  <section class="portfolio-brands" id="projetos-destaque" aria-labelledby="portfolio-brands-title">
+    <div class="container">
+      <header class="portfolio-editorial-heading">
+        <div>
+          <span class="portfolio-kicker">PROJETOS COM IDENTIDADE</span>
+          <h2 id="portfolio-brands-title">Marcas que viraram<br><em>projetos memoráveis.</em></h2>
+        </div>
+        <p>Por trás de cada peça existe uma ideia, uma necessidade e uma identidade. Aqui, alguns dos trabalhos que contam essa história.</p>
+      </header>
+      <div class="portfolio-case-grid">
+      {% for name,eyebrow,hook,context,detail,index in stories %}
+        {% set work = portfolio | selectattr('title','equalto',name) | first %}
+        <article class="portfolio-case">
+          <div class="portfolio-case-photo">
+            <a data-work-zoom href="{{ url_for('static',filename=work.presentation_image|default(work.image)) }}" target="_blank" rel="noopener" aria-label="Ampliar apresentação de {{ work.title }}">
+              <img class="portfolio-case-main-image" src="{{ url_for('static',filename=work.presentation_image|default(work.image)) }}" alt="Apresentação de {{ detail|lower }} para {{ work.title }}" loading="lazy" decoding="async">
+              <span class="portfolio-photo-view">Ver imagem <span aria-hidden="true">↗</span></span>
+            </a>
+            {% if work.presentation_image and work.presentation_image != work.image %}
+            <span class="portfolio-case-real" title="Fotografia do registro original do trabalho">
+              <img src="{{ url_for('static',filename=work.image) }}" alt="" loading="lazy" decoding="async">
+              <span>REGISTRO REAL</span>
+            </span>
+            {% endif %}
+            <span class="portfolio-case-number" aria-hidden="true">{{ index }}</span>
+          </div>
+          <div class="portfolio-case-content">
+            <span class="portfolio-case-eyebrow">{{ eyebrow }}</span>
+            <h3>{{ hook }}</h3>
+            <p>{{ context }}</p>
+            <div class="portfolio-case-footer">
+              <span><small>O QUE PRODUZIMOS</small>{{ detail }}</span>
+              <a href="https://wa.me/{{ whatsapp_number }}?text={{ ('Olá! Vi o projeto ' ~ work.title ~ ' no portfólio da Megui e quero conversar sobre uma ideia semelhante.')|urlencode }}" target="_blank" rel="noopener" aria-label="Orçar projeto semelhante a {{ work.title }}">Quero algo assim <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+        </article>
+      {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="portfolio-collection" id="projetos" aria-labelledby="portfolio-collection-title">
+    <div class="container">
+      <header class="portfolio-editorial-heading portfolio-collection-heading">
+        <div>
+          <span class="portfolio-kicker">MUITAS IDEIAS. MUITAS FORMAS.</span>
+          <h2 id="portfolio-collection-title">O restante da história<br><em>também está aqui.</em></h2>
+        </div>
+        <p>Camisetas, kits, brindes, eventos, acessórios e bastidores da produção. Explore os trabalhos por área ou encontre o que procura.</p>
+      </header>
+      <div class="portfolio-find">
+        <label class="work-search" for="work-search"><span>Procurar um trabalho</span><input type="search" id="work-search" placeholder="Nome, produto ou projeto…" autocomplete="off"></label>
+        <div class="project-filters" aria-label="Filtrar projetos">
+          {% for key,label in [('todos','Todos'),('vestuario','Vestuário'),('brindes','Brindes e kits'),('tecnologia','Tecnologia'),('eventos','Eventos'),('bastidores','Bastidores')] %}
+          <button type="button" data-work-filter="{{ key }}" aria-pressed="{{ 'true' if loop.first else 'false' }}">{{ label }}</button>
+          {% endfor %}
+          <span class="project-filter-count" data-work-count role="status" aria-live="polite">Trabalhos do acervo</span>
+        </div>
+      </div>
+      <p class="work-empty" hidden>Nenhum trabalho encontrado nessa combinação. Tente outra categoria.</p>
+      <div class="portfolio-grid work-project-grid">
+        {% for work in portfolio if work.title not in feature_titles %}
+        {% set kind = work.kind|upper %}
+        <article id="{{ work.key if work.key else 'projeto-' ~ loop.index }}" class="portfolio-card work-project{% if work.portrait %} work-project-portrait{% endif %}" data-work-tags="{{ work.tags if work.tags else ('eventos ' if 'EVENT' in kind or 'CORRIDA' in kind or 'MOVIMENTO' in kind or 'COMUNICAÇÃO' in kind else '') ~ ('vestuario ' if 'VESTU' in kind or 'CAMISETA' in kind or 'EQUIPE' in kind or 'ESTAMP' in kind else '') ~ ('brindes ' if 'BRINDE' in kind or 'BOLSA' in kind or 'PAPELARIA' in kind or 'LEMBRAN' in kind else '') ~ ('bastidores ' if 'BASTIDOR' in kind or 'PRODUÇÃO' in kind else '') }}">
+          {% if work.video %}{{ video_preview(work.video, work.image, work.title) }}{% else %}
+          <a data-work-zoom class="work-project-image" href="{{ url_for('static',filename=work.presentation_image|default(work.image)) }}" target="_blank" rel="noopener" aria-label="Ampliar imagem de {{ work.title }}">
+            <img src="{{ url_for('static',filename=work.presentation_image|default(work.image)) }}" alt="{{ work.title }} — {{ work.kind|lower }}" loading="lazy" decoding="async" width="850" height="680">
+            <span class="portfolio-photo-view">Ver imagem <span aria-hidden="true">↗</span></span>
+          </a>{% endif %}
+          <div class="portfolio-copy">
+            <span class="work-overline">{{ work.kind }}{% if work.year %} / {{ work.year }}{% endif %}</span>
+            <h3>{{ work.title }}</h3>
+            <p>{{ work.text }}</p>
+            <a class="work-project-cta" href="https://wa.me/{{ whatsapp_number }}?text={{ ('Olá! Vi o trabalho “' ~ work.title ~ '” no site da Megui e gostaria de um projeto semelhante.')|urlencode }}" target="_blank" rel="noopener">Quero um projeto assim <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+      <div class="work-more-wrap"><button type="button" class="work-more" hidden>Ver mais trabalhos <span aria-hidden="true">＋</span></button></div>
+    </div>
+  </section>
+
+  <section class="portfolio-heritage" aria-labelledby="portfolio-heritage-title">
+    <div class="container">
+      <div class="portfolio-heritage-heading">
+        <div><span class="portfolio-kicker">DESDE 2020, HISTÓRIAS EM CADA PEÇA</span><h2 id="portfolio-heritage-title">Nossa história também<br><em>tem acervo.</em></h2></div>
+        <p>Antes do nome Megui, atuávamos como Freedom. Esses registros fazem parte da nossa trajetória e mostram como nosso trabalho vem evoluindo.</p>
+      </div>
+      <div class="archive-grid">
+        {% for brand in historical_brands %}
+        <article class="archive-card"><a href="{{ url_for('static', filename=brand.image) }}" target="_blank" rel="noopener" aria-label="Ver trabalho para {{ brand.name }}"><img src="{{ url_for('static', filename=brand.image) }}" alt="{{ brand.work }} para {{ brand.name }}, acervo Freedom" loading="lazy"></a><div><span class="archive-date">ACERVO FREEDOM / {{ brand.year }}</span><h3>{{ brand.name }}</h3><p>{{ brand.work }}</p></div></article>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="portfolio-outro" aria-labelledby="portfolio-outro-title">
+    <div class="container portfolio-outro-inner">
+      <span class="portfolio-outro-butterfly" aria-hidden="true">{{ icon('butterfly') }}</span>
+      <div><span class="portfolio-kicker">E O PRÓXIMO PROJETO?</span><h2 id="portfolio-outro-title">A próxima história<br><em>pode ser a sua.</em></h2></div>
+      <div><p>Do uniforme ao brinde, do evento à ideia fora do catálogo. Conte o que você imagina, e a Megui te ajuda a transformar isso em algo real.</p><a href="https://wa.me/{{ whatsapp_number }}?text={{ 'Olá! Conheci os trabalhos da Megui e quero conversar sobre um projeto personalizado.'|urlencode }}" target="_blank" rel="noopener">Vamos criar juntos <span aria-hidden="true">↗</span></a></div>
+    </div>
+  </section>
 </div>
-<dialog class="work-lightbox" aria-labelledby="work-lightbox-title"><div class="work-lightbox-bar"><h2 id="work-lightbox-title">Detalhes do trabalho</h2><button type="button" data-work-close aria-label="Fechar imagem">Fechar ×</button></div><img alt=""><p>Foto completa · explore os detalhes da personalização.</p></dialog>
+<dialog class="work-lightbox" aria-labelledby="work-lightbox-title"><div class="work-lightbox-bar"><h2 id="work-lightbox-title">Detalhes do trabalho</h2><button type="button" data-work-close aria-label="Fechar imagem">Fechar ×</button></div><img alt=""><p>Imagem do portfólio Megui.</p></dialog>
 {% endblock %}
 
 {% block extra_scripts %}
