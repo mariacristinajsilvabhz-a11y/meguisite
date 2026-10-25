@@ -945,3 +945,51 @@
   .ev-artdirection .ev-curated-photo,
   .ev-artdirection .ev-curated-minions .ev-curated-photo{height:auto;aspect-ratio:4/3;min-height:0}
 }
+
+
+/* Ajustes finais de enquadramento: os registros quadrados ficam inteiros
+   e a coleção ganha leitura confortável no celular. */
+.ev-artdirection .ev-moment-photo{
+  width:100%;
+  height:auto;
+  max-height:none;
+  aspect-ratio:1;
+  align-self:center;
+  overflow:hidden;
+}
+.ev-artdirection .ev-moment-photo img{
+  display:block;
+  width:100%;
+  height:100%;
+  max-height:none;
+  object-fit:cover;
+  object-position:center;
+}
+.ev-artdirection #ev-panel-casamento .ev-world-image{
+  aspect-ratio:1;
+  min-height:0;
+}
+.ev-artdirection #ev-panel-casamento .ev-world-image img{
+  object-fit:cover;
+}
+.ev-artdirection .ev-cover-stamp{right:8px}
+@media(max-width:850px){
+  .ev-artdirection .ev-moment-photo{height:auto;max-height:none;aspect-ratio:1}
+  .ev-artdirection #ev-panel-casamento .ev-world-image{height:auto;aspect-ratio:1}
+}
+@media(max-width:620px){
+  .ev-artdirection .ev-moment-photo{height:auto;max-height:none;aspect-ratio:1}
+  .ev-artdirection .ev-moment-photo img{max-height:none;height:100%}
+  .ev-artdirection .ev-curated-grid{
+    grid-template-columns:minmax(0,1fr);
+    gap:45px;
+  }
+  .ev-artdirection .ev-curated-grid>.ev-curated-piece{
+    grid-column:1/-1;
+  }
+  .ev-artdirection .ev-curated-info>span{font-size:10px}
+  .ev-artdirection .ev-curated-info h3{font-size:26px}
+  .ev-artdirection .ev-curated-info p{font-size:14px;line-height:1.85}
+  .ev-artdirection .ev-curated-info>a{font-size:12px}
+  .ev-artdirection #ev-panel-casamento .ev-world-image{height:auto;aspect-ratio:1}
+}
