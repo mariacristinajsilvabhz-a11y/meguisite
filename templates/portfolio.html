@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="{{ url_for('static',filename='css/mostruario.css',v='20261018-v1') }}">
 <link rel="stylesheet" href="{{ url_for('static',filename='css/work-showcase.css',v='20261020-v1') }}">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,600;1,700&display=swap">
-<link rel="stylesheet" href="{{ url_for('static',filename='css/portfolio-signature-20261025.css',v='20261025-v6') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/portfolio-signature-20261025.css',v='20261025-v7') }}">
 {% endblock %}
 {% block content %}
 {% set feature_titles = ['SenacX · Alexas personalizadas','Infinix · kit corporativo','Fecomércio MG · fones','Band Minas'] %}
@@ -121,6 +121,13 @@
         {% endfor %}
       </div>
       <div class="work-more-wrap"><button type="button" class="work-more" hidden>Ver mais trabalhos <span aria-hidden="true">＋</span></button></div>
+      <div class="portfolio-instagram-wrap" data-portfolio-instagram hidden>
+        <span class="portfolio-instagram-note">A HISTÓRIA CONTINUA NO NOSSO INSTAGRAM</span>
+        <a class="portfolio-instagram-link" href="https://www.instagram.com/megui.personalizados/" target="_blank" rel="noopener noreferrer" aria-label="Veja mais trabalhos no Instagram da Megui, abre em nova aba">
+          <span class="portfolio-instagram-copy"><small>@MEGUI.PERSONALIZADOS</small><strong>Veja mais trabalhos</strong></span>
+          <span class="portfolio-instagram-stamp" aria-hidden="true">{{ icon('butterfly') }}<span class="portfolio-instagram-arrow">↗</span></span>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -237,10 +244,10 @@
 <script>
 (() => {
  const root=document.querySelector('.portfolio-studio'), search=document.getElementById('work-search'), buttons=[...root.querySelectorAll('[data-work-filter]')], cards=[...root.querySelectorAll('[data-work-tags]')], status=root.querySelector('[data-work-count]');
- let category='todos', limit=12; const more=root.querySelector('.work-more');
+ let category='todos', limit=12, expanded=false; const more=root.querySelector('.work-more'), instagram=root.querySelector('[data-portfolio-instagram]');
  const normalize=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
- function apply(){const query=normalize(search.value.trim());let count=0;cards.forEach(card=>{const match=(category==='todos'||card.dataset.workTags.split(/\s+/).includes(category))&&normalize(card.querySelector('.portfolio-copy').textContent).includes(query);if(match)count++;card.hidden=!match||count>limit;});status.textContent=Math.min(count,limit)+' de '+count+' trabalhos';root.querySelector('.work-empty').hidden=count>0;more.hidden=count<=limit;more.innerHTML='Ver mais '+Math.min(12,Math.max(0,count-limit))+' trabalhos <span aria-hidden="true">＋</span>';}
- buttons.forEach(button=>button.addEventListener('click',()=>{category=button.dataset.workFilter;limit=12;buttons.forEach(b=>b.setAttribute('aria-pressed',String(b===button)));apply();}));search.addEventListener('input',()=>{limit=12;apply();});more.addEventListener('click',()=>{const old=cards.filter(c=>!c.hidden);limit+=12;apply();const firstNew=cards.find(c=>!c.hidden&&!old.includes(c));firstNew?.querySelector('a,button')?.focus({preventScroll:true});});apply();
+ function apply(){const query=normalize(search.value.trim());let count=0;cards.forEach(card=>{const match=(category==='todos'||card.dataset.workTags.split(/\s+/).includes(category))&&normalize(card.querySelector('.portfolio-copy').textContent).includes(query);if(match)count++;card.hidden=!match||count>limit;});status.textContent=Math.min(count,limit)+' de '+count+' trabalhos';root.querySelector('.work-empty').hidden=count>0;more.hidden=count<=limit;more.innerHTML='Ver mais '+Math.min(12,Math.max(0,count-limit))+' trabalhos <span aria-hidden="true">＋</span>';instagram.hidden=!(expanded&&count>0&&count<=limit);}
+ buttons.forEach(button=>button.addEventListener('click',()=>{category=button.dataset.workFilter;limit=12;expanded=false;buttons.forEach(b=>b.setAttribute('aria-pressed',String(b===button)));apply();}));search.addEventListener('input',()=>{limit=12;expanded=false;apply();});more.addEventListener('click',()=>{const old=cards.filter(c=>!c.hidden);limit+=12;expanded=true;apply();const firstNew=cards.find(c=>!c.hidden&&!old.includes(c));firstNew?.querySelector('a,button')?.focus({preventScroll:true});});apply();
  const dialog=document.querySelector('.work-lightbox'), picture=dialog.querySelector('img'), title=dialog.querySelector('h2');let opener;
  root.querySelectorAll('[data-work-zoom]').forEach(link=>link.addEventListener('click',event=>{if(event.ctrlKey||event.metaKey||event.shiftKey||!dialog.showModal)return;event.preventDefault();opener=link;picture.src=link.href;picture.alt=link.querySelector('img').alt;title.textContent=link.closest('article').querySelector('h3').textContent;picture.style.transform=link.querySelector('.work-record-rotate')?'rotate(180deg)':'';dialog.showModal();}));
  dialog.querySelector('[data-work-close]').addEventListener('click',()=>dialog.close());dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close();}});dialog.addEventListener('close',()=>opener?.focus());
