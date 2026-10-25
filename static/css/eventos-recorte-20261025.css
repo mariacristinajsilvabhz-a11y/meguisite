@@ -1,0 +1,137 @@
+/* Eventos | integração visual com o tratamento de fotos de Trabalhos.
+   A fotografia de estúdio recebe recorte progressivo somente quando marcada
+   com data-ev-cutout. Cenas reais e produtos claros permanecem intactos.
+   Nenhum filtro de cor altera logo, textura ou estampa. */
+
+.ev-experience{
+  --ev-transparent-product:transparent;
+}
+
+/* Retira a segunda camada de fundo que o layout colocava atrás dos produtos.
+   Mantém o papel lilás da página como base visual, sem novos "quadrados". */
+.ev-experience .ev-project-image,
+.ev-experience .ev-format-panel figure{
+  background:var(--ev-transparent-product)!important;
+}
+
+.ev-experience .ev-photo-detail:has(img[data-ev-cutout]){
+  overflow:visible;
+}
+
+.ev-experience .ev-photo-detail:has(img[data-ev-cutout])>img{
+  background:transparent!important;
+  display:block;
+  width:100%;
+  object-fit:contain!important;
+  object-position:center!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+}
+
+.ev-experience .ev-format-panel figure:has(img[data-ev-cutout]){
+  overflow:visible!important;
+  background:none!important;
+}
+
+.ev-experience .ev-format-panel figure>img[data-ev-cutout]{
+  display:block;
+  width:100%;
+  max-width:100%;
+  object-fit:contain!important;
+  object-position:center!important;
+  background:transparent!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  mix-blend-mode:normal!important;
+}
+
+.ev-experience .ev-project-image:has(img[data-ev-cutout]){
+  overflow:visible!important;
+  background:none!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+}
+
+.ev-experience .ev-project-image>img[data-ev-cutout]{
+  display:block;
+  width:100%;
+  height:320px;
+  padding:0;
+  object-fit:contain!important;
+  object-position:center!important;
+  background:transparent!important;
+  border:0!important;
+  border-radius:0!important;
+  mix-blend-mode:normal!important;
+}
+
+.ev-experience .ev-project-kits img[data-ev-cutout]{height:270px}
+.ev-experience .ev-project-gifts img[data-ev-cutout]{height:310px}
+
+/* Peças em estúdio não precisam de uma moldura com formato aleatório. */
+.ev-experience .ev-project-shirts .ev-project-image:has(img[data-ev-cutout]),
+.ev-experience .ev-project-gifts .ev-project-image:has(img[data-ev-cutout]){
+  border-radius:0!important;
+}
+
+.ev-experience .ev-project-image:has(img[data-ev-cutout])>span{
+  z-index:2;
+  width:37px;
+  height:37px;
+  right:3px;
+  bottom:3px;
+  background:#e3d1ea;
+  color:#6c407f;
+  border-radius:11px 18px 11px 18px;
+  transform:none;
+}
+
+/* Um recorte só é considerado pronto quando a imagem foi realmente tratada.
+   Se o fundo não puder ser removido sem perda, mostra o original. */
+.ev-experience .mw-has-cutout img[data-ev-cutout]{
+  object-fit:contain!important;
+  filter:none!important;
+  background:none!important;
+}
+
+.ev-experience .ev-project:hover img[data-ev-cutout]{
+  transform:translateY(-3px) scale(1.015);
+}
+
+@media(max-width:1050px){
+  .ev-experience .ev-project-image>img[data-ev-cutout]{height:285px}
+  .ev-experience .ev-project-kits img[data-ev-cutout]{height:245px}
+  .ev-experience .ev-project-gifts img[data-ev-cutout]{height:285px}
+}
+
+@media(max-width:700px){
+  .ev-experience .ev-photo-detail>img[data-ev-cutout]{
+    height:166px;
+  }
+  .ev-experience .ev-format-panel figure>img[data-ev-cutout]{
+    height:200px;
+  }
+  .ev-experience .ev-project-image>img[data-ev-cutout]{
+    height:220px;
+  }
+  .ev-experience .ev-project-kits img[data-ev-cutout]{height:200px}
+  .ev-experience .ev-project-gifts img[data-ev-cutout]{height:192px}
+  .ev-experience .ev-project-image:has(img[data-ev-cutout])>span{
+    width:31px;height:31px;right:4px;bottom:4px;
+  }
+}
+
+@media(max-width:380px){
+  .ev-experience .ev-photo-detail>img[data-ev-cutout]{height:152px}
+  .ev-experience .ev-format-panel figure>img[data-ev-cutout]{height:185px}
+  .ev-experience .ev-project-image>img[data-ev-cutout]{height:195px}
+  .ev-experience .ev-project-kits img[data-ev-cutout],
+  .ev-experience .ev-project-gifts img[data-ev-cutout]{height:180px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .ev-experience .ev-project-image>img[data-ev-cutout]{
+    transition:none!important;
+    transform:none!important;
+  }
+}
