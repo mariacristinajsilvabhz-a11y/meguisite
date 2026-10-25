@@ -1,256 +1,327 @@
 {% extends 'base.html' %}
-{% block title %}Trabalhos realizados | Megui{% endblock %}
-{% from '_video_preview.html' import video_preview with context %}
 {% from '_icons.html' import icon %}
-{% block extra_head %}
-<link rel="stylesheet" href="{{ url_for('static',filename='css/mostruario.css',v='20261018-v1') }}">
-<link rel="stylesheet" href="{{ url_for('static',filename='css/work-showcase.css',v='20261020-v1') }}">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,600;1,700&display=swap">
-<link rel="stylesheet" href="{{ url_for('static',filename='css/portfolio-signature-20261025.css',v='20261025-v7') }}">
+{% block title %}Trabalhos & bastidores | Portfólio Megui Personalizados{% endblock %}
+{% block final_head %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600;1,700&display=swap">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/meg-work-atelier-20261025.css',v='20261025-signature-v1') }}">
 {% endblock %}
+
+{% macro watch(film, position='lead') -%}
+<button class="mw-film-watch mw-film-watch-{{ position }}" type="button"
+  data-video-src="{{ url_for('static',filename=film.video) }}"
+  data-video-poster="{{ url_for('static',filename=film.poster) }}"
+  data-video-title="{{ film.title }}"
+  aria-label="Assistir ao vídeo: {{ film.title }}">
+  <img class="mw-film-ambient" src="{{ url_for('static',filename=film.poster) }}" alt="" aria-hidden="true" loading="lazy">
+  <img class="mw-film-poster" src="{{ url_for('static',filename=film.poster) }}" alt="" loading="lazy" decoding="async">
+  <span class="mw-film-shade" aria-hidden="true"></span>
+  <span class="mw-film-play" aria-hidden="true"><svg viewBox="0 0 44 44" fill="none"><path d="M15 10 34 22 15 34V10Z" fill="currentColor"/></svg></span>
+  <span class="mw-film-caption" aria-hidden="true"><span>ASSISTIR AO PROCESSO</span><span class="mw-film-caption-dot"></span></span>
+</button>
+{%- endmacro %}
+
 {% block content %}
-{% set feature_titles = ['SenacX · Alexas personalizadas','Infinix · kit corporativo','Fecomércio MG · fones','Band Minas'] %}
+{% set featured_titles = ['SenacX · Alexas personalizadas','Infinix · kit corporativo','Fecomércio MG · fones','Band Minas'] %}
 {% set process_titles = ['Uniformes em volume','O processo por trás da estampa','Comunicação visual em produção','Confecção de bolsas'] %}
-{% set stories = [
- ('SenacX · Alexas personalizadas','SENAC / NA SEMANAS','Quando tecnologia também comunica identidade.','A identidade do projeto NaSemanaS aplicada às Alexas Echo Pop. Um objeto pensado para seguir na rotina e continuar levando a marca para além do encontro.','Alexa Echo Pop personalizada','01'),
- ('Infinix · kit corporativo','INFINIX / KIT DE MARCA','Três objetos. Uma presença de marca.','Um conjunto com copo, caderno e caneta personalizados. A mesma identidade aparece em diferentes momentos de uso, em uma apresentação coordenada.','Copo, caderno e caneta','02'),
- ('Fecomércio MG · fones','SISTEMA COMÉRCIO / BRINDES','Uma marca também se faz presente no cotidiano.','Fones personalizados com a identidade do Sistema Comércio, envolvendo Fecomércio MG, Sesc, Senac e sindicatos empresariais. Tecnologia e aplicação da marca em um só projeto.','Fones personalizados','03'),
- ('Band Minas','BAND MINAS / CORPORATIVO','A identidade continua depois do encontro.','Copos e outros itens personalizados com a identidade da Band Minas. Objetos de uso diário que prolongam a presença da marca.','Copos e brindes personalizados','04')
+{% set featured_main = portfolio|selectattr('title','equalto',featured_titles[0])|first %}
+{% set feature_stories = [
+  ('Infinix · kit corporativo','A IDENTIDADE ACOMPANHA O DIA','Uma marca presente em cada objeto.','Copo, caderno e caneta personalizados para manter a linguagem visual em diferentes momentos de uso.'),
+  ('Fecomércio MG · fones','TECNOLOGIA COM IDENTIDADE','Uma peça que continua sendo usada.','Fones personalizados com a identidade do Sistema Comércio, unindo um item funcional à presença da marca.'),
+  ('Band Minas','ALÉM DA TELA','A marca também mora nos detalhes.','Itens personalizados para levar a identidade Band Minas aos objetos que acompanham o dia a dia.')
 ] %}
-<div class="portfolio-studio portfolio-signature-page">
-  <section class="portfolio-intro" aria-labelledby="portfolio-page-title">
-    <div class="container portfolio-intro-layout">
-      <div class="portfolio-intro-copy">
-        <span class="portfolio-kicker"><span class="portfolio-kicker-star" aria-hidden="true">{{ icon('butterfly') }}</span> MEGUI / NOSSO PORTFÓLIO</span>
-        <h1 id="portfolio-page-title">Não é só<br>personalizar.<br><em>É fazer parte.</em></h1>
-        <p>Na rotina de uma equipe, no encontro de uma marca ou na lembrança de um evento. Conheça os projetos que saíram da nossa produção para ganhar o mundo.</p>
-        <div class="portfolio-intro-actions">
-          <a href="#projetos-destaque" class="portfolio-intro-link">Conhecer projetos <span aria-hidden="true">↘</span></a>
-          <span class="portfolio-intro-count"><strong>{{ portfolio|length }}</strong> projetos e registros do acervo</span>
+
+<div class="meg-work" id="portfolio-megui">
+  <section class="mw-hero" aria-labelledby="mw-hero-title">
+    <div class="container mw-hero-layout">
+      <div class="mw-hero-copy">
+        <span class="mw-signature"><span class="mw-signature-mark" aria-hidden="true">{{ icon('butterfly') }}</span> UM POUCO DO QUE FAZEMOS POR AQUI</span>
+        <h1 id="mw-hero-title">Não fazemos<br>apenas peças.<br><em>Fazemos presença.</em></h1>
+        <p>Uma marca que ganha as ruas. Uma equipe que veste a própria identidade. Um presente que continua sendo lembrado. É assim que nossos trabalhos encontram as pessoas.</p>
+        <div class="mw-hero-actions">
+          <a href="#marcas" class="mw-main-action"><span>Conheça o que já criamos</span><span class="mw-action-seal" aria-hidden="true">{{ icon('butterfly') }}</span></a>
+          <a href="#processos" class="mw-hero-film-link"><span class="mw-hero-film-dot" aria-hidden="true"></span> Veja como fazemos</a>
         </div>
+        <div class="mw-hero-promise"><span>CONFECÇÃO PRÓPRIA</span><span>PERSONALIZAÇÃO</span><span>PROJETOS REAIS</span></div>
       </div>
-      <div class="portfolio-intro-visual">
-        <div class="portfolio-intro-photo">
-          <img src="{{ url_for('static',filename='img/acervo/camisetas-em-uso.jpg') }}" alt="Camisetas personalizadas em uso em um evento real" fetchpriority="high">
+      <div class="mw-hero-composition">
+        <div class="mw-hero-photograph">
+          <img src="{{ url_for('static',filename='img/acervo/camisetas-em-uso.jpg') }}" alt="Camisetas personalizadas em uso durante um evento real" fetchpriority="high" decoding="async">
         </div>
-        <span class="portfolio-photo-stamp">FEITO POR NÓS.<br>VIVIDO POR VOCÊS.</span>
-        <span class="portfolio-intro-butterfly" aria-hidden="true">{{ icon('butterfly') }}</span>
-        <span class="portfolio-photo-caption">01 / DA NOSSA PRODUÇÃO PARA O DIA A DIA</span>
+        <div class="mw-hero-small" aria-hidden="true">
+          <img src="{{ url_for('static',filename='img/acervo/2026/senac-cadernos-estudio-v2.webp') }}" alt="" loading="lazy">
+        </div>
+        <div class="mw-hero-insignia" aria-hidden="true">{{ icon('butterfly') }}</div>
+        <span class="mw-hero-handnote">feito para viver fora da fábrica</span>
+        <span class="mw-hero-photo-caption">DO NOSSO ACERVO, PARA A VIDA REAL</span>
+      </div>
+    </div>
+    <div class="container mw-hero-tail"><span>PEÇAS, HISTÓRIAS E GENTE DE VERDADE</span><span class="mw-scroll-cue" aria-hidden="true"></span></div>
+  </section>
+
+  <section class="mw-brandproof" aria-label="Marcas que já confiaram na Megui">
+    <div class="container mw-brandproof-inner">
+      <p>Uma produção, muitos universos.</p>
+      <div class="mw-brandproof-logos">
+        {% for brand in trusted_brands[:7] %}
+        <div class="mw-brandproof-brand">
+          {% if brand.image %}
+          <img src="{{ url_for('static',filename='img/clientes/' ~ brand.image) }}" alt="{{ brand.name }}" loading="lazy" decoding="async">
+          {% else %}
+          <span>{{ brand.name }}</span>
+          {% endif %}
+        </div>
+        {% endfor %}
       </div>
     </div>
   </section>
-  {% include '_client_marquee.html' %}
 
-  <section class="portfolio-brands" id="projetos-destaque" aria-labelledby="portfolio-brands-title">
+  <section class="mw-featured" id="marcas" aria-labelledby="mw-featured-heading">
     <div class="container">
-      <header class="portfolio-editorial-heading">
-        <div>
-          <span class="portfolio-kicker">PROJETOS COM IDENTIDADE</span>
-          <h2 id="portfolio-brands-title">Marcas que viraram<br><em>projetos memoráveis.</em></h2>
+      <div class="mw-section-opener">
+        <div class="mw-opener-title">
+          <span class="mw-overline">HISTÓRIAS DE MARCA</span>
+          <h2 id="mw-featured-heading">O trabalho é nosso.<br><em>A identidade é de cada um.</em></h2>
         </div>
-        <p>Por trás de cada peça existe uma ideia, uma necessidade e uma identidade. Aqui, alguns dos trabalhos que contam essa história.</p>
-      </header>
-      <div class="portfolio-case-grid">
-      {% for name,eyebrow,hook,context,detail,index in stories %}
-        {% set work = portfolio | selectattr('title','equalto',name) | first %}
-        <article class="portfolio-case">
-          <div class="portfolio-case-photo">
-            <a data-work-zoom href="{{ url_for('static',filename=work.presentation_image|default(work.image)) }}" target="_blank" rel="noopener" aria-label="Ampliar apresentação de {{ work.title }}">
-              <img class="portfolio-case-main-image" src="{{ url_for('static',filename=work.presentation_image|default(work.image)) }}" alt="Apresentação de {{ detail|lower }} para {{ work.title }}" loading="lazy" decoding="async">
-              <span class="portfolio-photo-view">Ver imagem <span aria-hidden="true">↗</span></span>
-            </a>
-            {% if work.presentation_image and work.presentation_image != work.image %}
-            <span class="portfolio-case-real" title="Fotografia do registro original do trabalho">
-              <img src="{{ url_for('static',filename=work.image) }}" alt="" loading="lazy" decoding="async">
-              <span>REGISTRO REAL</span>
-            </span>
-            {% endif %}
-            <span class="portfolio-case-brand" aria-label="Marca atendida: {{ name.split(' · ')[0] }}">{{ name.split(' · ')[0] }}</span>
-            <span class="portfolio-case-number" aria-hidden="true">{{ index }}</span>
-          </div>
-          <div class="portfolio-case-content">
-            <span class="portfolio-case-eyebrow">{{ eyebrow }}</span>
-            <h3>{{ hook }}</h3>
-            <p>{{ context }}</p>
-            <div class="portfolio-case-footer">
-              <span><small>O QUE PRODUZIMOS</small>{{ detail }}</span>
-              <a href="https://wa.me/{{ whatsapp_number }}?text={{ ('Olá! Vi o projeto ' ~ work.title ~ ' no portfólio da Megui e quero conversar sobre uma ideia semelhante.')|urlencode }}" target="_blank" rel="noopener" aria-label="Orçar projeto semelhante a {{ work.title }}">Quero algo assim <span aria-hidden="true">↗</span></a>
+        <p>Cada projeto tem seu propósito. Nosso papel é transformar essa identidade em algo que as pessoas possam ver, vestir, levar e usar.</p>
+      </div>
+
+      <article class="mw-lead-project">
+        <div class="mw-lead-photo">
+          <a href="{{ url_for('static',filename=featured_main.presentation_image|default(featured_main.image)) }}"
+             data-mw-zoom data-mw-zoom-title="{{ featured_main.title }}" aria-label="Ampliar fotografia do projeto {{ featured_main.title }}" target="_blank" rel="noopener">
+            <img src="{{ url_for('static',filename=featured_main.presentation_image|default(featured_main.image)) }}"
+                 alt="Alexa personalizada para o projeto SenacX" loading="lazy" decoding="async">
+          </a>
+          <span class="mw-lead-photo-tag">ESTÚDIO DE PROJETOS MEGUI</span>
+        </div>
+        <div class="mw-lead-story">
+          <div class="mw-lead-brand"><span>PROJETO EM DESTAQUE</span><strong>SENAC<span>X</span></strong></div>
+          <h3>Tecnologia<br>que carrega<br><em>uma identidade.</em></h3>
+          <p>Alexas Echo Pop personalizadas com a identidade NaSemanaS. Uma ideia que coloca a marca em um objeto que permanece na rotina, muito depois do encontro.</p>
+          <div class="mw-lead-details"><span>TECNOLOGIA PERSONALIZADA</span><span>APLICAÇÃO DE MARCA</span></div>
+          <a class="mw-editorial-cta" href="https://wa.me/{{ whatsapp_number }}?text={{ ('Olá! Vi as Alexas personalizadas do SenacX no portfólio da Megui e quero conversar sobre um projeto semelhante.')|urlencode }}" target="_blank" rel="noopener"><span>Quero criar algo assim</span><span class="mw-editorial-cta-mark" aria-hidden="true">{{ icon('butterfly') }}</span></a>
+        </div>
+      </article>
+
+      <div class="mw-featured-others">
+        {% for name,eyebrow,title,description in feature_stories %}
+        {% set work = portfolio|selectattr('title','equalto',name)|first %}
+        <article class="mw-feature-story">
+          <a class="mw-feature-image" href="{{ url_for('static',filename=work.presentation_image|default(work.image)) }}"
+             data-mw-zoom data-mw-zoom-title="{{ work.title }}" target="_blank" rel="noopener" aria-label="Ampliar fotografia de {{ work.title }}">
+            <img src="{{ url_for('static',filename=work.presentation_image|default(work.image)) }}"
+                 alt="{{ work.title }} — {{ work.kind|lower }}" loading="lazy" decoding="async">
+            <span class="mw-image-enlarge" aria-hidden="true">VER DE PERTO</span>
+          </a>
+          <div class="mw-feature-copy">
+            <span class="mw-overline">{{ eyebrow }}</span>
+            <h3>{{ title }}</h3>
+            <p>{{ description }}</p>
+            <div class="mw-feature-base">
+              <strong>{{ name.split(' · ')[0] }}</strong>
+              <a href="https://wa.me/{{ whatsapp_number }}?text={{ ('Olá! Vi o trabalho ' ~ work.title ~ ' no portfólio da Megui e quero algo nessa proposta.')|urlencode }}" target="_blank" rel="noopener">Conversar sobre um projeto <span class="mw-tiny-butterfly" aria-hidden="true">{{ icon('butterfly') }}</span></a>
             </div>
-          </div>
-        </article>
-      {% endfor %}
-      </div>
-    </div>
-  </section>
-
-  <section class="portfolio-collection" id="projetos" aria-labelledby="portfolio-collection-title">
-    <div class="container">
-      <header class="portfolio-editorial-heading portfolio-collection-heading">
-        <div>
-          <span class="portfolio-kicker">MUITAS IDEIAS. MUITAS FORMAS.</span>
-          <h2 id="portfolio-collection-title">O restante da história<br><em>também está aqui.</em></h2>
-        </div>
-        <p>Camisetas, kits, brindes, eventos, acessórios e bastidores da produção. Explore os trabalhos por área ou encontre o que procura.</p>
-      </header>
-      <div class="portfolio-find">
-        <label class="work-search" for="work-search"><span>Procurar um trabalho</span><input type="search" id="work-search" placeholder="Nome, produto ou projeto…" autocomplete="off"></label>
-        <div class="project-filters" aria-label="Filtrar projetos">
-          {% for key,label in [('todos','Todos'),('vestuario','Vestuário'),('brindes','Brindes e kits'),('tecnologia','Tecnologia'),('eventos','Eventos'),('bastidores','Bastidores')] %}
-          <button type="button" data-work-filter="{{ key }}" aria-pressed="{{ 'true' if loop.first else 'false' }}">{{ label }}</button>
-          {% endfor %}
-          <span class="project-filter-count" data-work-count role="status" aria-live="polite">Trabalhos do acervo</span>
-        </div>
-      </div>
-      <p class="work-empty" hidden>Nenhum trabalho encontrado nessa combinação. Tente outra categoria.</p>
-      <div class="portfolio-grid work-project-grid">
-        {% for work in portfolio if work.title not in feature_titles and work.title not in process_titles %}
-        {% set kind = work.kind|upper %}
-        <article id="{{ work.key if work.key else 'projeto-' ~ loop.index }}" class="portfolio-card work-project{% if work.portrait %} work-project-portrait{% endif %}" data-work-tags="{{ work.tags if work.tags else ('eventos ' if 'EVENT' in kind or 'CORRIDA' in kind or 'MOVIMENTO' in kind or 'COMUNICAÇÃO' in kind else '') ~ ('vestuario ' if 'VESTU' in kind or 'CAMISETA' in kind or 'EQUIPE' in kind or 'ESTAMP' in kind else '') ~ ('brindes ' if 'BRINDE' in kind or 'BOLSA' in kind or 'PAPELARIA' in kind or 'LEMBRAN' in kind else '') ~ ('bastidores ' if 'BASTIDOR' in kind or 'PRODUÇÃO' in kind else '') }}">
-          {% if work.video %}{{ video_preview(work.video, work.image, work.title) }}{% else %}
-          <a data-work-zoom class="work-project-image" href="{{ url_for('static',filename=work.presentation_image|default(work.image)) }}" target="_blank" rel="noopener" aria-label="Ampliar imagem de {{ work.title }}">
-            <img src="{{ url_for('static',filename=work.presentation_image|default(work.image)) }}" alt="{{ work.title }} — {{ work.kind|lower }}" loading="lazy" decoding="async" width="850" height="680">
-            <span class="portfolio-photo-view">Ver imagem <span aria-hidden="true">↗</span></span>
-          </a>{% endif %}
-          <div class="portfolio-copy">
-            <span class="work-overline">{{ work.kind }}{% if work.year %} / {{ work.year }}{% endif %}</span>
-            <h3>{{ work.title }}</h3>
-            <p>{{ work.text }}</p>
-            <a class="work-project-cta" href="https://wa.me/{{ whatsapp_number }}?text={{ ('Olá! Vi o trabalho “' ~ work.title ~ '” no site da Megui e gostaria de um projeto semelhante.')|urlencode }}" target="_blank" rel="noopener" aria-label="Quero um projeto personalizado como {{ work.title }} com a Megui"><span class="work-cta-copy"><small>CRIAR COM A MEGUI</small><span class="work-cta-title">Quero um projeto assim</span></span><span class="work-cta-signature" aria-hidden="true"><span class="work-cta-butterfly">{{ icon('butterfly') }}</span><span class="work-cta-arrow">↗</span></span></a>
           </div>
         </article>
         {% endfor %}
       </div>
-      <div class="work-more-wrap"><button type="button" class="work-more" hidden>Ver mais trabalhos <span aria-hidden="true">＋</span></button></div>
-      <div class="portfolio-instagram-wrap" data-portfolio-instagram hidden>
-        <span class="portfolio-instagram-note">A HISTÓRIA CONTINUA NO NOSSO INSTAGRAM</span>
-        <a class="portfolio-instagram-link" href="https://www.instagram.com/megui.personalizados/" target="_blank" rel="noopener noreferrer" aria-label="Veja mais trabalhos no Instagram da Megui, abre em nova aba">
-          <span class="portfolio-instagram-copy"><small>@MEGUI.PERSONALIZADOS</small><strong>Veja mais trabalhos</strong></span>
-          <span class="portfolio-instagram-stamp" aria-hidden="true">{{ icon('butterfly') }}<span class="portfolio-instagram-arrow">↗</span></span>
-        </a>
+    </div>
+  </section>
+
+  <section class="mw-making" id="processos" aria-labelledby="mw-making-heading">
+    <div class="container">
+      <div class="mw-making-head">
+        <span class="mw-overline">POR DENTRO DA MEGUI</span>
+        <h2 id="mw-making-heading">Bonito na foto.<br><em>Mais interessante quando você vê nascer.</em></h2>
+        <p>Aqui você encontra os bastidores de verdade: estamparia, uniformes, comunicação visual e confecção. Aperte o play e veja como o trabalho acontece.</p>
+      </div>
+      {% if production_videos %}
+      {% set principal = production_videos[0] %}
+      <div class="mw-making-stage">
+        <div class="mw-making-principal">
+          {{ watch(principal,'hero') }}
+          <div class="mw-making-principal-label">
+            <span>A ESTAMPA GANHA VIDA</span>
+            <h3>{{ principal.title }}</h3>
+            <p>{{ principal.text }}</p>
+          </div>
+        </div>
+        <div class="mw-making-films" aria-label="Outros vídeos da produção">
+          {% set movie_topics = ['UNIFORMES E EQUIPES','IDENTIDADE NOS AMBIENTES','CONFECÇÃO DE BOLSAS'] %}
+          {% for film in production_videos[1:] %}
+          <article class="mw-making-film">
+            <div class="mw-making-film-media">{{ watch(film,'small') }}</div>
+            <div class="mw-making-film-copy">
+              <span>{{ movie_topics[loop.index0] if loop.index0 < movie_topics|length else 'BASTIDORES' }}</span>
+              <h3>{{ film.title }}</h3>
+              <p>{{ film.text }}</p>
+              <button type="button" class="mw-film-text-play" data-video-src="{{ url_for('static',filename=film.video) }}"
+                data-video-poster="{{ url_for('static',filename=film.poster) }}"
+                data-video-title="{{ film.title }}">Assistir <span aria-hidden="true">▶</span></button>
+            </div>
+          </article>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+      <div class="mw-making-statement"><span class="mw-making-wing" aria-hidden="true">{{ icon('butterfly') }}</span>São essas mãos e esses processos que fazem tudo acontecer.</div>
+    </div>
+  </section>
+
+  <section class="mw-collection" id="projetos" aria-labelledby="mw-collection-heading">
+    <div class="container">
+      <div class="mw-collection-header">
+        <div><span class="mw-overline">CONHEÇA NOSSO ACERVO</span><h2 id="mw-collection-heading">Uma ideia nunca<br><em>precisa ser igual à outra.</em></h2></div>
+        <p>Uniformes para equipes, lembranças para eventos, brindes que representam marcas e projetos que fogem do catálogo. Explore o que já passou por aqui.</p>
+      </div>
+
+      <div class="mw-discover-controls">
+        <div class="mw-filter-tabs" aria-label="Filtrar trabalhos">
+          {% for value,text in [('todos','Todos os projetos'),('vestuario','Vestuário'),('brindes','Brindes e kits'),('eventos','Eventos'),('tecnologia','Tecnologia')] %}
+          <button type="button" data-mw-filter="{{ value }}" aria-pressed="{{ 'true' if loop.first else 'false' }}">{{ text }}</button>
+          {% endfor %}
+        </div>
+        <label class="mw-search"><span class="mw-search-visual" aria-hidden="true"></span><span class="mw-sr-only">Buscar trabalho</span><input type="search" id="mw-search" placeholder="Procurar um trabalho" autocomplete="off"></label>
+      </div>
+      <div class="mw-collection-summary"><span data-mw-summary role="status" aria-live="polite">Projetos do nosso acervo</span><span class="mw-summary-butterfly" aria-hidden="true">{{ icon('butterfly') }}</span></div>
+
+      <div class="mw-gallery" data-mw-gallery>
+        {% for work in portfolio if work.title not in featured_titles and work.title not in process_titles %}
+        {% set upperkind = work.kind|upper %}
+        {% set inferred_tags = ('eventos ' if 'EVENT' in upperkind or 'CORRIDA' in upperkind or 'MOVIMENTO' in upperkind or 'COMUNICAÇÃO' in upperkind else '') ~ ('vestuario ' if 'VESTU' in upperkind or 'CAMISETA' in upperkind or 'EQUIPE' in upperkind or 'ESTAMP' in upperkind else '') ~ ('brindes ' if 'BRINDE' in upperkind or 'BOLSA' in upperkind or 'PAPELARIA' in upperkind or 'LEMBRAN' in upperkind else '') %}
+        <article class="mw-piece" data-mw-item data-tags="{{ work.tags|default(inferred_tags) }}"
+          data-search="{{ work.title }} {{ work.kind }} {{ work.text }}">
+          <a class="mw-piece-image" href="{{ url_for('static',filename=work.presentation_image|default(work.image)) }}"
+            data-mw-zoom data-mw-zoom-title="{{ work.title }}" target="_blank" rel="noopener"
+            aria-label="Ver imagem ampliada do trabalho {{ work.title }}">
+            <img src="{{ url_for('static',filename=work.presentation_image|default(work.image)) }}"
+              alt="{{ work.title }} — {{ work.kind|lower }}" loading="lazy" decoding="async">
+            <span class="mw-piece-image-zoom" aria-hidden="true">AMPLIAR</span>
+          </a>
+          <div class="mw-piece-body">
+            <span class="mw-piece-type">{{ work.kind }}</span>
+            <h3>{{ work.title }}</h3>
+            <p>{{ work.text }}</p>
+            <a class="mw-piece-request" href="https://wa.me/{{ whatsapp_number }}?text={{ ('Olá, Megui! Gostei do projeto “' ~ work.title ~ '” que vi no portfólio. Quero conversar sobre algo parecido.')|urlencode }}"
+              target="_blank" rel="noopener"><span>Quero um projeto assim</span><span aria-hidden="true">{{ icon('butterfly') }}</span></a>
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+      <p class="mw-no-results" hidden>Nenhum trabalho com esse filtro. Experimente outra categoria ou termo.</p>
+      <div class="mw-expand-wrap"><button type="button" class="mw-expand" data-mw-expand hidden><span>Mostrar mais trabalhos</span><span class="mw-expand-icon" aria-hidden="true">{{ icon('butterfly') }}</span></button></div>
+      <div class="mw-instagram-continue" data-mw-instagram hidden>
+        <div><span class="mw-overline">MAIS INSPIRAÇÃO?</span><p>Nosso portfólio não termina aqui.</p></div>
+        <a href="https://www.instagram.com/megui.personalizados/" target="_blank" rel="noopener noreferrer"
+          aria-label="Ver outros trabalhos no Instagram da Megui (abre em outra aba)"><span>Veja mais trabalhos no Instagram</span><span aria-hidden="true">{{ icon('butterfly') }}</span></a>
       </div>
     </div>
   </section>
 
-  <section class="portfolio-making" id="bastidores" aria-labelledby="portfolio-making-title">
-  <div class="container">
-    <div class="portfolio-making-heading">
-      <div>
-        <span class="portfolio-kicker">NOSSA PRODUÇÃO, SEM FILTRO</span>
-        <h2 id="portfolio-making-title">O cuidado também<br><em>está nos bastidores.</em></h2>
-      </div>
-      <div><p>Do corte à estamparia, cada etapa também faz parte do resultado. Registros de processos reais da nossa produção — porque ver como é feito diz muito sobre a qualidade.</p><a href="{{ url_for('videos') }}">Mais bastidores da Megui <span aria-hidden="true">↗</span></a></div>
+  <section class="mw-origins" id="acervo-historico" aria-labelledby="mw-origins-title">
+    <div class="container mw-origins-top">
+      <div><span class="mw-overline">UMA HISTÓRIA QUE COMEÇOU ANTES</span><h2 id="mw-origins-title">Toda grande coleção<br>tem seus <em>primeiros capítulos.</em></h2></div>
+      <p>A Megui tem raízes na fase Freedom. Esses registros de 2021 e 2022 fazem parte do caminho que nos trouxe até aqui — trabalhos reais, guardados com carinho.</p>
     </div>
-    <div class="portfolio-making-grid">
-      {% for film in production_videos %}
-      <article class="portfolio-making-item">
-        <div class="portfolio-making-preview">{{ video_preview(film.video, film.poster, film.title) }}</div>
-        <div class="portfolio-making-meta">
-          <span>0{{ loop.index }} / PROCESSO REAL</span>
-          <h3>{{ film.title }}</h3>
-          <p>{{ film.text }}</p>
-        </div>
+    <div class="container mw-archive-scroller" aria-label="Trabalhos históricos da fase Freedom">
+      {% for brand in historical_brands %}
+      <article class="mw-archive-piece">
+        <a href="{{ url_for('static',filename=brand.image) }}" data-mw-zoom data-mw-zoom-title="{{ brand.name }}"
+          aria-label="Ampliar foto histórica de {{ brand.name }}" target="_blank" rel="noopener">
+          <img src="{{ url_for('static',filename=brand.image) }}" alt="{{ brand.work }} para {{ brand.name }}, fase Freedom" loading="lazy" decoding="async">
+        </a>
+        <div class="mw-archive-info"><span>ACERVO FREEDOM · {{ brand.year }}</span><h3>{{ brand.name }}</h3><strong>{{ brand.work }}</strong><p>{{ brand.story|default(brand.work) }}</p></div>
       </article>
       {% endfor %}
     </div>
-  </div>
-</section>
-
-<section class="portfolio-heritage heritage-chapter" id="acervo-historico" aria-labelledby="portfolio-heritage-title">
-    <div class="container">
-      <header class="heritage-chapter-heading">
-        <div class="heritage-chapter-heading-main">
-          <span class="portfolio-kicker">NOSSO ACERVO / CAPÍTULO DE ORIGEM</span>
-          <h2 id="portfolio-heritage-title">O primeiro capítulo<br><em>continua aqui.</em></h2>
-        </div>
-        <div class="heritage-chapter-intro">
-          <span class="heritage-chapter-mark" aria-hidden="true">{{ icon('butterfly') }}</span>
-          <p>Antes do nome Megui, nosso trabalho já tinha história. Na época Freedom, cada projeto trazia uma identidade diferente e ajudava a construir o caminho que seguimos hoje.</p>
-          <span class="heritage-chapter-note">FOTOGRAFIAS DO ACERVO REAL · 2021—2022</span>
-        </div>
-      </header>
-
-      <div class="heritage-timeline" role="list" aria-label="Linha do tempo da trajetória Megui">
-        <div class="heritage-milestone" role="listitem">
-          <span class="heritage-milestone-dot" aria-hidden="true"></span>
-          <span class="heritage-milestone-date">2020</span>
-          <strong>O início</strong>
-          <p>Começamos nossa história com confecção e personalização.</p>
-        </div>
-        <div class="heritage-milestone" role="listitem">
-          <span class="heritage-milestone-dot" aria-hidden="true"></span>
-          <span class="heritage-milestone-date">2021</span>
-          <strong>Primeiros registros</strong>
-          <p>Brindes, impressos e identidades da fase Freedom.</p>
-        </div>
-        <div class="heritage-milestone" role="listitem">
-          <span class="heritage-milestone-dot" aria-hidden="true"></span>
-          <span class="heritage-milestone-date">2022</span>
-          <strong>Mais histórias</strong>
-          <p>Personalizações presentes em novos materiais.</p>
-        </div>
-        <div class="heritage-milestone heritage-milestone-current" role="listitem">
-          <span class="heritage-milestone-dot" aria-hidden="true"></span>
-          <span class="heritage-milestone-date">HOJE</span>
-          <strong>Megui Personalizados</strong>
-          <p>Um acervo que continua crescendo a cada trabalho.</p>
-        </div>
-      </div>
-
-      <div class="heritage-gallery-heading">
-        <span><span class="heritage-gallery-signet" aria-hidden="true">✳</span> ARQUIVO DE TRABALHOS</span>
-        <span>{{ historical_brands|length }} PROJETOS PRESERVADOS</span>
-      </div>
-
-      <div class="heritage-gallery">
-        {% for brand in historical_brands %}
-        <article class="heritage-project">
-          <a class="heritage-project-photo" data-work-zoom href="{{ url_for('static', filename=brand.image) }}" target="_blank" rel="noopener" aria-label="Ampliar foto do trabalho {{ brand.work }} para {{ brand.name }}">
-            <img src="{{ url_for('static', filename=brand.image) }}" alt="{{ brand.work }} para {{ brand.name }}, fotografia original da fase Freedom" loading="lazy" decoding="async">
-            <span class="heritage-photo-note" aria-hidden="true">REGISTRO ORIGINAL <span>↗</span></span>
-          </a>
-          <div class="heritage-project-copy">
-            <div class="heritage-project-meta">
-              <span>ARQUIVO {{ '%02d'|format(loop.index) }}</span>
-              <span>FREEDOM / {{ brand.year }}</span>
-            </div>
-            <h3>{{ brand.name }}</h3>
-            <span class="heritage-project-kind">{{ brand.work }}</span>
-            <p>{{ brand.story|default(brand.work) }}</p>
-          </div>
-        </article>
-        {% endfor %}
-      </div>
-
-      <div class="heritage-chapter-end">
-        <span class="heritage-chapter-end-icon" aria-hidden="true">{{ icon('butterfly') }}</span>
-        <p>Os nomes mudam. A vontade de fazer algo único continua.</p>
-        <a href="#projetos-destaque">Conhecer os projetos atuais <span aria-hidden="true">↗</span></a>
-      </div>
-    </div>
+    <div class="container mw-origins-bottom"><span>{{ icon('butterfly') }}</span><p>O nome mudou. O cuidado com cada projeto continua.</p></div>
   </section>
 
-  <section class="portfolio-outro" aria-labelledby="portfolio-outro-title">
-    <div class="container portfolio-outro-inner">
-      <span class="portfolio-outro-butterfly" aria-hidden="true">{{ icon('butterfly') }}</span>
-      <div><span class="portfolio-kicker">E O PRÓXIMO PROJETO?</span><h2 id="portfolio-outro-title">A próxima história<br><em>pode ser a sua.</em></h2></div>
-      <div><p>Do uniforme ao brinde, do evento à ideia fora do catálogo. Conte o que você imagina, e a Megui te ajuda a transformar isso em algo real.</p><a href="https://wa.me/{{ whatsapp_number }}?text={{ 'Olá! Conheci os trabalhos da Megui e quero conversar sobre um projeto personalizado.'|urlencode }}" target="_blank" rel="noopener">Vamos criar juntos <span aria-hidden="true">↗</span></a></div>
+  <section class="mw-finale" aria-labelledby="mw-finale-title">
+    <div class="container mw-finale-layout">
+      <div class="mw-finale-seal" aria-hidden="true">{{ icon('butterfly') }}</div>
+      <div class="mw-finale-copy"><span class="mw-overline">A SUA IDEIA É A PRÓXIMA</span><h2 id="mw-finale-title">A gente já fez muita coisa.<br><em>Vamos criar a sua?</em></h2></div>
+      <div class="mw-finale-panel">
+        <p>Uma equipe que quer se apresentar melhor, um evento especial ou algo totalmente fora do catálogo. O próximo projeto começa com uma conversa.</p>
+        <a class="mw-finale-cta" href="https://wa.me/{{ whatsapp_number }}?text={{ 'Olá, Megui! Vi o portfólio e quero conversar sobre um projeto personalizado.'|urlencode }}" target="_blank" rel="noopener"><span>Conversar sobre meu projeto</span><span aria-hidden="true">{{ icon('butterfly') }}</span></a>
+        <a class="mw-outside-link" href="{{ url_for('outside_box') }}">Tenho uma ideia fora da caixa</a>
+      </div>
     </div>
   </section>
 </div>
-<dialog class="work-lightbox" aria-labelledby="work-lightbox-title"><div class="work-lightbox-bar"><h2 id="work-lightbox-title">Detalhes do trabalho</h2><button type="button" data-work-close aria-label="Fechar imagem">Fechar ×</button></div><img alt=""><p>Imagem do portfólio Megui.</p></dialog>
+
+<dialog class="mw-lightbox" data-mw-lightbox aria-labelledby="mw-lightbox-title">
+  <div class="mw-lightbox-heading"><h2 id="mw-lightbox-title">Detalhes do projeto</h2><button type="button" data-mw-close aria-label="Fechar imagem">Fechar <span aria-hidden="true">×</span></button></div>
+  <img alt="" decoding="async">
+</dialog>
 {% endblock %}
 
 {% block extra_scripts %}
 <script>
 (() => {
- const root=document.querySelector('.portfolio-studio'), search=document.getElementById('work-search'), buttons=[...root.querySelectorAll('[data-work-filter]')], cards=[...root.querySelectorAll('[data-work-tags]')], status=root.querySelector('[data-work-count]');
- let category='todos', limit=12, expanded=false; const more=root.querySelector('.work-more'), instagram=root.querySelector('[data-portfolio-instagram]');
- const normalize=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
- function apply(){const query=normalize(search.value.trim());let count=0;cards.forEach(card=>{const match=(category==='todos'||card.dataset.workTags.split(/\s+/).includes(category))&&normalize(card.querySelector('.portfolio-copy').textContent).includes(query);if(match)count++;card.hidden=!match||count>limit;});status.textContent=Math.min(count,limit)+' de '+count+' trabalhos';root.querySelector('.work-empty').hidden=count>0;more.hidden=count<=limit;more.innerHTML='Ver mais '+Math.min(12,Math.max(0,count-limit))+' trabalhos <span aria-hidden="true">＋</span>';instagram.hidden=!(expanded&&count>0&&count<=limit);}
- buttons.forEach(button=>button.addEventListener('click',()=>{category=button.dataset.workFilter;limit=12;expanded=false;buttons.forEach(b=>b.setAttribute('aria-pressed',String(b===button)));apply();}));search.addEventListener('input',()=>{limit=12;expanded=false;apply();});more.addEventListener('click',()=>{const old=cards.filter(c=>!c.hidden);limit+=12;expanded=true;apply();const firstNew=cards.find(c=>!c.hidden&&!old.includes(c));firstNew?.querySelector('a,button')?.focus({preventScroll:true});});apply();
- const dialog=document.querySelector('.work-lightbox'), picture=dialog.querySelector('img'), title=dialog.querySelector('h2');let opener;
- root.querySelectorAll('[data-work-zoom]').forEach(link=>link.addEventListener('click',event=>{if(event.ctrlKey||event.metaKey||event.shiftKey||!dialog.showModal)return;event.preventDefault();opener=link;picture.src=link.href;picture.alt=link.querySelector('img').alt;title.textContent=link.closest('article').querySelector('h3').textContent;picture.style.transform=link.querySelector('.work-record-rotate')?'rotate(180deg)':'';dialog.showModal();}));
- dialog.querySelector('[data-work-close]').addEventListener('click',()=>dialog.close());dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close();}});dialog.addEventListener('close',()=>opener?.focus());
+  const root = document.querySelector('.meg-work');
+  if (!root) return;
+  const filterButtons = [...root.querySelectorAll('[data-mw-filter]')];
+  const items = [...root.querySelectorAll('[data-mw-item]')];
+  const search = root.querySelector('#mw-search');
+  const summary = root.querySelector('[data-mw-summary]');
+  const expand = root.querySelector('[data-mw-expand]');
+  const instagram = root.querySelector('[data-mw-instagram]');
+  const noResults = root.querySelector('.mw-no-results');
+  const normalize = value => String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+  let category = 'todos', limit = 12, hasExpanded = false;
+  const show = () => {
+    const query = normalize(search.value.trim());
+    let matched = 0;
+    items.forEach(item => {
+      const text = normalize(item.dataset.search);
+      const tags = (item.dataset.tags || '').split(/\s+/);
+      const eligible = (category === 'todos' || tags.includes(category)) && text.includes(query);
+      if (eligible) matched++;
+      item.hidden = !eligible || matched > limit;
+    });
+    const visible = Math.min(matched, limit);
+    summary.textContent = matched === 0 ? 'Nenhum projeto encontrado' : visible + ' de ' + matched + ' projetos';
+    expand.hidden = matched <= limit;
+    expand.querySelector('span').textContent = 'Ver mais ' + Math.min(3, Math.max(0, matched - limit)) + ' trabalhos';
+    instagram.hidden = !(hasExpanded && matched > 0 && matched <= limit);
+    noResults.hidden = matched !== 0;
+  };
+  filterButtons.forEach(button => button.addEventListener('click', () => {
+    category = button.dataset.mwFilter;
+    limit = 12;
+    hasExpanded = false;
+    filterButtons.forEach(other => other.setAttribute('aria-pressed', String(other === button)));
+    show();
+  }));
+  search.addEventListener('input', () => {limit = 12; hasExpanded = false; show();});
+  expand.addEventListener('click', () => {
+    const existing = new Set(items.filter(item => !item.hidden));
+    limit += 3;
+    hasExpanded = true;
+    show();
+    const firstNew = items.find(item => !item.hidden && !existing.has(item));
+    firstNew?.querySelector('a,button')?.focus({preventScroll:true});
+  });
+  show();
+  const dialog = document.querySelector('[data-mw-lightbox]');
+  if (dialog && typeof dialog.showModal === 'function') {
+    const picture = dialog.querySelector('img');
+    const heading = dialog.querySelector('h2');
+    let opener = null;
+    root.querySelectorAll('[data-mw-zoom]').forEach(link => link.addEventListener('click', event => {
+      if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      opener = link;
+      picture.src = link.href;
+      picture.alt = link.querySelector('img')?.alt || '';
+      heading.textContent = link.dataset.mwZoomTitle || 'Detalhes do projeto';
+      dialog.showModal();
+    }));
+    dialog.querySelector('[data-mw-close]').addEventListener('click', () => dialog.close());
+    dialog.addEventListener('click', event => {if (event.target === dialog) dialog.close();});
+    dialog.addEventListener('close', () => {picture.removeAttribute('src'); opener?.focus();});
+  }
 })();
 </script>
 {% endblock %}
