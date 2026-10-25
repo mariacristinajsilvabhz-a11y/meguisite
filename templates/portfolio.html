@@ -43,6 +43,7 @@
 </style><link rel="stylesheet" href="{{ url_for('static',filename='css/portfolio-editorial-20261025.css',v='20261025-v2') }}"><link rel="stylesheet" href="{{ url_for('static',filename='css/portfolio-signature-20261025.css',v='20261025-v1') }}">{% endblock %}
 {% block content %}
 {% set feature_titles = ['SenacX · Alexas personalizadas','Infinix · kit corporativo','Fecomércio MG · fones','Band Minas'] %}
+{% set process_titles = ['Uniformes em volume','O processo por trás da estampa','Comunicação visual em produção','Confecção de bolsas'] %}
 {% set stories = [
  ('SenacX · Alexas personalizadas','SENAC / NA SEMANAS','Quando tecnologia também comunica identidade.','A identidade do projeto NaSemanaS aplicada às Alexas Echo Pop. Um objeto pensado para seguir na rotina e continuar levando a marca para além do encontro.','Alexa Echo Pop personalizada','01'),
  ('Infinix · kit corporativo','INFINIX / KIT DE MARCA','Três objetos. Uma presença de marca.','Um conjunto com copo, caderno e caneta personalizados. A mesma identidade aparece em diferentes momentos de uso, em uma apresentação coordenada.','Copo, caderno e caneta','02'),
@@ -134,7 +135,7 @@
       </div>
       <p class="work-empty" hidden>Nenhum trabalho encontrado nessa combinação. Tente outra categoria.</p>
       <div class="portfolio-grid work-project-grid">
-        {% for work in portfolio if work.title not in feature_titles %}
+        {% for work in portfolio if work.title not in feature_titles and work.title not in process_titles %}
         {% set kind = work.kind|upper %}
         <article id="{{ work.key if work.key else 'projeto-' ~ loop.index }}" class="portfolio-card work-project{% if work.portrait %} work-project-portrait{% endif %}" data-work-tags="{{ work.tags if work.tags else ('eventos ' if 'EVENT' in kind or 'CORRIDA' in kind or 'MOVIMENTO' in kind or 'COMUNICAÇÃO' in kind else '') ~ ('vestuario ' if 'VESTU' in kind or 'CAMISETA' in kind or 'EQUIPE' in kind or 'ESTAMP' in kind else '') ~ ('brindes ' if 'BRINDE' in kind or 'BOLSA' in kind or 'PAPELARIA' in kind or 'LEMBRAN' in kind else '') ~ ('bastidores ' if 'BASTIDOR' in kind or 'PRODUÇÃO' in kind else '') }}">
           {% if work.video %}{{ video_preview(work.video, work.image, work.title) }}{% else %}
@@ -155,7 +156,31 @@
     </div>
   </section>
 
-  <section class="portfolio-heritage" aria-labelledby="portfolio-heritage-title">
+  <section class="portfolio-making" id="bastidores" aria-labelledby="portfolio-making-title">
+  <div class="container">
+    <div class="portfolio-making-heading">
+      <div>
+        <span class="portfolio-kicker">NOSSA PRODUÇÃO, SEM FILTRO</span>
+        <h2 id="portfolio-making-title">O cuidado também<br><em>está nos bastidores.</em></h2>
+      </div>
+      <div><p>Do corte à estamparia, cada etapa também faz parte do resultado. Registros de processos reais da nossa produção — porque ver como é feito diz muito sobre a qualidade.</p><a href="{{ url_for('videos') }}">Mais bastidores da Megui <span aria-hidden="true">↗</span></a></div>
+    </div>
+    <div class="portfolio-making-grid">
+      {% for film in production_videos %}
+      <article class="portfolio-making-item">
+        <div class="portfolio-making-preview">{{ video_preview(film.video, film.poster, film.title) }}</div>
+        <div class="portfolio-making-meta">
+          <span>0{{ loop.index }} / PROCESSO REAL</span>
+          <h3>{{ film.title }}</h3>
+          <p>{{ film.text }}</p>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="portfolio-heritage" aria-labelledby="portfolio-heritage-title">
     <div class="container">
       <div class="portfolio-heritage-heading">
         <div><span class="portfolio-kicker">DESDE 2020, HISTÓRIAS EM CADA PEÇA</span><h2 id="portfolio-heritage-title">Nossa história também<br><em>tem acervo.</em></h2></div>
