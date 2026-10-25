@@ -55,7 +55,6 @@
         </div>
         <a href="{{ url_for('b2b') }}" {% if request.endpoint == 'b2b' %}aria-current="page"{% endif %}>Empresas</a>
         <a href="{{ url_for('events') }}" {% if request.endpoint == 'events' %}aria-current="page"{% endif %}>Eventos</a>
-        <a href="{{ url_for('videos') }}" {% if request.endpoint == 'videos' %}aria-current="page"{% endif %}>Vídeos</a>
         <a href="{{ url_for('portfolio_view') }}" {% if request.endpoint == 'portfolio_view' %}aria-current="page"{% endif %}>Trabalhos</a>
         <a href="{{ url_for('about') }}" {% if request.endpoint == 'about' %}aria-current="page"{% endif %}>Sobre</a>
         <a href="{{ url_for('contact') }}" {% if request.endpoint == 'contact' %}aria-current="page"{% endif %}>Contato</a>
@@ -100,7 +99,8 @@
         <a href="{{ url_for('products') }}" {% if request.endpoint in ['products','category','product'] %}aria-current="page"{% endif %}>Produtos</a>
         <a href="{{ url_for('b2b') }}">Empresas</a>
         <a href="{{ url_for('events') }}">Eventos</a>
-        <a href="{{ url_for('videos') }}">Vídeos</a>
+        <a href="{{ url_for('portfolio_view') }}">Trabalhos</a>
+        <a href="{{ url_for('portfolio_view') }}#processos">Bastidores da produção</a>
         <a href="{{ url_for('about') }}">Sobre nós</a>
       </div>
       <div>
