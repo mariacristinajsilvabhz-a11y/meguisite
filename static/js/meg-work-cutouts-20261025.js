@@ -1,10 +1,10 @@
-/* Megui · recorte visual progressivo das fotos de estúdio no portfólio.
+/* Megui · recorte visual progressivo das fotos de estúdio em Trabalhos e Eventos.
    Remove só o fundo claro conectado às bordas. Preserva rótulos/estampas
    claros internos e não altera a fotografia original no servidor.
    Sem dependências externas; em caso de dúvida mantém o arquivo intacto. */
 (() => {
   'use strict';
-  const photos = [...document.querySelectorAll('.meg-work img[data-mw-cutout]')];
+  const photos = [...document.querySelectorAll('.meg-work img[data-mw-cutout], .ev-experience img[data-ev-cutout]')];
   if (!photos.length || !('HTMLCanvasElement' in window)) return;
   const processed = new WeakSet();
   const maxDimension = 1050;
@@ -12,7 +12,7 @@
   const colorDistance = (d, i, ref) => Math.max(
     Math.abs(d[i] - ref[0]), Math.abs(d[i + 1] - ref[1]), Math.abs(d[i + 2] - ref[2])
   );
-  function sampleBackground(data, width, height) {
+  function sampleBackground(data, width, height, isEventStudio) {
     const corners = [[0, 0], [width - 1, 0], [0, height - 1], [width - 1, height - 1]];
     const samples = [];
     for (const [cx, cy] of corners) {
@@ -28,7 +28,7 @@
       const color = [r / total, g / total, b / total];
       const bright = color[0] * .3 + color[1] * .59 + color[2] * .11;
       const chroma = Math.max(...color) - Math.min(...color);
-      if (bright > 188 && chroma < 51) samples.push({color, bright});
+      if (bright > (isEventStudio ? 151 : 188) && chroma < (isEventStudio ? 61 : 51)) samples.push({color, bright});
     }
     if (samples.length < 2) return null;
     samples.sort((a, b) => b.bright - a.bright);
@@ -52,7 +52,8 @@
       context.drawImage(image, 0, 0, w, h);
       const frame = context.getImageData(0, 0, w, h);
       const data = frame.data;
-      const bg = sampleBackground(data, w, h);
+      const isEventStudio = image.hasAttribute('data-ev-cutout');
+      const bg = sampleBackground(data, w, h, isEventStudio);
       if (!bg) return;
       const count = w * h;
       const marks = new Uint8Array(count);
@@ -61,7 +62,7 @@
       const isBackdrop = index => {
         const i = index * 4;
         const light = data[i] * .3 + data[i + 1] * .59 + data[i + 2] * .11;
-        return light > 171 && colorDistance(data, i, bg) < 68;
+        return light > (isEventStudio ? 137 : 171) && colorDistance(data, i, bg) < (isEventStudio ? 74 : 68);
       };
       const enqueue = index => {
         if (marks[index] || !isBackdrop(index)) return;
@@ -113,7 +114,7 @@
         image.dataset.mwCutoutReady = 'true';
         image.src = url;
         if (a) a.href = url;
-        image.closest('.mw-lead-photo, .mw-feature-image, .mw-piece-image, .mw-hero-small')?.classList.add('mw-has-cutout');
+        image.closest('.mw-lead-photo, .mw-feature-image, .mw-piece-image, .mw-hero-small, .ev-photo-detail, .ev-format-panel, .ev-project-image')?.classList.add('mw-has-cutout');
       }, 'image/webp', .94);
     } catch (_) {
       // A problem decoding an image must never hide it from the page.
