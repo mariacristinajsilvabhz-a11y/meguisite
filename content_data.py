@@ -1,9 +1,9 @@
 """Conteúdo selecionado do acervo publicado da Megui e da fase Freedom."""
 HISTORICAL_BRANDS = [
-    {"name": "Studio IS Concept", "work": "Canecas personalizadas", "year": "2022", "image": "img/acervo/studio-is-concept.jpg", "source": "https://drive.google.com/file/d/1Ojvoeiwa_FINjvpmaRzbiTS1W9Jhuanj/view"},
-    {"name": "PrintUp Estamparia", "work": "Brindes personalizados", "year": "2021", "image": "img/acervo/printup-estamparia.jpg", "source": "https://drive.google.com/file/d/1Ge6bKxeZuiWnPOJs8ySc2TzVhOgDtREQ/view"},
-    {"name": "Brantchic", "work": "Brindes com identidade da marca", "year": "2021", "image": "img/acervo/brantchic.jpg", "source": "https://drive.google.com/file/d/1z2_Vh0uZQhKD2k_7dTouOaMhu53Us5MK/view"},
-    {"name": "T-Shirteria Versátil", "work": "Cartões de agradecimento", "year": "2021", "image": "img/acervo/tshirteria-versatil.jpg", "source": "https://drive.google.com/file/d/1DasaEQY0y_ks-aUcx_Mg-PdrtAN6D3f2/view"},
+    {"name": "Studio IS Concept", "work": "Canecas personalizadas", "year": "2022", "image": "img/acervo/studio-is-concept.jpg", "source": "https://drive.google.com/file/d/1Ojvoeiwa_FINjvpmaRzbiTS1W9Jhuanj/view", "story": "Uma identidade que chegou até as canecas. A personalização transforma um objeto simples em algo que representa a marca no cotidiano."},
+    {"name": "PrintUp Estamparia", "work": "Brindes personalizados", "year": "2021", "image": "img/acervo/printup-estamparia.jpg", "source": "https://drive.google.com/file/d/1Ge6bKxeZuiWnPOJs8ySc2TzVhOgDtREQ/view", "story": "Brindes personalizados para carregar a identidade da PrintUp. Pequenos materiais que também fazem parte da forma como uma marca se apresenta."},
+    {"name": "Brantchic", "work": "Brindes com identidade da marca", "year": "2021", "image": "img/acervo/brantchic.jpg", "source": "https://drive.google.com/file/d/1z2_Vh0uZQhKD2k_7dTouOaMhu53Us5MK/view", "story": "Elementos personalizados com a identidade Brantchic. O cuidado com a apresentação ajuda a tornar cada entrega reconhecível."},
+    {"name": "T-Shirteria Versátil", "work": "Cartões de agradecimento", "year": "2021", "image": "img/acervo/tshirteria-versatil.jpg", "source": "https://drive.google.com/file/d/1DasaEQY0y_ks-aUcx_Mg-PdrtAN6D3f2/view", "story": "Cartões de agradecimento personalizados. Uma mensagem impressa que prolonga a experiência da marca depois que o pedido chega."},
 ]
 PORTFOLIO = [
     {"title": "Band Minas", "kind": "BRINDES CORPORATIVOS", "text": "Copos e itens personalizados que levam a identidade da Band Minas para além da tela.", "image": "img/acervo/band-minas-kit.jpg", "year": "2026"},
