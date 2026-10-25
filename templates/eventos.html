@@ -3,7 +3,7 @@
 {% block title %}Eventos que ficam na memória | Megui Personalizados{% endblock %}
 {% block final_head %}
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600;1,700&display=swap">
-<link rel="stylesheet" href="{{ url_for('static',filename='css/eventos-editorial-20261025.css',v='20261025-v1') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/eventos-editorial-20261025.css',v='20261025-v2') }}">
 {% endblock %}
 
 {% block content %}
@@ -27,10 +27,6 @@
         <figure class="ev-cover-live">
           <img src="{{ url_for('static',filename='img/acervo/2026/samba-do-maestro-sem-marca-v3.webp') }}" alt="Público acompanhando o Samba do Maestro; capas de grade personalizadas pela Megui identificam o evento" fetchpriority="high" decoding="async">
           <figcaption><strong>SAMBA DO MAESTRO</strong><span>Identidade presente no espaço, junto às pessoas.</span></figcaption>
-        </figure>
-        <figure class="ev-cover-object">
-          <img src="{{ url_for('static',filename='img/trabalhos/2026/samba-do-maestro-estudio-20261022.webp') }}" alt="Capa de grade personalizada produzida para o Samba do Maestro" loading="lazy" decoding="async" data-ev-cutout>
-          <figcaption>DO PROJETO AO EVENTO REAL</figcaption>
         </figure>
         <div class="ev-cover-stamp" aria-hidden="true">{{ icon('butterfly') }}</div>
         <span class="ev-cover-photo-label">UM TRABALHO QUE FAZ PARTE DO MOMENTO</span>
@@ -58,7 +54,7 @@
         </article>
         <article class="ev-moment ev-moment-welcome">
           <div class="ev-moment-photo">
-            <img src="{{ url_for('static',filename='img/mostruario/cadernos-senac-estudio-v1.webp') }}" alt="Cadernos personalizados Senac NaSemanaS para recepção de participantes" loading="lazy" decoding="async" data-ev-cutout>
+            <img src="{{ url_for('static',filename='img/acervo/2026/senac-cadernos.webp') }}" alt="Cadernos personalizados Senac NaSemanaS fotografados no acervo real" loading="lazy" decoding="async">
           </div>
           <div class="ev-moment-copy">
             <span class="ev-moment-word">Receber.</span>
@@ -69,7 +65,7 @@
         </article>
         <article class="ev-moment ev-moment-remember">
           <div class="ev-moment-photo">
-            <img src="{{ url_for('static',filename='img/mostruario/kit-band-minas-estudio-v1.webp') }}" alt="Kit Band Minas com copos e acessórios personalizados" loading="lazy" decoding="async" data-ev-cutout>
+            <img src="{{ url_for('static',filename='img/acervo/band-minas-kit.jpg') }}" alt="Copos e peças da Band Minas registrados na produção" loading="lazy" decoding="async">
           </div>
           <div class="ev-moment-copy">
             <span class="ev-moment-word">Lembrar.</span>
@@ -101,7 +97,7 @@
         <article class="ev-curated-piece ev-curated-{{ key }}">
           <button class="ev-curated-photo" type="button" data-ev-enlarge data-ev-title="{{ brand }} — {{ headline }}" data-ev-image="{{ url_for('static',filename=photo) }}"
             aria-label="Ampliar fotografia de {{ brand }}">
-            <img src="{{ url_for('static',filename=photo) }}" alt="{{ description }}" loading="lazy" decoding="async" {% if cutout %}data-ev-cutout{% endif %}>
+            <img src="{{ url_for('static',filename=photo) }}" alt="{{ description }}" loading="lazy" decoding="async" >
             <span class="ev-curated-zoom" aria-hidden="true">VER DE PERTO</span>
           </button>
           <div class="ev-curated-info">
@@ -143,7 +139,7 @@
         {% for key,label,title,description,photo,alt,products,event_name,pick,cutout in event_formats %}
         <article class="ev-world-panel" id="ev-panel-{{ key }}" role="tabpanel" tabindex="0" aria-labelledby="ev-tab-{{ key }}" data-ev-panel="{{ key }}" data-event-name="{{ event_name }}" data-event-label="{{ label }}" {% if not loop.first %}hidden{% endif %}>
           <div class="ev-world-image">
-            <img src="{{ url_for('static',filename=photo) }}" alt="{{ alt }}" loading="lazy" decoding="async" {% if cutout %}data-ev-cutout{% endif %}>
+            <img src="{{ url_for('static',filename=photo) }}" alt="{{ alt }}" loading="lazy" decoding="async" >
             <span>{{ label }}</span>
           </div>
           <div class="ev-world-copy">
@@ -202,6 +198,5 @@
 
 {% block extra_scripts %}
 <script defer src="{{ url_for('static',filename='js/eventos.js',v='20261016-detalhes-v5') }}"></script>
-<script defer src="{{ url_for('static',filename='js/meg-work-cutouts-20261025.js',v='20261025-v2') }}"></script>
 <script defer src="{{ url_for('static',filename='js/eventos-editorial-20261025.js',v='20261025-v1') }}"></script>
 {% endblock %}
