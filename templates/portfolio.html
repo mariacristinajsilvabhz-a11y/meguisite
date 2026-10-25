@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="{{ url_for('static',filename='css/mostruario.css',v='20261018-v1') }}">
 <link rel="stylesheet" href="{{ url_for('static',filename='css/work-showcase.css',v='20261020-v1') }}">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,600;1,700&display=swap">
-<link rel="stylesheet" href="{{ url_for('static',filename='css/portfolio-signature-20261025.css',v='20261025-v3') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/portfolio-signature-20261025.css',v='20261025-v4') }}">
 {% endblock %}
 {% block content %}
 {% set feature_titles = ['SenacX · Alexas personalizadas','Infinix · kit corporativo','Fecomércio MG · fones','Band Minas'] %}
@@ -115,7 +115,7 @@
             <span class="work-overline">{{ work.kind }}{% if work.year %} / {{ work.year }}{% endif %}</span>
             <h3>{{ work.title }}</h3>
             <p>{{ work.text }}</p>
-            <a class="work-project-cta" href="https://wa.me/{{ whatsapp_number }}?text={{ ('Olá! Vi o trabalho “' ~ work.title ~ '” no site da Megui e gostaria de um projeto semelhante.')|urlencode }}" target="_blank" rel="noopener">Quero um projeto assim <span aria-hidden="true">↗</span></a>
+            <a class="work-project-cta" href="https://wa.me/{{ whatsapp_number }}?text={{ ('Olá! Vi o trabalho “' ~ work.title ~ '” no site da Megui e gostaria de um projeto semelhante.')|urlencode }}" target="_blank" rel="noopener" aria-label="Quero um projeto personalizado como {{ work.title }} com a Megui"><span class="work-cta-copy"><small>CRIAR COM A MEGUI</small><span class="work-cta-title">Quero um projeto assim</span></span><span class="work-cta-signature" aria-hidden="true"><span class="work-cta-butterfly">{{ icon('butterfly') }}</span><span class="work-cta-arrow">↗</span></span></a>
           </div>
         </article>
         {% endfor %}
