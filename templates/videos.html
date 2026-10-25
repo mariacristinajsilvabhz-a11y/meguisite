@@ -3,10 +3,10 @@
 {% block title %}Nos bastidores | Produção real da Megui{% endblock %}
 {% block final_head %}
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600;1,700&display=swap">
-<link rel="stylesheet" href="{{ url_for('static',filename='css/video-documentary-20261025.css',v='20261025-v1') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/video-documentary-20261025.css',v='20261025-v2') }}">
 {% endblock %}
 
-{% macro watch_film(film, featured=false, order=1) -%}
+{% macro watch_film(film, featured=false) -%}
 <button
   type="button"
   class="vf-video-preview video-preview{{ ' vf-video-featured' if featured else '' }}"
@@ -18,8 +18,7 @@
   <img class="vf-video-blur" src="{{ url_for('static',filename=film.poster) }}" alt="" loading="{{ 'eager' if featured else 'lazy' }}" aria-hidden="true">
   <img class="vf-video-still" src="{{ url_for('static',filename=film.poster) }}" alt="" loading="{{ 'eager' if featured else 'lazy' }}" decoding="async">
   <span class="vf-video-scrim" aria-hidden="true"></span>
-  <span class="vf-video-rec" aria-hidden="true"><i></i> REGISTRO {{ '%02d'|format(order) }}</span>
-  <span class="vf-video-play" aria-hidden="true"><svg viewBox="0 0 36 36" fill="none"><path d="M13.5 9.5 27 18 13.5 26.5V9.5Z" fill="currentColor"/></svg></span>
+    <span class="vf-video-play" aria-hidden="true"><svg viewBox="0 0 36 36" fill="none"><path d="M13.5 9.5 27 18 13.5 26.5V9.5Z" fill="currentColor"/></svg></span>
   <span class="vf-video-watch" aria-hidden="true">ASSISTIR AO VÍDEO <span>↗</span></span>
 </button>
 {%- endmacro %}
@@ -36,23 +35,20 @@
         <h1 id="vf-page-title">Muito antes<br>da peça pronta,<br><em>tem uma história.</em></h1>
         <p>A gente gosta de mostrar o que acontece entre a ideia e o resultado. Aqui estão registros reais da estamparia, da confecção e dos detalhes que fazem parte de cada entrega.</p>
         <a class="vf-primary-link" href="#filmes"><span>Descubra nossos bastidores</span><span class="vf-link-arrow" aria-hidden="true">↘</span></a>
-        <div class="vf-opening-foot">
-          <span><strong>DO ATELIÊ PARA A TELA</strong><small>Produção de verdade, sem cenas inventadas.</small></span>
-          <span class="vf-opening-counter" aria-label="{{ production_videos|length }} vídeos disponíveis">{{ '%02d'|format(production_videos|length) }} <small>REGISTROS</small></span>
-        </div>
+        <div class="vf-opening-foot"><span><strong>FEITO DE PERTO</strong><small>Processos reais, peças reais.</small></span><span class="vf-opening-sign" aria-hidden="true">{{ icon('butterfly') }}</span></div>
       </div>
       <div class="vf-opening-stage">
         <span class="vf-opening-outline" aria-hidden="true"></span>
-        <div class="vf-opening-media">{{ watch_film(opening_film, true, 1) }}</div>
+        <div class="vf-opening-media">{{ watch_film(opening_film, true) }}</div>
         <div class="vf-opening-credit">
-          <div><span>EM CARTAZ / 01</span><strong>{{ opening_film.title }}</strong></div>
+          <div><span>NA BANCADA, NA TELA</span><strong>{{ opening_film.title }}</strong></div>
           <span class="vf-film-butterfly" aria-hidden="true">{{ icon('butterfly') }}</span>
         </div>
         <span class="vf-opening-edge" aria-hidden="true">MEGUI PERSONALIZADOS · ACERVO REAL</span>
       </div>
     </div>
     <div class="container vf-opening-bottom" aria-hidden="true">
-      <span>01 — DO PRIMEIRO PROCESSO AO ÚLTIMO DETALHE</span>
+      <span>DA PRIMEIRA IDEIA AO ÚLTIMO DETALHE</span>
       <span>CONTINUE EXPLORANDO ↓</span>
     </div>
   </section>
@@ -70,7 +66,7 @@
     <div class="container">
       <div class="vf-section-heading">
         <div>
-          <span class="vf-kicker">O ACERVO EM MOVIMENTO / 02—{{ '%02d'|format(production_videos|length) }}</span>
+          <span class="vf-kicker">UM OLHAR SOBRE O NOSSO TRABALHO</span>
           <h2 id="vf-episodes-title">O processo,<br><em>visto de perto.</em></h2>
         </div>
         <div class="vf-section-aside">
@@ -78,18 +74,16 @@
           <span class="vf-section-line" aria-hidden="true"></span>
         </div>
       </div>
-      <div class="vf-episode-grid">
-        {% set episode_topics = ['ESTAMPARIA','UNIFORMES','COMUNICAÇÃO VISUAL','CORTE & COSTURA'] %}
+      <div class="vf-episode-grid vf-episode-editorial">
         {% for film in production_videos[1:] %}
-        <article class="vf-episode">
-          <div class="vf-episode-visual">{{ watch_film(film, false, loop.index + 1) }}</div>
-          <div class="vf-episode-topline">
-            <span>CAPÍTULO {{ '%02d'|format(loop.index + 1) }}</span>
-            <span>{{ episode_topics[loop.index] if loop.index < episode_topics|length else 'PROCESSO REAL' }}</span>
+        <article class="vf-episode vf-story-{{ loop.index }}">
+          <div class="vf-episode-visual">{{ watch_film(film) }}</div>
+          <div class="vf-episode-content">
+            <span class="vf-story-eyebrow">{{ ['DA IDEIA AO UNIFORME','A MARCA NO ESPAÇO','CORTAR, COSTURAR, CRIAR'][loop.index0] if loop.index0 < 3 else 'POR DENTRO DA MEGUI' }}</span>
+            <h3>{{ film.title }}</h3>
+            <p>{{ film.text }}</p>
+            <button type="button" class="vf-episode-action" data-video-src="{{ url_for('static',filename=film.video) }}" data-video-poster="{{ url_for('static',filename=film.poster) }}" data-video-title="{{ film.title }}" aria-label="Assistir ao vídeo: {{ film.title }}">Assistir ao processo <span aria-hidden="true">↗</span></button>
           </div>
-          <h3>{{ film.title }}</h3>
-          <p>{{ film.text }}</p>
-          <button type="button" class="vf-episode-action" data-video-src="{{ url_for('static',filename=film.video) }}" data-video-poster="{{ url_for('static',filename=film.poster) }}" data-video-title="{{ film.title }}" aria-label="Assistir ao vídeo: {{ film.title }}">Ver esse processo <span aria-hidden="true">↗</span></button>
         </article>
         {% endfor %}
       </div>
@@ -112,9 +106,9 @@
       </div>
       <div class="vf-details-gallery">
         {% for photo,kind,title in [
-          ('img/acervo/2026/camisetas-estamparia.webp','01 / ESTAMPARIA','Quando a estampa encontra a peça.'),
-          ('img/acervo/2026/bolsas-producao-sem-marca-v3.webp','02 / CONFECÇÃO','Peças em diferentes etapas da produção.'),
-          ('img/acervo/2026/senac-cadernos.webp','03 / PERSONALIZAÇÃO','Identidade aplicada aos detalhes.')
+          ('img/acervo/2026/camisetas-estamparia.webp','ESTAMPARIA','Quando a estampa encontra a peça.'),
+          ('img/acervo/2026/bolsas-producao-sem-marca-v3.webp','CONFECÇÃO','Peças em diferentes etapas da produção.'),
+          ('img/acervo/2026/senac-cadernos.webp','PERSONALIZAÇÃO','Identidade aplicada aos detalhes.')
         ] %}
         <figure class="vf-detail">
           <a href="{{ url_for('static',filename=photo) }}" target="_blank" rel="noopener" aria-label="Ver a foto completa: {{ title }}">
