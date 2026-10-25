@@ -179,3 +179,135 @@
 @media(prefers-reduced-motion:reduce){
  .portfolio-studio :is(.work-cover-large,.work-cover-small,.work-project-image,.work-project-image>img,.work-project-cta,.work-hero-jump,.project-filters>button){transition:none!important;transform:none!important}
 }
+
+/* Segunda passagem: a tipografia faz parte do produto, não é legenda miúda.
+   Proporções por projeto, hierarquia clara e leitura confortável. */
+.portfolio-studio .work-project-grid > .work-project .portfolio-copy {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: flex-start;
+  padding: 24px 4px 0 !important;
+  min-width: 0;
+}
+.portfolio-studio .work-project-grid > .work-project .portfolio-copy > .work-overline {
+  display: inline-block;
+  margin: 0 0 15px;
+  min-height: 0;
+  font: 650 12px/1.55 "Sora", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: .065em;
+  color: #78458d;
+  overflow-wrap: anywhere;
+}
+.portfolio-studio .work-project-grid > .work-project .portfolio-copy > .work-overline::before {
+  content: none;
+  display: none;
+}
+.portfolio-studio .work-project-grid > .work-project .portfolio-copy > h3 {
+  margin: 0 0 15px;
+  min-height: 0;
+  max-width: 25ch;
+  font-family: "Space Grotesk", "Manrope", sans-serif !important;
+  font-size: clamp(26px, 2.18vw, 32px);
+  font-weight: 650;
+  line-height: 1.16;
+  letter-spacing: -.052em;
+  color: #37213f;
+  overflow-wrap: anywhere;
+  text-wrap: pretty;
+}
+.portfolio-studio .work-project-grid > .work-project .portfolio-copy > p {
+  max-width: 56ch;
+  margin: 0 0 23px;
+  font: 450 16px/1.78 "Sora", sans-serif;
+  letter-spacing: -.018em;
+  color: #56415e;
+  text-wrap: pretty;
+  overflow-wrap: anywhere;
+}
+.portfolio-studio .work-project-grid > .work-project:nth-child(9n+1) .portfolio-copy > h3,
+.portfolio-studio .work-project-grid > .work-project:nth-child(9n+2) .portfolio-copy > h3,
+.portfolio-studio .work-project-grid > .work-project:nth-child(9n+6) .portfolio-copy > h3,
+.portfolio-studio .work-project-grid > .work-project:nth-child(9n+7) .portfolio-copy > h3 {
+  font-size: clamp(28px, 2.45vw, 37px);
+  max-width: 29ch;
+}
+.portfolio-studio .work-project-grid > .work-project:nth-child(9n+1) .portfolio-copy > p,
+.portfolio-studio .work-project-grid > .work-project:nth-child(9n+2) .portfolio-copy > p,
+.portfolio-studio .work-project-grid > .work-project:nth-child(9n+6) .portfolio-copy > p,
+.portfolio-studio .work-project-grid > .work-project:nth-child(9n+7) .portfolio-copy > p {
+  font-size: 17px;
+  line-height: 1.78;
+}
+.portfolio-studio .work-project-grid > .work-project .work-project-cta {
+  min-height: 57px;
+  margin-top: auto;
+  padding: 8px 8px 8px 17px;
+  gap: 19px;
+  border-radius: 13px 19px 19px 13px;
+  border-color: #ba98cb;
+  color: #563065;
+  font: 650 14px/1.35 "Sora", sans-serif;
+  letter-spacing: -.025em;
+}
+.portfolio-studio .work-project-grid > .work-project .work-project-cta small {
+  font: 700 10px/1.55 "Sora", sans-serif;
+  letter-spacing: .07em;
+  color: #855693;
+  margin-bottom: 2px;
+}
+.portfolio-studio .work-project-grid > .work-project .work-project-cta b {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  font-size: 24px;
+}
+.portfolio-studio .work-project-grid > .work-project .work-record summary {
+  font: 600 13px/1.6 "Sora", sans-serif;
+  color: #62416f;
+}
+@media (max-width: 1150px) {
+  .portfolio-studio .work-project-grid > .work-project:nth-child(n) .portfolio-copy > h3 {
+    font-size: clamp(26px, 2.7vw, 32px);
+  }
+  .portfolio-studio .work-project-grid > .work-project:nth-child(n) .portfolio-copy > p {
+    font-size: 16px;
+  }
+}
+@media (max-width: 600px) {
+  .portfolio-studio .work-project-grid > .work-project .portfolio-copy {
+    padding: 20px 2px 0 !important;
+  }
+  .portfolio-studio .work-project-grid > .work-project .portfolio-copy > .work-overline {
+    font-size: 11px;
+    line-height: 1.55;
+    margin-bottom: 12px;
+    letter-spacing: .05em;
+  }
+  .portfolio-studio .work-project-grid > .work-project:nth-child(n) .portfolio-copy > h3 {
+    font-size: clamp(26px, 7.3vw, 31px);
+    line-height: 1.17;
+    letter-spacing: -.05em;
+    margin-bottom: 12px;
+  }
+  .portfolio-studio .work-project-grid > .work-project:nth-child(n) .portfolio-copy > p {
+    font-size: 15.5px;
+    line-height: 1.76;
+    letter-spacing: -.01em;
+    margin-bottom: 21px;
+  }
+  .portfolio-studio .work-project-grid > .work-project .work-project-cta {
+    font-size: 13px;
+    min-height: 55px;
+    padding-left: 14px;
+    gap: 12px;
+  }
+  .portfolio-studio .work-project-grid > .work-project .work-project-cta small {
+    font-size: 9px;
+  }
+  .portfolio-studio .work-project-grid > .work-project .work-project-cta b {
+    width: 38px;
+    height: 38px;
+  }
+}
