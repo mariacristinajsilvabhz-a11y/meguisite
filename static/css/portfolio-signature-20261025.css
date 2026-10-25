@@ -1,0 +1,515 @@
+/* MEGUI PERSONALIZADOS — Portfolio/Trabalhos editorial, 25.10.2026
+   Brand-first showcase with intentionally highlighted cases and a strictly
+   uniform project gallery. No positional nth-child featured widths.
+*/
+.portfolio-signature-page {
+  --pv-ink:#342039;
+  --pv-plum:#623570;
+  --pv-accent:#8c54a1;
+  --pv-paper:#f1eaf2;
+  --pv-paper-light:#f8f3f8;
+  --pv-lilac:#e7d8ed;
+  --pv-body:#604d68;
+  --pv-rule:#d7c1df;
+  color:var(--pv-ink);
+  background:#eee5f1;
+  overflow:clip;
+}
+.portfolio-signature-page :is(h1,h2,h3,p){text-wrap:pretty}
+.portfolio-signature-page .portfolio-kicker{
+  display:inline-flex;align-items:center;gap:10px;
+  font:700 11px/1.5 "Sora",sans-serif;
+  color:#7a4a8a;letter-spacing:.115em;text-transform:uppercase;
+}
+.portfolio-signature-page .portfolio-kicker-star{display:inline-flex;width:18px;height:22px;color:#8445a0}
+.portfolio-signature-page .portfolio-kicker-star svg{width:100%;height:100%}
+.portfolio-signature-page :is(.portfolio-editorial-heading,.portfolio-heritage-heading) h2,
+.portfolio-signature-page .portfolio-outro h2{
+  font-family:"Space Grotesk","Manrope",sans-serif!important;
+  color:var(--pv-ink);font-weight:650;
+  letter-spacing:-.063em;line-height:1.08;
+  font-size:clamp(42px,4.9vw,70px);
+}
+.portfolio-signature-page :is(.portfolio-editorial-heading,.portfolio-heritage-heading,.portfolio-outro) h2 em{
+  display:inline-block;font:italic 600 1.11em/1.04 "Cormorant Garamond",Georgia,serif;
+  letter-spacing:-.04em;color:#875097;
+}
+.portfolio-signature-page .portfolio-intro{
+  position:relative;
+  padding:clamp(56px,7vw,112px) 0 clamp(64px,7vw,118px);
+  background:radial-gradient(ellipse at 92% 8%,#d9c1e5a8,transparent 56%),linear-gradient(120deg,#f2ecf4,#e6d8ed);
+  overflow:hidden;
+}
+.portfolio-signature-page .portfolio-intro:before{
+  content:"";position:absolute;left:-20%;bottom:-75%;width:65%;aspect-ratio:1;
+  border-radius:50%;background:radial-gradient(circle,#ffffff9c,transparent 70%);
+  pointer-events:none;
+}
+.portfolio-signature-page .portfolio-intro-layout{
+  position:relative;display:grid;grid-template-columns:minmax(0,.98fr) minmax(0,1.02fr);
+  gap:clamp(36px,5vw,90px);align-items:center;
+}
+.portfolio-signature-page .portfolio-intro-copy{position:relative;z-index:2}
+.portfolio-signature-page .portfolio-intro h1{
+  margin:28px 0 26px;
+  font:650 clamp(60px,6.2vw,91px)/1.025 "Space Grotesk","Manrope",sans-serif!important;
+  letter-spacing:-.075em;color:var(--pv-ink);
+}
+.portfolio-signature-page .portfolio-intro h1 em{
+  font:italic 600 1.12em/1 "Cormorant Garamond",Georgia,serif;
+  color:#855098;letter-spacing:-.047em;
+}
+.portfolio-signature-page .portfolio-intro-copy>p{
+  font:400 clamp(16px,1.25vw,18px)/1.85 "Sora",sans-serif;
+  color:#624e6b;max-width:45ch;margin:0;
+}
+.portfolio-signature-page .portfolio-intro-actions{
+  display:flex;flex-wrap:wrap;align-items:center;gap:25px;margin-top:38px;
+}
+.portfolio-signature-page .portfolio-intro-link{
+  display:inline-flex;align-items:center;justify-content:space-between;gap:28px;
+  min-height:62px;box-sizing:border-box;padding:14px 17px 14px 22px;
+  border:1px solid #684079;border-radius:11px 22px 22px 11px;
+  background:#6a3f7e;color:#fff;text-decoration:none;
+  font:600 14px/1.4 "Sora",sans-serif;box-shadow:6px 8px 0 #d2bbdfa1;
+  transition:transform .22s,box-shadow .22s,background .22s;
+}
+.portfolio-signature-page .portfolio-intro-link>span{
+  display:grid;place-items:center;width:34px;height:34px;border-radius:10px;
+  background:#e4cdec;color:#5d3672;font-size:23px;
+}
+.portfolio-signature-page .portfolio-intro-count{
+  display:flex;align-items:center;gap:12px;
+  font:500 11px/1.55 "Sora",sans-serif;color:#876995;max-width:19ch;
+}
+.portfolio-signature-page .portfolio-intro-count strong{
+  font:650 35px/1 "Space Grotesk",sans-serif;letter-spacing:-.07em;color:#573368;
+}
+.portfolio-signature-page .portfolio-intro-visual{
+  position:relative;max-width:645px;padding:18px 45px 26px 13px;isolation:isolate;
+}
+.portfolio-signature-page .portfolio-intro-visual:before{
+  content:"";position:absolute;inset:0 15px 0 -15px;
+  border:1px solid #aa81b959;border-radius:47% 53% 45% 55% / 58% 50% 50% 42%;
+  transform:rotate(-8deg);pointer-events:none;z-index:-1;
+}
+.portfolio-signature-page .portfolio-intro-photo{
+  overflow:hidden;aspect-ratio:1.05;border-radius:110px 14px 120px 14px;
+  background:#dbc9e0;box-shadow:0 18px 45px #47224b22;transform:rotate(2deg);
+}
+.portfolio-signature-page .portfolio-intro-photo>img{
+  width:100%;height:100%;display:block;object-fit:cover;object-position:center;
+}
+.portfolio-signature-page .portfolio-photo-stamp{
+  position:absolute;right:0;bottom:18%;display:grid;place-content:center;
+  width:132px;height:132px;box-sizing:border-box;
+  background:#72418a;color:#fff;border:8px solid #eee4f1;
+  border-radius:50%;text-align:center;
+  font:700 10px/1.65 "Sora",sans-serif;letter-spacing:.065em;
+  transform:rotate(10deg);box-shadow:0 11px 18px #59386b29;
+}
+.portfolio-signature-page .portfolio-intro-butterfly{
+  position:absolute;right:1%;top:0;width:56px;height:74px;
+  color:#87539a;transform:rotate(15deg);
+}
+.portfolio-signature-page .portfolio-intro-butterfly>svg{width:100%;height:100%}
+.portfolio-signature-page .portfolio-photo-caption{
+  display:block;position:absolute;bottom:-18px;left:11%;
+  font:700 9px/1.5 "Sora",sans-serif;letter-spacing:.1em;color:#9b7ba6;
+}
+/* Case study section: names and relevance decide featured placement. */
+.portfolio-signature-page .portfolio-brands{
+  padding:clamp(85px,10vw,145px) 0 clamp(76px,9vw,135px);
+  background:#f3edf5;
+}
+.portfolio-signature-page .portfolio-editorial-heading,
+.portfolio-signature-page .portfolio-heritage-heading{
+  display:grid;grid-template-columns:minmax(0,1.18fr) minmax(0,.82fr);
+  gap:clamp(32px,7vw,115px);align-items:end;margin-bottom:clamp(36px,5vw,67px);
+}
+.portfolio-signature-page .portfolio-editorial-heading h2,
+.portfolio-signature-page .portfolio-heritage-heading h2{
+  margin:18px 0 0;
+}
+.portfolio-signature-page .portfolio-editorial-heading>p,
+.portfolio-signature-page .portfolio-heritage-heading>p{
+  max-width:45ch;margin:0 0 8px;
+  font:400 15px/1.85 "Sora",sans-serif;color:#695570;
+}
+.portfolio-signature-page .portfolio-case-grid{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  column-gap:clamp(25px,4.5vw,72px);row-gap:clamp(62px,7vw,102px);
+  align-items:start;
+}
+.portfolio-signature-page .portfolio-case{min-width:0;display:block}
+.portfolio-signature-page .portfolio-case-photo{
+  position:relative;width:100%;aspect-ratio:1.35;
+  overflow:visible;
+}
+.portfolio-signature-page .portfolio-case-photo>a{
+  position:absolute;inset:0;display:block;
+  border-radius:12px 55px 12px 55px;overflow:hidden;
+  background:radial-gradient(ellipse at 55% 35%,#fdf8ff 0%,#dfc9e8 78%,#d2b7df 100%);
+  box-shadow:0 17px 36px #56346419;
+  transition:transform .3s,box-shadow .3s;
+}
+.portfolio-signature-page .portfolio-case-main-image{
+  display:block;width:100%;height:100%;padding:clamp(15px,2vw,35px);
+  object-fit:contain;box-sizing:border-box;
+}
+.portfolio-signature-page .portfolio-case-number{
+  position:absolute;left:-11px;top:-15px;display:grid;place-items:center;
+  width:49px;height:49px;border-radius:50%;
+  background:#74438a;color:#fff;border:4px solid #f3edf5;
+  font:700 14px/1 "Sora",sans-serif;box-shadow:0 7px 18px #51336021;
+}
+.portfolio-signature-page .portfolio-photo-view{
+  display:inline-flex;align-items:center;gap:10px;
+  position:absolute;right:14px;bottom:14px;
+  padding:10px 13px;border-radius:99px;
+  color:#563767;background:#f5ecf6e8;backdrop-filter:blur(5px);
+  border:1px solid #ffffffbd;
+  font:600 10px/1.3 "Sora",sans-serif;
+  box-shadow:0 5px 15px #4d336019;pointer-events:none;
+}
+.portfolio-signature-page .portfolio-photo-view span{font-size:15px;line-height:1}
+.portfolio-signature-page .portfolio-case-real{
+  position:absolute;bottom:-16px;left:15px;width:29%;aspect-ratio:1.02;
+  display:block;overflow:hidden;
+  border:6px solid #f3edf5;border-radius:14px;
+  background:#d9c8df;box-shadow:0 10px 20px #44204a24;
+  transform:rotate(-5deg);pointer-events:none;
+}
+.portfolio-signature-page .portfolio-case-real img{
+  display:block;width:100%;height:100%;object-fit:contain;background:#e4d5e8;
+}
+.portfolio-signature-page .portfolio-case-real>span{
+  position:absolute;bottom:0;left:0;right:0;text-align:center;
+  padding:7px 3px;background:#382844d8;color:#fff;
+  font:700 7px/1.4 "Sora",sans-serif;letter-spacing:.065em;
+}
+.portfolio-signature-page .portfolio-case-content{padding:clamp(26px,3vw,43px) 6px 0}
+.portfolio-signature-page .portfolio-case-eyebrow{
+  font:700 11px/1.5 "Sora",sans-serif;
+  letter-spacing:.11em;text-transform:uppercase;color:#876398;
+}
+.portfolio-signature-page .portfolio-case-content h3{
+  font:650 clamp(29px,2.8vw,41px)/1.13 "Space Grotesk",sans-serif!important;
+  color:#3d2445;letter-spacing:-.055em;margin:13px 0 17px;max-width:23ch;
+}
+.portfolio-signature-page .portfolio-case-content>p{
+  color:#69566f;margin:0 0 24px;max-width:61ch;
+  font:400 15px/1.8 "Sora",sans-serif;
+}
+.portfolio-signature-page .portfolio-case-footer{
+  display:flex;gap:23px;align-items:center;justify-content:space-between;
+  border-top:1px solid #d9c8df;padding:20px 0 0;
+}
+.portfolio-signature-page .portfolio-case-footer>span{
+  display:flex;flex-direction:column;gap:6px;
+  font:600 13px/1.4 "Sora",sans-serif;color:#543660;
+}
+.portfolio-signature-page .portfolio-case-footer>span small{
+  font:700 9px/1.5 "Sora",sans-serif;
+  letter-spacing:.11em;color:#9778a4;
+}
+.portfolio-signature-page .portfolio-case-footer>a{
+  display:inline-flex;align-items:center;gap:12px;flex:none;
+  color:#714087;text-decoration:none;
+  font:700 12px/1.4 "Sora",sans-serif;
+}
+.portfolio-signature-page .portfolio-case-footer>a span{font-size:23px;line-height:1}
+/* Catalogue-like browsing without catalogue-like cards. */
+.portfolio-signature-page .portfolio-collection{
+  padding:clamp(77px,9vw,128px) 0 98px;
+  background:#eae0ef;
+}
+.portfolio-signature-page .portfolio-collection-heading{margin-bottom:32px}
+.portfolio-signature-page .portfolio-find{
+  padding:22px 0 14px;border-top:1px solid #c6a8d1;
+}
+.portfolio-signature-page .work-search{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  margin:0;padding:0;background:transparent;border:0;border-radius:0;
+}
+.portfolio-signature-page .work-search>span{
+  display:block;font:700 14px/1.5 "Sora",sans-serif;color:#51315e;
+}
+.portfolio-signature-page .work-search>input{
+  display:block;box-sizing:border-box;margin:0;width:min(100%,445px);
+  padding:15px 23px;min-height:53px;border-radius:999px;
+  border:1px solid #c7a8d4;background:#f6f0f7;
+  font:400 14px/1.4 "Sora",sans-serif;color:#44314a;
+}
+.portfolio-signature-page .project-filters{
+  display:flex;flex-wrap:wrap;gap:9px;align-items:center;
+  margin:20px 0 19px;padding:0;border:0;border-radius:0;
+  background:none;
+}
+.portfolio-signature-page .project-filters>button{
+  box-sizing:border-box;min-height:42px;margin:0;
+  padding:10px 15px;border-radius:999px;border:1px solid #c3a6cf;
+  background:#f2eaf4;color:#6a4779;box-shadow:none;
+  font:600 12px/1.5 "Sora",sans-serif;cursor:pointer;
+}
+.portfolio-signature-page .project-filters>button[aria-pressed=true]{
+  color:#fff;background:#714086;border-color:#714086;box-shadow:none;
+}
+.portfolio-signature-page .project-filter-count{
+  margin-left:auto;color:#7c6089;font:500 12px/1.5 "Sora",sans-serif;
+}
+.portfolio-signature-page .work-empty{
+  font:500 14px/1.6 "Sora",sans-serif;color:#61436e;
+  background:#dfcee6;padding:22px;border-radius:12px;
+}
+.portfolio-signature-page .work-empty[hidden],
+.portfolio-signature-page .work-project-grid>.work-project[hidden]{display:none!important}
+.portfolio-signature-page .work-project-grid{
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:clamp(44px,4.5vw,72px) clamp(18px,2.35vw,34px)!important;
+  grid-auto-flow:row;columns:unset;align-items:start;
+}
+.portfolio-signature-page .work-project-grid>.work-project:nth-child(n){
+  display:flex;flex-direction:column;grid-column:auto!important;
+  width:auto;min-width:0;height:100%;
+  padding:0!important;margin:0!important;
+  background:transparent!important;border:0!important;border-radius:0!important;
+  box-shadow:none!important;overflow:visible;
+  transform:none!important;
+}
+.portfolio-signature-page .work-project-grid>.work-project :is(.work-project-image,.video-preview){
+  position:relative;display:block;width:100%;height:auto!important;
+  aspect-ratio:1.25!important;overflow:hidden;
+  border-radius:12px 28px 12px 28px!important;
+  border:0!important;
+  background:radial-gradient(ellipse at 50% 40%,#fcf8fd,#d7c3e0)!important;
+  box-shadow:0 9px 25px #56346414;
+  transform:none;
+}
+.portfolio-signature-page .work-project-grid>.work-project .work-project-image>img,
+.portfolio-signature-page .work-project-grid>.work-project:nth-child(n) .work-project-image>img{
+  display:block;width:100%;height:100%!important;aspect-ratio:auto!important;
+  padding:15px!important;margin:0;
+  box-sizing:border-box;
+  object-fit:contain!important;object-position:center;
+  background:transparent!important;
+}
+.portfolio-signature-page .work-project-grid>.work-project .work-project-image:before{
+  content:none!important;display:none!important;
+}
+.portfolio-signature-page .work-project-grid>.work-project .work-project-image:after{
+  content:none!important;display:none!important;
+}
+.portfolio-signature-page .work-project-grid>.work-project .work-project-image>.portfolio-photo-view{
+  bottom:12px;right:12px;
+}
+.portfolio-signature-page .work-project-grid>.work-project .video-preview{
+  min-height:0!important;
+}
+.portfolio-signature-page .work-project-grid>.work-project .portfolio-copy{
+  padding:22px 2px 0!important;
+  display:flex;flex-direction:column;align-items:flex-start;flex:1;
+}
+.portfolio-signature-page .work-project-grid>.work-project:nth-child(n) .portfolio-copy>.work-overline{
+  display:block;min-height:0;margin:0 0 13px;
+  font:700 11px/1.5 "Sora",sans-serif;
+  letter-spacing:.07em;color:#825b91;text-transform:uppercase;
+}
+.portfolio-signature-page .work-project-grid>.work-project .portfolio-copy>.work-overline:before{
+  display:none!important;content:none!important;
+}
+.portfolio-signature-page .work-project-grid>.work-project:nth-child(n) .portfolio-copy>h3{
+  margin:0 0 13px;min-height:0;max-width:none;
+  color:#3d2548;
+  font:650 clamp(23px,1.85vw,29px)/1.18 "Space Grotesk",sans-serif!important;
+  letter-spacing:-.045em;overflow-wrap:anywhere;
+}
+.portfolio-signature-page .work-project-grid>.work-project:nth-child(n) .portfolio-copy>p{
+  margin:0 0 20px;max-width:50ch;flex:1;
+  font:400 14px/1.8 "Sora",sans-serif;
+  letter-spacing:-.012em;color:#66516e;
+}
+.portfolio-signature-page .work-project-grid>.work-project .work-project-cta{
+  display:inline-flex;align-items:center;justify-content:space-between;
+  gap:14px;min-height:47px;padding:12px 16px;margin:0;
+  box-shadow:none;background:#dfcce8;
+  border:1px solid #cbb0d5;border-radius:10px 18px 18px 10px;
+  font:650 12px/1.4 "Sora",sans-serif;color:#553262;
+  text-decoration:none;
+}
+.portfolio-signature-page .work-project-grid>.work-project .work-project-cta span{
+  font-size:19px;line-height:1;color:#60326e;
+}
+.portfolio-signature-page .work-more-wrap{text-align:center;margin-top:58px}
+.portfolio-signature-page .work-more{
+  display:inline-flex;gap:20px;align-items:center;justify-content:center;
+  background:#d9c3e3;color:#5b386c;border:1px solid #b793c8;
+  border-radius:12px 22px 22px 12px;min-height:56px;
+  padding:12px 21px 12px 26px;
+  font:650 13px/1.4 "Sora",sans-serif;
+  cursor:pointer;
+}
+.portfolio-signature-page .work-more[hidden]{display:none!important}
+/* Heritage display uses originals, not fabricated catalogue photos. */
+.portfolio-signature-page .portfolio-heritage{
+  padding:clamp(76px,9vw,120px) 0;
+  background:#f3edf5;
+}
+.portfolio-signature-page .portfolio-heritage-heading{margin-bottom:36px}
+.portfolio-signature-page .archive-grid{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:clamp(18px,2.7vw,36px);
+}
+.portfolio-signature-page .archive-card{
+  min-width:0;border:0!important;box-shadow:none!important;
+  background:transparent!important;padding:0!important;
+}
+.portfolio-signature-page .archive-card>a{
+  display:block;border-radius:11px 26px 11px 26px;
+  overflow:hidden;aspect-ratio:1.15;background:#dcc9e4;
+}
+.portfolio-signature-page .archive-card>a img{
+  display:block;width:100%;height:100%;object-fit:contain;box-sizing:border-box;
+  padding:10px;background:transparent;
+}
+.portfolio-signature-page .archive-card>div{padding:19px 2px 0}
+.portfolio-signature-page .archive-card .archive-date{
+  font:700 10px/1.5 "Sora",sans-serif;letter-spacing:.07em;color:#8f6d9d;
+}
+.portfolio-signature-page .archive-card h3{
+  margin:12px 0 7px;color:#452852;
+  font:650 20px/1.2 "Space Grotesk",sans-serif!important;
+  letter-spacing:-.035em;
+}
+.portfolio-signature-page .archive-card p{
+  margin:0;font:400 13px/1.6 "Sora",sans-serif;color:#705c79;
+}
+.portfolio-signature-page .portfolio-outro{
+  padding:80px 0 95px;background:#e9dced;
+}
+.portfolio-signature-page .portfolio-outro-inner{
+  position:relative;display:grid;grid-template-columns:1fr .8fr;
+  gap:clamp(32px,6vw,100px);align-items:center;
+  padding:clamp(42px,5vw,82px);
+  border-radius:33px 12px 33px 12px;
+  background:linear-gradient(125deg,#e2cfe9,#d9c2e3);
+  border:1px solid #ceb4d8;
+}
+.portfolio-signature-page .portfolio-outro h2{margin:18px 0 0}
+.portfolio-signature-page .portfolio-outro p{
+  margin:0 0 26px;
+  font:400 15px/1.8 "Sora",sans-serif;color:#624b6d;
+}
+.portfolio-signature-page .portfolio-outro a{
+  display:inline-flex;align-items:center;justify-content:space-between;gap:32px;
+  padding:16px 18px 16px 22px;min-height:62px;box-sizing:border-box;
+  border-radius:12px 23px 23px 12px;background:#694078;color:#fff;
+  text-decoration:none;font:650 14px/1.4 "Sora",sans-serif;
+  box-shadow:6px 8px 0 #c7a8d363;
+}
+.portfolio-signature-page .portfolio-outro a span{
+  display:grid;place-items:center;
+  width:36px;height:36px;border-radius:11px;background:#e5d2ed;color:#5b386b;
+  font-size:23px;
+}
+.portfolio-signature-page .portfolio-outro-butterfly{
+  position:absolute;right:20px;top:17px;width:31px;height:39px;
+  transform:rotate(23deg);color:#996ba9;
+}
+.portfolio-signature-page .portfolio-outro-butterfly svg{display:block;width:100%;height:100%}
+.portfolio-signature-page :is(a,button,input):focus-visible{
+  outline:3px solid #88529b!important;outline-offset:4px!important;
+}
+@media (hover:hover){
+ .portfolio-signature-page .portfolio-intro-link:hover{
+  background:#80518d;transform:translate(-2px,-2px);box-shadow:9px 10px 0 #d2bbdfa1;
+ }
+ .portfolio-signature-page .portfolio-case-photo>a:hover{
+  transform:translateY(-3px);box-shadow:0 21px 39px #56346425;
+ }
+ .portfolio-signature-page .portfolio-case-footer>a:hover{text-decoration:underline;text-underline-offset:4px}
+ .portfolio-signature-page .work-project-grid>.work-project .work-project-image:hover{
+  box-shadow:0 14px 32px #56346422;transform:translateY(-2px);
+ }
+ .portfolio-signature-page .work-project-cta:hover{background:#d4b8e0}
+ .portfolio-signature-page .project-filters>button:hover{border-color:#825195}
+ .portfolio-signature-page .portfolio-outro a:hover{background:#7b4b88}
+}
+@media(max-width:1050px){
+ .portfolio-signature-page .portfolio-intro-layout{gap:30px}
+ .portfolio-signature-page .portfolio-intro h1{font-size:clamp(49px,6.4vw,71px)}
+ .portfolio-signature-page .portfolio-intro-photo{border-radius:75px 10px 80px 10px}
+ .portfolio-signature-page .portfolio-photo-stamp{width:112px;height:112px;font-size:8px}
+ .portfolio-signature-page .portfolio-case-grid{gap:60px 28px}
+ .portfolio-signature-page .portfolio-case-content h3{font-size:30px}
+ .portfolio-signature-page .portfolio-case-footer{align-items:flex-start;flex-direction:column;gap:15px}
+ .portfolio-signature-page .work-project-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ .portfolio-signature-page .archive-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:760px){
+ .portfolio-signature-page .portfolio-intro{padding:44px 0 67px}
+ .portfolio-signature-page .portfolio-intro-layout{grid-template-columns:1fr;gap:38px}
+ .portfolio-signature-page .portfolio-intro h1{font-size:clamp(47px,10vw,71px)}
+ .portfolio-signature-page .portfolio-intro-copy>p{font-size:14px;max-width:50ch}
+ .portfolio-signature-page .portfolio-intro-actions{margin-top:25px}
+ .portfolio-signature-page .portfolio-intro-visual{width:min(540px,100%);box-sizing:border-box;margin:0 auto}
+ .portfolio-signature-page .portfolio-intro-photo{aspect-ratio:1.2}
+ .portfolio-signature-page .portfolio-editorial-heading,
+ .portfolio-signature-page .portfolio-heritage-heading{grid-template-columns:1fr;gap:18px}
+ .portfolio-signature-page .portfolio-case-grid{grid-template-columns:1fr;row-gap:61px}
+ .portfolio-signature-page .portfolio-case{max-width:610px;margin:0 auto;width:100%}
+ .portfolio-signature-page .portfolio-case-photo{aspect-ratio:1.45}
+ .portfolio-signature-page .portfolio-case-footer{align-items:center;flex-direction:row}
+ .portfolio-signature-page .portfolio-brands{padding:76px 0}
+ .portfolio-signature-page .portfolio-collection{padding:75px 0}
+ .portfolio-signature-page .portfolio-find{padding-top:20px}
+ .portfolio-signature-page .work-search{flex-direction:column;align-items:stretch;gap:9px}
+ .portfolio-signature-page .work-search>input{width:100%;max-width:none;font-size:16px}
+ .portfolio-signature-page .project-filter-count{width:100%;margin:8px 0 0}
+ .portfolio-signature-page .work-project-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:43px 18px!important}
+ .portfolio-signature-page .work-project-grid>.work-project:nth-child(n) .portfolio-copy>h3{font-size:clamp(20px,3.4vw,26px)}
+ .portfolio-signature-page .work-project-grid>.work-project:nth-child(n) .portfolio-copy>p{font-size:13px}
+ .portfolio-signature-page .portfolio-outro-inner{grid-template-columns:1fr;gap:23px}
+}
+@media(max-width:560px){
+ .portfolio-signature-page .portfolio-kicker{font-size:9px;letter-spacing:.095em}
+ .portfolio-signature-page .portfolio-intro h1{font-size:clamp(45px,11.1vw,59px)}
+ .portfolio-signature-page .portfolio-intro-link{min-height:57px;font-size:12px}
+ .portfolio-signature-page .portfolio-intro-visual{padding:10px 24px 22px 8px}
+ .portfolio-signature-page .portfolio-intro-visual:before{inset:0 0 0 -8px}
+ .portfolio-signature-page .portfolio-intro-photo{border-radius:55px 9px 65px 9px}
+ .portfolio-signature-page .portfolio-photo-stamp{width:93px;height:93px;right:0;font-size:7px;border-width:5px}
+ .portfolio-signature-page .portfolio-intro-butterfly{width:39px;height:50px}
+ .portfolio-signature-page .portfolio-photo-caption{font-size:7px;bottom:-10px}
+ .portfolio-signature-page :is(.portfolio-editorial-heading,.portfolio-heritage-heading) h2,
+ .portfolio-signature-page .portfolio-outro h2{font-size:clamp(36px,9.5vw,49px)}
+ .portfolio-signature-page :is(.portfolio-editorial-heading,.portfolio-heritage-heading)>p{font-size:13px;line-height:1.75}
+ .portfolio-signature-page .portfolio-case-photo{aspect-ratio:1.25}
+ .portfolio-signature-page .portfolio-case-photo>a{border-radius:10px 28px 10px 28px}
+ .portfolio-signature-page .portfolio-case-main-image{padding:15px}
+ .portfolio-signature-page .portfolio-case-real{width:29%;border-width:4px;left:7px}
+ .portfolio-signature-page .portfolio-case-real>span{font-size:6px;padding:4px 2px}
+ .portfolio-signature-page .portfolio-case-number{width:42px;height:42px;font-size:12px;left:-6px;top:-10px}
+ .portfolio-signature-page .portfolio-case-content{padding:33px 2px 0}
+ .portfolio-signature-page .portfolio-case-content h3{font-size:clamp(27px,7.7vw,34px)}
+ .portfolio-signature-page .portfolio-case-content>p{font-size:14px;line-height:1.8}
+ .portfolio-signature-page .portfolio-case-footer{flex-direction:column;align-items:flex-start}
+ .portfolio-signature-page .work-project-grid{grid-template-columns:1fr!important;gap:40px!important}
+ .portfolio-signature-page .work-project-grid>.work-project:nth-child(n) .portfolio-copy>h3{font-size:26px}
+ .portfolio-signature-page .work-project-grid>.work-project:nth-child(n) .portfolio-copy>p{font-size:15px}
+ .portfolio-signature-page .work-project-grid>.work-project .work-project-cta{min-height:51px;font-size:13px}
+ .portfolio-signature-page .work-project-grid>.work-project .work-project-image,
+ .portfolio-signature-page .work-project-grid>.work-project .video-preview{border-radius:12px 23px 12px 23px!important}
+ .portfolio-signature-page .project-filters>button{padding:9px 11px;min-height:39px;font-size:11px}
+ .portfolio-signature-page .archive-grid{gap:29px 15px}
+ .portfolio-signature-page .archive-card h3{font-size:16px}
+ .portfolio-signature-page .archive-card p{font-size:11px}
+ .portfolio-signature-page .portfolio-outro{padding:55px 0}
+ .portfolio-signature-page .portfolio-outro-inner{padding:34px 20px;border-radius:24px 8px 24px 8px}
+ .portfolio-signature-page .portfolio-outro p{font-size:13px}
+ .portfolio-signature-page .portfolio-outro a{min-height:56px;font-size:12px;padding:11px 12px 11px 16px;gap:15px}
+}
+@media(prefers-reduced-motion:reduce){
+ .portfolio-signature-page :is(.portfolio-intro-link,.portfolio-case-photo>a,.work-project-image,.work-project-cta,.portfolio-outro a){transition:none!important}
+}
