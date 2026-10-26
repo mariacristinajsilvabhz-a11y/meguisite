@@ -48,3 +48,6 @@ html[data-theme=dark] main #megui-theme-slides .carousel-slide{background:#30233
 html[data-theme=dark] main :is(.filters,.catalog-help,.contact-desks,.contact-desk,.contact-brief-form,.textile-faq,.fabric-inspector,.quote-empty,.product-info,.product-gallery){background:#2b2034!important;border-color:#594267!important}
 html[data-theme=dark] main :is(.filters a,.catalog-help,.catalog-help strong,.contact-desk-phone,.contact-email,.product-info span){color:#ddc7e9!important}
 html[data-theme=dark] main .filters a.active{background:#513661!important;color:#f5e7fc!important}
+html[data-theme=dark] main .mw-hero-promise span{background:#483052!important;color:#e4caee!important}
+html[data-theme=dark] main :is(.work-exhibit-story,.work-exhibit-stage,.knit-edition-story,.pouch-editorial,.pouch-stage,.fabric-inspector-contact,.idea-invitation,.category-drawer,.catalog-facets){background:#2d2136!important;border-color:#5d426d!important}
+html[data-theme=dark] main :is(.work-exhibit-index,.work-exhibit-description,.work-exhibit-piece,.work-exhibit-facts,.knit-edition-kicker,.pouch-title-note){color:#d7b9e6!important}
