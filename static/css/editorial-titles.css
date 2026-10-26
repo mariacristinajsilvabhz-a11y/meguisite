@@ -101,4 +101,4 @@ body :is(.home-clients,.client-ribbon) .client-logo[src$="printup-v2.png"],
 body .empresa-brand-line img[src$="sesc.png"]{filter:url(#brand-white-to-ink)}
 body #megui-theme-slides .slide-senac .carousel-art>img{transform:none!important;object-position:center!important}
 /* Logo do acervo com papel branco: integra o fundo e preserva o traço preto. */
-body :is(.home-clients,.client-ribbon) .client-logo-paper{filter:grayscale(1);mix-blend-mode:multiply}
+body :is(.home-clients,.client-ribbon) .client-logo-paper{filter:url(#brand-paper-cutout);mix-blend-mode:normal}
