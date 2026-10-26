@@ -1185,3 +1185,10 @@
 .meg-work .mw-brandproof-logos.is-dragging{cursor:grabbing;scroll-behavior:auto}
 .meg-work .mw-brandproof-logos img{-webkit-user-drag:none;user-select:none;pointer-events:none}
 .meg-work .mw-brandproof-logos:focus-visible{outline-offset:-4px}
+
+/* A frase da capa tem sua própria linha, acima das fotos. */
+.meg-work .mw-hero-composition{padding-top:56px}
+.meg-work .mw-hero-above{position:absolute;top:0;left:0;right:0;text-align:center;font:italic 600 clamp(21px,2vw,29px)/1.2 "Cormorant Garamond",Georgia,serif;color:#9461a6;transform:none}
+.meg-work .mw-hero-photograph{margin-top:10px}
+.meg-work .mw-hero-small:has(img[data-clean-cutout]){padding:0;border-radius:0;background:transparent;box-shadow:none}
+.meg-work .mw-hero-small img[data-clean-cutout]{border-radius:0;background:transparent}

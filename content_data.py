@@ -52,7 +52,7 @@ PORTFOLIO = NEW_WORKS + PORTFOLIO
 
 
 # Fotos de apresentação aprovadas em 22/10/2026; registros originais preservados.
-STUDIO_PRESENTATIONS_20261022 = {'SenacX · Alexas personalizadas': 'img/inicio/alexa-senacx-alinhada-v2.webp', 'Infinix · kit corporativo': 'img/trabalhos/2026/kit-infinix-estudio-20261022.webp', 'SenacX · bottons': 'img/trabalhos/2026/bottons-senac-estudio-20261022.webp', 'Fecomércio MG · fones': 'img/trabalhos/2026/fones-fecomercio-estudio-20261022.webp', 'E.E.P.O.F · kit escolar': 'img/trabalhos/2026/kit-eepof-estudio-20261022.webp', 'Virgin Mary · camisetas': 'img/trabalhos/2026/virgin-mary-estudio-20261022.webp', 'Samba do Maestro': 'img/trabalhos/2026/samba-do-maestro-estudio-20261022.webp', 'Circuito das Indústrias': 'img/trabalhos/2026/circuito-industrias-estudio-20261022.webp'}
+STUDIO_PRESENTATIONS_20261022 = {'SenacX · Alexas personalizadas': 'img/trabalhos/2026/echo-pop-senac-fiel-v3.webp', 'Infinix · kit corporativo': 'img/trabalhos/2026/kit-infinix-estudio-20261022.webp', 'SenacX · bottons': 'img/trabalhos/2026/bottons-senac-estudio-20261022.webp', 'Fecomércio MG · fones': 'img/trabalhos/2026/fones-fecomercio-estudio-20261022.webp', 'E.E.P.O.F · kit escolar': 'img/trabalhos/2026/kit-eepof-estudio-20261022.webp', 'Virgin Mary · camisetas': 'img/trabalhos/2026/virgin-mary-estudio-20261022.webp', 'Samba do Maestro': 'img/trabalhos/2026/samba-do-maestro-estudio-20261022.webp', 'Circuito das Indústrias': 'img/trabalhos/2026/circuito-industrias-estudio-20261022.webp'}
 for _work in PORTFOLIO:
     if _work["title"] in STUDIO_PRESENTATIONS_20261022:
         _work["presentation_image"] = STUDIO_PRESENTATIONS_20261022[_work["title"]]

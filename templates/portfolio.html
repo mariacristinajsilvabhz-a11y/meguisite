@@ -3,7 +3,7 @@
 {% block title %}Trabalhos & bastidores | Portfólio Megui Personalizados{% endblock %}
 {% block final_head %}
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600;1,700&display=swap">
-<link rel="stylesheet" href="{{ url_for('static',filename='css/meg-work-atelier-20261025.css',v='20261026-fullwidth-drag-v5') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/meg-work-atelier-20261025.css',v='20261026-cover-v6') }}">
 <script defer src="{{ url_for('static',filename='js/brand-drag.js',v='20261026-v1') }}"></script>
 {% endblock %}
 
@@ -45,18 +45,16 @@
         <div class="mw-hero-promise"><span>CONFECÇÃO PRÓPRIA</span><span>PERSONALIZAÇÃO</span><span>PROJETOS REAIS</span></div>
       </div>
       <div class="mw-hero-composition">
+        <p class="mw-hero-above">Feito para viver fora da fábrica.</p>
         <div class="mw-hero-photograph">
           <img src="{{ url_for('static',filename='img/acervo/camisetas-em-uso.jpg') }}" alt="Camisetas personalizadas em uso durante um evento real" fetchpriority="high" decoding="async">
         </div>
         <div class="mw-hero-small" aria-hidden="true">
-          <img src="{{ url_for('static',filename='img/acervo/2026/senac-cadernos-estudio-v2.webp') }}" alt="" loading="lazy" data-mw-cutout>
+          <img src="{{ url_for('static',filename='img/trabalhos/2026/senac-cadernos-recorte-v3.webp') }}" alt="" loading="lazy" data-clean-cutout>
         </div>
         <div class="mw-hero-insignia" aria-hidden="true">{{ icon('butterfly') }}</div>
-        <span class="mw-hero-handnote">feito para viver fora da fábrica</span>
-        <span class="mw-hero-photo-caption">DO NOSSO ACERVO, PARA A VIDA REAL</span>
       </div>
     </div>
-    <div class="container mw-hero-tail"><span>PEÇAS, HISTÓRIAS E GENTE DE VERDADE</span><span class="mw-scroll-cue" aria-hidden="true"></span></div>
   </section>
 
   <section class="mw-brandproof" aria-label="Marcas que já confiaram na Megui">

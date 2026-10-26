@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="{{ url_for('static',filename='js/theme-mode.js',v='20261026-v1') }}"></script>
   <meta name="theme-color" content="#171219">
   <meta name="description" content="Megui Personalizados: confecção e personalização em malha. Camisetas, uniformes, saquinhos, eventos, brindes e comunicação visual.">
   <title>{% block title %}Megui Personalizados{% endblock %}</title>
@@ -25,6 +26,7 @@
   <link rel="stylesheet" href="{{ url_for('static',filename='css/header-modern.css',v='20261023-v2') }}">
   <link rel="stylesheet" href="{{ url_for('static',filename='css/typography-megui.css',v='20261024-v1') }}">
   <link rel="stylesheet" href="{{ url_for('static',filename='css/editorial-titles.css',v='20261026-v3') }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/theme-mode.css',v='20261026-v1') }}">
 </head>
 <body{% if request.endpoint == 'home' %} class="home-cinema"{% elif request.endpoint == 'b2b' %} class="corporate-page"{% elif request.endpoint == 'events' %} class="events-page"{% elif request.endpoint in ['products', 'category'] %} class="catalog-experience"{% endif %}{% if request.endpoint not in ['home', 'products', 'category', 'product', 'create_art', 'outside_box', 'events'] %} data-scroll-experience{% endif %}>
   {% from '_icons.html' import icon %}
@@ -62,6 +64,7 @@
       </nav>
 
       <div class="header-actions">
+        <button type="button" class="theme-toggle" data-theme-toggle aria-label="Ativar modo escuro" aria-pressed="false" title="Ativar modo escuro"><svg class="theme-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M20 15.2A8.6 8.6 0 0 1 8.8 4 8.6 8.6 0 1 0 20 15.2Z"/></svg><svg class="theme-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg></button>
         <a class="create-art-button" href="{{ url_for('outside_box') }}" {% if request.endpoint == 'outside_box' %}aria-current="page"{% endif %}>
           {{ icon('butterfly') }}<span>Fora da caixa</span>
         </a>

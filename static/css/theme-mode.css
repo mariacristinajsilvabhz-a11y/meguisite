@@ -1,0 +1,50 @@
+/* Controles e superfícies do modo escuro. Fotografias preservam as próprias cores. */
+body .modern-header .theme-toggle{display:grid;place-items:center;flex:0 0 38px;width:38px;height:42px;padding:8px;border:1px solid #ddcde6;border-radius:12px;background:#f2eaf6;color:#79528d;cursor:pointer}
+.theme-toggle svg{width:21px;height:21px}
+.theme-toggle .theme-sun{display:none}
+html[data-theme=dark] .theme-toggle .theme-sun{display:block}
+html[data-theme=dark] .theme-toggle .theme-moon{display:none}
+html[data-theme=dark]{color-scheme:dark;--ink:#f1e7f5;--ink-2:#e5d5ed;--paper:#1b1522;--soft:#241c2d;--soft-2:#302539;--purple:#c39ad9;--purple-dark:#d6b5e7;--lavender:#755289;--muted:#c1accb;--line:#4b3a57;--megui-ink:#f0e4f5;--megui-accent:#cca8e0;--megui-soft:#2a2033;--megui-line:#503c5e}
+html[data-theme=dark] body{background:#1b1522!important;color:#eee3f3}
+html[data-theme=dark] body :is(.top-strip,.discovery-bar,.site-footer){background:#211929!important;color:#c9b4d4!important;border-color:#493452!important}
+html[data-theme=dark] body .site-header.modern-header{background:#211929f5!important;border-color:#493452!important;box-shadow:0 8px 28px #0002}
+html[data-theme=dark] body .modern-header :is(.main-nav>a,.nav-dropdown>a,.dropdown-panel a){color:#e1cde9!important}
+html[data-theme=dark] body .modern-header :is(.main-nav.open,.dropdown-panel){background:#2c2035!important;border-color:#503a60!important}
+html[data-theme=dark] body .modern-header :is(.main-nav>a:hover,.nav-dropdown>a:hover,.main-nav>a[aria-current=page],.nav-dropdown>a[aria-current=page]){background:#493254!important;color:#f1d8ff!important}
+html[data-theme=dark] body .modern-header .header-actions{border-color:#4a3657!important}
+html[data-theme=dark] body .modern-header .theme-toggle{background:#362640;color:#e4c5f4;border-color:#624773}
+html[data-theme=dark] body .brand-official{filter:brightness(0) invert(1)}
+html[data-theme=dark] body :is(.search-shell,.search-input-wrap,.search-results,.quote-toast,.video-dialog,.mw-lightbox,.ev-dialog){background:#2b2034!important;color:#f0e0f6!important;border-color:#5b416b!important}
+html[data-theme=dark] body :is(input,textarea,select){background:#2b2034!important;color:#f0e0f6!important;border-color:#5b416b!important}
+html[data-theme=dark] body :is(input,textarea)::placeholder{color:#ac95ba!important}
+html[data-theme=dark] body :is(.menu-toggle span){background:#dfc8ea!important}
+html[data-theme=dark] main{background:#1b1522!important;color:#eee3f3}
+html[data-theme=dark] main :is(.section,.section-soft,.page-hero,.home-content-sheet,.services-discovery,#malharia,.home-editorial-products,.home-idea,.home-clients,.home-editorial-reviews,.home-editorial-finale,.work-exhibit,.fabric-details,.about-megui,.outside-box,.ev-experience,.ev-artdirection,.textile-page,.catalog-experience,.contact-desk,.contact-intro,.contact-brief,.contact-directory){background:#211929!important;color:#eee3f3!important}
+html[data-theme=dark] main :is(.about-method,.about-history-image,.about-history-wordmark,.about-material-note,.outside-form,.idea-board,.possibility-open-art,.product-card,.category-card,.review-card,.quote-banner,.quote-box,.send-quote-card,.cart-card,.empty-cart,.filter-panel,.catalog-sidebar,.catalog-hero,.catalog-toolbar,.collection-card,.contact-channel,.contact-directory article,.textile-hero,.textile-library,.textile-project,.mw-finale,.mw-origins,.mw-making,.ev-worlds,.ev-start,.empresa-discovery,.empresa-project,.knit-edition-stage,.knit-edition-tabs button){background:#302339!important;color:#eee3f3!important;border-color:#513b60!important}
+html[data-theme=dark] main :is(h1,h2,h3,h4,p,li,label,legend,summary,figcaption,dt,dd){color:#eee3f3!important}
+html[data-theme=dark] main :is(.eyebrow,.outside-kicker,.about-label,.about-signature,.mw-overline,.mw-signature,.ev-kicker,.empresa-kicker,.textile-label,.catalog-eyebrow,.work-exhibit-kind,.product-category,.muted-copy,.about-location,.about-origin-year,.about-history-copy>span){color:#c8a8d9!important}
+html[data-theme=dark] main :is(h1,h2,h3) em{color:#ce9ee6!important}
+html[data-theme=dark] main :is(a.text-link,.about-text-link,.about-secondary,.empresa-link,.page-crosslinks a,.mw-hero-film-link,.textile-back){color:#d8b6e9!important}
+html[data-theme=dark] main :is(.about-primary,.about-history-years button[aria-selected=true],.outside-start,.outside-submit,.btn-light){background:#c19bd5!important;color:#25152e!important;border-color:#d7b6e7!important}
+html[data-theme=dark] main .about-history-years button{color:#c5a8d3}
+html[data-theme=dark] main .about-history-years button[aria-selected=true]{color:#25152e}
+html[data-theme=dark] main :is(.possibilities-grid a,.idea-choice,.previous-step,.quantity-control,.product-colors a){background:#3c2b48!important;color:#eddbf6!important;border-color:#644b73!important}
+html[data-theme=dark] main .idea-choice[aria-pressed=true]{background:#604376!important;border-color:#c69ee0!important}
+html[data-theme=dark] main :is(.idea-choice small,.idea-choice strong,.board-foot,.board-photo-label,.outside-note,.outside-form .field-label,.outside-form .journey-top,.mw-hero-promise span){color:#d9c1e5!important}
+html[data-theme=dark] main :is(.choice-art,.idea-scene,.mw-piece-image,.mw-feature-image,.mw-lead-photo){background:transparent!important}
+html[data-theme=dark] .meg-work{--mw-ink:#f0e4f5;--mw-plum:#d1a9e7;--mw-purple:#bc8ed4;--mw-violet:#c19bda;--mw-quiet:#c8afcf;--mw-paper:#211929;--mw-silk:#33253d;--mw-mist:#42304d;--mw-shell:#2a2032;background:#211929}
+html[data-theme=dark] .about-megui{--about-ink:#f0e4f5;--about-purple:#c9a0df;--about-muted:#c5aecd}
+html[data-theme=dark] .outside-box{--ink:#f0e4f5;--purple:#c9a0df;--paper:#211929;--lilac:#6b487f}
+html[data-theme=dark] .home-clients .client-logo-monochrome{filter:brightness(0) invert(1)!important}
+html[data-theme=dark] :is(.home-clients,.client-ribbon) .client-logo[src$="sesc.png"],html[data-theme=dark] :is(.home-clients,.client-ribbon) .client-logo[src$="printup-v2.png"]{filter:none!important}
+html[data-theme=dark] :is(.home-clients,.client-ribbon) .client-logo-paper{filter:url(#brand-paper-cutout) invert(1)!important}
+html[data-theme=dark] .home-clients .client-logo[src*="vorr"]{background:#f2e9f6;border-radius:8px;padding:5px}
+html[data-theme=dark] .site-footer :is(h3,p,a,span){color:#ceb6db!important}
+html[data-theme=dark] :is(.back-to-top,.whatsapp-float-label){background:#392744!important;color:#e9d0f5!important;border-color:#765786!important}
+html[data-theme=dark] :focus-visible{outline-color:#d6a4f2!important}
+@media(max-width:480px){body .modern-header .theme-toggle{flex-basis:32px;width:32px;height:38px;padding:6px}body .modern-header .header-actions{gap:6px}body .site-header.modern-header .header-actions a.create-art-button{padding:9px;font-size:10px;gap:4px}}
+html[data-theme=dark] main :is(.catalog-desk,.contact-studio,.mw-hero,.mw-featured,.mw-collection,.ev-cover,.ev-moments,.ev-showcase,.empresa-hero,.empresa-gifts,.empresa-services,.outside-intro){background:#211929!important}
+html[data-theme=dark] main #megui-theme-slides .carousel-slide{background:#302339!important}
+html[data-theme=dark] main :is(.filters,.catalog-help,.contact-desks,.contact-desk,.contact-brief-form,.textile-faq,.fabric-inspector,.quote-empty,.product-info,.product-gallery){background:#2b2034!important;border-color:#594267!important}
+html[data-theme=dark] main :is(.filters a,.catalog-help,.catalog-help strong,.contact-desk-phone,.contact-email,.product-info span){color:#ddc7e9!important}
+html[data-theme=dark] main .filters a.active{background:#513661!important;color:#f5e7fc!important}

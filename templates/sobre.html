@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% from '_icons.html' import icon %}
 {% block title %}Sobre a Megui | Confecção, criação e personalização{% endblock %}
-{% block final_head %}<link rel="stylesheet" href="{{ url_for('static',filename='css/sobre-atelier.css',v='20261026-v1') }}">{% endblock %}
+{% block final_head %}<link rel="stylesheet" href="{{ url_for('static',filename='css/sobre-atelier.css',v='20261026-v2') }}">{% endblock %}
 {% block content %}
 <article class="about-megui">
   <header class="about-opening container">
@@ -22,6 +22,25 @@
     <div class="about-origin-copy"><p class="about-lead">Nossa história começou como Freedom, com presentes e pequenas encomendas. Cada pedido trazia uma ideia, uma pessoa e um motivo para fazer bem-feito.</p><p>Com a Megui, essa experiência ganhou novos caminhos. Hoje, nossa especialidade é a confecção e personalização em malha: camisetas, uniformes e saquinhos que vestem equipes, acompanham produtos e representam marcas.</p><p>Brindes, papelaria e comunicação visual completam as possibilidades. O projeto pode começar em uma peça ou reunir vários produtos; o importante é que cada escolha faça sentido para quem vai usar.</p><a class="about-text-link" href="{{ url_for('portfolio_view') }}">Veja esse cuidado nos nossos trabalhos {{ icon('butterfly') }}</a></div>
   </section>
 
+
+  <section class="about-history container" aria-labelledby="about-history-title" data-about-history>
+    <header><span class="about-label">CADA ANO DEIXOU UM POUCO DE NÓS</span><h2 id="about-history-title">Uma trajetória feita de começos.</h2><p>Da Freedom à Megui, registros e capítulos do nosso caminho.</p></header>
+    {% set chapters = [
+      ('2020','O primeiro começo.','Nossa história começa como Freedom: presentes, peças artesanais e personalizados, com atenção a cada encomenda.','',''),
+      ('2021','Outras marcas entram na história.','Brindes, cartões e peças personalizadas passam a levar a identidade de outros negócios.','img/acervo/printup-estamparia.jpg','Brindes personalizados PrintUp, acervo de 2021'),
+      ('2022','O cuidado chega ao cotidiano.','Canecas e presentes com a identidade de cada marca fazem parte da nossa trajetória.','img/acervo/studio-is-concept.jpg','Canecas Studio IS Concept, acervo de 2022'),
+      ('2023','Do corte à costura.','A confecção de bolsas também faz parte do nosso acervo: materiais, montagem e acabamento ganham forma na produção.','img/acervo/confeccao-bolsas.jpg','Registro da confecção de bolsas, acervo de 2023'),
+      ('2024','A ideia encontra as pessoas.','Camisetas em uso e personalização em produção mostram o trabalho ganhando vida fora da bancada.','img/acervo/camisetas-em-uso.jpg','Camisetas personalizadas em uso, acervo de 2024'),
+      ('2025','Equipes vestem a própria identidade.','O acervo reúne uniformes personalizados em volume e registros de preparação das peças.','img/acervo/uniformes-em-volume.jpg','Uniformes personalizados em volume, acervo de 2025'),
+      ('2026','Novas formas de criar juntos.','A Megui reúne confecção, produtos e personalização. O Fora da Caixa abre espaço para projetos que ainda não estão no catálogo.','','')
+    ] %}
+    <div class="about-history-years" role="tablist" aria-label="Explore a trajetória por ano">{% for year,title,text,photo,alt in chapters %}<button type="button" role="tab" id="history-tab-{{ year }}" aria-controls="history-panel-{{ year }}" aria-selected="{{ 'true' if loop.first else 'false' }}" tabindex="{{ '0' if loop.first else '-1' }}" data-history-year="{{ year }}">{{ year }}</button>{% endfor %}</div>
+    {% for year,title,text,photo,alt in chapters %}<div class="about-history-panel" id="history-panel-{{ year }}" role="tabpanel" aria-labelledby="history-tab-{{ year }}" {% if not loop.first %}hidden{% endif %}>
+      <div class="about-history-image">{% if photo %}<img src="{{ url_for('static',filename=photo) }}" alt="{{ alt }}" loading="lazy" decoding="async">{% else %}<div class="about-history-wordmark">{% if year == '2020' %}<span>onde tudo começou</span><strong>Freedom</strong><small>presentes &amp; personalizados</small>{% else %}{{ icon('butterfly') }}<strong>Megui</strong><small>muitas formas de criar.</small>{% endif %}</div>{% endif %}</div>
+      <div class="about-history-copy"><span>{{ year }}</span><h3>{{ title }}</h3><p>{{ text }}</p>{% if photo %}<small>Registro do acervo da nossa trajetória.</small>{% endif %}</div>
+    </div>{% endfor %}
+  </section>
+
   <section class="about-method" aria-labelledby="about-method-title">
     <div class="container"><header class="about-method-heading"><span class="about-label">O NOSSO JEITO DE FAZER</span><h2 id="about-method-title">Sua ideia guia as escolhas.</h2><p>Não começa com uma lista de produtos. Começa com o que você quer criar.</p></header>
       <div class="about-method-flow">
@@ -34,4 +53,5 @@
 
   <section class="about-finale container" aria-labelledby="about-finale-title"><span class="about-finale-mark" aria-hidden="true">{{ icon('butterfly') }}</span><p>Uma equipe. Um encontro. Um novo negócio.</p><h2 id="about-finale-title">O próximo começo<br><em>pode ser o seu.</em></h2><div class="about-actions"><a class="about-primary" href="{{ url_for('outside_box') }}">Tenho uma ideia {{ icon('butterfly') }}</a><a class="about-secondary" href="{{ url_for('products') }}">Quero explorar os produtos</a></div><span class="about-location">De Contagem, para fazer parte da sua história.</span></section>
 </article>
+<script defer src="{{ url_for('static',filename='js/about-history.js',v='20261026-v1') }}"></script>
 {% endblock %}
