@@ -4,7 +4,7 @@ A mesma versão é usada na projeção do Hub e na navegação do site.
 import re
 import unicodedata
 
-VERSION = '20261016-familias-v1'
+VERSION = '20261026-categorias-v2'
 
 def normalize(value):
     return re.sub(r'\s+', ' ', ''.join(c for c in unicodedata.normalize('NFKD', str(value or '')) if not unicodedata.combining(c)).lower()).strip()
@@ -30,9 +30,40 @@ CATEGORY_MAP = {c['slug']:c for c in CATEGORIES}
 SUBCATEGORY_MAP = {s['slug']:(c['slug'],s['name']) for c in CATEGORIES for s in c['subcategories']}
 COLLECTIONS = [dict(slug='brindes',name='Todos os brindes',description='Produtos para personalizar e presentear.'),dict(slug='corporativo',name='Para empresas',description='Kits, papelaria, bolsas, tecnologia e itens para equipes.'),dict(slug='eventos',name='Para eventos',description='Roupas, kits, copos e materiais para encontros.'),dict(slug='destaques',name='Seleção Megui',description='Uma seleção de modelos disponíveis para personalizar.')]
 
+# As famílias técnicas continuam disponíveis como filtros, dentro das sete categorias comerciais.
+_INTERNAL_MAP = CATEGORY_MAP.copy()
+_INTERNAL_SUBS = SUBCATEGORY_MAP.copy()
+def group(slug, name, icon, image, families, description):
+    return dict(slug=slug,name=name,icon=icon,homepage_image='img/inicio/'+image+'.webp',
+                images=['img/inicio/'+image+'.webp'],description=description,
+                subcategories=[sub for family in families for sub in _INTERNAL_MAP[family]['subcategories']])
+CATEGORIES = [
+ group('vestuario','Camisas e uniforme','tshirt','moletom',['vestuario'],'Camisetas, camisas, polos, uniformes, aventais e outras peças.'),
+ group('grafica','Gráfica e papelaria','create-art','papelaria',['grafica','papelaria'],'Cartões, adesivos, banners, cadernos, agendas, canetas e impressos.'),
+ group('kits-presentes','Presentes Personalizados','kit','caderno',['kits-presentes'],'Kits e conjuntos personalizados para presentear.'),
+ group('brindes','Brindes corporativos','corporativo','caderno',['tecnologia','casa-cozinha','cuidados-pessoais','lazer-esportes','acessorios-utilidades','pets','outros'],'Todos os produtos dos fornecedores, também organizados por tipo.'),
+ group('copos-garrafas','Copos, canecas e garrafas','bottle','copo-termico',['copos-garrafas'],'Copos, taças, canecas, xícaras, garrafas e squeezes.'),
+ group('chaveiros','Chaveiros','keyring','bone',[],'Chaveiros de metal, acrílico, madeira e modelos multifuncionais.'),
+ group('bolsas-acessorios','Bolsas e sacolas','bag','ecobag',['bolsas-acessorios'],'Bolsas, sacolas, ecobags, sacochilas, mochilas e nécessaires.'),
+]
+# Chaveiros têm navegação própria, sem ferramentas e utilidades misturadas.
+CATEGORIES[3]['subcategories']=[s for s in CATEGORIES[3]['subcategories'] if s['slug']!='chaveiros']
+CATEGORIES[5]['subcategories']=[dict(slug='chaveiros',name='Chaveiros')]
+CATEGORIES[5].update(homepage_image='img/mostruario/chaveiros-estudio-v1.webp',images=['img/mostruario/chaveiros-estudio-v1.webp'])
+CATEGORIES[2].update(homepage_image='img/produtos/kit-corporativo-megui.webp',images=['img/produtos/kit-corporativo-megui.webp'])
+CATEGORY_MAP={c['slug']:c for c in CATEGORIES}
+SUBCATEGORY_MAP={s['slug']:(c['slug'],s['name']) for c in CATEGORIES for s in c['subcategories']}
+# A coleção de fornecedores aceita todos os filtros técnicos, inclusive os das outras seções.
+CATEGORIES[3]['subcategories']=[s for c in CATEGORIES if c['slug']!='brindes' for s in c['subcategories']]+CATEGORIES[3]['subcategories']
+LEGACY_CATEGORIES={c['slug']:c for c in _INTERNAL_MAP.values() if c['slug'] not in CATEGORY_MAP}
+COLLECTIONS=[c for c in COLLECTIONS if c['slug']!='brindes']+list(LEGACY_CATEGORIES.values())
+
+def is_supplier_product(product):
+    return bool(product.get('fornecedor') or product.get('fornecedor_id') or product.get('fornecedores') or product.get('supplier') or product.get('variacoes'))
+
 # Regras por nome têm precedência sobre uma categoria de fornecedor genérica ou herdada.
 _RULES = [
- ('pets','acessorios-pet',r'\b(?:pet|pets|cachorro|cachorros|gato|gatos|coleira|comedouro|bebedouro|guia retratil)\b'),
+ ('pets','acessorios-pet',r'\b(?:pets|cachorro|cachorros|gato|gatos|coleira|comedouro|bebedouro|guia retratil)\b'),
  ('acessorios-utilidades','chaveiros',r'\bchaveiros?\b'),
  ('bolsas-acessorios','pastas-notebook',r'\b(?:pasta|case|capa|maleta)\b.*\b(?:notebook|laptop|tablet)\b'),
  ('bolsas-acessorios','bolsas-termicas',r'\b(?:bolsa|mochila|sacola|lancheira)\b.*\btermic[ao]\b|\bcooler\b'),
@@ -120,6 +151,12 @@ _RULES += [
  ('tecnologia','eletronicos',r'^(?:cond|evap) hw\b'),
  ('lazer-esportes','jogos-brinquedos',r'\b(?:lousa|quishy)\b'),
 ]
+# Expressões de objeto composto precedem palavras que apenas indicam material ou acessório.
+_RULES = [
+ ('grafica','embalagens',r'^sacolas? de papel\b'),
+ ('papelaria','acessorios-escritorio',r'^porta[ -]canetas?\b'),
+ ('pets','acessorios-pet',r'\b(?:para pets?|linha pet|pet shop)\b'),
+]+_RULES
 RULES = [(c,s,re.compile(p,re.I)) for c,s,p in _RULES]
 
 def classify(product):
@@ -141,15 +178,18 @@ def classify(product):
     if result is None:
         # Fornecedor é evidência auxiliar; linha de negócio nunca determina tipo de produto.
         result = next(((c,s) for c,s,p in RULES if p.search(source)), ('outros','outros-itens'))
-    category, subtype = result
+    family, subtype = result
+    category = SUBCATEGORY_MAP[subtype][0]
+    product['familia'] = family
     product.update(categoria=category,subcategoria=subtype,categoria_nome=CATEGORY_MAP[category]['name'],subcategoria_nome=SUBCATEGORY_MAP[subtype][1])
     return product
 
 def matches(product, slug):
     category = product.get('categoria') or product.get('category')
     if slug in ('', 'destaques'):return True
-    if slug == 'brindes':return category not in {'vestuario','grafica'}
-    if slug == 'corporativo':return category in {'vestuario','bolsas-acessorios','copos-garrafas','papelaria','tecnologia','kits-presentes','grafica'}
+    if slug == 'brindes':return is_supplier_product(product) or category == 'brindes'
+    if slug in LEGACY_CATEGORIES:return product.get('familia') == slug
+    if slug == 'corporativo':return category in {'vestuario','bolsas-acessorios','copos-garrafas','brindes','chaveiros','kits-presentes','grafica'}
     if slug == 'eventos':return category in {'vestuario','bolsas-acessorios','copos-garrafas','papelaria','kits-presentes','grafica'}
     return category == slug
 

@@ -168,7 +168,7 @@ PRODUCTS = [
 
 for _product in PRODUCTS:
     _classification = classify({'nome':_product['name'],'categoria_original':_product['category']})
-    _product.update(category=_classification['categoria'],subcategory=_classification['subcategoria'])
+    _product.update(category=_classification['categoria'],subcategory=_classification['subcategoria'],familia=_classification['familia'])
 
 def get_product(product_id):
     if hub_catalog.enabled and product_id >= 1_000_000_000:
@@ -236,7 +236,7 @@ def order_by_stock(products):
 
 @app.get("/")
 def home():
-    home_slugs = ['vestuario','bolsas-acessorios','copos-garrafas','papelaria','tecnologia','grafica']
+    home_slugs = ['vestuario','grafica','kits-presentes','brindes','copos-garrafas','chaveiros','bolsas-acessorios']
     home_categories = [dict(CATEGORY_MAP[slug],images=[CATEGORY_MAP[slug]['homepage_image']]) for slug in home_slugs]
     try:
         items = hub_catalog.list(limit=6, vitrine=True, timeout=3)[0] if hub_catalog.enabled else order_by_stock(PRODUCTS)[:6]
@@ -253,6 +253,8 @@ def textiles():
 
 
 def render_catalog(category_slug=""):
+    if category_slug == 'fora-da-caixa':
+        return redirect(url_for('outside_box'))
     active_category = get_category(category_slug)
     if category_slug and not active_category:
         abort(404)
@@ -260,7 +262,7 @@ def render_catalog(category_slug=""):
     page = max(1, request.args.get("pagina", 1, type=int) or 1)
     subtype = request.args.get('subcategoria','').strip()
     if subtype and subtype not in SUBCATEGORY_MAP:abort(404)
-    if subtype and category_slug in CATEGORY_MAP and SUBCATEGORY_MAP[subtype][0]!=category_slug:
+    if subtype and category_slug in CATEGORY_MAP and category_slug != 'brindes' and SUBCATEGORY_MAP[subtype][0]!=category_slug:
         return redirect(url_for('category',slug=SUBCATEGORY_MAP[subtype][0],subcategoria=subtype,q=query or None))
     if hub_catalog.enabled:
         items, pagination, facets = hub_catalog.listing(category_slug, query, page, subtype=subtype)
@@ -269,8 +271,8 @@ def render_catalog(category_slug=""):
         if query:
             all_items = [p for p in all_items if all(t.lower() in (p['name']+' '+p['sku']).lower() for t in query.split())]
         items = [p for p in all_items if matches_category(p, category_slug)]
-        facets = {'categorias':[dict(slug=c['slug'],total=sum(p['category']==c['slug'] for p in all_items)) for c in CATEGORIES],
-                  'subcategorias':[dict(slug=sub['slug'],name=sub['name'],total=sum(p.get('subcategory')==sub['slug'] for p in items)) for c in CATEGORIES for sub in c['subcategories'] if any(p.get('subcategory')==sub['slug'] for p in items)]}
+        facets = {'categorias':[dict(slug=c['slug'],total=sum(matches(p,c['slug']) for p in all_items)) for c in CATEGORIES],
+                  'subcategorias':[dict(slug=sub['slug'],name=sub['name'],total=sum(p.get('subcategory')==sub['slug'] for p in items)) for slug,(_,name) in SUBCATEGORY_MAP.items() for sub in [dict(slug=slug,name=name)] if any(p.get('subcategory')==sub['slug'] for p in items)]}
         if subtype:items=[p for p in items if p.get('subcategory')==subtype]
         items = order_by_stock(items)
         pagination = {"total": len(items), "pagina": 1, "paginas": 1}

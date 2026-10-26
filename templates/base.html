@@ -54,6 +54,7 @@
             {% for category in categories %}
               <a data-category="{{ category.slug }}" href="{{ url_for('category', slug=category.slug) }}">{{ icon(category.icon) }} {{ category.name }}</a>
             {% endfor %}
+            <a href="{{ url_for('outside_box') }}">{{ icon('butterfly') }} Fora da caixa</a>
           </div>
         </div>
         <a href="{{ url_for('b2b') }}" {% if request.endpoint == 'b2b' %}aria-current="page"{% endif %}>Empresas</a>

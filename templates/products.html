@@ -16,14 +16,15 @@
       {% set category_icons = {'tecnologia':'electronics','casa-cozinha':'kitchen','cuidados-pessoais':'care','lazer-esportes':'sport','acessorios-utilidades':'keyring','pets':'paw'} %}
 
       <a class="{% if not active_category %}active{% endif %}" href="{{ url_for('products') }}">{{ icon('grid') }} <span>Todos os produtos</span></a>
-      {% for category in categories if category_counts.get(category.slug,1)>0 or (active_category and active_category.slug==category.slug) %}
+      {% for category in categories %}
         <a class="{% if active_category and active_category.slug == category.slug %}active{% endif %}" data-category="{{ category.slug }}" href="{{ url_for('category', slug=category.slug) }}">{{ icon(category_icons.get(category.slug, category.icon)) }} <span>{{ category.name }}</span>{% if category.slug in category_counts %}<small>{{ category_counts[category.slug] }}</small>{% endif %}</a>
       {% endfor %}
+      <a href="{{ url_for('outside_box') }}">{{ icon('butterfly') }} <span>Fora da caixa</span></a>
       {% for collection in collections if collection.slug in ['corporativo','eventos'] %}<a class="{% if active_category and active_category.slug==collection.slug %}active{% endif %}" href="{{ url_for('category',slug=collection.slug) }}">{{ icon('eventos' if collection.slug == 'eventos' else 'corporativo') }} <span>{{ collection.name }}</span></a>{% endfor %}
     </nav>
 
     <div class="catalog-results">
-      <label class="catalog-mobile-category" for="mobile-category">Categoria<select id="mobile-category" data-catalog-category><option value="{{ url_for('products') }}" {% if not active_category %}selected{% endif %}>Todos os produtos</option>{% for category in categories if category_counts.get(category.slug,1)>0 or (active_category and active_category.slug==category.slug) %}<option value="{{ url_for('category',slug=category.slug) }}" {% if active_category and active_category.slug==category.slug %}selected{% endif %}>{{ category.name }}</option>{% endfor %}</select></label>
+      <label class="catalog-mobile-category" for="mobile-category">Categoria<select id="mobile-category" data-catalog-category><option value="{{ url_for('products') }}" {% if not active_category %}selected{% endif %}>Todos os produtos</option>{% for category in categories %}<option value="{{ url_for('category',slug=category.slug) }}" {% if active_category and active_category.slug==category.slug %}selected{% endif %}>{{ category.name }}</option>{% endfor %}<option value="{{ url_for('outside_box') }}">Fora da caixa</option></select></label>
       <form class="catalog-query" action="{{ request.path }}" method="get">
         {% if request.args.get('categoria') %}<input type="hidden" name="categoria" value="{{ request.args.get('categoria') }}">{% endif %}
         <div class="catalog-search-field"><label for="full-catalog-query">Buscar produtos</label><div><input type="search" id="full-catalog-query" name="q" value="{{ query }}" placeholder="Ex.: caneca, camiseta, ecobag…"><button class="btn btn-primary" type="submit">Buscar</button></div></div>
