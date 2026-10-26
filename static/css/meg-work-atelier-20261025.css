@@ -204,7 +204,7 @@
 /* Credibility, but not a never-ending rotating logo carousel. */
 .meg-work .mw-brandproof{
   padding:32px 0 37px;
-  background:#e5d7eb;
+  background:#302638;
 }
 .meg-work .mw-brandproof-inner{
   display:grid;grid-template-columns:minmax(150px,.4fr) minmax(0,1.6fr);
@@ -212,7 +212,7 @@
 }
 .meg-work .mw-brandproof-inner>p{
   font:600 13px/1.5 "Sora",sans-serif;
-  color:#755681;max-width:17ch;
+  color:#f2eaf6;max-width:17ch;
 }
 .meg-work .mw-brandproof-logos{
   display:flex;align-items:center;justify-content:space-between;
@@ -227,8 +227,15 @@
 }
 .meg-work .mw-brandproof-brand img{
   display:block;max-width:100%;width:auto;max-height:41px;
-  object-fit:contain;filter:grayscale(.45);
-  opacity:.87;
+  object-fit:contain;filter:none;
+  opacity:1;
+  mix-blend-mode:normal;
+}
+
+.meg-work .mw-brandproof-brand--color{
+  background:#faf7fc;
+  border-radius:12px;
+  padding:10px 12px;
 }
 
 /* 2 / Brand case studies. One lead project because it has its own story,
