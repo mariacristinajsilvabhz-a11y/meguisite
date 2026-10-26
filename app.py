@@ -235,7 +235,7 @@ def home():
     home_slugs = ['vestuario','bolsas-acessorios','copos-garrafas','papelaria','tecnologia','grafica']
     home_categories = [dict(CATEGORY_MAP[slug],images=[CATEGORY_MAP[slug]['homepage_image']]) for slug in home_slugs]
     try:
-        items = hub_catalog.list(limit=6, vitrine=True)[0] if hub_catalog.enabled else order_by_stock(PRODUCTS)[:6]
+        items = hub_catalog.list(limit=6, vitrine=True, timeout=3)[0] if hub_catalog.enabled else order_by_stock(PRODUCTS)[:6]
     except CatalogUnavailable:
         # A indisponibilidade do catálogo não deve impedir a abertura da página inicial.
         app.logger.warning("Página inicial sem vitrine: catálogo do Hub indisponível")

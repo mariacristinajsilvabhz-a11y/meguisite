@@ -24,7 +24,7 @@ class HubCatalog:
     def enabled(self):
         return bool(self.base and self.token)
 
-    def fetch(self,path,params=None):
+    def fetch(self,path,params=None,timeout=25):
         key=path+'?'+urlencode(params or {})
         cached=self.cache.get(key)
         if cached and time.monotonic()-cached[0]<30:return cached[1]
@@ -33,7 +33,7 @@ class HubCatalog:
                 cached=self.cache.get(key)
                 if cached and time.monotonic()-cached[0]<30:return cached[1]
                 req=Request(self.base+key,headers={'Authorization':'Bearer '+self.token,'Accept':'application/json'})
-                with urlopen(req,timeout=25) as response:
+                with urlopen(req,timeout=timeout) as response:
                     data=json.loads(response.read(4_000_000))
                 if not isinstance(data,dict) or not any(k in data for k in ('produtos','produto')):
                     raise ValueError('Resposta inválida do catálogo')
@@ -52,14 +52,14 @@ class HubCatalog:
             if cached and time.monotonic()-cached[0]<86400:return cached[1]
             raise CatalogUnavailable() from error
 
-    def listing(self,category='',query='',page=1,limit=48,vitrine=False,subtype=''):
+    def listing(self,category='',query='',page=1,limit=48,vitrine=False,subtype='',timeout=25):
         params={'categoria':category,'q':query,'pagina':page,'limite':limit,'vitrine':int(vitrine)}
         if subtype:params['subcategoria']=subtype
-        data=self.fetch('/api/site/catalogo',params)
+        data=self.fetch('/api/site/catalogo',params,timeout=timeout)
         return [adapt(p) for p in data['produtos'] if int(p.get('estoque') or 0)>0],data['paginacao'],data.get('filtros',{})
 
-    def list(self,category='',query='',page=1,limit=48,vitrine=False):
-        items,pagination,_=self.listing(category,query,page,limit,vitrine)
+    def list(self,category='',query='',page=1,limit=48,vitrine=False,timeout=25):
+        items,pagination,_=self.listing(category,query,page,limit,vitrine,timeout=timeout)
         return items,pagination
 
     def get(self,hub_id):

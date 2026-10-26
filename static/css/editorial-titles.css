@@ -103,3 +103,28 @@ body main .carousel-copy .title-carousel-wear span{display:block;font-size:.7em;
 body main .carousel-copy .title-carousel-football span{font-weight:700}
 body main .carousel-copy .title-carousel-teachers span{font-family:"Cormorant Garamond",Georgia,serif!important;font-style:italic;font-size:1.1em}
 @media(max-width:620px){body main .carousel-copy .title-carousel{font-size:clamp(33px,8.6vw,46px)!important}}
+
+/* Títulos com a delicadeza da marca, distintos da Sora do corpo. */
+body main :is(h1,h2):not(#cinema-heading),
+body main :is(.section-heading h2,.display-small,.idea-copy h2,.carousel-copy .title-carousel){
+ font-family:"Cormorant Garamond",Georgia,serif!important;
+ font-weight:500!important;letter-spacing:-.025em!important;line-height:1.08!important;
+}
+body main :is(h3,h4){font-weight:500;letter-spacing:-.02em}
+body main .eyebrow{border:0;background:transparent;box-shadow:none;border-radius:0;padding:0;min-height:0}
+body main .eyebrow::before,body main .eyebrow::after{display:none}
+body .home-editorial-clients .centered-heading{display:block;text-align:center;margin-bottom:38px}
+body .home-editorial-clients .centered-heading h2{max-width:24ch;margin:auto;text-align:center;color:#8855a0;font-size:clamp(39px,5.2vw,70px)}
+body .explore-signature{display:inline-flex;align-items:center;gap:12px;margin-bottom:16px;color:#8958a1}
+body .explore-signature>.icon{width:24px;height:29px;opacity:.65;transform:rotate(-13deg)}
+body .explore-signature>span{font:italic 500 clamp(22px,2.1vw,29px)/1.2 "Cormorant Garamond",Georgia,serif;letter-spacing:0}
+body .home-clients .client-logo{filter:none;opacity:1;mix-blend-mode:normal;max-width:150px;object-fit:contain}
+body .home-clients .client-logo-card{position:relative;isolation:isolate;overflow:visible}
+body .home-clients .client-logo-card::before{content:"";position:absolute;inset:8px -4px;z-index:-1;opacity:0;border-radius:50%;background:radial-gradient(ellipse,#d5b5e895,transparent 72%);pointer-events:none}
+body .home-clients .client-logo-card.is-spotlit::before{animation:brand-glimmer 1.35s ease-in-out both}
+body .home-clients .client-logo-card.is-spotlit .client-logo{animation:brand-light 1.35s ease-in-out both}
+body .home-clients .client-brand-name{color:#49334f;font-weight:500}
+@keyframes brand-glimmer{0%,100%{opacity:0;transform:scale(.85)}45%{opacity:1;transform:scale(1.1)}}
+@keyframes brand-light{0%,100%{transform:scale(1);filter:none}45%{transform:scale(1.045);filter:drop-shadow(0 2px 5px #a976c35c)}}
+@media(max-width:620px){body .home-editorial-clients .centered-heading h2{font-size:43px}.clients-title-break{display:none}}
+@media(prefers-reduced-motion:reduce){body .home-clients .client-logo-card.is-spotlit::before,body .home-clients .client-logo-card.is-spotlit .client-logo{animation:none}}
