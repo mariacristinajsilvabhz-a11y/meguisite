@@ -3,7 +3,7 @@
 {% block title %}Trabalhos & bastidores | Portfólio Megui Personalizados{% endblock %}
 {% block final_head %}
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600;1,700&display=swap">
-<link rel="stylesheet" href="{{ url_for('static',filename='css/meg-work-atelier-20261025.css',v='20261026-brand-glow-v3') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/meg-work-atelier-20261025.css',v='20261026-brand-glow-v4') }}">
 {% endblock %}
 
 {% macro watch(film, position='lead') -%}
@@ -65,7 +65,7 @@
         {% for brand in trusted_brands %}
         <div class="mw-brandproof-brand{% if brand.image in ['sesc.png','printup-v2.png','samba-do-maestro-acervo.png','escola-de-cura-acervo.png'] %} mw-brandproof-brand--original{% endif %}{% if brand.logo_style == 'paper' %} mw-brandproof-brand--paper{% endif %}" style="--mw-brand-delay:{{ loop.index0 * 2 }}s">
           {% if brand.image %}
-          <img src="{{ url_for('static',filename='img/clientes/' ~ brand.image) }}" alt="{{ brand.name }}" loading="lazy" decoding="async">
+          <img{% if brand.image in ['sesc.png','printup-v2.png','samba-do-maestro-acervo.png','escola-de-cura-acervo.png'] %} style="filter:none!important;mix-blend-mode:normal!important"{% endif %} src="{{ url_for('static',filename='img/clientes/' ~ brand.image) }}" alt="{{ brand.name }}" loading="lazy" decoding="async">
           {% else %}
           <span>{{ brand.name }}</span>
           {% endif %}
