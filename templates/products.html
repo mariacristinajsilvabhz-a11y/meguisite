@@ -30,6 +30,18 @@
         <div class="catalog-search-field"><label for="full-catalog-query">Buscar produtos</label><div><input type="search" id="full-catalog-query" name="q" value="{{ query }}" placeholder="Ex.: caneca, camiseta, ecobag…"><button class="btn btn-primary" type="submit">Buscar</button></div></div>
         <div class="catalog-type-filter"><label for="catalog-subtype">Tipo de produto<select id="catalog-subtype" name="subcategoria"><option value="">Todos os tipos{% if active_category %} de {{ active_category.name|lower }}{% endif %}</option>{% for sub in subcategories %}<option value="{{ sub.slug }}" {% if active_subtype==sub.slug %}selected{% endif %}>{{ sub.name }} ({{ sub.total }})</option>{% endfor %}</select></label><button class="catalog-filter-apply" type="submit">Filtrar produtos</button>{% if active_subtype or query %}<a class="catalog-clear" href="{{ url_for('category',slug=active_category.slug) if active_category else url_for('products') }}">Limpar filtros</a>{% endif %}</div>
       </form>
+      {% if own_products %}
+      <section class="own-production" aria-labelledby="own-production-title">
+        <span class="catalog-eyebrow">CONFECÇÃO PRÓPRIA MEGUI</span>
+        <h2 id="own-production-title">Sua marca começa na escolha da malha.</h2>
+        <p>Camisetas produzidas sob encomenda. Definimos tamanhos, cores, personalização e prazo com você, antes de produzir.</p>
+        <div class="product-grid">{% for product in own_products %}<div>
+          <span class="product-options-label">Sob encomenda · disponibilidade e prazo sob consulta</span>
+          {% include "_product_card.html" %}
+        </div>{% endfor %}</div>
+        <p><a class="text-link" href="{{ url_for('b2b') }}">Conheça as possibilidades de uniformes para sua equipe</a></p>
+      </section>
+      {% endif %}
       <div class="catalog-toolbar">
         <div id="catalog-result-count" role="status" aria-live="polite"><strong>{{ "{:,}".format(pagination.total).replace(",", ".") }}</strong> {{ 'produto' if pagination.total == 1 else 'produtos' }}{% if query %} para “{{ query }}”{% endif %}</div>
         <div class="catalog-view-controls" aria-label="Visualização dos produtos">
@@ -51,7 +63,7 @@
         <span>Página {{ pagination.pagina }} de {{ pagination.paginas }}</span>
         {% if pagination.pagina < pagination.paginas %}<a class="btn btn-primary" href="{{ url_for(request.endpoint, slug=active_category.slug if request.endpoint == 'category' else none, categoria=request.args.get('categoria') or none, q=query or none, subcategoria=active_subtype or none, pagina=pagination.pagina+1) }}">Próxima →</a>{% endif %}
       </nav>{% endif %}
-      <div id="empty-search" class="empty-state" {% if products %}hidden{% endif %}>{{ icon('search') }}<h2>Nenhum produto para esta seleção.</h2><p>Veja as sugestões da busca ou explore o catálogo completo.</p><a class="btn btn-secondary" href="{{ url_for('products') }}">Ver todos os produtos</a></div>
+      <div id="empty-search" class="empty-state" {% if products or own_products %}hidden{% endif %}>{{ icon('search') }}<h2>Nenhum produto para esta seleção.</h2><p>Veja as sugestões da busca ou explore o catálogo completo.</p><a class="btn btn-secondary" href="{{ url_for('products') }}">Ver todos os produtos</a></div>
     </div>
   </div>
 </section>

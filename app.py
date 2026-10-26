@@ -276,10 +276,15 @@ def render_catalog(category_slug=""):
         if subtype:items=[p for p in items if p.get('subcategory')==subtype]
         items = order_by_stock(items)
         pagination = {"total": len(items), "pagina": 1, "paginas": 1}
+    # Confecção sob encomenda não depende de estoque de fornecedores.
+    own_products = [p for p in PRODUCTS if p["id"] == 1 and category_slug in ("", "vestuario")
+                    and (not subtype or p.get("subcategory") == subtype)
+                    and all(term.casefold() in (p["name"]+" "+p["sku"]+" "+p["description"]).casefold() for term in query.split())
+                    and page == 1] if hub_catalog.enabled else []
     category_counts = {c['slug']:c['total'] for c in facets.get('categorias',[])}
     subcategories = facets.get('subcategorias',[])
     return render_template("products.html", products=items, active_category=active_category, pagination=pagination, query=query,
-                           active_subtype=subtype,subcategories=subcategories,category_counts=category_counts,collections=COLLECTIONS)
+                           active_subtype=subtype,subcategories=subcategories,category_counts=category_counts,collections=COLLECTIONS,own_products=own_products)
 
 
 @app.get("/produtos")
