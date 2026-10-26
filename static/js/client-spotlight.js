@@ -6,7 +6,7 @@
     setTimeout(() => {
       card.classList.add('is-spotlit');
       setTimeout(() => card.classList.remove('is-spotlit'), 1400);
-    }, index * 850);
+    }, index * 1450);
   });
   if (!('IntersectionObserver' in window)) return;
   const observer = new IntersectionObserver(entries => {

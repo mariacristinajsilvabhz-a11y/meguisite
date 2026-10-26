@@ -1,130 +1,102 @@
-/* Megui: hierarquia por intenção, sem quebras de linha decorativas obrigatórias. */
-body main :is(.title-question,.title-section,.title-compact,.title-invitation,
-.title-editorial,.title-impact,.title-portfolio,.title-catalog,.title-origin,
-.title-contact,.title-playful,.title-material){
-  height:auto;min-height:0;max-height:none;overflow:visible;
-  text-wrap:pretty;overflow-wrap:normal;word-break:normal;
-  text-transform:none;letter-spacing:-.045em!important;
-}
-body main :is(.title-section,.title-compact,.title-invitation,.title-question) em{
-  font-family:inherit!important;font-style:normal;font-size:inherit!important;
-}
-body main .title-question{
-  font-size:clamp(32px,4.2vw,63px)!important;line-height:1.12!important;
-  font-weight:600!important;max-width:19ch;
-}
-body main .title-section{
-  font-size:clamp(29px,3.1vw,46px)!important;line-height:1.16!important;
-  font-weight:600!important;max-width:25ch;
-}
-body main .title-compact{
-  font-size:clamp(25px,2.5vw,37px)!important;line-height:1.22!important;
-  letter-spacing:-.025em!important;font-weight:500!important;max-width:28ch;
-}
-body main .title-invitation{
-  font-size:clamp(32px,3.8vw,57px)!important;line-height:1.13!important;
-  font-weight:500!important;max-width:23ch;
-}
-body main .title-editorial{
-  font-size:clamp(30px,3.5vw,52px)!important;line-height:1.18!important;
-  font-weight:500!important;max-width:24ch;
-}
-body main .title-editorial em{
-  display:inline!important;font:italic 600 1.12em/1.05 "Cormorant Garamond",Georgia,serif!important;
-  color:#80528f;letter-spacing:-.035em;
-}
-body main .title-small-line{
-  display:block!important;font-family:"Sora",sans-serif!important;
-  font-size:clamp(15px,1.35vw,21px)!important;line-height:1.5!important;
-  letter-spacing:-.015em!important;font-style:normal;font-weight:500;
-  margin:0 0 16px!important;color:inherit;
-}
-body main .title-impact{
-  font-size:clamp(64px,8vw,120px)!important;line-height:.98!important;
-  font-weight:600!important;max-width:100%;
-}
-body main .title-impact-word{display:block;letter-spacing:-.06em}
-body main #ev-title .title-impact-word{
-  font-family:"Cormorant Garamond",Georgia,serif!important;
-  font-style:italic;font-size:1.18em;line-height:1.05;color:#81538e;
-}
-body main .title-portfolio{
-  font-size:clamp(40px,5vw,73px)!important;line-height:1.04!important;
-  font-weight:600!important;max-width:15ch;
-}
-body main .title-catalog{
-  font-size:clamp(30px,3.2vw,49px)!important;line-height:1.14!important;
-  font-weight:600!important;max-width:26ch;
-}
-body main .title-origin{
-  font-size:clamp(39px,5.3vw,77px)!important;line-height:1.09!important;
-  font-weight:500!important;max-width:20ch;
-}
-body main .title-contact{
-  font-size:clamp(43px,6.7vw,94px)!important;line-height:1.03!important;
-  font-weight:600!important;
-}
-body main .title-contact .title-small-line{margin:22px 0 0!important;font-size:clamp(22px,2.4vw,34px)!important}
-body main .title-playful{
-  font-size:clamp(63px,8.5vw,122px)!important;line-height:1.05!important;
-  max-width:100%;
-}
-body main .title-playful em{
-  display:block;font:italic 600 1em/1.05 "Cormorant Garamond",Georgia,serif!important;
-  letter-spacing:-.05em;transform:rotate(-3deg);transform-origin:left center;
-}
-body main .title-material{
-  font-size:clamp(39px,5vw,71px)!important;line-height:1.09!important;
-  font-weight:500!important;max-width:18ch;
-}
-body main #empresa-title{max-width:18ch;font-size:clamp(37px,4.6vw,68px)!important}
-body main #mw-making-heading{max-width:23ch}
-body main #textile-gateway-title .title-impact-word{font-size:1em;color:#80528f}
-body main #fabric-details-title{max-width:22ch}
-body main #mw-origins-title{font-size:clamp(32px,3.3vw,48px)!important}
-body main #idea-title{max-width:18ch}
-body main .story-copy h2{font-size:clamp(29px,3vw,44px);line-height:1.17;max-width:24ch}
-@media(max-width:620px){
-  body main :is(.title-question,.title-section,.title-editorial,.title-invitation,.title-catalog){max-width:100%}
-  body main #empresa-title{font-size:clamp(34px,8.5vw,48px)!important;max-width:19ch}
-  body main .title-impact{font-size:clamp(57px,15vw,86px)!important}
-  body main .title-portfolio{font-size:clamp(36px,9.5vw,53px)!important}
-  body main .title-playful{font-size:clamp(58px,15vw,88px)!important}
-  body main .title-small-line{margin-bottom:12px!important}
-  body main .title-material{font-size:clamp(36px,9vw,49px)!important}
-}
-body main .carousel-copy .title-carousel{
-  font-size:clamp(35px,4.3vw,63px)!important;line-height:1.08!important;
-  letter-spacing:-.045em!important;text-wrap:pretty;max-width:18ch;
-}
-body main .carousel-copy .title-carousel span{font:inherit;display:inline;color:#80528f}
-body main .carousel-copy .title-carousel-wear{font-weight:500}
-body main .carousel-copy .title-carousel-wear span{display:block;font-size:.7em;line-height:1.18;margin-top:14px;font-weight:500}
-body main .carousel-copy .title-carousel-football span{font-weight:700}
-body main .carousel-copy .title-carousel-teachers span{font-family:"Cormorant Garamond",Georgia,serif!important;font-style:italic;font-size:1.1em}
-@media(max-width:620px){body main .carousel-copy .title-carousel{font-size:clamp(33px,8.6vw,46px)!important}}
-
-/* Títulos com a delicadeza da marca, distintos da Sora do corpo. */
-body main :is(h1,h2):not(#cinema-heading),
-body main :is(.section-heading h2,.display-small,.idea-copy h2,.carousel-copy .title-carousel){
- font-family:"Cormorant Garamond",Georgia,serif!important;
- font-weight:500!important;letter-spacing:-.025em!important;line-height:1.08!important;
-}
-body main :is(h3,h4){font-weight:500;letter-spacing:-.02em}
+/* Megui — hierarquia por função e composição, não por repetição de blocos. */
+body main :is(h1,h2){font-family:"Manrope",sans-serif!important;font-weight:600;letter-spacing:-.035em;line-height:1.12;text-wrap:balance}
+body main :is(.title-question,.title-section,.title-compact,.title-invitation,.title-editorial,.title-portfolio,.title-catalog,.title-origin,.title-contact,.title-material){height:auto;min-height:0;max-height:none;overflow:visible;word-break:normal;text-transform:none}
+body main .title-question{font-size:clamp(32px,3.6vw,52px)!important;line-height:1.1!important;max-width:25ch;font-weight:500!important}
+body main .title-section{font-size:clamp(30px,3vw,44px)!important;line-height:1.14!important;max-width:32ch;font-weight:600!important}
+body main .title-compact{font-size:clamp(26px,2.4vw,36px)!important;line-height:1.16!important;max-width:36ch;font-weight:600!important}
+body main .title-invitation{font-size:clamp(32px,3.6vw,52px)!important;line-height:1.1!important;max-width:27ch;font-weight:500!important}
+body main .title-editorial{font-size:clamp(32px,3.4vw,49px)!important;line-height:1.12!important;max-width:28ch;font-weight:500!important}
+body main .title-editorial em{font-family:"Cormorant Garamond",Georgia,serif!important;font-size:1.15em;line-height:1;font-weight:600;color:#80528f}
+body main .title-small-line{display:block;font:500 clamp(14px,1.3vw,18px)/1.5 "Sora",sans-serif!important;letter-spacing:.005em;margin:0 0 18px;color:inherit}
+body main .title-impact{font-size:clamp(64px,8vw,112px)!important;line-height:.98!important;font-weight:500!important;max-width:100%}
+body main .title-impact-word{display:block}
+body main #ev-title .title-impact-word{font-family:"Cormorant Garamond",Georgia,serif!important;font-style:italic;font-size:1.18em;line-height:1;color:#81538e}
+body main .title-portfolio{font-size:clamp(40px,4.9vw,70px)!important;line-height:1.04!important;font-weight:500!important;max-width:19ch}
+body main .title-catalog{font-size:clamp(31px,3.4vw,48px)!important;line-height:1.12!important;max-width:32ch;font-weight:600!important}
+body main .title-origin{font-size:clamp(39px,5vw,72px)!important;line-height:1.08!important;font-weight:500!important;max-width:22ch}
+body main .title-contact{font-size:clamp(43px,6vw,84px)!important;line-height:1.04!important;font-weight:500!important}
+body main .title-contact .title-small-line{font-size:clamp(20px,2vw,28px)!important;margin:20px 0 0}
+body main .title-playful{font-size:clamp(60px,8vw,110px)!important;line-height:1.03!important}
+body main .title-playful em{display:block;font:italic 600 1.1em/1 "Cormorant Garamond",Georgia,serif!important}
+body main .title-material{font-size:clamp(38px,4.6vw,66px)!important;line-height:1.08!important;max-width:24ch;font-weight:500!important}
 body main .eyebrow{border:0;background:transparent;box-shadow:none;border-radius:0;padding:0;min-height:0}
 body main .eyebrow::before,body main .eyebrow::after{display:none}
-body .home-editorial-clients .centered-heading{display:block;text-align:center;margin-bottom:38px}
-body .home-editorial-clients .centered-heading h2{max-width:24ch;margin:auto;text-align:center;color:#8855a0;font-size:clamp(39px,5.2vw,70px)}
-body .explore-signature{display:inline-flex;align-items:center;gap:12px;margin-bottom:16px;color:#8958a1}
-body .explore-signature>.icon{width:24px;height:29px;opacity:.65;transform:rotate(-13deg)}
-body .explore-signature>span{font:italic 500 clamp(22px,2.1vw,29px)/1.2 "Cormorant Garamond",Georgia,serif;letter-spacing:0}
-body .home-clients .client-logo{filter:none;opacity:1;mix-blend-mode:normal;max-width:150px;object-fit:contain}
+/* Carrossel: uma chamada, com apoio curto e próximo. */
+body main .carousel-copy .title-carousel{font-size:clamp(36px,4vw,58px)!important;line-height:1.05!important;letter-spacing:-.035em!important;max-width:22ch;font-weight:500!important}
+body main .carousel-copy .title-carousel span{display:inline;font:inherit;color:#80528f}
+body main .carousel-copy .title-carousel-wear span{display:block;font-size:.59em;line-height:1.2;margin-top:16px;max-width:24ch}
+/* Possibilidades: abertura ampla, central, com apoio imediatamente abaixo. */
+body .services-discovery .services-heading{display:block;text-align:center;max-width:1000px;margin:0 auto 40px}
+body .services-discovery .services-heading-title{width:100%;max-width:none}
+body main #services-title{font-size:clamp(36px,4.5vw,64px)!important;line-height:1.06!important;max-width:none;margin:12px 0 20px}
+body #services-title .services-title-lead{display:inline;font:inherit}
+body #services-title>em{display:inline;font:italic 600 1.12em/1 "Cormorant Garamond",Georgia,serif!important;letter-spacing:-.025em}
+body .services-discovery .services-heading-story{max-width:650px;margin:auto;text-align:center}
+body .services-discovery .services-maker-mark{display:none}
+body .services-discovery .services-heading-story p{max-width:none;margin:0;font-size:15px;line-height:1.75}
+/* Vitrine: título curto em largura inteira; produtos formam uma base alinhada. */
+body .home-editorial-products .split-heading{display:block;text-align:center;margin:0 auto 36px;max-width:1000px}
+body .home-editorial-products .section-heading h2{font-size:clamp(31px,3.7vw,52px)!important;line-height:1.1!important;font-weight:600!important;letter-spacing:-.04em!important;max-width:none;margin:0 auto 18px;color:#513060}
+body .home-editorial-products .split-heading>p{border:0;padding:0;margin:0 auto;max-width:63ch;font-size:15px;line-height:1.7}
+body .home-editorial-products .product-grid>*:nth-child(n){transform:none}
+body .explore-signature{display:inline-flex;align-items:center;gap:10px;margin-bottom:14px;color:#87559b}
+body .explore-signature>.icon{width:22px;height:27px;opacity:.65;transform:rotate(-13deg)}
+body .explore-signature>span{font:italic 600 clamp(20px,2vw,27px)/1.1 "Cormorant Garamond",Georgia,serif}
+/* Ideia: título acima da composição, sem uma terceira coluna estreita de texto. */
+body .home-idea .idea-section-heading{max-width:1050px;text-align:center;margin:0 auto 44px}
+body main #idea-title{font-size:clamp(33px,4vw,56px)!important;line-height:1.08!important;max-width:none;margin:0;font-weight:500!important;color:#513060}
+body .home-idea .idea-layout{align-items:center;gap:clamp(30px,5vw,80px)}
+body .home-idea .idea-invitation{border:0;padding:0;margin-top:22px}
+body .home-idea .idea-invitation h3{font-size:23px;line-height:1.2;margin:0 0 12px}
+/* Credibilidade: um título compacto, marcas legíveis nas cores de cada arquivo. */
+body .home-editorial-clients .centered-heading{display:block;text-align:center;margin-bottom:30px}
+body .home-editorial-clients .centered-heading h2{max-width:none;margin:0;text-align:center;color:#8955a0;font-size:clamp(30px,3.5vw,48px)!important;line-height:1.1!important;font-weight:500!important}
+body .home-cinema .home-editorial-clients{padding-block:clamp(52px,6vw,84px)}
+body :is(.home-clients,.client-ribbon) .client-logo{filter:none;opacity:1;mix-blend-mode:normal;object-fit:contain}
+body .home-clients .client-logo{max-width:150px}
+body :is(.home-clients,.client-ribbon) .client-logo-monochrome{filter:brightness(0)}
 body .home-clients .client-logo-card{position:relative;isolation:isolate;overflow:visible}
 body .home-clients .client-logo-card::before{content:"";position:absolute;inset:8px -4px;z-index:-1;opacity:0;border-radius:50%;background:radial-gradient(ellipse,#d5b5e895,transparent 72%);pointer-events:none}
 body .home-clients .client-logo-card.is-spotlit::before{animation:brand-glimmer 1.35s ease-in-out both}
 body .home-clients .client-logo-card.is-spotlit .client-logo{animation:brand-light 1.35s ease-in-out both}
 body .home-clients .client-brand-name{color:#49334f;font-weight:500}
 @keyframes brand-glimmer{0%,100%{opacity:0;transform:scale(.85)}45%{opacity:1;transform:scale(1.1)}}
-@keyframes brand-light{0%,100%{transform:scale(1);filter:none}45%{transform:scale(1.045);filter:drop-shadow(0 2px 5px #a976c35c)}}
-@media(max-width:620px){body .home-editorial-clients .centered-heading h2{font-size:43px}.clients-title-break{display:none}}
+@keyframes brand-light{0%,100%{transform:scale(1)}45%{transform:scale(1.045)}}
+/* Trabalho em destaque: assinatura curta, com a descrição em segundo plano. */
+body main #work-showcase-title{font-size:clamp(37px,4.7vw,66px)!important;line-height:1.05!important;max-width:none;margin:0}
+body main #work-showcase-title>span{display:inline!important;font:italic 600 1.08em/1 "Cormorant Garamond",Georgia,serif!important}
+body main #fabric-details-title{max-width:none;font-size:clamp(33px,3.3vw,46px)!important;line-height:1.1!important}
+/* Encerramento: convite central, sem título espremido ao lado do parágrafo. */
+body .home-editorial-finale .quote-banner{display:block;text-align:center;padding:clamp(32px,5vw,64px)}
+body .home-editorial-finale .quote-banner h2{font-size:clamp(33px,3.8vw,54px)!important;max-width:none;margin:12px 0 20px;line-height:1.08!important}
+body .home-editorial-finale .quote-banner p{max-width:62ch;margin:0 auto 24px;font-size:15px;line-height:1.7}
+/* Empresas: pergunta de entrada editorial; seções de escolha com título central. */
+body main #empresa-title{font-size:clamp(38px,4.8vw,68px)!important;line-height:1.04!important;max-width:15ch}
+body .empresa-discovery-heading{max-width:900px;margin-inline:auto;text-align:center}
+body main #discovery-title{max-width:none;margin-inline:auto}
+body .empresa-trust{text-align:center}
+body main #trust-title{max-width:none;margin-inline:auto}
+body .empresa-brand-line img{filter:none;opacity:1}
+body .empresa-brand-line img[src*="band-minas"],body .empresa-brand-line img[src*="cemig"],body .empresa-brand-line img[src*="resultado-final"],body .empresa-brand-line img[src*="future-pro"]{filter:brightness(0)}
+body main #mw-making-heading{max-width:30ch}
+body main #mw-origins-title{max-width:30ch;font-size:clamp(31px,3.2vw,46px)!important}
+@media(max-width:760px){
+ body .home-editorial-products .section-heading h2{font-size:clamp(30px,7.2vw,40px)!important}
+ body main #idea-title{font-size:clamp(31px,7.2vw,42px)!important}
+ body .home-idea .idea-section-heading{margin-bottom:28px}
+ body main #services-title{font-size:clamp(34px,7.8vw,48px)!important}
+ body .home-editorial-clients .centered-heading h2{font-size:clamp(29px,6.8vw,38px)!important}
+ body main #work-showcase-title{font-size:clamp(36px,8vw,48px)!important}
+ body main :is(.title-question,.title-section,.title-editorial,.title-invitation,.title-catalog){max-width:100%}
+ body main .title-impact{font-size:clamp(58px,14vw,85px)!important}
+ body main .title-portfolio{font-size:clamp(38px,8vw,52px)!important}
+ body main #empresa-title{font-size:clamp(37px,8vw,50px)!important;max-width:17ch}
+ body .home-editorial-finale .quote-banner h2{font-size:clamp(31px,7.5vw,42px)!important}
+}
 @media(prefers-reduced-motion:reduce){body .home-clients .client-logo-card.is-spotlit::before,body .home-clients .client-logo-card.is-spotlit .client-logo{animation:none}}
+
+/* Sesc e PrintUp: texto branco em preto, grafismos amarelo e colorido intactos. */
+body :is(.home-clients,.client-ribbon) .client-logo[src$="sesc.png"],
+body :is(.home-clients,.client-ribbon) .client-logo[src$="printup-v2.png"],
+body .empresa-brand-line img[src$="sesc.png"]{filter:url(#brand-white-to-ink)}
+body #megui-theme-slides .slide-senac .carousel-art>img{transform:none!important;object-position:center!important}

@@ -24,11 +24,11 @@
   <link rel="stylesheet" href="{{ url_for('static',filename='css/experience-refinement.css',v='20261021-v1') }}">
   <link rel="stylesheet" href="{{ url_for('static',filename='css/header-modern.css',v='20261023-v2') }}">
   <link rel="stylesheet" href="{{ url_for('static',filename='css/typography-megui.css',v='20261024-v1') }}">
-  <link rel="stylesheet" href="{{ url_for('static',filename='css/editorial-titles.css',v='20261026-v2') }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/editorial-titles.css',v='20261026-v3') }}">
 </head>
 <body{% if request.endpoint == 'home' %} class="home-cinema"{% elif request.endpoint == 'b2b' %} class="corporate-page"{% elif request.endpoint == 'events' %} class="events-page"{% elif request.endpoint in ['products', 'category'] %} class="catalog-experience"{% endif %}{% if request.endpoint not in ['home', 'products', 'category', 'product', 'create_art', 'outside_box', 'events'] %} data-scroll-experience{% endif %}>
   {% from '_icons.html' import icon %}
-  <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false"><defs><symbol id="megui-butterfly" viewBox="0 0 125 154">{% include '_brand_butterfly.html' %}</symbol></defs></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false"><defs><filter id="brand-white-to-ink" color-interpolation-filters="sRGB" x="-5%" y="-5%" width="110%" height="110%"><feComponentTransfer in="SourceGraphic" result="channels"><feFuncR type="discrete" tableValues="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1"/><feFuncG type="discrete" tableValues="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1"/><feFuncB type="discrete" tableValues="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1"/></feComponentTransfer><feColorMatrix in="channels" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 0 -2" result="white-mask"/><feComposite in="white-mask" in2="SourceGraphic" operator="in" result="ink"/><feMerge><feMergeNode in="SourceGraphic"/><feMergeNode in="ink"/></feMerge></filter><symbol id="megui-butterfly" viewBox="0 0 125 154">{% include '_brand_butterfly.html' %}</symbol></defs></svg>
   <a class="skip-content" href="#main-content">Pular para o conteúdo</a>
   <div class="top-strip">Confecção própria • Malha & personalização • Empresas & eventos</div>
 

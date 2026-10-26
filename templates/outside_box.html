@@ -1,23 +1,23 @@
 {% extends "base.html" %}
 {% block title %}Fora da Caixa: seu próximo projeto começa aqui | Megui{% endblock %}
-{% block final_head %}<link rel="stylesheet" href="{{ url_for('static', filename='css/outside-box.css', v='3') }}">{% endblock %}
+{% block final_head %}<link rel="stylesheet" href="{{ url_for('static', filename='css/outside-box.css', v='4') }}">{% endblock %}
 {% block content %}
 <div class="outside-box">
  <section class="outside-intro container">
-  <div><span class="outside-kicker">MEGUI · FORA DA CAIXA</span><h1>Sua ideia merece<br>ganhar forma.</h1><p>Um produto que você não encontrou. Uma coleção com a sua marca. Um projeto que ainda precisa de um começo. Vamos explorar as possibilidades juntos.</p><a class="outside-start" href="#novo-projeto">Quero desenvolver meu projeto <span aria-hidden="true">✳</span></a><small>Traga uma referência ou só a vontade de criar.</small></div>
-  <figure class="outside-hero-product"><img src="{{ url_for('static', filename='img/trabalhos/2026/kit-infinix-estudio-20261022.webp') }}" alt="Kit personalizado da Infinix: referência de produtos reunidos em um projeto de marca" fetchpriority="high"><figcaption>Produtos que, juntos, contam a história de uma marca.<span>Referência de trabalho Megui · Infinix</span></figcaption></figure>
+  <div><span class="outside-kicker">MEGUI · FORA DA CAIXA</span><h1>Sua ideia, feita marca.</h1><p>Um produto que você não encontrou. Uma coleção com a sua marca. Um projeto que ainda precisa de um começo. Vamos explorar as possibilidades juntos.</p><a class="outside-start" href="#novo-projeto">Quero desenvolver meu projeto <span aria-hidden="true">✳</span></a><small>Traga uma referência ou só a vontade de criar.</small></div>
+  <figure class="outside-hero-product"><img src="{{ url_for('static', filename='img/conceitos/nova-orbita-tecnologia.webp') }}" alt="Linha Nova Órbita com caixa de som, power bank, fones e embalagens com a mesma identidade" fetchpriority="high"><figcaption>Uma linha de tecnologia com a sua identidade.<span>Nova Órbita · caixa de som, power bank, fones e embalagens.</span></figcaption></figure>
  </section>
  <section class="outside-possibilities container" aria-labelledby="possibilities-title">
   <div class="possibilities-heading"><span class="outside-kicker">QUAL É O SEU PRÓXIMO PASSO?</span><h2 id="possibilities-title">Há mais de um jeito de começar.</h2><p>Explore uma possibilidade ou conte uma ideia completamente sua.</p></div>
   <div class="possibilities-grid">
-   <article><img src="{{ url_for('static', filename='img/trabalhos/2026/fones-fecomercio-estudio-20261022.webp') }}" alt="Fones personalizados para a Fecomércio" loading="lazy"><div><span>UM PRODUTO ESPECÍFICO</span><h3>Não encontrou no catálogo?</h3><p>De um alicate a um acessório diferente: envie o que procura. Vamos avaliar fornecimento, materiais e opções de personalização.</p><a href="#novo-projeto" data-project-intent="Busco um produto fora do catálogo">Contar o que procuro</a></div></article>
-   <article><img src="{{ url_for('static', filename='img/hero-camisetas.webp') }}" alt="Camisetas como referência para desenvolver uma coleção com identidade própria" loading="lazy"><div><span>SUA MARCA, SUA COLEÇÃO</span><h3>Uma ideia que pode virar negócio.</h3><p>Explore peças e produtos para uma linha com a sua identidade. A Megui ajuda a definir as possibilidades de personalização para o seu projeto.</p><a href="#novo-projeto" data-project-intent="Quero criar minha marca ou coleção">Começar minha coleção</a></div></article>
-   <article><img src="{{ url_for('static', filename='img/trabalhos/2026/kit-eepof-estudio-20261022.webp') }}" alt="Kit personalizado Eepof como inspiração para presentes e projetos especiais" loading="lazy"><div><span>UMA CRIAÇÃO ESPECIAL</span><h3>Ainda está imaginando?</h3><p>Um kit para uma ocasião, um presente ou uma combinação diferente. Conte para quem é e o que deseja provocar; construímos o caminho juntos.</p><a href="#novo-projeto" data-project-intent="Quero desenvolver uma ideia">Explorar minha ideia</a></div></article>
-  </div><p class="possibilities-footnote">As fotos são referências de produtos e projetos. Fornecimento, quantidades mínimas, técnicas e prazos serão avaliados para a sua ideia.</p>
+   <article><div class="possibility-open-art" aria-hidden="true">{{ icon('butterfly') }}<span>E se…?</span></div><div><span>UM PRODUTO ESPECÍFICO</span><h3>Não encontrou no catálogo?</h3><p>De um alicate a um acessório diferente: envie o que procura. Vamos avaliar fornecimento, materiais e opções de personalização.</p><a href="#novo-projeto" data-project-intent="Busco um produto fora do catálogo">Contar o que procuro</a></div></article>
+   <article><img src="{{ url_for('static', filename='img/conceitos/avesso-colecao.webp') }}" alt="Coleção Avesso com camisetas, boné, saquinho e etiquetas" loading="lazy"><div><span>SUA MARCA, SUA COLEÇÃO</span><h3>Uma coleção com o seu nome.</h3><p>Explore peças e produtos para uma linha com a sua identidade. A Megui ajuda a definir as possibilidades de personalização para o seu projeto.</p><a href="#novo-projeto" data-project-intent="Quero criar minha marca ou coleção">Começar minha coleção</a></div></article>
+   <article><img src="{{ url_for('static', filename='img/conceitos/acai-do-bola.webp') }}" alt="Açaí do Bola: identidade aplicada a camiseta, copos, ecobag e adesivos" loading="lazy"><div><span>SEU NEGÓCIO POR INTEIRO</span><h3>Sua marca em cada detalhe.</h3><p>Do uniforme ao copo, da embalagem à ecobag: imagine os pontos de contato do seu negócio com a mesma identidade. O Açaí do Bola é uma possibilidade para explorar.</p><a href="#novo-projeto" data-project-intent="Quero desenvolver uma ideia">Explorar minha ideia</a></div></article>
+  </div><p class="possibilities-footnote">Explore aplicações de marca para imaginar o seu projeto. Fornecimento, quantidades mínimas, técnicas e prazos serão avaliados para a sua ideia.</p>
  </section>
  <section class="outside-workspace container" aria-label="Crie seu projeto">
   <aside class="idea-board"><div class="board-top"><span class="outside-kicker">SUA IDEIA ESTÁ GANHANDO FORMA</span><span class="board-dot"></span></div>
-   <div class="idea-scene"><img class="board-product-photo" src="{{ url_for('static', filename='img/trabalhos/2026/kit-infinix-estudio-20261022.webp') }}" alt="Kit personalizado como referência de composição de produtos"><span class="board-photo-label">Seu projeto começa com possibilidades.</span></div>
+   <div class="idea-scene"><div class="board-idea-mark" aria-hidden="true">{{ icon('butterfly') }}<span>E se…?</span></div><span class="board-photo-label">Seu projeto começa com possibilidades.</span></div>
    <p id="board-caption">Tudo começa com um “e se…”.</p><div id="idea-tags" class="idea-tags" aria-label="Suas escolhas"></div><p class="board-foot">Você traz a vontade.<br>A Megui entra com as possibilidades.</p>
   </aside>
   <form id="novo-projeto" class="outside-form" data-whatsapp="{{ whatsapp_number }}" novalidate>
@@ -30,5 +30,5 @@
  </section>
  <div class="outside-after container"><span aria-hidden="true">✳</span><p><strong>Da ideia à possibilidade real.</strong> Depois, nossa equipe conversa com você sobre materiais, personalização, quantidades e prazos. O projeto e o orçamento são definidos juntos.</p></div>
 </div>
-<script defer src="{{ url_for('static', filename='js/outside-box.js', v='3') }}"></script>
+<script defer src="{{ url_for('static', filename='js/outside-box.js', v='4') }}"></script>
 {% endblock %}

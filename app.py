@@ -72,6 +72,10 @@ TRUSTED_BRANDS = [
     {"name": "Minions Run", "image": "minions-run-acervo.png", "logo_style": "ink"},
 ]
 
+MONO_CLIENT_LOGOS = {"band-minas.png", "cemig.png", "balaia.png", "we-basic.png", "resultado-final.png", "future-pro-v2.png", "circuito-industrias-v2.png", "studio-is-concept-v2.png", "brantchic-v2.png", "tailors-mind-oficial.svg", "minions-run-acervo.png"}
+for brand in TRUSTED_BRANDS:
+    brand["monochrome"] = brand.get("image") in MONO_CLIENT_LOGOS
+
 REVIEWS = []
 
 PRODUCTS = [
