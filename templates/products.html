@@ -5,7 +5,7 @@
 {% from '_icons.html' import icon %}
 <section class="catalog-desk" aria-labelledby="catalog-title">
  <div class="container catalog-desk-heading">
-  <div><span class="catalog-eyebrow">MEGUI / CATÁLOGO</span><h1 id="catalog-title">{% if active_category %}{{ active_category.name }}{% elif query %}Resultados da busca{% else %}O que vamos personalizar?{% endif %}</h1><p>Escolha as peças. A gente coloca a sua identidade.</p></div>
+  <div><span class="catalog-eyebrow">MEGUI / CATÁLOGO</span><h1 id="catalog-title" class="title-catalog">{% if active_category %}{{ active_category.name }}{% elif query %}Resultados da busca{% else %}Encontre a base da sua próxima ideia.{% endif %}</h1><p>Escolha as peças. A gente coloca a sua identidade.</p></div>
   <a class="catalog-help" href="https://wa.me/{{ whatsapp_number }}?text={{ 'Olá! Gostaria de ajuda para escolher produtos personalizados.'|urlencode }}" target="_blank" rel="noopener">Precisa de uma indicação? <strong>Fale com a Megui</strong></a>
  </div>
 </section>

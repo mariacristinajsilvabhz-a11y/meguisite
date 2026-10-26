@@ -10,7 +10,7 @@
   <script defer src="{{ url_for('static',filename='js/favicon.js',v='20261016-v1') }}"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&family=Sora:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&family=Sora:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css', v='carousel-20261001-v2') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/design-system.css', v='garment-photos-20261015-v26') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/mockup-integration.css', v='20261002-v1') }}">
@@ -24,6 +24,7 @@
   <link rel="stylesheet" href="{{ url_for('static',filename='css/experience-refinement.css',v='20261021-v1') }}">
   <link rel="stylesheet" href="{{ url_for('static',filename='css/header-modern.css',v='20261023-v2') }}">
   <link rel="stylesheet" href="{{ url_for('static',filename='css/typography-megui.css',v='20261024-v1') }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/editorial-titles.css',v='20261026-v1') }}">
 </head>
 <body{% if request.endpoint == 'home' %} class="home-cinema"{% elif request.endpoint == 'b2b' %} class="corporate-page"{% elif request.endpoint == 'events' %} class="events-page"{% elif request.endpoint in ['products', 'category'] %} class="catalog-experience"{% endif %}{% if request.endpoint not in ['home', 'products', 'category', 'product', 'create_art', 'outside_box', 'events'] %} data-scroll-experience{% endif %}>
   {% from '_icons.html' import icon %}

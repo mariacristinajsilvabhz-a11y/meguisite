@@ -356,7 +356,7 @@
   <div class="carousel-slides" aria-live="off">
    {% set slides = [
         {'theme':'football','tag':'UNIFORMES PARA QUEM JOGA JUNTO','title':'Seu time.','accent':'Sua identidade.','text':'As cores, o escudo e a história do seu time entram em campo com você. Uniformes personalizados para vestir a equipe dentro e fora do jogo.','image':'img/inicio/uniforme-futebol-manequim-v1.webp','alt':'Conjunto de camisa e bermuda esportiva branca e azul em manequim invisível 3D','cta':'Uniformizar meu time','href':'https://wa.me/' ~ whatsapp_number ~ '?text=' ~ ('Olá! Quero um orçamento de uniformes personalizados para meu time de futebol.'|urlencode),'label':'time de futebol','details':'Escudo · Nomes · Numeração','caption':'Juntos, dentro e fora de campo.'},
-        {'theme':'wear','tag':'MALHA É A NOSSA ESPECIALIDADE','title':'Sua ideia.','accent':'Feita para vestir.','text':'Camisetas, uniformes e peças em malha para dar forma à sua marca, vestir sua equipe e fazer parte dos seus encontros.','image':'img/inicio/camiseta-megui-movimento-v3.webp','alt':'Camiseta preta com a identidade lilás da Megui, mostrando o caimento e os detalhes da malha','cta':'Explorar a confecção','href':url_for('category',slug='vestuario'),'label':'vestuário e uniformes','details':'Confecção própria · Personalização do seu jeito'},
+        {'theme':'wear','tag':'MALHA É A NOSSA ESPECIALIDADE','title':'Confecção própria.','accent':'A sua identidade em cada ponto.','text':'Camisetas, uniformes e peças em malha para dar forma à sua marca, vestir sua equipe e fazer parte dos seus encontros.','image':'img/inicio/camiseta-megui-movimento-v3.webp','alt':'Camiseta preta com a identidade lilás da Megui, mostrando o caimento e os detalhes da malha','cta':'Explorar a confecção','href':url_for('category',slug='vestuario'),'label':'vestuário e uniformes','details':'Confecção própria · Personalização do seu jeito'},
         {'theme':'faith','tag':'CAMISETAS PARA ENCONTROS & MOVIMENTOS','title':'Uma mensagem.','accent':'Muitas pessoas.','text':'Vista o tema do seu encontro. Camisetas e itens personalizados para reunir o grupo em uma identidade.','image':'img/inicio/camiseta-encontro-manequim-v1.webp','alt':'Camiseta verde com estampa bege de encontro religioso, em manequim invisível 3D, vista pelas costas','cta':'Conhecer as possibilidades','href':url_for('events') ~ '#movimentos','label':'encontros religiosos'},
         {'theme':'senac','tag':'ALEXAS PERSONALIZADAS · PROJETO SENACX','title':'Sua marca.','accent':'Na conversa.','text':'A personalização que criamos para o SenacX NaSemanaS mostra como a tecnologia também pode levar a identidade de um projeto.','image':'img/inicio/alexa-senacx-3d-v1.webp','alt':'Recriação 3D de duas Alexas Echo Pop pretas, uma com a personalização branca SenacX NaSemanaS e outra mostrando o alto-falante','cta':'Personalizar Alexas','href':'https://wa.me/' ~ whatsapp_number ~ '?text=' ~ ('Olá! Quero um orçamento de Alexas personalizadas, como as do projeto SenacX.'|urlencode),'label':'Alexas personalizadas do Senac','details':'Identidade aplicada · Presentes corporativos'},
         {'theme':'tech','tag':'POWER BANKS & FONES INTRA-AURICULARES','title':'Mais conexão.','accent':'No dia a dia.','text':'Power banks e fones pequenos, com estojo de carregamento, personalizados para acompanhar a rotina com a sua marca.','image':'img/inicio/powerbank-fones-intra-3d-v1.webp','alt':'Power bank branco e dois fones intra-auriculares lilás com estojo de carregamento aberto e identidade Megui, em 3D','cta':'Criar meus brindes','href':'https://wa.me/' ~ whatsapp_number ~ '?text=' ~ ('Olá! Quero um orçamento de power banks e fones intra-auriculares personalizados.'|urlencode),'label':'power banks e fones intra-auriculares','details':'Power banks · Fones sem fio · Sua identidade'},
@@ -370,7 +370,7 @@
    <article class="carousel-slide slide-{{ slide.theme }} {% if loop.first %}is-active{% endif %}" style="--hero-photo:url('{{ url_for('static',filename=slide.image) }}')" data-carousel-slide role="group" aria-roledescription="banner" aria-label="{{ loop.index }} de {{ loop.length }}" {% if not loop.first %}hidden inert{% endif %}>
     <div class="carousel-copy">
      <span class="carousel-kicker">{{ icon('butterfly','carousel-butterfly') }} {{ slide.tag }}</span>
-     <{% if loop.first %}h1{% else %}h2{% endif %}>{{ slide.title }}<br><span>{{ slide.accent }}</span></{% if loop.first %}h1{% else %}h2{% endif %}>
+     <{% if loop.first %}h1{% else %}h2{% endif %} class="title-carousel title-carousel-{{ slide.theme }}">{{ slide.title }} <span>{{ slide.accent }}</span></{% if loop.first %}h1{% else %}h2{% endif %}>
      <p>{{ slide.text }}</p>
      {% if slide.details %}<span class="carousel-theme-details">{{ slide.details }}</span>{% endif %}
      <div class="carousel-actions">
@@ -496,7 +496,7 @@
       </div>
       <div class="idea-copy">
         <span class="idea-eyebrow">O CATÁLOGO É SÓ O COMEÇO</span>
-        <h2 id="idea-title">Você imagina.<br>A gente cria<br><em>com você.</em></h2>
+        <h2 id="idea-title" class="title-question">E quando a sua ideia ainda não existe no catálogo?</h2>
         <p>Uma peça para sua marca, um presente com significado ou um kit que ninguém pensou ainda. A personalização começa no que você quer contar.</p>
         <div class="idea-invitation"><h3>Não encontrou por aqui?</h3><p>Mande uma referência, um rascunho ou conte sua ideia. Vamos avaliar materiais, formatos e possibilidades para tirar seu projeto do papel.</p></div>
         <a class="idea-cta" href="https://wa.me/{{ whatsapp_number }}?text={{ 'Olá! Tenho uma ideia de produto personalizado e quero desenvolver com a Megui.'|urlencode }}" target="_blank" rel="noopener">{{ icon('whatsapp') }} <span>Quero conversar sobre minha ideia</span> {{ icon('arrow') }}</a>
@@ -511,7 +511,7 @@
   <div class="container">
     <div class="section-heading centered-heading">
       <span class="eyebrow">QUEM JÁ CONFIOU NA MEGUI</span>
-      <h2>Marcas e projetos que fazem parte da nossa história.</h2>
+      <h2>Quem já criou com a Megui.</h2>
     </div>
     {% include '_client_logos.html' %}
   </div>
@@ -524,7 +524,7 @@
   <div class="container split-content">
     <div>
       <span class="eyebrow">AVALIAÇÕES</span>
-      <h2 class="display-small">Confiança se constrói na entrega.</h2>
+      <h2 class="display-small">A experiência de quem recebeu.</h2>
       <p class="muted-copy">Conheça a experiência de quem já personalizou com a Megui.</p>
     </div>
     <div class="review-shell">
@@ -555,7 +555,7 @@
   <div class="container quote-banner">
     <div>
       <span class="eyebrow eyebrow-light">MONTE SUA SELEÇÃO</span>
-      <h2>Escolha vários itens.<br>Peça tudo de uma vez.</h2>
+      <h2 class="title-invitation">Um projeto completo, em um só orçamento.</h2>
     </div>
     <div>
       <p>Adicione os produtos ao carrinho de orçamento, informe quantidade e personalização e envie a lista completa para o atendimento.</p>
