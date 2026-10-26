@@ -1173,3 +1173,6 @@
 @media(prefers-reduced-motion:reduce){
   .meg-work .mw-brandproof-brand{animation:none;opacity:1;filter:none}
 }
+
+/* Preserva detalhes que somem ao converter os símbolos em branco. */
+.meg-work .mw-brandproof-brand--original img{filter:none;mix-blend-mode:normal}
