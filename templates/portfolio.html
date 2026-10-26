@@ -3,7 +3,7 @@
 {% block title %}Trabalhos & bastidores | Portfólio Megui Personalizados{% endblock %}
 {% block final_head %}
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600;1,700&display=swap">
-<link rel="stylesheet" href="{{ url_for('static',filename='css/meg-work-atelier-20261025.css',v='20261025-signature-v3') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/meg-work-atelier-20261025.css',v='20261026-brand-colors-v1') }}">
 {% endblock %}
 
 {% macro watch(film, position='lead') -%}
@@ -63,7 +63,7 @@
       <p>Uma produção, muitos universos.</p>
       <div class="mw-brandproof-logos">
         {% for brand in trusted_brands[:7] %}
-        <div class="mw-brandproof-brand">
+        <div class="mw-brandproof-brand{% if brand.logo_style == 'ink' %} mw-brandproof-brand--color{% endif %}">
           {% if brand.image %}
           <img src="{{ url_for('static',filename='img/clientes/' ~ brand.image) }}" alt="{{ brand.name }}" loading="lazy" decoding="async">
           {% else %}
