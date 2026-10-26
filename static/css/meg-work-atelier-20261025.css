@@ -1137,3 +1137,39 @@
     transform:translateY(-5px) scale(1.02);
   }
 }
+
+
+/* Faixa imóvel: só a iluminação percorre as marcas. */
+.meg-work .mw-brandproof-inner{display:block}
+.meg-work .mw-brandproof-inner>p{max-width:none;margin:0 0 22px}
+.meg-work .mw-brandproof-logos{
+  display:flex;flex-wrap:nowrap;justify-content:flex-start;align-items:center;
+  gap:clamp(26px,4vw,60px);overflow-x:auto;overflow-y:hidden;
+  padding:18px 5px 24px;scrollbar-width:thin;scrollbar-color:#897092 transparent;
+}
+.meg-work .mw-brandproof-logos:focus-visible{outline:2px solid #d1b2e1;outline-offset:6px}
+.meg-work .mw-brandproof-brand{
+  flex:0 0 112px;min-width:112px;max-width:112px;height:62px;
+  color:#fff;opacity:.36;
+  animation:mw-brand-light var(--mw-brand-cycle) linear infinite;
+  animation-delay:var(--mw-brand-delay);
+}
+.meg-work .mw-brandproof-brand img{
+  width:100%;height:48px;max-height:48px;object-fit:contain;
+  filter:brightness(0) invert(1);opacity:1;mix-blend-mode:normal;
+}
+.meg-work .mw-brandproof-brand--paper img{filter:grayscale(1) invert(1);mix-blend-mode:screen}
+.meg-work .mw-brandproof-brand span{font:600 15px/1.35 "Sora",sans-serif}
+@keyframes mw-brand-light{
+  0%{opacity:.36;filter:drop-shadow(0 0 0 transparent)}
+  1%,4%{opacity:1;filter:drop-shadow(0 0 9px #e8c7ff99)}
+  5.55%,100%{opacity:.36;filter:drop-shadow(0 0 0 transparent)}
+}
+@media(max-width:620px){
+  .meg-work .mw-brandproof-logos{gap:28px}
+  .meg-work .mw-brandproof-brand{flex-basis:94px;min-width:94px;max-width:94px}
+  .meg-work .mw-brandproof-brand img{height:42px;max-height:42px}
+}
+@media(prefers-reduced-motion:reduce){
+  .meg-work .mw-brandproof-brand{animation:none;opacity:1;filter:none}
+}
