@@ -3,7 +3,8 @@
 {% block title %}Trabalhos & bastidores | Portfólio Megui Personalizados{% endblock %}
 {% block final_head %}
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600;1,700&display=swap">
-<link rel="stylesheet" href="{{ url_for('static',filename='css/meg-work-atelier-20261025.css',v='20261026-brand-glow-v4') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/meg-work-atelier-20261025.css',v='20261026-fullwidth-drag-v5') }}">
+<script defer src="{{ url_for('static',filename='js/brand-drag.js',v='20261026-v1') }}"></script>
 {% endblock %}
 
 {% macro watch(film, position='lead') -%}
@@ -59,9 +60,9 @@
   </section>
 
   <section class="mw-brandproof" aria-label="Marcas que já confiaram na Megui">
-    <div class="container mw-brandproof-inner">
+    <div class="mw-brandproof-inner">
       <p>Uma produção, muitos universos.</p>
-      <div class="mw-brandproof-logos" tabindex="0" role="region" aria-label="Marcas atendidas, deslize para explorar" style="--mw-brand-cycle:{{ trusted_brands|length * 2 }}s">
+      <div class="mw-brandproof-logos" tabindex="0" role="region" aria-label="Marcas atendidas. Arraste para explorar ou use as setas do teclado" data-brand-drag style="--mw-brand-cycle:{{ trusted_brands|length * 2 }}s">
         {% for brand in trusted_brands %}
         <div class="mw-brandproof-brand{% if brand.image in ['sesc.png','printup-v2.png','samba-do-maestro-acervo.png','escola-de-cura-acervo.png'] %} mw-brandproof-brand--original{% endif %}{% if brand.logo_style == 'paper' %} mw-brandproof-brand--paper{% endif %}" style="--mw-brand-delay:{{ loop.index0 * 2 }}s">
           {% if brand.image %}

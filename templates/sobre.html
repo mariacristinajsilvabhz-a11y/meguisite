@@ -1,15 +1,37 @@
 {% extends 'base.html' %}
-{% block title %}Nossa história | Megui{% endblock %}
+{% from '_icons.html' import icon %}
+{% block title %}Sobre a Megui | Confecção, criação e personalização{% endblock %}
+{% block final_head %}<link rel="stylesheet" href="{{ url_for('static',filename='css/sobre-atelier.css',v='20261026-v1') }}">{% endblock %}
 {% block content %}
-<section class="page-hero"><div class="container"><span class="eyebrow">NOSSA HISTÓRIA</span><h1 class="title-origin"><span class="title-small-line">Desde 2020,</span>ideias ganham forma por aqui.</h1><p>Começamos em 2020 como Freedom, uma pequena loja de personalizados. De lá para cá, ampliamos nossa atuação e nos tornamos a Megui: produção, criação e personalização para pessoas, eventos, marcas e empresas.</p><nav class="page-crosslinks" aria-label="Conheça a Megui"><a href="{{ url_for('portfolio_view') }}">Conheça os trabalhos ↗</a><a href="{{ url_for('events') }}">Encontros com identidade ↗</a></nav></div></section>
-<section class="section"><div class="container story-grid"><div class="story-photo"><img src="{{ url_for('static', filename='img/acervo/camisetas-em-uso.jpg') }}" alt="Camiseta personalizada pela Megui em uso durante um evento" loading="lazy"><span>Uma ideia que ganha vida quando alguém veste.</span></div><div class="story-copy"><span class="eyebrow">DE PERSONALIZADOS A PROJETOS COMPLETOS</span><h2>A confecção cresceu. O cuidado continua próximo.</h2><p>A nossa história começou com presentes e pequenas encomendas, feitos para transformar uma ideia em algo pessoal. Aos poucos, esse cuidado passou a fazer parte também dos projetos de lojas, equipes e empresas.</p><p>Hoje, nossa especialidade é a confecção e personalização em malha. Camisetas, uniformes e saquinhos são acompanhados por brindes, materiais gráficos e comunicação visual. Criamos e personalizamos produtos para vestir equipes, acompanhar eventos e levar a identidade de cada marca para o dia a dia.</p><a class="text-link" href="{{ url_for('portfolio_view') }}">Conhecer trabalhos realizados →</a></div></div></section>
-<section class="section section-soft"><div class="container"><div class="section-heading"><span class="eyebrow">DE ONDE VIEMOS</span><h2>De Freedom a Megui.</h2></div><div class="history-timeline">
-<article><span>2020</span><div><h3>O início como Freedom</h3><p>Nossa história começa com uma pequena loja de presentes, peças artesanais e personalizados. Cada encomenda tinha um propósito: transformar ideias em produtos com significado para quem recebia.</p></div></article>
-<article><span>2021–2022</span><div><h3>Personalização para outras marcas</h3><p>Além dos presentes, passamos a atender lojas e negócios com canecas, brindes e papelaria personalizada. A identidade de outras marcas passou a fazer parte do nosso trabalho.</p></div></article>
-<article><span>2023</span><div><h3>Um novo capítulo</h3><p>A Freedom deu lugar a um novo capítulo. A Megui nasce dessa experiência, com uma proposta mais ampla de criação, produção e personalização.</p></div></article>
-<article><span>2024–2026</span><div><h3>A marca vai para o mundo</h3><p>Ampliamos nossa atuação em vestuário, uniformes e brindes corporativos, atendendo equipes, eventos e empresas. Em 2026, iniciamos uma nova fase da Megui, conectando essas frentes em projetos com a identidade de cada cliente.</p></div></article>
-</div></div></section>
-<section class="section section-soft"><div class="container"><div class="section-heading"><span class="eyebrow">QUEM JÁ FEZ PARTE DA NOSSA HISTÓRIA</span><h2>Parte de quem somos.</h2><p>Clientes e projetos da Megui e do nosso início como Freedom.</p></div>{% include '_client_logos.html' %}</div></section>
-<section class="section"><div class="container"><div class="section-heading split-heading"><div><span class="eyebrow">MARCAS AO LONGO DA TRAJETÓRIA</span><h2>Projetos que atravessam nossa história.</h2></div><p>Antes de sermos Megui, essas marcas já faziam parte do nosso caminho. São parcerias da fase Freedom que carregamos na nossa história.</p></div><div class="archive-grid">{% for brand in historical_brands %}<article class="archive-card"><img src="{{ url_for('static', filename=brand.image) }}" alt="{{ brand.work }} para {{ brand.name }} na fase Freedom" loading="lazy"><div><span class="archive-date">FREEDOM · {{ brand.year }}</span><h3>{{ brand.name }}</h3><p>{{ brand.work }}</p></div></article>{% endfor %}</div></div></section>
-<section class="section"><div class="container quote-banner"><div><span class="eyebrow eyebrow-light">MEGUI HOJE</span><h2 class="title-section">Confecção própria. Possibilidades por inteiro.</h2></div><div><p>Um atendimento para reunir produtos, criação e personalização no mesmo projeto.</p><a class="btn btn-light" href="{{ url_for('products') }}">Explorar o catálogo</a></div></div></section>
+<article class="about-megui">
+  <header class="about-opening container">
+    <span class="about-signature">{{ icon('butterfly') }} MEGUI · DESDE 2020</span>
+    <h1>Por trás da sua marca,<br><em>tem o nosso cuidado.</em></h1>
+    <p>Somos criação, confecção e personalização. Uma ideia chega até nós; uma peça com a sua identidade sai daqui.</p>
+    <a class="about-text-link" href="#nosso-jeito">Conheça quem faz {{ icon('butterfly') }}</a>
+  </header>
+
+  <div class="about-material-story container" aria-label="Materiais e detalhes da confecção">
+    <figure class="about-material-main"><img src="{{ url_for('static',filename='img/tecidos/detalhe-costura-v9.webp') }}" alt="Costura da malha em detalhe, mostrando a união e o acabamento do tecido" fetchpriority="high" width="1200" height="800"><figcaption>O cuidado também está onde quase ninguém olha.</figcaption></figure>
+    <div class="about-material-note"><span>DA MATÉRIA À IDENTIDADE</span><p>Um tecido.<br>Um ponto.<br><em>O seu jeito.</em></p>{{ icon('butterfly') }}</div>
+    <figure class="about-material-detail"><img src="{{ url_for('static',filename='img/tecidos/detalhe-gola-v9.webp') }}" alt="Detalhe da gola e do acabamento de uma camiseta" width="1200" height="800" loading="lazy"><figcaption>Toque, caimento e acabamento.</figcaption></figure>
+  </div>
+
+  <section class="about-origin container" id="nosso-jeito" aria-labelledby="about-origin-title">
+    <div class="about-origin-heading"><span class="about-label">UMA HISTÓRIA QUE GANHOU NOVAS FORMAS</span><h2 id="about-origin-title">Mudamos de nome.<br><em>O cuidado ficou.</em></h2><span class="about-origin-year">2020 <span>foi só o começo.</span></span></div>
+    <div class="about-origin-copy"><p class="about-lead">Nossa história começou como Freedom, com presentes e pequenas encomendas. Cada pedido trazia uma ideia, uma pessoa e um motivo para fazer bem-feito.</p><p>Com a Megui, essa experiência ganhou novos caminhos. Hoje, nossa especialidade é a confecção e personalização em malha: camisetas, uniformes e saquinhos que vestem equipes, acompanham produtos e representam marcas.</p><p>Brindes, papelaria e comunicação visual completam as possibilidades. O projeto pode começar em uma peça ou reunir vários produtos; o importante é que cada escolha faça sentido para quem vai usar.</p><a class="about-text-link" href="{{ url_for('portfolio_view') }}">Veja esse cuidado nos nossos trabalhos {{ icon('butterfly') }}</a></div>
+  </section>
+
+  <section class="about-method" aria-labelledby="about-method-title">
+    <div class="container"><header class="about-method-heading"><span class="about-label">O NOSSO JEITO DE FAZER</span><h2 id="about-method-title">Sua ideia guia as escolhas.</h2><p>Não começa com uma lista de produtos. Começa com o que você quer criar.</p></header>
+      <div class="about-method-flow">
+        <div><span class="about-method-mark">{{ icon('chat') }}</span><h3>Escutar antes de criar.</h3><p>Para quem é, como será usado e o que precisa representar. Entender o seu projeto vem primeiro.</p></div>
+        <div><span class="about-method-mark">{{ icon('tshirt') }}</span><h3>Escolher com intenção.</h3><p>Modelo, tecido, cor e personalização conversam entre si. A gente ajuda a encontrar essa combinação.</p></div>
+        <div><span class="about-method-mark">{{ icon('butterfly') }}</span><h3>Dar forma à identidade.</h3><p>Da confecção própria aos produtos personalizados, cuidamos dos detalhes que tornam a peça sua.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-finale container" aria-labelledby="about-finale-title"><span class="about-finale-mark" aria-hidden="true">{{ icon('butterfly') }}</span><p>Uma equipe. Um encontro. Um novo negócio.</p><h2 id="about-finale-title">O próximo começo<br><em>pode ser o seu.</em></h2><div class="about-actions"><a class="about-primary" href="{{ url_for('outside_box') }}">Tenho uma ideia {{ icon('butterfly') }}</a><a class="about-secondary" href="{{ url_for('products') }}">Quero explorar os produtos</a></div><span class="about-location">De Contagem, para fazer parte da sua história.</span></section>
+</article>
 {% endblock %}

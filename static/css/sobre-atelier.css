@@ -1,0 +1,57 @@
+.about-megui{--about-ink:#39253e;--about-purple:#84529a;--about-muted:#75667c;background:#f6f0f7;color:var(--about-ink);overflow:clip}
+.about-megui *{box-sizing:border-box}
+.about-megui .container{width:min(1180px,92%)}
+.about-megui :is(p,figure,h1,h2,h3){margin:0}
+.about-opening{padding:70px 0 46px;text-align:center}
+.about-signature{display:inline-flex;align-items:center;gap:10px;font:500 11px/1.5 "Sora",sans-serif;letter-spacing:.1em;color:#835a94}
+.about-signature .icon{width:20px;height:25px;transform:rotate(-12deg)}
+body main .about-opening h1{max-width:1050px;margin:24px auto 22px;font:500 clamp(38px,4.7vw,66px)/1.05 "Manrope",sans-serif!important;letter-spacing:-.04em;text-wrap:balance}
+.about-megui :is(h1,h2) em{font:italic 600 1.13em/1 "Cormorant Garamond",Georgia,serif!important;letter-spacing:-.025em;color:var(--about-purple)}
+.about-opening>p{max-width:590px;margin:0 auto 23px;font-size:16px;line-height:1.75;color:var(--about-muted)}
+.about-text-link{display:inline-flex;align-items:center;gap:12px;text-decoration:none;color:#74458a;font-size:13px;font-weight:600;line-height:1.5;padding:8px 0}
+.about-text-link>.icon{width:16px;height:20px;transition:transform .2s}
+.about-text-link:hover>.icon{transform:translateX(4px) rotate(10deg)}
+.about-material-story{display:grid;grid-template-columns:1.45fr .6fr .85fr;gap:26px;align-items:center;padding:0 0 80px}
+.about-material-story figure{min-width:0}
+.about-material-story img{display:block;width:100%;object-fit:cover}
+.about-material-main img{aspect-ratio:1.35;border-radius:90px 22px 22px 22px}
+.about-material-detail{padding-top:90px}
+.about-material-detail img{aspect-ratio:.88;border-radius:20px 20px 75px 20px}
+.about-material-story figcaption{font-size:11px;line-height:1.6;color:var(--about-muted);padding:14px 3px}
+.about-material-note{text-align:center;align-self:center}
+.about-material-note>span{font-size:9px;letter-spacing:.12em;line-height:1.8;color:#9677a2}
+.about-material-note p{font:500 clamp(24px,2.7vw,38px)/1.22 "Manrope",sans-serif;letter-spacing:-.04em;margin:24px 0}
+.about-material-note p em{font:italic 600 1.25em/1.1 "Cormorant Garamond",Georgia,serif;color:#84529a}
+.about-material-note>.icon{width:36px;height:44px;color:#b18bc4;transform:rotate(15deg)}
+.about-label{display:block;color:#9675a4;font-size:10px;line-height:1.6;letter-spacing:.09em}
+.about-origin{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(32px,8vw,115px);padding:30px 0 90px;scroll-margin-top:125px}
+body main .about-origin h2{font:500 clamp(33px,3.4vw,48px)/1.1 "Manrope",sans-serif!important;letter-spacing:-.035em;margin:22px 0 30px}
+.about-origin-year{font:500 30px/1 "Manrope",sans-serif;color:#c3a7ce}
+.about-origin-year>span{font:400 12px/1.6 "Sora",sans-serif;color:#8c7696;margin-left:12px}
+.about-origin-copy{padding-top:18px}
+.about-origin-copy p{font-size:15px;line-height:1.9;color:var(--about-muted);margin-bottom:20px}
+.about-origin-copy .about-lead{font-size:19px;line-height:1.65;color:#51385c}
+.about-method{background:#e9dfee;padding:70px 0 76px}
+.about-method-heading{text-align:center;max-width:800px;margin:0 auto 44px}
+body main .about-method h2{font:500 clamp(31px,3.3vw,46px)/1.1 "Manrope",sans-serif!important;letter-spacing:-.035em;margin:15px 0 18px}
+.about-method-heading>p{font-size:15px;line-height:1.7;color:var(--about-muted)}
+.about-method-flow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(25px,5vw,70px)}
+.about-method-flow>div{padding:0 5px;text-align:center}
+.about-method-mark{display:grid;place-items:center;height:48px;margin-bottom:20px;color:#9364a6}
+.about-method-mark .icon{width:28px;height:34px}
+body main .about-method-flow h3{font:600 21px/1.25 "Manrope",sans-serif!important;letter-spacing:-.025em;margin:0 0 15px}
+.about-method-flow p{font-size:14px;line-height:1.8;color:var(--about-muted)}
+.about-finale{padding:78px 0 88px;text-align:center}
+.about-finale-mark{color:#a884b9;display:block;margin-bottom:18px}
+.about-finale-mark .icon{width:35px;height:43px;transform:rotate(-12deg)}
+.about-finale>p{font-size:12px;color:#957e9e;line-height:1.6}
+body main .about-finale h2{font:500 clamp(37px,4vw,57px)/1.1 "Manrope",sans-serif!important;letter-spacing:-.035em;margin:20px 0 30px}
+.about-actions{display:flex;justify-content:center;align-items:center;gap:22px;flex-wrap:wrap}
+.about-actions a{font-size:13px;font-weight:600;text-decoration:none;min-height:50px;display:inline-flex;align-items:center;justify-content:center;gap:18px;padding:15px 24px}
+.about-primary{background:#d9c1e5;color:#493054;border-radius:12px 12px 25px 12px;box-shadow:0 8px 20px #5e3b7010}
+.about-primary .icon{width:19px;height:24px}
+.about-secondary{color:#78558a}
+.about-actions a:hover{background:#e6d5ed}
+.about-location{display:block;font-size:11px;color:#a18ba9;margin-top:28px;line-height:1.6}
+@media(max-width:760px){.about-opening{padding:42px 0 35px}.about-opening>p{font-size:14px;max-width:36ch}.about-material-story{grid-template-columns:1.25fr .75fr;gap:15px;padding-bottom:40px}.about-material-main img{border-radius:50px 16px 16px 16px;aspect-ratio:1}.about-material-note{grid-column:2;grid-row:1}.about-material-note>span{font-size:8px}.about-material-note p{font-size:25px;margin:14px 0}.about-material-note>.icon{width:25px;height:30px}.about-material-detail{display:none}.about-origin{grid-template-columns:1fr;gap:12px;padding:15px 0 45px}.about-origin-heading{text-align:center}.about-origin-copy{padding-top:12px}.about-origin-copy .about-lead{font-size:17px}.about-origin-copy p{font-size:14px}.about-method{padding:42px 0}.about-method-flow{grid-template-columns:1fr;gap:30px;max-width:420px;margin:auto}.about-method-flow>div{display:grid;grid-template-columns:40px 1fr;gap:0 16px;text-align:left}.about-method-mark{grid-row:1/3;height:40px;margin:0}.about-method-flow p{grid-column:2}.about-method-heading{margin-bottom:30px}.about-finale{padding:45px 0 55px}.about-actions{gap:8px}.about-actions a{width:100%;max-width:310px}}
+@media(prefers-reduced-motion:reduce){.about-text-link>.icon{transition:none}}
