@@ -389,7 +389,7 @@
       </svg>
       <span class="carousel-ground-shadow"></span>
      </div>
-     <img src="{{ url_for('static', filename=slide.image) }}" alt="{{ slide.alt }}" width="{{ 1280 if loop.first else 1440 }}" height="{{ 853 if loop.first else 960 }}" {% if loop.first %}fetchpriority="high"{% endif %} decoding="async">
+     <img {% if slide.theme == 'wear' %}data-theme-light="{{ url_for('static', filename=slide.image) }}" data-theme-dark="{{ url_for('static', filename='img/inicio/camiseta-megui-noite-v1.webp') }}" data-alt-light="{{ slide.alt }}" data-alt-dark="Camiseta branca com a identidade lilás da Megui, mostrando o caimento e os detalhes da malha"{% endif %} src="{{ url_for('static', filename=slide.image) }}" alt="{{ slide.alt }}" width="{{ 1280 if loop.first else 1440 }}" height="{{ 853 if loop.first else 960 }}" {% if loop.first %}fetchpriority="high"{% endif %} decoding="async">
      {% if slide.theme == 'wear' %}
      <button class="carousel-material-swatch fabric-zoom" type="button" data-fabric-zoom aria-expanded="false" aria-label="Ampliar os pontos da meia malha">
       <span class="fabric-zoom-window"><img src="{{ url_for('static',filename='img/tecidos/malha-encorpada.webp') }}" alt="Detalhe dos pontos em V da meia malha preta" width="1200" height="800" decoding="async" draggable="false"></span>
