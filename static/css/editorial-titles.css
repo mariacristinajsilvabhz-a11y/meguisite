@@ -26,12 +26,12 @@ body main .carousel-copy .title-carousel{font-size:clamp(36px,4vw,58px)!importan
 body main .carousel-copy .title-carousel span{display:inline;font:inherit;color:#80528f}
 body main .carousel-copy .title-carousel-wear span{display:block;font-size:.59em;line-height:1.2;margin-top:16px;max-width:24ch}
 /* Possibilidades: duas linhas compõem uma única assinatura tipográfica. */
-body .services-discovery .services-heading{display:block;text-align:center;max-width:1000px;margin:0 auto 40px}
-body .services-discovery .services-heading-title{width:100%;max-width:none;padding-bottom:0}
-body main #services-title{display:flex;flex-direction:column;align-items:center;gap:4px;width:fit-content;max-width:100%;margin:20px auto 26px!important;font-size:clamp(56px,6.1vw,82px)!important;line-height:1.05!important;text-align:center;overflow:visible}
+body .services-discovery .services-heading{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);align-items:end;gap:clamp(32px,5vw,72px);text-align:left;max-width:1100px;margin:0 auto 48px}
+body .services-discovery .services-heading-title{width:100%;max-width:none;padding-bottom:0;min-width:0}\nbody .services-discovery .services-heading-title>.services-eyebrow{margin:0 0 24px;line-height:1.6}
+body main #services-title{display:flex;flex-direction:column;align-items:flex-start;gap:3px;width:fit-content;max-width:100%;margin:0!important;font-size:clamp(56px,6.1vw,82px)!important;line-height:1.05!important;text-align:left;overflow:visible}
 body #services-title .services-title-lead{display:block;font:600 .46em/1.2 "Manrope",sans-serif;letter-spacing:-.04em;white-space:nowrap}
-body #services-title>em{display:block;position:relative;font:italic 600 1em/1.08 "Cormorant Garamond",Georgia,serif!important;letter-spacing:-.035em;white-space:nowrap;padding:0 .08em .08em}
-body .services-discovery .services-heading-story{max-width:590px;margin:auto;padding-bottom:0;text-align:center}
+body #services-title>em{display:block;position:relative;font:italic 600 1em/1.08 "Cormorant Garamond",Georgia,serif!important;letter-spacing:-.035em;white-space:nowrap;padding:0 0 .08em}
+body .services-discovery .services-heading-story{justify-self:end;align-self:end;width:100%;max-width:39ch;margin:0;padding:0 0 12px;text-align:left}
 body .services-discovery .services-maker-mark{display:none}
 body .services-discovery .services-heading-story p{max-width:none;margin:0;font-size:15px;line-height:1.75}
 /* Vitrine: título curto em largura inteira; produtos formam uma base alinhada. */
@@ -84,7 +84,7 @@ body main #mw-origins-title{max-width:30ch;font-size:clamp(31px,3.2vw,46px)!impo
  body .home-editorial-products .section-heading h2{font-size:clamp(30px,7.2vw,40px)!important}
  body main #idea-title{font-size:clamp(31px,7.2vw,42px)!important}
  body .home-idea .idea-section-heading{margin-bottom:28px}
- body main #services-title{font-size:clamp(44px,11.2vw,68px)!important;gap:6px;margin:16px auto 20px!important}
+ body main #services-title{font-size:clamp(44px,11.2vw,68px)!important;gap:5px;margin:0!important}
  body .home-editorial-clients .centered-heading h2{font-size:clamp(29px,6.8vw,38px)!important}
  body main #work-showcase-title{font-size:clamp(36px,8vw,48px)!important}
  body main :is(.title-question,.title-section,.title-editorial,.title-invitation,.title-catalog){max-width:100%}
@@ -102,3 +102,6 @@ body .empresa-brand-line img[src$="sesc.png"]{filter:url(#brand-white-to-ink)}
 body #megui-theme-slides .slide-senac .carousel-art>img{transform:none!important;object-position:center!important}
 /* Logo do acervo com papel branco: integra o fundo e preserva o traço preto. */
 body :is(.home-clients,.client-ribbon) .client-logo-paper{filter:url(#brand-paper-cutout);mix-blend-mode:normal}
+
+/* O apoio segue o título na leitura móvel, sempre pelo mesmo eixo. */
+@media(max-width:900px){body .services-discovery .services-heading{grid-template-columns:minmax(0,1fr);gap:18px;max-width:620px;margin-bottom:34px}body .services-discovery .services-heading-story{justify-self:start;max-width:46ch;padding:0}body .services-discovery .services-heading-title>.services-eyebrow{margin-bottom:20px}body .services-discovery .services-heading-story p{font-size:14px;line-height:1.75}}
