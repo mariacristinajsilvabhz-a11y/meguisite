@@ -1,123 +1,22 @@
 {% extends 'base.html' %}
 {% from '_icons.html' import icon %}
-{% block title %}Sobre a Megui | Confecção, criação e personalização{% endblock %}
-{% block final_head %}<link rel="stylesheet" href="{{ url_for('static',filename='css/sobre-atelier.css',v='20261026-v2') }}"><style>
-.about-megui{--about-ink:#38263f;--about-muted:#786280;background:#f4edf7}
-html body .about-megui .container{max-width:1150px}
-html body .about-megui .about-opening{display:grid;grid-template-columns:1fr 1fr;gap:75px;align-items:center;text-align:left;padding-block:55px 50px}
-html body .about-megui .about-opening h1{font:550 clamp(48px,5.3vw,74px)/1.04 "Space Grotesk",sans-serif!important;letter-spacing:-.06em!important;margin:25px 0!important;color:#38263f!important}
-html body .about-megui .about-opening h1 em{font:inherit!important;color:#a17bb4!important}
-.about-opening-text>p{max-width:37ch;font-size:14px;line-height:1.85}
-.about-opening-photo{margin:0;position:relative;transform:rotate(2deg)}
-html body .about-megui .about-opening-photo>img{display:block;width:100%!important;height:340px!important;object-fit:cover!important;object-position:center;border-radius:100px 7px 7px 7px}
-.about-opening-photo figcaption{display:flex;gap:12px;align-items:center;background:#e4d5ed;position:relative;margin:-25px 20px 0;padding:17px 20px;font:500 11px/1.5 "Sora",sans-serif;color:#70517e;transform:rotate(-3deg)}
-.about-opening-photo figcaption .icon{width:26px;height:30px;flex:none}
-html body .about-megui :is(.about-origin,.about-history){padding-block:50px}
-html body .about-megui .about-origin{display:grid;grid-template-columns:.85fr 1.15fr;gap:85px;align-items:start}
-html body .about-megui :is(h2,.about-origin-heading h2){font:550 clamp(32px,3.5vw,47px)/1.13 "Space Grotesk",sans-serif!important;letter-spacing:-.045em!important;color:#38263f!important}
-html body .about-megui h2 em{font:inherit!important;color:#9c77af}
-.about-origin-copy p{font-size:13px;line-height:1.9;max-width:56ch}
-.about-origin-year{font-size:40px!important;margin-top:25px!important}
-.about-origin-year>span{font-size:12px!important}
-.about-touch{display:grid;grid-template-columns:.85fr 1.15fr;gap:65px;align-items:center;padding-block:35px 55px}
-.about-touch>div>p{font-size:13px;line-height:1.85;max-width:36ch;margin:20px 0 0}
-.about-touch-samples{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.about-touch-samples figure{margin:0;min-width:0}
-html body .about-megui .about-touch-samples img{display:block;width:100%!important;height:190px!important;object-fit:cover!important;border-radius:7px 35px 7px 7px}
-.about-touch-samples figure:nth-child(2){padding-top:32px}
-.about-touch-samples figcaption{padding:14px 2px;color:#70577d;font:400 10px/1.7 "Sora",sans-serif}
-.about-touch-samples figcaption strong{display:block;font-weight:600;font-size:12px;margin-bottom:4px}
-.about-touch-samples figcaption span{display:block}
-.about-history>header{display:grid;grid-template-columns:1.2fr .8fr;gap:12px 40px;align-items:end;margin-bottom:25px}
-.about-history>header>.about-label{grid-column:1/-1}
-.about-history>header p{font-size:13px;line-height:1.8}
-html body .about-megui .about-history-panel{min-height:0;gap:40px;padding:28px;background:#eaddf0;border-radius:6px 40px 6px 6px}
-html body .about-megui .about-history-image{height:260px;min-height:0}
-html body .about-megui .about-history-image img{height:100%!important;width:100%!important;object-fit:contain!important}
-html body .about-megui .about-history-copy h3{font-size:28px!important;line-height:1.2!important}
-.about-history-copy p{font-size:13px;line-height:1.85}
-html body .about-megui .about-method{padding-block:48px}
-html body .about-megui .about-method-flow{gap:30px;margin-top:28px}
-html body .about-megui .about-method-flow h3{font-size:23px!important;line-height:1.2}
-html body .about-megui .about-method-flow p{font-size:12px;line-height:1.8}
-html body .about-megui .about-finale{padding-block:50px}
-html[data-theme=dark] body .about-megui :is(h2,.about-origin-heading h2,.about-opening h1){color:#f1e5f6!important}
-html[data-theme=dark] .about-megui :is(.about-opening-photo figcaption,.about-history-panel){background:#3b2b46!important;color:#dac5e6}
-@media(max-width:760px){
- html body .about-megui .about-opening{grid-template-columns:1fr;gap:28px;padding-block:30px}
- html body .about-megui .about-opening h1{font-size:44px!important;margin:18px 0!important}
- .about-opening-text>p{font-size:13px}
- html body .about-megui .about-opening-photo>img{height:235px!important;border-radius:60px 6px 6px 6px}
- .about-opening-photo{margin-inline:5px}.about-opening-photo figcaption{font-size:10px;padding:13px 15px;margin-inline:13px}
- html body .about-megui .about-origin{grid-template-columns:1fr;gap:22px;padding-block:35px}
- html body .about-megui :is(h2,.about-origin-heading h2){font-size:30px!important}
- .about-origin-year{display:flex!important;align-items:center;gap:14px;font-size:30px!important;margin-top:20px!important}
- .about-origin-copy p{font-size:13px}
- .about-touch{grid-template-columns:1fr;gap:24px;padding-block:25px 35px}
- .about-touch>div>p{font-size:12px;max-width:42ch;margin-top:15px}
- .about-touch-samples{gap:14px}
- html body .about-megui .about-touch-samples img{height:135px!important}
- .about-touch-samples figure:nth-child(2){padding-top:20px}
- .about-touch-samples figcaption strong{font-size:11px}.about-touch-samples figcaption{font-size:9px}
- .about-history>header{display:block}.about-history>header h2{margin:14px 0!important}.about-history>header p{font-size:12px}
- html body .about-megui .about-history{padding-block:35px}
- html body .about-megui .about-history-panel{display:grid;grid-template-columns:1fr;gap:22px;padding:22px 18px}
- html body .about-megui .about-history-panel[hidden]{display:none!important}
- html body .about-megui .about-history-image{height:190px}
- .about-history-years{display:flex!important;overflow-x:auto;flex-wrap:nowrap!important;gap:7px;padding-bottom:12px}
- .about-history-years button{flex:none;min-height:44px}
- html body .about-megui .about-history-copy h3{font-size:25px!important}
- html body .about-megui .about-method-flow{display:flex;overflow-x:auto;gap:18px;scroll-snap-type:x mandatory;padding-bottom:16px}
- .about-method-flow>div{flex:0 0 85%;scroll-snap-align:start}
- html body .about-megui .about-method{padding-block:35px}
- html body .about-megui .about-finale{padding-block:35px}
-}
-</style>{% endblock %}
+{% block title %}Nossa história | Da Freedom à Megui Personalizados{% endblock %}
+{% block final_head %}<link rel="stylesheet" href="{{ url_for('static',filename='css/sobre-historia.css',v='20261029-1') }}">{% endblock %}
 {% block content %}
-<article class="about-megui">
-  <header class="about-opening container"><div class="about-opening-text">
-    <span class="about-signature">{{ icon('butterfly') }} MEGUI · DESDE 2020</span>
-    <h1>Tem ideia.<br>Tem mãos.<br><em>Tem Megui.</em></h1>
-    <p>Somos criação, confecção e personalização. Uma ideia chega até nós; uma peça com a sua identidade sai daqui.</p>
-    <a class="about-text-link" href="#nosso-jeito">Conheça quem faz {{ icon('butterfly') }}</a>
-  </div><figure class="about-opening-photo"><img src="{{ url_for('static',filename='img/acervo/confeccao-bolsas.jpg') }}" alt="Bastidores da confecção de bolsas: mãos e materiais na produção" fetchpriority="high"><figcaption>{{ icon('butterfly') }} É aqui que a ideia encontra as mãos.</figcaption></figure></header>
-
-  <section class="about-origin container" id="nosso-jeito" aria-labelledby="about-origin-title">
-    <div class="about-origin-heading"><span class="about-label">UMA HISTÓRIA QUE GANHOU NOVAS FORMAS</span><h2 id="about-origin-title">Mudamos de nome.<br><em>O cuidado ficou.</em></h2><span class="about-origin-year">2020 <span>foi só o começo.</span></span></div>
-    <div class="about-origin-copy"><p class="about-lead">Nossa história começou como Freedom, com presentes e pequenas encomendas. Cada pedido trazia uma ideia, uma pessoa e um motivo para fazer bem-feito.</p><p>Com a Megui, essa experiência ganhou novos caminhos. Hoje, nossa especialidade é a confecção e personalização em malha: camisetas, uniformes e saquinhos que vestem equipes, acompanham produtos e representam marcas.</p><p>Brindes, papelaria e comunicação visual completam as possibilidades. O projeto pode começar em uma peça ou reunir vários produtos; o importante é que cada escolha faça sentido para quem vai usar.</p><a class="about-text-link" href="{{ url_for('portfolio_view') }}">Veja esse cuidado nos nossos trabalhos {{ icon('butterfly') }}</a></div>
-  </section>
-
-
-  <section class="about-touch container" aria-labelledby="about-touch-title"><div><span class="about-label">O CUIDADO, DE PERTO</span><h2 id="about-touch-title">Pequenos detalhes.<br>Uma peça bem pensada.</h2><p>Tecido, gola e costura fazem parte da mesma escolha: criar uma peça que represente sua marca e acompanhe quem usa.</p><a class="about-text-link" href="{{ url_for('textiles') }}">Conheça nossa malharia {{ icon('butterfly') }}</a></div><div class="about-touch-samples"><figure><img src="{{ url_for('static',filename='img/tecidos/detalhe-costura-v9.webp') }}" alt="Acabamento da costura da malha lilás" loading="lazy"><figcaption><strong>Cada ponto importa.</strong><span>União e acabamento da malha.</span></figcaption></figure><figure><img src="{{ url_for('static',filename='img/tecidos/detalhe-gola-v9.webp') }}" alt="Gola de camiseta em detalhe" loading="lazy"><figcaption><strong>Feito para vestir bem.</strong><span>Estrutura, toque e caimento.</span></figcaption></figure></div></section>
-  <section class="about-history container" aria-labelledby="about-history-title" data-about-history>
-    <header><span class="about-label">CADA ANO DEIXOU UM POUCO DE NÓS</span><h2 id="about-history-title">Uma trajetória feita de começos.</h2><p>Da Freedom à Megui, registros e capítulos do nosso caminho.</p></header>
-    {% set chapters = [
-      ('2020','O primeiro começo.','Nossa história começa como Freedom: presentes, peças artesanais e personalizados, com atenção a cada encomenda.','',''),
-      ('2021','Outras marcas entram na história.','Brindes, cartões e peças personalizadas passam a levar a identidade de outros negócios.','img/acervo/printup-estamparia.jpg','Brindes personalizados PrintUp, acervo de 2021'),
-      ('2022','O cuidado chega ao cotidiano.','Canecas e presentes com a identidade de cada marca fazem parte da nossa trajetória.','img/acervo/studio-is-concept.jpg','Canecas Studio IS Concept, acervo de 2022'),
-      ('2023','Do corte à costura.','A confecção de bolsas também faz parte do nosso acervo: materiais, montagem e acabamento ganham forma na produção.','img/acervo/confeccao-bolsas.jpg','Registro da confecção de bolsas, acervo de 2023'),
-      ('2024','A ideia encontra as pessoas.','Camisetas em uso e personalização em produção mostram o trabalho ganhando vida fora da bancada.','img/acervo/camisetas-em-uso.jpg','Camisetas personalizadas em uso, acervo de 2024'),
-      ('2025','Equipes vestem a própria identidade.','O acervo reúne uniformes personalizados em volume e registros de preparação das peças.','img/acervo/uniformes-em-volume.jpg','Uniformes personalizados em volume, acervo de 2025'),
-      ('2026','Novas formas de criar juntos.','A Megui reúne confecção, produtos e personalização. O Fora da Caixa abre espaço para projetos que ainda não estão no catálogo.','','')
-    ] %}
-    <div class="about-history-years" role="tablist" aria-label="Explore a trajetória por ano">{% for year,title,text,photo,alt in chapters %}<button type="button" role="tab" id="history-tab-{{ year }}" aria-controls="history-panel-{{ year }}" aria-selected="{{ 'true' if loop.first else 'false' }}" tabindex="{{ '0' if loop.first else '-1' }}" data-history-year="{{ year }}">{{ year }}</button>{% endfor %}</div>
-    {% for year,title,text,photo,alt in chapters %}<div class="about-history-panel" id="history-panel-{{ year }}" role="tabpanel" aria-labelledby="history-tab-{{ year }}" {% if not loop.first %}hidden{% endif %}>
-      <div class="about-history-image">{% if photo %}<img src="{{ url_for('static',filename=photo) }}" alt="{{ alt }}" loading="lazy" decoding="async">{% else %}<div class="about-history-wordmark">{% if year == '2020' %}<span>onde tudo começou</span><strong>Freedom</strong><small>presentes &amp; personalizados</small>{% else %}{{ icon('butterfly') }}<strong>Megui</strong><small>muitas formas de criar.</small>{% endif %}</div>{% endif %}</div>
-      <div class="about-history-copy"><span>{{ year }}</span><h3>{{ title }}</h3><p>{{ text }}</p>{% if photo %}<small>Registro do acervo da nossa trajetória.</small>{% endif %}</div>
-    </div>{% endfor %}
-  </section>
-
-  <section class="about-method" aria-labelledby="about-method-title">
-    <div class="container"><header class="about-method-heading"><span class="about-label">O NOSSO JEITO DE FAZER</span><h2 id="about-method-title">Sua ideia guia as escolhas.</h2><p>Não começa com uma lista de produtos. Começa com o que você quer criar.</p></header>
-      <div class="about-method-flow">
-        <div><span class="about-method-mark">{{ icon('chat') }}</span><h3>Escutar antes de criar.</h3><p>Para quem é, como será usado e o que precisa representar. Entender o seu projeto vem primeiro.</p></div>
-        <div><span class="about-method-mark">{{ icon('tshirt') }}</span><h3>Escolher com intenção.</h3><p>Modelo, tecido, cor e personalização conversam entre si. A gente ajuda a encontrar essa combinação.</p></div>
-        <div><span class="about-method-mark">{{ icon('butterfly') }}</span><h3>Dar forma à identidade.</h3><p>Da confecção própria aos produtos personalizados, cuidamos dos detalhes que tornam a peça sua.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="about-finale container" aria-labelledby="about-finale-title"><span class="about-finale-mark" aria-hidden="true">{{ icon('butterfly') }}</span><p>Uma equipe. Um encontro. Um novo negócio.</p><h2 id="about-finale-title">O próximo começo<br><em>pode ser o seu.</em></h2><div class="about-actions"><a class="about-primary" href="{{ url_for('outside_box') }}">Tenho uma ideia {{ icon('butterfly') }}</a><a class="about-secondary" href="{{ url_for('products') }}">Quero explorar os produtos</a></div><span class="about-location">De Contagem, para fazer parte da sua história.</span></section>
-</article>
-<script defer src="{{ url_for('static',filename='js/about-history.js',v='20261026-v1') }}"></script>
+<article class="meg-history">
+<header class="mh-hero mh-wrap">
+ <div class="mh-intro"><span class="mh-eyebrow">{{ icon('butterfly') }} NOSSA HISTÓRIA · DESDE 2020</span><h1>A gente cresceu.<br>O cuidado veio<br><span>junto.</span></h1><p>Antes de vestir equipes e dar forma a projetos de marcas, a nossa história começou com pequenos presentes. E uma vontade enorme de fazer cada entrega significar alguma coisa.</p><a class="mh-link" href="#origem">Conheça o nosso começo {{ icon('butterfly') }}</a></div>
+ <div class="mh-hero-album"><figure class="mh-photo-main"><img src="{{ url_for('static',filename='img/acervo/historia-canecas.webp') }}" alt="Recriação das canecas personalizadas Studio IS Concept do nosso acervo" fetchpriority="high" width="1200" height="800"><figcaption>Uma marca. Muitos jeitos de fazer parte da vida.</figcaption></figure><figure class="mh-photo-note"><img src="{{ url_for('static',filename='img/acervo/confeccao-bolsas.jpg') }}" alt="Registro real da confecção de bolsas" width="360" height="260"><figcaption>As mãos por trás das ideias.</figcaption></figure><span class="mh-year" aria-hidden="true">2020<br><small>o primeiro capítulo</small></span></div>
+</header>
+<nav class="mh-chapters mh-wrap" aria-label="Capítulos da história"><a href="#origem">O começo</a><a href="#identidade">A transformação</a><a href="#memorias">Os primeiros trabalhos</a><a href="#hoje">A Megui de hoje</a></nav>
+<section class="mh-origin mh-wrap" id="origem"><div class="mh-origin-visual"><span class="mh-bigyear" aria-hidden="true">2020</span><figure><img src="{{ url_for('static',filename='img/acervo/origens-freedom.jpg') }}" alt="Registro original de uma entrega da fase Freedom" loading="lazy" width="360" height="640"><figcaption>Freedom · um registro do nosso começo.</figcaption></figure>{{ icon('butterfly') }}</div><div class="mh-copy"><span class="mh-eyebrow">TUDO COMEÇA COM ALGUÉM QUE ACREDITA</span><h2>Antes de Megui,<br>éramos <span>Freedom.</span></h2><p class="mh-lead">Uma pequena loja, presentes personalizados e o olhar da Duda para transformar ideias em algo que se pudesse tocar.</p><p>Em 2020, começava uma trajetória entre almofadas, peças artesanais e pequenos mimos. Cada encomenda tinha um motivo: presentear alguém, marcar uma ocasião ou levar a identidade de um negócio até seus clientes.</p><p>Vieram as balinhas personalizadas, os materiais de papelaria, as canecas. E, junto com cada novo trabalho, mais experiência para entender o que torna uma peça especial para quem recebe.</p><blockquote>Desde o começo, personalizar foi o nosso jeito de aproximar pessoas e marcas.</blockquote></div></section>
+<section class="mh-identity" id="identidade"><div class="mh-wrap"><div class="mh-section-head"><span class="mh-eyebrow">A ESSÊNCIA ENCONTRA UMA NOVA FORMA</span><h2>A marca mudou.<br><span>A história continua.</span></h2><p>A Freedom faz parte de quem somos. Com a Megui, essa trajetória ganhou novos caminhos, uma identidade própria e mais possibilidades de criar.</p></div><div class="mh-logos"><figure><span>IDENTIDADE ORIGINAL MEGUI</span><div><img src="{{ url_for('static',filename='img/acervo/logo-megui-original.webp') }}" alt="Logo original da Megui, preservada do arquivo PDF" loading="lazy" width="520" height="420"></div><figcaption>O desenho que faz parte da nossa trajetória.</figcaption></figure><div class="mh-transformation" aria-hidden="true">{{ icon('butterfly') }}<span>evoluir</span></div><figure><span>MEGUI HOJE</span><div><img src="{{ url_for('static',filename='img/logo-megui-oficial.png') }}" alt="Identidade atual da Megui Personalizados" loading="lazy" width="520" height="420"></div><figcaption>A mesma essência, em novas aplicações.</figcaption></figure></div><p class="mh-symbol">{{ icon('butterfly') }} A borboleta traduz o que essa trajetória tem de mais nosso: transformação, liberdade para criar e espaço para crescer.</p></div></section>
+<section class="mh-memories mh-wrap" id="memorias"><div class="mh-section-head"><span class="mh-eyebrow">PEÇAS QUE FAZEM PARTE DO CAMINHO</span><h2>Pequenos trabalhos.<br><span>Grandes aprendizados.</span></h2><p>Antes dos projetos de hoje, essas entregas já carregavam uma preocupação: fazer a identidade de cada cliente aparecer.</p></div>
+{% set memories = [('2021','PrintUp Estamparia','Até um pequeno mimo pode carregar uma marca.','As embalagens personalizadas das balinhas mostram como o cuidado com a apresentação já fazia parte do nosso trabalho.','historia-balinhas.webp','printup-estamparia.jpg'),('2022','Studio IS Concept','A identidade acompanha o cotidiano.','Uma caneca deixa de ser apenas uma caneca quando leva a marca de quem cria, atende e se dedica ao próprio negócio.','historia-canecas.webp','studio-is-concept.jpg')] %}
+{% for year,client,title,copy,photo,original in memories %}<section class="mh-memory {% if loop.index == 2 %}mh-reverse{% endif %}" aria-labelledby="memory-{{ loop.index }}"><div class="mh-memory-image"><img src="{{ url_for('static',filename='img/acervo/'~photo) }}" alt="Recriação visual do trabalho para {{ client }}" loading="lazy" width="1200" height="800"><span class="mh-date">{{ year }}</span></div><div class="mh-copy"><span class="mh-eyebrow">{{ client }}</span><h3 id="memory-{{ loop.index }}">{{ title }}</h3><p>{{ copy }}</p><div class="mh-memory-controls" data-memory><button type="button" data-original="{{ url_for('static',filename='img/acervo/'~original) }}" data-recreation="{{ url_for('static',filename='img/acervo/'~photo) }}" aria-pressed="false">Ver registro original</button><small>Recriação visual baseada no trabalho do acervo.</small></div></div></section>{% endfor %}
+</section>
+<section class="mh-today mh-wrap" id="hoje"><div class="mh-copy"><span class="mh-eyebrow">MAIS GENTE. MAIS IDEIAS. MAIS POSSIBILIDADES.</span><h2>O que começou pequeno<br><span>ganhou novas mãos.</span></h2><p class="mh-lead">A história iniciada pela Duda cresceu com a chegada da Maria Cristina. Hoje, criação, produção e comunicação caminham juntas para dar mais possibilidades a cada projeto.</p><p>Da nossa confecção própria saem peças que vestem equipes e representam marcas. Camisetas, uniformes, bolsas, saquinhos, brindes e kits ampliam o que uma ideia pode se tornar.</p><p>Essa variedade tem um propósito: encontrar o produto, o material e a personalização que façam sentido para o seu projeto.</p><a class="mh-link" href="{{ url_for('portfolio_view') }}">Veja onde essa história chegou {{ icon('butterfly') }}</a></div><div class="mh-today-gallery"><figure><img src="{{ url_for('static',filename='img/acervo/2026/band-kit-estudio-v6.webp') }}" alt="Apresentação de kit personalizado Band Minas" loading="lazy" width="600" height="600"><figcaption>Identidade que vai além da peça.</figcaption></figure><figure><img src="{{ url_for('static',filename='img/acervo/2026/future-pro-estudio-v2.webp') }}" alt="Apresentação da camiseta personalizada Future Pro" loading="lazy" width="600" height="600"><figcaption>Confecção e personalização, juntas.</figcaption></figure></div></section>
+<section class="mh-value"><div class="mh-wrap"><div class="mh-section-head"><span class="mh-eyebrow">O QUE ESSA HISTÓRIA ENTREGA PARA VOCÊ</span><h2>Experiência que aparece<br><span>nas escolhas.</span></h2></div><div class="mh-values"><div>{{ icon('chat') }}<h3>Seu projeto é ouvido.</h3><p>Entender a ocasião, o público e o uso ajuda a indicar uma peça que tenha sentido para você.</p></div><div>{{ icon('tshirt') }}<h3>O detalhe é pensado.</h3><p>Tecido, cor, caimento, aplicação e acabamento participam da mesma ideia: representar bem a sua marca.</p></div><div>{{ icon('butterfly') }}<h3>A ideia tem espaço.</h3><p>Se o que você imaginou ainda não está no catálogo, o Fora da Caixa é o lugar para começar essa conversa.</p></div></div></div></section>
+<footer class="mh-finale mh-wrap">{{ icon('butterfly') }}<span class="mh-eyebrow">DE CONTAGEM, PARA A SUA HISTÓRIA</span><h2>Já contamos o nosso começo.<br><span>Vamos criar o seu próximo?</span></h2><p>Um novo uniforme. Um presente com significado. Uma marca que quer ir mais longe.</p><a class="mh-cta" href="{{ url_for('outside_box') }}">Quero criar com a Megui {{ icon('butterfly') }}</a></footer>
+</article><script defer src="{{ url_for('static',filename='js/sobre-historia.js',v='20261029-1') }}"></script>
 {% endblock %}
