@@ -1,0 +1,113 @@
+.mw-mobile-rail-head,.mw-mobile-chapters{display:none}
+.meg-work .mw-project-detail{color:#705c76;font:400 14px/1.83 "Sora",sans-serif;margin:0 0 22px}
+.meg-work .mw-project-detail summary{display:none}
+.meg-work .mw-project-detail p{margin:0}
+html[data-theme=dark] .meg-work .mw-project-detail{color:#dfcfe7}
+html[data-theme=dark] .ms-opening{--ms-paper:#27212e;--ms-vein:#27212e;--ms-ink:#f5edf8}
+@media(max-width:620px){
+ body:has(.meg-work){padding-bottom:80px}
+ body .meg-work .container{width:100%;max-width:100%;padding-inline:20px}
+ body .meg-work :is(#marcas,#processos,#projetos){scroll-margin-top:100px}
+ body .meg-work .ms-opening{padding-top:28px}
+ body .meg-work .ms-opening .ms-opening-layout{gap:18px}
+ body .meg-work .ms-opening .ms-kicker{font-size:9px;letter-spacing:.07em}
+ body .meg-work .ms-opening .ms-preface{margin:18px 0 12px;font-size:12px}
+ body .meg-work .ms-opening #mw-hero-title{font-size:clamp(35px,10.2vw,52px)!important;line-height:1.04!important;margin-bottom:18px!important}
+ body .meg-work .ms-opening .ms-intro{font-size:13px;line-height:1.75}
+ body .meg-work .ms-opening .ms-invitation{font-size:11px;margin-top:12px}
+ body .meg-work .ms-opening .ms-start{margin-top:14px;min-height:44px;font-size:12px}
+ body .meg-work .ms-opening .ms-start>span{width:42px;height:42px}
+ body .meg-work .ms-opening .ms-cover{width:min(100%,340px);padding:10px 14px 16px}
+ body .meg-work .ms-opening .ms-photograph{height:270px;transform:rotate(2deg)}
+ body .meg-work .ms-opening .ms-cover-caption{margin-top:-24px;padding:14px 20px;max-width:88%}
+ body .meg-work .ms-opening .ms-cover-caption p{font-size:21px;margin-top:6px}
+ body .meg-work .ms-opening .ms-cover-caption>span{font-size:7px}
+ body .meg-work .ms-opening .ms-butterfly-one{width:38px;right:0;top:20px}
+ body .meg-work .ms-opening .ms-cover-leaves{width:140px;height:240px;left:-20px}
+ body .meg-work .ms-opening .ms-story-path{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding-block:18px 22px;margin-top:0;border:0}
+ body .meg-work .ms-opening .ms-story-path>a{flex:0 0 78%;min-height:68px;justify-content:center;padding:12px 16px;border-left:2px solid #b292c3;background:#e9dff0;scroll-snap-align:center;color:#6b5575}
+ body .meg-work .ms-opening .ms-story-path strong{font-size:12px}
+ body .meg-work :is(.mw-featured,.mw-collection,.mw-origins,.mw-making){padding-block:44px 52px}
+ body .meg-work :is(.mw-section-opener,.mw-collection-header,.mw-origins-top,.mw-making-head) h2{font-size:clamp(29px,8.2vw,39px)!important;line-height:1.12!important;letter-spacing:-.05em!important}
+ body .meg-work .mw-overline{font-size:9px;letter-spacing:.08em}
+ body .meg-work .mw-lead-project{margin:24px 0 30px}
+ body .meg-work .mw-lead-photo{aspect-ratio:1.5;min-height:0}
+ body .meg-work .mw-lead-photo img{padding:12px 28px 28px}
+ body .meg-work .mw-lead-photo-tag{font-size:7px;padding:7px 10px;bottom:2px}
+ body .meg-work .mw-lead-story{padding:24px 20px;border-radius:8px 24px 8px 24px}
+ body .meg-work .mw-lead-brand{gap:8px}
+ body .meg-work .mw-lead-brand>span{font-size:9px}
+ body .meg-work .mw-lead-brand strong{font-size:33px;letter-spacing:-.05em}
+ body .meg-work .mw-lead-story h3{font-size:32px!important;margin:17px 0 12px}
+ body .meg-work .mw-lead-story h3 br{display:none}
+ body .meg-work .mw-lead-details{gap:6px;margin:14px 0}
+ body .meg-work .mw-lead-details span{font-size:7px;padding:8px}
+ body .meg-work .mw-editorial-cta{min-height:48px;width:100%;justify-content:space-between}
+ body .meg-work .mw-mobile-rail-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px;font:500 10px/1.5 "Sora",sans-serif;color:#735580}
+ .mw-mobile-rail-head>div{display:flex;gap:9px;align-items:center;white-space:nowrap}
+ .mw-mobile-rail-head button{display:grid;place-items:center;width:44px;height:44px;border:1px solid #ccb4d6;background:transparent;border-radius:50%;font-size:26px;color:inherit;cursor:pointer}
+ .mw-mobile-rail-head button:disabled{opacity:.3;cursor:default}
+ body .meg-work .mw-featured-others{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;padding-bottom:16px;scrollbar-width:thin}
+ body .meg-work .mw-feature-story{flex:0 0 90%;scroll-snap-align:start;scroll-snap-stop:always}
+ body .meg-work .mw-feature-image{aspect-ratio:1.45}
+ body .meg-work .mw-feature-copy{padding-top:14px}
+ body .meg-work .mw-feature-copy h3{font-size:26px!important;margin:10px 0}
+ body .meg-work .mw-feature-copy>p{font-size:12px;line-height:1.8}
+ body .meg-work .mw-feature-base{padding-top:15px;gap:10px}
+ body .meg-work .mw-feature-base>a{min-height:44px}
+ body .meg-work .mw-making-head{margin-bottom:24px}
+ body .meg-work .mw-film-watch-hero{aspect-ratio:1.4;border-radius:8px 24px 8px 24px}
+ body .meg-work .mw-making-stage{gap:28px}
+ body .meg-work .mw-making-films{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:14px;overscroll-behavior-x:contain}
+ body .meg-work .mw-making-film{display:flex;flex:0 0 85%;gap:14px;scroll-snap-align:start}
+ body .meg-work .mw-making-film-media{aspect-ratio:1.45;height:auto}
+ body .meg-work .mw-making-film-copy h3{font-size:23px!important}
+ body .meg-work .mw-film-text-play{min-height:44px}
+ body .meg-work .mw-making-statement{margin-top:32px;font-size:25px}
+ body .meg-work .mw-discover-controls{display:block;margin:24px 0 16px;min-width:0}
+ body .meg-work .mw-filter-tabs{display:flex;flex-wrap:nowrap;overflow-x:auto;gap:7px;padding:4px 2px 12px;scrollbar-width:thin;overscroll-behavior-x:contain}
+ body .meg-work .mw-filter-tabs button{flex:none;min-height:44px;font-size:11px;padding:10px 15px}
+ body .meg-work .mw-search{width:100%;margin-top:8px}
+ body .meg-work .mw-search input{font-size:16px;min-height:48px}
+ body .meg-work .mw-gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 16px}
+ body .meg-work .mw-piece{height:auto}
+ body .meg-work .mw-piece-image{aspect-ratio:1;box-shadow:none}
+ body .meg-work .mw-piece-image img{padding:6px!important}
+ body .meg-work .mw-piece-image-zoom{font-size:7px;bottom:0;right:0;padding:7px 9px}
+ body .meg-work .mw-piece-body{padding:12px 0 0}
+ body .meg-work .mw-piece-type{font-size:8px;line-height:1.6;letter-spacing:0}
+ body .meg-work .mw-piece h3{font-size:20px!important;line-height:1.2!important;letter-spacing:-.04em!important;margin:8px 0 10px}
+ body .meg-work .mw-project-detail{font-size:12px;line-height:1.7;margin:0 0 12px;width:100%}
+ body .meg-work .mw-project-detail summary{display:list-item;min-height:44px;padding:12px 0;cursor:pointer;font-size:10px;color:#795588}
+ body .meg-work .mw-project-detail p{padding-bottom:10px}
+ body .meg-work .mw-piece-request{margin-top:auto;width:100%;min-height:44px;padding:7px 8px;font-size:10px;gap:5px;border-radius:7px 15px 7px 15px}
+ body .meg-work .mw-piece-request>span:last-child{width:24px;height:26px;flex-basis:24px}
+ body .meg-work .mw-piece-request svg{width:19px;height:21px}
+ body .meg-work .mw-expand-wrap{margin-top:28px}
+ body .meg-work .mw-expand{width:100%;min-height:52px;font-size:12px}
+ body .meg-work .mw-archive-scroller{grid-auto-columns:84%;gap:16px;scroll-snap-type:x mandatory}
+ body .meg-work .mw-archive-info p{font-size:12px}
+ body .meg-work .mw-origins-bottom{margin-top:26px}
+ body .meg-work .mw-finale{padding-block:36px 44px}
+ body .meg-work .mw-finale-layout{width:calc(100% - 32px);padding:28px 20px}
+ body .meg-work .mw-finale h2{font-size:34px!important}
+ body .meg-work .mw-finale-seal{width:25px;height:32px;right:15px;top:12px}
+ body .meg-work .mw-finale-cta{min-height:54px}
+ body .meg-work .mw-mobile-chapters{position:fixed;z-index:90;left:16px;right:16px;bottom:calc(12px + env(safe-area-inset-bottom));display:flex;justify-content:space-between;gap:4px;padding:5px;background:#faf5fcf5;border:1px solid #d2bddc;border-radius:100px;box-shadow:0 5px 25px #38233d25;backdrop-filter:blur(14px);visibility:hidden;opacity:0;transition:opacity .2s;max-width:420px;margin:auto}
+ body .meg-work .mw-mobile-chapters.is-visible{visibility:visible;opacity:1}
+ .mw-mobile-chapters a{flex:1;text-align:center;min-height:44px;display:grid;place-items:center;border-radius:100px;font:600 11px/1.4 "Sora",sans-serif;color:#6c4c7b}
+ .mw-mobile-chapters a[aria-current]{background:#e4d3ed;color:#4e305e}
+ body:has(.meg-work) .whatsapp-float{bottom:calc(84px + env(safe-area-inset-bottom))!important}
+ body:has(.meg-work) .back-to-top{bottom:148px!important}
+ .mw-lightbox{width:calc(100vw - 20px);max-width:calc(100vw - 20px);max-height:88dvh}
+ .mw-lightbox-heading h2{font-size:16px!important;overflow-wrap:anywhere}
+ .mw-lightbox-heading button{min-width:44px;min-height:44px;flex-shrink:0}
+ .mw-lightbox>img{max-height:68dvh}
+ html[data-theme=dark] body .meg-work .ms-opening .ms-story-path>a{background:#372c40;color:#dbcce1}
+ html[data-theme=dark] body .meg-work .mw-mobile-chapters{background:#2c2234f5;border-color:#60486e}
+ html[data-theme=dark] .mw-mobile-chapters a{color:#e5d4ee}
+ html[data-theme=dark] .mw-mobile-chapters a[aria-current]{background:#50375f;color:#fff}
+ html[data-theme=dark] body .meg-work :is(.mw-mobile-rail-head,.mw-project-detail summary){color:#ceb1dd}
+}
+@media(max-width:350px){body .meg-work .container{padding-inline:16px}body .meg-work .mw-gallery{gap:24px 12px}body .meg-work .mw-piece h3{font-size:18px!important}body .meg-work .mw-piece-request{font-size:9px}}
+@media(prefers-reduced-motion:reduce){.mw-mobile-chapters{transition:none!important}}
