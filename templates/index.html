@@ -342,7 +342,7 @@
 .home-cinema main{overflow:clip}
 </style>
 <link rel="stylesheet" href="{{ url_for('static',filename='css/work-showcase.css',v='20261022-identidade-v6') }}">
-<link rel="stylesheet" href="{{ url_for('static',filename='css/home-signature.css',v='20261020-campaign-v11') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/home-signature.css',v='20261029-wear-editorial-v1') }}">
 <link rel="stylesheet" href="{{ url_for('static',filename='css/services-discovery.css',v='20261020-butterfly-v1') }}">
 <link rel="stylesheet" href="{{ url_for('static',filename='css/pouch-studio.css',v='20261020-atelier-v3') }}">
  <link rel="stylesheet" href="{{ url_for('static',filename='css/pouch-detail-polish.css',v='20261025-atelier-v1') }}">
@@ -370,7 +370,11 @@
    <article class="carousel-slide slide-{{ slide.theme }} {% if loop.first %}is-active{% endif %}" style="--hero-photo:url('{{ url_for('static',filename=slide.image) }}')" data-carousel-slide role="group" aria-roledescription="banner" aria-label="{{ loop.index }} de {{ loop.length }}" {% if not loop.first %}hidden inert{% endif %}>
     <div class="carousel-copy">
      <span class="carousel-kicker">{{ icon('butterfly','carousel-butterfly') }} {{ slide.tag }}</span>
+     {% if slide.theme == 'wear' %}
+     <h2 class="title-carousel title-carousel-wear wear-editorial-title"><span class="wear-title-main"><span class="wear-lilac">Confecção</span> <span class="wear-white">própria.</span></span><span class="wear-title-second"><span class="wear-lilac">Sua identidade,</span> <span class="wear-white">em cada ponto.</span></span></h2>
+     {% else %}
      <{% if loop.first %}h1{% else %}h2{% endif %} class="title-carousel title-carousel-{{ slide.theme }}">{{ slide.title }} <span>{{ slide.accent }}</span></{% if loop.first %}h1{% else %}h2{% endif %}>
+     {% endif %}
      <p>{{ slide.text }}</p>
      {% if slide.details %}<span class="carousel-theme-details">{{ slide.details }}</span>{% endif %}
      <div class="carousel-actions">
