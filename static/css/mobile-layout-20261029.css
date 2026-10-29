@@ -8,14 +8,14 @@
  html body main :is(.services-heading,.pouch-heading,.empresa-section-heading,.ev-moments-heading,.ev-showcase-intro,.ev-worlds-heading){gap:16px;margin-bottom:22px}
  html body main :is(.services-heading h2,#pouch-title,.megui-around-heading h2,.mp-copy h2,.empresa-studio h2,.ev-moments-heading h2,.ev-showcase-intro h2,.ev-worlds-heading h2,.outside-box h2,.contact-story h1){font-size:clamp(28px,7.8vw,36px)!important;line-height:1.15!important;letter-spacing:-.045em!important}
  html body main :is(.services-heading p,.pouch-heading>p,.empresa-section-heading p,.outside-intro p,.contact-story>p){font-size:13px!important;line-height:1.75!important}
- html body .home-welcome .welcome-carousel{min-height:0}
- html body .home-welcome .carousel-slide{min-height:0}
- html body .home-welcome .carousel-copy{padding:20px 18px 6px}
+ html body.home-cinema .home-welcome .welcome-carousel{min-height:0!important}
+ html body.home-cinema .home-welcome .carousel-slide{min-height:0!important;height:auto!important}
+ html body.home-cinema .home-welcome .carousel-copy{padding:20px 18px 6px!important}
  html body .home-welcome .carousel-copy :is(h1,h2){font-size:32px!important;line-height:1.12!important;margin:12px 0}
  html body .home-welcome .carousel-copy p{font-size:13px;line-height:1.65;margin-bottom:14px}
- html body .home-welcome .carousel-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:16px}
- html body .home-welcome .carousel-actions>a{width:auto;min-width:0;font-size:11px;padding:10px;min-height:44px}
- html body .home-welcome .carousel-art{height:180px;min-height:0;padding:4px 18px 12px}
+ html body.home-cinema .home-welcome .carousel-actions{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:9px!important;margin-top:16px!important}
+ html body.home-cinema .home-welcome .carousel-actions>a{width:auto!important;min-width:0;font-size:11px!important;padding:10px!important;min-height:44px}
+ html body.home-cinema .home-welcome .carousel-art{height:180px!important;min-height:0!important;padding:4px 18px 12px!important;flex:none}
  html body .home-welcome .carousel-art>img,html body .home-welcome .carousel-art .wear-orbit{height:166px!important;max-height:166px!important;object-fit:contain}
  html body .home-welcome .carousel-material-swatch{width:68px;height:68px;min-height:0}
  /* Categorias: seis escolhas em grade, com imagens proporcionais. */
