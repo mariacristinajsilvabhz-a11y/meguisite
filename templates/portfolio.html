@@ -5,6 +5,54 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600;1,700&display=swap">
 <link rel="stylesheet" href="{{ url_for('static',filename='css/meg-work-atelier-20261025.css',v='20261026-cover-v6') }}">
 <script defer src="{{ url_for('static',filename='js/brand-drag.js',v='20261026-v1') }}"></script>
+<style>
+.ms-opening{--ms-paper:#f4f2e9;--ms-ink:#30372e;--ms-sage:#89937b;--ms-lilac:#9b73ae;--ms-vein:#f4f2e9;position:relative;isolation:isolate;overflow:hidden;background:var(--ms-paper);color:var(--ms-ink);padding:70px 0 0}
+.ms-opening .ms-opening-layout{display:grid;grid-template-columns:1fr 1fr;gap:75px;align-items:center;max-width:1180px;position:relative;z-index:2}
+.ms-opening .ms-opening-copy{padding:15px 0 30px;max-width:490px}
+.ms-opening .ms-kicker{display:flex;align-items:center;gap:12px;color:#787f6d;font:650 10px/1.5 "Sora",sans-serif;letter-spacing:.13em}
+.ms-opening .ms-kicker .icon{width:27px;height:27px;color:#9470a7}
+.ms-opening .ms-preface{margin:30px 0 18px;font:500 14px/1.5 "Sora",sans-serif;color:#7a816f}
+body .meg-work .ms-opening #mw-hero-title{font:550 clamp(45px,5vw,70px)/1.055 "Space Grotesk",sans-serif!important;letter-spacing:-.06em!important;color:var(--ms-ink)!important;margin:0 0 26px!important;max-width:none!important}
+body .meg-work .ms-opening #mw-hero-title>span{font:400 1.2em/1.05 Georgia,serif!important;letter-spacing:-.055em;color:#9772a6;display:inline-block}
+.ms-opening .ms-intro{max-width:41ch;margin:0;font:400 14px/1.9 "Sora",sans-serif;color:#68705f}
+.ms-opening .ms-invitation{max-width:38ch;margin:17px 0 0;font:600 12px/1.8 "Sora",sans-serif;color:#4e5847}
+.ms-opening .ms-start{display:inline-flex;align-items:center;gap:13px;margin-top:28px;padding:0 22px 0 0;min-height:54px;color:#644772;font:650 12px/1.4 "Sora",sans-serif}
+.ms-opening .ms-start>span{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:#e6dced;border:1px solid #ceb6da;transition:transform .25s}
+.ms-opening .ms-start .icon{width:27px;height:27px}
+.ms-opening .ms-start:hover>span{transform:rotate(-12deg);background:#dccbe7}
+.ms-opening .ms-cover{position:relative;isolation:isolate;min-width:0;padding:16px 28px 70px 6px}
+.ms-opening .ms-photograph{position:relative;z-index:1;height:440px;overflow:hidden;border-radius:48% 48% 7px 7px;transform:rotate(3deg);box-shadow:0 18px 32px -20px #4c554c55;background:#d3d6c9}
+.ms-opening .ms-photograph:after{content:"";position:absolute;inset:12px;border:1px dashed #f9f3e278;border-radius:inherit;pointer-events:none}
+.ms-opening .ms-photograph img{width:100%;height:100%;display:block;object-fit:cover;object-position:50% 36%}
+.ms-opening .ms-cover-caption{position:relative;z-index:3;width:max-content;max-width:90%;margin:-36px auto 0;padding:22px 27px;background:#e6dfed;color:#584161;transform:rotate(-3deg);box-shadow:0 7px 22px -16px #58416170}
+.ms-opening .ms-cover-caption>span{font:600 8px/1.5 "Sora",sans-serif;letter-spacing:.11em}
+.ms-opening .ms-cover-caption p{margin:10px 0 0;font:400 25px/1.18 Georgia,serif;letter-spacing:-.03em}
+.ms-opening .ms-leaf{position:absolute;pointer-events:none;z-index:0;color:#b0b9a0;opacity:.32}
+.ms-opening .ms-botanical{display:block;width:100%;height:100%}
+.ms-opening .ms-leaf-left{width:245px;height:420px;left:-135px;bottom:90px;transform:rotate(28deg)}
+.ms-opening .ms-leaf-right{width:300px;height:440px;right:-145px;top:-50px;transform:rotate(-145deg);color:#c8b7d2}
+.ms-opening .ms-cover-leaves{position:absolute;z-index:0;width:240px;height:390px;bottom:4px;left:-70px;color:#91a080;transform:rotate(-34deg)}
+.ms-opening .ms-butterfly{position:absolute;z-index:4;color:#9b74b1;pointer-events:none}
+.ms-opening .ms-butterfly .icon{width:100%;height:100%}
+.ms-opening .ms-butterfly-one{width:59px;height:65px;right:-7px;top:32px;transform:rotate(20deg);animation:ms-wing-drift 7s ease-in-out infinite}
+.ms-opening .ms-butterfly-two{width:28px;height:36px;left:-24px;top:70px;transform:rotate(-25deg);opacity:.7}
+.ms-opening .ms-butterfly-three{width:22px;height:28px;right:1px;bottom:92px;transform:rotate(35deg);opacity:.5}
+.ms-opening .ms-story-path{position:relative;z-index:2;max-width:1180px;display:grid;grid-template-columns:repeat(3,1fr);gap:35px;margin-top:16px;padding-top:25px;padding-bottom:28px;border-top:1px solid #a0aa8c45}
+.ms-opening .ms-story-path>a{display:flex;flex-direction:column;gap:8px;padding:4px 0;color:#5e6955}
+.ms-opening .ms-story-path>a>span{font:400 10px/1.6 "Sora",sans-serif}
+.ms-opening .ms-story-path strong{font:600 12px/1.5 "Sora",sans-serif;color:#5d4867}
+.ms-opening .ms-story-path>a:hover strong{color:#9772a6}
+@keyframes ms-wing-drift{50%{transform:translateY(-9px) rotate(12deg)}}
+html[data-theme=dark] .ms-opening{--ms-paper:#262b26;--ms-ink:#f0eee5;--ms-vein:#262b26;background:var(--ms-paper)!important}
+html[data-theme=dark] .ms-opening :is(.ms-intro,.ms-preface,.ms-kicker,.ms-invitation,.ms-story-path>a){color:#c1c8b7}
+html[data-theme=dark] .ms-opening .ms-story-path strong{color:#dbbfdf}
+html[data-theme=dark] .ms-opening .ms-cover-caption{background:#413748;color:#eadcf0}
+html[data-theme=dark] .ms-opening .ms-start{color:#dabce8}
+@media(min-width:1450px){.ms-opening .ms-photograph{height:470px}}
+@media(max-width:800px){.ms-opening{padding-top:46px}.ms-opening .ms-opening-layout{grid-template-columns:1fr;gap:25px;max-width:580px}.ms-opening .ms-opening-copy{max-width:none;padding-bottom:0}.ms-opening .ms-preface{margin-top:24px}.ms-opening .ms-cover{width:min(100%,410px);margin:0 auto;padding-bottom:30px;padding-top:8px}.ms-opening .ms-photograph{height:390px}.ms-opening .ms-cover-leaves{width:185px;left:-29px;bottom:0}.ms-opening .ms-story-path{max-width:580px;gap:20px;grid-template-columns:1fr;padding-top:21px;margin-top:15px}.ms-opening .ms-story-path>a{gap:3px}.ms-opening .ms-leaf-left{opacity:.15}.ms-opening .ms-leaf-right{width:180px;right:-100px;top:40px}body .meg-work .ms-opening #mw-hero-title{font-size:52px!important}.ms-opening .ms-intro{max-width:44ch}}
+@media(max-width:390px){body .meg-work .ms-opening #mw-hero-title{font-size:44px!important}.ms-opening .ms-photograph{height:330px}.ms-opening .ms-cover-caption p{font-size:22px}}
+@media(prefers-reduced-motion:reduce){.ms-opening *{animation:none!important;transition:none!important}}
+</style>
 {% endblock %}
 
 {% macro watch(film, position='lead') -%}
@@ -32,29 +80,32 @@
 ] %}
 
 <div class="meg-work" id="portfolio-megui">
-  <section class="mw-hero" aria-labelledby="mw-hero-title">
-    <div class="container mw-hero-layout">
-      <div class="mw-hero-copy">
-        <span class="mw-signature"><span class="mw-signature-mark" aria-hidden="true">{{ icon('butterfly') }}</span> UM POUCO DO QUE FAZEMOS POR AQUI</span>
-        <h1 id="mw-hero-title" class="title-portfolio"><span class="title-small-line">Feito pela Megui.</span>Trabalhos que levam marcas adiante.</h1>
-        <p>Uma marca que ganha as ruas. Uma equipe que veste a própria identidade. Um presente que continua sendo lembrado. É assim que nossos trabalhos encontram as pessoas.</p>
-        <div class="mw-hero-actions">
-          <a href="#marcas" class="mw-main-action"><span>Conheça o que já criamos</span><span class="mw-action-seal" aria-hidden="true">{{ icon('butterfly') }}</span></a>
-          <a href="#processos" class="mw-hero-film-link"><span class="mw-hero-film-dot" aria-hidden="true"></span> Veja como fazemos</a>
-        </div>
-        <div class="mw-hero-promise"><span>CONFECÇÃO PRÓPRIA</span><span>PERSONALIZAÇÃO</span><span>PROJETOS REAIS</span></div>
+  <section class="ms-opening" aria-labelledby="mw-hero-title">
+    <div class="ms-leaf ms-leaf-left"><svg class="ms-botanical" viewBox="0 0 260 420" fill="none" aria-hidden="true"><path d="M124 415C88 315 180 199 115 28" stroke="currentColor" stroke-width="1.4"/><g fill="currentColor"><path d="M128 348C68 346 39 301 41 265c55 8 87 37 87 83Z"/><path d="M130 304c66-21 99-68 88-108-55 20-86 59-88 108Z"/><path d="M142 240c-58-9-91-48-87-88 56 12 83 38 87 88Z"/><path d="M142 185c52-21 76-60 63-95-41 18-65 51-63 95Z"/><path d="M132 122C90 105 71 71 78 42c37 16 53 42 54 80Z"/><path d="M121 65c26-23 32-44 19-65-24 18-28 43-19 65Z"/></g><g stroke="var(--ms-vein,#f4f0e8)" stroke-width=".8" opacity=".6"><path d="m128 348-66-61m68 17 65-83m-53 19-66-63m66 8 49-72m-59 9L88 57"/></g></svg></div>
+    <div class="ms-leaf ms-leaf-right"><svg class="ms-botanical" viewBox="0 0 260 420" fill="none" aria-hidden="true"><path d="M124 415C88 315 180 199 115 28" stroke="currentColor" stroke-width="1.4"/><g fill="currentColor"><path d="M128 348C68 346 39 301 41 265c55 8 87 37 87 83Z"/><path d="M130 304c66-21 99-68 88-108-55 20-86 59-88 108Z"/><path d="M142 240c-58-9-91-48-87-88 56 12 83 38 87 88Z"/><path d="M142 185c52-21 76-60 63-95-41 18-65 51-63 95Z"/><path d="M132 122C90 105 71 71 78 42c37 16 53 42 54 80Z"/><path d="M121 65c26-23 32-44 19-65-24 18-28 43-19 65Z"/></g><g stroke="var(--ms-vein,#f4f0e8)" stroke-width=".8" opacity=".6"><path d="m128 348-66-61m68 17 65-83m-53 19-66-63m66 8 49-72m-59 9L88 57"/></g></svg></div>
+    <div class="container ms-opening-layout">
+      <div class="ms-opening-copy">
+        <span class="ms-kicker">{{ icon('butterfly') }} HISTÓRIAS FEITAS PELA MEGUI</span>
+        <p class="ms-preface">Era uma ideia. E então…</p>
+        <h1 id="mw-hero-title">Toda ideia tem<br>um jeito de<br><span>florescer.</span></h1>
+        <p class="ms-intro">Aqui, ela encontra tecido, cor e mãos que fazem. Depois, vira parte de uma equipe, de um encontro, da rotina de alguém.</p>
+        <p class="ms-invitation">Cada trabalho é um capítulo. Vem conhecer os nossos.</p>
+        <a class="ms-start" href="#marcas"><span>{{ icon('butterfly') }}</span> Comece essa história</a>
       </div>
-      <div class="mw-hero-composition">
-        <p class="mw-hero-above">Feito para viver fora da fábrica.</p>
-        <div class="mw-hero-photograph">
-          <img src="{{ url_for('static',filename='img/acervo/camisetas-em-uso.jpg') }}" alt="Camisetas personalizadas em uso durante um evento real" fetchpriority="high" decoding="async">
-        </div>
-        <div class="mw-hero-small" aria-hidden="true">
-          <img src="{{ url_for('static',filename='img/trabalhos/2026/senac-cadernos-recorte-v3.webp') }}" alt="" loading="lazy" data-clean-cutout>
-        </div>
-        <div class="mw-hero-insignia" aria-hidden="true">{{ icon('butterfly') }}</div>
+      <div class="ms-cover">
+        <div class="ms-cover-leaves"><svg class="ms-botanical" viewBox="0 0 260 420" fill="none" aria-hidden="true"><path d="M124 415C88 315 180 199 115 28" stroke="currentColor" stroke-width="1.4"/><g fill="currentColor"><path d="M128 348C68 346 39 301 41 265c55 8 87 37 87 83Z"/><path d="M130 304c66-21 99-68 88-108-55 20-86 59-88 108Z"/><path d="M142 240c-58-9-91-48-87-88 56 12 83 38 87 88Z"/><path d="M142 185c52-21 76-60 63-95-41 18-65 51-63 95Z"/><path d="M132 122C90 105 71 71 78 42c37 16 53 42 54 80Z"/><path d="M121 65c26-23 32-44 19-65-24 18-28 43-19 65Z"/></g><g stroke="var(--ms-vein,#f4f0e8)" stroke-width=".8" opacity=".6"><path d="m128 348-66-61m68 17 65-83m-53 19-66-63m66 8 49-72m-59 9L88 57"/></g></svg></div>
+        <figure class="ms-photograph"><img src="{{ url_for('static',filename='img/acervo/camisetas-em-uso.jpg') }}" alt="Pessoas usando camisetas personalizadas em um evento: o trabalho ganha vida fora da fábrica" fetchpriority="high" decoding="async"></figure>
+        <span class="ms-butterfly ms-butterfly-one" aria-hidden="true">{{ icon('butterfly') }}</span>
+        <span class="ms-butterfly ms-butterfly-two" aria-hidden="true">{{ icon('butterfly') }}</span>
+        <span class="ms-butterfly ms-butterfly-three" aria-hidden="true">{{ icon('butterfly') }}</span>
+        <div class="ms-cover-caption"><span>É LÁ FORA QUE TUDO FAZ SENTIDO.</span><p>Quando a criação<br>encontra as pessoas.</p></div>
       </div>
     </div>
+    <nav class="container ms-story-path" aria-label="Caminhos desta história">
+      <a href="#marcas"><span>As ideias que ganharam forma</span><strong>Conheça os projetos</strong></a>
+      <a href="#processos"><span>As mãos por trás de cada detalhe</span><strong>Entre nos bastidores</strong></a>
+      <a href="#projetos"><span>Cada marca, um novo capítulo</span><strong>Continue explorando</strong></a>
+    </nav>
   </section>
 
   <section class="mw-brandproof" aria-label="Marcas que já confiaram na Megui">
@@ -78,10 +129,10 @@
     <div class="container">
       <div class="mw-section-opener">
         <div class="mw-opener-title">
-          <span class="mw-overline">HISTÓRIAS DE MARCA</span>
-          <h2 id="mw-featured-heading" class="title-section">Identidades que saíram do papel.</h2>
+          <span class="mw-overline">QUANDO A IDEIA ENCONTRA O MUNDO</span>
+          <h2 id="mw-featured-heading" class="title-section">Cada encontro, um novo capítulo.</h2>
         </div>
-        <p>Cada projeto tem seu propósito. Nosso papel é transformar essa identidade em algo que as pessoas possam ver, vestir, levar e usar.</p>
+        <p>Uma marca nunca chega sozinha. Ela traz uma mensagem, uma ocasião, um jeito de ser. Nossos projetos dão forma a esses encontros.</p>
       </div>
 
       <article class="mw-lead-project">
@@ -94,8 +145,8 @@
           <span class="mw-lead-photo-tag">ESTÚDIO DE PROJETOS MEGUI</span>
         </div>
         <div class="mw-lead-story">
-          <div class="mw-lead-brand"><span>PROJETO EM DESTAQUE</span><strong>SENAC<span>X</span></strong></div>
-          <h3>Tecnologia<br>que carrega<br><em>uma identidade.</em></h3>
+          <div class="mw-lead-brand"><span>UM CAPÍTULO COM SENACX</span><strong>SENAC<span>X</span></strong></div>
+          <h3>Uma ideia<br>que ganha<br><em>voz.</em></h3>
           <p>Alexas Echo Pop personalizadas com a identidade NaSemanaS. Uma ideia que coloca a marca em um objeto que permanece na rotina, muito depois do encontro.</p>
           <div class="mw-lead-details"><span>TECNOLOGIA PERSONALIZADA</span><span>APLICAÇÃO DE MARCA</span></div>
           <a class="mw-editorial-cta" href="https://wa.me/{{ whatsapp_number }}?text={{ ('Olá! Vi as Alexas personalizadas do SenacX no portfólio da Megui e quero conversar sobre um projeto semelhante.')|urlencode }}" target="_blank" rel="noopener"><span>Quero criar algo assim</span><span class="mw-editorial-cta-mark" aria-hidden="true">{{ icon('butterfly') }}</span></a>
@@ -113,7 +164,7 @@
             <span class="mw-image-enlarge" aria-hidden="true">VER DE PERTO</span>
           </a>
           <div class="mw-feature-copy">
-            <span class="mw-overline">{{ eyebrow }}</span>
+            <span class="mw-overline">UM CAPÍTULO · {{ eyebrow }}</span>
             <h3>{{ title }}</h3>
             <p>{{ description }}</p>
             <div class="mw-feature-base">
@@ -130,8 +181,8 @@
   <section class="mw-making" id="processos" aria-labelledby="mw-making-heading">
     <div class="container">
       <div class="mw-making-head">
-        <span class="mw-overline">POR DENTRO DA MEGUI</span>
-        <h2 id="mw-making-heading" class="title-editorial"><span class="title-small-line">Entre a ideia e a entrega,</span><em>tem muita mão na massa.</em></h2>
+        <span class="mw-overline">ONDE A HISTÓRIA TOMA FORMA</span>
+        <h2 id="mw-making-heading" class="title-editorial"><span class="title-small-line">Antes de chegar às pessoas,</span><em>passa pelas nossas mãos.</em></h2>
         <p>Aqui você encontra os bastidores de verdade: estamparia, uniformes, comunicação visual e confecção. Aperte o play e veja como o trabalho acontece.</p>
       </div>
       {% if production_videos %}
@@ -170,7 +221,7 @@
   <section class="mw-collection" id="projetos" aria-labelledby="mw-collection-heading">
     <div class="container">
       <div class="mw-collection-header">
-        <div><span class="mw-overline">CONHEÇA NOSSO ACERVO</span><h2 id="mw-collection-heading" class="title-compact">Explore o que já criamos.</h2></div>
+        <div><span class="mw-overline">A HISTÓRIA CONTINUA</span><h2 id="mw-collection-heading" class="title-compact">Mais marcas. Outros capítulos.</h2></div>
         <p>Uniformes para equipes, lembranças para eventos, brindes que representam marcas e projetos que fogem do catálogo. Explore o que já passou por aqui.</p>
       </div>
 
@@ -198,7 +249,7 @@
             <span class="mw-piece-image-zoom" aria-hidden="true">AMPLIAR</span>
           </a>
           <div class="mw-piece-body">
-            <span class="mw-piece-type">{{ work.kind }}</span>
+            <span class="mw-piece-type">UM CAPÍTULO DE {{ work.kind }}</span>
             <h3>{{ work.title }}</h3>
             <p>{{ work.text }}</p>
             <a class="mw-piece-request" href="https://wa.me/{{ whatsapp_number }}?text={{ ('Olá, Megui! Gostei do projeto “' ~ work.title ~ '” que vi no portfólio. Quero conversar sobre algo parecido.')|urlencode }}"
@@ -239,7 +290,7 @@
   <section class="mw-finale" aria-labelledby="mw-finale-title">
     <div class="container mw-finale-layout">
       <div class="mw-finale-seal" aria-hidden="true">{{ icon('butterfly') }}</div>
-      <div class="mw-finale-copy"><span class="mw-overline">A SUA IDEIA É A PRÓXIMA</span><h2 id="mw-finale-title" class="title-invitation">Que marca vamos deixar juntos?</h2></div>
+      <div class="mw-finale-copy"><span class="mw-overline">O PRÓXIMO CAPÍTULO PODE SER SEU</span><h2 id="mw-finale-title" class="title-invitation">Que história vamos criar juntos?</h2></div>
       <div class="mw-finale-panel">
         <p>Uma equipe que quer se apresentar melhor, um evento especial ou algo totalmente fora do catálogo. O próximo projeto começa com uma conversa.</p>
         <a class="mw-finale-cta" href="https://wa.me/{{ whatsapp_number }}?text={{ 'Olá, Megui! Vi o portfólio e quero conversar sobre um projeto personalizado.'|urlencode }}" target="_blank" rel="noopener"><span>Conversar sobre meu projeto</span><span aria-hidden="true">{{ icon('butterfly') }}</span></a>
