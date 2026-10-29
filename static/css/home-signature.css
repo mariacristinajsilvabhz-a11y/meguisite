@@ -442,3 +442,16 @@
 #megui-theme-slides .carousel-slide:not(.slide-wear) .carousel-theme-details{
  color:#e2c5ef!important;-webkit-text-fill-color:#e2c5ef!important;
 }
+
+/* Ornamentos por tema: sempre ancorados à área da imagem, nunca ao fluxo de texto. */
+#megui-theme-slides .carousel-slide:not(.slide-wear) .carousel-art{position:absolute;isolation:isolate}
+#megui-theme-slides .carousel-slide:not(.slide-wear) .megui-scene-ornaments{position:absolute!important;inset:0!important;z-index:1!important;pointer-events:none!important}
+#megui-theme-slides .carousel-slide:not(.slide-wear) .megui-ornament{display:block!important;position:absolute!important;z-index:2;line-height:1;opacity:.8;animation:megui-ornament-float 5.8s ease-in-out infinite alternate}
+#megui-theme-slides .carousel-slide:not(.slide-wear) .megui-ornament .icon{display:block!important;width:32px!important;height:32px!important;color:inherit}
+#megui-theme-slides .carousel-slide:not(.slide-wear) .megui-ornament-b{animation-delay:-2.1s}
+#megui-theme-slides .carousel-slide:not(.slide-wear) .megui-ornament-c{animation-delay:-3.6s}
+#megui-theme-slides .carousel-slide:not(.slide-wear) .megui-ornament-d{animation-delay:-1.4s}
+#megui-theme-slides .carousel-slide:not(.slide-wear) .carousel-art>img{position:relative;z-index:3}
+@keyframes megui-ornament-float{from{transform:translate3d(0,2px,0) rotate(-6deg)}to{transform:translate3d(3px,-8px,0) rotate(7deg)}}
+@media(max-width:760px){#megui-theme-slides .carousel-slide:not(.slide-wear) .megui-ornament{font-size:20px!important}#megui-theme-slides .carousel-slide:not(.slide-wear) .megui-ornament .icon{width:23px!important;height:23px!important}}
+@media(prefers-reduced-motion:reduce){#megui-theme-slides .carousel-slide:not(.slide-wear) .megui-ornament{animation:none!important}}
