@@ -148,7 +148,7 @@
 
 <link rel="stylesheet" href="{{ url_for('static',filename='css/knit-journal.css',v='20261016-v3') }}">
 <link rel="stylesheet" href="{{ url_for('static',filename='css/mostruario.css',v='20261018-v1') }}">
-<link rel="stylesheet" href="{{ url_for('static',filename='css/home-editorial-refresh.css',v='20261029-fora-obvio-editorial-v2') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/home-editorial-refresh.css',v='20261029-restore-v3') }}">
 <style>
 {% raw %}
 /* Abertura Megui — apresentação fluida, sem molduras, preserva imagens originais. */
@@ -512,37 +512,27 @@
 </section>
 {% endif %}
 
-<section class="section home-idea idea-art-direction" id="sua-ideia" aria-labelledby="idea-title">
-  <div class="container idea-campaign">
-    <header class="idea-section-heading">
-      <span class="explore-signature">{{ icon('butterfly') }} <span>FORA DO ÓBVIO</span></span>
-      <h2 id="idea-title">Sua ideia vai <em>além</em> do catálogo.</h2>
-      <p class="idea-intro">Algumas ideias não cabem numa prateleira. E é justamente aí que a nossa criatividade começa.</p>
-    </header>
+<section class="section home-idea" id="sua-ideia" aria-labelledby="idea-title">
+  <div class="container">
+    <header class="idea-section-heading"><span class="explore-signature">{{ icon('butterfly') }} <span>Fora do óbvio</span></span><h2 id="idea-title">Sua ideia vai além do catálogo.</h2></header>
     <div class="idea-layout">
-      <div class="idea-showcase" aria-label="Peças personalizadas que inspiram novas ideias">
+      <div class="idea-showcase" aria-label="Explore algumas possibilidades de personalização">
         <span class="idea-orbit" aria-hidden="true"></span>
-        <span class="idea-visual-label">MATERIAIS DIFERENTES.<br>SUA IDENTIDADE EM TODOS.</span>
-        <a class="idea-product idea-shirt" href="{{ url_for('category',slug='vestuario') }}"><img src="{{ url_for('static',filename='img/produtos/camiseta-megui.webp') }}" alt="Camiseta preta personalizada Megui" loading="lazy"><span>Vista sua ideia</span></a>
-        <a class="idea-product idea-notebook" href="{{ url_for('category',slug='grafica') }}"><img src="{{ url_for('static',filename='img/inicio/caderno.webp') }}" alt="Caderno personalizado Megui" loading="lazy"><span>Dê forma à mensagem</span></a>
-        <a class="idea-product idea-bag" href="{{ url_for('category',slug='bolsas-acessorios') }}"><img src="{{ url_for('static',filename='img/inicio/ecobag.webp') }}" alt="Ecobag personalizada Megui" loading="lazy"><span>Leve sua marca</span></a>
-        <a class="idea-product idea-cup" href="{{ url_for('category',slug='brindes') }}"><img src="{{ url_for('static',filename='img/inicio/copo-termico.webp') }}" alt="Copo térmico personalizado" loading="lazy"><span>Faça parte da rotina</span></a>
-        <span class="idea-signature" aria-hidden="true">{{ icon('butterfly') }} Feito para representar.</span>
+        <span class="idea-visual-label">MATERIAIS DIFERENTES.<br>A SUA IDENTIDADE EM TODOS.</span>
+        <a class="idea-product idea-shirt" href="{{ url_for('category',slug='vestuario') }}"><img src="{{ url_for('static',filename='img/produtos/camiseta-megui.webp') }}" alt="Camiseta preta personalizada Megui" width="1000" height="1000" loading="lazy"><span>Vista sua ideia {{ icon('arrow') }}</span></a>
+        <a class="idea-product idea-bag" href="{{ url_for('category',slug='bolsas-acessorios') }}"><img src="{{ url_for('static',filename='img/inicio/ecobag.webp') }}" alt="Ecobag personalizada" width="1000" height="1000" loading="lazy"><span>Leve sua marca {{ icon('arrow') }}</span></a>
+        <a class="idea-product idea-notebook" href="{{ url_for('category',slug='grafica') }}"><img src="{{ url_for('static',filename='img/inicio/caderno.webp') }}" alt="Caderno com personalização Megui" width="1000" height="1000" loading="lazy"><span>Dê forma à mensagem {{ icon('arrow') }}</span></a>
+        <a class="idea-product idea-cup" href="{{ url_for('category',slug='brindes') }}"><img src="{{ url_for('static',filename='img/inicio/copo-termico.webp') }}" alt="Copo térmico personalizado" width="1000" height="1000" loading="lazy"><span>Faça parte da rotina {{ icon('arrow') }}</span></a>
+        <span class="idea-signature" aria-hidden="true">{{ icon('butterfly') }} feito para representar.</span>
       </div>
       <div class="idea-copy">
-        <span class="idea-copy-eyebrow">A SUA IDEIA, DO SEU JEITO</span>
-        <p class="idea-story">Pode ser um presente com significado, uma peça para sua marca ou um produto que você ainda nem encontrou por aí. <strong>A gente ajuda a transformar a ideia em algo real.</strong></p>
-        <div class="idea-invitation">
-          <h3>Não encontrou por aqui?</h3>
-          <p>Conte o que imaginou, envie uma referência ou até um rabisco. Vamos estudar materiais, formatos e possibilidades para criar com você.</p>
-        </div>
-        <a class="idea-cta" href="{{ url_for('outside_box') }}"><span>Vamos tirar sua ideia do papel</span>{{ icon('arrow') }}</a>
-        <a class="idea-secondary-link" href="https://wa.me/{{ whatsapp_number }}?text={{ 'Olá! Tenho uma ideia fora do catálogo e quero conversar com a Megui.'|urlencode }}" target="_blank" rel="noopener">Prefere conversar pelo WhatsApp? {{ icon('arrow') }}</a>
+        <p>Uma peça para sua marca, um presente com significado ou um kit que ninguém pensou ainda. A personalização começa no que você quer contar.</p>
+        <div class="idea-invitation"><h3>Não encontrou por aqui?</h3><p>Mande uma referência, um rascunho ou conte sua ideia. Vamos avaliar materiais, formatos e possibilidades para tirar seu projeto do papel.</p></div>
+        <a class="idea-cta" href="https://wa.me/{{ whatsapp_number }}?text={{ 'Olá! Tenho uma ideia de produto personalizado e quero desenvolver com a Megui.'|urlencode }}" target="_blank" rel="noopener">{{ icon('whatsapp') }} <span>Quero conversar sobre minha ideia</span> {{ icon('arrow') }}</a>
+        <span class="idea-cta-note">Conversa direta com quem entende de personalização.</span>
       </div>
     </div>
     <div class="idea-footer"><span>Uma marca. Muitas possibilidades.</span><nav aria-label="Mais possibilidades para seu projeto"><a href="{{ url_for('b2b') }}">Para sua empresa {{ icon('arrow') }}</a><a href="{{ url_for('events') }}">Para seu evento {{ icon('arrow') }}</a><a href="{{ url_for('products') }}">Explore o catálogo {{ icon('arrow') }}</a></nav></div>
-    <svg class="idea-flight" viewBox="0 0 460 120" fill="none" aria-hidden="true"><path d="M4 54 C100 44 136 102 248 66 S398 66 448 7" stroke="#9B72AD" stroke-width="3" stroke-linecap="round" stroke-dasharray="10 16"/><path d="M428 8l15 -7 -5 18" stroke="#9B72AD" stroke-width="2"/></svg>
-    <span class="idea-flight-butterfly" aria-hidden="true">{{ icon('butterfly') }}</span>
   </div>
 </section>
 
