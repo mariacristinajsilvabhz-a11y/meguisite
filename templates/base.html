@@ -27,7 +27,7 @@
   <link rel="stylesheet" href="{{ url_for('static',filename='css/typography-megui.css',v='20261024-v1') }}">
   <link rel="stylesheet" href="{{ url_for('static',filename='css/editorial-titles.css',v='20261028-composition-v1') }}">
   <link rel="stylesheet" href="{{ url_for('static',filename='css/theme-mode.css',v='20261029-client-contrast-v4') }}">
-  <link rel="stylesheet" href="{{ url_for('static',filename='css/mobile-layout-20261029.css',v='5-banner-flow') }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/mobile-layout-20261029.css',v='20261029-carousel-hidden-fix') }}">
 </head>
 <body{% if request.endpoint == 'home' %} class="home-cinema"{% elif request.endpoint == 'b2b' %} class="corporate-page"{% elif request.endpoint == 'events' %} class="events-page"{% elif request.endpoint in ['products', 'category'] %} class="catalog-experience"{% endif %}{% if request.endpoint not in ['home', 'products', 'category', 'product', 'create_art', 'outside_box', 'events'] %} data-scroll-experience{% endif %}>
   {% from '_icons.html' import icon %}
