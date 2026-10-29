@@ -381,3 +381,44 @@
  #megui-theme-slides .slide-wear .carousel-art .wear-butterfly .icon{width:23px!important;height:23px!important}
  #megui-theme-slides .slide-wear .carousel-art .wear-butterfly{width:24px!important;height:24px!important}
 }
+
+/* Refinamento da arte aprovada: hierarquia, profundidade e movimento delicado. */
+#megui-theme-slides .slide-wear h2.wear-editorial-title .wear-title-main > .wear-lilac,
+#megui-theme-slides .slide-wear h2.wear-editorial-title .wear-title-second > .wear-lilac{color:#d7a6f1!important}
+#megui-theme-slides .slide-wear h2.wear-editorial-title .wear-title-main > .wear-white,
+#megui-theme-slides .slide-wear h2.wear-editorial-title .wear-title-second > .wear-white{color:#fff!important}
+#megui-theme-slides .slide-wear .carousel-art .carousel-stage-word{
+ top:15%!important;right:-1%!important;font-size:clamp(125px,16vw,230px)!important;
+ color:rgba(195,136,222,.50)!important;text-shadow:0 0 26px rgba(186,102,229,.11);
+}
+#megui-theme-slides .slide-wear .carousel-art .wear-orbit{
+ border-color:rgba(216,156,236,.29)!important;opacity:.65;
+}
+#megui-theme-slides .slide-wear:before{
+ background:radial-gradient(ellipse at 79% 62%,rgba(170,90,199,.22),transparent 48%),
+ radial-gradient(ellipse at 68% 78%,rgba(129,60,164,.16),transparent 43%),
+ radial-gradient(ellipse at 8% 8%,rgba(155,83,183,.10),transparent 53%)!important;
+}
+#megui-theme-slides .slide-wear .fabric-zoom{
+ box-shadow:0 16px 30px rgba(9,4,15,.25),0 0 0 1px rgba(221,167,245,.12)!important;
+}
+#megui-theme-slides .slide-wear .carousel-art .wear-butterfly{
+ animation:megui-butterfly-sway 5.8s ease-in-out infinite alternate;
+ will-change:transform;
+}
+#megui-theme-slides .slide-wear .carousel-art .wear-butterfly-a{--wing-rotation:-25deg;animation-duration:5.2s;animation-delay:-1.2s}
+#megui-theme-slides .slide-wear .carousel-art .wear-butterfly-b{--wing-rotation:23deg;animation-duration:6.7s;animation-delay:-3.4s}
+#megui-theme-slides .slide-wear .carousel-art .wear-butterfly-c{--wing-rotation:-22deg;animation-duration:6.0s;animation-delay:-2.1s}
+@keyframes megui-butterfly-sway{
+ 0%{transform:translate3d(0,0,0) rotate(calc(var(--wing-rotation) - 5deg))}
+ 50%{transform:translate3d(2px,-5px,0) rotate(var(--wing-rotation))}
+ 100%{transform:translate3d(-2px,3px,0) rotate(calc(var(--wing-rotation) + 6deg))}
+}
+@media(prefers-reduced-motion:reduce){
+ #megui-theme-slides .slide-wear .carousel-art .wear-butterfly{
+  animation:none!important;transform:rotate(var(--wing-rotation))!important;will-change:auto!important;
+ }
+}
+@media(max-width:760px){
+ #megui-theme-slides .slide-wear .carousel-art .carousel-stage-word{top:7%!important;font-size:clamp(85px,24vw,140px)!important}
+}
