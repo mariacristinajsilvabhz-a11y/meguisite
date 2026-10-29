@@ -160,16 +160,25 @@ html:not([data-theme=dark]) body .modern-header .theme-toggle{
  background:#e7d5f1!important;border-color:#ceb2df!important;color:#67417c!important;
 }
 
-/* Logotipos da história Megui: contraste correto nos dois temas. */
-html:not([data-theme=dark]) body .client-logo-wall .client-logo-card img.client-logo{
- filter:brightness(0) saturate(100%) invert(19%) sepia(24%) saturate(1302%) hue-rotate(246deg) brightness(89%) contrast(94%)!important;
- opacity:.9!important;
+/* Logotipos: preserva o arquivo original, sem tintura lilás ou silhuetas. */
+html body :is(.client-logo-wall,.client-ribbon) img.client-logo{
+ filter:none!important;opacity:1!important;mix-blend-mode:normal!important;
+}
+html:not([data-theme=dark]) body :is(.client-logo-wall,.client-ribbon) img.client-logo-monochrome:not(.client-logo-paper){
+ filter:brightness(0)!important;
+}
+html:not([data-theme=dark]) body :is(.client-logo-wall,.client-ribbon) img.client-logo[src$="sesc.png"],
+html:not([data-theme=dark]) body :is(.client-logo-wall,.client-ribbon) img.client-logo[src$="printup-v2.png"]{
+ filter:url(#brand-white-to-ink)!important;
+}
+html:not([data-theme=dark]) body :is(.client-logo-wall,.client-ribbon) img.client-logo-paper{
+ filter:none!important;mix-blend-mode:multiply!important;
 }
 html:not([data-theme=dark]) body .client-logo-wall .client-brand-name{
- color:#4d315e!important;-webkit-text-fill-color:#4d315e!important;
+ color:#111!important;-webkit-text-fill-color:#111!important;
 }
-html[data-theme=dark] body .client-logo-wall .client-logo-card img.client-logo{
- filter:brightness(0) invert(1)!important;opacity:.92!important;
+html[data-theme=dark] body :is(.client-logo-wall,.client-ribbon) img.client-logo-paper{
+ background:#fff!important;padding:5px;box-sizing:border-box;filter:none!important;
 }
 html[data-theme=dark] body .client-logo-wall .client-brand-name{
  color:#fff!important;-webkit-text-fill-color:#fff!important;
