@@ -243,3 +243,47 @@
  #megui-theme-slides .slide-wear .wear-editorial-title .wear-title-second{font-size:.82em!important;white-space:normal}
  #megui-theme-slides .slide-wear .carousel-stage-word{top:7%;right:1%;font-size:clamp(82px,24vw,135px)}
 }
+
+/* Correção: regra antiga h2 span tornava TODOS os segmentos serifados.
+   Os quatro segmentos recebem fontes e cores explicitamente. */
+#megui-theme-slides .slide-wear .carousel-copy{width:60%!important;max-width:700px!important}
+#megui-theme-slides .slide-wear h2.wear-editorial-title{
+ display:flex!important;flex-direction:column!important;align-items:flex-start!important;
+ width:100%!important;max-width:none!important;
+ font-family:"Manrope","DM Sans",sans-serif!important;font-style:normal!important;
+ font-weight:800!important;font-size:clamp(31px,3.45vw,50px)!important;line-height:1.08!important;
+ letter-spacing:-.055em!important;text-wrap:nowrap!important;
+}
+#megui-theme-slides .slide-wear h2.wear-editorial-title > .wear-title-main{
+ display:block!important;white-space:nowrap!important;max-width:none!important;
+ font-family:"Manrope","DM Sans",sans-serif!important;font-style:normal!important;
+ font-size:1em!important;font-weight:800!important;line-height:1.1!important;
+}
+#megui-theme-slides .slide-wear h2.wear-editorial-title > .wear-title-second{
+ display:block!important;white-space:nowrap!important;max-width:none!important;
+ font-family:"Cormorant Garamond",Georgia,serif!important;font-style:italic!important;
+ font-size:.87em!important;font-weight:600!important;line-height:1.13!important;
+ letter-spacing:-.045em!important;margin-top:2px!important;
+}
+#megui-theme-slides .slide-wear h2.wear-editorial-title .wear-title-main > span{
+ display:inline!important;margin:0!important;font-family:"Manrope","DM Sans",sans-serif!important;
+ font-style:normal!important;font-weight:800!important;font-size:1em!important;line-height:inherit!important;
+ letter-spacing:inherit!important;text-shadow:none!important;
+}
+#megui-theme-slides .slide-wear h2.wear-editorial-title .wear-title-second > span{
+ display:inline!important;margin:0!important;font-family:"Cormorant Garamond",Georgia,serif!important;
+ font-style:italic!important;font-weight:600!important;font-size:1em!important;
+ line-height:inherit!important;letter-spacing:inherit!important;text-shadow:none!important;
+}
+#megui-theme-slides .slide-wear h2.wear-editorial-title .wear-lilac{color:#d7a6f1!important}
+#megui-theme-slides .slide-wear h2.wear-editorial-title .wear-white{color:#fff!important}
+@media(max-width:1000px){
+ #megui-theme-slides .slide-wear .carousel-copy{width:59%!important}
+ #megui-theme-slides .slide-wear h2.wear-editorial-title{font-size:clamp(27px,3.4vw,38px)!important}
+}
+@media(max-width:760px){
+ #megui-theme-slides .slide-wear .carousel-copy{width:100%!important;max-width:none!important}
+ #megui-theme-slides .slide-wear h2.wear-editorial-title{font-size:clamp(25px,6.3vw,36px)!important;text-wrap:wrap!important}
+ #megui-theme-slides .slide-wear h2.wear-editorial-title > .wear-title-main,
+ #megui-theme-slides .slide-wear h2.wear-editorial-title > .wear-title-second{white-space:normal!important}
+}
