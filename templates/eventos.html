@@ -4,35 +4,98 @@
 {% block final_head %}
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600;1,700&display=swap">
 <link rel="stylesheet" href="{{ url_for('static',filename='css/eventos-editorial-20261025.css',v='20261025-v2') }}">
+
+<style>
+.ev-gather{background:#f1e9f6;color:#302135;position:relative;overflow:hidden;padding:54px 0 0}
+.ev-gather .ev-wrap{max-width:1260px}
+.eg-heading{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,.7fr);gap:60px;align-items:end;padding-bottom:36px}
+.eg-eyebrow{display:flex;align-items:center;gap:12px;font:650 10px/1.5 "Sora",sans-serif;letter-spacing:.12em;color:#89659b;margin-bottom:24px}
+.eg-eyebrow svg{width:28px;height:32px}
+body .ev-gather h1{font:600 clamp(44px,5.5vw,82px)/1.02 "Space Grotesk",sans-serif!important;letter-spacing:-.065em!important;color:#302135!important;margin:0!important;max-width:none!important}
+body .ev-gather h1>span{display:inline;color:#9470a7!important;font:inherit!important}
+.eg-intro{padding-bottom:5px}
+.eg-intro p{font:400 14px/1.85 "Sora",sans-serif;color:#725f7d;margin:0 0 22px;max-width:31ch}
+.eg-intro strong{color:#523761}
+.eg-create{display:flex;justify-content:space-between;align-items:center;gap:18px;font:600 12px/1.5 "Sora",sans-serif;color:#4d305c;min-height:52px;text-decoration:none}
+.eg-create>span{display:grid;place-items:center;flex:none;width:46px;height:46px;background:#ddcce7;border-radius:50%;transition:transform .25s}
+.eg-create svg{width:27px;height:30px}
+.eg-create:hover>span{transform:rotate(-15deg)}
+.eg-scene{position:relative;margin:0;isolation:isolate;height:390px;border-radius:6px 90px 6px 6px}
+.eg-scene>img{display:block;width:100%!important;height:100%!important;object-fit:cover!important;object-position:50% 48%;border-radius:inherit}
+.eg-scene:after{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(0deg,#201b23c9,transparent 57%);border-radius:inherit;pointer-events:none}
+.eg-scene-note{position:absolute;z-index:2;left:25px;top:24px;display:flex;gap:9px;align-items:center;padding:11px 14px;background:#faf4ffed;color:#664774;font:600 8px/1.5 "Sora",sans-serif;letter-spacing:.08em;border-radius:3px}
+.eg-note-dot{width:6px;height:6px;background:#a480b7;border-radius:50%}
+.eg-wing{position:absolute;z-index:3;pointer-events:none;display:block;color:#a47eb7}
+.eg-wing-one{width:65px;height:77px;right:5px;top:-35px;transform:rotate(18deg)}
+.eg-wing svg{width:100%;height:100%}
+.eg-scene figcaption{position:absolute;z-index:2;bottom:30px;left:30px;right:30px;color:white;display:grid;grid-template-columns:1fr auto;gap:11px 30px;align-items:end}
+.eg-scene figcaption>span{font:600 9px/1.5 "Sora",sans-serif;letter-spacing:.12em;grid-column:1/-1;color:#e4d5ec}
+.eg-scene figcaption strong{font:500 clamp(25px,2.5vw,36px)/1.12 "Space Grotesk",sans-serif;letter-spacing:-.04em}
+.eg-scene figcaption a{display:flex;align-items:center;gap:22px;min-height:44px;font:500 11px/1.5 "Sora",sans-serif;color:#fff;text-decoration:none}
+.eg-scene figcaption a>span{font-size:22px}
+.eg-after{display:grid;grid-template-columns:.8fr 3fr;gap:30px;padding:30px 0 34px}
+.eg-after>p{font:400 12px/1.65 "Sora",sans-serif;margin:0;color:#82708b}
+.eg-after>p strong{font-weight:600;color:#573d65}
+.eg-after nav{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.eg-after nav a{display:flex;flex-direction:column;justify-content:center;gap:7px;color:#493052;text-decoration:none;font:600 12px/1.5 "Sora",sans-serif;min-height:48px}
+.eg-after nav a>span{font:400 10px/1.5 "Sora",sans-serif;color:#8a7197}
+.eg-after nav a:hover{color:#986aaf}
+html[data-theme=dark] .ev-gather{background:#29212f;color:#f5edf8}
+html[data-theme=dark] body .ev-gather h1{color:#f5edf8!important}
+html[data-theme=dark] .ev-gather :is(.eg-intro p,.eg-after>p,.eg-after nav a>span){color:#c6b2d0}
+html[data-theme=dark] .ev-gather :is(.eg-intro strong,.eg-after>p strong,.eg-after nav a,.eg-create){color:#edddf5}
+@media(max-width:850px){
+ .eg-heading{grid-template-columns:1fr;gap:22px}.eg-intro{display:flex;align-items:center;gap:30px;justify-content:space-between}.eg-intro p{margin:0;max-width:40ch}.eg-create{flex-shrink:0}
+ .eg-scene{height:360px}.eg-after{grid-template-columns:1fr;gap:18px}
+}
+@media(max-width:620px){
+ .ev-gather{padding-top:28px}.ev-gather .ev-wrap{padding-inline:20px;width:100%;max-width:100%;box-sizing:border-box}
+ .eg-heading{padding-bottom:26px;gap:18px}.eg-eyebrow{font-size:8px;margin-bottom:18px;gap:9px;letter-spacing:.09em}
+ body .ev-gather h1{font-size:clamp(33px,9vw,52px)!important;line-height:1.07!important;letter-spacing:-.055em!important}
+ .eg-intro{display:block}.eg-intro p{font-size:13px;line-height:1.8;max-width:38ch}.eg-create{font-size:12px;justify-content:flex-start;margin-top:12px;gap:15px}
+ .eg-create>span{width:42px;height:42px;order:-1}.eg-scene{height:310px;border-radius:5px 55px 5px 5px}.eg-scene>img{object-position:47% 50%}
+ .eg-scene-note{left:13px;top:16px;padding:9px 10px;font-size:6px;letter-spacing:.04em;gap:6px}
+ .eg-wing-one{width:43px;height:51px;top:-22px;right:1px}
+ .eg-scene figcaption{bottom:17px;left:17px;right:17px;grid-template-columns:1fr;gap:9px}.eg-scene figcaption>span{font-size:7px}.eg-scene figcaption strong{font-size:27px}.eg-scene figcaption a{font-size:10px;justify-content:space-between}
+ .eg-after{padding:23px 0 27px;gap:14px}.eg-after>p{font-size:12px}.eg-after>p br{display:none}
+ .eg-after nav{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding-bottom:12px;overscroll-behavior-x:contain;scrollbar-width:thin}
+ .eg-after nav a{flex:0 0 64%;background:#e8dcef;padding:13px 16px;box-sizing:border-box;border-radius:4px 20px 4px 4px;scroll-snap-align:start;font-size:12px;gap:5px;min-height:72px}
+ html[data-theme=dark] .eg-after nav a{background:#392d43}
+}
+@media(prefers-reduced-motion:reduce){.eg-create>span{transition:none}}
+</style>
 {% endblock %}
 
 {% block content %}
 <div class="ev-experience ev-artdirection">
-  <section class="ev-cover" aria-labelledby="ev-title">
-    <div class="ev-wrap ev-cover-layout">
-      <div class="ev-cover-copy">
-        <span class="ev-kicker"><span class="ev-kicker-wing" aria-hidden="true">{{ icon('butterfly') }}</span> MEGUI / EVENTOS & EXPERIÊNCIAS</span>
-        <h1 id="ev-title" class="title-impact"><span class="title-small-line">Tem encontro que vira</span><span class="title-impact-word">memória.</span></h1>
-        <p>Tem a camiseta que une um grupo, o kit que dá boas-vindas e aquele detalhe que todo mundo leva para casa. A gente transforma a identidade do seu encontro em algo que dá para viver.</p>
-        <div class="ev-cover-actions">
-          <a class="ev-signature-cta" href="#compor">
-            <span><small>COMECE PELA SUA IDEIA</small>Vamos criar seu evento</span>
-            <span class="ev-cta-wing" aria-hidden="true">{{ icon('butterfly') }}</span>
-          </a>
-          <a class="ev-watch-work" href="#destaques"><span class="ev-watch-icon" aria-hidden="true"></span> Conheça alguns projetos</a>
+  <section class="ev-gather" aria-labelledby="ev-title">
+    <div class="ev-wrap">
+      <div class="eg-heading">
+        <div class="eg-title">
+          <span class="eg-eyebrow">{{ icon('butterfly') }} ENCONTROS COM A MEGUI</span>
+          <h1 id="ev-title">O encontro passa.<br><span>A sensação fica.</span></h1>
         </div>
-        <div class="ev-cover-note"><span>VESTIR</span><span>RECEBER</span><span>CELEBRAR</span><span>LEMBRAR</span></div>
+        <div class="eg-intro">
+          <p>Gente reunida. Uma identidade em comum. Detalhes que fazem aquele dia ser <strong>seu.</strong></p>
+          <a href="#compor" class="eg-create">Vamos imaginar seu evento <span aria-hidden="true">{{ icon('butterfly') }}</span></a>
+        </div>
       </div>
-      <div class="ev-cover-art">
-        <figure class="ev-cover-live">
-          <img src="{{ url_for('static',filename='img/acervo/2026/samba-do-maestro-sem-marca-v3.webp') }}" alt="Público acompanhando o Samba do Maestro; capas de grade personalizadas pela Megui identificam o evento" fetchpriority="high" decoding="async">
-          <figcaption><strong>SAMBA DO MAESTRO</strong><span>Identidade presente no espaço, junto às pessoas.</span></figcaption>
-        </figure>
-        <div class="ev-cover-stamp" aria-hidden="true">{{ icon('butterfly') }}</div>
-        <span class="ev-cover-photo-label">UM TRABALHO QUE FAZ PARTE DO MOMENTO</span>
+      <figure class="eg-scene">
+        <img src="{{ url_for('static',filename='img/acervo/2026/samba-do-maestro-sem-marca-v3.webp') }}" alt="Samba do Maestro ao pôr do sol, com público reunido e capas de grade personalizadas pela Megui" fetchpriority="high" decoding="async">
+        <div class="eg-scene-note"><span class="eg-note-dot"></span> ACONTECEU. E A MEGUI ESTAVA LÁ.</div>
+        <span class="eg-wing eg-wing-one" aria-hidden="true">{{ icon('butterfly') }}</span>
+        <figcaption><span>SAMBA DO MAESTRO</span><strong>A marca no espaço.<br>As pessoas no centro.</strong><a href="#destaques">Veja o que já ganhou vida <span aria-hidden="true">↗</span></a></figcaption>
+      </figure>
+      <div class="eg-after">
+        <p>Seu encontro pode ter<br><strong>muitas formas.</strong></p>
+        <nav aria-label="Explore ocasiões para personalizar">
+          <a href="#formatos" data-eg-format="empresa">Equipe reunida <span>Confra & empresas</span></a>
+          <a href="#formatos" data-eg-format="casamento">Dia de celebrar <span>Casamentos & festas</span></a>
+          <a href="#formatos" data-eg-format="esporte">Energia lá em cima <span>Esporte & movimento</span></a>
+          <a href="#formatos" data-eg-format="comunidade">Algo que nos une <span>Fé & comunidade</span></a>
+        </nav>
       </div>
     </div>
-    <div class="ev-wrap ev-cover-foot"><p>Não é só sobre o que entregamos. É sobre onde cada peça vai chegar.</p><span aria-hidden="true" class="ev-cover-tiny-wing">{{ icon('butterfly') }}</span></div>
   </section>
 
   <section class="ev-moments" id="experiencia" aria-labelledby="ev-moments-title">
@@ -197,6 +260,12 @@
 {% endblock %}
 
 {% block extra_scripts %}
+<script>
+document.querySelectorAll('[data-eg-format]').forEach(link => link.addEventListener('click', () => {
+ const tab = document.querySelector('[data-ev-tab="'+link.dataset.egFormat+'"]');
+ tab?.click();
+}));
+</script>
 <script defer src="{{ url_for('static',filename='js/eventos.js',v='20261016-detalhes-v5') }}"></script>
 <script defer src="{{ url_for('static',filename='js/eventos-editorial-20261025.js',v='20261025-v1') }}"></script>
 {% endblock %}
