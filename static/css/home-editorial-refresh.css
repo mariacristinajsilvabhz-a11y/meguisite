@@ -47,3 +47,65 @@
  .home-editorial-finale .quote-banner h2{font-size:clamp(37px,9vw,52px)}
 }
 @media(prefers-reduced-motion:reduce){.home-editorial-products .product-grid>*{transition:none}}
+
+/* Fora do Óbvio: direção de arte próxima à composição aprovada, sem transformar peças em cards. */
+body .home-idea.idea-premium{position:relative;isolation:isolate;background:radial-gradient(ellipse at 48% 42%,#f8f2fb 0,#f0e6f6 75%,#eadef1 100%)!important;padding:clamp(55px,7vw,100px) 0 70px;overflow:hidden}
+body .home-idea.idea-premium>.container{position:relative;max-width:1200px}
+body .home-idea.idea-premium .idea-section-heading{margin:0 auto 47px;max-width:950px;text-align:center}
+body .home-idea.idea-premium .idea-section-heading .explore-signature{font:italic 600 24px/1.3 "Cormorant Garamond",Georgia,serif;color:#8655a0}
+body .home-idea.idea-premium .idea-section-heading h2{font:500 clamp(36px,4.25vw,62px)/1.1 "Space Grotesk",sans-serif;letter-spacing:-.055em;color:#462954;margin:13px 0 0}
+body .home-idea.idea-premium .idea-section-heading h2 em{font-style:normal;font-weight:700;color:#8d4cab}
+body .home-idea.idea-premium .idea-layout{grid-template-columns:minmax(0,1.15fr) minmax(310px,.85fr);gap:clamp(45px,6vw,88px);align-items:center}
+body .home-idea.idea-premium .idea-showcase{height:505px;max-width:590px;width:100%;margin:0;position:relative}
+body .home-idea.idea-premium .idea-orbit{inset:95px 24px 55px;border:1px solid rgba(158,111,184,.25);background:transparent;transform:rotate(-17deg)}
+body .home-idea.idea-premium .idea-orbit:after{border-color:rgba(173,136,198,.2)}
+body .home-idea.idea-premium .idea-visual-label{left:0;top:4px;z-index:5;max-width:150px;padding:20px 15px;border-radius:49% 41% 47% 42%;background:#80509b;color:#fff;text-align:center;transform:rotate(-21deg);font:800 10px/1.35 "Manrope",sans-serif;letter-spacing:.03em}
+body .home-idea.idea-premium .idea-visual-note{position:absolute;top:8px;right:3%;max-width:150px;font:500 10px/1.6 "Sora",sans-serif;color:#825698;letter-spacing:.08em;text-align:right}
+body .home-idea.idea-premium .idea-visual-note strong{display:block;color:#563567}
+body .home-idea.idea-premium .idea-product{display:flex;position:absolute;flex-direction:column;align-items:stretch;justify-content:flex-end;background:transparent;border:none;box-shadow:none;text-align:left}
+body .home-idea.idea-premium .idea-product img{display:block;object-fit:contain;filter:drop-shadow(0 11px 12px rgba(66,30,82,.13));transition:transform .3s ease}
+body .home-idea.idea-premium .idea-product:hover img{transform:translateY(-7px)}
+body .home-idea.idea-premium .idea-shirt{left:1%;top:61px;width:49%;height:213px;transform:none}
+body .home-idea.idea-premium .idea-notebook{right:1%;top:63px;width:45%;height:210px;transform:none}
+body .home-idea.idea-premium .idea-bag{left:1%;bottom:34px;width:49%;height:208px;transform:none}
+body .home-idea.idea-premium .idea-cup{right:1%;bottom:34px;width:45%;height:208px;transform:none}
+body .home-idea.idea-premium .idea-product>span{align-self:stretch;width:100%;max-width:none;margin:0;padding:9px 0;border-bottom:1px solid #b59bca;color:#493154;font:600 11px/1.3 "Sora",sans-serif;white-space:normal}
+body .home-idea.idea-premium .idea-product>span .icon{display:none}
+body .home-idea.idea-premium .idea-signature{bottom:0;left:51%;font-size:10px}
+body .home-idea.idea-premium .idea-copy{padding:0 0 6px;position:relative;z-index:2}
+body .home-idea.idea-premium .idea-copy-tag{display:block;margin-bottom:24px;color:#9863ac;font:700 10px/1.4 "Manrope",sans-serif;letter-spacing:.15em}
+body .home-idea.idea-premium .idea-copy>p{margin:0 0 27px;max-width:42ch;color:#4a3657;font:400 clamp(14px,1.2vw,16px)/1.82 "DM Sans",sans-serif}
+body .home-idea.idea-premium .idea-copy>p strong{font-weight:700;color:#62387a}
+body .home-idea.idea-premium .idea-invitation{margin:0 0 27px;padding:0 0 0 19px;border-left:2px solid #a274b9}
+body .home-idea.idea-premium .idea-invitation h3{margin-bottom:10px;color:#462450;font-size:clamp(20px,2vw,25px)}
+body .home-idea.idea-premium .idea-invitation p{color:#674f70;font-size:13px;line-height:1.75}
+body .home-idea.idea-premium .idea-cta{background:#563069;color:#fff;border-radius:10px;box-shadow:none;font-size:13px;padding:17px 20px}
+body .home-idea.idea-premium .idea-contact-link{display:flex;align-items:center;gap:8px;margin-top:15px;color:#77458b;font:600 12px "DM Sans",sans-serif;width:fit-content;text-decoration:none}
+body .home-idea.idea-premium .idea-contact-link .icon{width:13px;height:13px}
+body .home-idea.idea-premium .idea-cta-note{margin-top:14px;color:#785e83}
+body .home-idea.idea-premium .idea-footer{margin-top:65px}
+body .home-idea.idea-premium .idea-flight-path{position:absolute;z-index:1;right:0;top:35px;width:min(42%,510px);height:110px;pointer-events:none}
+body .home-idea.idea-premium .idea-flight-path svg{width:100%;height:100%;overflow:visible}
+body .home-idea.idea-premium .idea-flight-path path{fill:none;stroke:#9568ac;stroke-width:3;stroke-linecap:round;stroke-dasharray:9 15}
+body .home-idea.idea-premium .idea-flight-butterfly{position:absolute;right:0;top:-2px;color:#8c50ac;animation:idea-flight-gentle 5.5s ease-in-out infinite alternate}
+body .home-idea.idea-premium .idea-flight-butterfly .icon{width:36px;height:42px}
+@keyframes idea-flight-gentle{from{transform:translate(-6px,6px) rotate(-8deg)}to{transform:translate(5px,-7px) rotate(10deg)}}
+@media(max-width:850px){
+ body .home-idea.idea-premium .idea-layout{grid-template-columns:1fr;gap:55px}
+ body .home-idea.idea-premium .idea-showcase{margin:auto;max-width:560px}
+ body .home-idea.idea-premium .idea-copy{max-width:620px;margin:auto}
+ body .home-idea.idea-premium .idea-flight-path{top:0;width:47%;height:85px}
+}
+@media(max-width:560px){
+ body .home-idea.idea-premium{padding:50px 0}
+ body .home-idea.idea-premium .idea-section-heading{margin-bottom:30px}
+ body .home-idea.idea-premium .idea-section-heading h2{font-size:clamp(32px,8vw,45px)}
+ body .home-idea.idea-premium .idea-showcase{height:410px}
+ body .home-idea.idea-premium .idea-shirt,body .home-idea.idea-premium .idea-notebook{top:55px;height:166px}
+ body .home-idea.idea-premium .idea-bag,body .home-idea.idea-premium .idea-cup{bottom:25px;height:166px}
+ body .home-idea.idea-premium .idea-visual-label{font-size:8px;max-width:115px;padding:14px 9px}
+ body .home-idea.idea-premium .idea-visual-note{display:none}
+ body .home-idea.idea-premium .idea-product>span{font-size:10px}
+ body .home-idea.idea-premium .idea-flight-path{opacity:.4}
+}
+@media(prefers-reduced-motion:reduce){body .home-idea.idea-premium .idea-flight-butterfly{animation:none}body .home-idea.idea-premium .idea-product img{transition:none}}
