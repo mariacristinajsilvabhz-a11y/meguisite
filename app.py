@@ -64,7 +64,6 @@ TRUSTED_BRANDS = [
     {"name": "Studio IS Concept", "image": "studio-is-concept-v2.png"},
     {"name": "PrintUp Estamparia", "image": "printup-v2.png"},
     {"name": "Brantchic", "image": "brantchic-v2.png", "logo_style": "paper"},
-    {"name": "T-Shirteria Versátil"},
     {"name": "Vörr Brasil", "image": "vorr-oficial.png", "logo_style": "ink"},
     {"name": "Tailor’s Mind", "image": "tailors-mind-oficial.svg", "logo_style": "ink"},
     {"name": "Samba do Maestro", "image": "samba-do-maestro-acervo.png"},
