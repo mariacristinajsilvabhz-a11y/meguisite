@@ -202,3 +202,44 @@
 #megui-theme-slides .slide-senac:before{background:radial-gradient(ellipse at 83% 55%,#d9e7ea 0,transparent 60%)}
 #megui-theme-slides .slide-teachers .carousel-copy h2 span{font-size:1em}
 @media(max-width:760px){#megui-theme-slides .carousel-dots button{width:34px;min-width:34px}}
+
+/* 2026-10-29 · Título editorial aprovado para confecção.
+   Texto real, acessível e responsivo — não achatar o carrossel em imagem. */
+#megui-theme-slides .slide-wear .carousel-copy{width:54%;max-width:740px}
+#megui-theme-slides .slide-wear .wear-editorial-title{
+ display:flex;flex-direction:column;align-items:flex-start;
+ width:max-content;max-width:100%;margin:0 0 24px!important;
+ font-family:"DM Sans",sans-serif;font-size:clamp(31px,3.65vw,54px)!important;
+ letter-spacing:-.047em;line-height:1.06;font-weight:700;
+}
+#megui-theme-slides .slide-wear .wear-editorial-title .wear-title-main,
+#megui-theme-slides .slide-wear .wear-editorial-title .wear-title-second{
+ display:block!important;width:max-content;max-width:100%;
+ font-size:1em!important;margin:0!important;line-height:1.11!important;
+ text-shadow:none!important;letter-spacing:inherit;
+}
+#megui-theme-slides .slide-wear .wear-editorial-title .wear-title-main{white-space:nowrap}
+#megui-theme-slides .slide-wear .wear-editorial-title .wear-title-second{
+ margin-top:5px!important;white-space:nowrap;
+ font:italic 600 .83em/1.13 "Cormorant Garamond",Georgia,serif!important;letter-spacing:-.025em;
+}
+#megui-theme-slides .slide-wear .wear-editorial-title .wear-lilac{color:#dcb0f5!important;font:inherit!important}
+#megui-theme-slides .slide-wear .wear-editorial-title .wear-white{color:#fff!important;font:inherit!important}
+#megui-theme-slides .slide-wear .wear-editorial-title span:after{display:none!important}
+#megui-theme-slides .slide-wear .carousel-stage-word{
+ top:18%;right:2%;z-index:1;color:rgba(207,151,229,.4);
+ font-size:clamp(100px,13vw,190px);line-height:1;
+}
+#megui-theme-slides .slide-wear .carousel-art>img{z-index:2}
+@media(max-width:1000px){
+ #megui-theme-slides .slide-wear .carousel-copy{width:55%}
+ #megui-theme-slides .slide-wear .wear-editorial-title{font-size:clamp(30px,3.7vw,42px)!important}
+ #megui-theme-slides .slide-wear .wear-editorial-title .wear-title-second{font-size:.8em!important}
+}
+@media(max-width:760px){
+ #megui-theme-slides .slide-wear .carousel-copy{width:100%;max-width:none}
+ #megui-theme-slides .slide-wear .wear-editorial-title{font-size:clamp(24px,6.4vw,38px)!important;max-width:100%}
+ #megui-theme-slides .slide-wear .wear-editorial-title .wear-title-main{white-space:normal}
+ #megui-theme-slides .slide-wear .wear-editorial-title .wear-title-second{font-size:.82em!important;white-space:normal}
+ #megui-theme-slides .slide-wear .carousel-stage-word{top:7%;right:1%;font-size:clamp(82px,24vw,135px)}
+}
