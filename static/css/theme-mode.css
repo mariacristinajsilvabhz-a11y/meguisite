@@ -139,3 +139,23 @@ html:not([data-theme=dark]) .home-cinema #megui-theme-slides{
 html:not([data-theme=dark]) .home-cinema #megui-theme-slides .welcome-carousel{
  background:#f5eff9!important;
 }
+
+/* Cabeçalho lilás no tema claro, incluindo menu e busca. */
+html:not([data-theme=dark]) body .top-strip,
+html:not([data-theme=dark]) body .site-header.modern-header,
+html:not([data-theme=dark]) body .modern-header .main-nav,
+html:not([data-theme=dark]) body .modern-header .dropdown-panel{
+ background:#f1e5f8!important;border-color:#dac6e8!important;
+}
+html:not([data-theme=dark]) body .modern-header :is(.main-nav>a,.nav-dropdown>a,.dropdown-panel a){
+ color:#392543!important;
+}
+html:not([data-theme=dark]) body .modern-header :is(.main-nav>a:hover,.nav-dropdown>a:hover,.dropdown-panel a:hover){
+ background:#e6d4f1!important;color:#3f2452!important;
+}
+html:not([data-theme=dark]) body .modern-header :is(.search-shell,.search-input-wrap){
+ background:#f8f2fc!important;border-color:#d9c3e6!important;color:#392543!important;
+}
+html:not([data-theme=dark]) body .modern-header .theme-toggle{
+ background:#e7d5f1!important;border-color:#ceb2df!important;color:#67417c!important;
+}
