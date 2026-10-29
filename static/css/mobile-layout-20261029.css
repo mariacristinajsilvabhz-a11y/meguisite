@@ -1,0 +1,168 @@
+/* Layouts para toque. Carrosséis e abas preservam os estados hidden. */
+@media(max-width:680px){
+ html body main :where(section,article,figure,div){min-width:0}
+ html body main [hidden]{display:none!important}
+ html body main .reveal,html body main .scroll-content.reveal-pending{opacity:1!important;transform:none!important;visibility:visible!important}
+ html body main :is(h1,h2,h3){overflow-wrap:break-word}
+ html body main :is(.section,.services-discovery,.empresa-gifts,.empresa-next,.quality-chapter,.ev-moments,.ev-showcase,.ev-worlds,.ev-start,.mw-making,.mw-origins){padding-block:36px!important}
+ html body main :is(.services-heading,.pouch-heading,.empresa-section-heading,.ev-moments-heading,.ev-showcase-intro,.ev-worlds-heading){gap:16px;margin-bottom:22px}
+ html body main :is(.services-heading h2,#pouch-title,.megui-around-heading h2,.mp-copy h2,.empresa-studio h2,.ev-moments-heading h2,.ev-showcase-intro h2,.ev-worlds-heading h2,.outside-box h2,.contact-story h1){font-size:clamp(28px,7.8vw,36px)!important;line-height:1.15!important;letter-spacing:-.045em!important}
+ html body main :is(.services-heading p,.pouch-heading>p,.empresa-section-heading p,.outside-intro p,.contact-story>p){font-size:13px!important;line-height:1.75!important}
+ /* Catégories: six choix visibles dans une grille, sans six scènes empilées. */
+ html body .services-discovery .services-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 14px;padding-top:0}
+ html body .services-discovery .service-item:nth-child(n){display:flex;flex-direction:column;gap:10px;padding:0;align-items:stretch;transform:none}
+ html body .services-discovery .service-item:nth-child(n) .service-info{padding:0;display:flex;align-items:center;gap:5px;justify-content:space-between}
+ html body .services-discovery .service-visual{height:135px;min-height:0;width:100%;margin:0}
+ html body .services-discovery .service-object{height:125px!important;max-height:125px!important;width:100%!important;object-fit:contain!important;bottom:0!important}
+ html body .services-discovery .service-item-copos .service-object-secondary{height:82px!important;width:55%!important}
+ html body .services-discovery .service-orb{width:98px!important;height:98px!important;bottom:0}
+ html body .services-discovery .service-info h3{font-size:18px!important;line-height:1.2;margin:0}
+ html body .services-discovery .service-open{min-width:34px;min-height:44px;font-size:11px;margin:0}
+ html body .services-discovery .services-footer{gap:18px;margin-top:25px;padding-top:20px}
+ html body .services-discovery .services-invitation h3{font-size:27px;margin-bottom:12px}
+ html body .services-discovery .services-invitation p{font-size:13px;line-height:1.7}
+ html body .services-discovery .services-contact-note{font-size:20px;margin-bottom:10px}
+ html body .services-discovery .services-contact-button{min-height:66px;padding:14px 16px}
+ html body .services-discovery .services-contact-button strong{font-size:17px}
+ /* Saquinhos: uma cena e quatro destinos compactos, sem posições absolutas. */
+ html body #saquinhos.pouch-studio{padding-block:30px 16px}
+ html body .pouch-studio .pouch-heading>p{margin-top:16px}
+ html body .pouch-studio .pouch-experience{display:flex;flex-direction:column;height:auto;max-height:none;gap:18px;padding:0}
+ html body .pouch-studio .pouch-scene{position:relative;inset:auto;width:100%;height:auto;order:0}
+ html body .pouch-studio .pouch-panel{height:auto}
+ html body .pouch-studio .pouch-panel>img{height:200px!important;max-height:200px!important;object-fit:contain!important}
+ html body .pouch-studio .pouch-panel>figcaption{min-height:0;margin:8px auto 0;max-width:34ch}
+ html body .pouch-studio .pouch-panel>figcaption strong{font-size:22px}
+ html body .pouch-studio .pouch-panel>figcaption>span{font-size:11px;margin-top:6px}
+ html body .pouch-studio .pouch-use-list{position:relative;inset:auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;order:1;height:auto;pointer-events:auto}
+ html body .pouch-studio .pouch-use:nth-child(n){position:relative;inset:auto;width:100%;height:auto;min-height:104px;gap:5px;transform:none;padding:0}
+ html body .pouch-studio .pouch-bubble{width:65px;height:65px;max-width:100%;margin:auto;animation:none}
+ html body .pouch-studio .pouch-bubble>img{width:100%!important;height:100%!important;object-fit:contain}
+ html body .pouch-studio .pouch-orb{width:53px;height:53px;left:6px}
+ html body .pouch-studio .pouch-use>strong{font-size:10px;line-height:1.4}
+ html body .pouch-studio .pouch-use-purpose{font-size:7px;gap:3px}
+ html body .pouch-studio .pouch-use-purpose small{display:none}
+ html body .pouch-studio :is(.pouch-flight-map,.pouch-scene-word){display:none}
+ html body .pouch-studio .pouch-footer{margin-top:22px;padding:20px 0;gap:18px}
+ html body .pouch-studio .pouch-footer-story p{font-size:25px;line-height:1.2;margin:10px 0}
+ html body .pouch-studio .pouch-label-cta{min-height:86px;padding:16px 20px;width:100%;max-width:100%;transform:none}
+ html body .pouch-studio .pouch-label-copy strong{font-size:23px}
+ html body .pouch-studio .pouch-material-note{padding-top:10px}
+ html body .knit-studio .knit-edition-story h3{font-size:29px!important;line-height:1.15!important}
+ html body .knit-studio .knit-edition-story p{font-size:13px;line-height:1.7}
+ html body .knit-studio .knit-edition-panel{gap:18px}
+ html body .knit-studio .knit-edition-stage{height:230px;min-height:0}
+ html body .home-megui-around .megui-around-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+ html body .home-megui-around .megui-around-item{padding:6px 6px 12px;min-height:0}
+ html body .home-megui-around .megui-around-photo{height:150px;aspect-ratio:auto}
+ html body .home-megui-around .megui-around-photo img{height:100%!important;object-fit:contain!important}
+ html body .home-megui-around .megui-around-name{margin-top:10px;font-size:12px}
+ html body .megui-possibilities{padding-block:36px}
+ html body .megui-possibilities .mp-layout{gap:24px}
+ html body .megui-possibilities .mp-stage{height:260px;min-height:0}
+ html body .megui-possibilities .mp-product{height:220px}
+ html body .megui-possibilities .mp-product img{height:220px!important;max-height:220px!important;object-fit:contain}
+ /* Empresas: escolhas lado a lado; cenas menores e textos com respiro. */
+ html body .empresa-studio :is(.empresa-discovery,.empresa-everyday,.uniform-studio){padding-block:34px}
+ html body .empresa-studio .empresa-moments{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+ html body .empresa-studio .empresa-moments button{min-height:84px;padding:12px;font-size:12px}
+ html body .empresa-studio .moment-visual{height:225px;min-height:0}
+ html body .empresa-studio .moment-workbench{gap:22px}
+ html body .empresa-studio .empresa-discovery-answer{gap:18px;margin-top:22px}
+ html body .empresa-studio .uniform-studio-garments{height:220px;min-height:0}
+ html body .empresa-studio .uniform-studio-garments img{max-height:210px!important;object-fit:contain}
+ html body .empresa-studio .uniform-studio-panel{gap:18px;min-height:0}
+ html body .empresa-studio .uniform-studio-copy{padding-top:0}
+ html body .empresa-studio .uniform-studio-copy h3{font-size:27px!important}
+ html body .empresa-studio .uniform-quality-detail summary{grid-template-columns:80px minmax(0,1fr);gap:16px}
+ html body .empresa-studio .uniform-quality-photo{height:92px}
+ html body .empresa-studio .uniform-quality-photo img{height:100%!important;object-fit:cover}
+ html body .empresa-studio .uniform-quality-text>span{font-size:12px;line-height:1.65}
+ html body .empresa-studio .empresa-gift-art{height:240px;min-height:0}
+ html body .empresa-studio .empresa-gift-art figure img{height:230px!important;object-fit:contain}
+ html body .empresa-studio .empresa-gift-mug{height:100px!important;width:100px!important;object-fit:contain}
+ html body .empresa-studio .business-tabs{display:flex;flex-wrap:nowrap;overflow-x:auto;gap:8px;padding-bottom:12px;scroll-snap-type:x proximity}
+ html body .empresa-studio .business-tabs button{flex:0 0 auto;min-height:48px;padding:10px 14px;font-size:12px;scroll-snap-align:start}
+ html body .empresa-studio .business-visual{height:220px;min-height:0;margin:0}
+ html body .empresa-studio .business-visual img{height:100%!important;object-fit:contain}
+ html body .empresa-studio .business-copy{padding:20px 16px}
+ html body .empresa-studio .business-copy h3{font-size:26px!important}
+ html body .empresa-studio .business-copy p{font-size:13px;line-height:1.7}
+ html body .empresa-studio .empresa-next-grid{gap:24px}
+ html body .empresa-studio .empresa-project-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+ html body .empresa-studio .empresa-project-options button{font-size:11px;min-height:70px;padding:12px;gap:8px}
+ /* Eventos: explorar projetos sem percorrer seis blocos de tela inteira. */
+ html body .ev-artdirection .ev-moments-composition{display:flex;flex-direction:row;align-items:stretch;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;padding-bottom:14px}
+ html body .ev-artdirection .ev-moment:nth-child(n){flex:0 0 88%;min-width:0;min-height:0;scroll-snap-align:start;padding:20px;gap:22px;grid-template-columns:minmax(0,1fr);margin:0}
+ html body .ev-artdirection .ev-moment-wear{display:flex;flex-direction:column;justify-content:space-between}
+ html body .ev-artdirection .ev-moment-wear>img{position:static;width:100%;height:180px!important;object-fit:contain;margin:0}
+ html body .ev-artdirection .ev-moment-photo{height:180px!important;aspect-ratio:auto;max-height:none}
+ html body .ev-artdirection .ev-moment-photo img{height:100%!important;max-height:180px!important;object-fit:contain}
+ html body .ev-artdirection .ev-moment-word{font-size:32px!important;margin-bottom:12px}
+ html body .ev-artdirection .ev-moment-copy h3{font-size:24px!important;line-height:1.2}
+ html body .ev-artdirection .ev-moment-copy p{font-size:13px!important;line-height:1.7}
+ html body .ev-artdirection .ev-curated-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 14px}
+ html body .ev-artdirection .ev-curated-piece{display:flex;flex-direction:column;min-width:0;gap:12px;grid-column:auto;grid-row:auto}
+ html body .ev-artdirection .ev-curated-photo{width:100%;height:150px;min-height:0;aspect-ratio:1;flex:none}
+ html body .ev-artdirection .ev-curated-photo img{width:100%!important;height:100%!important;object-fit:contain!important}
+ html body .ev-artdirection .ev-curated-minions .ev-curated-photo img{object-fit:cover!important}
+ html body .ev-artdirection .ev-curated-info{padding:0}
+ html body .ev-artdirection .ev-curated-info>span{font-size:8px;line-height:1.5;letter-spacing:0}
+ html body .ev-artdirection .ev-curated-info h3{font-size:20px!important;line-height:1.2;margin:8px 0}
+ html body .ev-artdirection .ev-curated-info p{font-size:12px;line-height:1.65}
+ html body .ev-artdirection .ev-curated-info a{font-size:10px;min-height:44px;line-height:1.5;gap:7px}
+ html body .ev-artdirection .ev-curated-zoom{font-size:7px;padding:7px}
+ html body .ev-artdirection .ev-world-image{height:220px;min-height:0;aspect-ratio:auto}
+ html body .ev-artdirection .ev-world-image img{height:100%!important;object-fit:contain}
+ html body .ev-artdirection .ev-world-copy{padding:20px 16px}
+ html body .ev-artdirection .ev-world-copy h3{font-size:27px!important}
+ html body .ev-artdirection .ev-world-copy p{font-size:13px;line-height:1.7}
+ html body .ev-artdirection .ev-start-layout{gap:24px}
+ html body .ev-artdirection .ev-start-copy h2{font-size:32px!important}
+ html body .ev-artdirection .ev-ticket{padding:23px 18px}
+ html body .ev-artdirection .ev-kit-options{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+ html body .ev-artdirection .ev-kit-options button{min-height:70px;padding:10px;font-size:11px}
+ /* Trabalhos: o eixo do carrossel de vídeos era herdado como coluna. */
+ html body .meg-work .mw-making-films{display:flex;flex-direction:row!important;height:auto;align-items:flex-start;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:16px}
+ html body .meg-work .mw-making-film{flex:0 0 86%;height:auto;min-height:0;display:flex;flex-direction:column;scroll-snap-align:start}
+ html body .meg-work .mw-making-film-media{width:100%;height:180px;aspect-ratio:auto}
+ html body .meg-work .mw-film-watch-small{height:100%;aspect-ratio:auto}
+ html body .meg-work :is(.mw-film-poster,.mw-film-ambient){height:100%!important;width:100%!important;object-fit:contain}
+ html body .meg-work .mw-making-head{margin-bottom:24px}
+ html body .meg-work .mw-making-head h2{font-size:32px!important;line-height:1.12!important}
+ html body .meg-work .ms-opening .ms-photograph{height:230px}
+ html body .meg-work .mw-archive-scroller{grid-auto-columns:82%;align-items:start}
+ /* Fora da caixa: exemplos deslizáveis, questionário com escolhas compactas. */
+ html body .outside-box :is(.outside-intro,.outside-possibilities,.outside-workspace){padding-block:30px;gap:22px}
+ html body .outside-box .outside-intro h1{font-size:37px!important;line-height:1.1}
+ html body .outside-box .outside-hero-product img{height:220px!important;max-height:220px;object-fit:contain}
+ html body .outside-box .possibilities-grid{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:14px}
+ html body .outside-box .possibilities-grid>article{display:flex;flex-direction:column;flex:0 0 85%;gap:18px;scroll-snap-align:start;padding:18px}
+ html body .outside-box .possibilities-grid>article img{height:180px!important;width:100%;object-fit:contain}
+ html body .outside-box .possibility-open-art{height:180px;min-height:0}
+ html body .outside-box .possibilities-grid h3{font-size:24px!important;line-height:1.2}
+ html body .outside-box .possibilities-grid p{font-size:13px;line-height:1.7}
+ html body .outside-box .idea-scene{height:150px;min-height:0}
+ html body .outside-box .idea-board{padding:18px}
+ html body .outside-box .outside-form{padding:23px 18px}
+ html body .outside-box .visual-choice-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+ html body .outside-box .visual-choice-grid .idea-choice{padding:12px;min-height:130px}
+ html body .outside-box .choice-art{height:85px;min-height:0}
+ html body .outside-box .choice-art img{height:85px!important;object-fit:contain}
+ html body .outside-box .visual-choice-grid strong{font-size:12px}
+ /* Contato e catálogo: controles legíveis, sem pôsteres entre as ações. */
+ html body .contact-studio{padding-block:30px}
+ html body .contact-studio-grid{gap:24px}
+ html body .contact-desks{gap:16px}
+ html body :is(.contact-desk,.contact-channel){padding:20px}
+ html body .contact-desk h2{font-size:25px!important}
+ html body .contact-desk p{font-size:13px;line-height:1.7}
+ html body .contact-brief-list{gap:12px}
+ html body .contact-brief-list>li{padding:16px;min-height:0}
+ html body .catalog-layout .product-grid:not(.list-view){grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px}
+ html body .catalog-layout .product-visual{height:145px!important;min-height:0}
+ html body .catalog-layout .product-visual img{height:100%!important;object-fit:contain!important}
+ html body .catalog-layout .product-card h3{font-size:13px!important;line-height:1.4!important}
+ html body main :is(.mw-making-films,.ev-moments-composition,.possibilities-grid,.business-tabs){scrollbar-width:thin;scrollbar-color:#b394c3 transparent;overscroll-behavior-x:contain}
+}
+@media(max-width:359px){html body .services-discovery .service-info h3{font-size:16px!important}html body .home-megui-around .megui-around-photo{height:130px}html body .ev-artdirection .ev-curated-photo{height:130px}html body .ev-artdirection .ev-curated-info h3{font-size:18px!important}}
