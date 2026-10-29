@@ -422,3 +422,78 @@
 @media(max-width:760px){
  #megui-theme-slides .slide-wear .carousel-art .carousel-stage-word{top:7%!important;font-size:clamp(85px,24vw,140px)!important}
 }
+
+/* Sistema editorial unificado dos seis slides complementares. */
+#megui-theme-slides .carousel-slide:not(.slide-wear) .carousel-copy{position:relative;z-index:5;width:48%;max-width:610px}
+#megui-theme-slides .carousel-slide:not(.slide-wear) .campaign-editorial-title{
+ display:flex;flex-direction:column;align-items:flex-start;gap:2px;
+ width:100%;max-width:none;margin:0 0 24px!important;
+ font-size:clamp(40px,4.35vw,67px)!important;line-height:1.02!important;
+ letter-spacing:-.055em!important;text-wrap:initial;
+}
+#megui-theme-slides .carousel-slide:not(.slide-wear) .campaign-editorial-title > .campaign-title-main{
+ display:block!important;margin:0!important;max-width:100%;font:800 1em/1.06 "Manrope",sans-serif!important;
+ letter-spacing:-.055em!important;color:var(--ink)!important;text-shadow:none!important;
+}
+#megui-theme-slides .carousel-slide:not(.slide-wear) .campaign-editorial-title > .campaign-title-accent{
+ display:block!important;margin:2px 0 0!important;max-width:100%;font:italic 600 .93em/1.06 "Cormorant Garamond",Georgia,serif!important;
+ letter-spacing:-.045em!important;color:var(--accent)!important;text-shadow:none!important;
+}
+#megui-theme-slides .carousel-slide:not(.slide-wear) .campaign-editorial-title span:after{display:none!important}
+#megui-theme-slides .carousel-slide:not(.slide-wear) .carousel-copy>p{max-width:39ch;line-height:1.68}
+#megui-theme-slides .carousel-slide:not(.slide-wear) .carousel-theme-details{letter-spacing:.06em}
+#megui-theme-slides .carousel-slide:not(.slide-wear) .carousel-art{isolation:isolate}
+#megui-theme-slides .campaign-decor{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:visible}
+#megui-theme-slides .campaign-decor .campaign-ghost-word{
+ position:absolute;top:8%;right:2%;z-index:0;
+ font:italic 600 clamp(82px,10.4vw,158px)/1 "Cormorant Garamond",Georgia,serif;
+ letter-spacing:-.07em;white-space:nowrap;color:rgba(139,93,158,.19);
+}
+#megui-theme-slides .campaign-decor .campaign-orbit{
+ position:absolute;left:-12%;top:40%;width:117%;height:42%;border:1px solid rgba(151,103,178,.25);
+ border-radius:50%;transform:rotate(-18deg);
+}
+#megui-theme-slides .campaign-decor .campaign-object,
+#megui-theme-slides .campaign-decor .campaign-wing{
+ position:absolute!important;z-index:3;display:block!important;line-height:1;
+ filter:drop-shadow(0 5px 10px rgba(30,12,39,.16));
+ animation:megui-theme-float 6.5s ease-in-out infinite alternate;
+}
+#megui-theme-slides .campaign-decor .campaign-object{font-size:clamp(24px,3.5vw,52px)}
+#megui-theme-slides .campaign-decor .campaign-wing .icon{display:block;width:31px;height:31px;fill:none;stroke:currentColor}
+#megui-theme-slides .campaign-decor .campaign-object-a{left:6%;top:18%;animation-delay:-1.2s}
+#megui-theme-slides .campaign-decor .campaign-object-b{right:5%;top:39%;animation-delay:-3.4s}
+#megui-theme-slides .campaign-decor .campaign-object-c{right:11%;bottom:12%;animation-delay:-2.1s}
+#megui-theme-slides .campaign-decor .campaign-wing-a{left:18%;bottom:16%;color:#c999e9;animation-delay:-2.2s}
+#megui-theme-slides .campaign-decor .campaign-wing-b{right:8%;bottom:15%;color:#bc85d9;animation-delay:-4.1s}
+#megui-theme-slides .campaign-decor .campaign-wave{
+ position:absolute;z-index:0;right:8%;top:25%;height:40%;width:30%;border:1px solid rgba(131,105,198,.27);border-radius:50%;
+}
+#megui-theme-slides .campaign-decor .campaign-wave-b{transform:scale(1.28)}
+#megui-theme-slides .slide-football{--accent:#b69cf1}
+#megui-theme-slides .slide-football .campaign-decor .campaign-object{font-size:clamp(28px,3.7vw,49px);opacity:.92}
+#megui-theme-slides .slide-football .campaign-ghost-word{color:rgba(109,87,154,.17)}
+#megui-theme-slides .slide-faith .campaign-object{color:#d3a9db}
+#megui-theme-slides .slide-senac .campaign-object{color:#4a879d}
+#megui-theme-slides .slide-tech .campaign-object{color:#8c6fcf}
+#megui-theme-slides .slide-teachers .campaign-object{color:#ae83b9}
+#megui-theme-slides .slide-events .campaign-object{color:#a967aa}
+@keyframes megui-theme-float{
+ from{transform:translate3d(0,3px,0) rotate(-7deg)}
+ to{transform:translate3d(3px,-8px,0) rotate(7deg)}
+}
+@media(max-width:1000px){
+ #megui-theme-slides .carousel-slide:not(.slide-wear) .carousel-copy{width:52%}
+ #megui-theme-slides .carousel-slide:not(.slide-wear) .campaign-editorial-title{font-size:clamp(36px,4.5vw,51px)!important}
+}
+@media(max-width:760px){
+ #megui-theme-slides .carousel-slide:not(.slide-wear) .carousel-copy{width:100%;max-width:none}
+ #megui-theme-slides .carousel-slide:not(.slide-wear) .campaign-editorial-title{font-size:clamp(34px,8vw,48px)!important;margin-bottom:17px!important}
+ #megui-theme-slides .campaign-decor .campaign-ghost-word{top:2%;font-size:clamp(66px,19vw,108px)}
+ #megui-theme-slides .campaign-decor .campaign-object{font-size:24px!important}
+ #megui-theme-slides .campaign-decor .campaign-wing .icon{width:22px;height:22px}
+}
+@media(prefers-reduced-motion:reduce){
+ #megui-theme-slides .campaign-decor .campaign-object,
+ #megui-theme-slides .campaign-decor .campaign-wing{animation:none!important}
+}
