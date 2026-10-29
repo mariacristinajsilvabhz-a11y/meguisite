@@ -497,14 +497,14 @@
 <section class="section home-editorial-products home-megui-around" aria-labelledby="megui-around-title">
   <div class="container">
     <header class="megui-around-heading">
-      <span class="megui-around-eyebrow">MEGUI <span aria-hidden="true">/</span> TRABALHOS REAIS</span>
+      <span class="megui-around-eyebrow">MEGUI <span aria-hidden="true">/</span> PRODUTOS</span>
       <h2 id="megui-around-title">Tem Megui <em>por aí...</em></h2>
-      <p>Projetos feitos para marcas de verdade. Cada peça leva uma identidade e uma história.</p>
+      <p>Produtos personalizados para a sua marca. Conheça algumas peças que já produzimos para clientes reais.</p>
     </header>
     <div class="megui-around-grid" aria-label="Trabalhos reais de clientes da Megui">
       {% for work in featured_works[:5] %}
       <a class="megui-around-item" href="{{ url_for('portfolio_view',_anchor=work.key if work.key else 'projetos') }}">
-        <span class="megui-around-photo"><img src="{{ url_for('static',filename=work.presentation_image|default(work.image)) }}" alt="{{ work.title }} — {{ work.kind }}" loading="lazy" decoding="async"></span>
+        <span class="megui-around-photo"><img src="{{ url_for('static',filename=work.image) }}" alt="{{ work.title }} — {{ work.kind }}" loading="lazy" decoding="async"></span>
         <span class="megui-around-name">{{ work.title.split(' · ')[0] }}</span><span class="megui-around-detail">{{ work.kind|title }}</span>
       </a>
       {% endfor %}
