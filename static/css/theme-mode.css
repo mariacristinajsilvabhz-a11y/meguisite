@@ -183,3 +183,6 @@ html[data-theme=dark] body :is(.client-logo-wall,.client-ribbon) img.client-logo
 html[data-theme=dark] body .client-logo-wall .client-brand-name{
  color:#fff!important;-webkit-text-fill-color:#fff!important;
 }
+
+/* Enquadra a assinatura original da Maac sem alterar a arte. */
+html body :is(.client-logo-wall,.client-ribbon) img.client-logo[src$="maac-midia.webp"]{object-fit:cover;object-position:center;max-width:160px}
