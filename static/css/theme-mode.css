@@ -110,3 +110,32 @@ html[data-theme=dark] main .pouch-studio :is(.pouch-bubble-check,.pouch-bubble-s
 html[data-theme=dark] main .pouch-studio .pouch-scene{background:radial-gradient(ellipse at 50% 45%,#70478b24,transparent 65%)}
 html[data-theme=dark] main .work-exhibit :is(.work-exhibit-counter,.work-exhibit-label,.work-exhibit-facts dt,.work-exhibit-facts dd){color:#dec7e9!important}
 html[data-theme=dark] main :is(.work-exhibit-prev,.work-exhibit-next){background:transparent!important;color:#d7adef!important}
+
+/* Identidade do modo claro: lilás claro em vez de superfícies brancas frias.
+   Aplicar apenas no tema claro; preservar o modo noturno. */
+html:not([data-theme=dark]){
+ --paper:#f6f0fa;--soft:#f3eafa;--soft-2:#e9dcf3;
+ --megui-soft:#f1e6f8;--megui-line:#dec9eb;
+ color-scheme:light;
+}
+html:not([data-theme=dark]) body,
+html:not([data-theme=dark]) main{
+ background:#f5eff9!important;
+}
+html:not([data-theme=dark]) main :is(
+ .home-content-sheet,.section-soft,.home-editorial-products,.home-idea,
+ .home-clients,.home-editorial-reviews,.home-editorial-finale,
+ .services-discovery,.fabric-details,.home-welcome,
+ .work-exhibit,.about-megui,.outside-box
+){
+ background-color:#f5eff9!important;
+}
+html:not([data-theme=dark]) .site-header.modern-header{
+ background:#f8f2fbf5!important;
+}
+html:not([data-theme=dark]) .home-cinema #megui-theme-slides{
+ background:#f5eff9!important;
+}
+html:not([data-theme=dark]) .home-cinema #megui-theme-slides .welcome-carousel{
+ background:#f5eff9!important;
+}
