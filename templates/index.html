@@ -342,7 +342,7 @@
 .home-cinema main{overflow:clip}
 </style>
 <link rel="stylesheet" href="{{ url_for('static',filename='css/work-showcase.css',v='20261022-identidade-v6') }}">
-<link rel="stylesheet" href="{{ url_for('static',filename='css/home-signature.css',v='20261029-butterflies-v5') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/home-signature.css',v='20261029-color-override-v6') }}">
 <link rel="stylesheet" href="{{ url_for('static',filename='css/services-discovery.css',v='20261020-butterfly-v1') }}">
 <link rel="stylesheet" href="{{ url_for('static',filename='css/pouch-studio.css',v='20261020-atelier-v3') }}">
  <link rel="stylesheet" href="{{ url_for('static',filename='css/pouch-detail-polish.css',v='20261025-atelier-v1') }}">
@@ -371,7 +371,7 @@
     <div class="carousel-copy">
      <span class="carousel-kicker">{{ icon('butterfly','carousel-butterfly') }} {{ slide.tag }}</span>
      {% if slide.theme == 'wear' %}
-     <h2 class="title-carousel title-carousel-wear wear-editorial-title"><span class="wear-title-main"><span class="wear-lilac">Confecção</span> <span class="wear-white">própria.</span></span><span class="wear-title-second"><span class="wear-lilac">Sua identidade,</span> <span class="wear-white">em cada ponto.</span></span></h2>
+     <h2 class="title-carousel title-carousel-wear wear-editorial-title"><span class="wear-title-main"><span class="wear-lilac" style="color:#d7a6f1!important;-webkit-text-fill-color:#d7a6f1!important">Confecção</span> <span class="wear-white" style="color:#ffffff!important;-webkit-text-fill-color:#ffffff!important">própria.</span></span><span class="wear-title-second"><span class="wear-lilac" style="color:#d7a6f1!important;-webkit-text-fill-color:#d7a6f1!important">Sua identidade,</span> <span class="wear-white" style="color:#ffffff!important;-webkit-text-fill-color:#ffffff!important">em cada ponto.</span></span></h2>
      {% else %}
      <{% if loop.first %}h1{% else %}h2{% endif %} class="title-carousel title-carousel-{{ slide.theme }}">{{ slide.title }} <span>{{ slide.accent }}</span></{% if loop.first %}h1{% else %}h2{% endif %}>
      {% endif %}
