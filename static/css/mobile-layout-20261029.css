@@ -37,6 +37,7 @@
  /* Saquinhos: uma cena e quatro destinos compactos, sem posições absolutas. */
  html body #saquinhos.pouch-studio{padding-block:30px 16px}
  html body .pouch-studio .pouch-heading>p{margin-top:16px}
+ html body .pouch-studio .pouch-heading>p strong{font-size:20px;line-height:1.3;margin-block:9px}
  html body .pouch-studio .pouch-experience{display:flex;flex-direction:column;height:auto;max-height:none;gap:18px;padding:0}
  html body .pouch-studio .pouch-scene{position:relative;inset:auto;width:100%;height:auto;order:0}
  html body .pouch-studio .pouch-panel{height:auto}
@@ -74,8 +75,12 @@
  html body .megui-possibilities .mp-product img{height:220px!important;max-height:220px!important;object-fit:contain}
  /* Empresas: escolhas lado a lado; cenas menores e textos com respiro. */
  html body .empresa-studio :is(.empresa-discovery,.empresa-everyday,.uniform-studio){padding-block:34px}
- html body .empresa-studio .empresa-moments{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
- html body .empresa-studio .empresa-moments button{min-height:84px;padding:12px;font-size:12px}
+ html body .empresa-studio .moment-controls{padding:20px 16px}
+ html body .empresa-studio .empresa-moments{display:flex;flex-direction:row;overflow-x:auto;gap:12px;scroll-snap-type:x mandatory;padding-bottom:12px}
+ html body .empresa-studio .empresa-moments button{display:flex;flex-direction:column;gap:8px;flex:0 0 83%;min-height:140px;padding:14px;font-size:12px;scroll-snap-align:start}
+ html body .empresa-studio .empresa-moments button>span{position:static}
+ html body .empresa-studio .empresa-moments button strong{font-size:15px;line-height:1.3}
+ html body .empresa-studio .empresa-moments button small{font-size:11px;line-height:1.6;margin:0}
  html body .empresa-studio .moment-visual{height:225px;min-height:0}
  html body .empresa-studio .moment-workbench{gap:22px}
  html body .empresa-studio .empresa-discovery-answer{gap:18px;margin-top:22px}
@@ -88,6 +93,8 @@
  html body .empresa-studio .uniform-quality-photo{height:92px}
  html body .empresa-studio .uniform-quality-photo img{height:100%!important;object-fit:cover}
  html body .empresa-studio .uniform-quality-text>span{font-size:12px;line-height:1.65}
+ html body .empresa-studio .uniform-studio-quality h3{font-size:28px!important;line-height:1.2}
+ html body .empresa-studio .uniform-quality-intro{font-size:13px}
  html body .empresa-studio .empresa-gift-art{height:240px;min-height:0}
  html body .empresa-studio .empresa-gift-art figure img{height:230px!important;object-fit:contain}
  html body .empresa-studio .empresa-gift-mug{height:100px!important;width:100px!important;object-fit:contain}
@@ -112,8 +119,8 @@
  html body .ev-artdirection .ev-moment-copy h3{font-size:24px!important;line-height:1.2}
  html body .ev-artdirection .ev-moment-copy p{font-size:13px!important;line-height:1.7}
  html body .ev-artdirection .ev-curated-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 14px}
- html body .ev-artdirection .ev-curated-piece{display:flex;flex-direction:column;min-width:0;gap:12px;grid-column:auto;grid-row:auto}
- html body .ev-artdirection .ev-curated-photo{width:100%;height:150px;min-height:0;aspect-ratio:1;flex:none}
+ html body .ev-artdirection .ev-curated-grid>.ev-curated-piece{display:flex;flex-direction:column;min-width:0;gap:12px;grid-area:auto!important}
+ html body .ev-artdirection .ev-curated-photo{width:100%;height:150px!important;min-height:0;aspect-ratio:1;flex:none}
  html body .ev-artdirection .ev-curated-photo img{width:100%!important;height:100%!important;object-fit:contain!important}
  html body .ev-artdirection .ev-curated-minions .ev-curated-photo img{object-fit:cover!important}
  html body .ev-artdirection .ev-curated-info{padding:0}
@@ -163,16 +170,27 @@
  /* Contato e catálogo: controles legíveis, sem pôsteres entre as ações. */
  html body .contact-studio{padding-block:30px}
  html body .contact-studio-grid{gap:24px}
- html body .contact-desks{gap:16px}
+ html body .contact-production>img{height:180px!important;width:100%;object-fit:cover}
+ html body .contact-desks{display:flex;flex-direction:row;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;align-items:stretch;padding-bottom:14px}
+ html body .contact-desks>.contact-desk{flex:0 0 88%;scroll-snap-align:start;min-width:0;box-sizing:border-box}
  html body :is(.contact-desk,.contact-channel){padding:20px}
  html body .contact-desk h2{font-size:25px!important}
  html body .contact-desk p{font-size:13px;line-height:1.7}
- html body .contact-brief-list{gap:12px}
- html body .contact-brief-list>li{padding:16px;min-height:0}
+ html body .contact-brief-list{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:14px}
+ html body .contact-brief-list>li{flex:0 0 82%;box-sizing:border-box;scroll-snap-align:start;padding:16px;min-height:0}
  html body .catalog-layout .product-grid:not(.list-view){grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px}
  html body .catalog-layout .product-visual{height:145px!important;min-height:0}
  html body .catalog-layout .product-visual img{height:100%!important;object-fit:contain!important}
  html body .catalog-layout .product-card h3{font-size:13px!important;line-height:1.4!important}
+ html body .fabric-details{padding-block:32px}
+ html body .fabric-details-heading h2{font-size:30px!important}
+ html body .fabric-inspector-panel{height:260px;min-height:0}
+ html body .fabric-inspector-panel>img{height:100%!important;width:100%;object-fit:cover}
+ html body .fabric-inspector-caption h3{font-size:24px!important}
+ html body .fabric-inspector-tabs{display:flex;flex-direction:row;gap:10px;overflow-x:auto;padding-bottom:12px;scroll-snap-type:x mandatory}
+ html body .fabric-inspector-tabs>button{flex:0 0 78%;min-height:92px;padding:12px;scroll-snap-align:start}
+ html body .fabric-inspector-contact{padding:18px;min-height:96px}
+ html body .fabric-contact-copy strong{font-size:26px}
  html body main :is(.mw-making-films,.ev-moments-composition,.possibilities-grid,.business-tabs){scrollbar-width:thin;scrollbar-color:#b394c3 transparent;overscroll-behavior-x:contain}
 }
 @media(max-width:359px){html body .services-discovery .service-info h3{font-size:16px!important}html body .home-megui-around .megui-around-photo{height:130px}html body .ev-artdirection .ev-curated-photo{height:130px}html body .ev-artdirection .ev-curated-info h3{font-size:18px!important}}
