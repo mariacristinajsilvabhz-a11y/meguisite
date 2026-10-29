@@ -132,3 +132,28 @@ body .home-idea.idea-premium .idea-flight-butterfly{right:0!important;top:-3px!i
  }
  body .home-idea.idea-premium .idea-flight-butterfly .icon{width:24px;height:29px}
 }
+
+/* Respiro dos textos decorativos — Fora do Óbvio. */
+@media(min-width:851px){
+ body .home-idea.idea-premium .idea-showcase{height:550px!important}
+ body .home-idea.idea-premium .idea-visual-label{top:-8px!important;left:-20px!important;max-width:130px!important;font-size:9px!important;line-height:1.4!important;padding:17px 12px!important;z-index:5!important}
+ body .home-idea.idea-premium .idea-visual-note{top:-5px!important;right:-10px!important;max-width:128px!important;font-size:9px!important;line-height:1.5!important;z-index:5!important}
+ body .home-idea.idea-premium .idea-shirt,
+ body .home-idea.idea-premium .idea-notebook{top:96px!important}
+ body .home-idea.idea-premium .idea-signature{bottom:-9px!important;left:50%!important;transform:translateX(-50%)!important;white-space:nowrap!important}
+}
+@media(min-width:561px) and (max-width:850px){
+ body .home-idea.idea-premium .idea-showcase{height:555px!important}
+ body .home-idea.idea-premium .idea-visual-label{top:0!important;left:0!important;max-width:125px!important}
+ body .home-idea.idea-premium .idea-visual-note{top:0!important;right:0!important;max-width:120px!important}
+ body .home-idea.idea-premium .idea-shirt,
+ body .home-idea.idea-premium .idea-notebook{top:100px!important}
+ body .home-idea.idea-premium .idea-signature{bottom:-9px!important}
+}
+@media(max-width:560px){
+ body .home-idea.idea-premium .idea-showcase{height:445px!important}
+ body .home-idea.idea-premium .idea-visual-label{top:0!important;left:0!important;max-width:105px!important;font-size:8px!important;padding:13px 8px!important}
+ body .home-idea.idea-premium .idea-shirt,
+ body .home-idea.idea-premium .idea-notebook{top:80px!important}
+ body .home-idea.idea-premium .idea-signature{bottom:-10px!important;left:50%!important;transform:translateX(-50%)!important}
+}
