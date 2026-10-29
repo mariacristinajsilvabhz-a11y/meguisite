@@ -194,3 +194,61 @@
  html body main :is(.mw-making-films,.ev-moments-composition,.possibilities-grid,.business-tabs){scrollbar-width:thin;scrollbar-color:#b394c3 transparent;overscroll-behavior-x:contain}
 }
 @media(max-width:359px){html body .services-discovery .service-info h3{font-size:16px!important}html body .home-megui-around .megui-around-photo{height:130px}html body .ev-artdirection .ev-curated-photo{height:130px}html body .ev-artdirection .ev-curated-info h3{font-size:18px!important}}
+
+/* Banner mobile: a arte participa do fluxo, sem herdar as coordenadas do desktop. */
+@media(max-width:760px){
+ html body.home-cinema #megui-theme-slides .carousel-slide{
+  display:flex!important;flex-direction:column!important;align-items:stretch!important;
+  justify-content:flex-start!important;min-height:0!important;height:auto!important;
+  padding:22px 18px 54px!important;gap:18px!important;
+ }
+ html body.home-cinema #megui-theme-slides .carousel-slide .carousel-copy{
+  position:relative!important;inset:auto!important;width:100%!important;max-width:none!important;
+  box-sizing:border-box!important;padding:0!important;margin:0!important;flex:none!important;
+ }
+ html body.home-cinema #megui-theme-slides .carousel-slide .carousel-art{
+  position:relative!important;inset:auto!important;top:auto!important;right:auto!important;
+  bottom:auto!important;left:auto!important;order:1!important;flex:none!important;
+  align-self:stretch!important;box-sizing:border-box!important;width:100%!important;
+  height:220px!important;min-height:0!important;max-height:none!important;
+  margin:0!important;padding:0 0 24px!important;transform:none!important;
+ }
+ html body.home-cinema #megui-theme-slides .carousel-slide .carousel-art>img{
+  position:relative!important;inset:auto!important;display:block!important;
+  width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;
+  object-fit:contain!important;object-position:center!important;transform:none!important;
+ }
+ html body.home-cinema #megui-theme-slides .carousel-copy :is(h1,h2){
+  font-size:clamp(30px,7.6vw,40px)!important;line-height:1.12!important;
+  max-width:100%!important;margin:0 0 16px!important;text-wrap:wrap!important;
+ }
+ html body.home-cinema #megui-theme-slides .carousel-copy :is(h1,h2)>span{
+  display:block!important;
+ }
+ html body.home-cinema #megui-theme-slides .carousel-kicker{
+  font-size:9px!important;line-height:1.5!important;letter-spacing:.06em!important;margin-bottom:14px!important;
+ }
+ html body.home-cinema #megui-theme-slides .carousel-copy>p{
+  font-size:13px!important;line-height:1.7!important;max-width:none!important;margin:0!important;
+ }
+ html body.home-cinema #megui-theme-slides .carousel-actions{
+  display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:10px!important;margin-top:18px!important;
+ }
+ html body.home-cinema #megui-theme-slides .carousel-actions>a{
+  width:100%!important;min-width:0!important;min-height:46px!important;
+  padding:10px 8px!important;box-sizing:border-box!important;font-size:11px!important;gap:7px!important;
+ }
+ html body.home-cinema #megui-theme-slides .carousel-maker-signature{
+  bottom:0!important;right:0!important;font-size:8px!important;
+ }
+ html body.home-cinema #megui-theme-slides .carousel-toolbar{
+  inset:auto 0 6px!important;min-height:40px!important;
+ }
+ html body.home-cinema #megui-theme-slides .carousel-dots{
+  gap:0!important;max-width:100%!important;
+ }
+ html body.home-cinema #megui-theme-slides .carousel-dots button{
+  width:36px!important;min-width:36px!important;height:40px!important;padding:0!important;
+ }
+}
