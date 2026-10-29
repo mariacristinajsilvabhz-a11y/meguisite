@@ -287,3 +287,60 @@
  #megui-theme-slides .slide-wear h2.wear-editorial-title > .wear-title-main,
  #megui-theme-slides .slide-wear h2.wear-editorial-title > .wear-title-second{white-space:normal!important}
 }
+
+/* Campanha em camadas: todas as interações permanecem reais no DOM. */
+#megui-theme-slides .slide-wear{
+ background:radial-gradient(ellipse at 77% 53%,#42214f 0%,#291a32 45%,#151018 100%)!important;
+ --ink:#fff;--muted:#f1e9f3;--accent:#d7a6f1;
+}
+#megui-theme-slides .slide-wear:before{
+ content:"";position:absolute;inset:0;display:block!important;pointer-events:none;
+ background:radial-gradient(ellipse at 70% 78%,rgba(164,78,204,.20),transparent 46%),
+ radial-gradient(ellipse at 5% 2%,rgba(152,87,184,.12),transparent 48%);
+ opacity:1!important;
+}
+#megui-theme-slides .slide-wear .carousel-copy{position:relative;z-index:5;width:61%!important;max-width:none!important}
+#megui-theme-slides .slide-wear h2.wear-editorial-title{
+ font-size:clamp(31px,4.05vw,68px)!important;margin-bottom:29px!important;
+ letter-spacing:-.058em!important;text-wrap:nowrap!important;
+}
+#megui-theme-slides .slide-wear h2.wear-editorial-title > .wear-title-main{font-size:1em!important}
+#megui-theme-slides .slide-wear h2.wear-editorial-title > .wear-title-second{
+ font-size:.88em!important;margin-top:3px!important;letter-spacing:-.045em!important;
+}
+#megui-theme-slides .slide-wear .carousel-copy>p{color:#f5edf9!important;font-size:clamp(13px,1.15vw,16px)!important;line-height:1.7!important;max-width:42ch}
+#megui-theme-slides .slide-wear .carousel-kicker{color:#e8ccef!important;letter-spacing:.18em}
+#megui-theme-slides .slide-wear .carousel-theme-details{color:#e4c6ef!important}
+#megui-theme-slides .slide-wear .carousel-actions>.carousel-cta{background:#d6a9ee!important;color:#211629!important;border-color:#d6a9ee!important}
+#megui-theme-slides .slide-wear .carousel-actions>.carousel-talk{background:transparent!important;color:#fff!important;border:1px solid #a987b9!important}
+#megui-theme-slides .slide-wear .carousel-art{isolation:isolate}
+#megui-theme-slides .slide-wear .carousel-stage-word{
+ top:12%!important;right:0!important;z-index:0!important;color:rgba(196,135,220,.43)!important;
+ font:italic 600 clamp(100px,14.5vw,220px)/1 "Cormorant Garamond",Georgia,serif!important;
+ letter-spacing:-.09em!important;white-space:nowrap;
+}
+#megui-theme-slides .slide-wear .carousel-art>img{position:relative;z-index:3!important;filter:drop-shadow(0 20px 18px rgba(0,0,0,.27))!important}
+#megui-theme-slides .slide-wear .wear-orbit{
+ position:absolute;z-index:1;left:-22%;right:-6%;top:42%;height:43%;border:1px solid rgba(213,155,240,.5);
+ border-radius:50%;transform:rotate(-19deg);pointer-events:none;
+}
+#megui-theme-slides .slide-wear .wear-butterfly{position:absolute;z-index:4;display:block;color:#dba2fb;pointer-events:none;filter:drop-shadow(0 0 9px #b45fe9)}
+#megui-theme-slides .slide-wear .wear-butterfly .icon{width:34px;height:34px}
+#megui-theme-slides .slide-wear .wear-butterfly-a{top:17%;left:4%;transform:rotate(-20deg)}
+#megui-theme-slides .slide-wear .wear-butterfly-b{top:35%;right:0;transform:rotate(25deg)}
+#megui-theme-slides .slide-wear .wear-butterfly-c{bottom:10%;right:4%;transform:rotate(-30deg)}
+#megui-theme-slides .slide-wear .fabric-zoom{z-index:6!important;background:rgba(38,24,50,.85)!important;color:white!important;border:1px solid #a876c5!important;box-shadow:0 12px 25px #100a16a0!important}
+#megui-theme-slides .slide-wear .fabric-zoom-caption{color:#fff!important}
+#megui-theme-slides .slide-wear .fabric-zoom-hint{color:#d3bddf!important}
+@media(max-width:1100px){
+ #megui-theme-slides .slide-wear .carousel-copy{width:58%!important}
+ #megui-theme-slides .slide-wear h2.wear-editorial-title{font-size:clamp(28px,3.65vw,45px)!important}
+ #megui-theme-slides .slide-wear .wear-butterfly .icon{width:25px;height:25px}
+}
+@media(max-width:760px){
+ #megui-theme-slides .slide-wear .carousel-copy{width:100%!important}
+ #megui-theme-slides .slide-wear h2.wear-editorial-title{font-size:clamp(25px,6.3vw,38px)!important;text-wrap:wrap!important}
+ #megui-theme-slides .slide-wear .carousel-stage-word{top:5%!important;right:0!important;font-size:clamp(75px,23vw,130px)!important}
+ #megui-theme-slides .slide-wear .wear-orbit{top:40%;height:40%;left:-8%}
+ #megui-theme-slides .slide-wear .wear-butterfly-b{top:28%}
+}
