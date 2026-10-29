@@ -54,6 +54,13 @@ html[data-theme=dark] .ms-opening .ms-start{color:#dabce8}
 @media(prefers-reduced-motion:reduce){.ms-opening *{animation:none!important;transition:none!important}}
 
 .meg-work .mw-piece-image img[src*="camisetas-estamparia-piso-v4"]{object-fit:cover;object-position:50% 55%;padding:0}
+
+/* Produtos com transparência real: sem moldura ou fundo artificial. */
+.meg-work :is(.mw-lead-photo,.mw-feature-image,.mw-piece-image):has(img[data-product-cutout]){background:transparent!important;box-shadow:none!important;border-radius:0}
+.meg-work img[data-product-cutout]{object-fit:contain!important;filter:drop-shadow(0 12px 10px #4c305215)}
+.meg-work .mw-piece-image:has(img[data-product-cutout]) img{padding:12px}
+html[data-theme=dark] .meg-work :is(.mw-lead-photo,.mw-feature-image,.mw-piece-image):has(img[data-product-cutout]){background:transparent!important}
+
 </style>
 {% endblock %}
 
@@ -81,7 +88,13 @@ html[data-theme=dark] .ms-opening .ms-start{color:#dabce8}
  'Escola de Cura':'img/trabalhos/2026/escola-clean-transparent-v1.webp',
  'Senac Minas':'img/trabalhos/2026/senac-cadernos-recorte-v3.webp',
  'Chaveiros personalizados':'img/trabalhos/2026/chaveiro-fabiano-clean-v1.webp',
- 'Da estampa à camiseta':'img/acervo/2026/camisetas-estamparia-piso-v4.webp'
+ 'Da estampa à camiseta':'img/acervo/2026/camisetas-estamparia-piso-v4.webp',
+ 'Circuito das Indústrias':'img/trabalhos/2026/cutout-circuito-v1.webp',
+ 'Senac · garrafas personalizadas':'img/trabalhos/2026/cutout-garrafas-v1.webp',
+ 'Virgin Mary · camisetas':'img/trabalhos/2026/cutout-virgin-v1.webp',
+ 'SenacX · bottons':'img/trabalhos/2026/cutout-bottons-v1.webp',
+ 'E.E.P.O.F · kit escolar':'img/trabalhos/2026/cutout-eepof-v1.webp',
+ 'Nécessaires personalizadas':'img/trabalhos/2026/cutout-necessaires-v1.webp'
 } %}
 
 {% set featured_titles = ['SenacX · Alexas personalizadas','Infinix · kit corporativo','Fecomércio MG · fones','Band Minas'] %}
@@ -154,7 +167,7 @@ html[data-theme=dark] .ms-opening .ms-start{color:#dabce8}
           <a href="{{ url_for('static',filename=portfolio_photos.get(featured_main.title, featured_main.presentation_image|default(featured_main.image))) }}"
              data-mw-zoom data-mw-zoom-title="{{ featured_main.title }}" aria-label="Ampliar fotografia do projeto {{ featured_main.title }}" target="_blank" rel="noopener">
             <img src="{{ url_for('static',filename=portfolio_photos.get(featured_main.title, featured_main.presentation_image|default(featured_main.image))) }}"
-                 alt="Alexa personalizada para o projeto SenacX" loading="lazy" decoding="async">
+                 data-product-cutout alt="Alexa personalizada para o projeto SenacX" loading="lazy" decoding="async">
           </a>
           <span class="mw-lead-photo-tag">ESTÚDIO DE PROJETOS MEGUI</span>
         </div>
@@ -174,7 +187,7 @@ html[data-theme=dark] .ms-opening .ms-start{color:#dabce8}
           <a class="mw-feature-image" href="{{ url_for('static',filename=portfolio_photos.get(work.title, work.presentation_image|default(work.image))) }}"
              data-mw-zoom data-mw-zoom-title="{{ work.title }}" target="_blank" rel="noopener" aria-label="Ampliar fotografia de {{ work.title }}">
             <img src="{{ url_for('static',filename=portfolio_photos.get(work.title, work.presentation_image|default(work.image))) }}"
-                 alt="{{ work.title }} — {{ work.kind|lower }}" loading="lazy" decoding="async" {% if name in ['Infinix · kit corporativo','Fecomércio MG · fones'] %}{% endif %}>
+                 {% if work.title in portfolio_photos and work.title != 'Da estampa à camiseta' %}data-product-cutout{% endif %} alt="{{ work.title }} — {{ work.kind|lower }}" loading="lazy" decoding="async" {% if name in ['Infinix · kit corporativo','Fecomércio MG · fones'] %}{% endif %}>
             <span class="mw-image-enlarge" aria-hidden="true">VER DE PERTO</span>
           </a>
           <div class="mw-feature-copy">
@@ -259,7 +272,7 @@ html[data-theme=dark] .ms-opening .ms-start{color:#dabce8}
             data-mw-zoom data-mw-zoom-title="{{ work.title }}" target="_blank" rel="noopener"
             aria-label="Ver imagem ampliada do trabalho {{ work.title }}">
             <img src="{{ url_for('static',filename=portfolio_photos.get(work.title, work.presentation_image|default(work.image))) }}"
-              alt="{{ work.title }} — {{ work.kind|lower }}" loading="lazy" decoding="async" {% if work.presentation_image is defined and work.title not in ['Nécessaires personalizadas','Virgin Mary · camisetas','Escola de Cura','E.E.P.O.F · kit escolar'] %}data-mw-cutout{% endif %}>
+              {% if work.title in portfolio_photos and work.title != 'Da estampa à camiseta' %}data-product-cutout{% endif %} alt="{{ work.title }} — {{ work.kind|lower }}" loading="lazy" decoding="async" {% if work.presentation_image is defined and work.title not in ['Nécessaires personalizadas','Virgin Mary · camisetas','Escola de Cura','E.E.P.O.F · kit escolar'] %}{% endif %}>
             <span class="mw-piece-image-zoom" aria-hidden="true">AMPLIAR</span>
           </a>
           <div class="mw-piece-body">
@@ -390,3 +403,4 @@ html[data-theme=dark] .ms-opening .ms-start{color:#dabce8}
 })();
 </script>
 {% endblock %}
+
