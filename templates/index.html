@@ -520,31 +520,87 @@
   </div>
 </section>
 
-<section class="section home-idea idea-premium" id="sua-ideia" aria-labelledby="idea-title">
-  <div class="container">
-    <header class="idea-section-heading"><span class="explore-signature">{{ icon('butterfly') }} <span>Fora do óbvio</span></span><h2 id="idea-title">Sua ideia vai <em>além</em> do catálogo.</h2></header>
-    <div class="idea-layout">
-      <div class="idea-showcase" aria-label="Explore algumas possibilidades de personalização">
-        <span class="idea-orbit" aria-hidden="true"></span><span class="idea-visual-note" aria-hidden="true">NÃO TEM NO CATÁLOGO?<strong> A GENTE CRIA.</strong></span>
-        <span class="idea-visual-label">MATERIAIS DIFERENTES.<br>SUA IDENTIDADE<br>EM TODOS.</span>
-        <a class="idea-product idea-shirt" href="{{ url_for('category',slug='vestuario') }}"><img src="{{ url_for('static',filename='img/produtos/camiseta-megui.webp') }}" alt="Camiseta preta personalizada Megui" width="1000" height="1000" loading="lazy"><span>Vista sua ideia {{ icon('arrow') }}</span></a>
-        <a class="idea-product idea-bag" href="{{ url_for('category',slug='bolsas-acessorios') }}"><img src="{{ url_for('static',filename='img/inicio/ecobag.webp') }}" alt="Ecobag personalizada" width="1000" height="1000" loading="lazy"><span>Leve sua marca {{ icon('arrow') }}</span></a>
-        <a class="idea-product idea-notebook" href="{{ url_for('category',slug='grafica') }}"><img src="{{ url_for('static',filename='img/inicio/caderno.webp') }}" alt="Caderno com personalização Megui" width="1000" height="1000" loading="lazy"><span>Dê forma à mensagem {{ icon('arrow') }}</span></a>
-        <a class="idea-product idea-cup" href="{{ url_for('category',slug='brindes') }}"><img src="{{ url_for('static',filename='img/inicio/copo-termico.webp') }}" alt="Copo térmico personalizado" width="1000" height="1000" loading="lazy"><span>Faça parte da rotina {{ icon('arrow') }}</span></a>
-        <span class="idea-signature" aria-hidden="true">{{ icon('butterfly') }} feito para representar.</span>
+<section class="megui-possibilities" id="sua-ideia" aria-labelledby="possibilities-title">
+  <div class="container mp-layout">
+    <div class="mp-copy">
+      <span class="mp-eyebrow">{{ icon('butterfly') }} FORA DA CAIXA</span>
+      <h2 id="possibilities-title">Sua ideia merece<br><span>sair do papel.</span></h2>
+      <p class="mp-intro">Mesmo quando ainda não está no catálogo.</p>
+      <p class="mp-description">Uma referência, um rascunho ou uma vontade de fazer diferente. Conte o que você imaginou: a gente explora materiais, formatos e personalização com você.</p>
+      <a class="mp-cta" href="{{ url_for('outside_box') }}">{{ icon('butterfly') }} Vamos desenvolver sua ideia</a>
+      <a class="mp-talk" href="https://wa.me/{{ whatsapp_number }}?text={{ 'Olá! Quero desenvolver uma ideia personalizada com a Megui.'|urlencode }}" target="_blank" rel="noopener">Ou converse com a gente no WhatsApp</a>
+      <span class="mp-signature">Da primeira ideia ao último detalhe.</span>
+    </div>
+    <div class="mp-studio" data-possibility-studio>
+      <div class="mp-studio-heading"><span>UMA IDENTIDADE.</span><span>MUITAS POSSIBILIDADES.</span></div>
+      <div class="mp-stage">
+        {% for key,word,title,description,image in [
+          ('vestir','Vestir','Identidade que veste.','Da escolha da malha ao cuidado com a estampa.','img/produtos/camiseta-megui.webp'),
+          ('levar','Levar','Sua marca acompanha.','Bolsas e acessórios para fazer parte do caminho.','img/inicio/ecobag.webp'),
+          ('presentear','Presentear','Uma ideia que fica.','Papelaria e presentes com a personalidade da sua marca.','img/inicio/caderno.webp'),
+          ('usar','Usar','Presença no dia a dia.','Peças úteis que transformam a rotina em lembrança.','img/inicio/copo-termico.webp')
+        ] %}
+        <div class="mp-panel" id="mp-panel-{{ key }}" role="tabpanel" aria-labelledby="mp-tab-{{ key }}" {% if not loop.first %}hidden{% endif %}>
+          <div class="mp-product"><img src="{{ url_for('static',filename=image) }}" alt="{{ title }} Produto personalizado Megui" width="1000" height="1000" loading="lazy" decoding="async"></div>
+          <div class="mp-caption"><h3>{{ title }}</h3><p>{{ description }}</p></div>
+        </div>
+        {% endfor %}
       </div>
-      <div class="idea-copy">
-        <span class="idea-copy-tag">POSSIBILIDADES SEM FÓRMULA PRONTA</span>
-        <p>Uma peça para sua marca, um presente com significado ou aquele produto que você ainda não encontrou por aí. <strong>A ideia é sua. O caminho para criar, a gente constrói junto.</strong></p>
-        <div class="idea-invitation"><h3>Não encontrou por aqui?</h3><p>Mostre uma referência, um rascunho ou simplesmente conte o que imaginou. Vamos explorar materiais, formatos e possibilidades juntos.</p></div>
-        <a class="idea-cta" href="{{ url_for('outside_box') }}">{{ icon('butterfly') }} <span>Vamos criar algo fora da caixa</span> {{ icon('arrow') }}</a><a class="idea-contact-link" href="https://wa.me/{{ whatsapp_number }}?text={{ 'Olá! Quero desenvolver uma ideia personalizada com a Megui.'|urlencode }}" target="_blank" rel="noopener">Prefere conversar no WhatsApp? {{ icon('arrow') }}</a>
-        <span class="idea-cta-note">Cada projeto começa com uma conversa e uma possibilidade.</span>
+      <div class="mp-tabs" role="tablist" aria-label="Explore as possibilidades">
+        {% for key,word,image in [
+          ('vestir','Vestir','img/produtos/camiseta-megui.webp'),
+          ('levar','Levar','img/inicio/ecobag.webp'),
+          ('presentear','Presentear','img/inicio/caderno.webp'),
+          ('usar','Usar','img/inicio/copo-termico.webp')
+        ] %}
+        <button class="mp-tab" id="mp-tab-{{ key }}" type="button" role="tab" aria-selected="{{ 'true' if loop.first else 'false' }}" aria-controls="mp-panel-{{ key }}" tabindex="{{ '0' if loop.first else '-1' }}"><img src="{{ url_for('static',filename=image) }}" alt="" width="70" height="70" loading="lazy"><span>{{ word }}</span></button>
+        {% endfor %}
       </div>
     </div>
-    <div class="idea-flight-path" aria-hidden="true"><svg viewBox="0 0 560 126" preserveAspectRatio="none"><path d="M5 45 C88 21 154 111 284 69 S465 57 551 6"/></svg><span class="idea-flight-butterfly">{{ icon('butterfly') }}</span></div>
-    <div class="idea-footer"><span>Uma marca. Muitas possibilidades.</span><nav aria-label="Mais possibilidades para seu projeto"><a href="{{ url_for('b2b') }}">Para sua empresa {{ icon('arrow') }}</a><a href="{{ url_for('events') }}">Para seu evento {{ icon('arrow') }}</a><a href="{{ url_for('products') }}">Explore o catálogo {{ icon('arrow') }}</a></nav></div>
   </div>
 </section>
+<style>
+.megui-possibilities{--mp-ink:#37233f;--mp-accent:#9361ac;--mp-muted:#6e5d77;position:relative;padding:clamp(60px,7vw,105px) 0;background:#f7f2f9;color:var(--mp-ink);overflow:hidden}
+.megui-possibilities .mp-layout{max-width:1180px;display:grid;grid-template-columns:1fr 1fr;gap:clamp(45px,7vw,100px);align-items:center}
+.megui-possibilities .mp-copy{max-width:485px}
+.megui-possibilities .mp-eyebrow{display:flex;align-items:center;gap:10px;font:650 11px/1.4 "Sora",sans-serif;letter-spacing:.14em;color:#805297}
+.megui-possibilities .mp-eyebrow .icon{width:27px;height:27px}
+.megui-possibilities h2{margin:24px 0 21px!important;font:550 clamp(37px,4vw,57px)/1.1 "Space Grotesk",sans-serif!important;letter-spacing:-.055em!important;color:var(--mp-ink)!important;max-width:none!important;text-wrap:balance}
+.megui-possibilities h2 span{color:var(--mp-accent)}
+.megui-possibilities .mp-intro{margin:0 0 18px;font:600 17px/1.55 "Sora",sans-serif;color:var(--mp-ink)}
+.megui-possibilities .mp-description{max-width:43ch;margin:0;font:400 15px/1.8 "Sora",sans-serif;color:var(--mp-muted)}
+.megui-possibilities .mp-cta{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:54px;padding:13px 22px;margin-top:30px;border-radius:8px;background:#9361ac;color:white;text-decoration:none;font:650 13px/1.5 "Sora",sans-serif;box-shadow:0 9px 20px -13px #6d3f83;transition:background .2s,transform .2s}
+.megui-possibilities .mp-cta .icon{width:23px;height:23px;flex:none}
+.megui-possibilities .mp-cta:hover{background:#7e4e96;transform:translateY(-2px)}
+.megui-possibilities .mp-talk{display:block;width:fit-content;margin-top:17px;font:500 11px/1.7 "Sora",sans-serif;text-underline-offset:4px;color:var(--mp-muted)}
+.megui-possibilities .mp-signature{display:block;margin-top:39px;color:#9a7fa7;font:500 11px/1.5 "Sora",sans-serif}
+.megui-possibilities .mp-studio{min-width:0}
+.megui-possibilities .mp-studio-heading{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px;color:#896a98;font:600 9px/1.6 "Sora",sans-serif;letter-spacing:.12em}
+.megui-possibilities .mp-stage{position:relative;margin-top:14px}
+.megui-possibilities .mp-panel[hidden]{display:none!important}
+.megui-possibilities .mp-product{height:clamp(270px,30vw,360px);position:relative;display:flex;align-items:center;justify-content:center;isolation:isolate}
+.megui-possibilities .mp-product:before{content:"";position:absolute;z-index:-1;inset:12% 9% 5%;border-radius:49% 51% 45% 55%;background:#e8d9ef;transform:rotate(-8deg)}
+.megui-possibilities .mp-product img{display:block;box-sizing:border-box;width:100%;height:100%;padding:10px 35px;object-fit:contain;filter:drop-shadow(0 18px 12px #4b2c5b20)}
+.megui-possibilities .mp-caption{text-align:center;min-height:73px;margin-top:13px}
+.megui-possibilities .mp-caption h3{margin:0 0 7px;font:600 20px/1.3 "Space Grotesk",sans-serif;letter-spacing:-.035em;color:var(--mp-ink)}
+.megui-possibilities .mp-caption p{margin:0 auto;max-width:40ch;font:400 11px/1.7 "Sora",sans-serif;color:var(--mp-muted)}
+.megui-possibilities .mp-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:17px}
+.megui-possibilities .mp-tab{appearance:none;display:flex;flex-direction:column;align-items:center;gap:8px;min-width:0;padding:9px 3px 12px;background:transparent;border:0;border-bottom:2px solid transparent;border-radius:0;color:#897493;cursor:pointer;font:500 11px/1.5 "Sora",sans-serif;transition:color .2s,background .2s}
+.megui-possibilities .mp-tab img{height:48px;width:60px;object-fit:contain;opacity:.65;transition:opacity .2s,transform .2s}
+.megui-possibilities .mp-tab[aria-selected=true]{color:#704587;border-bottom-color:#a67bb9;background:#eee4f3}
+.megui-possibilities .mp-tab[aria-selected=true] img,.megui-possibilities .mp-tab:hover img{opacity:1;transform:translateY(-2px)}
+.megui-possibilities :is(.mp-tab,.mp-cta,.mp-talk):focus-visible{outline:3px solid #a277b8;outline-offset:4px}
+html[data-theme=dark] .megui-possibilities{--mp-ink:#f0e5f4;--mp-muted:#c4b0cf;--mp-accent:#cea5e2;background:#241c2d}
+html[data-theme=dark] .megui-possibilities .mp-product:before{background:#3c2d46}
+html[data-theme=dark] .megui-possibilities .mp-tab[aria-selected=true]{background:#3b2b46;color:#e1c2ef;border-color:#c99edd}
+html[data-theme=dark] .megui-possibilities :is(.mp-eyebrow,.mp-studio-heading,.mp-signature){color:#c3a2d3}
+@media(max-width:760px){.megui-possibilities .mp-layout{grid-template-columns:1fr;gap:42px;max-width:560px}.megui-possibilities .mp-copy{max-width:none}.megui-possibilities .mp-signature{display:none}.megui-possibilities .mp-product{height:310px}.megui-possibilities .mp-studio-heading{font-size:9px}.megui-possibilities h2{font-size:42px!important}}
+@media(max-width:390px){.megui-possibilities h2{font-size:36px!important}.megui-possibilities .mp-product{height:270px}.megui-possibilities .mp-cta{padding:13px 16px;font-size:12px}}
+@media(prefers-reduced-motion:reduce){.megui-possibilities *{transition:none!important}}
+</style>
+<script>
+(()=>{const studio=document.querySelector('[data-possibility-studio]');if(!studio)return;const tabs=[...studio.querySelectorAll('[role=tab]')];const select=(tab,focus=false)=>{tabs.forEach(item=>{const active=item===tab;item.setAttribute('aria-selected',String(active));item.tabIndex=active?0:-1;document.getElementById(item.getAttribute('aria-controls')).hidden=!active;});if(focus)tab.focus();};tabs.forEach((tab,index)=>{tab.addEventListener('click',()=>select(tab));tab.addEventListener('keydown',event=>{let next;if(event.key==='ArrowRight')next=(index+1)%tabs.length;else if(event.key==='ArrowLeft')next=(index+tabs.length-1)%tabs.length;else if(event.key==='Home')next=0;else if(event.key==='End')next=tabs.length-1;else return;event.preventDefault();select(tabs[next],true);});});})();
+</script>
 
 <section class="section home-clients home-editorial-clients">
   <div class="container">
