@@ -492,25 +492,38 @@
 </section>
 
 
-{% if products %}
-<section class="section home-editorial-products">
+<section class="section home-editorial-products home-megui-around" aria-labelledby="megui-around-title">
   <div class="container">
-    <div class="section-heading split-heading">
-      <div>
-        <span class="explore-signature">{{ icon('butterfly') }} <span>Continue explorando</span></span>
-        <h2>Sua marca, <span style="color:#8b46b1!important;-webkit-text-fill-color:#8b46b1!important">em novas formas.</span></h2>
-      </div>
-      <p>Escolha uma peça. Imagine sua cor, sua mensagem, seu logo. Vamos criar a combinação que faz sentido para você.</p>
+    <header class="megui-around-heading">
+      <span class="megui-around-eyebrow">MEGUI <span aria-hidden="true">/</span> PRODUTOS</span>
+      <h2 id="megui-around-title">Tem Megui <em>por aí...</em></h2>
+      <p>Em encontros, empresas e momentos especiais. Sua marca ganha vida em produtos que acompanham pessoas.</p>
+    </header>
+    <div class="megui-around-grid" aria-label="Algumas formas de personalizar com a Megui">
+      <a class="megui-around-item" href="{{ url_for('category',slug='brindes') }}">
+        <span class="megui-around-photo"><img src="{{ url_for('static',filename='img/trabalhos/2026/echo-pop-senac-fiel-v3.webp') }}" alt="Alexas personalizadas para o projeto SenacX" loading="lazy"></span>
+        <span class="megui-around-name">Tecnologia personalizada</span><span class="megui-around-detail">Brindes que surpreendem</span>
+      </a>
+      <a class="megui-around-item" href="{{ url_for('category',slug='bolsas-acessorios') }}">
+        <span class="megui-around-photo"><img src="{{ url_for('static',filename='img/inicio/ecobag.webp') }}" alt="Ecobag personalizada" loading="lazy"></span>
+        <span class="megui-around-name">Ecobags & bolsas</span><span class="megui-around-detail">Sua marca em movimento</span>
+      </a>
+      <a class="megui-around-item" href="{{ url_for('category',slug='vestuario') }}">
+        <span class="megui-around-photo"><img src="{{ url_for('static',filename='img/inicio/camiseta-megui-movimento-v3.webp') }}" alt="Camiseta personalizada Megui" loading="lazy"></span>
+        <span class="megui-around-name">Camisetas personalizadas</span><span class="megui-around-detail">Confecção própria</span>
+      </a>
+      <a class="megui-around-item" href="{{ url_for('category',slug='grafica') }}">
+        <span class="megui-around-photo"><img src="{{ url_for('static',filename='img/inicio/caderno.webp') }}" alt="Caderno personalizado Megui" loading="lazy"></span>
+        <span class="megui-around-name">Cadernos & papelaria</span><span class="megui-around-detail">Ideias que ficam</span>
+      </a>
+      <a class="megui-around-item" href="{{ url_for('category',slug='copos-garrafas') }}">
+        <span class="megui-around-photo"><img src="{{ url_for('static',filename='img/inicio/copo-termico.webp') }}" alt="Copo térmico personalizado Megui" loading="lazy"></span>
+        <span class="megui-around-name">Copos & térmicos</span><span class="megui-around-detail">Presentes para o dia a dia</span>
+      </a>
     </div>
-
-    <div class="product-grid">
-      {% for product in products %}
-        {% include "_product_card.html" %}
-      {% endfor %}
-    </div>
+    <div class="megui-around-footer"><span>{{ icon('butterfly') }} Muitas formas. Uma identidade só: a sua.</span><a href="{{ url_for('products') }}">Conheça os personalizados {{ icon('arrow') }}</a></div>
   </div>
 </section>
-{% endif %}
 
 <section class="section home-idea idea-premium" id="sua-ideia" aria-labelledby="idea-title">
   <div class="container">
