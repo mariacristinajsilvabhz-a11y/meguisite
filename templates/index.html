@@ -342,7 +342,7 @@
 .home-cinema main{overflow:clip}
 </style>
 <link rel="stylesheet" href="{{ url_for('static',filename='css/work-showcase.css',v='20261022-identidade-v6') }}">
-<link rel="stylesheet" href="{{ url_for('static',filename='css/home-signature.css',v='20261029-text-contrast-v9') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/home-signature.css',v='20261029-restored-decor-v10') }}">
 <link rel="stylesheet" href="{{ url_for('static',filename='css/services-discovery.css',v='20261020-butterfly-v1') }}">
 <link rel="stylesheet" href="{{ url_for('static',filename='css/pouch-studio.css',v='20261020-atelier-v3') }}">
  <link rel="stylesheet" href="{{ url_for('static',filename='css/pouch-detail-polish.css',v='20261025-atelier-v1') }}">
@@ -384,6 +384,32 @@
     </div>
     <figure class="carousel-art">
      {% if slide.theme == 'wear' %}<span class="carousel-stage-word" aria-hidden="true">Malha.</span><span class="wear-butterfly wear-butterfly-a" aria-hidden="true">{{ icon('butterfly') }}</span><span class="wear-butterfly wear-butterfly-b" aria-hidden="true">{{ icon('butterfly') }}</span><span class="wear-butterfly wear-butterfly-c" aria-hidden="true">{{ icon('butterfly') }}</span><span class="wear-orbit" aria-hidden="true"></span>{% endif %}
+     {% if slide.theme != 'wear' %}
+     <div class="megui-scene-ornaments" aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;z-index:1;overflow:hidden">
+       {% if slide.theme == 'football' %}
+       <span class="megui-ornament megui-ornament-a" style="position:absolute;top:12%;left:10%;font-size:32px">⚽</span>
+       <span class="megui-ornament megui-ornament-b" style="position:absolute;bottom:17%;right:5%;font-size:24px">⚽</span>
+       <span class="megui-ornament megui-ornament-c" style="position:absolute;top:27%;right:5%;color:#d4a0eb">{{ icon('butterfly') }}</span>
+       <span class="megui-ornament megui-ornament-d" style="position:absolute;bottom:12%;left:9%;color:#d4a0eb">{{ icon('butterfly') }}</span>
+       {% elif slide.theme == 'faith' %}
+       <span class="megui-ornament megui-ornament-a" style="position:absolute;top:13%;left:12%;font-size:32px;color:#d5b4e2">✦</span>
+       <span class="megui-ornament megui-ornament-b" style="position:absolute;bottom:17%;right:7%;font-size:27px;color:#d5b4e2">✧</span>
+       <span class="megui-ornament megui-ornament-c" style="position:absolute;top:26%;right:8%;color:#d3a2e4">{{ icon('butterfly') }}</span>
+       {% elif slide.theme == 'senac' %}
+       <span class="megui-ornament megui-ornament-a" style="position:absolute;top:12%;left:8%;font-size:37px;color:#77aebd">♫</span>
+       <span class="megui-ornament megui-ornament-b" style="position:absolute;bottom:16%;right:8%;font-size:34px;color:#77aebd">◌</span>
+       {% elif slide.theme == 'tech' %}
+       <span class="megui-ornament megui-ornament-a" style="position:absolute;top:12%;left:10%;font-size:35px;color:#cba6ef">⚡</span>
+       <span class="megui-ornament megui-ornament-b" style="position:absolute;bottom:15%;right:8%;font-size:27px;color:#cba6ef">◉</span>
+       {% elif slide.theme == 'teachers' %}
+       <span class="megui-ornament megui-ornament-a" style="position:absolute;top:13%;left:9%;font-size:38px;color:#cda6e4">✎</span>
+       <span class="megui-ornament megui-ornament-b" style="position:absolute;bottom:17%;right:7%;font-size:27px;color:#cda6e4">✧</span>
+       {% elif slide.theme == 'events' %}
+       <span class="megui-ornament megui-ornament-a" style="position:absolute;top:15%;left:10%;font-size:29px;color:#e0b1ed">✦</span>
+       <span class="megui-ornament megui-ornament-b" style="position:absolute;bottom:17%;right:7%;font-size:33px;color:#e0b1ed">✧</span>
+       {% endif %}
+     </div>
+     {% endif %}
      <div class="carousel-fabric-scene" aria-hidden="true">
       <span class="carousel-fabric-back"></span>
       <span class="carousel-fabric-fold"></span>
