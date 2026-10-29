@@ -148,7 +148,7 @@
 
 <link rel="stylesheet" href="{{ url_for('static',filename='css/knit-journal.css',v='20261016-v3') }}">
 <link rel="stylesheet" href="{{ url_for('static',filename='css/mostruario.css',v='20261018-v1') }}">
-<link rel="stylesheet" href="{{ url_for('static',filename='css/home-editorial-refresh.css',v='20261029-megui-around-v7') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/home-editorial-refresh.css',v='20261029-megui-around-v8-cutouts') }}">
 <style>
 {% raw %}
 /* Abertura Megui — apresentação fluida, sem molduras, preserva imagens originais. */
@@ -499,12 +499,19 @@
     <header class="megui-around-heading">
       <span class="megui-around-eyebrow">MEGUI <span aria-hidden="true">/</span> PRODUTOS</span>
       <h2 id="megui-around-title">Tem Megui <em>por aí...</em></h2>
-      <p>Produtos personalizados para a sua marca. Conheça algumas peças que já produzimos para clientes reais.</p>
+      <p>Trabalhos que levam marcas para o dia a dia — e novas possibilidades de personalização.</p>
     </header>
     <div class="megui-around-grid" aria-label="Trabalhos reais de clientes da Megui">
-      {% for work in featured_works[:5] %}
+      {% set around_works = [
+        {'title':'MAAC MÍDIA','kind':'Alexa · conceito de personalização','image':'img/trabalhos/2026/around-maac-transparent-v1.webp','key':'marcas'},
+        {'title':'Infinix','kind':'Kit corporativo','image':'img/trabalhos/2026/around-infinix-transparent-v1.webp','key':'marcas'},
+        {'title':'Future Pro','kind':'Vestuário personalizado','image':'img/trabalhos/2026/around-future-transparent-v1.webp','key':'projetos'},
+        {'title':'Fecomércio MG','kind':'Fones personalizados','image':'img/trabalhos/2026/around-fecomercio-transparent-v1.webp','key':'marcas'},
+        {'title':'Band Minas','kind':'Brindes corporativos','image':'img/trabalhos/2026/around-band-transparent-v1.webp','key':'projetos'}
+      ] %}
+      {% for work in around_works %}
       <a class="megui-around-item" href="{{ url_for('portfolio_view',_anchor=work.key if work.key else 'projetos') }}">
-        <span class="megui-around-photo"><img src="{{ url_for('static',filename=work.image) }}" alt="{{ work.title }} — {{ work.kind }}" loading="lazy" decoding="async"></span>
+        <span class="megui-around-photo"><span class="megui-around-butterfly" aria-hidden="true">{{ icon('butterfly') }}</span><img src="{{ url_for('static',filename=work.image) }}" alt="{{ work.title }} — {{ work.kind }}" width="800" height="800" loading="lazy" decoding="async"></span>
         <span class="megui-around-name">{{ work.title.split(' · ')[0] }}</span><span class="megui-around-detail">{{ work.kind|title }}</span>
       </a>
       {% endfor %}
