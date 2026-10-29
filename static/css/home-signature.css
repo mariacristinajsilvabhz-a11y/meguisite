@@ -422,3 +422,23 @@
 @media(max-width:760px){
  #megui-theme-slides .slide-wear .carousel-art .carousel-stage-word{top:7%!important;font-size:clamp(85px,24vw,140px)!important}
 }
+
+/* Legibilidade dos seis banners: correção de contraste, sem afetar confecção. */
+#megui-theme-slides .carousel-slide:not(.slide-wear){
+ --ink:#f8f2fa!important;--muted:#eee2f3!important;--accent:#d5acee!important;
+}
+#megui-theme-slides .carousel-slide:not(.slide-wear) .carousel-copy h1,
+#megui-theme-slides .carousel-slide:not(.slide-wear) .carousel-copy h2{
+ color:#fff!important;-webkit-text-fill-color:#fff!important;
+}
+#megui-theme-slides .carousel-slide:not(.slide-wear) .carousel-copy h1 > span,
+#megui-theme-slides .carousel-slide:not(.slide-wear) .carousel-copy h2 > span{
+ color:#d5acee!important;-webkit-text-fill-color:#d5acee!important;
+}
+#megui-theme-slides .carousel-slide:not(.slide-wear) .carousel-copy>p{
+ color:#f5edf8!important;-webkit-text-fill-color:#f5edf8!important;
+}
+#megui-theme-slides .carousel-slide:not(.slide-wear) .carousel-kicker,
+#megui-theme-slides .carousel-slide:not(.slide-wear) .carousel-theme-details{
+ color:#e2c5ef!important;-webkit-text-fill-color:#e2c5ef!important;
+}
