@@ -455,3 +455,32 @@
 @keyframes megui-ornament-float{from{transform:translate3d(0,2px,0) rotate(-6deg)}to{transform:translate3d(3px,-8px,0) rotate(7deg)}}
 @media(max-width:760px){#megui-theme-slides .carousel-slide:not(.slide-wear) .megui-ornament{font-size:20px!important}#megui-theme-slides .carousel-slide:not(.slide-wear) .megui-ornament .icon{width:23px!important;height:23px!important}}
 @media(prefers-reduced-motion:reduce){#megui-theme-slides .carousel-slide:not(.slide-wear) .megui-ornament{animation:none!important}}
+
+/* Mesmo cenário premium de confecção em todos os temas do carrossel. */
+#megui-theme-slides .carousel-slide,
+.home-cinema #megui-theme-slides .carousel-slide{
+ --ink:#fff;--muted:#f3e9f8;--accent:#d9b0ef;
+ background:radial-gradient(ellipse at 78% 52%,#452650 0%,#2b1c35 48%,#191321 100%)!important;
+ border-color:rgba(211,168,228,.30)!important;
+ color:#fff!important;
+}
+#megui-theme-slides .carousel-slide:before,
+.home-cinema #megui-theme-slides .carousel-slide:before{
+ background:radial-gradient(ellipse at 79% 62%,rgba(170,90,199,.17),transparent 48%),
+ radial-gradient(ellipse at 68% 78%,rgba(129,60,164,.13),transparent 43%),
+ radial-gradient(ellipse at 8% 8%,rgba(155,83,183,.10),transparent 53%)!important;
+ opacity:1!important;
+}
+#megui-theme-slides .carousel-slide:not(.slide-wear) .carousel-copy h1,
+#megui-theme-slides .carousel-slide:not(.slide-wear) .carousel-copy h2{color:#fff!important}
+#megui-theme-slides .carousel-slide:not(.slide-wear) .carousel-copy h1 > span,
+#megui-theme-slides .carousel-slide:not(.slide-wear) .carousel-copy h2 > span{color:#dcb6f0!important}
+#megui-theme-slides .carousel-slide:not(.slide-wear) .carousel-copy>p{color:#f6eef8!important}
+#megui-theme-slides .carousel-slide:not(.slide-wear) .carousel-kicker,
+#megui-theme-slides .carousel-slide:not(.slide-wear) .carousel-theme-details{color:#e4c7f3!important}
+#megui-theme-slides .carousel-slide:not(.slide-wear) .carousel-actions>.carousel-cta{
+ background:#d8b2ec!important;border-color:#d8b2ec!important;color:#271a31!important;
+}
+#megui-theme-slides .carousel-slide:not(.slide-wear) .carousel-actions>.carousel-talk{
+ background:transparent!important;border:1px solid #9876ab!important;color:#fff!important;
+}
