@@ -252,3 +252,10 @@
   width:36px!important;min-width:36px!important;height:40px!important;padding:0!important;
  }
 }
+
+/* O estado do carrossel prevalece sobre os layouts de cada slide. */
+html body.home-cinema #megui-theme-slides [data-carousel-slide][hidden],
+html body.home-cinema #megui-theme-slides .carousel-slide[hidden],
+html body.home-cinema #megui-theme-slides .carousel-slide:not(.is-active){
+ display:none!important;
+}
