@@ -70,6 +70,17 @@ html[data-theme=dark] .ms-opening .ms-start{color:#dabce8}
 {%- endmacro %}
 
 {% block content %}
+{% set portfolio_photos = {
+ 'SenacX · Alexas personalizadas':'img/trabalhos/2026/senac-clean-transparent-v1.webp',
+ 'Infinix · kit corporativo':'img/trabalhos/2026/around-infinix-transparent-v1.webp',
+ 'Fecomércio MG · fones':'img/trabalhos/2026/around-fecomercio-transparent-v1.webp',
+ 'Band Minas':'img/trabalhos/2026/around-band-transparent-v1.webp',
+ 'Future Pro':'img/trabalhos/2026/around-future-transparent-v1.webp',
+ 'Escola de Cura':'img/trabalhos/2026/escola-clean-transparent-v1.webp',
+ 'Senac Minas':'img/trabalhos/2026/senac-cadernos-recorte-v3.webp',
+ 'Chaveiros personalizados':'img/trabalhos/2026/chaveiro-fabiano-clean-v1.webp'
+} %}
+
 {% set featured_titles = ['SenacX · Alexas personalizadas','Infinix · kit corporativo','Fecomércio MG · fones','Band Minas'] %}
 {% set process_titles = ['Uniformes em volume','O processo por trás da estampa','Comunicação visual em produção','Confecção de bolsas'] %}
 {% set featured_main = portfolio|selectattr('title','equalto',featured_titles[0])|first %}
@@ -137,10 +148,10 @@ html[data-theme=dark] .ms-opening .ms-start{color:#dabce8}
 
       <article class="mw-lead-project">
         <div class="mw-lead-photo">
-          <a href="{{ url_for('static',filename=featured_main.presentation_image|default(featured_main.image)) }}"
+          <a href="{{ url_for('static',filename=portfolio_photos.get(featured_main.title, featured_main.presentation_image|default(featured_main.image))) }}"
              data-mw-zoom data-mw-zoom-title="{{ featured_main.title }}" aria-label="Ampliar fotografia do projeto {{ featured_main.title }}" target="_blank" rel="noopener">
-            <img src="{{ url_for('static',filename=featured_main.presentation_image|default(featured_main.image)) }}"
-                 alt="Alexa personalizada para o projeto SenacX" loading="lazy" decoding="async" data-mw-cutout>
+            <img src="{{ url_for('static',filename=portfolio_photos.get(featured_main.title, featured_main.presentation_image|default(featured_main.image))) }}"
+                 alt="Alexa personalizada para o projeto SenacX" loading="lazy" decoding="async">
           </a>
           <span class="mw-lead-photo-tag">ESTÚDIO DE PROJETOS MEGUI</span>
         </div>
@@ -157,10 +168,10 @@ html[data-theme=dark] .ms-opening .ms-start{color:#dabce8}
         {% for name,eyebrow,title,description in feature_stories %}
         {% set work = portfolio|selectattr('title','equalto',name)|first %}
         <article class="mw-feature-story">
-          <a class="mw-feature-image" href="{{ url_for('static',filename=work.presentation_image|default(work.image)) }}"
+          <a class="mw-feature-image" href="{{ url_for('static',filename=portfolio_photos.get(work.title, work.presentation_image|default(work.image))) }}"
              data-mw-zoom data-mw-zoom-title="{{ work.title }}" target="_blank" rel="noopener" aria-label="Ampliar fotografia de {{ work.title }}">
-            <img src="{{ url_for('static',filename=work.presentation_image|default(work.image)) }}"
-                 alt="{{ work.title }} — {{ work.kind|lower }}" loading="lazy" decoding="async" {% if name in ['Infinix · kit corporativo','Fecomércio MG · fones'] %}data-mw-cutout{% endif %}>
+            <img src="{{ url_for('static',filename=portfolio_photos.get(work.title, work.presentation_image|default(work.image))) }}"
+                 alt="{{ work.title }} — {{ work.kind|lower }}" loading="lazy" decoding="async" {% if name in ['Infinix · kit corporativo','Fecomércio MG · fones'] %}{% endif %}>
             <span class="mw-image-enlarge" aria-hidden="true">VER DE PERTO</span>
           </a>
           <div class="mw-feature-copy">
@@ -241,10 +252,10 @@ html[data-theme=dark] .ms-opening .ms-start{color:#dabce8}
         {% set inferred_tags = ('eventos ' if 'EVENT' in upperkind or 'CORRIDA' in upperkind or 'MOVIMENTO' in upperkind or 'COMUNICAÇÃO' in upperkind else '') ~ ('vestuario ' if 'VESTU' in upperkind or 'CAMISETA' in upperkind or 'EQUIPE' in upperkind or 'ESTAMP' in upperkind else '') ~ ('brindes ' if 'BRINDE' in upperkind or 'BOLSA' in upperkind or 'PAPELARIA' in upperkind or 'LEMBRAN' in upperkind else '') %}
         <article class="mw-piece" data-mw-item data-tags="{{ work.tags|default(inferred_tags) }}"
           data-search="{{ work.title }} {{ work.kind }} {{ work.text }}">
-          <a class="mw-piece-image" href="{{ url_for('static',filename=work.presentation_image|default(work.image)) }}"
+          <a class="mw-piece-image" href="{{ url_for('static',filename=portfolio_photos.get(work.title, work.presentation_image|default(work.image))) }}"
             data-mw-zoom data-mw-zoom-title="{{ work.title }}" target="_blank" rel="noopener"
             aria-label="Ver imagem ampliada do trabalho {{ work.title }}">
-            <img src="{{ url_for('static',filename=work.presentation_image|default(work.image)) }}"
+            <img src="{{ url_for('static',filename=portfolio_photos.get(work.title, work.presentation_image|default(work.image))) }}"
               alt="{{ work.title }} — {{ work.kind|lower }}" loading="lazy" decoding="async" {% if work.presentation_image is defined and work.title not in ['Nécessaires personalizadas','Virgin Mary · camisetas','Escola de Cura','E.E.P.O.F · kit escolar'] %}data-mw-cutout{% endif %}>
             <span class="mw-piece-image-zoom" aria-hidden="true">AMPLIAR</span>
           </a>
@@ -307,7 +318,7 @@ html[data-theme=dark] .ms-opening .ms-start{color:#dabce8}
 {% endblock %}
 
 {% block extra_scripts %}
-<script defer src="{{ url_for('static',filename='js/meg-work-cutouts-20261025.js',v='20261025-v1') }}"></script>
+
 <script>
 (() => {
   const root = document.querySelector('.meg-work');
