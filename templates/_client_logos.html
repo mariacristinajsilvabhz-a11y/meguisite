@@ -2,9 +2,9 @@
   {% for brand in trusted_brands %}
   <div class="client-logo-card">
     {% if brand.image %}
-    <img class="client-logo{% if brand.monochrome %} client-logo-monochrome{% endif %}{% if brand.logo_style %} client-logo-{{ brand.logo_style }}{% endif %}" src="{{ url_for('static', filename='img/clientes/' ~ brand.image) }}" alt="{{ brand.name }}" loading="lazy" decoding="async">
+    <img style="filter:brightness(0) invert(1);opacity:.94" class="client-logo{% if brand.monochrome %} client-logo-monochrome{% endif %}{% if brand.logo_style %} client-logo-{{ brand.logo_style }}{% endif %}" src="{{ url_for('static', filename='img/clientes/' ~ brand.image) }}" alt="{{ brand.name }}" loading="lazy" decoding="async">
     {% else %}
-    <span class="client-brand-name">{{ brand.name }}</span>
+    <span class="client-brand-name" style="color:#fff!important;-webkit-text-fill-color:#fff!important">{{ brand.name }}</span>
     {% endif %}
   </div>
   {% endfor %}
