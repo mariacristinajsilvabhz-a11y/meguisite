@@ -196,3 +196,6 @@ html[data-theme=dark] .home-megui-around .megui-around-footer>a{color:#cfaae3}
 html[data-theme=dark] .home-megui-around .megui-around-heading>p,
 html[data-theme=dark] .home-megui-around .megui-around-detail,
 html[data-theme=dark] .home-megui-around .megui-around-footer>span{color:#ccb6d6}
+
+/* Enquadramento mais distante da Echo Dot: respiro dentro do card. */
+.home-megui-around .megui-around-photo img[src*="around-maac-transparent"]{padding:19% 16%}
