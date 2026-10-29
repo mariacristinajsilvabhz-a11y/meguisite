@@ -32,6 +32,8 @@ html[data-theme=dark] .ms-opening{--ms-paper:#27212e;--ms-vein:#27212e;--ms-ink:
  body .meg-work .mw-overline{font-size:9px;letter-spacing:.08em}
  body .meg-work .mw-lead-project{margin:24px 0 30px}
  body .meg-work .mw-lead-photo{aspect-ratio:1.5;min-height:0}
+ body .meg-work .mw-lead-photo>a{min-height:0;overflow:hidden}
+ body .meg-work :is(.mw-lead-photo,.mw-feature-image,.mw-piece-image) img{width:100%!important;height:100%!important;max-height:100%!important;min-height:0;object-fit:contain!important}
  body .meg-work .mw-lead-photo img{padding:12px 28px 28px}
  body .meg-work .mw-lead-photo-tag{font-size:7px;padding:7px 10px;bottom:2px}
  body .meg-work .mw-lead-story{padding:24px 20px;border-radius:8px 24px 8px 24px}
