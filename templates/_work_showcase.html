@@ -2,7 +2,7 @@
  <div class="container">
   <header class="work-exhibit-header">
    <div><span class="work-exhibit-eyebrow">MEGUI / TRABALHOS QUE GANHAM O MUNDO</span><h2 id="work-showcase-title">Tem Megui <span>por aí.</span></h2></div>
-   <div class="work-exhibit-intro"><p>Na roupa de uma equipe.<br>Na lembrança de um encontro.<br><strong>No detalhe que leva uma marca.</strong></p><a href="{{ url_for('portfolio_view') }}">Conheça nosso portfólio <span aria-hidden="true">↗</span></a></div>
+   <div class="work-exhibit-intro"><p>Projetos feitos para marcas e eventos reais.<br>Fotografias do nosso acervo de produção.<br><strong>Trabalhos que contam histórias.</strong></p><a href="{{ url_for('portfolio_view') }}">Conheça nosso portfólio <span aria-hidden="true">↗</span></a></div>
   </header>
   {% set project_details = {
    'SenacX · Alexas personalizadas': ('Alexas Echo Pop', 'Identidade NaSemanaS'),
@@ -18,7 +18,7 @@
    {% for work in featured_works %}
    {% set title_parts = work.title.split(' · ') %}
    <article class="work-exhibit-panel" id="work-panel-{{ loop.index }}" aria-labelledby="work-title-{{ loop.index }}" {% if not loop.first %}hidden{% endif %}>
-    <div class="work-exhibit-image"><img src="{{ url_for('static',filename=work.presentation_image|default(work.image)) }}" alt="{{ work.title }}" loading="lazy" decoding="async" width="1000" height="1000"><span class="work-exhibit-photo-note">ACERVO MEGUI <b>/ {{ '%02d'|format(loop.index) }}</b></span><button type="button" class="work-exhibit-enlarge" data-work-enlarge aria-label="Ampliar foto: {{ work.title }}"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6.5"/><path d="m15 15 5 5M7 10h6m-3-3v6"/></svg><span>Ver de perto</span></button></div>
+    <div class="work-exhibit-image"><img src="{{ url_for('static',filename=work.image) }}" alt="{{ work.title }}" loading="lazy" decoding="async" width="1000" height="1000"><span class="work-exhibit-photo-note">ACERVO MEGUI <b>/ {{ '%02d'|format(loop.index) }}</b></span><button type="button" class="work-exhibit-enlarge" data-work-enlarge aria-label="Ampliar foto: {{ work.title }}"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6.5"/><path d="m15 15 5 5M7 10h6m-3-3v6"/></svg><span>Ver de perto</span></button></div>
     <div class="work-exhibit-story">
      <div class="work-exhibit-index"><span>PROJETO EM FOCO</span><span>{{ '%02d'|format(loop.index) }} <i>/ {{ '%02d'|format(featured_works|length) }}</i></span></div>
      <span class="work-exhibit-kind">{{ work.kind }}</span>
