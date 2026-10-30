@@ -65,6 +65,10 @@ html[data-theme=dark] .meg-work :is(.mw-lead-photo,.mw-feature-image,.mw-piece-i
 html body .meg-work .mw-feature-image{height:250px;min-height:0;aspect-ratio:auto;overflow:hidden;display:flex;align-items:center;justify-content:center}
 html body .meg-work .mw-feature-image img[data-product-cutout]{width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;object-fit:contain!important;object-position:center!important;padding:14px 22px!important;transform:none!important;box-sizing:border-box}
 @media(max-width:680px){html body .meg-work .mw-feature-image{height:210px}html body .meg-work .mw-feature-image img[data-product-cutout]{padding:10px 20px!important}}
+/* A galeria mantém as peças inteiras e numa escala uniforme. */
+html body .meg-work .mw-piece-image:has(img[data-product-cutout]){height:240px;min-height:0;aspect-ratio:auto;overflow:hidden;display:flex;align-items:center;justify-content:center}
+html body .meg-work .mw-piece-image img[data-product-cutout]{width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;object-fit:contain!important;object-position:center!important;padding:12px 20px!important;transform:none!important;box-sizing:border-box}
+@media(max-width:680px){html body .meg-work .mw-piece-image:has(img[data-product-cutout]){height:180px}html body .meg-work .mw-piece-image img[data-product-cutout]{padding:8px!important}}
 </style>
 <link rel="stylesheet" href="{{ url_for('static',filename='css/portfolio-mobile-20261029.css',v='2') }}">
 {% endblock %}
@@ -84,6 +88,7 @@ html body .meg-work .mw-feature-image img[data-product-cutout]{width:100%!import
 {%- endmacro %}
 
 {% block content %}
+{% set archive_mockups = [{"title":"Auto Carro · uniformes","kind":"VESTUÁRIO PERSONALIZADO","text":"Camisetas pretas com a identidade Auto Carro Centro Automotivo no peito e nas costas.","image":"img/trabalhos/2026/auto-carro-drive-v1.webp","tags":"vestuario","key":"auto-carro","product_cutout":true},{"title":"Estilo Moto Peças","kind":"UNIFORMES PARA EQUIPES","text":"Frente, costas e mangas personalizadas: a identidade da Estilo Moto Peças acompanha toda a peça.","image":"img/trabalhos/2026/estilo-moto-drive-v1.webp","tags":"vestuario","key":"estilo-moto","product_cutout":true},{"title":"Ana Lídia · formatura","kind":"LEMBRANÇAS DE FORMATURA","text":"Ecobag, taça e chinelos com nome, curso e ano. Uma identidade criada para celebrar a formatura.","image":"img/trabalhos/2026/ana-lidia-drive-v1.webp","tags":"eventos brindes","key":"ana-lidia","product_cutout":true},{"title":"Núcleo Med · sacochila","kind":"BOLSAS & BRINDES","text":"Sacochila branca com mensagem e aplicação das identidades Núcleo Med, NGCmed e Global Brasil.","image":"img/trabalhos/2026/nucleo-med-drive-v1.webp","tags":"brindes eventos","key":"nucleo-med","product_cutout":true},{"title":"Monte Seu Armário","kind":"VESTUÁRIO CORPORATIVO","text":"Camisetas verdes com assinatura no peito e canais da marca nas costas, em uma composição limpa e reconhecível.","image":"img/trabalhos/2026/monte-armario-drive-v1.webp","tags":"vestuario","key":"monte-armario","product_cutout":true},{"title":"Henrique Sapori · copo personalizado","kind":"PRESENTES PERSONALIZADOS","text":"Copo térmico branco com o emblema da Escola Estadual Henrique Sapori e personalização nominal.","image":"img/trabalhos/2026/sapori-drive-v1.webp","tags":"brindes","key":"sapori","product_cutout":true}] %}
 {% set portfolio_photos = {
  'SenacX · Alexas personalizadas':'img/trabalhos/2026/senac-clean-transparent-v1.webp',
  'Infinix · kit corporativo':'img/trabalhos/2026/around-infinix-transparent-v1.webp',
@@ -268,7 +273,7 @@ html body .meg-work .mw-feature-image img[data-product-cutout]{width:100%!import
       <div class="mw-collection-summary"><span data-mw-summary role="status" aria-live="polite">Projetos do nosso acervo</span><span class="mw-summary-butterfly" aria-hidden="true">{{ icon('butterfly') }}</span></div>
 
       <div class="mw-gallery" data-mw-gallery>
-        {% for work in portfolio if work.title not in featured_titles and work.title not in process_titles %}
+        {% for work in (archive_mockups + portfolio) if work.title not in featured_titles and work.title not in process_titles %}
         {% set upperkind = work.kind|upper %}
         {% set inferred_tags = ('eventos ' if 'EVENT' in upperkind or 'CORRIDA' in upperkind or 'MOVIMENTO' in upperkind or 'COMUNICAÇÃO' in upperkind else '') ~ ('vestuario ' if 'VESTU' in upperkind or 'CAMISETA' in upperkind or 'EQUIPE' in upperkind or 'ESTAMP' in upperkind else '') ~ ('brindes ' if 'BRINDE' in upperkind or 'BOLSA' in upperkind or 'PAPELARIA' in upperkind or 'LEMBRAN' in upperkind else '') %}
         <article class="mw-piece" data-mw-item data-tags="{{ work.tags|default(inferred_tags) }}"
@@ -277,7 +282,7 @@ html body .meg-work .mw-feature-image img[data-product-cutout]{width:100%!import
             data-mw-zoom data-mw-zoom-title="{{ work.title }}" target="_blank" rel="noopener"
             aria-label="Ver imagem ampliada do trabalho {{ work.title }}">
             <img src="{{ url_for('static',filename=portfolio_photos.get(work.title, work.presentation_image|default(work.image))) }}"
-              {% if work.title in portfolio_photos and work.title != 'Da estampa à camiseta' %}data-product-cutout{% endif %} alt="{{ work.title }} — {{ work.kind|lower }}" loading="lazy" decoding="async" {% if work.presentation_image is defined and work.title not in ['Nécessaires personalizadas','Virgin Mary · camisetas','Escola de Cura','E.E.P.O.F · kit escolar'] %}{% endif %}>
+              {% if work.product_cutout|default(false) or (work.title in portfolio_photos and work.title != 'Da estampa à camiseta') %}data-product-cutout{% endif %} alt="{{ work.title }} — {{ work.kind|lower }}" loading="lazy" decoding="async" {% if work.presentation_image is defined and work.title not in ['Nécessaires personalizadas','Virgin Mary · camisetas','Escola de Cura','E.E.P.O.F · kit escolar'] %}{% endif %}>
             <span class="mw-piece-image-zoom" aria-hidden="true">AMPLIAR</span>
           </a>
           <div class="mw-piece-body">

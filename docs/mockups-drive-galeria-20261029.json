@@ -1,0 +1,52 @@
+{
+  "projects": [
+    {
+      "key": "auto-carro",
+      "source_drive_url": "https://drive.google.com/file/d/1yNUGPKmTMnQx-IxBdJ6u6edbYjTxMc26/view?usp=drivesdk",
+      "source_name": "TORNEAMENTO 31 33532115 31 996513000 - 2.PNG",
+      "image": "static/img/trabalhos/2026/auto-carro-drive-v1.webp",
+      "method": "Mockup fotográfico gerado a partir da arte de referência do acervo. Fundo transparente; identidade visual e aplicação guiadas pelo original.",
+      "usage": "Galeria de trabalhos; não é fotografia documental da entrega."
+    },
+    {
+      "key": "estilo-moto",
+      "source_drive_url": "https://drive.google.com/file/d/1uKQO_OvWcaZ3PY0w9mZZDWxI-wWHi6r3/view?usp=drivesdk",
+      "source_name": "estilo moto peças - 1.PNG",
+      "image": "static/img/trabalhos/2026/estilo-moto-drive-v1.webp",
+      "method": "Mockup fotográfico gerado a partir da arte de referência do acervo. Fundo transparente; identidade visual e aplicação guiadas pelo original.",
+      "usage": "Galeria de trabalhos; não é fotografia documental da entrega."
+    },
+    {
+      "key": "ana-lidia",
+      "source_drive_url": "https://drive.google.com/file/d/116cSwYh2KpId4wtxjGUYCbTt6hQduX0O/view?usp=drivesdk",
+      "source_name": "O que eu sei é que quero a taça prata, escrito Ana Lídia Publicidade e propaganda 2025.png.PNG",
+      "image": "static/img/trabalhos/2026/ana-lidia-drive-v1.webp",
+      "method": "Mockup fotográfico gerado a partir da arte de referência do acervo. Fundo transparente; identidade visual e aplicação guiadas pelo original.",
+      "usage": "Galeria de trabalhos; não é fotografia documental da entrega."
+    },
+    {
+      "key": "nucleo-med",
+      "source_drive_url": "https://drive.google.com/file/d/1xkj51fYIMGy2Ku4lK1yAu5R0SRqqIWn0/view?usp=drivesdk",
+      "source_name": "Modelo chinelo 02.zip - 1.PNG",
+      "image": "static/img/trabalhos/2026/nucleo-med-drive-v1.webp",
+      "method": "Mockup fotográfico gerado a partir da arte de referência do acervo. Fundo transparente; identidade visual e aplicação guiadas pelo original.",
+      "usage": "Galeria de trabalhos; não é fotografia documental da entrega."
+    },
+    {
+      "key": "monte-armario",
+      "source_drive_url": "https://drive.google.com/file/d/1M5hAkvN7MWf6kmhv7hDTq1RywsxkTd7G/view?usp=drivesdk",
+      "source_name": "monteseuarmario www.monteseuarmario.com.br.zip - 3.PNG",
+      "image": "static/img/trabalhos/2026/monte-armario-drive-v1.webp",
+      "method": "Mockup fotográfico gerado a partir da arte de referência do acervo. Fundo transparente; identidade visual e aplicação guiadas pelo original.",
+      "usage": "Galeria de trabalhos; não é fotografia documental da entrega."
+    },
+    {
+      "key": "sapori",
+      "source_drive_url": "https://drive.google.com/file/d/1KAQD4Pd_yyFF78tdNWNil0smpySUYxEH/view?usp=drivesdk",
+      "source_name": "Flavya Coeli Teodoro.zip - 1.PNG",
+      "image": "static/img/trabalhos/2026/sapori-drive-v1.webp",
+      "method": "Mockup fotográfico gerado a partir da arte de referência do acervo. Fundo transparente; identidade visual e aplicação guiadas pelo original.",
+      "usage": "Galeria de trabalhos; não é fotografia documental da entrega."
+    }
+  ]
+}
