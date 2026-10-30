@@ -259,3 +259,12 @@ html body.home-cinema #megui-theme-slides .carousel-slide[hidden],
 html body.home-cinema #megui-theme-slides .carousel-slide:not(.is-active){
  display:none!important;
 }
+
+/* Alinha ícones e títulos; descrições de duas linhas crescem para baixo. */
+@media(max-width:680px){
+ html body .pouch-studio .pouch-use-list{align-items:start}
+ html body .pouch-studio .pouch-use:nth-child(n){justify-content:flex-start;align-self:start}
+ html body .pouch-studio .pouch-use>.pouch-bubble{flex:0 0 65px;margin:0 auto}
+ html body .pouch-studio .pouch-use>.pouch-use-purpose{flex:none;margin-top:8px}
+ html body .pouch-studio .pouch-use>strong{flex:none;min-height:2.8em;margin:0;align-content:start}
+}
