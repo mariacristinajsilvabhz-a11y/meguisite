@@ -188,3 +188,17 @@ html[data-theme=dark] body .client-logo-wall .client-brand-name{
 html body :is(.client-logo-wall,.client-ribbon) img.client-logo[src$="maac-midia.webp"]{object-fit:cover;object-position:center;max-width:160px}
 
 html:not([data-theme=dark]) body :is(.client-logo-wall,.client-ribbon) img.client-logo[src$="maac-midia.webp"]{filter:url(#brand-paper-cutout)!important;mix-blend-mode:normal!important}
+
+/* Faixas de marcas: contraste total no escuro, sem placas brancas. */
+html[data-theme=dark] body :is(.client-logo-wall,.client-ribbon,.mw-brandproof-logos,.cl-logos) img{
+ filter:brightness(0) invert(1)!important;background:transparent!important;padding:0!important;opacity:1!important;mix-blend-mode:normal!important;
+}
+html[data-theme=dark] body :is(.client-logo-wall,.client-ribbon) img.client-logo-paper{
+ filter:url(#brand-paper-cutout) brightness(0) invert(1)!important;background:transparent!important;padding:0!important;
+}
+html body :is(.client-logo-wall,.client-ribbon,.mw-brandproof-logos,.cl-logos) img[src*="maac-midia"]{
+ filter:url(#brand-paper-cutout)!important;background:transparent!important;mix-blend-mode:normal!important;object-fit:contain!important;padding:0!important;
+}
+html[data-theme=dark] body :is(.client-logo-wall,.client-ribbon,.mw-brandproof-logos,.cl-logos) img[src*="maac-midia"]{
+ filter:url(#brand-paper-cutout)!important;background:transparent!important;
+}
