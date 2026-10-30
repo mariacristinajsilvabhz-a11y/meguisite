@@ -61,6 +61,11 @@ html[data-theme=dark] .ms-opening .ms-start{color:#dabce8}
 .meg-work .mw-piece-image:has(img[data-product-cutout]) img{padding:12px}
 html[data-theme=dark] .meg-work :is(.mw-lead-photo,.mw-feature-image,.mw-piece-image):has(img[data-product-cutout]){background:transparent!important}
 
+/* Escala uniforme: produtos inteiros e respiro para a identidade. */
+html body .meg-work .mw-feature-image{height:250px;min-height:0;aspect-ratio:auto;overflow:hidden;display:flex;align-items:center;justify-content:center}
+html body .meg-work .mw-feature-image img[data-product-cutout]{width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;object-fit:contain!important;object-position:center!important;padding:14px 22px!important;transform:none!important;box-sizing:border-box}
+.meg-work .mw-artwork-note{font:400 9px/1.6 Sora,sans-serif;color:var(--mw-quiet);margin-top:12px}
+@media(max-width:680px){html body .meg-work .mw-feature-image{height:210px}html body .meg-work .mw-feature-image img[data-product-cutout]{padding:10px 20px!important}}
 </style>
 <link rel="stylesheet" href="{{ url_for('static',filename='css/portfolio-mobile-20261029.css',v='2') }}">
 {% endblock %}
@@ -102,9 +107,9 @@ html[data-theme=dark] .meg-work :is(.mw-lead-photo,.mw-feature-image,.mw-piece-i
 {% set process_titles = ['Uniformes em volume','O processo por trás da estampa','Comunicação visual em produção','Confecção de bolsas'] %}
 {% set featured_main = portfolio|selectattr('title','equalto',featured_titles[0])|first %}
 {% set feature_stories = [
-  ('Infinix · kit corporativo','A IDENTIDADE ACOMPANHA O DIA','Uma marca presente em cada objeto.','Copo, caderno e caneta personalizados para manter a linguagem visual em diferentes momentos de uso.'),
-  ('Fecomércio MG · fones','TECNOLOGIA COM IDENTIDADE','Uma peça que continua sendo usada.','Fones personalizados com a identidade do Sistema Comércio, unindo um item funcional à presença da marca.'),
-  ('Band Minas','ALÉM DA TELA','A marca também mora nos detalhes.','Itens personalizados para levar a identidade Band Minas aos objetos que acompanham o dia a dia.')
+  ('CSN · Corrida & Caminhada','ESPORTE E MOVIMENTO','Uma lembrança que acompanha o ritmo.','Toalha personalizada com a identidade da Corrida & Caminhada CSN 85 anos.','img/trabalhos/2026/csn-toalha-estudio-v1.webp'),
+  ('EJC · Encontro de Jovens com Cristo','IDENTIDADE EM CADA FUNÇÃO','O cuidado também veste quem prepara.','Touca de cozinha com a arte do EJC: personalização para quem faz parte do encontro.','img/trabalhos/2026/ejc-touca-estudio-v1.webp'),
+  ('Moto Pão','UNIFORMES COM PERSONALIDADE','Quem entrega também representa.','Camisetas com aplicações na frente e nas costas, preservando a identidade da Moto Pão.','img/trabalhos/2026/motopao-camisetas-estudio-v1.webp')
 ] %}
 
 <div class="meg-work" id="portfolio-megui">
@@ -183,22 +188,21 @@ html[data-theme=dark] .meg-work :is(.mw-lead-photo,.mw-feature-image,.mw-piece-i
 
       <div class="mw-mobile-rail-head"><span>Deslize para conhecer cada história</span><div><button type="button" data-story-prev aria-label="História anterior">‹</button><span data-story-count aria-live="polite">1 / 3</span><button type="button" data-story-next aria-label="Próxima história">›</button></div></div>
       <div class="mw-featured-others" id="mw-stories" aria-label="Histórias dos nossos clientes">
-        {% for name,eyebrow,title,description in feature_stories %}
-        {% set work = portfolio|selectattr('title','equalto',name)|first %}
+        {% for name,eyebrow,title,description,photo in feature_stories %}
         <article class="mw-feature-story">
-          <a class="mw-feature-image" href="{{ url_for('static',filename=portfolio_photos.get(work.title, work.presentation_image|default(work.image))) }}"
-             data-mw-zoom data-mw-zoom-title="{{ work.title }}" target="_blank" rel="noopener" aria-label="Ampliar fotografia de {{ work.title }}">
-            <img src="{{ url_for('static',filename=portfolio_photos.get(work.title, work.presentation_image|default(work.image))) }}"
-                 {% if work.title in portfolio_photos and work.title != 'Da estampa à camiseta' %}data-product-cutout{% endif %} alt="{{ work.title }} — {{ work.kind|lower }}" loading="lazy" decoding="async" {% if name in ['Infinix · kit corporativo','Fecomércio MG · fones'] %}{% endif %}>
+          <a class="mw-feature-image" href="{{ url_for('static',filename=photo) }}"
+             data-mw-zoom data-mw-zoom-title="{{ name }}" target="_blank" rel="noopener" aria-label="Ampliar fotografia de {{ name }}">
+            <img src="{{ url_for('static',filename=photo) }}"
+                 data-product-cutout alt="{{ name }} — apresentação a partir da arte do acervo" loading="lazy" decoding="async" width="1536" height="1024">
             <span class="mw-image-enlarge" aria-hidden="true">VER DE PERTO</span>
           </a>
           <div class="mw-feature-copy">
             <span class="mw-overline">UM CAPÍTULO · {{ eyebrow }}</span>
             <h3>{{ title }}</h3>
-            <p>{{ description }}</p>
+            <p>{{ description }}</p><small class="mw-artwork-note">Apresentação criada a partir da arte do acervo.</small>
             <div class="mw-feature-base">
               <strong>{{ name.split(' · ')[0] }}</strong>
-              <a href="https://wa.me/{{ whatsapp_number }}?text={{ ('Olá! Vi o trabalho ' ~ work.title ~ ' no portfólio da Megui e quero algo nessa proposta.')|urlencode }}" target="_blank" rel="noopener">Conversar sobre um projeto <span class="mw-tiny-butterfly" aria-hidden="true">{{ icon('butterfly') }}</span></a>
+              <a href="https://wa.me/{{ whatsapp_number }}?text={{ ('Olá! Vi o trabalho ' ~ name ~ ' no portfólio da Megui e quero algo nessa proposta.')|urlencode }}" target="_blank" rel="noopener">Conversar sobre um projeto <span class="mw-tiny-butterfly" aria-hidden="true">{{ icon('butterfly') }}</span></a>
             </div>
           </div>
         </article>
