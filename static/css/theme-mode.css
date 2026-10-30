@@ -20,7 +20,7 @@ html[data-theme=dark] body :is(input,textarea)::placeholder{color:#ac95ba!import
 html[data-theme=dark] body :is(.menu-toggle span){background:#dfc8ea!important}
 html[data-theme=dark] main{background:#1b1522!important;color:#eee3f3}
 html[data-theme=dark] main :is(.section,.section-soft,.page-hero,.home-content-sheet,.services-discovery,#malharia,.home-editorial-products,.home-idea,.home-clients,.home-editorial-reviews,.home-editorial-finale,.work-exhibit,.fabric-details,.about-megui,.outside-box,.ev-experience,.ev-artdirection,.textile-page,.catalog-experience,.contact-desk,.contact-intro,.contact-brief,.contact-directory){background:#211929!important;color:#eee3f3!important}
-html[data-theme=dark] main :is(.about-method,.about-history-image,.about-history-wordmark,.about-material-note,.outside-form,.idea-board,.possibility-open-art,.product-card,.category-card,.review-card,.quote-banner,.quote-box,.send-quote-card,.cart-card,.empty-cart,.filter-panel,.catalog-sidebar,.catalog-hero,.catalog-toolbar,.collection-card,.contact-channel,.contact-directory article,.textile-hero,.textile-library,.textile-project,.mw-finale,.mw-origins,.mw-making,.ev-worlds,.ev-start,.empresa-discovery,.empresa-project,.knit-edition-stage,.knit-edition-tabs button){background:#302339!important;color:#eee3f3!important;border-color:#513b60!important}
+html[data-theme=dark] main :is(.about-method,.about-history-image,.about-history-wordmark,.about-material-note,.outside-form,.idea-board,.possibility-open-art,.product-card,.category-card,.review-card,.quote-banner,.quote-box,.send-quote-card,.cart-card,.empty-cart,.filter-panel,.catalog-sidebar,.catalog-hero,.catalog-toolbar,.collection-card,.contact-channel,.contact-directory article,.textile-hero,.textile-library,.textile-project,.mw-finale,.mw-origins,.mw-making,.ev-worlds,.ev-start,.empresa-discovery,.empresa-project,.knit-edition-stage){background:#302339!important;color:#eee3f3!important;border-color:#513b60!important}
 html[data-theme=dark] main :is(h1,h2,h3,h4,p,li,label,legend,summary,figcaption,dt,dd){color:#eee3f3!important}
 html[data-theme=dark] main :is(.eyebrow,.outside-kicker,.about-label,.about-signature,.mw-overline,.mw-signature,.ev-kicker,.empresa-kicker,.textile-label,.catalog-eyebrow,.work-exhibit-kind,.product-category,.muted-copy,.about-location,.about-origin-year,.about-history-copy>span){color:#c8a8d9!important}
 html[data-theme=dark] main :is(h1,h2,h3) em{color:#ce9ee6!important}
@@ -223,3 +223,8 @@ html[data-theme=dark] body .meg-work .mw-lead-details span{
 html[data-theme=dark] body .meg-work :is(.mw-lead-photo-tag,.mw-image-enlarge,.mw-piece-image-zoom){
  background:#463250ed!important;color:#efddf7!important;
 }
+
+/* Escolha em texto: sem placas no fundo das palavras. */
+html[data-theme=dark] body main #malharia .knit-edition-tabs button{background:transparent!important;border:0!important;box-shadow:none!important;color:#c5a8d2!important}
+html[data-theme=dark] body main #malharia .knit-edition-tabs button[aria-selected=true]{color:#f4e7fc!important}
+html[data-theme=dark] body main #malharia .knit-edition-tabs button:hover{background:transparent!important;color:#f4e7fc!important}
