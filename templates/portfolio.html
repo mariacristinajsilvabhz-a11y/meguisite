@@ -64,7 +64,6 @@ html[data-theme=dark] .meg-work :is(.mw-lead-photo,.mw-feature-image,.mw-piece-i
 /* Escala uniforme: produtos inteiros e respiro para a identidade. */
 html body .meg-work .mw-feature-image{height:250px;min-height:0;aspect-ratio:auto;overflow:hidden;display:flex;align-items:center;justify-content:center}
 html body .meg-work .mw-feature-image img[data-product-cutout]{width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;object-fit:contain!important;object-position:center!important;padding:14px 22px!important;transform:none!important;box-sizing:border-box}
-.meg-work .mw-artwork-note{font:400 9px/1.6 Sora,sans-serif;color:var(--mw-quiet);margin-top:12px}
 @media(max-width:680px){html body .meg-work .mw-feature-image{height:210px}html body .meg-work .mw-feature-image img[data-product-cutout]{padding:10px 20px!important}}
 </style>
 <link rel="stylesheet" href="{{ url_for('static',filename='css/portfolio-mobile-20261029.css',v='2') }}">
@@ -193,13 +192,13 @@ html body .meg-work .mw-feature-image img[data-product-cutout]{width:100%!import
           <a class="mw-feature-image" href="{{ url_for('static',filename=photo) }}"
              data-mw-zoom data-mw-zoom-title="{{ name }}" target="_blank" rel="noopener" aria-label="Ampliar fotografia de {{ name }}">
             <img src="{{ url_for('static',filename=photo) }}"
-                 data-product-cutout alt="{{ name }} — apresentação a partir da arte do acervo" loading="lazy" decoding="async" width="1536" height="1024">
+                 data-product-cutout alt="{{ name }}" loading="lazy" decoding="async" width="1536" height="1024">
             <span class="mw-image-enlarge" aria-hidden="true">VER DE PERTO</span>
           </a>
           <div class="mw-feature-copy">
             <span class="mw-overline">UM CAPÍTULO · {{ eyebrow }}</span>
             <h3>{{ title }}</h3>
-            <p>{{ description }}</p><small class="mw-artwork-note">Apresentação criada a partir da arte do acervo.</small>
+            <p>{{ description }}</p>
             <div class="mw-feature-base">
               <strong>{{ name.split(' · ')[0] }}</strong>
               <a href="https://wa.me/{{ whatsapp_number }}?text={{ ('Olá! Vi o trabalho ' ~ name ~ ' no portfólio da Megui e quero algo nessa proposta.')|urlencode }}" target="_blank" rel="noopener">Conversar sobre um projeto <span class="mw-tiny-butterfly" aria-hidden="true">{{ icon('butterfly') }}</span></a>
