@@ -202,3 +202,24 @@ html body :is(.client-logo-wall,.client-ribbon,.mw-brandproof-logos,.cl-logos) i
 html[data-theme=dark] body :is(.client-logo-wall,.client-ribbon,.mw-brandproof-logos,.cl-logos) img[src*="maac-midia"]{
  filter:url(#brand-paper-cutout)!important;background:transparent!important;
 }
+
+/* Trabalhos: painéis e textos formam uma versão escura completa. */
+html[data-theme=dark] body .meg-work .mw-lead-story,
+html[data-theme=dark] body .meg-work .mw-finale-layout{
+ background:#35273f!important;border-color:#594268!important;
+}
+html[data-theme=dark] body .meg-work :is(.mw-lead-story h3,.mw-lead-brand strong,.mw-feature-copy h3,.mw-piece h3,.mw-archive-info h3,.mw-finale h2){
+ color:#f2e7f7!important;-webkit-text-fill-color:#f2e7f7!important;
+}
+html[data-theme=dark] body .meg-work :is(.mw-lead-story>p,.mw-feature-copy>p,.mw-piece-body>p,.mw-project-detail,.mw-archive-info p,.mw-finale-panel p){
+ color:#dbcbe4!important;-webkit-text-fill-color:#dbcbe4!important;
+}
+html[data-theme=dark] body .meg-work :is(.mw-lead-brand>span,.mw-lead-brand strong span,.mw-lead-story h3 em,.mw-feature-copy .mw-overline,.mw-piece-type,.mw-archive-info>span,.mw-archive-info>strong){
+ color:#cba4df!important;-webkit-text-fill-color:#cba4df!important;
+}
+html[data-theme=dark] body .meg-work .mw-lead-details span{
+ background:#51395f!important;color:#ecdcf5!important;-webkit-text-fill-color:#ecdcf5!important;
+}
+html[data-theme=dark] body .meg-work :is(.mw-lead-photo-tag,.mw-image-enlarge,.mw-piece-image-zoom){
+ background:#463250ed!important;color:#efddf7!important;
+}
