@@ -34,6 +34,23 @@ def gate_mockup_studio():
 hub_catalog = HubCatalog()
 
 app.secret_key = os.environ["SECRET_KEY"]
+app.config.update(
+    SESSION_COOKIE_HTTPONLY=True,
+    SESSION_COOKIE_SECURE=True,
+    SESSION_COOKIE_SAMESITE="Lax",
+)
+
+@app.after_request
+def add_security_headers(response):
+    response.headers.setdefault("X-Content-Type-Options", "nosniff")
+    response.headers.setdefault("Referrer-Policy", "strict-origin-when-cross-origin")
+    response.headers.setdefault("X-Frame-Options", "SAMEORIGIN")
+    response.headers.setdefault("Permissions-Policy", "camera=(), microphone=(), geolocation=()")
+    return response
+
+@app.get("/healthz")
+def healthz():
+    return jsonify(status="ok")
 
 PRIMARY_WHATSAPP = "5531994888250"
 ADMIN_PHONE = "5531993181939"
