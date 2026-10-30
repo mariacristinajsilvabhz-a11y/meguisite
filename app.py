@@ -479,6 +479,10 @@ def send_whatsapp():
     phone = re.sub(r"\D", "", request.form.get("phone", ""))
     errors = {}
     if len(name) < 2: errors["name"] = "Informe seu nome."
+    if len(name) > 120: errors["name"] = "Nome muito longo."
+    if len(email) > 254: errors["email"] = "E-mail muito longo."
+    if len(request.form.get("company", "")) > 180 or len(request.form.get("general_notes", "")) > 2000 or len(request.form.get("deadline", "")) > 120:
+        errors["details"] = "Revise o tamanho das informações adicionais."
     if not re.fullmatch(r"[^\s@]+@[^\s@]+\.[^\s@]+", email): errors["email"] = "Digite um e-mail válido."
     if not 10 <= len(phone) <= 13: errors["phone"] = "Informe um telefone com DDD."
     if not cart(): errors["items"] = "Adicione pelo menos um produto."
