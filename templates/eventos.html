@@ -6,63 +6,20 @@
 <link rel="stylesheet" href="{{ url_for('static',filename='css/eventos-editorial-20261025.css',v='20261025-v2') }}">
 
 <style>
-.ev-gather{background:#f1e9f6;color:#302135;position:relative;overflow:hidden;padding:54px 0 0}
-.ev-gather .ev-wrap{max-width:1260px}
-.eg-heading{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,.7fr);gap:60px;align-items:end;padding-bottom:36px}
-.eg-eyebrow{display:flex;align-items:center;gap:12px;font:650 10px/1.5 "Sora",sans-serif;letter-spacing:.12em;color:#89659b;margin-bottom:24px}
-.eg-eyebrow svg{width:28px;height:32px}
-body .ev-gather h1{font:600 clamp(44px,5.5vw,82px)/1.02 "Space Grotesk",sans-serif!important;letter-spacing:-.065em!important;color:#302135!important;margin:0!important;max-width:none!important}
-body .ev-gather h1>span{display:inline;color:#9470a7!important;font:inherit!important}
-.eg-intro{padding-bottom:5px}
-.eg-intro p{font:400 14px/1.85 "Sora",sans-serif;color:#725f7d;margin:0 0 22px;max-width:31ch}
-.eg-intro strong{color:#523761}
-.eg-create{display:flex;justify-content:space-between;align-items:center;gap:18px;font:600 12px/1.5 "Sora",sans-serif;color:#4d305c;min-height:52px;text-decoration:none}
-.eg-create>span{display:grid;place-items:center;flex:none;width:46px;height:46px;background:#ddcce7;border-radius:50%;transition:transform .25s}
-.eg-create svg{width:27px;height:30px}
-.eg-create:hover>span{transform:rotate(-15deg)}
-.eg-scene{position:relative;margin:0;isolation:isolate;height:390px;border-radius:6px 90px 6px 6px}
-.eg-scene>img{display:block;width:100%!important;height:100%!important;object-fit:cover!important;object-position:50% 48%;border-radius:inherit}
-.eg-scene:after{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(0deg,#201b23c9,transparent 57%);border-radius:inherit;pointer-events:none}
-.eg-scene-note{position:absolute;z-index:2;left:25px;top:24px;display:flex;gap:9px;align-items:center;padding:11px 14px;background:#faf4ffed;color:#664774;font:600 8px/1.5 "Sora",sans-serif;letter-spacing:.08em;border-radius:3px}
-.eg-note-dot{width:6px;height:6px;background:#a480b7;border-radius:50%}
-.eg-wing{position:absolute;z-index:3;pointer-events:none;display:block;color:#a47eb7}
-.eg-wing-one{width:65px;height:77px;right:5px;top:-35px;transform:rotate(18deg)}
-.eg-wing svg{width:100%;height:100%}
-.eg-scene figcaption{position:absolute;z-index:2;bottom:30px;left:30px;right:30px;color:white;display:grid;grid-template-columns:1fr auto;gap:11px 30px;align-items:end}
-.eg-scene figcaption>span{font:600 9px/1.5 "Sora",sans-serif;letter-spacing:.12em;grid-column:1/-1;color:#e4d5ec}
-.eg-scene figcaption strong{font:500 clamp(25px,2.5vw,36px)/1.12 "Space Grotesk",sans-serif;letter-spacing:-.04em}
-.eg-scene figcaption a{display:flex;align-items:center;gap:22px;min-height:44px;font:500 11px/1.5 "Sora",sans-serif;color:#fff;text-decoration:none}
-.eg-scene figcaption a>span{font-size:22px}
-.eg-after{display:grid;grid-template-columns:.8fr 3fr;gap:30px;padding:30px 0 34px}
-.eg-after>p{font:400 12px/1.65 "Sora",sans-serif;margin:0;color:#82708b}
-.eg-after>p strong{font-weight:600;color:#573d65}
-.eg-after nav{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
-.eg-after nav a{display:flex;flex-direction:column;justify-content:center;gap:7px;color:#493052;text-decoration:none;font:600 12px/1.5 "Sora",sans-serif;min-height:48px}
-.eg-after nav a>span{font:400 10px/1.5 "Sora",sans-serif;color:#8a7197}
-.eg-after nav a:hover{color:#986aaf}
-html[data-theme=dark] .ev-gather{background:#29212f;color:#f5edf8}
-html[data-theme=dark] body .ev-gather h1{color:#f5edf8!important}
-html[data-theme=dark] .ev-gather :is(.eg-intro p,.eg-after>p,.eg-after nav a>span){color:#c6b2d0}
-html[data-theme=dark] .ev-gather :is(.eg-intro strong,.eg-after>p strong,.eg-after nav a,.eg-create){color:#edddf5}
-@media(max-width:850px){
- .eg-heading{grid-template-columns:1fr;gap:22px}.eg-intro{display:flex;align-items:center;gap:30px;justify-content:space-between}.eg-intro p{margin:0;max-width:40ch}.eg-create{flex-shrink:0}
- .eg-scene{height:360px}.eg-after{grid-template-columns:1fr;gap:18px}
-}
-@media(max-width:620px){
- .ev-gather{padding-top:28px}.ev-gather .ev-wrap{padding-inline:20px;width:100%;max-width:100%;box-sizing:border-box}
- .eg-heading{padding-bottom:26px;gap:18px}.eg-eyebrow{font-size:8px;margin-bottom:18px;gap:9px;letter-spacing:.09em}
- body .ev-gather h1{font-size:clamp(33px,9vw,52px)!important;line-height:1.07!important;letter-spacing:-.055em!important}
- .eg-intro{display:block}.eg-intro p{font-size:13px;line-height:1.8;max-width:38ch}.eg-create{font-size:12px;justify-content:flex-start;margin-top:12px;gap:15px}
- .eg-create>span{width:42px;height:42px;order:-1}.eg-scene{height:310px;border-radius:5px 55px 5px 5px}.eg-scene>img{object-position:47% 50%}
- .eg-scene-note{left:13px;top:16px;padding:9px 10px;font-size:6px;letter-spacing:.04em;gap:6px}
- .eg-wing-one{width:43px;height:51px;top:-22px;right:1px}
- .eg-scene figcaption{bottom:17px;left:17px;right:17px;grid-template-columns:1fr;gap:9px}.eg-scene figcaption>span{font-size:7px}.eg-scene figcaption strong{font-size:27px}.eg-scene figcaption a{font-size:10px;justify-content:space-between}
- .eg-after{padding:23px 0 27px;gap:14px}.eg-after>p{font-size:12px}.eg-after>p br{display:none}
- .eg-after nav{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding-bottom:12px;overscroll-behavior-x:contain;scrollbar-width:thin}
- .eg-after nav a{flex:0 0 64%;background:#e8dcef;padding:13px 16px;box-sizing:border-box;border-radius:4px 20px 4px 4px;scroll-snap-align:start;font-size:12px;gap:5px;min-height:72px}
- html[data-theme=dark] .eg-after nav a{background:#392d43}
-}
-@media(prefers-reduced-motion:reduce){.eg-create>span{transition:none}}
+.ev-gather{--eg-bg:#f5eff8;--eg-ink:#302637;--eg-muted:#716278;--eg-accent:#a57cbc;position:relative;isolation:isolate;overflow:hidden;background:var(--eg-bg);color:var(--eg-ink);padding:66px 0 60px}
+.ev-gather:before{content:'';position:absolute;width:600px;height:600px;right:-240px;top:-310px;border:1px solid #af86c133;border-radius:50%;pointer-events:none;z-index:-1}
+.ev-gather .eg-layout{display:grid;grid-template-columns:.94fr 1.06fr;align-items:center;gap:60px}
+.eg-eyebrow{display:flex;align-items:center;gap:10px;font:600 9px/1.6 Sora,sans-serif;letter-spacing:.12em;color:var(--eg-accent);margin-bottom:22px}.eg-eyebrow .icon{width:24px;height:30px;flex:none}
+body .ev-gather h1{font:500 clamp(42px,4.8vw,66px)/1.06 'Space Grotesk',sans-serif!important;letter-spacing:-.05em!important;color:var(--eg-ink)!important;margin:0 0 24px!important;max-width:12ch!important}
+body .ev-gather h1>span{color:var(--eg-accent)!important;display:block;font:inherit!important}
+.eg-copy>p{font:400 14px/1.9 Sora,sans-serif;color:var(--eg-muted);max-width:43ch;margin:0 0 26px}
+.eg-actions{display:flex;flex-wrap:wrap;gap:12px}.eg-actions a{display:inline-flex;align-items:center;justify-content:center;gap:15px;min-height:52px;padding:14px 22px;text-decoration:none;font:600 12px/1.5 Sora,sans-serif;border-radius:30px;box-sizing:border-box}.eg-plan{background:#d9bee9;color:#302437;box-shadow:0 8px 24px #a47bb31c}.eg-plan .icon{width:21px;height:25px}.eg-explore{border:1px solid #ac8fbb88;color:var(--eg-ink)}
+.eg-occasions{display:flex;flex-wrap:wrap;gap:13px 22px;margin-top:32px}.eg-occasions a{font:400 11px/1.7 Sora,sans-serif;color:var(--eg-muted);padding:5px 0 8px;border-bottom:1px solid #ad91bc55;text-decoration:none}.eg-occasions a:hover{color:var(--eg-accent)}
+.eg-kit{margin:0;min-width:0;position:relative}.eg-kit-frame{position:relative;padding:10px;border:1px solid #b28bc144;border-radius:70px 16px 70px 16px;background:#ffffff12}.eg-kit-frame>img{display:block;width:100%!important;height:auto!important;aspect-ratio:1.5;object-fit:contain!important;border-radius:61px 10px 61px 10px}.eg-kit-wing{position:absolute;top:-23px;right:12px;color:var(--eg-accent);transform:rotate(15deg);pointer-events:none}.eg-kit-wing .icon{width:45px;height:57px}.eg-kit figcaption{display:flex;justify-content:space-between;gap:18px;margin-top:16px;font:400 10px/1.7 Sora,sans-serif;color:var(--eg-muted)}.eg-kit figcaption small{font-size:9px;white-space:nowrap}.eg-kit-label{display:flex;align-items:center;gap:12px;margin:0 0 15px;font:600 9px/1.6 Sora,sans-serif;letter-spacing:.13em;color:var(--eg-accent)}.eg-kit-label:before{content:'';width:32px;height:1px;background:currentColor}
+.ev-gather a:focus-visible{outline:2px solid var(--eg-accent);outline-offset:5px}
+html[data-theme=dark] .ev-gather{--eg-bg:#1c1721;--eg-ink:#faf3ff;--eg-muted:#c5b4ce;--eg-accent:#d0a9e5;background:radial-gradient(ellipse at 0 10%,#a174b723,transparent 60%),var(--eg-bg)}
+@media(max-width:900px){.ev-gather .eg-layout{gap:32px;grid-template-columns:1fr 1fr}.eg-actions a{font-size:11px;padding:13px 17px}.eg-kit figcaption{display:block}.eg-kit figcaption small{display:block;margin-top:4px}}
+@media(max-width:680px){.ev-gather{padding:34px 0 38px}.ev-gather .ev-wrap{width:calc(100% - 40px);padding:0;box-sizing:border-box}.ev-gather .eg-layout{grid-template-columns:1fr;gap:35px}.eg-eyebrow{font-size:8px;letter-spacing:.08em;margin-bottom:18px}body .ev-gather h1{font-size:clamp(39px,10vw,60px)!important;line-height:1.07!important;margin-bottom:20px!important}.eg-copy>p{font-size:13px;max-width:42ch;margin-bottom:22px}.eg-actions{gap:10px}.eg-actions a{font-size:11px;min-height:48px;padding:13px 18px}.eg-occasions{margin-top:24px;gap:12px 22px}.eg-occasions a{font-size:11px}.eg-kit-frame{padding:7px;border-radius:42px 10px 42px 10px}.eg-kit-frame>img{border-radius:35px 6px 35px 6px}.eg-kit-wing{top:-17px;right:4px}.eg-kit-wing .icon{width:30px;height:38px}.eg-kit-label{font-size:8px;margin-bottom:12px}.eg-kit figcaption{font-size:10px;margin-top:12px}}
 
 /* Duas frases, duas linhas, com destaque para a identidade. */
 .ev-artdirection #ev-showcase-title{font-size:clamp(32px,4.2vw,60px)!important;line-height:1.12!important}
@@ -89,32 +46,19 @@ body .ev-artdirection :is(.ev-moment-welcome,.ev-moment-remember){column-gap:28p
 {% block content %}
 <div class="ev-experience ev-artdirection">
   <section class="ev-gather" aria-labelledby="ev-title">
-    <div class="ev-wrap">
-      <div class="eg-heading">
-        <div class="eg-title">
-          <span class="eg-eyebrow">{{ icon('butterfly') }} ENCONTROS COM A MEGUI</span>
-          <h1 id="ev-title">O encontro passa.<br><span>A sensação fica.</span></h1>
-        </div>
-        <div class="eg-intro">
-          <p>Gente reunida. Uma identidade em comum. Detalhes que fazem aquele dia ser <strong>seu.</strong></p>
-          <a href="#compor" class="eg-create">Vamos imaginar seu evento <span aria-hidden="true">{{ icon('butterfly') }}</span></a>
-        </div>
+    <div class="ev-wrap eg-layout">
+      <div class="eg-copy">
+        <span class="eg-eyebrow">{{ icon('butterfly') }} PERSONALIZADOS PARA ENCONTROS QUE MARCAM</span>
+        <h1 id="ev-title">O evento tem data.<span>A lembrança fica.</span></h1>
+        <p>Da primeira camiseta ao último presente: criamos os detalhes que conectam as pessoas à identidade do seu evento.</p>
+        <div class="eg-actions"><a class="eg-plan" href="#compor">Planejar meu evento {{ icon('butterfly') }}</a><a class="eg-explore" href="#experiencia">Explorar produtos</a></div>
+        <nav class="eg-occasions" aria-label="Ocasiões para personalizar"><a href="#formatos" data-eg-format="comunidade">Igrejas e movimentos</a><a href="#compor">Feiras e congressos</a><a href="#formatos" data-eg-format="casamento">Festas e celebrações</a><a href="#formatos" data-eg-format="empresa">Empresas e equipes</a></nav>
       </div>
-      <figure class="eg-scene">
-        <img src="{{ url_for('static',filename='img/acervo/2026/samba-do-maestro-sem-marca-v3.webp') }}" alt="Samba do Maestro ao pôr do sol, com público reunido e capas de grade personalizadas pela Megui" fetchpriority="high" decoding="async">
-        <div class="eg-scene-note"><span class="eg-note-dot"></span> ACONTECEU. E A MEGUI ESTAVA LÁ.</div>
-        <span class="eg-wing eg-wing-one" aria-hidden="true">{{ icon('butterfly') }}</span>
-        <figcaption><span>SAMBA DO MAESTRO</span><strong>A marca no espaço.<br>As pessoas no centro.</strong><a href="#destaques">Veja o que já ganhou vida <span aria-hidden="true">↗</span></a></figcaption>
+      <figure class="eg-kit">
+        <div class="eg-kit-label">UM ENCONTRO. A MESMA IDENTIDADE.</div>
+        <div class="eg-kit-frame"><img src="{{ url_for('static',filename='img/eventos/itens-encontro.webp') }}" alt="Kit ilustrativo Encontro com camiseta preta, ecobag lilás, copo, credencial e pulseira personalizados" width="1600" height="1067" fetchpriority="high" decoding="async"><span class="eg-kit-wing" aria-hidden="true">{{ icon('butterfly') }}</span></div>
+        <figcaption><span>Sua identidade, presente em cada detalhe.</span><small>Composição ilustrativa.</small></figcaption>
       </figure>
-      <div class="eg-after">
-        <p>Seu encontro pode ter<br><strong>muitas formas.</strong></p>
-        <nav aria-label="Explore ocasiões para personalizar">
-          <a href="#formatos" data-eg-format="empresa">Equipe reunida <span>Confra & empresas</span></a>
-          <a href="#formatos" data-eg-format="casamento">Dia de celebrar <span>Casamentos & festas</span></a>
-          <a href="#formatos" data-eg-format="esporte">Energia lá em cima <span>Esporte & movimento</span></a>
-          <a href="#formatos" data-eg-format="comunidade">Algo que nos une <span>Fé & comunidade</span></a>
-        </nav>
-      </div>
     </div>
   </section>
 
