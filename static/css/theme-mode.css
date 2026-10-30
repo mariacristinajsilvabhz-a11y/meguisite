@@ -228,3 +228,9 @@ html[data-theme=dark] body .meg-work :is(.mw-lead-photo-tag,.mw-image-enlarge,.m
 html[data-theme=dark] body main #malharia .knit-edition-tabs button{background:transparent!important;border:0!important;box-shadow:none!important;color:#c5a8d2!important}
 html[data-theme=dark] body main #malharia .knit-edition-tabs button[aria-selected=true]{color:#f4e7fc!important}
 html[data-theme=dark] body main #malharia .knit-edition-tabs button:hover{background:transparent!important;color:#f4e7fc!important}
+
+/* Brasão com fundo integrado: preservar as letras e as cores do Samba do Maestro. */
+html body :is(.client-logo-wall,.client-ribbon,.mw-brandproof-logos,.cl-logos) img[src$="samba-do-maestro-acervo.png"],
+html[data-theme=dark] body :is(.client-logo-wall,.client-ribbon,.mw-brandproof-logos,.cl-logos) img[src$="samba-do-maestro-acervo.png"]{
+ filter:none!important;opacity:1!important;mix-blend-mode:normal!important;background:transparent!important;
+}
