@@ -1,7 +1,35 @@
 {% extends 'base.html' %}
 {% from '_icons.html' import icon %}
 {% block title %}Eventos que ficam na memória | Megui Personalizados{% endblock %}
-{% block final_head %}
+{% block final_head %}<style>
+html body .ev-artdirection #formatos .ev-worlds-switcher{display:flex;flex-direction:column;flex-wrap:nowrap;overflow:visible;gap:0;margin:26px 0 35px;padding:0}
+html body .ev-artdirection #formatos .ev-worlds-switcher button{display:grid;grid-template-columns:28px 1fr 48px;gap:18px;align-items:center;width:100%;text-align:left;border:0;border-bottom:1px solid #cbb7d7;border-radius:0;background:transparent!important;color:#9b80aa;min-height:106px;padding:21px 0;white-space:normal}
+html body .ev-artdirection #formatos .ev-worlds-switcher button[aria-selected=true]{color:#674279}
+.ev-format-number{align-self:start;padding-top:7px;font-size:10px;font-weight:600}
+.ev-format-label strong{display:block;font:600 30px/1.2 "Space Grotesk",sans-serif;letter-spacing:-.04em}
+.ev-format-label small{display:block;font:400 13px/1.7 "Sora",sans-serif;margin-top:10px}
+.ev-format-arrow{display:grid;place-items:center;width:46px;height:46px;border-radius:50%;border:1px solid #cbb5d6;font-size:24px}
+[aria-selected=true]>.ev-format-arrow{background:#9567ac;color:white;border-color:#9567ac}
+html body .ev-artdirection #formatos .ev-world-panel{display:grid;grid-template-columns:.65fr 1fr;gap:42px;align-items:center;padding:25px 0;background:transparent}
+html body .ev-artdirection #formatos .ev-world-panel[hidden]{display:none!important}
+html body .ev-artdirection #formatos .ev-world-image{height:275px;min-height:0;border-radius:70px 6px 6px 6px;overflow:hidden}
+html body .ev-artdirection #formatos .ev-world-image img{width:100%!important;height:100%!important;object-fit:contain!important}
+html body .ev-artdirection #formatos .ev-world-copy{padding:0}
+html body .ev-artdirection #formatos .ev-world-copy h3{font-size:36px!important;line-height:1.16!important;margin:16px 0}
+html[data-theme=dark] body .ev-artdirection #formatos .ev-worlds-switcher button{color:#bba2c8;border-color:#594565}
+html[data-theme=dark] body .ev-artdirection #formatos .ev-worlds-switcher button[aria-selected=true]{color:#f0e3f7}
+@media(max-width:680px){
+ html body .ev-artdirection #formatos .ev-worlds-switcher button{grid-template-columns:20px 1fr 38px;gap:10px;min-height:96px;padding:18px 0}
+ .ev-format-label strong{font-size:24px}.ev-format-label small{font-size:11px;line-height:1.6;margin-top:7px}.ev-format-number{font-size:8px}.ev-format-arrow{width:36px;height:36px;font-size:21px}
+ html body .ev-artdirection #formatos .ev-world-panel{grid-template-columns:minmax(0,.65fr) minmax(0,1fr);gap:20px;padding:15px 0}
+ html body .ev-artdirection #formatos .ev-world-image{height:210px;border-radius:55px 5px 5px 5px}
+ html body .ev-artdirection #formatos .ev-world-copy h3{font-size:25px!important}
+ html body .ev-artdirection #formatos .ev-world-copy p{font-size:12px;line-height:1.75}
+ html body .ev-artdirection #formatos .ev-world-copy>strong{font-size:10px;line-height:1.7}
+ html body .ev-artdirection #formatos .ev-world-action{font-size:10px;min-height:44px}
+}
+@media(max-width:370px){html body .ev-artdirection #formatos .ev-world-panel{grid-template-columns:1fr}html body .ev-artdirection #formatos .ev-world-image{height:180px}}
+</style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600;1,700&display=swap">
 <link rel="stylesheet" href="{{ url_for('static',filename='css/eventos-editorial-20261025.css',v='20261025-v2') }}">
 
@@ -144,13 +172,13 @@ body .ev-artdirection :is(.ev-moment-welcome,.ev-moment-remember){column-gap:28p
   </section>
 
   {% set event_formats = [
-    ('empresa','Empresas & equipes','Celebrar com a própria identidade.','Confraternizações, ações internas, lançamentos e encontros de equipes. Kits, uniformes e brindes combinam com projetos de vários tamanhos.','img/trabalhos/2026/kit-infinix-estudio-20261022.webp','Kit corporativo Infinix com copo, caderno e caneta personalizados','Camisetas · Kits · Copos · Credenciais','um evento corporativo','Cadernos e kits',true),
-    ('casamento','Casamentos & celebrações','Os detalhes que contam a história de vocês.','Lembranças, nécessaires, taças, chinelos e peças personalizadas para receber quem participa. A fotografia ao lado é uma referência de acabamento, não o registro de um casamento.','img/acervo/2026/necessaires-personalizadas.webp','Nécessaires personalizadas em ambiente real, referência de acabamento para lembranças','Taças · Chinelos · Nécessaires · Lembranças','um casamento ou celebração','Taças e chinelos',false),
-    ('comunidade','Fé & comunidade','Uma mensagem que todo mundo leva junto.','Congressos, retiros, encontros religiosos e celebrações de grupos. Camisetas e lembranças ajudam a criar pertencimento.','img/mostruario/camiseta-iprv-estudio-v1.webp','Camisetas comemorativas IPRV, frente e costas','Camisetas · Sacochilas · Lembranças','um encontro religioso','Camisetas',false),
-    ('esporte','Esporte & movimento','Uma identidade que acompanha a energia do grupo.','Corridas, desafios e encontros esportivos com camisetas, bolsas, garrafas e sinalização para orientar o público.','img/mostruario/sacochila-circuito-estudio-v1.webp','Sacochila rosa Circuito das Indústrias','Camisetas · Sacochilas · Garrafas','um evento esportivo','Sacochilas e bolsas',true),
-    ('cultura','Festas & cultura','O cenário também faz parte da festa.','Shows, festivais e encontros culturais em que a identidade ocupa o espaço e chega até quem participa.','img/trabalhos/2026/samba-do-maestro-estudio-20261022.webp','Capa de grade personalizada do Samba do Maestro','Camisetas · Copos · Comunicação visual','uma festa ou evento cultural','Banners e sinalização',true)
-  ] %}
-  <section class="ev-worlds" id="formatos" data-ev-formats aria-labelledby="ev-worlds-title">
+('comunidade','Fé & comunidade','Uma mensagem que todo mundo leva junto.','Congressos, retiros, encontros religiosos e celebrações de grupos. Camisetas e lembranças ajudam a criar pertencimento.','img/mostruario/camiseta-iprv-estudio-v1.webp','Camisetas comemorativas IPRV, frente e costas','Camisetas · Sacochilas · Lembranças','um encontro religioso','Camisetas',false),
+('cultura','Festas & cultura','O cenário também faz parte da festa.','Shows, festivais e encontros culturais em que a identidade ocupa o espaço e chega até quem participa.','img/trabalhos/2026/samba-do-maestro-estudio-20261022.webp','Capa de grade personalizada do Samba do Maestro','Camisetas · Copos · Comunicação visual','uma festa ou evento cultural','Banners e sinalização',true),
+('feiras','Feiras & congressos','Marcas, ideias e novas conexões.','Credenciais, materiais de apoio e kits para receber participantes, representar sua marca e acompanhar cada encontro.','img/trabalhos/2026/senac-cadernos-recorte-v3.webp','Cadernos personalizados Senac para encontros e congressos','Credenciais · Cadernos · Kits · Sacochilas','uma feira ou congresso','Cadernos e kits',true),
+('esporte','Esporte & movimento','Uma identidade que acompanha a energia do grupo.','Corridas, desafios e encontros esportivos com camisetas, bolsas, garrafas e sinalização para orientar o público.','img/mostruario/sacochila-circuito-estudio-v1.webp','Sacochila rosa Circuito das Indústrias','Camisetas · Sacochilas · Garrafas','um evento esportivo','Sacochilas e bolsas',true),
+('empresa','Empresas & equipes','Celebrar com a própria identidade.','Confraternizações, ações internas, lançamentos e encontros de equipes. Kits, uniformes e brindes combinam com projetos de vários tamanhos.','img/trabalhos/2026/kit-infinix-estudio-20261022.webp','Kit corporativo Infinix com copo, caderno e caneta personalizados','Camisetas · Kits · Copos · Credenciais','um evento corporativo','Cadernos e kits',true),
+('casamento','Casamentos & celebrações','Os detalhes que contam a história de vocês.','Lembranças, nécessaires, taças, chinelos e peças personalizadas para receber quem participa. A fotografia ao lado é uma referência de acabamento, não o registro de um casamento.','img/acervo/2026/necessaires-personalizadas.webp','Nécessaires personalizadas em ambiente real, referência de acabamento para lembranças','Taças · Chinelos · Nécessaires · Lembranças','um casamento ou celebração','Taças e chinelos',false)
+] %}  <section class="ev-worlds" id="formatos" data-ev-formats aria-labelledby="ev-worlds-title">
     <div class="ev-wrap">
       <div class="ev-worlds-heading">
         <span class="ev-kicker">CADA ENCONTRO TEM SEU UNIVERSO</span>
@@ -159,7 +187,7 @@ body .ev-artdirection :is(.ev-moment-welcome,.ev-moment-remember){column-gap:28p
       </div>
       <div class="ev-worlds-switcher" role="tablist" aria-label="Tipo de evento">
         {% for key,label,title,description,photo,alt,products,event_name,pick,cutout in event_formats %}
-        <button type="button" role="tab" id="ev-tab-{{ key }}" aria-controls="ev-panel-{{ key }}" aria-selected="{{ 'true' if loop.first else 'false' }}" tabindex="{{ '0' if loop.first else '-1' }}" data-ev-tab="{{ key }}">{{ label }}</button>
+        <button type="button" role="tab" id="ev-tab-{{ key }}" aria-controls="ev-panel-{{ key }}" aria-selected="{{ 'true' if loop.first else 'false' }}" tabindex="{{ '0' if loop.first else '-1' }}" data-ev-tab="{{ key }}"><span class="ev-format-number" aria-hidden="true">{{ "%02d"|format(loop.index) }}</span><span class="ev-format-label"><strong>{{ label }}</strong><small>{{ {'comunidade':'Retiros, congressos e encontros religiosos.','cultura':'Celebrações, shows e festivais.','feiras':'Marcas, ideias e novas conexões.','esporte':'Corridas, desafios e encontros ao ar livre.','empresa':'Confraternizações e encontros de equipes.','casamento':'Detalhes para receber e celebrar.'}[key] }}</small></span><span class="ev-format-arrow" aria-hidden="true">↗</span></button>
         {% endfor %}
       </div>
       <div class="ev-worlds-panels">
