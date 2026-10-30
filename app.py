@@ -33,7 +33,7 @@ def gate_mockup_studio():
 
 hub_catalog = HubCatalog()
 
-app.secret_key = os.environ.get("SECRET_KEY", "troque-esta-chave-no-render")
+app.secret_key = os.environ["SECRET_KEY"]
 
 PRIMARY_WHATSAPP = "5531994888250"
 ADMIN_PHONE = "5531993181939"
@@ -574,7 +574,7 @@ def contact():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)), debug=True)
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)), debug=False)
 
 
 # deploy-sync: versão visual e comercial completa 2026-09-30
