@@ -113,6 +113,21 @@ html[data-theme=dark] body .ev-artdirection #compor .ev-current-event :is(small,
  html body .ev-artdirection #formatos .ev-world-image{height:240px}
 }
 </style>
+<style>
+/* Roxo espelhado no formulário: reflexos contidos sem interferir na leitura. */
+html[data-theme=dark] body .ev-artdirection #compor .ev-ticket{
+ background:linear-gradient(118deg,transparent 8%,#ead8ff16 24%,#f6eaff30 25%,transparent 26%,transparent 60%,#dfbfff12 77%,transparent 86%),radial-gradient(ellipse at 8% 0%,#b88bd46b,transparent 54%),linear-gradient(145deg,#68477e 0%,#3e2853 42%,#53366c 70%,#82618f 100%)!important;
+ border:1px solid #d8b7ee99!important;
+ box-shadow:inset 0 1px 0 #f4dfff99,inset 1px 0 0 #ead0ff40,inset 0 -1px 0 #c19ed65c,0 20px 55px #160c263d,0 0 36px #c38cf315!important;
+}
+html[data-theme=dark] body .ev-artdirection #compor .ev-kit-options>button{
+ background:linear-gradient(135deg,#eddbff12,#29173845)!important;border-color:#d0a9e580!important;box-shadow:inset 0 1px 0 #ffffff14;
+}
+html[data-theme=dark] body .ev-artdirection #compor .ev-kit-options>button[aria-pressed=true]{
+ background:linear-gradient(125deg,#ead8f7,#c8a8df)!important;color:#302039!important;border-color:#f2e1ff!important;
+}
+html[data-theme=dark] body .ev-artdirection #compor .ev-selected{background:#20102d52!important;border:1px solid #d7b5ec45;box-shadow:inset 0 1px 0 #ecd8ff14}
+</style>
 {% endblock %}
 
 {% block content %}
