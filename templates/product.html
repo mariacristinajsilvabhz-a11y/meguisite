@@ -76,12 +76,21 @@
             {% if product.variants %}Adicionar opção ao orçamento{% elif product.id in cart_ids %}Atualizar no orçamento{% else %}Adicionar ao meu orçamento{% endif %}
           </button>
         </form>
+        <a class="product-whatsapp" href="https://wa.me/{{ whatsapp_number }}?text={{ ('Olá, Megui! Tenho uma dúvida sobre ' ~ product.name ~ '.')|urlencode }}" target="_blank" rel="noopener">{{ icon('whatsapp') }} Tirar uma dúvida pelo WhatsApp</a>
       </div>
 
       <div class="product-benefits">
         <span>✓ Atendimento consultivo</span>
         <span>✓ Personalização sob medida</span>
+        <span>✓ Confecção própria em Contagem (MG)</span>
       </div>
+
+      {% if trusted_brands %}
+      <div class="product-trust" aria-label="Marcas que já trabalharam com a Megui">
+        <span>Marcas que já vestem e presenteiam com a Megui</span>
+        <div>{% for brand in trusted_brands[:5] if brand.image %}<img src="{{ url_for('static', filename='img/clientes/' ~ brand.image) }}" alt="{{ brand.name }}" width="96" height="24" loading="lazy" decoding="async">{% endfor %}</div>
+      </div>
+      {% endif %}
     </div>
   </div>
 </section>

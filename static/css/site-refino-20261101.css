@@ -1,0 +1,138 @@
+/*
+  Site inteiro — passada de contraste, ritmo e conversão (nov/2026).
+  Carregado depois de todos os outros estilos. Só vale no tema claro.
+  A home tem ajustes próprios em home-refino-20261101.css, carregado depois deste.
+
+  Paleta
+    papel   #FFFFFF  fundo padrão
+    nevoa   #F2EAF7  faixas suaves (uma ou duas por página)
+    ameixa  #1E1024  faixas escuras e barra do topo
+    tinta   #22162A  títulos
+    texto   #5A4A63  parágrafos
+    roxo    #6A2C93  ações (um só estilo de botão principal)
+    lilas   #C79BE6  destaque sobre o escuro
+*/
+
+html[data-theme=light]{
+  --rf-papel:#fff!important;--rf-nevoa:#f2eaf7!important;--rf-linha:#ebe1f0!important;--rf-ameixa:#1e1024!important;--rf-ameixa-2:#2a1831!important;
+  --rf-tinta:#22162a!important;--rf-texto:#5a4a63!important;--rf-roxo:#6a2c93!important;--rf-roxo-hover:#55207a!important;--rf-lilas:#c79be6!important;
+  --ink:#22162a!important;--purple-dark:#6a2c93!important;--line:#ebe1f0!important;--soft:#f2eaf7!important;--shadow:0 1px 2px #22162a0a,0 8px 24px #22162a0d!important;
+}
+
+/* ============ Topo ============ */
+html[data-theme=light]:not(#rf1):not(#rf2) body{background:var(--rf-papel)!important}
+html[data-theme=light]:not(#rf1):not(#rf2) .top-strip{background:var(--rf-ameixa)!important;color:#dccbe6!important;letter-spacing:.02em!important}
+html[data-theme=light]:not(#rf1):not(#rf2) .site-header.modern-header{background:#ffffffeb!important;backdrop-filter:saturate(1.4) blur(14px)!important;-webkit-backdrop-filter:saturate(1.4) blur(14px)!important;border-bottom:1px solid var(--rf-linha)!important;box-shadow:none!important}
+html[data-theme=light]:not(#rf1):not(#rf2) .modern-header .main-nav>a,html[data-theme=light]:not(#rf1):not(#rf2) .modern-header .nav-dropdown>a{color:var(--rf-tinta)!important}
+html[data-theme=light]:not(#rf1):not(#rf2) .modern-header .main-nav>a:hover,html[data-theme=light]:not(#rf1):not(#rf2) .modern-header .nav-dropdown>a:hover{color:var(--rf-roxo)!important}
+html[data-theme=light]:not(#rf1):not(#rf2) .modern-header .main-nav>a[aria-current=page],html[data-theme=light]:not(#rf1):not(#rf2) .modern-header .nav-dropdown>a[aria-current=page]{color:var(--rf-roxo)!important}
+html[data-theme=light]:not(#rf1):not(#rf2) .modern-header .theme-toggle{background:transparent!important;border:1px solid var(--rf-linha)!important;border-radius:999px!important;color:var(--rf-texto)!important;width:42px!important;height:42px!important;flex:0 0 42px!important}
+html[data-theme=light]:not(#rf1):not(#rf2) .modern-header .create-art-button{background:transparent!important;border:1px solid var(--rf-linha)!important;border-radius:999px!important;color:var(--rf-tinta)!important;box-shadow:none!important}
+html[data-theme=light]:not(#rf1):not(#rf2) .modern-header .create-art-button:hover{border-color:var(--rf-roxo)!important;color:var(--rf-roxo)!important;background:transparent!important}
+html[data-theme=light]:not(#rf1):not(#rf2) .modern-header .quote-button{background:var(--rf-roxo)!important;border:0!important;border-radius:999px!important;color:#fff!important;box-shadow:0 6px 18px #6a2c9333!important}
+html[data-theme=light]:not(#rf1):not(#rf2) .modern-header .quote-button:hover{background:var(--rf-roxo-hover)!important;color:#fff!important}
+html[data-theme=light]:not(#rf1):not(#rf2) .modern-header .quote-button svg{color:#fff!important}
+html[data-theme=light]:not(#rf1):not(#rf2) .modern-header .quote-count{background:#fff!important;color:var(--rf-roxo)!important}
+html[data-theme=light]:not(#rf1):not(#rf2) .discovery-bar{background:var(--rf-papel)!important;border-bottom:1px solid var(--rf-linha)!important;box-shadow:none!important}
+html[data-theme=light]:not(#rf1):not(#rf2) .discovery-bar input{background:#f7f3f9!important;border:1px solid transparent!important;border-radius:999px!important;box-shadow:none!important}
+html[data-theme=light]:not(#rf1):not(#rf2) .discovery-bar input:focus{background:#fff!important;border-color:var(--rf-roxo)!important;box-shadow:0 0 0 4px #6a2c9314!important}
+html[data-theme=light]:not(#rf1):not(#rf2) .discovery-links a{color:var(--rf-texto)!important}
+html[data-theme=light]:not(#rf1):not(#rf2) .discovery-links a:hover{color:var(--rf-roxo)!important}
+html[data-theme=light]:not(#rf1):not(#rf2) .dropdown-panel{background:#fff!important;border:1px solid var(--rf-linha)!important;box-shadow:0 18px 40px #22162a1f!important}
+html[data-theme=light]:not(#rf1):not(#rf2) .dropdown-panel a:hover{background:var(--rf-nevoa)!important;color:var(--rf-roxo)!important}
+
+/* ============ Fundos: branco por padrão ============ */
+html[data-theme=light]:not(#rf1):not(#rf2) main,
+html[data-theme=light]:not(#rf1):not(#rf2) main :is(.page-hero,.catalog-desk,.catalog-section,.quote-studio,.company-lab,.cl-hero,.cl-proof,.cl-uniforms,.cl-craft,.cl-project,
+  .ev-experience,.ev-gather,.ev-moments,.ev-showcase,.ev-worlds,.meg-work,.ms-opening,.mw-featured,.mw-collection,.outside-box,
+  .contact-studio,.contact-brief,.contact-directory,.textile-page,.textile-library,.textile-project,.textile-bottom-faq,.b2b-visual-hero,.contact-intro,.product-page,#textile-page,.textile-hero,.mh-origin,.mh-identity,.mh-today,.mh-wrap,.mh-memory,.mh-value){
+  background-color:var(--rf-papel)!important;background-image:none!important}
+/* faixas suaves: uma por página */
+html[data-theme=light]:not(#rf1):not(#rf2) main :is(.section-soft,.cl-kits,.mw-origins,.ev-moments,.mh-memories){background-color:var(--rf-nevoa)!important;background-image:none!important}
+/* faixas escuras */
+html[data-theme=light]:not(#rf1):not(#rf2) main :is(.mw-brandproof,.mw-making){background-color:var(--rf-ameixa)!important;background-image:none!important}
+/* finais em roxo cheio */
+html[data-theme=light]:not(#rf1):not(#rf2) main :is(.mw-finale){background-color:var(--rf-roxo)!important;background-image:none!important}
+html[data-theme=light]:not(#rf1):not(#rf2) main .mw-finale :is(h1,h2,h3,p):not([class*=card] *){color:#fff!important}
+html[data-theme=light]:not(#rf1):not(#rf2) main .mw-finale p:not([class*=card] *){color:#eadcf3!important}
+
+/* ============ Tipografia ============ */
+html[data-theme=light]:not(#rf1):not(#rf2) main :is(h1,h2,h3){font-family:Sora,system-ui,sans-serif!important;letter-spacing:-.035em!important}
+html[data-theme=light]:not(#rf1):not(#rf2) main :is(h1,h2){font-weight:650!important}
+html[data-theme=light]:not(#rf1):not(#rf2) main :is(h1,h2,h3):not(.title-carousel) :is(em,i,span:not([class*=butterfl]):not([class*=service-]):not([class*=sr-only])){
+  font-family:inherit!important;font-style:normal!important;color:inherit!important;-webkit-text-fill-color:currentColor!important;background:none!important;text-shadow:none!important}
+html[data-theme=light]:not(#rf1):not(#rf2) main :is(.eyebrow,.micro-label){color:var(--rf-roxo)!important}
+
+/* ============ Menos enfeite ============ */
+html[data-theme=light]:not(#rf1):not(#rf2) .brand-whisper,
+html[data-theme=light]:not(#rf1):not(#rf2) main span[class*=butterfly]:not(.service-butterfly):not([class*=dot]):not([class*=icon]){display:none!important}
+
+/* ============ Botões: um principal, um secundário ============ */
+html[data-theme=light]:not(#rf1):not(#rf2) main :is(.btn-primary,.quote-send-button,.cl-main-link,.cl-welcome-cta,.ev-world-action,.ev-talk-action,.mw-editorial-cta,.mw-finale-cta,
+  .textile-primary,.outside-submit,.outside-start,.mh-cta,.eg-plan,.contact-desk-action){
+  background:var(--rf-roxo)!important;color:#fff!important;-webkit-text-fill-color:#fff!important;border:0!important;border-radius:999px!important;box-shadow:0 8px 20px #6a2c932e!important;
+  font-family:Sora,system-ui,sans-serif!important;font-weight:600!important;letter-spacing:-.005em!important;transform:none!important;transition:background .2s,transform .2s!important}
+html[data-theme=light]:not(#rf1):not(#rf2) main :is(.btn-primary,.quote-send-button,.cl-main-link,.cl-welcome-cta,.ev-world-action,.ev-talk-action,.mw-editorial-cta,.mw-finale-cta,
+  .textile-primary,.outside-submit,.outside-start,.mh-cta,.eg-plan,.contact-desk-action):hover{background:var(--rf-roxo-hover)!important;transform:translateY(-1px)!important}
+html[data-theme=light]:not(#rf1):not(#rf2) main :is(.btn-primary,.quote-send-button,.cl-main-link,.cl-welcome-cta,.ev-world-action,.ev-talk-action,.mw-editorial-cta,.mw-finale-cta,
+  .textile-primary,.outside-submit,.outside-start,.mh-cta,.eg-plan,.contact-desk-action) :is(span,small,strong,svg){color:#fff!important;-webkit-text-fill-color:#fff!important}
+/* sobre roxo cheio, o botão vira branco */
+html[data-theme=light]:not(#rf1):not(#rf2) main .mw-finale :is(.mw-finale-cta,a[class*=cta]){background:#fff!important;color:var(--rf-roxo)!important;-webkit-text-fill-color:var(--rf-roxo)!important;box-shadow:0 12px 28px #2a0b3d40!important}
+html[data-theme=light]:not(#rf1):not(#rf2) main .mw-finale :is(.mw-finale-cta,a[class*=cta]) :is(span,small,strong,svg){color:var(--rf-roxo)!important;-webkit-text-fill-color:var(--rf-roxo)!important}
+
+html[data-theme=light]:not(#rf1):not(#rf2) main :is(.btn-secondary,.eg-explore,.mw-piece-request,.product-quick-button,.ev-moment-choose,.catalog-filter-apply,.mw-expand,.catalog-help){
+  background:#fff!important;color:var(--rf-roxo)!important;-webkit-text-fill-color:var(--rf-roxo)!important;border:1px solid #dccbe6!important;border-radius:999px!important;box-shadow:none!important;transform:none!important}
+html[data-theme=light]:not(#rf1):not(#rf2) main :is(.btn-secondary,.eg-explore,.mw-piece-request,.product-quick-button,.ev-moment-choose,.catalog-filter-apply,.mw-expand,.catalog-help):hover{
+  border-color:var(--rf-roxo)!important;background:#faf6fc!important}
+html[data-theme=light]:not(#rf1):not(#rf2) main :is(.btn-secondary,.eg-explore,.mw-piece-request,.product-quick-button,.ev-moment-choose,.catalog-filter-apply,.mw-expand,.catalog-help) :is(span,small,strong,svg){color:var(--rf-roxo)!important;-webkit-text-fill-color:var(--rf-roxo)!important}
+html[data-theme=light]:not(#rf1):not(#rf2) main :is(.btn-primary,.btn-secondary,.product-quick-button):before,
+html[data-theme=light]:not(#rf1):not(#rf2) main :is(.btn-primary,.btn-secondary,.product-quick-button):after{border-style:solid!important}
+
+/* ============ Vitrine e produto: menos moldura, mais produto ============ */
+html[data-theme=light]:not(#rf1):not(#rf2) main .product-card{background:#fff!important;border:1px solid var(--rf-linha)!important;border-radius:20px!important;box-shadow:none!important}
+html[data-theme=light]:not(#rf1):not(#rf2) main .product-card:hover{border-color:#cdb2de!important;box-shadow:0 18px 40px #22162a14!important;transform:translateY(-3px)!important}
+html[data-theme=light]:not(#rf1):not(#rf2) main :is(.product-visual,.product-gallery,.real-product-photo){background-color:#f7f3f9!important;background-image:none!important;box-shadow:none!important}
+html[data-theme=light]:not(#rf1):not(#rf2) main .product-gallery{border:1px solid var(--rf-linha)!important}
+html[data-theme=light]:not(#rf1):not(#rf2) main .product-card :is(h3,.product-detail-link){color:var(--rf-tinta)!important}
+html[data-theme=light]:not(#rf1):not(#rf2) main .quote-box-header strong{font-family:Sora,system-ui,sans-serif!important;font-weight:650!important;letter-spacing:-.02em!important;color:var(--rf-tinta)!important}
+html[data-theme=light]:not(#rf1):not(#rf2) main .quote-box{background:#fff!important;border:1px solid var(--rf-linha)!important;box-shadow:0 18px 40px #22162a0f!important}
+html[data-theme=light]:not(#rf1):not(#rf2) main .btn-full{min-height:56px!important;font-size:15px!important}
+html[data-theme=light]:not(#rf1):not(#rf2) main .filters{background:#fff!important;border:1px solid var(--rf-linha)!important}
+html[data-theme=light]:not(#rf1):not(#rf2) main .filters a.active{background:var(--rf-nevoa)!important;color:var(--rf-roxo)!important;box-shadow:inset 3px 0 var(--rf-roxo)!important}
+html[data-theme=light]:not(#rf1):not(#rf2) main .catalog-toolbar{background:#fff!important;border:1px solid var(--rf-linha)!important}
+html[data-theme=light]:not(#rf1):not(#rf2) main .tag-row span{background:#f7f3f9!important;border-color:var(--rf-linha)!important;color:var(--rf-texto)!important}
+html[data-theme=light]:not(#rf1):not(#rf2) main :is(.send-quote-card,.empty-cart){background:#fff!important;background-image:none!important;border:1px solid var(--rf-linha)!important}
+
+/* ============ Formulários ============ */
+html[data-theme=light]:not(#rf1):not(#rf2) main :is(input,textarea,select){border:1px solid #e0d3e8!important;border-radius:12px!important;background:#fff!important}
+html[data-theme=light]:not(#rf1):not(#rf2) main :is(input,textarea,select):focus{border-color:var(--rf-roxo)!important;box-shadow:0 0 0 4px #6a2c9314!important}
+html[data-theme=light]:not(#rf1):not(#rf2) :is(a,button,summary,input,textarea,select):focus-visible{outline:3px solid #a46fcb!important;outline-offset:3px!important}
+
+/* ============ Rodapé ============ */
+html[data-theme=light]:not(#rf1):not(#rf2) .site-footer,html[data-theme=light]:not(#rf1):not(#rf2) footer.footer{background:var(--rf-ameixa)!important;background-image:none!important}
+
+@media(max-width:1000px){
+  html[data-theme=light]:not(#rf1):not(#rf2) .modern-header .main-nav{background:#fff!important}
+}
+@media(prefers-reduced-motion:reduce){
+  html[data-theme=light]:not(#rf1):not(#rf2) main :is(.product-card,.btn-primary,.btn-secondary){transition:none!important;transform:none!important}
+}
+
+/* Final de Trabalhos: roxo de ponta a ponta, sem o cartão interno */
+html[data-theme=light]:not(#rf1):not(#rf2) main .mw-finale-layout{background:none!important;box-shadow:none!important;border:0!important}
+html[data-theme=light]:not(#rf1):not(#rf2) main .mw-finale-layout:before,html[data-theme=light]:not(#rf1):not(#rf2) main .mw-finale-layout:after{display:none!important}
+html[data-theme=light]:not(#rf1):not(#rf2) main .mw-finale :is(h2,.mw-overline,.mw-finale-panel p,.mw-finale-panel span:not(.mw-finale-cta span),small){color:#fff!important;-webkit-text-fill-color:#fff!important}
+html[data-theme=light]:not(#rf1):not(#rf2) main .mw-finale h2{font-family:"Cormorant Garamond",serif!important;font-style:italic!important;font-weight:600!important;font-size:clamp(44px,5.5vw,84px)!important;line-height:1!important;letter-spacing:-.01em!important}
+html[data-theme=light]:not(#rf1):not(#rf2) main .mw-finale-seal{color:#ffffff66!important}
+html[data-theme=light]:not(#rf1):not(#rf2) main .mw-finale-panel a:not(.mw-finale-cta){color:#eadcf3!important;-webkit-text-fill-color:#eadcf3!important}
+
+/* Produto: dúvida rápida e prova social perto do botão */
+html[data-theme=light]:not(#rf1):not(#rf2) main .product-whatsapp{display:flex!important;align-items:center!important;justify-content:center!important;gap:10px!important;min-height:48px!important;margin-top:12px!important;border:1px solid #dccbe6!important;border-radius:999px!important;color:var(--rf-roxo)!important;font-weight:600!important;font-size:14px!important;text-decoration:none!important}
+html[data-theme=light]:not(#rf1):not(#rf2) main .product-whatsapp:hover{border-color:var(--rf-roxo)!important;background:#faf6fc!important}
+html[data-theme=light]:not(#rf1):not(#rf2) main .product-whatsapp svg{width:18px!important;height:18px!important}
+html[data-theme=light]:not(#rf1):not(#rf2) main .product-benefits{display:flex!important;flex-wrap:wrap!important;gap:8px 18px!important;color:var(--rf-texto)!important}
+html[data-theme=light]:not(#rf1):not(#rf2) main .product-trust{margin-top:28px!important;padding-top:22px!important;border-top:1px solid var(--rf-linha)!important}
+html[data-theme=light]:not(#rf1):not(#rf2) main .product-trust>span{display:block!important;font-size:12px!important;color:var(--rf-texto)!important;margin-bottom:14px!important}
+html[data-theme=light]:not(#rf1):not(#rf2) main .product-trust>div{display:flex!important;flex-wrap:wrap!important;align-items:center!important;gap:14px 26px!important}
+html[data-theme=light]:not(#rf1):not(#rf2) main .product-trust img{height:24px!important;width:auto!important;max-width:96px!important;object-fit:contain!important;filter:grayscale(1)!important;opacity:.7!important}
+html[data-theme=light]:not(#rf1):not(#rf2) main .product-gallery :is(.catalog-photo-set,.real-product-photo,figure,div){background:transparent!important;box-shadow:none!important}
