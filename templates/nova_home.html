@@ -3,7 +3,6 @@
 {% block title %}Megui Personalizados | Sua ideia vira peça de verdade{% endblock %}
 
 {% block extra_head %}
-<meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400..600,100&display=swap" rel="stylesheet">
 {% endblock %}
@@ -59,7 +58,7 @@
     {% set made = [
       ('Camisetas e malha','img/inicio/camiseta-megui-movimento-v3.webp',url_for('category',slug='vestuario')),
       ('Uniformes','img/inicio/social-manga-longa-manequim.webp',url_for('b2b')),
-      ('Saquinhos e embalagens','img/inicio/servicos/saquinhos-v1.webp',url_for('home') ~ '#saquinhos'),
+      ('Saquinhos e embalagens','img/inicio/servicos/saquinhos-v1.webp',url_for('products', q='saquinho')),
       ('Bolsas e mochilas','img/produtos/mochila-megui.webp',url_for('category',slug='bolsas-acessorios')),
       ('Copos e garrafas','img/produtos/squeeze-megui.webp',url_for('category',slug='copos-garrafas')),
       ('Papelaria e kits','img/produtos/kit-corporativo-megui.webp',url_for('category',slug='papelaria')),

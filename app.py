@@ -262,18 +262,14 @@ def home():
         # A indisponibilidade do catálogo não deve impedir a abertura da página inicial.
         app.logger.warning("Página inicial sem vitrine: catálogo do Hub indisponível")
         items = []
-    return render_template("index.html", products=items, home_categories=home_categories)
+    # A home anterior (index.html) fica guardada para consulta; a atual é a jornada de nova_home.html.
+    return render_template("nova_home.html", products=items, home_categories=home_categories)
 
 
 @app.get("/nova-home")
 def home_preview():
-    """Prévia da nova home (fora dos menus e dos buscadores) para aprovação antes de substituir a atual."""
-    try:
-        items = hub_catalog.list(limit=6, vitrine=True, timeout=3)[0] if hub_catalog.enabled else order_by_stock(PRODUCTS)[:6]
-    except CatalogUnavailable:
-        app.logger.warning("Prévia da home sem vitrine: catálogo do Hub indisponível")
-        items = []
-    return render_template("nova_home.html", products=items)
+    """Endereço da prévia, mantido para links já compartilhados."""
+    return redirect(url_for("home"), code=301)
 
 
 @app.get("/tecidos")
