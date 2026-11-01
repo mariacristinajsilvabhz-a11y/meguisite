@@ -1,0 +1,41 @@
+{% from '_icons.html' import icon %}
+{% for block in blocks %}
+{% if block.kind == 'product' %}
+  {% with product=block.product, feature=block.feature %}{% include '_passeio_card.html' %}{% endwith %}
+{% elif block.kind == 'work' %}
+  <figure class="ps-pause ps-work">
+    <img src="{{ url_for('static', filename=block.work.image) }}" alt="{{ block.work.title }}" loading="lazy" decoding="async">
+    <figcaption>
+      <span>Assim ficou</span>
+      <strong>{{ block.work.title }}</strong>
+      <p>{{ block.work.text }}</p>
+      {% if block.work.category %}<a href="{{ url_for('explore', categoria=block.work.category) }}">Ver produtos parecidos {{ icon('arrow') }}</a>
+      {% else %}<a href="{{ url_for('portfolio_view') }}">Ver mais trabalhos {{ icon('arrow') }}</a>{% endif %}
+    </figcaption>
+  </figure>
+{% elif block.kind == 'idea' %}
+  <aside class="ps-pause ps-idea">
+    <span>Ideia de combinação</span>
+    <strong>{{ block.title }}</strong>
+    <p>{{ block.text }}</p>
+    <a href="{{ url_for('explore', categoria=block.slug) }}">Ver peças para esse kit {{ icon('arrow') }}</a>
+  </aside>
+{% elif block.kind == 'shelf' %}
+  <section class="ps-pause ps-shelf" aria-label="{{ block.title }}">
+    <header><div><h2>{{ block.title }}</h2><p>{{ block.text }}</p></div><a href="{{ url_for('explore', categoria=block.slug) }}">Ver tudo {{ icon('arrow') }}</a></header>
+    <div class="ps-shelf-row">
+      {% for product in block['items'] %}
+      {% set img = product.image_url or (url_for('static', filename=product.image) if product.image else (url_for('static', filename=product.images[0]) if product.images else '')) %}
+      <a class="ps-shelf-item" href="{{ url_for('product', slug=product.slug) }}" data-keep-place>
+        <span>{% if img %}<img src="{{ img }}" alt="" loading="lazy" decoding="async">{% endif %}</span>
+        {{ product.name }}
+      </a>
+      {% endfor %}
+    </div>
+  </section>
+{% endif %}
+{% endfor %}
+{% if has_more %}
+  <a class="ps-more" href="{{ url_for('explore', categoria=request.args.get('categoria') or None, q=request.args.get('q') or None, subcategoria=request.args.get('subcategoria') or None, surpresa=request.args.get('surpresa') or None, ate=next_page) }}"
+     data-src="{{ url_for('explore_more', categoria=request.args.get('categoria') or None, q=request.args.get('q') or None, subcategoria=request.args.get('subcategoria') or None, surpresa=request.args.get('surpresa') or None, pagina=next_page) }}" data-page="{{ next_page }}">Carregar mais produtos</a>
+{% endif %}

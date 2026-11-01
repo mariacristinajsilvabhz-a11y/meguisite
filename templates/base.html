@@ -51,7 +51,7 @@
       <nav id="main-nav" class="main-nav" aria-label="Navegação principal">
         <a href="{{ url_for('home') }}" {% if request.endpoint == 'home' %}aria-current="page"{% endif %}>Início</a>
         <div class="nav-dropdown">
-          <a href="{{ url_for('products') }}" {% if request.endpoint in ['products','category','product'] %}aria-current="page"{% endif %}>Produtos</a>
+          <a href="{{ url_for('products') }}" {% if request.endpoint in ['products','category','product','explore'] %}aria-current="page"{% endif %}>Produtos</a>
           <div class="dropdown-panel">
             <a href="{{ url_for('textiles') }}">{{ icon('tshirt') }} Tecidos & materiais</a>
             {% for category in categories %}
@@ -104,7 +104,7 @@
       </div>
       <div>
         <h3>Explore</h3>
-        <a href="{{ url_for('products') }}" {% if request.endpoint in ['products','category','product'] %}aria-current="page"{% endif %}>Produtos</a>
+        <a href="{{ url_for('products') }}" {% if request.endpoint in ['products','category','product','explore'] %}aria-current="page"{% endif %}>Produtos</a>
         <a href="{{ url_for('b2b') }}">Empresas</a>
         <a href="{{ url_for('events') }}">Eventos</a>
         <a href="{{ url_for('portfolio_view') }}">Trabalhos</a>

@@ -1,17 +1,16 @@
-"""Gera static/css/nova-home.css a partir de nova-home.src.css.
+"""Gera static/css/<nome>.css a partir de static/css/<nome>.src.css.
 
 O site tem muitas camadas antigas de CSS com !important. Para que a nova home
 não brigue com elas, cada seletor ganha um reforço de especificidade e cada
 declaração ganha !important (menos dentro de @keyframes, onde não é permitido).
 
-Uso: python3 tools/build_nova_home_css.py
+Uso: python3 tools/build_css.py nova-home passeio
 """
 from pathlib import Path
 import re
+import sys
 
 ROOT = Path(__file__).resolve().parent.parent
-SRC = ROOT / "static/css/nova-home.src.css"
-OUT = ROOT / "static/css/nova-home.css"
 BOOST = ":not(#nh1):not(#nh2):not(#nh3)"
 
 
@@ -66,5 +65,8 @@ def process(css: str, in_keyframes: bool = False) -> str:
 
 
 if __name__ == "__main__":
-    OUT.write_text("/* Gerado por tools/build_nova_home_css.py — edite nova-home.src.css */\n" + process(SRC.read_text()))
-    print(f"ok: {OUT.relative_to(ROOT)}")
+    for name in sys.argv[1:] or ["nova-home", "passeio"]:
+        src = ROOT / f"static/css/{name}.src.css"
+        out = ROOT / f"static/css/{name}.css"
+        out.write_text(f"/* Gerado por tools/build_css.py — edite {name}.src.css */\n" + process(src.read_text()))
+        print(f"ok: {out.relative_to(ROOT)}")

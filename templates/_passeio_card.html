@@ -1,0 +1,32 @@
+{# Card do passeio: foto grande, nome, cores que trocam a foto e o "+" para incluir no orçamento sem sair da página. #}
+{% set available = product.variants|default([])|selectattr('stock','gt',0)|list %}
+{% set main_image = product.image_url or (url_for('static', filename=product.image) if product.image else (url_for('static', filename=product.images[0]) if product.images else '')) %}
+{% set card_category = categories|selectattr('slug','equalto',product.category)|first %}
+{% set url = url_for('product', slug=product.slug) %}
+<article class="ps-card{{ ' is-feature' if feature }}">
+  <div class="ps-media">
+  <a class="ps-photo" href="{{ url }}" data-keep-place tabindex="-1" aria-hidden="true">
+    {% if main_image %}<img src="{{ main_image }}" alt="" loading="lazy" decoding="async" data-main-image>{% else %}<span class="ps-photo-empty">Foto em breve</span>{% endif %}
+  </a>
+  {% if not product.variants or available %}
+    <form class="ps-add" action="{{ url_for('add_to_quote', product_id=product.id) }}" method="post">
+      <input type="hidden" name="qty" value="50">
+      <input type="hidden" name="next" value="{{ request.full_path if request.query_string else request.path }}">
+      {% if available %}<input type="hidden" name="variant_id" value="{{ available[0].id }}">{% endif %}
+      <button type="submit" aria-label="Incluir {{ product.name }} no orçamento" title="Incluir no orçamento"{% if product.id in cart_ids %} class="is-added"{% endif %}><span aria-hidden="true">+</span></button>
+    </form>
+    {% endif %}
+  </div>
+  <div class="ps-info">
+    <h3><a href="{{ url }}" data-keep-place>{{ product.name }}</a></h3>
+    <span class="ps-cat">{{ card_category.name if card_category else 'Personalizados Megui' }}</span>
+    {% if available|length > 1 %}
+    <div class="ps-colors" role="group" aria-label="Cores de {{ product.name }}">
+      {% for variant in available[:6] %}
+      <button type="button" class="ps-dot" data-variant="{{ variant.id }}" data-image="{{ variant.image }}" aria-pressed="{{ 'true' if loop.first else 'false' }}" aria-label="{{ variant.color or ('Opção ' ~ loop.index) }}" title="{{ variant.color or ('Opção ' ~ loop.index) }}"><span style="--c:{{ variant.swatch or '#d9d0de' }}"></span></button>
+      {% endfor %}
+      {% if available|length > 6 %}<a class="ps-dot-more" href="{{ url }}" data-keep-place>+{{ available|length - 6 }}</a>{% endif %}
+    </div>
+    {% endif %}
+  </div>
+</article>

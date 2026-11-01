@@ -317,6 +317,150 @@ def products():
     return render_catalog(request.args.get("categoria", ""))
 
 
+def quote_image(product, variant=None):
+    """Foto pequena para a bandeja do orçamento (URL absoluta do Hub ou arquivo do site)."""
+    if variant and variant.get("image"):
+        return variant["image"]
+    if product.get("image_url"):
+        return product["image_url"]
+    image = product.get("image") or (product.get("images") or [None])[0]
+    return url_for("static", filename=image) if image else ""
+
+
+def quote_thumbs(limit=4):
+    items = list(cart().values())[-limit:]
+    return [item.get("image", "") for item in items]
+
+
+# ---------- Passeio pelo catálogo: feed contínuo com pausas ----------
+EXPLORE_INTENTS = [
+    ("Para minha equipe", "vestuario"),
+    ("Para um evento", "eventos"),
+    ("Para presentear", "kits-presentes"),
+    ("Para minha empresa", "corporativo"),
+]
+EXPLORE_SHELVES = [
+    ("Para eventos", "Roupas, copos e materiais para todo mundo chegar junto.", "eventos"),
+    ("Copos e garrafas", "Do squeeze da academia à caneca do escritório.", "copos-garrafas"),
+    ("Presentes que encantam", "Kits prontos para personalizar e entregar.", "kits-presentes"),
+    ("Bolsas e sacolas", "Para levar a marca para todo lado.", "bolsas-acessorios"),
+]
+EXPLORE_IDEAS = [
+    ("Kit boas-vindas", "Caneca, caderno e ecobag com a sua marca no primeiro dia de quem chega.", "kits-presentes"),
+    ("Kit de evento", "Camiseta, copo e cordão: todo mundo vestindo e usando a mesma identidade.", "eventos"),
+    ("Kit da rotina", "Garrafa, caderno e caneta que acompanham a equipe no dia a dia.", "corporativo"),
+    ("Presente de fim de ano", "Uma garrafa térmica numa embalagem bonita já faz alguém lembrar de você.", "kits-presentes"),
+]
+EXPLORE_TAG_CATEGORY = {"vestuario": "vestuario", "tecnologia": "tecnologia", "brindes": "brindes", "eventos": "eventos"}
+EXPLORE_PAGE_SIZE = 48
+EXPLORE_MAX_INITIAL_PAGES = 5
+
+
+def explore_works():
+    seen, works = set(), []
+    for work in PORTFOLIO:
+        image = work.get("image") or ""
+        if not image or image in seen or "transparent" in image or "cutout" in image:
+            continue
+        seen.add(image)
+        category = next((EXPLORE_TAG_CATEGORY[t] for t in (work.get("tags") or "").split() if t in EXPLORE_TAG_CATEGORY), "")
+        works.append(dict(title=work["title"], text=work.get("text", ""), image=image, category=category))
+    return works
+
+
+def explore_fetch(category, query, page, subtype=""):
+    """Uma página do catálogo: (itens, total de páginas, total de produtos)."""
+    if hub_catalog.enabled:
+        items, pagination, _ = hub_catalog.listing(category, query, page, EXPLORE_PAGE_SIZE, subtype=subtype)
+        return items, max(1, int(pagination.get("paginas") or 1)), int(pagination.get("total") or len(items))
+    items = [p for p in PRODUCTS if matches_category(p, category)] if category else list(PRODUCTS)
+    if query:
+        items = [p for p in items if all(t.lower() in (p["name"] + " " + p["sku"]).lower() for t in query.split())]
+    if subtype:
+        items = [p for p in items if p.get("subcategory") == subtype]
+    items = order_by_stock(items)
+    return (items if page == 1 else []), 1, len(items)
+
+
+def explore_page(category, query, page, subtype="", seed=None):
+    """Uma página do passeio, já com as pausas no meio dos produtos."""
+    import random
+    if seed:
+        rng = random.Random(seed)
+        _, pages, total = explore_fetch(category, query, 1, subtype)
+        start = rng.randint(0, pages - 1)
+        real_page = (start + page - 1) % pages + 1
+        items = explore_fetch(category, query, real_page, subtype)[0]
+        random.Random(f"{seed}:{page}").shuffle(items)
+        has_more = page < pages
+    else:
+        items, pages, total = explore_fetch(category, query, page, subtype)
+        has_more = page < pages
+    works = explore_works()
+    blocks, step = [], 0
+    pause_at = {10: "work", 22: "shelf", 34: "idea", 46: "work"}
+    for index, product in enumerate(items, 1):
+        blocks.append(dict(kind="product", product=product, feature=index % 9 == 4))
+        kind = pause_at.get(index)
+        if not kind or category or query:
+            # Com filtro ou busca, o feed fica só com produtos, sem desviar o foco.
+            continue
+        n = (page - 1) * 2 + step
+        step += 1
+        if kind == "work" and works:
+            blocks.append(dict(kind="work", work=works[n % len(works)]))
+        elif kind == "idea":
+            title, text, slug = EXPLORE_IDEAS[(page - 1) % len(EXPLORE_IDEAS)]
+            blocks.append(dict(kind="idea", title=title, text=text, slug=slug))
+        elif kind == "shelf":
+            title, text, slug = EXPLORE_SHELVES[(page - 1) % len(EXPLORE_SHELVES)]
+            try:
+                shelf_items = (hub_catalog.list(slug, limit=12, timeout=5)[0] if hub_catalog.enabled
+                               else [p for p in PRODUCTS if matches_category(p, slug)])[:12]
+            except CatalogUnavailable:
+                shelf_items = []
+            if len(shelf_items) >= 3:
+                blocks.append(dict(kind="shelf", title=title, text=text, slug=slug, items=shelf_items))
+    return blocks, has_more, total
+
+
+def explore_args():
+    category = request.args.get("categoria", "").strip()
+    if category and not get_category(category):
+        abort(404)
+    subtype = request.args.get("subcategoria", "").strip()
+    if subtype and subtype not in SUBCATEGORY_MAP:
+        abort(404)
+    query = request.args.get("q", "").strip()[:160]
+    seed = re.sub(r"[^0-9a-z]", "", request.args.get("surpresa", "").lower())[:12] or None
+    return category, subtype, query, seed
+
+
+@app.get("/produtos-passeio")
+def explore():
+    """Prévia do catálogo explorativo (fora dos menus) para aprovação."""
+    category, subtype, query, seed = explore_args()
+    until = max(1, min(request.args.get("ate", 1, type=int) or 1, EXPLORE_MAX_INITIAL_PAGES))
+    blocks, has_more, total, page = [], False, 0, 0
+    for page in range(1, until + 1):
+        page_blocks, has_more, total = explore_page(category, query, page, subtype, seed)
+        blocks += page_blocks
+        if not has_more:
+            break
+    return render_template("passeio.html", blocks=blocks, has_more=has_more, next_page=page + 1, total=total,
+                           active_category=get_category(category) if category else None, query=query,
+                           active_subtype=subtype, seed=seed, intents=EXPLORE_INTENTS, collections=COLLECTIONS,
+                           thumbs=quote_thumbs())
+
+
+@app.get("/produtos-passeio/mais")
+def explore_more():
+    category, subtype, query, seed = explore_args()
+    page = max(2, request.args.get("pagina", 2, type=int) or 2)
+    blocks, has_more, _ = explore_page(category, query, page, subtype, seed)
+    return render_template("_passeio_feed.html", blocks=blocks, has_more=has_more, next_page=page + 1)
+
+
 @app.get("/categoria/<slug>")
 def category(slug):
     return render_catalog(slug)
@@ -386,13 +530,14 @@ def add_to_quote(product_id):
         "sku": variant["sku"] if variant else product["sku"],
         "qty": qty,
         "notes": notes,
+        "image": quote_image(product, variant),
     }
 
     session["quote_cart"] = quote_cart
     session.modified = True
 
     if request.accept_mimetypes.best == "application/json":
-        return jsonify(count=cart_count(), name=product["name"], quote_url=url_for("quote_view"))
+        return jsonify(count=cart_count(), name=product["name"], quote_url=url_for("quote_view"), thumbs=quote_thumbs())
 
     next_url = request.form.get("next")
     if not next_url or not next_url.startswith("/") or next_url.startswith("//") or urlsplit(next_url).netloc or "\\" in next_url:
