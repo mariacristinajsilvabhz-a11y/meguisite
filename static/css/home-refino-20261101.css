@@ -1,0 +1,121 @@
+/*
+  Home — passada de contraste e ritmo (nov/2026).
+  Carregado por último. Só vale no tema claro e só na home (escopo .home-content-sheet).
+
+  Paleta
+    --rf-papel   #FFFFFF  seções claras
+    --rf-nevoa   #F2EAF7  uma única faixa suave (malharia + saquinhos)
+    --rf-ameixa  #1E1024  faixas escuras
+    --rf-tinta   #22162A  texto
+    --rf-roxo    #6A2C93  ações e links
+    --rf-lilas   #C79BE6  destaque sobre o escuro
+
+  Tipografia: Sora para tudo. Itálico serifado só no hero e em "muitas formas".
+  Ritmo: hero escuro → branco → névoa → ameixa → branco → branco → roxo.
+*/
+
+html[data-theme=light]{
+  --rf-papel:#fff!important;--rf-nevoa:#f2eaf7!important;--rf-ameixa:#1e1024!important;--rf-ameixa-2:#2a1831!important;
+  --rf-tinta:#22162a!important;--rf-texto:#5a4a63!important;--rf-roxo:#6a2c93!important;--rf-roxo-hover:#55207a!important;--rf-lilas:#c79be6!important;
+}
+
+/* ---------- 1. Fundo: fim do lilás em tudo ---------- */
+html[data-theme=light] .home-content-sheet{background:var(--rf-papel)!important}
+html[data-theme=light] .home-content-sheet>section,
+html[data-theme=light] .home-content-sheet>section:before,
+html[data-theme=light] .home-content-sheet>section:after{background-image:none!important}
+html[data-theme=light] .home-content-sheet .services-discovery,
+html[data-theme=light] .home-content-sheet .megui-possibilities,
+html[data-theme=light] .home-content-sheet .home-clients,
+html[data-theme=light] .home-content-sheet .fabric-details{background:var(--rf-papel)!important}
+
+/* Faixa de marcas: branca, entre linhas finas */
+html[data-theme=light] .home-content-sheet .client-ribbon{background:var(--rf-papel)!important;border-block:1px solid #eee5f3!important}
+
+/* Malharia + saquinhos: a única faixa suave */
+html[data-theme=light] .home-content-sheet #malharia,
+html[data-theme=light] .home-content-sheet #malharia .knit-flow,
+html[data-theme=light] .home-content-sheet .pouch-studio{background:var(--rf-nevoa)!important}
+html[data-theme=light] #malharia .knit-flow:before{display:none!important}
+
+/* ---------- 2. Tipografia: uma família, itálico com parcimônia ---------- */
+html[data-theme=light] .home-content-sheet :is(h2,h3){font-family:Sora,system-ui,sans-serif!important;letter-spacing:-.035em!important}
+html[data-theme=light] .home-content-sheet :is(h2,h3) :is(em,i,strong,span:not([class*=butterfl]):not([class*=service-]):not(.services-title-lead)){
+  font-family:inherit!important;font-style:normal!important;color:inherit!important;-webkit-text-fill-color:currentColor!important;font-weight:inherit!important;letter-spacing:inherit!important;font-size:inherit!important}
+/* "muitas formas" continua em itálico: é o detalhe da borboleta no pingo do i */
+html[data-theme=light] .home-content-sheet .services-discovery h2 :is(em,span){font-family:"Cormorant Garamond",serif!important;font-style:italic!important;color:var(--rf-roxo)!important;-webkit-text-fill-color:var(--rf-roxo)!important}
+html[data-theme=light] .home-content-sheet .services-discovery h2 .services-title-lead{font-family:Sora,system-ui,sans-serif!important;font-style:normal!important;color:var(--rf-tinta)!important;-webkit-text-fill-color:var(--rf-tinta)!important}
+html[data-theme=light] .home-content-sheet .pouch-footer-story p,
+html[data-theme=light] .home-content-sheet .pouch-footer-story p strong{font-family:Sora,system-ui,sans-serif!important;font-style:normal!important;color:var(--rf-tinta)!important}
+html[data-theme=light] .home-content-sheet #pouch-title em:after{display:none!important}
+html[data-theme=light] .home-content-sheet #pouch-title .pouch-title-note{display:none!important}
+html[data-theme=light] .home-content-sheet .pouch-title-note-unused{font-family:Sora,system-ui,sans-serif!important;font-style:normal!important;font-size:14px!important;transform:none!important;color:var(--rf-texto)!important}
+html[data-theme=light] .home-content-sheet .services-contact-note{font-family:Sora,system-ui,sans-serif!important;font-style:normal!important;font-size:15px!important;transform:none!important;color:var(--rf-texto)!important}
+
+/* ---------- 3. Menos enfeite ---------- */
+html[data-theme=light] .home-content-sheet :is(.brand-whisper,.knit-flying-butterfly,.pouch-bubble-butterfly,.pouch-title-butterfly,.pouch-flight-mark,.megui-around-butterfly,.pouch-scene-word,.knit-stage-word,.knit-stage-butterfly,.pouch-label-hole){display:none!important}
+html[data-theme=light] .home-welcome .brand-whisper{display:none!important}
+html[data-theme=light] .home-content-sheet :is(.services-footer,.pouch-footer){border-style:solid!important;border-color:#e6dbec!important}
+html[data-theme=light] .home-content-sheet .megui-around-photo:before,
+html[data-theme=light] .home-content-sheet .megui-around-photo:after{display:none!important}
+
+/* ---------- 4. Um só botão de ação ---------- */
+html[data-theme=light] .home-content-sheet :is(.services-contact-button,.knit-brand-cta,.pouch-label-cta,.mp-cta){
+  display:inline-flex!important;align-items:center!important;gap:12px!important;width:auto!important;min-height:52px!important;padding:14px 26px!important;
+  background:var(--rf-roxo)!important;color:#fff!important;border:0!important;border-radius:999px!important;
+  box-shadow:0 10px 24px #6a2c9333!important;transform:none!important;outline:0!important;text-decoration:none!important;
+  font-family:Sora,system-ui,sans-serif!important;font-size:15px!important;font-weight:600!important;letter-spacing:-.01em!important;transition:background .2s,transform .2s!important}
+html[data-theme=light] .home-content-sheet :is(.services-contact-button,.knit-brand-cta,.pouch-label-cta,.mp-cta):before,
+html[data-theme=light] .home-content-sheet :is(.services-contact-button,.knit-brand-cta,.pouch-label-cta,.mp-cta):after{display:none!important}
+html[data-theme=light] .home-content-sheet :is(.services-contact-button,.knit-brand-cta,.pouch-label-cta,.mp-cta):hover{background:var(--rf-roxo-hover)!important;transform:translateY(-1px)!important}
+html[data-theme=light] .home-content-sheet :is(.services-contact-button,.knit-brand-cta,.pouch-label-cta,.mp-cta):focus-visible{outline:3px solid var(--rf-lilas)!important;outline-offset:4px!important}
+html[data-theme=light] .home-content-sheet :is(.services-contact-button,.knit-brand-cta,.pouch-label-cta,.mp-cta) :is(small,.pouch-label-copy>span){display:none!important}
+html[data-theme=light] .home-content-sheet :is(.services-contact-button,.knit-brand-cta,.pouch-label-cta,.mp-cta) :is(strong,span,.pouch-label-copy){display:inline!important;color:inherit!important;font:inherit!important;margin:0!important;padding:0!important;background:none!important;border:0!important;box-shadow:none!important}
+html[data-theme=light] .home-content-sheet :is(.services-contact-button,.knit-brand-cta,.pouch-label-cta,.mp-cta) :is(svg,.icon){width:18px!important;height:18px!important;color:inherit!important;flex:none!important}
+html[data-theme=light] .home-content-sheet .pouch-label-icon{display:inline-flex!important;width:auto!important;height:auto!important;border:0!important;background:none!important;order:-1!important}
+html[data-theme=light] .home-content-sheet .services-contact{align-items:flex-start!important}
+html[data-theme=light] .home-content-sheet .pouch-label-cta{flex:none!important;width:auto!important;max-width:max-content!important}
+/* Segunda linha dos nomes de categoria: mesma família, tom mais calmo */
+html[data-theme=light] .home-content-sheet .services-discovery h3 span+span,html[data-theme=light] .home-content-sheet .services-discovery h3 em{color:var(--rf-texto)!important;-webkit-text-fill-color:var(--rf-texto)!important;font-weight:500!important}
+
+/* ---------- 5. "Tem Megui por aí": a faixa escura que dá peso ---------- */
+html[data-theme=light] .home-content-sheet .home-megui-around{background:var(--rf-ameixa)!important;color:#fff!important;padding-block:clamp(64px,8vw,112px)!important}
+html[data-theme=light] .home-content-sheet .home-megui-around .megui-around-heading h2{font-family:Sora,system-ui,sans-serif!important;color:#fff!important;font-size:clamp(40px,5.2vw,76px)!important;font-weight:700!important;letter-spacing:-.05em!important;line-height:1.02!important}
+html[data-theme=light] .home-content-sheet .home-megui-around h2 em{color:var(--rf-lilas)!important;-webkit-text-fill-color:var(--rf-lilas)!important}
+html[data-theme=light] .home-content-sheet .home-megui-around .megui-around-heading p{color:#cdbcd6!important}
+html[data-theme=light] .home-content-sheet .home-megui-around .megui-around-eyebrow{color:var(--rf-lilas)!important}
+html[data-theme=light] .home-content-sheet .megui-around-item{background:transparent!important;border:0!important;box-shadow:none!important;border-radius:20px!important;padding:0!important;transition:transform .25s!important}
+html[data-theme=light] .home-content-sheet .megui-around-item:hover{transform:translateY(-4px)!important;background:transparent!important;box-shadow:none!important}
+html[data-theme=light] .home-content-sheet .megui-around-photo{background:var(--rf-nevoa)!important;border-radius:18px!important;box-shadow:none!important}
+html[data-theme=light] .home-content-sheet .megui-around-name{color:#fff!important;font-family:Sora,system-ui,sans-serif!important;text-align:left!important;margin-top:16px!important}
+html[data-theme=light] .home-content-sheet .megui-around-detail{color:#b9a6c4!important;text-align:left!important}
+html[data-theme=light] .home-content-sheet .megui-around-footer{color:#b9a6c4!important;border-color:#ffffff1f!important}
+html[data-theme=light] .home-content-sheet .megui-around-footer span{color:#b9a6c4!important}
+html[data-theme=light] .home-content-sheet .megui-around-footer .icon{display:none!important}
+html[data-theme=light] .home-content-sheet .megui-around-footer a{color:var(--rf-lilas)!important}
+
+/* ---------- 6. Final: o convite em roxo cheio, de ponta a ponta ---------- */
+html[data-theme=light] .home-content-sheet .home-editorial-finale{background:var(--rf-roxo)!important;padding-block:clamp(72px,9vw,128px)!important}
+html[data-theme=light] .home-content-sheet .home-editorial-finale>.container>*{background:none!important;box-shadow:none!important;border:0!important}
+html[data-theme=light] .home-content-sheet .home-editorial-finale :is(div,article,header)[class]{background:none!important;box-shadow:none!important}
+html[data-theme=light] .home-content-sheet .home-editorial-finale :is(div,article,header)[class]:before,
+html[data-theme=light] .home-content-sheet .home-editorial-finale :is(div,article,header)[class]:after{display:none!important}
+html[data-theme=light] .home-content-sheet .home-editorial-finale h2{font-family:"Cormorant Garamond",serif!important;font-style:italic!important;font-weight:600!important;color:#fff!important;font-size:clamp(46px,6.5vw,96px)!important;letter-spacing:-.02em!important;line-height:1!important}
+html[data-theme=light] .home-content-sheet .home-editorial-finale p{color:#eadcf3!important}
+html[data-theme=light] .home-content-sheet .home-editorial-finale span{color:#e2cdef!important}
+html[data-theme=light] .home-content-sheet .home-editorial-finale .btn-light{background:#fff!important;color:var(--rf-roxo)!important;border:0!important;border-radius:999px!important;padding:16px 30px!important;font-family:Sora,system-ui,sans-serif!important;font-weight:600!important;font-size:15px!important;box-shadow:0 12px 28px #2a0b3d40!important}
+html[data-theme=light] .home-content-sheet .home-editorial-finale .btn-light:hover{background:#f3e8fa!important}
+
+/* ---------- 7. Respiro ---------- */
+html[data-theme=light] .home-content-sheet .home-clients{border-top:1px solid #eee5f3!important}
+html[data-theme=light] .home-content-sheet .home-clients h2{color:var(--rf-tinta)!important}
+
+@media(max-width:760px){
+  html[data-theme=light] .home-content-sheet :is(.services-contact-button,.knit-brand-cta,.pouch-label-cta,.mp-cta){width:100%!important;justify-content:center!important}
+  html[data-theme=light] .home-content-sheet .home-megui-around h2{font-size:clamp(36px,10vw,48px)!important}
+  html[data-theme=light] .home-content-sheet .home-editorial-finale h2{font-size:clamp(42px,12vw,60px)!important}
+}
+@media(prefers-reduced-motion:reduce){
+  html[data-theme=light] .home-content-sheet :is(.megui-around-item,.services-contact-button,.knit-brand-cta,.pouch-label-cta,.mp-cta){transition:none!important}
+}
+html[data-theme=light] .home-content-sheet .home-editorial-finale [class]:not(.btn){border-color:transparent!important;background-color:transparent!important;box-shadow:none!important}
