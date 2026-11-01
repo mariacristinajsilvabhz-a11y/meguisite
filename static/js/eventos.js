@@ -15,23 +15,35 @@
   const message=selected.length?`Olá, Megui! Estou organizando ${eventName} e quero conversar sobre ${selected.join(', ')}. Podemos alinhar quantidades, personalização e prazo?`:`Olá, Megui! Estou organizando ${eventName} e preciso de ajuda para escolher os personalizados. Podemos conversar?`;
   link.href=`https://wa.me/${kit.dataset.whatsapp}?text=${encodeURIComponent(message)}`;
  }
- function select(key,focus=false){
-  tabs.forEach(tab=>{const active=tab.dataset.evTab===key;tab.setAttribute('aria-selected',String(active));tab.tabIndex=active?0:-1;if(active&&focus)tab.focus();});
-  panels.forEach(panel=>{panel.hidden=panel.dataset.evPanel!==key;if(!panel.hidden){eventName=panel.dataset.eventName;if(eventLabel)eventLabel.textContent=panel.dataset.eventLabel;}});
-  updateKit();
+ function syncAll(){
+  const allOpen=panels.every(panel=>!panel.hidden);
+  const all=root.querySelector('[data-ev-expand-all]');
+  all.setAttribute('aria-expanded',String(allOpen));
+  all.innerHTML=allOpen?'Recolher todos os formatos <span aria-hidden="true">−</span>':'Abrir todos os formatos <span aria-hidden="true">+</span>';
+ }
+ function expand(tab,open){
+  const panel=panels.find(panel=>panel.dataset.evPanel===tab.dataset.evTab);
+  tab.setAttribute('aria-expanded',String(open));panel.hidden=!open;
+  tab.querySelector('.ev-format-arrow').textContent=open?'−':'+';
+  if(open){eventName=panel.dataset.eventName;if(eventLabel)eventLabel.textContent=panel.dataset.eventLabel;}
  }
  tabs.forEach((tab,index)=>{
-  tab.addEventListener('click',()=>select(tab.dataset.evTab));
+  tab.addEventListener('click',()=>{expand(tab,tab.getAttribute('aria-expanded')!=='true');syncAll();updateKit();});
   tab.addEventListener('keydown',event=>{
    let next;
-   if(event.key==='ArrowRight'||event.key==='ArrowDown')next=(index+1)%tabs.length;
-   if(event.key==='ArrowLeft'||event.key==='ArrowUp')next=(index-1+tabs.length)%tabs.length;
+   if(event.key==='ArrowDown')next=(index+1)%tabs.length;
+   if(event.key==='ArrowUp')next=(index-1+tabs.length)%tabs.length;
    if(event.key==='Home')next=0;
    if(event.key==='End')next=tabs.length-1;
-   if(next===undefined)return;
-   event.preventDefault();select(tabs[next].dataset.evTab,true);
+   if(next!==undefined){event.preventDefault();tabs[next].focus();}
   });
  });
+ root.querySelector('[data-ev-expand-all]').addEventListener('click',()=>{
+  const open=panels.some(panel=>panel.hidden);
+  tabs.forEach(tab=>expand(tab,open));syncAll();updateKit();
+ });
+ syncAll();
+ if(eventLabel)eventLabel.textContent=(panels.find(panel=>!panel.hidden)||panels[0]).dataset.eventLabel;
  options.forEach(button=>button.addEventListener('click',()=>{const active=button.getAttribute('aria-pressed')!=='true';button.setAttribute('aria-pressed',String(active));button.querySelector('b').textContent=active?'✓':'+';updateKit();}));
  document.querySelectorAll('[data-ev-pick]').forEach(trigger=>trigger.addEventListener('click',()=>{const option=options.find(button=>button.dataset.evItem===trigger.dataset.evPick);if(!option)return;option.setAttribute('aria-pressed','true');option.querySelector('b').textContent='✓';updateKit();}));
  updateKit();
