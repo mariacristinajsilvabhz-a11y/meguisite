@@ -1,0 +1,178 @@
+{% extends "base.html" %}
+{% from '_icons.html' import icon %}
+{% block title %}Megui Personalizados | Sua ideia vira peça de verdade{% endblock %}
+
+{% block extra_head %}
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400..600,100&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block page_finish %}<link rel="stylesheet" href="{{ url_for('static',filename='css/nova-home.css',v='20261101-v1') }}">{% endblock %}
+
+{% block content %}
+{% set wa = 'https://wa.me/' ~ whatsapp_number ~ '?text=' %}
+<div class="nh">
+
+  {# 1. Encanto: uma frase, duas ações e gente de verdade vestindo Megui #}
+  <section class="nh-hero" aria-labelledby="nh-hero-title">
+    <div class="nh-wrap nh-hero-grid">
+      <div class="nh-hero-copy">
+        <p class="nh-kicker">Confecção própria em Contagem, MG</p>
+        <h1 id="nh-hero-title">Sua ideia vira peça de verdade.</h1>
+        <p class="nh-lead">Camisetas, uniformes e brindes feitos para a sua marca, o seu time ou o seu encontro. Você conta o que imagina e a gente cuida de cada ponto até a entrega.</p>
+        <div class="nh-actions">
+          <a class="nh-btn nh-btn-main" href="{{ url_for('products') }}">Começar meu orçamento</a>
+          <a class="nh-btn nh-btn-soft" href="{{ wa ~ ('Olá, Megui! Quero conversar sobre um projeto.'|urlencode) }}" target="_blank" rel="noopener">{{ icon('whatsapp') }} Conversar no WhatsApp</a>
+        </div>
+        <p class="nh-proof">Já vestimos Sesc, Senac, Cemig, Band Minas e muitos times, igrejas e empresas.</p>
+      </div>
+
+      <div class="nh-collage" aria-label="Trabalhos reais da Megui">
+        <svg class="nh-thread nh-thread-hero" viewBox="0 0 600 560" aria-hidden="true" focusable="false"><path d="M40 520C120 420 60 330 170 290S330 330 380 230 470 70 570 40"/></svg>
+        <figure class="nh-photo nh-photo-a">
+          <img src="{{ url_for('static',filename='img/eventos/fe-comunidade-real-20261101.jpeg') }}" alt="Encontro com o grupo vestindo camisetas personalizadas pela Megui" width="1179" height="775" fetchpriority="high">
+          <figcaption>Encontro de fé, todo mundo vestindo a mesma mensagem</figcaption>
+        </figure>
+        <figure class="nh-photo nh-photo-b">
+          <img src="{{ url_for('static',filename='img/inicio/time-futebol-real-20261018.jpeg') }}" alt="Time de futebol com uniforme personalizado" width="1280" height="853">
+          <figcaption>Uniforme de time</figcaption>
+        </figure>
+        <figure class="nh-photo nh-photo-c">
+          <img src="{{ url_for('static',filename='img/acervo/2026/bolsas-producao.webp') }}" alt="Mochilas saco cor-de-rosa prontas na produção" width="1056" height="992">
+          <figcaption>Na nossa produção</figcaption>
+        </figure>
+      </div>
+    </div>
+    <svg class="nh-edge" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40C240 90 480 0 720 34S1200 88 1440 30V90H0Z"/></svg>
+  </section>
+
+  {# 2. Desejo: o que dá para fazer, numa fileira que corre como um varal #}
+  <section class="nh-made" aria-labelledby="nh-made-title">
+    <div class="nh-wrap nh-made-head">
+      <h2 id="nh-made-title">O que você quer personalizar?</h2>
+      <div class="nh-row-controls" aria-hidden="true">
+        <button type="button" data-row-prev tabindex="-1">{{ icon('arrow') }}</button>
+        <button type="button" data-row-next tabindex="-1">{{ icon('arrow') }}</button>
+      </div>
+    </div>
+    {% set made = [
+      ('Camisetas e malha','img/inicio/camiseta-megui-movimento-v3.webp',url_for('category',slug='vestuario')),
+      ('Uniformes','img/inicio/social-manga-longa-manequim.webp',url_for('b2b')),
+      ('Saquinhos e embalagens','img/inicio/servicos/saquinhos-v1.webp',url_for('home') ~ '#saquinhos'),
+      ('Bolsas e mochilas','img/produtos/mochila-megui.webp',url_for('category',slug='bolsas-acessorios')),
+      ('Copos e garrafas','img/produtos/squeeze-megui.webp',url_for('category',slug='copos-garrafas')),
+      ('Papelaria e kits','img/produtos/kit-corporativo-megui.webp',url_for('category',slug='papelaria')),
+      ('Tecnologia','img/inicio/servicos/tecnologia-v1.webp',url_for('category',slug='tecnologia')),
+      ('Eventos','img/inicio/eventos.webp',url_for('events'))
+    ] %}
+    <div class="nh-row" data-row tabindex="0" aria-label="Categorias, role para o lado">
+      {% for name,img,href in made %}
+      <a class="nh-made-item {{ 'is-tall' if loop.index is odd else 'is-low' }}" href="{{ href }}">
+        <span class="nh-made-photo"><img src="{{ url_for('static',filename=img) }}" alt="" loading="lazy" decoding="async"></span>
+        <span class="nh-made-name">{{ name }} {{ icon('arrow') }}</span>
+      </a>
+      {% endfor %}
+    </div>
+  </section>
+
+  {# 3. Prova: um mural de trabalhos reais, com tamanhos diferentes #}
+  <section class="nh-wall" aria-labelledby="nh-wall-title">
+    <div class="nh-wrap">
+      <div class="nh-wall-head">
+        <h2 id="nh-wall-title">Quem já veste Megui</h2>
+        <p>Times, igrejas, empresas e eventos. Cada foto aqui é um pedido que saiu da nossa produção.</p>
+      </div>
+      {% set wall = [
+        ('img/acervo/2026/minions-run.webp','Minions Run','Corrida com a identidade do evento','wide'),
+        ('img/trabalhos/2026/kit-infinix-registro.webp','Infinix','Kit para a equipe','tall'),
+        ('img/acervo/2026/samba-do-maestro.webp','Samba do Maestro','Comunicação do evento',''),
+        ('img/acervo/2026/escola-de-cura.webp','Escola de Cura','Camisetas do encontro',''),
+        ('img/acervo/2026/senac-garrafas.webp','Senac','Garrafas personalizadas','tall'),
+        ('img/acervo/2026/necessaires-personalizadas.webp','Necessaires','Presente com nome',''),
+        ('img/acervo/2026/future-pro.webp','Future Pro','Camiseta da equipe',''),
+        ('img/acervo/2026/senac-cadernos.webp','Senac','Cadernos do projeto NaSemana','wide')
+      ] %}
+      <div class="nh-wall-grid">
+        {% for img,who,what,size in wall %}
+        <figure class="nh-wall-item {{ 'is-' ~ size if size }}">
+          <img src="{{ url_for('static',filename=img) }}" alt="{{ who }}: {{ what|lower }}" loading="lazy" decoding="async">
+          <figcaption><strong>{{ who }}</strong> {{ what }}</figcaption>
+        </figure>
+        {% endfor %}
+      </div>
+      <a class="nh-link" href="{{ url_for('portfolio_view') }}">Ver todos os trabalhos {{ icon('arrow') }}</a>
+    </div>
+  </section>
+
+  {# 4. Confiança: como funciona, ligado por uma linha de costura #}
+  <section class="nh-how" aria-labelledby="nh-how-title">
+    <svg class="nh-edge nh-edge-top" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 60C260 0 520 80 760 44S1180 0 1440 50V0H0Z"/></svg>
+    {% if trusted_brands %}
+    <div class="nh-wrap nh-brands" aria-label="Marcas que já trabalharam com a Megui">
+      <p>Já confiaram na Megui</p>
+      <div class="nh-brands-row">{% for brand in trusted_brands if brand.image %}<img class="{{ 'is-paper' if brand.logo_style == 'paper' }}" src="{{ url_for('static', filename='img/clientes/' ~ brand.image) }}" alt="{{ brand.name }}" loading="lazy" decoding="async">{% endfor %}</div>
+    </div>
+    {% endif %}
+    <div class="nh-wrap nh-how-grid">
+      <div class="nh-how-copy">
+        <h2 id="nh-how-title">Simples do começo ao fim</h2>
+        <ol class="nh-steps">
+          <li><span class="nh-step-dot" aria-hidden="true"></span><h3>Você conta a ideia</h3><p>Pode ser um rascunho, uma foto de referência ou só a vontade. Já é suficiente para começar.</p></li>
+          <li><span class="nh-step-dot" aria-hidden="true"></span><h3>A gente escolhe junto</h3><p>Peça, malha, cor e personalização: ajudamos a chegar no que combina com você e com o seu orçamento.</p></li>
+          <li><span class="nh-step-dot" aria-hidden="true"></span><h3>Produzimos e entregamos</h3><p>Com confecção própria, acompanhamos cada etapa aqui dentro até o pedido chegar nas suas mãos.</p></li>
+        </ol>
+        <a class="nh-btn nh-btn-light" href="{{ wa ~ ('Olá, Megui! Tenho uma ideia e quero começar.'|urlencode) }}" target="_blank" rel="noopener">{{ icon('whatsapp') }} Contar minha ideia</a>
+      </div>
+      <figure class="nh-how-photo">
+        <img src="{{ url_for('static',filename='img/acervo/2026/camisetas-estamparia.webp') }}" alt="Camisetas estampadas secando na linha de produção da Megui" width="900" height="1600" loading="lazy">
+        <figcaption>Estamparia, aqui na Megui</figcaption>
+      </figure>
+    </div>
+    <svg class="nh-edge" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30C300 90 560 10 820 40S1220 86 1440 36V90H0Z"/></svg>
+  </section>
+
+  {# 5. Pronto para pedir: a vitrine #}
+  {% if products %}
+  <section class="nh-shop" aria-labelledby="nh-shop-title">
+    <div class="nh-wrap">
+      <div class="nh-shop-head">
+        <h2 id="nh-shop-title">Para pedir hoje</h2>
+        <a class="nh-link" href="{{ url_for('products') }}">Ver o catálogo completo {{ icon('arrow') }}</a>
+      </div>
+      <div class="product-grid nh-shop-grid">
+        {% for product in products[:4] %}{% include '_product_card.html' %}{% endfor %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+  {# 6. Toque: a malha de perto #}
+  <section class="nh-touch" aria-labelledby="nh-touch-title">
+    <div class="nh-touch-frame">
+      <img src="{{ url_for('static',filename='img/tecidos/malha-encorpada.webp') }}" alt="Malha preta encorpada vista de perto" loading="lazy" decoding="async">
+      <div class="nh-touch-copy">
+        <h2 id="nh-touch-title">Antes da estampa, vem a malha.</h2>
+        <p>É ela que decide como a peça veste, como cai e quanto tempo dura. Conheça os tecidos com que trabalhamos.</p>
+        <a class="nh-link nh-link-light" href="{{ url_for('textiles') }}">Conhecer os tecidos {{ icon('arrow') }}</a>
+      </div>
+    </div>
+  </section>
+
+  {# 7. Pedido #}
+  <section class="nh-end" aria-labelledby="nh-end-title">
+    <svg class="nh-edge nh-edge-top" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 50C220 0 520 70 760 36S1200 0 1440 46V0H0Z"/></svg>
+    <div class="nh-wrap nh-end-inner">
+      <h2 id="nh-end-title">Qual é a sua ideia?</h2>
+      <p>Monte seu orçamento em poucos minutos ou chame a gente no WhatsApp. A resposta vem de gente, não de robô.</p>
+      <div class="nh-actions nh-actions-center">
+        <a class="nh-btn nh-btn-white" href="{{ url_for('products') }}">Montar meu orçamento</a>
+        <a class="nh-btn nh-btn-ghost" href="{{ wa ~ ('Olá, Megui! Vim pelo site e quero fazer um orçamento.'|urlencode) }}" target="_blank" rel="noopener">{{ icon('whatsapp') }} Chamar no WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+{% endblock %}
+
+{% block extra_scripts %}<script defer src="{{ url_for('static',filename='js/nova-home.js',v='20261101-v1') }}"></script>{% endblock %}
