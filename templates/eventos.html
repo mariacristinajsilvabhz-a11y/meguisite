@@ -128,6 +128,37 @@ html[data-theme=dark] body .ev-artdirection #compor .ev-kit-options>button[aria-
 }
 html[data-theme=dark] body .ev-artdirection #compor .ev-selected{background:#20102d52!important;border:1px solid #d7b5ec45;box-shadow:inset 0 1px 0 #ecd8ff14}
 </style>
+<style>
+/* Vestir, receber e lembrar: imagens inteiras e contraste nos dois temas. */
+html body .ev-artdirection #experiencia .ev-moments-composition{display:grid;grid-template-columns:1.12fr 1fr 1fr;grid-template-rows:auto;gap:24px;align-items:stretch}
+html body .ev-artdirection #experiencia .ev-moment{display:flex;flex-direction:column;grid-row:auto;padding:0;min-height:0;background:#eee7f3;border:1px solid #d9c7e3;border-radius:12px 36px 12px 36px;overflow:hidden;gap:0}
+html body .ev-artdirection #experiencia .ev-moment-welcome{border-radius:36px 12px 36px 12px}
+html body .ev-artdirection #experiencia .ev-moment-copy{width:auto;max-width:none;padding:26px;flex:1;box-sizing:border-box}
+html body .ev-artdirection #experiencia .ev-moment-copy h3{font-size:clamp(23px,2.1vw,30px)!important;color:#3d294b!important;line-height:1.18!important;margin:14px 0}
+html body .ev-artdirection #experiencia .ev-moment-copy p{color:#65536e!important;font-size:13px;line-height:1.85}
+html body .ev-artdirection #experiencia .ev-moment-word{font-family:"Space Grotesk",sans-serif;font-style:normal;font-weight:500;font-size:34px;letter-spacing:-.045em;color:#85549f!important}
+html body .ev-artdirection #experiencia .ev-moment-photo,
+html body .ev-artdirection #experiencia .ev-moment-wear>img{position:static;order:-1;display:block;flex:none;width:100%;height:clamp(210px,22vw,320px);max-height:none;min-height:0;aspect-ratio:auto;margin:0;padding:0;border-radius:0;align-self:auto;background:#e8e0ed;box-sizing:border-box}
+html body .ev-artdirection #experiencia .ev-moment-photo img,
+html body .ev-artdirection #experiencia .ev-moment-wear>img{width:100%!important;height:clamp(210px,22vw,320px)!important;max-height:none!important;object-fit:contain!important;object-position:center;padding:12px;box-sizing:border-box;border-radius:0;filter:none}
+html body .ev-artdirection #experiencia .ev-moment-choose{color:#42274f!important;background:#d9bde9!important;font-size:11px;padding:12px 15px}
+html[data-theme=dark] body .ev-artdirection #experiencia .ev-moment{background:#302638!important;border-color:#765985!important}
+html[data-theme=dark] body .ev-artdirection #experiencia .ev-moment-copy h3{color:#faf3ff!important}
+html[data-theme=dark] body .ev-artdirection #experiencia .ev-moment-copy p{color:#ddcee6!important}
+html[data-theme=dark] body .ev-artdirection #experiencia .ev-moment-word{color:#d6acec!important}
+@media(max-width:1000px){
+ html body .ev-artdirection #experiencia .ev-moments-composition{grid-template-columns:1fr;gap:22px}
+ html body .ev-artdirection #experiencia .ev-moment{display:grid;grid-template-columns:1fr 1fr;align-items:center}
+ html body .ev-artdirection #experiencia .ev-moment-photo,html body .ev-artdirection #experiencia .ev-moment-wear>img{grid-column:1;grid-row:1;height:280px!important}
+ html body .ev-artdirection #experiencia .ev-moment-photo img{height:280px!important}
+ html body .ev-artdirection #experiencia .ev-moment-copy{grid-column:2;grid-row:1;padding:26px}
+}
+@media(max-width:580px){
+ html body .ev-artdirection #experiencia .ev-moment{display:flex}
+ html body .ev-artdirection #experiencia .ev-moment-photo,html body .ev-artdirection #experiencia .ev-moment-wear>img,html body .ev-artdirection #experiencia .ev-moment-photo img{height:245px!important}
+ html body .ev-artdirection #experiencia .ev-moment-copy{padding:24px}
+}
+</style>
 {% endblock %}
 
 {% block content %}
@@ -164,11 +195,11 @@ html[data-theme=dark] body .ev-artdirection #compor .ev-selected{background:#201
             <p>Uma camiseta pode identificar uma equipe, reunir pessoas e levar a mensagem do evento para além daquele dia.</p>
             <a href="#compor" data-ev-pick="Camisetas" class="ev-moment-choose">Camisetas e peças em malha <span aria-hidden="true">{{ icon('butterfly') }}</span></a>
           </div>
-          <img src="{{ url_for('static',filename='img/trabalhos/2026/virgin-mary-estudio-20261022.webp') }}" alt="Camisetas personalizadas Virgin Mary com estampas azul e vermelha" loading="lazy" decoding="async">
+          <img src="{{ url_for('static',filename='img/acervo/2026/escola-de-cura-manequim-v3.webp') }}" alt="Camiseta Escola de Cura em manequim invisível e peças embaladas" loading="lazy" decoding="async">
         </article>
         <article class="ev-moment ev-moment-welcome">
           <div class="ev-moment-photo">
-            <img src="{{ url_for('static',filename='img/acervo/2026/senac-cadernos.webp') }}" alt="Cadernos personalizados Senac NaSemanaS fotografados no acervo real" loading="lazy" decoding="async">
+            <img src="{{ url_for('static',filename='img/acervo/2026/senac-cadernos-estudio-v2.webp') }}" alt="Cadernos personalizados Senac NaSemanaS em composição de estúdio" loading="lazy" decoding="async">
           </div>
           <div class="ev-moment-copy">
             <span class="ev-moment-word">Receber.</span>
@@ -179,7 +210,7 @@ html[data-theme=dark] body .ev-artdirection #compor .ev-selected{background:#201
         </article>
         <article class="ev-moment ev-moment-remember">
           <div class="ev-moment-photo">
-            <img src="{{ url_for('static',filename='img/acervo/band-minas-kit.jpg') }}" alt="Copos e peças da Band Minas registrados na produção" loading="lazy" decoding="async">
+            <img src="{{ url_for('static',filename='img/acervo/2026/band-kit-estudio-v6.webp') }}" alt="Kit Band Minas com camiseta, copos, caneca e chaveiro em composição de estúdio" loading="lazy" decoding="async">
           </div>
           <div class="ev-moment-copy">
             <span class="ev-moment-word">Lembrar.</span>
