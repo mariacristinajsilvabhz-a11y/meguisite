@@ -277,46 +277,6 @@ def textiles():
     return render_template("textiles.html", fabrics=FABRICS)
 
 
-def render_catalog(category_slug=""):
-    if category_slug == 'fora-da-caixa':
-        return redirect(url_for('outside_box'))
-    active_category = get_category(category_slug)
-    if category_slug and not active_category:
-        abort(404)
-    query = request.args.get("q", "").strip()[:160]
-    page = max(1, request.args.get("pagina", 1, type=int) or 1)
-    subtype = request.args.get('subcategoria','').strip()
-    if subtype and subtype not in SUBCATEGORY_MAP:abort(404)
-    if subtype and category_slug in CATEGORY_MAP and category_slug != 'brindes' and SUBCATEGORY_MAP[subtype][0]!=category_slug:
-        return redirect(url_for('category',slug=SUBCATEGORY_MAP[subtype][0],subcategoria=subtype,q=query or None))
-    if hub_catalog.enabled:
-        items, pagination, facets = hub_catalog.listing(category_slug, query, page, subtype=subtype)
-    else:
-        all_items = PRODUCTS
-        if query:
-            all_items = [p for p in all_items if all(t.lower() in (p['name']+' '+p['sku']).lower() for t in query.split())]
-        items = [p for p in all_items if matches_category(p, category_slug)]
-        facets = {'categorias':[dict(slug=c['slug'],total=sum(matches(p,c['slug']) for p in all_items)) for c in CATEGORIES],
-                  'subcategorias':[dict(slug=sub['slug'],name=sub['name'],total=sum(p.get('subcategory')==sub['slug'] for p in items)) for slug,(_,name) in SUBCATEGORY_MAP.items() for sub in [dict(slug=slug,name=name)] if any(p.get('subcategory')==sub['slug'] for p in items)]}
-        if subtype:items=[p for p in items if p.get('subcategory')==subtype]
-        items = order_by_stock(items)
-        pagination = {"total": len(items), "pagina": 1, "paginas": 1}
-    # Confecção sob encomenda não depende de estoque de fornecedores.
-    own_products = [p for p in PRODUCTS if p["id"] == 1 and category_slug in ("", "vestuario")
-                    and (not subtype or p.get("subcategory") == subtype)
-                    and all(term.casefold() in (p["name"]+" "+p["sku"]+" "+p["description"]).casefold() for term in query.split())
-                    and page == 1] if hub_catalog.enabled else []
-    category_counts = {c['slug']:c['total'] for c in facets.get('categorias',[])}
-    subcategories = facets.get('subcategorias',[])
-    return render_template("products.html", products=items, active_category=active_category, pagination=pagination, query=query,
-                           active_subtype=subtype,subcategories=subcategories,category_counts=category_counts,collections=COLLECTIONS,own_products=own_products)
-
-
-@app.get("/produtos")
-def products():
-    return render_catalog(request.args.get("categoria", ""))
-
-
 def quote_image(product, variant=None):
     """Foto pequena para a bandeja do orçamento (URL absoluta do Hub ou arquivo do site)."""
     if variant and variant.get("image"):
@@ -398,6 +358,9 @@ def explore_page(category, query, page, subtype="", seed=None):
         has_more = page < pages
     works = explore_works()
     blocks, step = [], 0
+    if hub_catalog.enabled and page == 1 and not seed and not query and category in ("", "vestuario"):
+        own = [p for p in PRODUCTS if p["id"] == 1 and (not subtype or p.get("subcategory") == subtype)]
+        blocks += [dict(kind="product", product=p, feature=True) for p in own]
     pause_at = {10: "work", 22: "shelf", 34: "idea", 46: "work"}
     for index, product in enumerate(items, 1):
         blocks.append(dict(kind="product", product=product, feature=index % 9 == 4))
@@ -424,8 +387,8 @@ def explore_page(category, query, page, subtype="", seed=None):
     return blocks, has_more, total
 
 
-def explore_args():
-    category = request.args.get("categoria", "").strip()
+def explore_args(category=None):
+    category = (request.args.get("categoria", "") if category is None else category).strip()
     if category and not get_category(category):
         abort(404)
     subtype = request.args.get("subcategoria", "").strip()
@@ -437,9 +400,21 @@ def explore_args():
 
 
 @app.get("/produtos-passeio")
-def explore():
-    """Prévia do catálogo explorativo (fora dos menus) para aprovação."""
-    category, subtype, query, seed = explore_args()
+def explore_preview():
+    """Endereço da prévia, mantido para links já compartilhados."""
+    return redirect(url_for("products", **request.args), code=301)
+
+
+@app.get("/produtos")
+def products():
+    return render_explore(request.args.get("categoria", ""))
+
+
+def render_explore(category_slug=""):
+    """Catálogo em forma de passeio: feed contínuo com pausas entre os produtos."""
+    if category_slug == "fora-da-caixa":
+        return redirect(url_for("outside_box"))
+    category, subtype, query, seed = explore_args(category_slug)
     until = max(1, min(request.args.get("ate", 1, type=int) or 1, EXPLORE_MAX_INITIAL_PAGES))
     blocks, has_more, total, page = [], False, 0, 0
     for page in range(1, until + 1):
@@ -447,23 +422,25 @@ def explore():
         blocks += page_blocks
         if not has_more:
             break
-    return render_template("passeio.html", blocks=blocks, has_more=has_more, next_page=page + 1, total=total,
+    feed_args = dict(categoria=category or None, q=query or None, subcategoria=subtype or None, surpresa=seed or None)
+    return render_template("passeio.html", blocks=blocks, has_more=has_more, next_page=page + 1, total=total, feed_args=feed_args,
                            active_category=get_category(category) if category else None, query=query,
                            active_subtype=subtype, seed=seed, intents=EXPLORE_INTENTS, collections=COLLECTIONS,
                            thumbs=quote_thumbs())
 
 
-@app.get("/produtos-passeio/mais")
+@app.get("/produtos/mais")
 def explore_more():
     category, subtype, query, seed = explore_args()
     page = max(2, request.args.get("pagina", 2, type=int) or 2)
     blocks, has_more, _ = explore_page(category, query, page, subtype, seed)
-    return render_template("_passeio_feed.html", blocks=blocks, has_more=has_more, next_page=page + 1)
+    feed_args = dict(categoria=category or None, q=query or None, subcategoria=subtype or None, surpresa=seed or None)
+    return render_template("_passeio_feed.html", blocks=blocks, has_more=has_more, next_page=page + 1, feed_args=feed_args)
 
 
 @app.get("/categoria/<slug>")
 def category(slug):
-    return render_catalog(slug)
+    return render_explore(slug)
 
 
 @app.get("/api/busca-produtos")

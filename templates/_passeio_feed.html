@@ -9,7 +9,7 @@
       <span>Assim ficou</span>
       <strong>{{ block.work.title }}</strong>
       <p>{{ block.work.text }}</p>
-      {% if block.work.category %}<a href="{{ url_for('explore', categoria=block.work.category) }}">Ver produtos parecidos {{ icon('arrow') }}</a>
+      {% if block.work.category %}<a href="{{ url_for('products', categoria=block.work.category) }}">Ver produtos parecidos {{ icon('arrow') }}</a>
       {% else %}<a href="{{ url_for('portfolio_view') }}">Ver mais trabalhos {{ icon('arrow') }}</a>{% endif %}
     </figcaption>
   </figure>
@@ -18,11 +18,11 @@
     <span>Ideia de combinação</span>
     <strong>{{ block.title }}</strong>
     <p>{{ block.text }}</p>
-    <a href="{{ url_for('explore', categoria=block.slug) }}">Ver peças para esse kit {{ icon('arrow') }}</a>
+    <a href="{{ url_for('products', categoria=block.slug) }}">Ver peças para esse kit {{ icon('arrow') }}</a>
   </aside>
 {% elif block.kind == 'shelf' %}
   <section class="ps-pause ps-shelf" aria-label="{{ block.title }}">
-    <header><div><h2>{{ block.title }}</h2><p>{{ block.text }}</p></div><a href="{{ url_for('explore', categoria=block.slug) }}">Ver tudo {{ icon('arrow') }}</a></header>
+    <header><div><h2>{{ block.title }}</h2><p>{{ block.text }}</p></div><a href="{{ url_for('products', categoria=block.slug) }}">Ver tudo {{ icon('arrow') }}</a></header>
     <div class="ps-shelf-row">
       {% for product in block['items'] %}
       {% set img = product.image_url or (url_for('static', filename=product.image) if product.image else (url_for('static', filename=product.images[0]) if product.images else '')) %}
@@ -36,6 +36,6 @@
 {% endif %}
 {% endfor %}
 {% if has_more %}
-  <a class="ps-more" href="{{ url_for('explore', categoria=request.args.get('categoria') or None, q=request.args.get('q') or None, subcategoria=request.args.get('subcategoria') or None, surpresa=request.args.get('surpresa') or None, ate=next_page) }}"
-     data-src="{{ url_for('explore_more', categoria=request.args.get('categoria') or None, q=request.args.get('q') or None, subcategoria=request.args.get('subcategoria') or None, surpresa=request.args.get('surpresa') or None, pagina=next_page) }}" data-page="{{ next_page }}">Carregar mais produtos</a>
+  <a class="ps-more" href="{{ url_for('products', ate=next_page, **feed_args) }}"
+     data-src="{{ url_for('explore_more', pagina=next_page, **feed_args) }}" data-page="{{ next_page }}">Carregar mais produtos</a>
 {% endif %}

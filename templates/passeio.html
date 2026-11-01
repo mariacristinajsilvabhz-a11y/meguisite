@@ -3,7 +3,6 @@
 {% block title %}{{ active_category.name if active_category else 'Catálogo' }} | Megui Personalizados{% endblock %}
 
 {% block extra_head %}
-<meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400..600,100&display=swap" rel="stylesheet">
 {% endblock %}
@@ -15,18 +14,18 @@
   <header class="ps-top">
     <div class="ps-wrap">
       {% if active_category %}
-        <a class="ps-back" href="{{ url_for('explore') }}">{{ icon('arrow') }} Todo o catálogo</a>
+        <a class="ps-back" href="{{ url_for('products') }}">{{ icon('arrow') }} Todo o catálogo</a>
         <h1>{{ active_category.name }}</h1>
         {% if active_category.description %}<p class="ps-lead">{{ active_category.description }}</p>{% endif %}
       {% elif query %}
-        <a class="ps-back" href="{{ url_for('explore') }}">{{ icon('arrow') }} Todo o catálogo</a>
+        <a class="ps-back" href="{{ url_for('products') }}">{{ icon('arrow') }} Todo o catálogo</a>
         <h1>“{{ query }}”</h1>
       {% else %}
         <h1>O que vai levar a sua marca?</h1>
         <p class="ps-lead">Role, descubra e toque no <b>+</b> para guardar no orçamento. Quando terminar, a gente cuida do resto.</p>
       {% endif %}
 
-      <form class="ps-search" action="{{ url_for('explore') }}" method="get" role="search">
+      <form class="ps-search" action="{{ url_for('products') }}" method="get" role="search">
         <label class="sr-only" for="ps-q">Buscar no catálogo</label>
         <span aria-hidden="true">{{ icon('search') }}</span>
         <input id="ps-q" name="q" type="search" value="{{ query }}" placeholder="Busque por caneca, mochila, camiseta…" autocomplete="off">
@@ -36,7 +35,7 @@
 
       {% if not active_category and not query %}
       <nav class="ps-intents" aria-label="Comece pela ocasião">
-        {% for label, slug in intents %}<a href="{{ url_for('explore', categoria=slug) }}">{{ label }}</a>{% endfor %}
+        {% for label, slug in intents %}<a href="{{ url_for('products', categoria=slug) }}">{{ label }}</a>{% endfor %}
       </nav>
       {% endif %}
     </div>
@@ -44,11 +43,11 @@
 
   <nav class="ps-cats" aria-label="Categorias">
     <div class="ps-cats-row">
-      <a href="{{ url_for('explore') }}" {% if not active_category and not query and not seed %}aria-current="page"{% endif %}>Tudo</a>
+      <a href="{{ url_for('products') }}" {% if not active_category and not query and not seed %}aria-current="page"{% endif %}>Tudo</a>
       {% for category in categories %}
-      <a href="{{ url_for('explore', categoria=category.slug) }}" {% if active_category and active_category.slug == category.slug %}aria-current="page"{% endif %}>{{ category.name }}</a>
+      <a href="{{ url_for('products', categoria=category.slug) }}" {% if active_category and active_category.slug == category.slug %}aria-current="page"{% endif %}>{{ category.name }}</a>
       {% endfor %}
-      <a class="ps-surprise" href="{{ url_for('explore', surpresa='inicio') }}" data-surprise {% if seed %}aria-current="page"{% endif %}>{{ icon('butterfly') }} Me surpreenda</a>
+      <a class="ps-surprise" href="{{ url_for('products', surpresa='inicio') }}" data-surprise {% if seed %}aria-current="page"{% endif %}>{{ icon('butterfly') }} Me surpreenda</a>
     </div>
   </nav>
 
