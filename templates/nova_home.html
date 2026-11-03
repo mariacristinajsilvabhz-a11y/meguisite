@@ -113,7 +113,7 @@
     {% if trusted_brands %}
     <div class="nh-wrap nh-brands" aria-label="Marcas que já trabalharam com a Megui">
       <p>Já confiaram na Megui</p>
-      <div class="nh-brands-row">{% for brand in trusted_brands if brand.image %}<img class="{{ 'is-paper' if brand.logo_style == 'paper' }}" src="{{ url_for('static', filename='img/clientes/' ~ brand.image) }}" alt="{{ brand.name }}" loading="lazy" decoding="async">{% endfor %}</div>
+      <div class="nh-brands-row">{% for brand in trusted_brands if brand.image %}<img class="{{ 'is-paper' if brand.logo_style == 'paper' }}"{% if brand.name == 'Samba do Maestro' %} style="filter:none!important;opacity:1!important;height:46px!important;max-width:112px!important"{% endif %} src="{{ url_for('static', filename='img/clientes/' ~ brand.image) }}" alt="{{ brand.name }}" loading="lazy" decoding="async">{% endfor %}</div>
     </div>
     {% endif %}
     <div class="nh-wrap nh-how-grid">
