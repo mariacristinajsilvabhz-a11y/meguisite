@@ -205,3 +205,21 @@ html[data-theme=dark] .nh .nh-portfolio-button{background:#d6b4eb;color:#2c1935;
 .nh .nh-portfolio-button:active{transform:translateY(3px);box-shadow:0 2px 0 #b697c6}
 @media(max-width:380px){.nh .nh-portfolio-button{gap:14px;padding-left:18px}.nh-portfolio-copy>span{font-size:13px}.nh-portfolio-arrow{width:42px;height:46px}}
 @media(prefers-reduced-motion:reduce){.nh .nh-portfolio-button,.nh-portfolio-arrow svg{transition:none}.nh .nh-portfolio-button:hover,.nh .nh-portfolio-button:active,.nh-portfolio-button:hover .nh-portfolio-arrow svg{transform:none}}
+
+/* Cenas aprovadas do processo e camisetas em manequim invisível. */
+.nh-steps:before{display:none}
+.nh-steps li{padding-left:126px;min-height:108px}
+.nh-step-scene{position:absolute;left:0;top:0;width:108px;height:88px;background-image:url('/static/img/inicio/processo-megui-20261103.webp');background-repeat:no-repeat;background-size:817.5px 481px;border-radius:10px}
+.nh-step-scene-1{background-position:-22px -155px}
+.nh-step-scene-2{background-position:-22px -245px}
+.nh-step-scene-3{background-position:-22px -328px}
+.nh-how-photo{rotate:0}
+.nh-shirts-photo{width:100%;aspect-ratio:850/765;background-image:url('/static/img/inicio/processo-megui-20261103.webp');background-size:192.35% 125.75%;background-position:97.2% 60%;background-repeat:no-repeat;border-radius:28px;box-shadow:0 40px 80px -30px #000c}
+@media(max-width:700px){
+.nh-steps li{padding-left:90px;min-height:90px}
+.nh-step-scene{width:76px;height:65px;background-size:588.6px 346.32px}
+.nh-step-scene-1{background-position:-15.84px -111.6px}
+.nh-step-scene-2{background-position:-15.84px -176.4px}
+.nh-step-scene-3{background-position:-15.84px -236.16px}
+.nh-shirts-photo{border-radius:22px}
+}
