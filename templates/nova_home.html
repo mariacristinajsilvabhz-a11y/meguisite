@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400..600,100&display=swap" rel="stylesheet">
 {% endblock %}
 
-{% block page_finish %}<link rel="stylesheet" href="{{ url_for('static',filename='css/nova-home.css',v='20261101-v1') }}">{% endblock %}
+{% block page_finish %}<link rel="stylesheet" href="{{ url_for('static',filename='css/nova-home.css',v='20261103-portfolio-button') }}">{% endblock %}
 
 {% block content %}
 {% set wa = 'https://wa.me/' ~ whatsapp_number ~ '?text=' %}
@@ -100,7 +100,10 @@
         </figure>
         {% endfor %}
       </div>
-      <a class="nh-link" href="{{ url_for('portfolio_view') }}">Ver todos os trabalhos {{ icon('arrow') }}</a>
+      <a class="nh-portfolio-button" href="{{ url_for('portfolio_view') }}">
+        <span class="nh-portfolio-copy"><small>FEITO PELA MEGUI</small><span>Ver todos os trabalhos</span></span>
+        <span class="nh-portfolio-arrow" aria-hidden="true">{{ icon('arrow') }}</span>
+      </a>
     </div>
   </section>
 
