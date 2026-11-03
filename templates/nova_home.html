@@ -113,7 +113,7 @@
     {% if trusted_brands %}
     <div class="nh-wrap nh-brands" aria-label="Marcas que já trabalharam com a Megui">
       <p>Já confiaram na Megui</p>
-      <div class="nh-brands-row">{% for brand in trusted_brands if brand.image %}<img class="{{ 'is-paper' if brand.logo_style == 'paper' }}"{% if brand.name == 'Samba do Maestro' %} style="filter:none!important;opacity:1!important;height:46px!important;max-width:112px!important"{% endif %} src="{{ url_for('static', filename='img/clientes/' ~ brand.image) }}" alt="{{ brand.name }}" loading="lazy" decoding="async">{% endfor %}</div>
+      <svg width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none"><defs><filter id="samba-glass" color-interpolation-filters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  1 0 0 0 0" result="whiteMask"/><feComponentTransfer in="whiteMask" result="glass"><feFuncA type="table" tableValues="0 0 0 .15 .2 .25 .3 .35 .4 .45 1"/></feComponentTransfer><feComposite in="glass" in2="SourceAlpha" operator="in"/></filter></defs></svg><div class="nh-brands-row">{% for brand in trusted_brands if brand.image %}<img class="{{ 'is-paper' if brand.logo_style == 'paper' }}"{% if brand.name == 'Samba do Maestro' %} style="filter:url(#samba-glass)!important;opacity:1!important;height:46px!important;max-width:112px!important"{% endif %} src="{{ url_for('static', filename='img/clientes/' ~ brand.image) }}" alt="{{ brand.name }}" loading="lazy" decoding="async">{% endfor %}</div>
     </div>
     {% endif %}
     <div class="nh-wrap nh-how-grid">
