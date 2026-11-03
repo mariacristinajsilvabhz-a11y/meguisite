@@ -260,8 +260,10 @@ def home():
         items = hub_catalog.list(limit=6, vitrine=True, timeout=3)[0] if hub_catalog.enabled else order_by_stock(PRODUCTS)[:6]
     except CatalogUnavailable:
         # A indisponibilidade do catálogo não deve impedir a abertura da página inicial.
-        app.logger.warning("Página inicial sem vitrine: catálogo do Hub indisponível")
-        items = []
+        app.logger.warning("Catálogo do Hub indisponível; usando vitrine local na página inicial")
+        items = order_by_stock(PRODUCTS)[:6]
+    if not items:
+        items = order_by_stock(PRODUCTS)[:6]
     # A home anterior (index.html) fica guardada para consulta; a atual é a jornada de nova_home.html.
     return render_template("nova_home.html", products=items, home_categories=home_categories)
 
