@@ -5,6 +5,21 @@
 {% block extra_head %}
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400..600,100&display=swap" rel="stylesheet">
+<style>
+html:not(#nh1):not(#nh2):not(#nh3) .nh-outside .nh-touch-frame{background:#29262d!important}
+html:not(#nh1):not(#nh2):not(#nh3) .nh-outside .nh-touch-frame>img{position:absolute!important;right:0!important;top:0!important;width:72%!important;height:100%!important;object-fit:contain!important;object-position:right center!important}
+html:not(#nh1):not(#nh2):not(#nh3) .nh-outside .nh-touch-copy{inset:0!important;display:flex!important;flex-direction:column!important;justify-content:center!important;align-items:flex-start!important;background:linear-gradient(90deg,#201c25 12%,#201c25e8 29%,#201c2570 48%,transparent 68%)!important}
+html:not(#nh1):not(#nh2):not(#nh3) .nh-outside h2{max-width:14ch!important}
+html:not(#nh1):not(#nh2):not(#nh3) .nh-outside p{max-width:37ch!important}
+html:not(#nh1):not(#nh2):not(#nh3) .nh-outside-kicker{font:600 12px Sora,sans-serif!important;letter-spacing:.16em!important;color:#dbc5ee!important;margin-bottom:18px!important}
+@media(max-width:700px){
+html:not(#nh1):not(#nh2):not(#nh3) .nh-outside .nh-touch-frame{height:620px!important}
+html:not(#nh1):not(#nh2):not(#nh3) .nh-outside .nh-touch-frame>img{width:100%!important;height:360px!important;object-position:65% top!important;object-fit:cover!important}
+html:not(#nh1):not(#nh2):not(#nh3) .nh-outside .nh-touch-copy{justify-content:flex-end!important;background:linear-gradient(0deg,#201c25 40%,#201c25d9 49%,transparent 76%)!important}
+html:not(#nh1):not(#nh2):not(#nh3) .nh-outside h2{font-size:34px!important;max-width:16ch!important}
+html:not(#nh1):not(#nh2):not(#nh3) .nh-outside p{font-size:15px!important}
+}
+</style>
 {% endblock %}
 
 {% block page_finish %}<link rel="stylesheet" href="{{ url_for('static',filename='css/nova-home.css',v='20261103-portfolio-button') }}">{% endblock %}
@@ -149,13 +164,14 @@
   {% endif %}
 
   {# 6. Toque: a malha de perto #}
-  <section class="nh-touch" aria-labelledby="nh-touch-title">
+  <section class="nh-touch nh-outside" aria-labelledby="nh-touch-title">
     <div class="nh-touch-frame">
-      <img src="{{ url_for('static',filename='img/tecidos/malha-encorpada.webp') }}" alt="Malha preta encorpada vista de perto" loading="lazy" decoding="async">
+      <img src="{{ url_for('static',filename='img/inicio/fora-da-caixa-flutuantes.webp') }}" alt="Fone, caixa de som, capinha, necessaire, porta-joias e ferramenta multifuncional flutuando em diferentes ângulos" loading="lazy" decoding="async">
       <div class="nh-touch-copy">
-        <h2 id="nh-touch-title">Antes da estampa, vem a malha.</h2>
-        <p>É ela que decide como a peça veste, como cai e quanto tempo dura. Conheça os tecidos com que trabalhamos.</p>
-        <a class="nh-link nh-link-light" href="{{ url_for('textiles') }}">Conhecer os tecidos {{ icon('arrow') }}</a>
+        <span class="nh-outside-kicker">FORA DA CAIXA</span>
+        <h2 id="nh-touch-title">Sua ideia não precisa estar no catálogo.</h2>
+        <p>Não encontrou o que imaginou? Conte pra gente. Buscamos possibilidades e desenvolvemos a personalização para o seu projeto.</p>
+        <a class="nh-link nh-link-light" href="/fora-da-caixa">Explorar possibilidades {{ icon('arrow') }}</a>
       </div>
     </div>
   </section>
