@@ -29,6 +29,11 @@ html:not(#nh1):not(#nh2):not(#nh3) .nh-outside-subtitle{display:block!important;
 html:not(#nh1):not(#nh2):not(#nh3) .nh-outside p{max-width:52ch!important;margin:14px 0 22px!important}
 @media(max-width:700px){html:not(#nh1):not(#nh2):not(#nh3) .nh-outside .nh-touch-frame>img{height:100%!important;object-position:70% center!important}html:not(#nh1):not(#nh2):not(#nh3) .nh-outside .nh-touch-frame{height:570px!important}html:not(#nh1):not(#nh2):not(#nh3) .nh-outside .nh-touch-copy{padding:28px!important;background:#17111c55!important}}
 </style>
+<style>
+html:not(#nh1):not(#nh2):not(#nh3) .nh-outside .nh-touch-frame{isolation:isolate!important;border:1px solid #dac3f385!important;box-shadow:inset 0 0 0 1px #efe0ff33,0 16px 45px -30px #c79be68c!important}
+html:not(#nh1):not(#nh2):not(#nh3) .nh-outside .nh-touch-frame:before{content:""!important;position:absolute!important;inset:0!important;border-radius:inherit!important;pointer-events:none!important;z-index:2!important;background:linear-gradient(90deg,#a974da80,transparent 10%,transparent 89%,#b78ce982),linear-gradient(0deg,#a775d95c,transparent 18%,transparent 84%,#e0bcff4a)!important;box-shadow:inset 2px 0 15px #ead8ff4d,inset -2px 0 16px #c58df64d,inset 0 1px 2px #f6edffb3!important}
+html:not(#nh1):not(#nh2):not(#nh3) .nh-outside .nh-touch-frame:after{content:""!important;position:absolute!important;inset:0!important;border-radius:inherit!important;pointer-events:none!important;z-index:3!important;padding:3px!important;background:linear-gradient(125deg,#7f4ca6 0%,#d5a7f1 10%,#fff0ff 15%,#9461bf 24%,#50336680 39%,#c48bec 58%,#f6e3ff 69%,#a26bc5 79%,#e4baff 92%,#744597 100%)!important;-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0)!important;-webkit-mask-composite:xor!important;mask-composite:exclude!important;opacity:.86!important}
+</style>
 {% endblock %}
 
 {% block page_finish %}<link rel="stylesheet" href="{{ url_for('static',filename='css/nova-home.css',v='20261103-portfolio-button') }}">{% endblock %}
