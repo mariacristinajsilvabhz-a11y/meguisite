@@ -20,6 +20,15 @@ html:not(#nh1):not(#nh2):not(#nh3) .nh-outside h2{font-size:34px!important;max-w
 html:not(#nh1):not(#nh2):not(#nh3) .nh-outside p{font-size:15px!important}
 }
 </style>
+<style>
+html:not(#nh1):not(#nh2):not(#nh3) .nh-outside .nh-touch-frame>img{width:100%!important;object-fit:cover!important;object-position:center!important;filter:blur(5px) brightness(.54)!important;transform:scale(1.04)!important}
+html:not(#nh1):not(#nh2):not(#nh3) .nh-outside .nh-touch-copy{align-items:center!important;text-align:center!important;justify-content:center!important;background:#17111c30!important}
+html:not(#nh1):not(#nh2):not(#nh3) .nh-outside-butterfly{display:block!important;position:static!important;width:138px!important;height:104px!important;color:#f4eafa!important;flex-shrink:0!important;margin:0 0 15px!important;filter:drop-shadow(0 2px 12px #c79be633)!important}
+html:not(#nh1):not(#nh2):not(#nh3) .nh-outside h2{font-size:clamp(40px,4.6vw,64px)!important;max-width:none!important}
+html:not(#nh1):not(#nh2):not(#nh3) .nh-outside-subtitle{display:block!important;font:500 clamp(16px,1.5vw,20px) Sora,sans-serif!important;color:#f3eaf7!important;margin-top:14px!important}
+html:not(#nh1):not(#nh2):not(#nh3) .nh-outside p{max-width:52ch!important;margin:14px 0 22px!important}
+@media(max-width:700px){html:not(#nh1):not(#nh2):not(#nh3) .nh-outside .nh-touch-frame>img{height:100%!important;object-position:70% center!important}html:not(#nh1):not(#nh2):not(#nh3) .nh-outside .nh-touch-frame{height:570px!important}html:not(#nh1):not(#nh2):not(#nh3) .nh-outside .nh-touch-copy{padding:28px!important;background:#17111c55!important}}
+</style>
 {% endblock %}
 
 {% block page_finish %}<link rel="stylesheet" href="{{ url_for('static',filename='css/nova-home.css',v='20261103-portfolio-button') }}">{% endblock %}
@@ -168,8 +177,9 @@ html:not(#nh1):not(#nh2):not(#nh3) .nh-outside p{font-size:15px!important}
     <div class="nh-touch-frame">
       <img src="{{ url_for('static',filename='img/inicio/fora-da-caixa-flutuantes.webp') }}" alt="Fone, caixa de som, capinha, necessaire, porta-joias e ferramenta multifuncional flutuando em diferentes ângulos" loading="lazy" decoding="async">
       <div class="nh-touch-copy">
-        <span class="nh-outside-kicker">FORA DA CAIXA</span>
-        <h2 id="nh-touch-title">Sua ideia não precisa estar no catálogo.</h2>
+        <svg class="nh-outside-butterfly" viewBox="0 0 160 120" fill="none" aria-hidden="true" focusable="false"><g stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><path d="M79 67C58 29 21 5 17 28C13 49 42 71 79 67ZM81 67C102 29 139 5 143 28C147 49 118 71 81 67ZM79 68C48 60 27 82 40 99C53 115 72 88 79 68ZM81 68C112 60 133 82 120 99C107 115 88 88 81 68Z"/><path d="M80 48C77 63 77 79 80 88C83 79 83 63 80 48ZM78 48C74 37 68 32 62 31M82 48C86 37 92 32 98 31M72 61C51 43 31 30 25 30M88 61C109 43 129 30 135 30M72 75C58 77 46 88 44 96M88 75C102 77 114 88 116 96" opacity=".65"/></g></svg>
+        <h2 id="nh-touch-title">Fora da caixa.</h2>
+        <span class="nh-outside-subtitle">Sua ideia não precisa estar no catálogo.</span>
         <p>Não encontrou o que imaginou? Conte pra gente. Buscamos possibilidades e desenvolvemos a personalização para o seu projeto.</p>
         <a class="nh-link nh-link-light" href="/fora-da-caixa">Explorar possibilidades {{ icon('arrow') }}</a>
       </div>
