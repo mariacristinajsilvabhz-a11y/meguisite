@@ -95,95 +95,38 @@ html[data-theme=dark] .cl-welcome :is(.cl-welcome-caption,.cl-welcome-builder-he
 }
 
 
-.cl-uniform-orbit{position:relative;padding-top:12px;max-width:100%}
-.cl-orbit-view{height:325px;position:relative;perspective:950px;touch-action:pan-y;cursor:grab;overflow:hidden}
+
+/* Mostruário editorial: uma peça, uma escolha. */
+.cl-showroom{position:relative;isolation:isolate;padding:0!important;margin:0!important;border:0!important}
+.cl-showroom:before,.cl-showroom-display:after{display:none!important}
+.cl-showroom-top{padding:0 0 12px;text-align:center}
+.cl-showroom-eyebrow{font-size:8px;letter-spacing:.18em;color:var(--cl-muted)}
+.cl-showroom-display{position:relative;isolation:isolate;background:none;margin:0;padding:0}
+.cl-showroom-display:before{content:"";position:absolute;inset:12% 12% 18%;background:radial-gradient(ellipse,#c3a1d32b,transparent 68%);z-index:-1;pointer-events:none}
+.cl-showroom .cl-stage-tag,.cl-showroom .cl-stage-note{display:none!important}
+.cl-uniform-orbit{position:relative}
+.cl-orbit-view{height:370px;position:relative;touch-action:pan-y;cursor:grab;overflow:hidden}
 .cl-orbit-view:active{cursor:grabbing}
-.cl-orbit-piece{position:absolute;inset:0 9%;transform-style:preserve-3d;transition:transform .5s cubic-bezier(.2,.75,.2,1),opacity .4s;pointer-events:none;will-change:transform}
-.cl-orbit-piece img{width:100%!important;height:100%!important;object-fit:contain!important;filter:drop-shadow(0 20px 15px #24142b26);user-select:none;-webkit-user-drag:none}
-.cl-orbit-controls{display:flex;gap:18px;align-items:center;justify-content:center;margin-top:5px;color:var(--cl-ink)}
-.cl-orbit-controls button{width:40px;height:40px;border:1px solid var(--cl-line);border-radius:50%;background:transparent;color:var(--cl-ink);font-size:26px}
-.cl-orbit-controls span{min-width:110px;text-align:center;font-size:14px;font-weight:600}
-.company-lab .cl-orbit-hint{text-align:center;font-size:10px;color:var(--cl-muted);margin:5px 0 12px}
-.cl-orbit-models{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-bottom:14px}
-.cl-orbit-models button{min-height:35px;padding:6px 10px;border:1px solid var(--cl-line);border-radius:20px;background:transparent;color:var(--cl-muted);font-size:10px}
-.cl-orbit-models button[aria-pressed=true]{background:#654878;border-color:#654878;color:#fff}
-.cl-stage:has(.cl-uniform-orbit:not([hidden])) .cl-stage-tag{top:8px;left:8px;font-size:8px;z-index:5}
-@media(max-width:700px){.cl-orbit-view{height:280px}.cl-orbit-piece{inset:0 10%}.cl-orbit-models button{font-size:9px;padding:6px 9px}.cl-orbit-controls button{width:44px;height:44px}}
-@media(prefers-reduced-motion:reduce){.cl-orbit-piece{transition:none}}
-
-
-/* Coluna de mostruário: peças em primeiro plano, navegação integrada. */
-.cl-showroom{padding:0 0 4px!important;position:relative;border-left:1px solid var(--cl-line);margin-left:0;min-width:0}
-.cl-showroom:before{display:none!important}
-.cl-showroom-top{display:flex;flex-direction:column;gap:8px;padding:4px 0 20px 25px;border-bottom:1px solid var(--cl-line);margin-left:18px}
-.cl-showroom-eyebrow{font-size:9px;letter-spacing:.18em;font-weight:650;color:var(--cl-lilac)}
-.cl-showroom-detail{font-size:12px;color:var(--cl-muted)}
-.cl-showroom-display{position:relative;padding:18px 0 8px;margin-left:18px;background:radial-gradient(ellipse at 50% 43%,#c9a8dc35,transparent 65%)}
-.cl-showroom-display:after{content:"";position:absolute;left:22%;right:16%;bottom:105px;height:18px;border-radius:50%;background:#30233512;filter:blur(9px);pointer-events:none;z-index:-1}
-.cl-showroom .cl-stage-tag{position:static!important;display:block;text-align:right;margin:0 12px 0 0;padding:0!important;font-size:8px!important;letter-spacing:.1em;transform:none!important;box-shadow:none!important;background:none!important;color:var(--cl-muted)}
-.cl-showroom .cl-orbit-view{height:365px}
-.cl-showroom .cl-orbit-piece{inset:0 1%}
-.cl-showroom .cl-orbit-controls{justify-content:space-between;margin:12px 28px 0;gap:14px;border-top:1px solid var(--cl-line);padding-top:15px}
-.cl-showroom .cl-orbit-controls button{border:0;border-radius:0;background:none;width:44px;height:44px;font-size:32px;line-height:1}
-.cl-orbit-current{display:flex;align-items:center;gap:15px;flex-direction:column}
-.cl-showroom .cl-orbit-counter{font-size:8px;letter-spacing:.18em;color:var(--cl-muted);min-width:0}
-.cl-showroom .cl-orbit-current [data-orbit-name]{font-size:19px;line-height:1;font-weight:500;color:var(--cl-ink)}
-.cl-showroom .cl-orbit-current{gap:7px}
-.company-lab .cl-showroom .cl-orbit-hint{font-size:9px;margin:12px 0 14px;opacity:.75}
-.cl-showroom .cl-orbit-models{gap:0;margin:0 20px;display:flex;flex-wrap:wrap;justify-content:center;border-bottom:1px solid var(--cl-line)}
-.cl-showroom .cl-orbit-models button{border:0;border-bottom:2px solid transparent;border-radius:0;min-height:42px;padding:8px 9px;background:none;color:var(--cl-muted);font-size:9px}
-.cl-showroom .cl-orbit-models button[aria-pressed=true]{background:none;color:var(--cl-ink);border-bottom-color:var(--cl-lilac)}
-.cl-showroom-footer{padding:18px 0 0 38px}
-.company-lab .cl-showroom .cl-stage-note{justify-content:flex-start;font-size:10px;margin:0 0 14px;line-height:1.5}
-.cl-showroom .cl-stage-note .icon{width:19px;height:23px;flex-shrink:0}
-.cl-showroom .cl-purpose-tabs{justify-content:flex-start;gap:16px;flex-wrap:wrap}
-.cl-showroom .cl-purpose-tabs button{padding:5px 0 8px;border:0;border-bottom:1px solid transparent;border-radius:0;min-height:34px;font-size:10px;color:var(--cl-muted)}
-.cl-showroom .cl-purpose-tabs button[aria-pressed=true]{background:none;color:var(--cl-ink);border-bottom-color:var(--cl-lilac)}
-.cl-showroom .cl-hero-product{height:455px!important;padding:15px!important}
-@media(max-width:980px){.cl-hero-layout{gap:30px}.cl-showroom .cl-orbit-view{height:310px}.cl-showroom-top{padding-left:15px}.cl-showroom-footer{padding-left:28px}}
-@media(max-width:700px){.cl-showroom{max-width:100%!important;margin:16px 0 0!important;border-left:0;border-top:1px solid var(--cl-line);padding-top:22px!important}.cl-showroom-top{margin:0;padding:0 0 16px;flex-direction:row;align-items:center;justify-content:space-between;gap:12px}.cl-showroom-detail{font-size:10px}.cl-showroom-display{margin:0;padding-top:16px}.cl-showroom .cl-orbit-view{height:300px}.cl-showroom .cl-orbit-piece{inset:0 4%}.cl-showroom .cl-orbit-controls{margin-inline:12px}.cl-showroom-footer{padding:18px 10px 0}.cl-showroom .cl-orbit-models{margin-inline:4px}.cl-showroom .cl-hero-product{height:350px!important}.cl-showroom .cl-stage-tag{font-size:7px!important}.cl-showroom .cl-purpose-tabs{gap:20px}}
-
-
-/* Mostruário com cenário, costura e seleção por miniaturas. */
-.cl-showroom{border:0!important;padding:20px 0 0!important}
-.cl-showroom-top{border:0!important;margin:0!important;padding:0 25px 10px!important;gap:5px}
-.cl-showroom-eyebrow{font-size:9px;letter-spacing:.13em}
-.cl-showroom-detail{font:500 23px/1.2 "Space Grotesk",sans-serif;color:var(--cl-ink);letter-spacing:-.04em}
-.cl-showroom-display{isolation:isolate;margin:0!important;padding:14px 0 5px!important;background:none!important}
-.cl-showroom-scenery{position:absolute;inset:22px 8px 116px;z-index:-1;pointer-events:none}
-.cl-showroom-scenery:before{content:"";position:absolute;inset:5% 4%;border-radius:43% 57% 62% 38% / 52% 38% 62% 48%;transform:rotate(-8deg);background:radial-gradient(ellipse at 31% 20%,#f8edff 0%,#e6cfef 38%,#cba7dc 76%,#b992cf 100%);box-shadow:inset 1px 2px 3px #fff9,inset -8px -12px 35px #9870af26,0 25px 45px -35px #63437866}
-.cl-showroom-stitch{position:absolute;inset:-12px;width:100%;height:100%;color:#9c78b1;opacity:.65;transform:rotate(3deg)}
-.cl-showroom-wing{position:absolute;color:#8f62a9;filter:drop-shadow(0 3px 3px #76498b18)}
-.cl-showroom-wing .icon{width:100%!important;height:100%!important}
-.cl-wing-one{width:48px;height:56px;left:0;top:8%;transform:rotate(-24deg)}
-.cl-wing-two{width:26px;height:32px;right:3%;top:6%;transform:rotate(24deg);opacity:.8}
-.cl-wing-three{width:34px;height:42px;right:0;bottom:5%;transform:rotate(-12deg);opacity:.65}
-.cl-showroom .cl-stage-tag{display:none!important}
-.cl-showroom .cl-orbit-view{height:310px!important;overflow:hidden}
-.cl-showroom .cl-orbit-piece{inset:0 6%!important}
-.cl-showroom .cl-orbit-piece img{filter:drop-shadow(0 16px 12px #35223d30)}
-.cl-showroom .cl-orbit-controls{border:0!important;padding:5px 0 0!important;margin:2px 24px 0!important;justify-content:center!important;gap:22px}
-.cl-showroom .cl-orbit-controls button{width:37px;height:37px;border:1px solid #bfa1d047;border-radius:12px 50% 50% 50%;background:linear-gradient(145deg,#f5e9fc,#d9c0e6);color:#69467b;box-shadow:inset 0 1px #fffa,0 4px 10px #6e467b10;font-size:25px}
-.cl-showroom .cl-orbit-controls button:last-child{border-radius:50% 12px 50% 50%}
-.cl-showroom .cl-orbit-current{min-width:124px;gap:6px}
-.cl-showroom .cl-orbit-counter{letter-spacing:.14em;font-size:8px}
-.cl-showroom .cl-orbit-current [data-orbit-name]{font-size:20px}
-.cl-showroom .cl-orbit-hint{margin:10px 0 12px!important}
-.cl-showroom .cl-orbit-models{border:0!important;margin:0 8px!important;gap:8px!important;flex-wrap:nowrap}
-.cl-showroom .cl-orbit-models button{position:relative;display:flex;flex:1;max-width:78px;min-width:0;flex-direction:column;align-items:center;gap:6px;padding:8px 3px!important;border:1px solid transparent!important;border-radius:18px 18px 10px 10px!important;background:#d9bfe716!important;transition:background .2s,transform .2s}
-.cl-showroom .cl-orbit-models button img{width:45px!important;height:49px!important;object-fit:contain!important;filter:drop-shadow(0 3px 3px #35223d18)}
-.cl-showroom .cl-orbit-models button span{font-size:8px;white-space:nowrap}
-.cl-showroom .cl-orbit-models button[aria-pressed=true]{border-color:#b48bc66b!important;background:linear-gradient(145deg,#f1e3f8b3,#d9bfe766)!important;box-shadow:inset 0 1px #ffffff70;transform:translateY(-3px)}
-.cl-showroom-footer{padding:14px 20px 0!important}
-.cl-showroom .cl-stage-note{justify-content:center!important;margin:0 0 8px!important;font-size:9px!important}
-.cl-showroom .cl-purpose-tabs{justify-content:center!important;gap:8px!important}
-.cl-showroom .cl-purpose-tabs button{padding:7px 12px!important;border:1px solid #bda2ca45!important;border-radius:18px!important;background:transparent!important;min-height:33px;font-size:9px!important}
-.cl-showroom .cl-purpose-tabs button[aria-pressed=true]{background:#9a77b12b!important;border-color:#bda2ca8c!important}
-html[data-theme=dark] .cl-showroom-scenery:before{background:radial-gradient(ellipse at 30% 18%,#cbb1df,#9d78b4 47%,#765985 90%);box-shadow:inset 1px 2px 3px #eddbff66,0 25px 45px -35px #10061788}
-html[data-theme=dark] .cl-showroom-wing,html[data-theme=dark] .cl-showroom-stitch{color:#dbc2ed}
-html[data-theme=dark] .cl-showroom .cl-orbit-models button[aria-pressed=true]{background:linear-gradient(145deg,#9673aa70,#664d7950)!important}
-@media(max-width:700px){.cl-showroom{border:0!important;margin-top:26px!important;padding-top:0!important}.cl-showroom-top{padding:0 12px 10px!important;flex-direction:column!important;align-items:flex-start!important}.cl-showroom-detail{font-size:23px}.cl-showroom .cl-orbit-view{height:290px!important}.cl-showroom .cl-orbit-models{gap:5px!important;margin-inline:0!important}.cl-showroom .cl-orbit-models button img{width:42px!important;height:46px!important}.cl-showroom .cl-orbit-models button span{font-size:7px}.cl-showroom-scenery{inset:20px 0 118px}.cl-wing-one{width:35px;height:42px}.cl-wing-three{width:27px;height:34px}.cl-showroom-footer{padding-inline:0!important}}
-
+.cl-orbit-piece{position:absolute;inset:0 6%;transition:transform .45s ease,opacity .3s;pointer-events:none}
+.cl-orbit-piece img{width:100%!important;height:100%!important;object-fit:contain!important;filter:drop-shadow(0 20px 18px #24142b20);user-select:none;-webkit-user-drag:none}
+.cl-orbit-controls{display:flex;align-items:center;justify-content:center;gap:28px;margin:12px 0 18px}
+.cl-orbit-controls button{border:0;background:none;color:var(--cl-ink);width:44px;height:44px;font-size:29px;opacity:.65}
+.cl-orbit-current{display:flex;flex-direction:column;align-items:center;gap:6px;min-width:140px}
+.cl-orbit-counter{font-size:8px;letter-spacing:.2em;color:var(--cl-muted)}
+.cl-orbit-current [data-orbit-name]{font:500 25px/1.1 "Space Grotesk",sans-serif;color:var(--cl-ink);letter-spacing:-.04em}
+.cl-orbit-models{display:flex;justify-content:center;gap:13px;margin:0}
+.cl-orbit-models button{position:relative;width:48px;min-height:60px;display:flex;align-items:center;justify-content:center;border:0;background:none;padding:3px 0 10px;border-radius:0;opacity:.48;transition:opacity .2s,transform .2s}
+.cl-orbit-models button img{width:38px!important;height:46px!important;object-fit:contain!important}
+.cl-orbit-models button span{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.cl-orbit-models button[aria-pressed=true]{opacity:1;transform:translateY(-3px)}
+.cl-orbit-models button[aria-pressed=true]:after{content:"";position:absolute;bottom:0;left:calc(50% - 2px);width:4px;height:4px;border-radius:50%;background:var(--cl-lilac)}
+.cl-showroom-footer{padding:20px 0 0}
+.cl-showroom .cl-purpose-tabs{justify-content:center;gap:22px}
+.cl-showroom .cl-purpose-tabs button{background:none!important;color:var(--cl-muted);border:0;border-radius:0;font-size:9px;padding:6px 0;min-height:32px}
+.cl-showroom .cl-purpose-tabs button[aria-pressed=true]{color:var(--cl-ink);border-bottom:1px solid var(--cl-lilac)}
+.cl-showroom .cl-hero-product{height:460px!important;padding:15px!important}
+@media(max-width:700px){.cl-showroom{max-width:100%!important;margin-top:26px!important}.cl-orbit-view{height:300px}.cl-orbit-piece{inset:0 5%}.cl-orbit-controls{margin:8px 0 14px}.cl-orbit-models{gap:10px}.cl-showroom-footer{padding-top:16px}.cl-showroom .cl-hero-product{height:390px!important}.cl-showroom-eyebrow{font-size:7px}}
+@media(prefers-reduced-motion:reduce){.cl-orbit-piece,.cl-orbit-models button{transition:none}}
 </style>
 {% endblock %}
 {% block content %}
@@ -198,7 +141,7 @@ html[data-theme=dark] .cl-showroom .cl-orbit-models button[aria-pressed=true]{ba
 <div class="company-lab" data-company-lab>
 <section class="cl-hero" aria-labelledby="cl-title"><div class="cl-wrap">
  <div class="cl-hero-layout"><div class="cl-hero-copy"><span class="cl-kicker">{{ icon('butterfly') }} MEGUI / PARA QUEM FAZ ACONTECER</span><h1 id="cl-title">Sua empresa,<br>reconhecida <span>nos detalhes.</span></h1><p>Na equipe que atende. No kit de boas-vindas. No cuidado que faz alguém lembrar da sua marca.</p><a class="cl-main-link" href="#uniformes" data-cl-start><span>Encontre o jeito da sua empresa</span>{{ icon('butterfly') }}</a></div>
- <div class="cl-stage cl-showroom"><div class="cl-showroom-top"><span class="cl-showroom-eyebrow">UM JEITO SEU DE VESTIR</span><span class="cl-showroom-detail">Uniformes com a sua identidade.</span></div><div class="cl-showroom-display"><div class="cl-showroom-scenery" aria-hidden="true"><svg class="cl-showroom-stitch" viewBox="0 0 500 400" fill="none"><path d="M47 304C-15 202 36 62 155 44S426 49 457 167 398 373 278 356" stroke="currentColor" stroke-width="1.2" stroke-dasharray="3 7"/><path d="M67 312C-1 197 60 87 156 66" stroke="currentColor" stroke-width=".6" opacity=".5"/></svg><span class="cl-showroom-wing cl-wing-one">{{ icon('butterfly') }}</span><span class="cl-showroom-wing cl-wing-two">{{ icon('butterfly') }}</span><span class="cl-showroom-wing cl-wing-three">{{ icon('butterfly') }}</span></div><span class="cl-stage-tag" data-cl-tag>VESTIR A SUA IDENTIDADE.</span><div class="cl-uniform-orbit" data-uniform-orbit><div class="cl-orbit-view" tabindex="0" role="region" aria-label="Modelos de uniforme. Arraste ou use as setas do teclado para escolher."><figure class="cl-orbit-piece" data-orbit-piece aria-hidden="false"><img src="{{ url_for('static',filename='img/inicio/polo.webp') }}" alt="Polo em manequim invisível, somente parte de cima" draggable="false" width="700" height="700" loading="eager"></figure><figure class="cl-orbit-piece" data-orbit-piece aria-hidden="true"><img src="{{ url_for('static',filename='img/inicio/social-manga-curta-manequim.webp') }}" alt="Social curta em manequim invisível, somente parte de cima" draggable="false" width="700" height="700" loading="lazy"></figure><figure class="cl-orbit-piece" data-orbit-piece aria-hidden="true"><img src="{{ url_for('static',filename='img/inicio/social-manga-longa-manequim.webp') }}" alt="Social longa em manequim invisível, somente parte de cima" draggable="false" width="700" height="700" loading="lazy"></figure><figure class="cl-orbit-piece" data-orbit-piece aria-hidden="true"><img src="{{ url_for('static',filename='img/inicio/babylook-manequim.webp') }}" alt="Babylook em manequim invisível, somente parte de cima" draggable="false" width="700" height="700" loading="lazy"></figure><figure class="cl-orbit-piece" data-orbit-piece aria-hidden="true"><img src="{{ url_for('static',filename='img/inicio/jaleco-manequim.webp') }}" alt="Jaleco em manequim invisível, somente parte de cima" draggable="false" width="700" height="700" loading="lazy"></figure></div><div class="cl-orbit-controls"><button type="button" data-orbit-prev aria-label="Uniforme anterior">‹</button><div class="cl-orbit-current"><span class="cl-orbit-counter" data-orbit-count>01 / 05</span><span data-orbit-name aria-live="polite">Polo</span></div><button type="button" data-orbit-next aria-label="Próximo uniforme">›</button></div><p class="cl-orbit-hint">Deslize para descobrir os modelos</p><div class="cl-orbit-models" aria-label="Escolha o modelo"><button type="button" data-orbit-index="0" aria-pressed="true"><img src="{{ url_for('static',filename='img/inicio/polo.webp') }}" alt="" loading="lazy" draggable="false"><span>Polo</span></button><button type="button" data-orbit-index="1" aria-pressed="false"><img src="{{ url_for('static',filename='img/inicio/social-manga-curta-manequim.webp') }}" alt="" loading="lazy" draggable="false"><span>Social curta</span></button><button type="button" data-orbit-index="2" aria-pressed="false"><img src="{{ url_for('static',filename='img/inicio/social-manga-longa-manequim.webp') }}" alt="" loading="lazy" draggable="false"><span>Social longa</span></button><button type="button" data-orbit-index="3" aria-pressed="false"><img src="{{ url_for('static',filename='img/inicio/babylook-manequim.webp') }}" alt="" loading="lazy" draggable="false"><span>Babylook</span></button><button type="button" data-orbit-index="4" aria-pressed="false"><img src="{{ url_for('static',filename='img/inicio/jaleco-manequim.webp') }}" alt="" loading="lazy" draggable="false"><span>Jaleco</span></button></div></div><img class="cl-hero-product" data-cl-hero hidden src="{{ url_for('static',filename='img/inicio/polo.webp') }}" alt="Polo Megui preta com detalhes lilás" fetchpriority="high" width="1000" height="1000"></div><div class="cl-showroom-footer"><p class="cl-stage-note" aria-live="polite">{{ icon('butterfly') }} <span data-cl-caption>Um uniforme. Muitas primeiras impressões.</span></p><div class="cl-purpose-tabs" aria-label="O que sua empresa quer criar"><button type="button" data-cl-purpose="uniforme" aria-pressed="true">Vestir a equipe</button><button type="button" data-cl-purpose="kit" aria-pressed="false">Surpreender</button><button type="button" data-cl-purpose="especial" aria-pressed="false">Sair do comum</button></div></div></div></div>
+ <div class="cl-stage cl-showroom"><div class="cl-showroom-top"><span class="cl-showroom-eyebrow">PARA CADA JEITO DE TRABALHAR</span></div><div class="cl-showroom-display"><span class="cl-stage-tag" data-cl-tag>VESTIR A SUA IDENTIDADE.</span><div class="cl-uniform-orbit" data-uniform-orbit><div class="cl-orbit-view" tabindex="0" role="region" aria-label="Modelos de uniforme. Arraste ou use as setas do teclado para escolher."><figure class="cl-orbit-piece" data-orbit-piece aria-hidden="false"><img src="{{ url_for('static',filename='img/inicio/polo.webp') }}" alt="Polo em manequim invisível, somente parte de cima" draggable="false" width="700" height="700" loading="eager"></figure><figure class="cl-orbit-piece" data-orbit-piece aria-hidden="true"><img src="{{ url_for('static',filename='img/inicio/social-manga-curta-manequim.webp') }}" alt="Social curta em manequim invisível, somente parte de cima" draggable="false" width="700" height="700" loading="lazy"></figure><figure class="cl-orbit-piece" data-orbit-piece aria-hidden="true"><img src="{{ url_for('static',filename='img/inicio/social-manga-longa-manequim.webp') }}" alt="Social longa em manequim invisível, somente parte de cima" draggable="false" width="700" height="700" loading="lazy"></figure><figure class="cl-orbit-piece" data-orbit-piece aria-hidden="true"><img src="{{ url_for('static',filename='img/inicio/babylook-manequim.webp') }}" alt="Babylook em manequim invisível, somente parte de cima" draggable="false" width="700" height="700" loading="lazy"></figure><figure class="cl-orbit-piece" data-orbit-piece aria-hidden="true"><img src="{{ url_for('static',filename='img/inicio/jaleco-manequim.webp') }}" alt="Jaleco em manequim invisível, somente parte de cima" draggable="false" width="700" height="700" loading="lazy"></figure></div><div class="cl-orbit-controls"><button type="button" data-orbit-prev aria-label="Uniforme anterior">‹</button><div class="cl-orbit-current"><span class="cl-orbit-counter" data-orbit-count>01 / 05</span><span data-orbit-name aria-live="polite">Polo</span></div><button type="button" data-orbit-next aria-label="Próximo uniforme">›</button></div><div class="cl-orbit-models" aria-label="Escolha o modelo"><button type="button" data-orbit-index="0" aria-pressed="true"><img src="{{ url_for('static',filename='img/inicio/polo.webp') }}" alt="" loading="lazy" draggable="false"><span>Polo</span></button><button type="button" data-orbit-index="1" aria-pressed="false"><img src="{{ url_for('static',filename='img/inicio/social-manga-curta-manequim.webp') }}" alt="" loading="lazy" draggable="false"><span>Social curta</span></button><button type="button" data-orbit-index="2" aria-pressed="false"><img src="{{ url_for('static',filename='img/inicio/social-manga-longa-manequim.webp') }}" alt="" loading="lazy" draggable="false"><span>Social longa</span></button><button type="button" data-orbit-index="3" aria-pressed="false"><img src="{{ url_for('static',filename='img/inicio/babylook-manequim.webp') }}" alt="" loading="lazy" draggable="false"><span>Babylook</span></button><button type="button" data-orbit-index="4" aria-pressed="false"><img src="{{ url_for('static',filename='img/inicio/jaleco-manequim.webp') }}" alt="" loading="lazy" draggable="false"><span>Jaleco</span></button></div></div><img class="cl-hero-product" data-cl-hero hidden src="{{ url_for('static',filename='img/inicio/polo.webp') }}" alt="Polo Megui preta com detalhes lilás" fetchpriority="high" width="1000" height="1000"></div><div class="cl-showroom-footer"><p class="cl-stage-note" aria-live="polite">{{ icon('butterfly') }} <span data-cl-caption>Um uniforme. Muitas primeiras impressões.</span></p><div class="cl-purpose-tabs" aria-label="O que sua empresa quer criar"><button type="button" data-cl-purpose="uniforme" aria-pressed="true">Uniformes</button><button type="button" data-cl-purpose="kit" aria-pressed="false">Kits de boas-vindas</button><button type="button" data-cl-purpose="especial" aria-pressed="false">Sob medida</button></div></div></div></div>
  <div class="cl-hero-foot"><span>{{ icon('tshirt') }} CONFECÇÃO PRÓPRIA EM MALHARIA</span><span>{{ icon('butterfly') }} PERSONALIZAÇÃO COM IDENTIDADE</span><a href="#ponto-de-partida">Já tem uma ideia? Vamos compor.</a></div>
 </div></section>
 <section class="cl-proof" aria-label="Marcas que fazem parte da nossa história"><div class="cl-wrap cl-proof-inner"><p>Do pequeno negócio<br>às marcas que você conhece.</p><div class="cl-logos">{% for brand in trusted_brands if brand.name in ['Band Minas','Sesc','Cemig','Resultado Final','Senac Minas','Future Pro'] %}<img src="{{ url_for('static',filename='img/clientes/' ~ brand.image) }}" alt="{{ brand.name }}" loading="lazy">{% endfor %}</div></div></section>
@@ -256,7 +199,7 @@ html[data-theme=dark] .cl-showroom .cl-orbit-models button[aria-pressed=true]{ba
  const root=document.querySelector('[data-company-lab]');if(!root)return;
  const orbit=root.querySelector('[data-uniform-orbit]'),view=orbit.querySelector('.cl-orbit-view'),pieces=[...orbit.querySelectorAll('[data-orbit-piece]')],buttons=[...orbit.querySelectorAll('[data-orbit-index]')],names=['Polo','Social curta','Social longa','Babylook','Jaleco'];
  let index=0,startX=null,startY=null;
- function show(next){index=(next+pieces.length)%pieces.length;pieces.forEach((p,i)=>{let d=(i-index+pieces.length)%pieces.length;if(d>pieces.length/2)d-=pieces.length;p.style.transform='translateX('+(d*65)+'%) translateZ('+(-Math.abs(d)*165)+'px) rotateY('+(-d*26)+'deg) scale('+(d===0?1:.83)+')';p.style.opacity=Math.abs(d)>1?'0':d===0?'1':'.42';p.style.visibility=Math.abs(d)>1?'hidden':'visible';p.style.zIndex=String(5-Math.abs(d));p.setAttribute('aria-hidden',String(d!==0));});buttons.forEach((b,i)=>b.setAttribute('aria-pressed',String(i===index)));orbit.querySelector('[data-orbit-name]').textContent=names[index];orbit.querySelector('[data-orbit-count]').textContent=String(index+1).padStart(2,'0')+' / 05';}
+ function show(next){index=(next+pieces.length)%pieces.length;pieces.forEach((p,i)=>{let d=(i-index+pieces.length)%pieces.length;if(d>pieces.length/2)d-=pieces.length;p.style.transform='translateX('+(d===0?0:d>0?12:-12)+'%) scale('+(d===0?1:.94)+')';p.style.opacity=d===0?'1':'0';p.style.visibility=d!==0?'hidden':'visible';p.style.zIndex=String(5-Math.abs(d));p.setAttribute('aria-hidden',String(d!==0));});buttons.forEach((b,i)=>b.setAttribute('aria-pressed',String(i===index)));orbit.querySelector('[data-orbit-name]').textContent=names[index];orbit.querySelector('[data-orbit-count]').textContent=String(index+1).padStart(2,'0')+' / 05';}
  orbit.querySelector('[data-orbit-prev]').addEventListener('click',()=>show(index-1));orbit.querySelector('[data-orbit-next]').addEventListener('click',()=>show(index+1));
  buttons.forEach((b,i)=>b.addEventListener('click',()=>show(i)));
  view.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();show(index+(e.key==='ArrowRight'?1:-1));}});
