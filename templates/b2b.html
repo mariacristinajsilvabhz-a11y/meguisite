@@ -159,7 +159,7 @@ html[data-theme=dark] .cl-welcome :is(.cl-welcome-caption,.cl-welcome-builder-he
 .cl-wing-two{width:26px;height:32px;right:3%;top:6%;transform:rotate(24deg);opacity:.8}
 .cl-wing-three{width:34px;height:42px;right:0;bottom:5%;transform:rotate(-12deg);opacity:.65}
 .cl-showroom .cl-stage-tag{display:none!important}
-.cl-showroom .cl-orbit-view{height:310px!important;overflow:visible}
+.cl-showroom .cl-orbit-view{height:310px!important;overflow:hidden}
 .cl-showroom .cl-orbit-piece{inset:0 6%!important}
 .cl-showroom .cl-orbit-piece img{filter:drop-shadow(0 16px 12px #35223d30)}
 .cl-showroom .cl-orbit-controls{border:0!important;padding:5px 0 0!important;margin:2px 24px 0!important;justify-content:center!important;gap:22px}
@@ -256,7 +256,7 @@ html[data-theme=dark] .cl-showroom .cl-orbit-models button[aria-pressed=true]{ba
  const root=document.querySelector('[data-company-lab]');if(!root)return;
  const orbit=root.querySelector('[data-uniform-orbit]'),view=orbit.querySelector('.cl-orbit-view'),pieces=[...orbit.querySelectorAll('[data-orbit-piece]')],buttons=[...orbit.querySelectorAll('[data-orbit-index]')],names=['Polo','Social curta','Social longa','Babylook','Jaleco'];
  let index=0,startX=null,startY=null;
- function show(next){index=(next+pieces.length)%pieces.length;pieces.forEach((p,i)=>{let d=(i-index+pieces.length)%pieces.length;if(d>pieces.length/2)d-=pieces.length;p.style.transform='translateX('+(d*65)+'%) translateZ('+(-Math.abs(d)*165)+'px) rotateY('+(-d*26)+'deg) scale('+(d===0?1:.83)+')';p.style.opacity=Math.abs(d)>1?'0':d===0?'1':'.42';p.style.zIndex=String(5-Math.abs(d));p.setAttribute('aria-hidden',String(d!==0));});buttons.forEach((b,i)=>b.setAttribute('aria-pressed',String(i===index)));orbit.querySelector('[data-orbit-name]').textContent=names[index];orbit.querySelector('[data-orbit-count]').textContent=String(index+1).padStart(2,'0')+' / 05';}
+ function show(next){index=(next+pieces.length)%pieces.length;pieces.forEach((p,i)=>{let d=(i-index+pieces.length)%pieces.length;if(d>pieces.length/2)d-=pieces.length;p.style.transform='translateX('+(d*65)+'%) translateZ('+(-Math.abs(d)*165)+'px) rotateY('+(-d*26)+'deg) scale('+(d===0?1:.83)+')';p.style.opacity=Math.abs(d)>1?'0':d===0?'1':'.42';p.style.visibility=Math.abs(d)>1?'hidden':'visible';p.style.zIndex=String(5-Math.abs(d));p.setAttribute('aria-hidden',String(d!==0));});buttons.forEach((b,i)=>b.setAttribute('aria-pressed',String(i===index)));orbit.querySelector('[data-orbit-name]').textContent=names[index];orbit.querySelector('[data-orbit-count]').textContent=String(index+1).padStart(2,'0')+' / 05';}
  orbit.querySelector('[data-orbit-prev]').addEventListener('click',()=>show(index-1));orbit.querySelector('[data-orbit-next]').addEventListener('click',()=>show(index+1));
  buttons.forEach((b,i)=>b.addEventListener('click',()=>show(i)));
  view.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();show(index+(e.key==='ArrowRight'?1:-1));}});
