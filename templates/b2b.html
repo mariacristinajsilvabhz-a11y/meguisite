@@ -94,6 +94,23 @@ html[data-theme=dark] .cl-welcome :is(.cl-welcome-caption,.cl-welcome-builder-he
  .cl-kit-dialog{padding:15px}.cl-kit-dialog>div{gap:10px}html body .cl-kit-dialog h2{font-size:17px!important}.cl-kit-dialog button{flex:none}
 }
 
+
+.cl-uniform-orbit{position:relative;padding-top:12px;max-width:100%}
+.cl-orbit-view{height:325px;position:relative;perspective:950px;touch-action:pan-y;cursor:grab;overflow:hidden}
+.cl-orbit-view:active{cursor:grabbing}
+.cl-orbit-piece{position:absolute;inset:0 9%;transform-style:preserve-3d;transition:transform .5s cubic-bezier(.2,.75,.2,1),opacity .4s;pointer-events:none;will-change:transform}
+.cl-orbit-piece img{width:100%!important;height:100%!important;object-fit:contain!important;filter:drop-shadow(0 20px 15px #24142b26);user-select:none;-webkit-user-drag:none}
+.cl-orbit-controls{display:flex;gap:18px;align-items:center;justify-content:center;margin-top:5px;color:var(--cl-ink)}
+.cl-orbit-controls button{width:40px;height:40px;border:1px solid var(--cl-line);border-radius:50%;background:transparent;color:var(--cl-ink);font-size:26px}
+.cl-orbit-controls span{min-width:110px;text-align:center;font-size:14px;font-weight:600}
+.company-lab .cl-orbit-hint{text-align:center;font-size:10px;color:var(--cl-muted);margin:5px 0 12px}
+.cl-orbit-models{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-bottom:14px}
+.cl-orbit-models button{min-height:35px;padding:6px 10px;border:1px solid var(--cl-line);border-radius:20px;background:transparent;color:var(--cl-muted);font-size:10px}
+.cl-orbit-models button[aria-pressed=true]{background:#654878;border-color:#654878;color:#fff}
+.cl-stage:has(.cl-uniform-orbit:not([hidden])) .cl-stage-tag{top:8px;left:8px;font-size:8px;z-index:5}
+@media(max-width:700px){.cl-orbit-view{height:280px}.cl-orbit-piece{inset:0 10%}.cl-orbit-models button{font-size:9px;padding:6px 9px}.cl-orbit-controls button{width:44px;height:44px}}
+@media(prefers-reduced-motion:reduce){.cl-orbit-piece{transition:none}}
+
 </style>
 {% endblock %}
 {% block content %}
@@ -108,7 +125,7 @@ html[data-theme=dark] .cl-welcome :is(.cl-welcome-caption,.cl-welcome-builder-he
 <div class="company-lab" data-company-lab>
 <section class="cl-hero" aria-labelledby="cl-title"><div class="cl-wrap">
  <div class="cl-hero-layout"><div class="cl-hero-copy"><span class="cl-kicker">{{ icon('butterfly') }} MEGUI / PARA QUEM FAZ ACONTECER</span><h1 id="cl-title">Sua empresa,<br>reconhecida <span>nos detalhes.</span></h1><p>Na equipe que atende. No kit de boas-vindas. No cuidado que faz alguém lembrar da sua marca.</p><a class="cl-main-link" href="#uniformes" data-cl-start><span>Encontre o jeito da sua empresa</span>{{ icon('butterfly') }}</a></div>
- <div class="cl-stage"><span class="cl-stage-tag" data-cl-tag>VESTIR A SUA IDENTIDADE.</span><img class="cl-hero-product" data-cl-hero src="{{ url_for('static',filename='img/inicio/polo.webp') }}" alt="Polo Megui preta com detalhes lilás" fetchpriority="high" width="1000" height="1000"><p class="cl-stage-note" aria-live="polite">{{ icon('butterfly') }} <span data-cl-caption>Um uniforme. Muitas primeiras impressões.</span></p><div class="cl-purpose-tabs" aria-label="O que sua empresa quer criar"><button type="button" data-cl-purpose="uniforme" aria-pressed="true">Vestir a equipe</button><button type="button" data-cl-purpose="kit" aria-pressed="false">Surpreender</button><button type="button" data-cl-purpose="especial" aria-pressed="false">Sair do comum</button></div></div></div>
+ <div class="cl-stage"><span class="cl-stage-tag" data-cl-tag>VESTIR A SUA IDENTIDADE.</span><div class="cl-uniform-orbit" data-uniform-orbit><div class="cl-orbit-view" tabindex="0" role="region" aria-label="Modelos de uniforme. Arraste ou use as setas do teclado para escolher."><figure class="cl-orbit-piece" data-orbit-piece aria-hidden="false"><img src="{{ url_for('static',filename='img/inicio/polo.webp') }}" alt="Polo em manequim invisível, somente parte de cima" draggable="false" width="700" height="700" loading="eager"></figure><figure class="cl-orbit-piece" data-orbit-piece aria-hidden="true"><img src="{{ url_for('static',filename='img/inicio/social-manga-curta-manequim.webp') }}" alt="Social curta em manequim invisível, somente parte de cima" draggable="false" width="700" height="700" loading="lazy"></figure><figure class="cl-orbit-piece" data-orbit-piece aria-hidden="true"><img src="{{ url_for('static',filename='img/inicio/social-manga-longa-manequim.webp') }}" alt="Social longa em manequim invisível, somente parte de cima" draggable="false" width="700" height="700" loading="lazy"></figure><figure class="cl-orbit-piece" data-orbit-piece aria-hidden="true"><img src="{{ url_for('static',filename='img/inicio/babylook-manequim.webp') }}" alt="Babylook em manequim invisível, somente parte de cima" draggable="false" width="700" height="700" loading="lazy"></figure><figure class="cl-orbit-piece" data-orbit-piece aria-hidden="true"><img src="{{ url_for('static',filename='img/inicio/jaleco-manequim.webp') }}" alt="Jaleco em manequim invisível, somente parte de cima" draggable="false" width="700" height="700" loading="lazy"></figure></div><div class="cl-orbit-controls"><button type="button" data-orbit-prev aria-label="Uniforme anterior">‹</button><span data-orbit-name aria-live="polite">Polo</span><button type="button" data-orbit-next aria-label="Próximo uniforme">›</button></div><p class="cl-orbit-hint">Arraste para girar a seleção</p><div class="cl-orbit-models" aria-label="Escolha o modelo"><button type="button" data-orbit-index="0" aria-pressed="true">Polo</button><button type="button" data-orbit-index="1" aria-pressed="false">Social curta</button><button type="button" data-orbit-index="2" aria-pressed="false">Social longa</button><button type="button" data-orbit-index="3" aria-pressed="false">Babylook</button><button type="button" data-orbit-index="4" aria-pressed="false">Jaleco</button></div></div><img class="cl-hero-product" data-cl-hero hidden src="{{ url_for('static',filename='img/inicio/polo.webp') }}" alt="Polo Megui preta com detalhes lilás" fetchpriority="high" width="1000" height="1000"><p class="cl-stage-note" aria-live="polite">{{ icon('butterfly') }} <span data-cl-caption>Um uniforme. Muitas primeiras impressões.</span></p><div class="cl-purpose-tabs" aria-label="O que sua empresa quer criar"><button type="button" data-cl-purpose="uniforme" aria-pressed="true">Vestir a equipe</button><button type="button" data-cl-purpose="kit" aria-pressed="false">Surpreender</button><button type="button" data-cl-purpose="especial" aria-pressed="false">Sair do comum</button></div></div></div>
  <div class="cl-hero-foot"><span>{{ icon('tshirt') }} CONFECÇÃO PRÓPRIA EM MALHARIA</span><span>{{ icon('butterfly') }} PERSONALIZAÇÃO COM IDENTIDADE</span><a href="#ponto-de-partida">Já tem uma ideia? Vamos compor.</a></div>
 </div></section>
 <section class="cl-proof" aria-label="Marcas que fazem parte da nossa história"><div class="cl-wrap cl-proof-inner"><p>Do pequeno negócio<br>às marcas que você conhece.</p><div class="cl-logos">{% for brand in trusted_brands if brand.name in ['Band Minas','Sesc','Cemig','Resultado Final','Senac Minas','Future Pro'] %}<img src="{{ url_for('static',filename='img/clientes/' ~ brand.image) }}" alt="{{ brand.name }}" loading="lazy">{% endfor %}</div></div></section>
@@ -158,6 +175,23 @@ html[data-theme=dark] .cl-welcome :is(.cl-welcome-caption,.cl-welcome-builder-he
  root.querySelector('[data-cl-kit-close]').addEventListener('click',()=>kitDialog.close());
  kitDialog.addEventListener('click',e=>{if(e.target===kitDialog)kitDialog.close();});
  root.querySelectorAll('[data-cl-purpose]').forEach(b=>b.addEventListener('click',()=>{const p=purposes[b.dataset.clPurpose];root.querySelectorAll('[data-cl-purpose]').forEach(t=>t.setAttribute('aria-pressed',String(t===b)));root.querySelector('[data-cl-hero]').src=p.image;root.querySelector('[data-cl-hero]').alt=p.alt;root.querySelector('[data-cl-tag]').textContent=p.tag;root.querySelector('[data-cl-caption]').textContent=p.caption;root.querySelector('[data-cl-start]').href=p.href;}));update();
+})();
+</script>
+
+<script>
+(()=>{
+ const root=document.querySelector('[data-company-lab]');if(!root)return;
+ const orbit=root.querySelector('[data-uniform-orbit]'),view=orbit.querySelector('.cl-orbit-view'),pieces=[...orbit.querySelectorAll('[data-orbit-piece]')],buttons=[...orbit.querySelectorAll('[data-orbit-index]')],names=['Polo','Social curta','Social longa','Babylook','Jaleco'];
+ let index=0,startX=null,startY=null;
+ function show(next){index=(next+pieces.length)%pieces.length;pieces.forEach((p,i)=>{let d=(i-index+pieces.length)%pieces.length;if(d>pieces.length/2)d-=pieces.length;p.style.transform='translateX('+(d*65)+'%) translateZ('+(-Math.abs(d)*165)+'px) rotateY('+(-d*26)+'deg) scale('+(d===0?1:.83)+')';p.style.opacity=Math.abs(d)>1?'0':d===0?'1':'.42';p.style.zIndex=String(5-Math.abs(d));p.setAttribute('aria-hidden',String(d!==0));});buttons.forEach((b,i)=>b.setAttribute('aria-pressed',String(i===index)));orbit.querySelector('[data-orbit-name]').textContent=names[index];}
+ orbit.querySelector('[data-orbit-prev]').addEventListener('click',()=>show(index-1));orbit.querySelector('[data-orbit-next]').addEventListener('click',()=>show(index+1));
+ buttons.forEach((b,i)=>b.addEventListener('click',()=>show(i)));
+ view.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();show(index+(e.key==='ArrowRight'?1:-1));}});
+ view.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'&&e.button!==0)return;startX=e.clientX;startY=e.clientY;view.setPointerCapture(e.pointerId);});
+ view.addEventListener('pointerup',e=>{if(startX===null)return;const dx=e.clientX-startX,dy=e.clientY-startY;if(Math.abs(dx)>35&&Math.abs(dx)>Math.abs(dy))show(index+(dx<0?1:-1));startX=null;});
+ view.addEventListener('pointercancel',()=>{startX=null;});
+ root.querySelectorAll('[data-cl-purpose]').forEach(b=>b.addEventListener('click',()=>{const uniforms=b.dataset.clPurpose==='uniforme';orbit.hidden=!uniforms;root.querySelector('[data-cl-hero]').hidden=uniforms;}));
+ show(0);
 })();
 </script>
 {% endblock %}
