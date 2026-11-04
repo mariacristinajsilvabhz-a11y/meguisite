@@ -160,6 +160,7 @@ html[data-theme=dark] body .ev-artdirection #experiencia .ev-moment-word{color:#
 }
 </style>
 {% endblock %}
+{% block page_finish %}<link rel="stylesheet" href="{{ url_for('static',filename='css/eventos-vivo-20261104.css',v='20261104-v1') }}">{% endblock %}
 
 {% block content %}
 <div class="ev-experience ev-artdirection">
@@ -179,6 +180,17 @@ html[data-theme=dark] body .ev-artdirection #experiencia .ev-moment-word{color:#
       </figure>
     </div>
   </section>
+
+  {% set ribbon_words = ['Retiros','congressos','Corridas','casamentos','Festivais','confraternizações','Feiras','formaturas','Lançamentos','encontros'] %}
+  <div class="vv-ribbon" role="presentation">
+    <div class="vv-ribbon-track">
+      {% for copy in [0,1] %}
+      <div class="vv-ribbon-group"{% if copy %} aria-hidden="true"{% endif %}>
+        {% for word in ribbon_words %}<span>{{ word }} {{ icon('butterfly') }}</span>{% endfor %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
 
   <section class="ev-moments" id="experiencia" aria-labelledby="ev-moments-title">
     <div class="ev-wrap">
@@ -323,6 +335,8 @@ html[data-theme=dark] body .ev-artdirection #experiencia .ev-moment-word{color:#
         <div class="ev-selected">
           <span data-ev-selection-count role="status" aria-live="polite">1 item selecionado</span>
           <p data-ev-selection>Camisetas</p>
+          <div class="vv-tray" data-vv-tray aria-hidden="true"></div>
+          <div class="vv-meter" data-vv-meter aria-hidden="true"><span></span></div>
         </div>
         <div class="ev-ticket-footer">
           <a class="ev-talk-action" data-ev-kit-link href="https://wa.me/{{ whatsapp_number }}?text={{ 'Olá, Megui! Quero conversar sobre camisetas e personalizados para um evento.'|urlencode }}" target="_blank" rel="noopener">
@@ -350,4 +364,5 @@ document.querySelectorAll('[data-eg-format]').forEach(link => link.addEventListe
 </script>
 <script defer src="{{ url_for('static',filename='js/eventos.js',v='20261101-acordeao-v1') }}"></script>
 <script defer src="{{ url_for('static',filename='js/eventos-editorial-20261025.js',v='20261025-v1') }}"></script>
+<script defer src="{{ url_for('static',filename='js/eventos-vivo-20261104.js',v='20261104-v1') }}"></script>
 {% endblock %}
