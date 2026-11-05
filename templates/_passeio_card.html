@@ -13,7 +13,7 @@
       <input type="hidden" name="qty" value="50">
       <input type="hidden" name="next" value="{{ request.full_path if request.query_string else request.path }}">
       {% if available %}<input type="hidden" name="variant_id" value="{{ available[0].id }}">{% endif %}
-      <button type="submit" aria-label="Incluir {{ product.name }} no orçamento" title="Incluir no orçamento"{% if product.id in cart_ids %} class="is-added"{% endif %}><span aria-hidden="true">+</span></button>
+      <button type="submit" aria-label="Incluir {{ product.name }} no orçamento" title="Incluir no orçamento"{% if product.id in cart_ids %} class="is-added"{% endif %}><span class="ps-action-symbol" aria-hidden="true">+</span><span class="ps-action-label">Orçar</span></button>
     </form>
     {% endif %}
   </div>

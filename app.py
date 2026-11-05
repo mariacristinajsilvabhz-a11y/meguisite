@@ -2,11 +2,12 @@ import os
 import re
 import uuid
 import json
+from xml.etree import ElementTree as ET
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
 from decimal import Decimal, InvalidOperation
 from urllib.parse import quote, urlsplit
-from flask import Flask, render_template, request, redirect, url_for, session, abort, jsonify
+from flask import Flask, render_template, request, redirect, url_for, session, abort, jsonify, Response
 from hub_catalog import HubCatalog, CatalogUnavailable
 from textile_data import FABRICS
 from content_data import HISTORICAL_BRANDS, PORTFOLIO, PRODUCTION_VIDEOS, RECENT_WORKS, DESIGN_PROJECTS, NEW_WORKS
@@ -42,6 +43,8 @@ app.config.update(
 
 @app.after_request
 def add_security_headers(response):
+    if request.endpoint in {"explore_more", "search_products_api", "healthz"}:
+        response.headers["X-Robots-Tag"] = "noindex"
     response.headers.setdefault("X-Content-Type-Options", "nosniff")
     response.headers.setdefault("Referrer-Policy", "strict-origin-when-cross-origin")
     response.headers.setdefault("X-Frame-Options", "SAMEORIGIN")
@@ -198,6 +201,37 @@ def get_category(slug):
     return next((c for c in CATEGORIES + COLLECTIONS if c["slug"] == slug), None)
 
 
+PUBLIC_ORIGIN = "https://www.meguipersonalizados.com.br"
+PAGE_DESCRIPTIONS = {
+    "home": "Brindes personalizados, camisetas e uniformes com confecção própria em Contagem, MG. Conheça os trabalhos da Megui e peça um orçamento para sua empresa ou evento.",
+    "products": "Explore camisetas, bolsas, copos e brindes para personalizar. Escolha os produtos e monte seu orçamento com a Megui.",
+    "b2b": "Uniformes profissionais, kits de boas-vindas e brindes corporativos personalizados. Conheça os projetos da Megui para empresas.",
+    "events": "Camisetas, copos, credenciais e lembranças personalizadas para eventos. Conheça opções para sua festa, congresso ou encontro.",
+    "portfolio_view": "Veja trabalhos da Megui para marcas e eventos, com exemplos de estampas, uniformes e brindes personalizados.",
+    "about": "Conheça a história da Megui Personalizados, da Freedom à confecção própria em Contagem.",
+    "contact": "Fale com a Megui em Contagem, MG. Consulte endereço, telefone e atendimento para solicitar seu orçamento.",
+    "outside_box": "Desenvolva um produto personalizado sob demanda com a Megui. Conte sua ideia e converse sobre materiais e acabamentos.",
+    "textiles": "Conheça os tecidos e materiais usados pela Megui para confeccionar camisetas e uniformes personalizados.",
+    "videos": "Assista aos bastidores da produção de roupas e brindes personalizados da Megui.",
+}
+
+
+@app.get("/robots.txt")
+def robots():
+    return Response(f"User-agent: *\nAllow: /\nSitemap: {PUBLIC_ORIGIN}/sitemap.xml\n", mimetype="text/plain")
+
+
+@app.get("/sitemap.xml")
+def sitemap():
+    paths = [url_for(endpoint) for endpoint in PAGE_DESCRIPTIONS if endpoint != "videos"]
+    paths.extend(url_for("category", slug=c["slug"]) for c in CATEGORIES + COLLECTIONS)
+    paths.extend(url_for("product", slug=p["slug"]) for p in PRODUCTS)
+    root = ET.Element("urlset", xmlns="http://www.sitemaps.org/schemas/sitemap/0.9")
+    for path in dict.fromkeys(paths):
+        ET.SubElement(ET.SubElement(root, "url"), "loc").text = PUBLIC_ORIGIN + path
+    return Response(ET.tostring(root, encoding="utf-8", xml_declaration=True), mimetype="application/xml")
+
+
 def cart():
     return session.setdefault("quote_cart", {})
 
@@ -210,6 +244,8 @@ def cart_count():
 def inject_global():
     quote_cart = cart()
     return {
+        "public_origin": PUBLIC_ORIGIN,
+        "page_descriptions": PAGE_DESCRIPTIONS,
         "categories": CATEGORIES,
         "cart_count": cart_count(),
         "cart_ids": [item["product_id"] for item in quote_cart.values()],
@@ -419,13 +455,18 @@ def render_explore(category_slug=""):
     category, subtype, query, seed = explore_args(category_slug)
     until = max(1, min(request.args.get("ate", 1, type=int) or 1, EXPLORE_MAX_INITIAL_PAGES))
     blocks, has_more, total, page = [], False, 0, 0
-    for page in range(1, until + 1):
+    single_page = request.args.get("pagina", type=int)
+    if single_page is not None and single_page < 1:
+        abort(404)
+    for page in ([single_page] if single_page else range(1, until + 1)):
         page_blocks, has_more, total = explore_page(category, query, page, subtype, seed)
+        if single_page and page > 1 and not page_blocks:
+            abort(404)
         blocks += page_blocks
         if not has_more:
             break
     feed_args = dict(categoria=category or None, q=query or None, subcategoria=subtype or None, surpresa=seed or None)
-    return render_template("passeio.html", blocks=blocks, has_more=has_more, next_page=page + 1, total=total, feed_args=feed_args,
+    return render_template("passeio.html", current_page=single_page or 1, blocks=blocks, has_more=has_more, next_page=page + 1, total=total, feed_args=feed_args,
                            active_category=get_category(category) if category else None, query=query,
                            active_subtype=subtype, seed=seed, intents=EXPLORE_INTENTS, collections=COLLECTIONS,
                            thumbs=quote_thumbs())
