@@ -697,6 +697,11 @@ def outside_box():
 
 
 @app.get("/empresas-licitacoes")
+def b2b_legacy():
+    return redirect(url_for("b2b"), code=301)
+
+
+@app.get("/empresas")
 def b2b():
     return render_template("b2b.html")
 
