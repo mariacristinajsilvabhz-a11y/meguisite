@@ -264,6 +264,10 @@ html body .company-lab .cl-hero-secondary{display:inline-flex;align-items:center
 html body .company-lab .cl-hero:not(#cl-a):not(#cl-b):not(#cl-c) .cl-title-script{font-family:'Allison',cursive!important;color:#c29ada!important}
 html body .company-lab .cl-hero:not(#cl-a):not(#cl-b):not(#cl-c) .cl-title-lead{font-family:'Space Grotesk',sans-serif!important;color:#f6eff9!important}
 html body .company-lab .cl-hero:not(#cl-a):not(#cl-b):not(#cl-c) .cl-main-link span{color:#fff!important}
+
+/* As miniaturas têm uma área fixa, independente da proporção da foto. */
+html body .company-lab .cl-thumbnails:not(#thumb-a):not(#thumb-b):not(#thumb-c) button{position:relative!important;display:block!important;flex-shrink:0;overflow:hidden!important;isolation:isolate;padding:0!important;min-height:0!important;min-width:0!important}
+html body .company-lab .cl-thumbnails:not(#thumb-a):not(#thumb-b):not(#thumb-c) button>img{position:absolute!important;inset:6px!important;display:block!important;width:calc(100% - 12px)!important;height:calc(100% - 12px)!important;max-width:calc(100% - 12px)!important;max-height:calc(100% - 12px)!important;min-width:0!important;min-height:0!important;object-fit:contain!important;object-position:center!important;transform:none!important;margin:0!important;padding:0!important;filter:none!important}
 </style>
 {% endblock %}
 {% block content %}
