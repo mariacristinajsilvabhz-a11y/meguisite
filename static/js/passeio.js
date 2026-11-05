@@ -68,6 +68,7 @@
   const savePlace = () => {
     try { sessionStorage.setItem(placeKey, JSON.stringify({ y: window.scrollY, pages: loadedPages })); } catch (_) {}
     const url = new URL(location.href);
+    if (url.searchParams.has('pagina')) return;
     if (loadedPages > 1) url.searchParams.set('ate', String(Math.min(loadedPages, 5))); else url.searchParams.delete('ate');
     history.replaceState(history.state, '', url);
   };
@@ -110,6 +111,13 @@
       { transform: `translate(${dx}px, ${dy}px) scale(.25)`, opacity: 0.2 }
     ], { duration: 700, easing: 'cubic-bezier(.3,.6,.3,1)' }).finished.then(() => ghost.remove());
   };
+  let feedbackTimer;
+  const announce = message => {
+    if (!status) return;
+    clearTimeout(feedbackTimer);
+    status.textContent = message;
+    feedbackTimer = setTimeout(() => { status.textContent = ''; }, 4500);
+  };
   const updateTray = result => {
     if (!tray) return;
     tray.hidden = false;
@@ -122,7 +130,7 @@
     document.querySelectorAll('.quote-count').forEach(count => { count.textContent = result.count; });
     document.querySelector('.quote-button')?.setAttribute('aria-label', `Meu orçamento: ${result.count} itens`);
     if (!calm) { tray.classList.remove('is-bump'); void tray.offsetWidth; tray.classList.add('is-bump'); setTimeout(() => tray.classList.remove('is-bump'), 300); }
-    if (status) status.textContent = `${result.name} incluído no orçamento. Agora são ${result.count} itens.`;
+    announce(`${result.name} incluído no orçamento.`);
   };
   root.addEventListener('submit', async event => {
     const form = event.target.closest('.ps-add');
@@ -136,13 +144,12 @@
       if (!response.ok) throw new Error(String(response.status));
       const result = await response.json();
       if (tray) tray.hidden = false;
+      updateTray(result);
       fly(form.closest('.ps-card').querySelector('[data-main-image]'), tray);
-      setTimeout(() => updateTray(result), calm ? 0 : 520);
       button.classList.add('is-added');
       button.setAttribute('aria-label', `${result.name} está no orçamento. Incluir de novo`);
     } catch (error) {
-      if (status) status.textContent = 'Não foi possível incluir agora. Tente de novo em instantes.';
-      form.submit();
+      announce('Confira seu orçamento antes de tentar incluir o produto novamente.');
     } finally {
       button.disabled = false;
     }

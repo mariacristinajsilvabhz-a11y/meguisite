@@ -5,8 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="{{ url_for('static',filename='js/theme-mode.js',v='20261028-night-v1') }}"></script>
   <meta name="theme-color" content="#171219">
-  <meta name="description" content="Megui Personalizados: confecção e personalização em malha. Camisetas, uniformes, saquinhos, eventos, brindes e comunicação visual.">
-  <title>{% block title %}Megui Personalizados{% endblock %}</title>
+  {% set page_title %}{% block title %}Megui Personalizados{% endblock %}{% endset %}
+  {% set description = (product.short or product.description or product.name) if product is defined else ((active_category.description ~ ' Solicite um orçamento com a Megui.') if active_category else page_descriptions.get(request.endpoint, page_descriptions.home)) %}
+  {% set path = url_for('category', slug=active_category.slug) if active_category else request.path %}
+  {% set canonical = public_origin ~ path ~ (('?pagina=' ~ current_page) if current_page|default(1) > 1 else '') %}
+  <title>{{ page_title }}{% if current_page|default(1) > 1 %} · Página {{ current_page }}{% endif %}</title>
+  <meta name="description" content="{{ description|striptags|truncate(165) }}">
+  {% if request.endpoint in page_descriptions or request.endpoint in ['product', 'category'] %}
+  <link rel="canonical" href="{{ canonical }}">
+  {% endif %}
+  {% if request.endpoint in ['quote_view', 'home_preview', 'create_art'] or (request.endpoint in ['products','category'] and (query or seed or active_subtype or request.args.get('ate'))) %}
+  <meta name="robots" content="noindex,follow">
+  {% endif %}
+  <meta property="og:title" content="{{ page_title }}">
+  <meta property="og:description" content="{{ description|striptags|truncate(165) }}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ canonical }}">
+  {% set share_image = (product.image_url or (url_for('static',filename=product.image) if product.image else '')) if product is defined else '' %}
+  <meta property="og:image" content="{{ share_image if share_image.startswith('https://') else public_origin ~ (share_image if share_image.startswith('/') else url_for('static',filename='img/logo-megui-oficial.png')) }}">
+  {% if request.endpoint == 'home' %}
+  <script type="application/ld+json">{{ {"@context":"https://schema.org","@type":"LocalBusiness","name":"Megui Personalizados","url":public_origin,"logo":public_origin ~ url_for('static',filename='img/logo-megui-oficial.png'),"telephone":"+" ~ whatsapp_number,"address":{"@type":"PostalAddress","streetAddress":"Avenida Seis, 31, Água Branca","addressLocality":"Contagem","addressRegion":"MG","addressCountry":"BR"}}|tojson }}</script>
+  {% elif request.endpoint == 'product' and product is defined %}
+  <script type="application/ld+json">{{ {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":public_origin ~ "/"},{"@type":"ListItem","position":2,"name":"Produtos","item":public_origin ~ url_for('products')},{"@type":"ListItem","position":3,"name":product.name,"item":canonical}]}|tojson }}</script>
+  {% endif %}
   <link id="megui-favicon" rel="icon" type="image/svg+xml" href="{{ url_for('static',filename='ui/favicon-butterfly.svg',v='20261016-v1') }}" data-logo="{{ url_for('static',filename='img/logo-megui-oficial.png') }}">
   <script defer src="{{ url_for('static',filename='js/favicon.js',v='20261016-v1') }}"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">

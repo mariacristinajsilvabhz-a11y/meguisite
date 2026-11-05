@@ -39,6 +39,9 @@ class Mockup3DTests(unittest.TestCase):
             provider.return_value = {'status':'SUCCEEDED','model_urls':{'glb':'https://evil.test/test.glb'}}
             self.assertEqual(self.client.get('/api/mockups/3d/tasks/valid-task-1234').status_code,502)
     def test_editor_assets(self):
-        for path in ['/criar-arte','/static/mockups/recognition.js','/static/mockups/recognition-worker.js','/static/mockups/vision/model.json','/static/mockups/vision/weights.bin']:
+        redirect = self.client.get('/criar-arte')
+        self.assertEqual(redirect.status_code, 302)
+        self.assertEqual(redirect.location, '/fora-da-caixa')
+        for path in ['/static/mockups/recognition.js','/static/mockups/recognition-worker.js','/static/mockups/vision/model.json','/static/mockups/vision/weights.bin']:
             with self.client.get(path) as response:
                 self.assertEqual(response.status_code,200,path)

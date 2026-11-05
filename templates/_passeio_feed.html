@@ -36,6 +36,6 @@
 {% endif %}
 {% endfor %}
 {% if has_more %}
-  <a class="ps-more" href="{{ url_for('products', ate=next_page, **feed_args) }}"
+  <a class="ps-more" href="{{ url_for('products', pagina=next_page, **feed_args) }}"
      data-src="{{ url_for('explore_more', pagina=next_page, **feed_args) }}" data-page="{{ next_page }}">Carregar mais produtos</a>
 {% endif %}
