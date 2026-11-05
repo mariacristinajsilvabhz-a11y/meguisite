@@ -234,3 +234,19 @@ html body :is(.client-logo-wall,.client-ribbon,.mw-brandproof-logos,.cl-logos) i
 html[data-theme=dark] body :is(.client-logo-wall,.client-ribbon,.mw-brandproof-logos,.cl-logos) img[src$="samba-do-maestro-acervo.png"]{
  filter:none!important;opacity:1!important;mix-blend-mode:normal!important;background:transparent!important;
 }
+
+/* Orçamento: superfícies e conteúdo acompanham o tema, inclusive sem itens. */
+html[data-theme=dark] body main .quote-studio{background:#211929!important;color:#eee3f3!important}
+html[data-theme=dark] body main .quote-studio :is(.quote-item,.send-quote-card){background:#302339!important;border-color:#695176!important;box-shadow:none!important}
+html[data-theme=dark] body main .quote-studio :is(.quote-empty-layout,.quote-steps li,.quote-steps span,.quote-start-points a,.quote-guidance,.quote-selection-heading){border-color:#695176!important}
+html[data-theme=dark] body main .quote-studio :is(.quote-start-points a,.quote-start-points strong,.quote-item h2 a,.quote-selection-heading>a,.quote-empty-help){color:#eee3f3!important}
+html[data-theme=dark] body main .quote-studio :is(.quote-start-points small,.quote-reference,.field-optional,.send-quote-card>small){color:#d3bedf!important}
+html[data-theme=dark] body main .quote-studio :is(.quote-start-points span,.quote-item-index,.quote-steps span){color:#d8b6e9!important}
+html[data-theme=dark] body main .quote-studio .quote-steps [aria-current=step]{color:#f4eafa!important}
+html[data-theme=dark] body main .quote-studio :is(.btn-primary,.quote-send-button){background:#d8bde8!important;color:#2f173b!important;border-color:#d8bde8!important}
+html[data-theme=dark] body main .quote-studio :is(.btn-primary,.quote-send-button):hover{background:#e7cef4!important}
+html[data-theme=dark] body main .quote-studio .quote-send-button :is(span,small){color:inherit!important}
+html[data-theme=dark] body main .quote-studio .btn-secondary{background:#3c2b48!important;color:#eee3f3!important;border-color:#80678e!important}
+html[data-theme=dark] body main .quote-studio .remove-link{background:#493044!important;color:#ffdae6!important}
+html[data-theme=dark] body main .quote-studio :is(.quote-field-error,.config-warning){color:#ffbfd1!important}
+html[data-theme=dark] body main .quote-studio input[aria-invalid=true]{border-color:#ff9db9!important}
