@@ -161,6 +161,31 @@ html body .company-lab .cl-kit-suggestion h3{font:550 23px/1.2 "Space Grotesk",s
 @media(max-width:600px){.cl-kit-carousel-nav{gap:22px}.cl-kit-carousel-nav>button{flex-basis:44px;width:44px;height:44px}.cl-kit-preset-nav button{font-size:10px;padding:8px 10px}.cl-welcome .cl-kit-picture{padding-top:38px}.cl-kit-dialog>.cl-kit-dialog-media{height:min(63dvh,440px)}html body .company-lab .cl-kit-suggestion h3{font-size:22px!important}.company-lab .cl-kit-suggestion p{font-size:12px;min-height:0}.cl-kit-more{font-size:11px}.cl-kit-carousel-nav small{font-size:8px}}
 @media(prefers-reduced-motion:reduce){.cl-kit-carousel-nav>button{transition:none}}
 
+
+/* Círculo ancorado no palco; todos os controles ficam fora dele. */
+.cl-welcome .cl-kit-picture{padding:30px 0 0;display:flex;flex-direction:column;align-items:center}
+.cl-welcome .cl-welcome-photo[data-cl-kit-stage]{width:100%;aspect-ratio:1;flex:none}
+.cl-welcome-photo>.cl-welcome-thread{position:absolute;inset:0;width:100%;height:100%;z-index:0;color:#ab87bf;pointer-events:none}
+.cl-welcome-photo>.cl-kit-scene{inset:6% 5% 7%;z-index:1}
+.cl-kit-controls{width:min(390px,100%);margin:23px auto 0;display:flex;flex-direction:column;align-items:stretch;gap:12px}
+.cl-kit-controls .cl-kit-carousel-nav{display:grid;grid-template-columns:48px minmax(0,1fr) 48px;align-items:center;gap:14px;margin:0;width:100%}
+.cl-kit-controls .cl-kit-carousel-nav>button{width:48px;height:48px;min-height:48px;border-radius:14px;border:1px solid #b58bd0;background:#b58bd0;color:#302039;box-shadow:0 3px 0 #8c65a13d;transform:none}
+.cl-kit-controls .cl-kit-carousel-nav>button svg{width:23px;height:23px}
+.cl-kit-controls .cl-kit-carousel-nav>.cl-welcome-zoom{position:static;inset:auto;transform:none;width:100%;height:48px;min-width:0;display:flex;justify-content:center;gap:14px;padding:10px 16px;border-radius:14px;background:#edddf5;color:#553568;border-color:#c6a5da;font-size:12px;white-space:nowrap;box-shadow:0 3px 0 #8c65a126}
+.cl-kit-controls .cl-kit-carousel-nav>button:hover{background:#c8a5df;border-color:#c8a5df;transform:translateY(-1px)}
+.cl-kit-controls .cl-kit-carousel-nav>.cl-welcome-zoom:hover{background:#f6edfb}
+.cl-kit-counter-label{text-align:center;line-height:1.4}
+.cl-kit-counter-label strong{font:500 12px/1.4 "Space Grotesk",sans-serif;color:var(--cl-muted);letter-spacing:.03em}
+.cl-kit-controls .cl-kit-preset-nav{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;margin:0;width:100%}
+.cl-kit-controls .cl-kit-preset-nav button{min-height:40px;padding:9px 6px;border:1px solid #ac85bf99;border-radius:10px;background:#b68ad216;color:var(--cl-ink);font-size:10px;font-weight:500;line-height:1.35}
+.cl-kit-controls .cl-kit-preset-nav button[aria-pressed=true]{background:#b58bd0;border-color:#b58bd0;color:#302039;font-weight:650;box-shadow:0 2px 0 #8c65a126}
+.cl-kit-controls .cl-kit-preset-nav button:hover{border-color:#b58bd0;background:#b68ad233}
+.cl-kit-controls .cl-kit-preset-nav button[aria-pressed=true]:hover{background:#c5a0dc}
+.cl-welcome .cl-welcome-caption{margin-top:16px;padding-top:0;width:100%;text-align:center}
+html[data-theme=dark] .cl-welcome-photo>.cl-welcome-thread{color:#b591cc}
+@media(max-width:600px){.cl-welcome .cl-kit-picture{padding:30px 0 0}.cl-kit-controls{width:min(370px,100%);margin-top:20px;gap:12px}.cl-kit-controls .cl-kit-carousel-nav{grid-template-columns:46px minmax(0,1fr) 46px;gap:12px}.cl-kit-controls .cl-kit-carousel-nav>button{width:46px;height:46px;min-height:46px}.cl-kit-controls .cl-kit-carousel-nav>.cl-welcome-zoom{width:100%;height:46px;font-size:12px}.cl-kit-controls .cl-kit-preset-nav button{font-size:10px;min-height:42px}}
+@media(max-width:380px){.cl-kit-controls .cl-kit-preset-nav{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
 </style>
 {% endblock %}
 {% block content %}
@@ -194,17 +219,21 @@ html body .company-lab .cl-kit-suggestion h3{font:550 23px/1.2 "Space Grotesk",s
   <div class="cl-welcome-stamp"><span>UM NOVO</span><strong>começo.</strong>{{ icon('butterfly') }}</div>
   <span class="cl-welcome-side" aria-hidden="true">PENSADO PARA CHEGAR JUNTO.</span>
   <div class="cl-welcome-photo" data-cl-kit-stage role="region" aria-roledescription="carrossel" aria-label="Sugestões de kits de boas-vindas. Use as setas para explorar." tabindex="0">
+   <svg class="cl-welcome-thread" viewBox="0 0 560 560" fill="none" aria-hidden="true"><circle cx="280" cy="280" r="267" stroke="currentColor" stroke-width="1.2" stroke-dasharray="2 8" stroke-linecap="round"/></svg>
    {% for kit in welcome_kits %}<div class="cl-kit-scene cl-kit-scene--{{ kit.key }}" data-cl-kit-scene="{{ kit.key }}" role="group" aria-roledescription="composição" aria-label="{{ loop.index }} de {{ welcome_kits|length }}: {{ kit.title }}" {% if not loop.first %}hidden{% endif %}>{% for photo,alt,position in kit.photos %}<img class="cl-kit-piece cl-kit-piece--{{ position }}" src="{{ url_for('static',filename=photo) }}" alt="{{ alt }}" loading="lazy" decoding="async" draggable="false">{% endfor %}</div>{% endfor %}
-   <button type="button" class="cl-welcome-zoom" data-cl-kit-zoom>Olhe de perto <span aria-hidden="true">+</span></button>
+   
   </div>
+  <div class="cl-kit-controls">
   <div class="cl-kit-carousel-nav" aria-label="Trocar composição">
    <button type="button" data-cl-kit-prev aria-label="Ver kit anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m14 6-6 6 6 6M8 12h12"/></svg></button>
-   <span><small>EXPLORE AS COMPOSIÇÕES</small><strong data-cl-kit-counter role="status" aria-live="polite">01 / 04 · Completo</strong></span>
+   <button type="button" class="cl-welcome-zoom" data-cl-kit-zoom>Olhe de perto <span aria-hidden="true">+</span></button>
    <button type="button" data-cl-kit-next aria-label="Ver próximo kit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m10 6 6 6-6 6M4 12h12"/></svg></button>
   </div>
+  <div class="cl-kit-counter-label"><strong data-cl-kit-counter role="status" aria-live="polite">01 / 04 · Completo</strong></div>
   <div class="cl-kit-preset-nav" aria-label="Escolher sugestão de kit">{% for kit in welcome_kits %}<button type="button" data-cl-kit-preset="{{ loop.index0 }}" aria-pressed="{{ 'true' if loop.first else 'false' }}">{{ kit.label }}</button>{% endfor %}</div>
+  </div>
   <div class="cl-welcome-caption"><span class="cl-welcome-swatches" aria-hidden="true"><i></i><i></i><i></i></span><span data-cl-kit-caption>{{ welcome_kits[0].caption }}</span></div>
-  <svg class="cl-welcome-thread" viewBox="0 0 500 440" fill="none" aria-hidden="true"><path d="M42 101C-15 220 3 363 121 403S426 436 467 316 475 87 352 49" stroke="currentColor" stroke-width="1" stroke-dasharray="3 7"/><path d="m345 43 8 6-3 10" stroke="currentColor"/></svg>
+  
  </div>
  <div class="cl-kit-copy"><span class="cl-kicker">{{ icon('butterfly') }} BOAS-VINDAS COM A SUA IDENTIDADE</span><h2 id="cl-kit-title">O primeiro dia<br>já diz <span>muito.</span></h2><p>Antes da primeira reunião, um gesto de cuidado. Um kit que apresenta a sua marca e faz quem chega se sentir parte da equipe.</p>
  <div class="cl-kit-suggestion"><h3 data-cl-kit-name>{{ welcome_kits[0].title }}</h3><p data-cl-kit-description>{{ welcome_kits[0].description }}</p></div>
