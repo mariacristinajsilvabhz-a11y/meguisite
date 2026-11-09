@@ -41,7 +41,7 @@ html:not(#nh1):not(#nh2):not(#nh3) .nh-outside-butterfly{filter:drop-shadow(0 0 
 </style>
 {% endblock %}
 
-{% block page_finish %}<link rel="stylesheet" href="{{ url_for('static',filename='css/nova-home.css',v='20261109-recentes') }}">{% endblock %}
+{% block page_finish %}<link rel="stylesheet" href="{{ url_for('static',filename='css/nova-home.css',v='20261109-recentes-selo') }}">{% endblock %}
 
 {% block content %}
 {% set wa = 'https://wa.me/' ~ whatsapp_number ~ '?text=' %}
@@ -115,7 +115,7 @@ html:not(#nh1):not(#nh2):not(#nh3) .nh-outside-butterfly{filter:drop-shadow(0 0 
     <div class="nh-wrap">
       <a class="nh-recent-card" href="{{ url_for('portfolio_view', _anchor=lw.key) }}">
         <div class="nh-recent-copy">
-          <p class="nh-recent-kicker"><b>NOVO</b> ACABOU DE SAIR DA PRODUÇÃO</p>
+          <p class="nh-recent-kicker"><span class="nh-recent-fly" aria-hidden="true">{{ icon('butterfly') }}</span><b>Acabou de sair da produção</b></p>
           <h2 id="nh-recent-title">{{ lw.title }}</h2>
           <p>Uniformes esportivos para cada equipe do festival. Veja as peças em campo, da roda à comemoração.</p>
           <span class="nh-recent-go">Ver o trabalho {{ icon('arrow') }}</span>
