@@ -141,6 +141,7 @@
         <a href="mailto:{{ contact_email }}">{{ contact_email }}</a>
         <span>{{ contact_address }}</span>
         <a href="{{ url_for('quote_view') }}">Meu orçamento</a>
+        <a href="{{ url_for('policies') }}" {% if request.endpoint == 'policies' %}aria-current="page"{% endif %}>Trocas e políticas</a>
       </div>
     </div>
     <div class="container footer-bottom">

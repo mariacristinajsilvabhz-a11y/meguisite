@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% from '_icons.html' import icon %}
+{% block title %}Trocas e políticas | Megui Personalizados{% endblock %}
+{% block final_head %}<link rel="stylesheet" href="{{ url_for('static',filename='css/politicas.css',v='20261109-politicas') }}">{% endblock %}
+{% block content %}
+{% set wa = 'https://wa.me/' ~ whatsapp_number ~ '?text=' %}
+<article class="mp">
+  <header class="mp-hero">
+    <div class="mp-wrap">
+      <span class="mp-eyebrow">Trocas, prazos e privacidade</span>
+      <h1>Combinado claro,<br><strong>peça bem feita.</strong></h1>
+      <p>Cada peça da Megui é produzida sob encomenda, com a sua personalização. Aqui está, em linguagem simples, como funcionam pedidos, trocas, prazos e o cuidado com os seus dados.</p>
+      <small>Última atualização: 9 de novembro de 2026</small>
+    </div>
+  </header>
+
+  <div class="mp-wrap mp-layout">
+    <nav class="mp-nav" aria-label="Seções desta página">
+      <a href="#pedido">Como funciona o pedido</a>
+      <a href="#arte">Aprovação da arte</a>
+      <a href="#trocas">Trocas e devoluções</a>
+      <a href="#cancelamento">Cancelamento</a>
+      <a href="#prazos">Prazos e entrega</a>
+      <a href="#cuidados">Cuidados com as peças</a>
+      <a href="#privacidade">Privacidade</a>
+      <a href="#contato">Fale com a gente</a>
+    </nav>
+
+    <div class="mp-content">
+      <section id="pedido">
+        <span class="mp-num">01</span>
+        <h2>Como funciona o pedido</h2>
+        <ol class="mp-steps">
+          <li><b>Orçamento.</b> Você monta o pedido pelo site ou chama no WhatsApp. A nossa equipe confirma valores, materiais, quantidades e prazo.</li>
+          <li><b>Arte.</b> Enviamos a arte ou a prova digital para você conferir e aprovar.</li>
+          <li><b>Pagamento.</b> A produção começa depois da aprovação da arte e da confirmação do pagamento, nas condições combinadas no orçamento.</li>
+          <li><b>Produção e entrega.</b> Produzimos na nossa confecção em Contagem e entregamos ou deixamos para retirada, como foi combinado.</li>
+        </ol>
+      </section>
+
+      <section id="arte">
+        <span class="mp-num">02</span>
+        <h2>Aprovação da arte</h2>
+        <p>A arte aprovada é a referência da produção. Antes de aprovar, confira com calma:</p>
+        <ul>
+          <li>textos, nomes, números e ortografia;</li>
+          <li>cores, posição e tamanho da estampa;</li>
+          <li>a grade de tamanhos e as quantidades de cada um.</li>
+        </ul>
+        <p>Depois de aprovada, a arte segue para produção do jeito que está. Erros que já estavam na arte aprovada não são considerados defeito.</p>
+        <p class="mp-note">A cor na tela do celular ou do computador pode ser um pouco diferente da cor impressa no tecido ou no material. Pequenas variações de tom e de posição fazem parte do processo de personalização.</p>
+      </section>
+
+      <section id="trocas">
+        <span class="mp-num">03</span>
+        <h2>Trocas e devoluções</h2>
+        <div class="mp-cards">
+          <div class="mp-card is-yes">
+            <h3>{{ icon('check') }} A gente resolve</h3>
+            <ul>
+              <li>defeito de fabricação (costura, tecido, estampa que solta ou falha);</li>
+              <li>arte diferente da que você aprovou;</li>
+              <li>tamanho ou quantidade diferente do pedido;</li>
+              <li>produto que chegou danificado.</li>
+            </ul>
+          </div>
+          <div class="mp-card is-no">
+            <h3>{{ icon('close') }} Não entra como troca</h3>
+            <ul>
+              <li>desistência depois que a produção começou, porque a peça é feita só para você;</li>
+              <li>tamanho escolhido errado no pedido;</li>
+              <li>erro que já estava na arte aprovada;</li>
+              <li>desgaste natural ou lavagem fora das orientações.</li>
+            </ul>
+          </div>
+        </div>
+        <h3>Como pedir</h3>
+        <p>Confira as peças assim que receber. Se algo não estiver certo, fale com a gente pelo WhatsApp ou e-mail com o número do pedido e fotos do problema. O prazo para reclamar de defeitos segue o Código de Defesa do Consumidor: <b>30 dias</b> para produtos não duráveis e <b>90 dias</b> para produtos duráveis, contados do recebimento.</p>
+        <p>Confirmado o problema, a gente <b>refaz ou conserta a peça</b> sem custo para você. Se isso não for possível, devolvemos o valor correspondente às peças com problema.</p>
+      </section>
+
+      <section id="cancelamento">
+        <span class="mp-num">04</span>
+        <h2>Cancelamento</h2>
+        <p><b>Antes da produção começar</b>, você pode cancelar o pedido e recebe de volta o valor pago.</p>
+        <p><b>Depois que a produção começou</b>, o material já foi cortado, estampado ou comprado para o seu pedido. Nesse caso, avaliamos junto com você o que já foi produzido e os custos envolvidos.</p>
+      </section>
+
+      <section id="prazos">
+        <span class="mp-num">05</span>
+        <h2>Prazos e entrega</h2>
+        <p>O prazo de produção é informado no orçamento e começa a contar a partir da aprovação da arte e da confirmação do pagamento. Mudanças na arte ou na grade depois da aprovação podem alterar o prazo.</p>
+        <p>A forma de entrega (retirada, entrega local ou envio) e o valor do frete, quando houver, são combinados no orçamento. Tem uma data importante, como um evento? Conte para a gente logo no início, para planejarmos a produção.</p>
+      </section>
+
+      <section id="cuidados">
+        <span class="mp-num">06</span>
+        <h2>Cuidados com as peças</h2>
+        <p>Para a estampa e o tecido durarem mais:</p>
+        <ul>
+          <li>lave do avesso, em água fria e com sabão neutro;</li>
+          <li>não use alvejante nem deixe de molho por muito tempo;</li>
+          <li>seque à sombra e evite secadora;</li>
+          <li>não passe ferro diretamente sobre a estampa.</li>
+        </ul>
+      </section>
+
+      <section id="privacidade">
+        <span class="mp-num">07</span>
+        <h2>Privacidade</h2>
+        <p>Usamos os dados que você nos envia (nome, contato, informações do pedido e arquivos de arte) apenas para fazer o orçamento, produzir, entregar e falar com você sobre o pedido. Não vendemos nem compartilhamos seus dados para outros fins.</p>
+        <p>Suas artes e logotipos são usados só no seu pedido. Se quiser que a gente não mostre o trabalho no nosso portfólio ou nas redes sociais, é só avisar.</p>
+        <p>Você pode pedir a qualquer momento para consultar, corrigir ou apagar seus dados, conforme a Lei Geral de Proteção de Dados (LGPD), pelo e-mail <a href="mailto:{{ contact_email }}">{{ contact_email }}</a>.</p>
+      </section>
+
+      <section id="contato" class="mp-contact">
+        <h2>Ficou alguma dúvida?</h2>
+        <p>A gente explica tudo antes de você fechar o pedido.</p>
+        <div class="mp-actions">
+          <a class="mp-btn mp-btn-main" href="{{ wa ~ ('Olá, Megui! Tenho uma dúvida sobre trocas e pedidos.'|urlencode) }}" target="_blank" rel="noopener">{{ icon('whatsapp') }} Falar no WhatsApp</a>
+          <a class="mp-btn mp-btn-soft" href="mailto:{{ contact_email }}">{{ contact_email }}</a>
+        </div>
+        <small>Megui Personalizados · CNPJ {{ company_cnpj }}{% if contact_address %} · {{ contact_address }}{% endif %}</small>
+      </section>
+    </div>
+  </div>
+</article>
+{% endblock %}

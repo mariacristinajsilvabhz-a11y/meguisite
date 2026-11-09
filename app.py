@@ -766,6 +766,11 @@ def about():
     return render_template("sobre.html")
 
 
+@app.get("/politicas")
+def policies():
+    return render_template("politicas.html")
+
+
 @app.get("/contato")
 def contact():
     return render_template("contact.html")
