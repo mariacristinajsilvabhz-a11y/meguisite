@@ -1,8 +1,15 @@
 /* Trabalhos recentes: abre a página /trabalhos antes do capítulo da Alexa (#marcas). */
 .meg-work .mw-recent{--rc-paper:#fbf8fd;--rc-ink:#2f1d38;--rc-soft:#6b5676;--rc-lilac:#9772a6;--rc-chip:#efe5f5;background:var(--rc-paper);color:var(--rc-ink);padding:clamp(56px,7vw,96px) 0 clamp(60px,7vw,100px);scroll-margin-top:90px}
 .meg-work .mw-recent-head{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(24px,5vw,72px);align-items:end;margin-bottom:clamp(28px,4vw,44px)}
-.meg-work .mw-recent-badge{display:inline-flex;align-items:center;gap:10px;font:650 10px/1.5 "Sora",sans-serif;letter-spacing:.14em;color:var(--rc-lilac)}
-.meg-work .mw-recent-badge b{display:inline-block;padding:4px 10px;border-radius:999px;background:var(--rc-lilac);color:#fff;font-weight:650;letter-spacing:.12em}
+body .meg-work .mw-recent-badge{position:relative;display:inline-flex;align-items:center;gap:12px;padding:8px 18px 8px 8px;border-radius:999px;background:linear-gradient(var(--rc-paper),var(--rc-paper)) padding-box,linear-gradient(110deg,#c79be6,#9772a6 40%,#f0c9e4 70%,#c79be6) border-box;border:1.5px solid transparent;box-shadow:0 10px 26px -16px #9772a6aa;color:var(--rc-ink);overflow:hidden}
+body .meg-work .mw-recent-badge:after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 35%,#ffffff55 50%,transparent 65%);transform:translateX(-120%);animation:rc-shine 4.5s ease-in-out 1s infinite;pointer-events:none}
+body .meg-work .mw-recent-badge-fly{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#9772a6,#c79be6);color:#fff;flex-shrink:0}
+body .meg-work .mw-recent-badge-fly .icon{width:19px;height:19px;animation:rc-flap 2.4s ease-in-out infinite;transform-origin:center}
+body .meg-work .mw-recent-badge b{font:650 11px/1.3 "Sora",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--rc-ink)}
+body .meg-work .mw-recent-badge i{width:1px;height:16px;background:currentColor;opacity:.25}
+body .meg-work .mw-recent-badge em{font:italic 400 15px/1.2 Georgia,serif;letter-spacing:0;color:var(--rc-lilac)}
+@keyframes rc-flap{0%,100%{transform:scaleX(1) rotate(-6deg)}50%{transform:scaleX(.72) rotate(4deg)}}
+@keyframes rc-shine{0%{transform:translateX(-120%)}35%,100%{transform:translateX(120%)}}
 .meg-work .mw-recent h2{margin:16px 0 0;font:550 clamp(36px,4.4vw,60px)/1.04 "Space Grotesk",sans-serif;letter-spacing:-.05em;color:var(--rc-ink)}
 body .meg-work .mw-recent .mw-recent-sub{margin:10px 0 0;font:italic 400 clamp(24px,2.6vw,34px)/1.2 Georgia,serif;letter-spacing:-.02em;color:var(--rc-lilac)}
 .meg-work .mw-recent-copy p{margin:0;max-width:48ch;font:400 14px/1.85 "Sora",sans-serif;color:var(--rc-soft)}
@@ -23,6 +30,8 @@ body .meg-work .mw-recent .mw-recent-sub{margin:10px 0 0;font:italic 400 clamp(2
 
 html[data-theme=dark] .meg-work .mw-recent{--rc-paper:#211b25;--rc-ink:#f2eaf6;--rc-soft:#c7b8cf;--rc-lilac:#d1aadb;--rc-chip:#352a3b}
 html[data-theme=dark] .meg-work .mw-recent-details li{color:#eadcf0}
+html[data-theme=dark] .meg-work .mw-recent-badge{box-shadow:0 10px 30px -16px #c79be680}
+html[data-theme=dark] .meg-work .mw-recent-badge:after{background:linear-gradient(100deg,transparent 35%,#ffffff22 50%,transparent 65%)}
 html[data-theme=dark] .meg-work .mw-recent-cta{background:#d6b4eb;color:#2c1935}
 html[data-theme=dark] .meg-work .mw-recent-cta:hover{background:#e5cef2}
 
@@ -30,5 +39,6 @@ html[data-theme=dark] .meg-work .mw-recent-cta:hover{background:#e5cef2}
   .meg-work .mw-recent-head{grid-template-columns:1fr;gap:16px}
   .meg-work .mw-recent-grid{grid-template-columns:1fr 1fr;grid-auto-rows:150px;gap:10px;grid-template-areas:"a b" "a c" "d e" "d f"}
   .meg-work .mw-recent-photo{border-radius:16px}
+  body .meg-work .mw-recent-badge{gap:9px;padding-right:16px}body .meg-work .mw-recent-badge b{font-size:10px}body .meg-work .mw-recent-badge :is(i,em){display:none}
 }
-@media(prefers-reduced-motion:reduce){.meg-work .mw-recent :is(img,.mw-recent-cta){transition:none}}
+@media(prefers-reduced-motion:reduce){.meg-work .mw-recent :is(img,.mw-recent-cta){transition:none}body .meg-work .mw-recent-badge:after,body .meg-work .mw-recent-badge-fly .icon{animation:none}}
