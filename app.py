@@ -291,7 +291,20 @@ def home():
     if not items:
         items = order_by_stock(PRODUCTS)[:6]
     # A home anterior (index.html) fica guardada para consulta; a atual é a jornada de nova_home.html.
-    return render_template("nova_home.html", products=items, home_categories=home_categories)
+    return render_template("nova_home.html", products=items, home_categories=home_categories, black_friday=black_friday_active())
+
+
+# Black Friday: o anúncio substitui o bloco de apresentação da home até o fim do dia 16/11
+# (horário de Brasília). Depois disso a apresentação original volta sozinha, sem novo deploy.
+BLACK_FRIDAY_END = (2026, 11, 16, 23, 59, 59)
+
+
+def black_friday_active(now=None):
+    from datetime import datetime, timedelta, timezone
+    brasilia = timezone(timedelta(hours=-3))
+    end = datetime(*BLACK_FRIDAY_END, tzinfo=brasilia)
+    now = now or datetime.now(brasilia)
+    return now <= end
 
 
 @app.get("/nova-home")

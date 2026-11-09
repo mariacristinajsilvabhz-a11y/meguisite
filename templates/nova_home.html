@@ -41,12 +41,55 @@ html:not(#nh1):not(#nh2):not(#nh3) .nh-outside-butterfly{filter:drop-shadow(0 0 
 </style>
 {% endblock %}
 
-{% block page_finish %}<link rel="stylesheet" href="{{ url_for('static',filename='css/nova-home.css',v='20261109-recentes-selo') }}">{% endblock %}
+{% block page_finish %}<link rel="stylesheet" href="{{ url_for('static',filename='css/nova-home.css',v='20261109-blackfriday') }}">{% endblock %}
 
 {% block content %}
 {% set wa = 'https://wa.me/' ~ whatsapp_number ~ '?text=' %}
 <div class="nh">
 
+  {# 1. Black Friday (até 16/11): substitui o bloco de apresentação; depois volta o original #}
+  {% if black_friday %}
+  <section class="nh-bf" aria-labelledby="nh-bf-title">
+    <div class="nh-wrap nh-bf-grid">
+      <div class="nh-bf-copy">
+        <p class="nh-bf-tag"><span class="nh-bf-dot" aria-hidden="true"></span> Só até 16 de novembro</p>
+        <h1 id="nh-bf-title"><span class="nh-bf-kicker">Black Friday</span> Megui</h1>
+        <p class="nh-bf-lead">Condições especiais em camisetas, uniformes e brindes personalizados para pedidos fechados até domingo, 16/11. Feito na nossa confecção em Contagem, do jeito que você imaginou.</p>
+        <div class="nh-bf-count" data-bf-end="2026-11-16T23:59:59-03:00" role="timer" aria-label="Tempo restante da Black Friday">
+          <div><b data-bf="d">--</b><small>dias</small></div>
+          <div><b data-bf="h">--</b><small>horas</small></div>
+          <div><b data-bf="m">--</b><small>min</small></div>
+          <div><b data-bf="s">--</b><small>seg</small></div>
+        </div>
+        <div class="nh-actions">
+          <a class="nh-btn nh-bf-btn-main" href="{{ url_for('products') }}">Garantir meu orçamento {{ icon('arrow') }}</a>
+          <a class="nh-btn nh-btn-ghost" href="{{ wa ~ ('Olá, Megui! Quero aproveitar a Black Friday.'|urlencode) }}" target="_blank" rel="noopener">{{ icon('whatsapp') }} Falar no WhatsApp</a>
+        </div>
+        <p class="nh-bf-proof">Já vestimos Sesc, Senac, Cemig, Band Minas e muitos times, igrejas e empresas.</p>
+      </div>
+
+      <div class="nh-bf-visual" aria-label="Trabalhos reais da Megui">
+        <figure class="nh-bf-photo nh-bf-photo-a">
+          <img src="{{ url_for('static',filename='img/eventos/fe-comunidade-real-20261101.jpeg') }}" srcset="{{ srcset('img/eventos/fe-comunidade-real-20261101.jpeg') }}" sizes="(max-width:700px) 92vw, 560px" alt="Encontro com o grupo vestindo camisetas personalizadas pela Megui" width="1179" height="775" fetchpriority="high">
+        </figure>
+        <figure class="nh-bf-photo nh-bf-photo-b">
+          <img src="{{ url_for('static',filename='img/inicio/time-futebol-real-20261018.jpeg') }}" srcset="{{ srcset('img/inicio/time-futebol-real-20261018.jpeg') }}" sizes="(max-width:700px) 60vw, 380px" alt="Time de futebol com uniforme personalizado" width="1280" height="853">
+        </figure>
+        <div class="nh-bf-seal" aria-hidden="true"><span>BLACK<br>FRIDAY</span><small>até 16.11</small></div>
+      </div>
+    </div>
+    <svg class="nh-edge nh-bf-edge" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40C240 90 480 0 720 34S1200 88 1440 30V90H0Z"/></svg>
+  </section>
+  <script>
+  (function(){var el=document.querySelector('[data-bf-end]');if(!el)return;var end=new Date(el.getAttribute('data-bf-end')).getTime();
+  function pad(n){return n<10?'0'+n:''+n}
+  function tick(){var t=Math.max(0,end-Date.now());var s=Math.floor(t/1000);
+  var v={d:Math.floor(s/86400),h:Math.floor(s%86400/3600),m:Math.floor(s%3600/60),s:s%60};
+  for(var k in v){var b=el.querySelector('[data-bf="'+k+'"]');if(b)b.textContent=pad(v[k]);}
+  if(t>0)setTimeout(tick,1000);}
+  tick();})();
+  </script>
+  {% else %}
   {# 1. Encanto: uma frase, duas ações e gente de verdade vestindo Megui #}
   <section class="nh-hero" aria-labelledby="nh-hero-title">
     <div class="nh-wrap nh-hero-grid">
@@ -79,6 +122,7 @@ html:not(#nh1):not(#nh2):not(#nh3) .nh-outside-butterfly{filter:drop-shadow(0 0 
     </div>
     <svg class="nh-edge" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40C240 90 480 0 720 34S1200 88 1440 30V90H0Z"/></svg>
   </section>
+  {% endif %}
 
   {# 2. Desejo: o que dá para fazer, numa fileira que corre como um varal #}
   <section class="nh-made" aria-labelledby="nh-made-title">
