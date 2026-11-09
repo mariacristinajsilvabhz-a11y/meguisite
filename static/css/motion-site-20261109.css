@@ -1,0 +1,36 @@
+/* ==========================================================================
+   Movimento do site inteiro (entrada de página + revelação na rolagem)
+   - Entrada: o conteúdo da página sobe e aparece ao abrir qualquer página.
+   - Troca de página: transição suave entre páginas (navegadores com View Transitions).
+   - Rolagem: js/reveal-site.js marca os blocos abaixo da dobra e os revela ao rolar.
+   Quem pede menos movimento no sistema (prefers-reduced-motion) não vê nada disso.
+   ========================================================================== */
+
+/* Transição entre páginas (Chrome, Edge, Safari 18.2+; os outros só ignoram). */
+@view-transition{navigation:auto}
+html:not(#mg1):not(#mg2):not(#mg3):not(#mg4) .site-header{view-transition-name:mg-header}
+html:not(#mg1):not(#mg2):not(#mg3):not(#mg4) .whatsapp-float{view-transition-name:mg-whatsapp}
+::view-transition-old(root){animation:mg-vt-out .28s cubic-bezier(.4,0,1,1) both}
+::view-transition-new(root){animation:mg-vt-in .42s cubic-bezier(.2,.7,.2,1) both}
+::view-transition-group(mg-header),::view-transition-group(mg-whatsapp){animation-duration:0s}
+@keyframes mg-vt-out{to{opacity:0}}
+@keyframes mg-vt-in{from{opacity:0}}
+
+/* Entrada de página: cada bloco principal sobe em sequência. Só CSS, então nunca fica preso escondido. */
+@keyframes mg-page-in{from{opacity:0;translate:0 26px}to{opacity:1;translate:0 0}}
+@media (prefers-reduced-motion:no-preference){
+  html:not(#mg1):not(#mg2):not(#mg3):not(#mg4) main>*{animation:mg-page-in .75s cubic-bezier(.2,.7,.2,1) backwards}
+  html:not(#mg1):not(#mg2):not(#mg3):not(#mg4) main>*:nth-child(2){animation-delay:.08s}
+  html:not(#mg1):not(#mg2):not(#mg3):not(#mg4) main>*:nth-child(3){animation-delay:.16s}
+  html:not(#mg1):not(#mg2):not(#mg3):not(#mg4) main>*:nth-child(n+4){animation-delay:.22s}
+  html{scroll-behavior:smooth}
+}
+
+/* Bloco esperando a rolagem chegar até ele (o script tira a classe e anima). */
+html:not(#mg1):not(#mg2):not(#mg3):not(#mg4) .mg-wait{opacity:0!important}
+
+@media (prefers-reduced-motion:reduce){
+  html:not(#mg1):not(#mg2):not(#mg3):not(#mg4) .mg-wait{opacity:1!important}
+  ::view-transition-old(root),::view-transition-new(root){animation:none}
+}
+@media print{html:not(#mg1):not(#mg2):not(#mg3):not(#mg4) .mg-wait{opacity:1!important}}

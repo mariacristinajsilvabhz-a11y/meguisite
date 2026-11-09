@@ -19,7 +19,7 @@ CSS_GROUPS = {
     "middle": ["mobile-refinement.css", "product-studio.css", "product-cards.css"],
     # Depois de final_head
     "finish": ["experience-refinement.css", "header-modern.css", "typography-megui.css", "editorial-titles.css",
-               "theme-mode.css", "mobile-layout-20261029.css", "site-refino-20261101.css"],
+               "theme-mode.css", "mobile-layout-20261029.css", "site-refino-20261101.css", "motion-site-20261109.css"],
 }
 
 RESPONSIVE_WIDTHS = (480, 800, 1200)
