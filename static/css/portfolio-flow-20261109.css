@@ -1,0 +1,12 @@
+/* Página de Trabalhos: fundo que muda de cor por capítulo e blocos que aparecem ao rolar
+   (controlado por static/js/portfolio-flow-20261109.js). */
+html.mwf-bg:not(#mwf1):not(#mwf2):not(#mwf3) body .meg-work{background-color:var(--mwf-bg,#fff)!important;transition:background-color .9s cubic-bezier(.4,0,.2,1)}
+html.mwf-bg:not(#mwf1):not(#mwf2):not(#mwf3) body .meg-work>section[data-mwf-bg]{background-color:transparent!important;transition:color .6s ease}
+/* O papel interno da abertura acompanha o fundo (veias das folhas). */
+html.mwf-bg:not(#mwf1):not(#mwf2):not(#mwf3) body .meg-work .ms-opening{--ms-paper:var(--mwf-bg);--ms-vein:var(--mwf-bg)}
+
+html.mwf-on:not(#mwf1):not(#mwf2):not(#mwf3) body .meg-work [data-mwf]{opacity:0;translate:0 34px;transition:opacity .8s cubic-bezier(.2,.7,.2,1) var(--mwf-d,0ms),translate .9s cubic-bezier(.2,.7,.2,1) var(--mwf-d,0ms),scale .9s cubic-bezier(.2,.7,.2,1) var(--mwf-d,0ms)}
+html.mwf-on:not(#mwf1):not(#mwf2):not(#mwf3) body .meg-work [data-mwf=photo]{scale:.94}
+html.mwf-on:not(#mwf1):not(#mwf2):not(#mwf3) body .meg-work [data-mwf].mwf-in{opacity:1;translate:0 0;scale:1}
+
+@media(prefers-reduced-motion:reduce){html.mwf-bg:not(#mwf1):not(#mwf2):not(#mwf3) body .meg-work{transition:none}html.mwf-on:not(#mwf1):not(#mwf2):not(#mwf3) body .meg-work [data-mwf]{opacity:1;translate:none;scale:none;transition:none}}

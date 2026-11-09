@@ -1,0 +1,64 @@
+/* Capítulo SenacX ("Uma ideia que ganha voz"): arco com as Alexas, ondas de som e borboletas em voo. */
+.meg-work .mw-voice{--v-paper:#f6eefa;--v-ink:#2f1d38;--v-soft:#6b5676;--v-lilac:#9772a6;--v-arch:#e6d4f1;--v-chip:#ecdff4;--v-note:#fffaf2;
+  position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.95fr);gap:clamp(28px,5vw,72px);align-items:center;
+  margin:clamp(36px,5vw,60px) 0 clamp(56px,7vw,90px);padding:clamp(32px,5vw,64px);border-radius:40px;background:var(--v-paper);color:var(--v-ink);overflow:hidden;isolation:isolate}
+
+.meg-work .mw-voice-kicker{display:inline-flex;align-items:center;gap:10px;font:600 13px/1.3 "Sora",sans-serif;letter-spacing:.06em;color:var(--v-soft)}
+.meg-work .mw-voice-kicker .icon{width:24px;height:24px;color:var(--v-lilac)}
+.meg-work .mw-voice-kicker strong{font:700 15px/1 "Space Grotesk",sans-serif;letter-spacing:-.02em;color:var(--v-ink)}
+.meg-work .mw-voice-kicker strong span{color:var(--v-lilac)}
+body .meg-work .mw-voice h3{margin:18px 0 0;max-width:12ch;font:550 clamp(40px,4.6vw,64px)/1.02 "Space Grotesk",sans-serif;letter-spacing:-.05em;color:var(--v-ink)}
+html:not(#mwf1):not(#mwf2):not(#mwf3) body .meg-work .mw-voice h3 em{font:italic 400 1.12em/1 Georgia,serif!important;letter-spacing:-.03em!important;color:var(--v-lilac)!important}
+.meg-work .mw-voice-story>p{margin:20px 0 0;max-width:44ch;font:400 15px/1.85 "Sora",sans-serif;color:var(--v-soft)}
+.meg-work .mw-voice-tags{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 0;padding:0;list-style:none}
+.meg-work .mw-voice-tags li{padding:8px 14px;border-radius:999px;background:var(--v-chip);font:600 12px/1.2 "Sora",sans-serif;color:#5d4867}
+.meg-work .mw-voice-cta{display:inline-flex;align-items:center;gap:12px;margin-top:28px;min-height:52px;padding:0 10px 0 24px;border-radius:999px;background:var(--v-ink);color:#fff;font:650 14px/1.2 "Sora",sans-serif;text-decoration:none;transition:transform .2s,background .2s}
+.meg-work .mw-voice-cta>span{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:#c9a2ea;color:#2f1d38}
+.meg-work .mw-voice-cta .icon{width:22px;height:22px}
+.meg-work .mw-voice-cta:hover{transform:translateY(-2px);background:#4a2f57}
+.meg-work .mw-voice-cta:hover>span .icon{animation:mv-flap .5s ease-in-out 2}
+.meg-work .mw-voice-cta:focus-visible,.meg-work .mw-voice-arch:focus-visible{outline:3px solid var(--v-lilac);outline-offset:5px}
+
+/* Palco */
+.meg-work .mw-voice-stage{position:relative;display:grid;place-items:center;min-height:clamp(380px,36vw,470px)}
+.meg-work .mw-voice-path{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.meg-work .mw-voice-path path{stroke:var(--v-lilac);stroke-width:1.6;stroke-dasharray:3 9;stroke-linecap:round;opacity:.55}
+.meg-work .mw-voice-arch{position:relative;z-index:1;display:flex;align-items:flex-end;justify-content:center;width:min(78%,330px);aspect-ratio:330/410;border-radius:999px 999px 30px 30px;background:var(--v-arch);box-shadow:inset 0 0 0 10px var(--v-paper),inset 0 0 0 11px #c9a2ea80;overflow:hidden}
+.meg-work .mw-voice-arch img{position:relative;z-index:1;width:72%;height:auto;margin-bottom:12%;filter:drop-shadow(0 18px 18px #2f1d3840);animation:mv-float 6s ease-in-out infinite}
+.meg-work .mw-voice-waves{position:absolute;left:50%;top:16%;width:0;height:0}
+.meg-work .mw-voice-waves i{position:absolute;left:50%;top:50%;width:80px;height:80px;margin:-40px 0 0 -40px;border-radius:50%;border:2px solid #9772a6;opacity:0;animation:mv-wave 3.6s ease-out infinite}
+.meg-work .mw-voice-waves i:nth-child(2){animation-delay:1.2s}
+.meg-work .mw-voice-waves i:nth-child(3){animation-delay:2.4s}
+
+.meg-work .mw-voice-fly{position:absolute;z-index:2;color:var(--v-lilac);pointer-events:none}
+.meg-work .mw-voice-fly .icon{width:100%;height:100%;animation:mv-flap 1.8s ease-in-out infinite;transform-origin:center}
+.meg-work .mw-voice-fly-1{width:64px;height:70px;right:4%;top:6%;animation:mv-drift 7s ease-in-out infinite}
+.meg-work .mw-voice-fly-2{width:36px;height:40px;left:5%;top:38%;opacity:.8;animation:mv-drift 8s ease-in-out -2s infinite}
+.meg-work .mw-voice-fly-2 .icon{animation-duration:1.4s}
+.meg-work .mw-voice-fly-3{width:24px;height:28px;left:20%;bottom:6%;opacity:.6;animation:mv-drift 9s ease-in-out -4s infinite}
+
+.meg-work .mw-voice-note{position:absolute;z-index:3;right:0;bottom:8%;padding:16px 20px;background:var(--v-note);color:#4a3356;font:italic 400 18px/1.3 Georgia,serif;transform:rotate(4deg);box-shadow:0 12px 24px -16px #2f1d3880;border-radius:4px}
+.meg-work .mw-voice-note:before{content:"";position:absolute;left:50%;top:-9px;width:46px;height:18px;margin-left:-23px;background:#c9a2ea99;transform:rotate(-3deg)}
+
+@keyframes mv-flap{0%,100%{transform:scaleX(1) rotate(-4deg)}50%{transform:scaleX(.6) rotate(4deg)}}
+@keyframes mv-drift{0%,100%{transform:translate(0,0) rotate(0)}33%{transform:translate(8px,-12px) rotate(8deg)}66%{transform:translate(-6px,-4px) rotate(-6deg)}}
+@keyframes mv-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes mv-wave{0%{transform:scale(.6);opacity:.55}100%{transform:scale(2.6);opacity:0}}
+
+/* Tema escuro */
+html[data-theme=dark] .meg-work .mw-voice{--v-paper:#2a2030;--v-ink:#f3eaf7;--v-soft:#c7b8cf;--v-lilac:#d1aadb;--v-arch:#3d2f47;--v-chip:#3a2d42;--v-note:#f4ecf8}
+html[data-theme=dark] .meg-work .mw-voice-tags li{color:#eadcf0}
+html[data-theme=dark] .meg-work .mw-voice-cta{background:#d6b4eb;color:#2c1935}
+html[data-theme=dark] .meg-work .mw-voice-cta>span{background:#2c1935;color:#e5cef2}
+html[data-theme=dark] .meg-work .mw-voice-cta:hover{background:#e5cef2}
+html[data-theme=dark] .meg-work .mw-voice-waves i{border-color:#d1aadb}
+
+@media(max-width:860px){
+  .meg-work .mw-voice{grid-template-columns:1fr;border-radius:30px;padding:30px 22px 26px}
+  .meg-work .mw-voice-stage{order:-1;min-height:340px}
+  .meg-work .mw-voice-arch{width:min(70%,260px)}
+  .meg-work .mw-voice-note{font-size:15px;padding:12px 15px;right:2%}
+  .meg-work .mw-voice-fly-1{width:46px;height:50px}
+  body .meg-work .mw-voice h3{font-size:clamp(36px,10vw,48px)}
+}
+@media(prefers-reduced-motion:reduce){.meg-work .mw-voice :is(.mw-voice-fly,.mw-voice-fly .icon,img,.mw-voice-waves i){animation:none}.meg-work .mw-voice-waves{display:none}}

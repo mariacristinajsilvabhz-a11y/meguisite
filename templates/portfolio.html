@@ -72,6 +72,9 @@ html body .meg-work .mw-piece-image img[data-product-cutout]{width:100%!importan
 </style>
 <link rel="stylesheet" href="{{ url_for('static',filename='css/portfolio-mobile-20261029.css',v='2') }}">
 <link rel="stylesheet" href="{{ url_for('static',filename='css/portfolio-recentes-20261109.css',v='6') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/portfolio-voz-20261109.css',v='3') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/portfolio-flow-20261109.css',v='2') }}">
+<script defer src="{{ url_for('static',filename='js/portfolio-flow-20261109.js',v='2') }}"></script>
 {% endblock %}
 
 {% macro watch(film, position='lead') -%}
@@ -199,21 +202,25 @@ html body .meg-work .mw-piece-image img[data-product-cutout]{width:100%!importan
         <p>Uma marca nunca chega sozinha. Ela traz uma mensagem, uma ocasião, um jeito de ser. Nossos projetos dão forma a esses encontros.</p>
       </div>
 
-      <article class="mw-lead-project">
-        <div class="mw-lead-photo">
-          <a href="{{ url_for('static',filename=portfolio_photos.get(featured_main.title, featured_main.presentation_image|default(featured_main.image))) }}"
-             data-mw-zoom data-mw-zoom-title="{{ featured_main.title }}" aria-label="Ampliar fotografia do projeto {{ featured_main.title }}" target="_blank" rel="noopener">
-            <img src="{{ url_for('static',filename=portfolio_photos.get(featured_main.title, featured_main.presentation_image|default(featured_main.image))) }}"
-                 data-product-cutout alt="Alexa personalizada para o projeto SenacX" loading="lazy" decoding="async">
-          </a>
-          <span class="mw-lead-photo-tag">ESTÚDIO DE PROJETOS MEGUI</span>
+      {% set voice_img = url_for('static',filename=portfolio_photos.get(featured_main.title, featured_main.presentation_image|default(featured_main.image))) %}
+      <article class="mw-voice" aria-labelledby="mw-voice-title">
+        <div class="mw-voice-story">
+          <span class="mw-voice-kicker">{{ icon('butterfly') }} Um capítulo com <strong>SENAC<span>X</span></strong></span>
+          <h3 id="mw-voice-title">Uma ideia que ganha <em>voz.</em></h3>
+          <p>Alexas Echo Pop personalizadas com a identidade NaSemanaS. A marca saiu do evento e foi morar na rotina das pessoas: na mesa, na estante, em cada "Alexa, bom dia".</p>
+          <ul class="mw-voice-tags"><li>Tecnologia personalizada</li><li>Aplicação de marca</li><li>Presente corporativo</li></ul>
+          <a class="mw-voice-cta" href="https://wa.me/{{ whatsapp_number }}?text={{ ('Olá! Vi as Alexas personalizadas do SenacX no portfólio da Megui e quero conversar sobre um projeto semelhante.')|urlencode }}" target="_blank" rel="noopener">Quero criar algo assim <span aria-hidden="true">{{ icon('butterfly') }}</span></a>
         </div>
-        <div class="mw-lead-story">
-          <div class="mw-lead-brand"><span>UM CAPÍTULO COM SENACX</span><strong>SENAC<span>X</span></strong></div>
-          <h3>Uma ideia <br>que ganha <br><em>voz.</em></h3>
-          <p>Alexas Echo Pop personalizadas com a identidade NaSemanaS. Uma ideia que coloca a marca em um objeto que permanece na rotina, muito depois do encontro.</p>
-          <div class="mw-lead-details"><span>TECNOLOGIA PERSONALIZADA</span><span>APLICAÇÃO DE MARCA</span></div>
-          <a class="mw-editorial-cta" href="https://wa.me/{{ whatsapp_number }}?text={{ ('Olá! Vi as Alexas personalizadas do SenacX no portfólio da Megui e quero conversar sobre um projeto semelhante.')|urlencode }}" target="_blank" rel="noopener"><span>Quero criar algo assim</span><span class="mw-editorial-cta-mark" aria-hidden="true">{{ icon('butterfly') }}</span></a>
+        <div class="mw-voice-stage">
+          <svg class="mw-voice-path" viewBox="0 0 420 460" fill="none" aria-hidden="true"><path d="M30 420C10 300 120 300 90 190S170 20 300 40 420 160 380 250"/></svg>
+          <a class="mw-voice-arch" href="{{ voice_img }}" data-mw-zoom data-mw-zoom-title="{{ featured_main.title }}" aria-label="Ampliar fotografia do projeto {{ featured_main.title }}" target="_blank" rel="noopener">
+            <span class="mw-voice-waves" aria-hidden="true"><i></i><i></i><i></i></span>
+            <img src="{{ voice_img }}" alt="Alexas Echo Pop pretas personalizadas com a identidade SenacX NaSemanaS" loading="lazy" decoding="async">
+          </a>
+          <span class="mw-voice-fly mw-voice-fly-1" aria-hidden="true">{{ icon('butterfly') }}</span>
+          <span class="mw-voice-fly mw-voice-fly-2" aria-hidden="true">{{ icon('butterfly') }}</span>
+          <span class="mw-voice-fly mw-voice-fly-3" aria-hidden="true">{{ icon('butterfly') }}</span>
+          <span class="mw-voice-note">“Alexa, toca<br>a nossa marca.”</span>
         </div>
       </article>
 
