@@ -130,3 +130,22 @@ for _work in PORTFOLIO:
 
 _portfolio_rank = {title: index for index, title in enumerate(PORTFOLIO_CURATORIAL_ORDER)}
 PORTFOLIO.sort(key=lambda _work: _portfolio_rank.get(_work["title"], len(_portfolio_rank)))
+
+
+# Trabalho mais recente: aparece no topo de /trabalhos (#recentes) e na prévia da página inicial.
+LATEST_WORK = {
+    "title": "Festival Geração Eleita",
+    "kind": "UNIFORMES ESPORTIVOS",
+    "headline": "Do aquecimento à comemoração.",
+    "text": "Camisetas esportivas em cores diferentes para cada equipe do festival, com a identidade Geração Eleita no peito e os patrocinadores nas mangas. Peças que acompanharam o time na roda, no alambrado e no grito de gol.",
+    "details": ["Malha esportiva", "Uma cor por equipe", "Identidade e patrocinadores"],
+    "key": "recentes",
+    "photos": [
+        {"image": "img/trabalhos/2026/recentes/geracao-eleita-comemoracao.webp", "alt": "Atleta de camiseta rosa Geração Eleita comemorando com o céu azul ao fundo", "caption": "A comemoração", "shape": "tall"},
+        {"image": "img/trabalhos/2026/recentes/geracao-eleita-alambrado.webp", "alt": "Três jogadores de camiseta rosa Geração Eleita sorrindo apoiados no alambrado", "caption": "Na beira do campo", "shape": "wide"},
+        {"image": "img/trabalhos/2026/recentes/geracao-eleita-roda-vermelha.webp", "alt": "Equipe de uniforme vermelho abraçada em roda antes do jogo", "caption": "Uniforme completo, com nome e número", "shape": "wide"},
+        {"image": "img/trabalhos/2026/recentes/geracao-eleita-oracao.webp", "alt": "Jogadores de camiseta azul-petróleo Geração Eleita em oração antes da partida", "caption": "Antes da partida", "shape": "tall"},
+        {"image": "img/trabalhos/2026/recentes/geracao-eleita-roda-azul.webp", "alt": "Equipe de uniforme azul abraçada, com numeração branca nas costas", "caption": "Numeração nas costas", "shape": "wide"},
+        {"image": "img/trabalhos/2026/recentes/geracao-eleita-camisa-branca.webp", "alt": "Jogador com camiseta branca Geração Eleita e estampa preta", "caption": "Versão branca", "shape": "tall"},
+    ],
+}

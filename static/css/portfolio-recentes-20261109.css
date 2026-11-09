@@ -1,0 +1,34 @@
+/* Trabalhos recentes: abre a página /trabalhos antes do capítulo da Alexa (#marcas). */
+.meg-work .mw-recent{--rc-paper:#fbf8fd;--rc-ink:#2f1d38;--rc-soft:#6b5676;--rc-lilac:#9772a6;--rc-chip:#efe5f5;background:var(--rc-paper);color:var(--rc-ink);padding:clamp(56px,7vw,96px) 0 clamp(60px,7vw,100px);scroll-margin-top:90px}
+.meg-work .mw-recent-head{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(24px,5vw,72px);align-items:end;margin-bottom:clamp(28px,4vw,44px)}
+.meg-work .mw-recent-badge{display:inline-flex;align-items:center;gap:10px;font:650 10px/1.5 "Sora",sans-serif;letter-spacing:.14em;color:var(--rc-lilac)}
+.meg-work .mw-recent-badge b{display:inline-block;padding:4px 10px;border-radius:999px;background:var(--rc-lilac);color:#fff;font-weight:650;letter-spacing:.12em}
+.meg-work .mw-recent h2{margin:16px 0 0;font:550 clamp(36px,4.4vw,60px)/1.04 "Space Grotesk",sans-serif;letter-spacing:-.05em;color:var(--rc-ink)}
+body .meg-work .mw-recent .mw-recent-sub{margin:10px 0 0;font:italic 400 clamp(24px,2.6vw,34px)/1.2 Georgia,serif;letter-spacing:-.02em;color:var(--rc-lilac)}
+.meg-work .mw-recent-copy p{margin:0;max-width:48ch;font:400 14px/1.85 "Sora",sans-serif;color:var(--rc-soft)}
+.meg-work .mw-recent-details{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0;padding:0;list-style:none}
+.meg-work .mw-recent-details li{padding:7px 13px;border-radius:999px;background:var(--rc-chip);font:600 11px/1.3 "Sora",sans-serif;color:#5d4867}
+.meg-work .mw-recent-cta{display:inline-flex;align-items:center;gap:12px;margin-top:22px;min-height:48px;padding:0 20px;border-radius:999px;background:var(--rc-ink);color:#fff;font:650 12px/1.3 "Sora",sans-serif;text-decoration:none;transition:transform .2s,background .2s}
+.meg-work .mw-recent-cta .icon{width:20px;height:20px}
+.meg-work .mw-recent-cta:hover{transform:translateY(-2px);background:#4a2f57}
+.meg-work .mw-recent-cta:focus-visible,.meg-work .mw-recent-photo:focus-visible{outline:3px solid var(--rc-lilac);outline-offset:4px}
+
+.meg-work .mw-recent-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:clamp(170px,17vw,240px);gap:14px;grid-template-areas:"a b b d" "a c c d" "e e f f"}
+.meg-work .mw-recent-photo{position:relative;display:block;margin:0;border-radius:20px;overflow:hidden;background:#e9e1ee}
+.meg-work .mw-recent-photo:nth-child(1){grid-area:a}.meg-work .mw-recent-photo:nth-child(2){grid-area:b}.meg-work .mw-recent-photo:nth-child(3){grid-area:c}
+.meg-work .mw-recent-photo:nth-child(4){grid-area:d}.meg-work .mw-recent-photo:nth-child(5){grid-area:e}.meg-work .mw-recent-photo:nth-child(6){grid-area:f}
+.meg-work .mw-recent-photo img{width:100%;height:100%;display:block;object-fit:cover;object-position:50% 30%;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.meg-work .mw-recent-photo span{position:absolute;inset:auto 0 0 0;padding:36px 16px 13px;background:linear-gradient(to top,#1e1024cc,transparent);color:#fff;font:600 12px/1.4 "Sora",sans-serif}
+@media(hover:hover){.meg-work .mw-recent-photo:hover img{transform:scale(1.04)}}
+
+html[data-theme=dark] .meg-work .mw-recent{--rc-paper:#211b25;--rc-ink:#f2eaf6;--rc-soft:#c7b8cf;--rc-lilac:#d1aadb;--rc-chip:#352a3b}
+html[data-theme=dark] .meg-work .mw-recent-details li{color:#eadcf0}
+html[data-theme=dark] .meg-work .mw-recent-cta{background:#d6b4eb;color:#2c1935}
+html[data-theme=dark] .meg-work .mw-recent-cta:hover{background:#e5cef2}
+
+@media(max-width:800px){
+  .meg-work .mw-recent-head{grid-template-columns:1fr;gap:16px}
+  .meg-work .mw-recent-grid{grid-template-columns:1fr 1fr;grid-auto-rows:150px;gap:10px;grid-template-areas:"a b" "a c" "d e" "d f"}
+  .meg-work .mw-recent-photo{border-radius:16px}
+}
+@media(prefers-reduced-motion:reduce){.meg-work .mw-recent :is(img,.mw-recent-cta){transition:none}}

@@ -71,6 +71,7 @@ html body .meg-work .mw-piece-image img[data-product-cutout]{width:100%!importan
 @media(max-width:680px){html body .meg-work .mw-piece-image:has(img[data-product-cutout]){height:180px}html body .meg-work .mw-piece-image img[data-product-cutout]{padding:8px!important}}
 </style>
 <link rel="stylesheet" href="{{ url_for('static',filename='css/portfolio-mobile-20261029.css',v='2') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/portfolio-recentes-20261109.css',v='2') }}">
 {% endblock %}
 
 {% macro watch(film, position='lead') -%}
@@ -157,6 +158,32 @@ html body .meg-work .mw-piece-image img[data-product-cutout]{width:100%!importan
           <span>{{ brand.name }}</span>
           {% endif %}
         </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  {% set lw = latest_work %}
+  <section class="mw-recent" id="{{ lw.key }}" aria-labelledby="mw-recent-heading">
+    <div class="container">
+      <div class="mw-recent-head">
+        <div>
+          <span class="mw-recent-badge"><b>NOVO</b> TRABALHO RECENTE · {{ lw.kind }}</span>
+          <h2 id="mw-recent-heading">{{ lw.title }}</h2>
+          <p class="mw-recent-sub">{{ lw.headline }}</p>
+        </div>
+        <div class="mw-recent-copy">
+          <p>{{ lw.text }}</p>
+          <ul class="mw-recent-details">{% for d in lw.details %}<li>{{ d }}</li>{% endfor %}</ul>
+          <a class="mw-recent-cta" href="https://wa.me/{{ whatsapp_number }}?text={{ ('Olá! Vi os uniformes do ' ~ lw.title ~ ' no portfólio da Megui e quero conversar sobre um projeto para o meu time.')|urlencode }}" target="_blank" rel="noopener">{{ icon('whatsapp') }} Quero uniformes para o meu time</a>
+        </div>
+      </div>
+      <div class="mw-recent-grid">
+        {% for ph in lw.photos %}
+        <a class="mw-recent-photo" href="{{ url_for('static',filename=ph.image) }}" data-mw-zoom data-mw-zoom-title="{{ lw.title }} · {{ ph.caption }}" target="_blank" rel="noopener" aria-label="Ampliar foto: {{ ph.alt }}">
+          <img src="{{ url_for('static',filename=ph.image) }}" alt="{{ ph.alt }}" loading="{{ 'eager' if loop.first else 'lazy' }}" decoding="async">
+          <span>{{ ph.caption }}</span>
+        </a>
         {% endfor %}
       </div>
     </div>
