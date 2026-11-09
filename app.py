@@ -13,6 +13,7 @@ from content_data import HISTORICAL_BRANDS, PORTFOLIO, PRODUCTION_VIDEOS, RECENT
 
 from mockup_3d import mockup_3d
 import seo
+import assets
 
 app = Flask(__name__)
 app.register_blueprint(mockup_3d)
@@ -50,6 +51,10 @@ def add_security_headers(response):
     if request.path.startswith("/static/") and response.status_code == 200:
         response.headers.setdefault("Cache-Control", "public, max-age=3600")
     return response
+
+assets.build_css_bundles()
+app.jinja_env.globals.update(srcset=assets.srcset, css_bundle_version=assets.css_bundle_version)
+
 
 @app.get("/robots.txt")
 def robots_txt():

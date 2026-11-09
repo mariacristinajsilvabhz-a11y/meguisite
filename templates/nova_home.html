@@ -4,7 +4,7 @@
 
 {% block extra_head %}
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400..600,100&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400..600,100&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400..600,100&display=swap" rel="stylesheet"></noscript>
 <style>
 html:not(#nh1):not(#nh2):not(#nh3) .nh-outside .nh-touch-frame{background:#29262d!important}
 html:not(#nh1):not(#nh2):not(#nh3) .nh-outside .nh-touch-frame>img{position:absolute!important;right:0!important;top:0!important;width:72%!important;height:100%!important;object-fit:contain!important;object-position:right center!important}
@@ -64,15 +64,15 @@ html:not(#nh1):not(#nh2):not(#nh3) .nh-outside-butterfly{filter:drop-shadow(0 0 
       <div class="nh-collage" aria-label="Trabalhos reais da Megui">
         <svg class="nh-thread nh-thread-hero" viewBox="0 0 600 560" aria-hidden="true" focusable="false"><path d="M40 520C120 420 60 330 170 290S330 330 380 230 470 70 570 40"/></svg>
         <figure class="nh-photo nh-photo-a">
-          <img src="{{ url_for('static',filename='img/eventos/fe-comunidade-real-20261101.jpeg') }}" alt="Encontro com o grupo vestindo camisetas personalizadas pela Megui" width="1179" height="775" fetchpriority="high">
+          <img src="{{ url_for('static',filename='img/eventos/fe-comunidade-real-20261101.jpeg') }}" srcset="{{ srcset('img/eventos/fe-comunidade-real-20261101.jpeg') }}" sizes="(max-width:700px) 92vw, 560px" alt="Encontro com o grupo vestindo camisetas personalizadas pela Megui" width="1179" height="775" fetchpriority="high">
           <figcaption>Encontro de fé, todo mundo vestindo a mesma mensagem</figcaption>
         </figure>
         <figure class="nh-photo nh-photo-b">
-          <img src="{{ url_for('static',filename='img/inicio/time-futebol-real-20261018.jpeg') }}" alt="Time de futebol com uniforme personalizado" width="1280" height="853">
+          <img src="{{ url_for('static',filename='img/inicio/time-futebol-real-20261018.jpeg') }}" srcset="{{ srcset('img/inicio/time-futebol-real-20261018.jpeg') }}" sizes="(max-width:700px) 60vw, 400px" alt="Time de futebol com uniforme personalizado" width="1280" height="853">
           <figcaption>Uniforme de time</figcaption>
         </figure>
         <figure class="nh-photo nh-photo-c">
-          <img src="{{ url_for('static',filename='img/acervo/2026/bolsas-producao.webp') }}" alt="Mochilas saco cor-de-rosa prontas na produção" width="1056" height="992">
+          <img src="{{ url_for('static',filename='img/acervo/2026/bolsas-producao.webp') }}" srcset="{{ srcset('img/acervo/2026/bolsas-producao.webp') }}" sizes="(max-width:700px) 50vw, 300px" alt="Mochilas saco cor-de-rosa prontas na produção" width="1056" height="992">
           <figcaption>Na nossa produção</figcaption>
         </figure>
       </div>
@@ -102,7 +102,7 @@ html:not(#nh1):not(#nh2):not(#nh3) .nh-outside-butterfly{filter:drop-shadow(0 0 
     <div class="nh-row" data-row tabindex="0" aria-label="Categorias, role para o lado">
       {% for name,img,href in made %}
       <a class="nh-made-item {{ 'is-tall' if loop.index is odd else 'is-low' }}" href="{{ href }}">
-        <span class="nh-made-photo"><img src="{{ url_for('static',filename=img) }}" alt="" loading="lazy" decoding="async"></span>
+        <span class="nh-made-photo"><img src="{{ url_for('static',filename=img) }}" srcset="{{ srcset(img) }}" sizes="(max-width:700px) 68vw, 280px" alt="" loading="lazy" decoding="async"></span>
         <span class="nh-made-name">{{ name }} {{ icon('arrow') }}</span>
       </a>
       {% endfor %}
@@ -121,7 +121,7 @@ html:not(#nh1):not(#nh2):not(#nh3) .nh-outside-butterfly{filter:drop-shadow(0 0 
           <span class="nh-recent-go">Ver o trabalho {{ icon('arrow') }}</span>
         </div>
         <div class="nh-recent-photos" aria-hidden="true">
-          {% for ph in [lw.photos[0], lw.photos[1], lw.photos[2]] %}<img src="{{ url_for('static',filename=ph.image) }}" alt="" loading="lazy" decoding="async">{% endfor %}
+          {% for ph in [lw.photos[0], lw.photos[1], lw.photos[2]] %}<img src="{{ url_for('static',filename=ph.image) }}" srcset="{{ srcset(ph.image) }}" sizes="(max-width:800px) 60vw, 420px" alt="" loading="lazy" decoding="async">{% endfor %}
         </div>
       </a>
     </div>
@@ -147,7 +147,7 @@ html:not(#nh1):not(#nh2):not(#nh3) .nh-outside-butterfly{filter:drop-shadow(0 0 
       <div class="nh-wall-grid">
         {% for img,who,what,size in wall %}
         <figure class="nh-wall-item {{ 'is-' ~ size if size }}">
-          <img src="{{ url_for('static',filename=img) }}" alt="{{ who }}: {{ what|lower }}" loading="lazy" decoding="async">
+          <img src="{{ url_for('static',filename=img) }}" srcset="{{ srcset(img) }}" sizes="{{ '(max-width:700px) 100vw, 640px' if size == 'wide' else '(max-width:700px) 50vw, 320px' }}" alt="{{ who }}: {{ what|lower }}" loading="lazy" decoding="async">
           <figcaption><strong>{{ who }}</strong> {{ what }}</figcaption>
         </figure>
         {% endfor %}
@@ -203,7 +203,7 @@ html:not(#nh1):not(#nh2):not(#nh3) .nh-outside-butterfly{filter:drop-shadow(0 0 
   {# 6. Toque: a malha de perto #}
   <section class="nh-touch nh-outside" aria-labelledby="nh-touch-title">
     <div class="nh-touch-frame">
-      <img src="{{ url_for('static',filename='img/inicio/fora-da-caixa-flutuantes.webp') }}" alt="Fone, caixa de som, capinha, necessaire, porta-joias e ferramenta multifuncional flutuando em diferentes ângulos" loading="lazy" decoding="async">
+      <img src="{{ url_for('static',filename='img/inicio/fora-da-caixa-flutuantes.webp') }}" srcset="{{ srcset('img/inicio/fora-da-caixa-flutuantes.webp') }}" sizes="(max-width:700px) 100vw, 1200px" alt="Fone, caixa de som, capinha, necessaire, porta-joias e ferramenta multifuncional flutuando em diferentes ângulos" loading="lazy" decoding="async">
       <div class="nh-touch-copy">
         <svg class="nh-outside-butterfly" viewBox="0 0 160 120" fill="none" aria-hidden="true" focusable="false"><defs><linearGradient id="outside-butterfly-mirror" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a873d2"/><stop offset=".18" stop-color="#e1bdf7"/><stop offset=".31" stop-color="#fff4ff"/><stop offset=".44" stop-color="#a773cb"/><stop offset=".61" stop-color="#dab0ef"/><stop offset=".74" stop-color="#fff1ff"/><stop offset="1" stop-color="#b57ddd"/></linearGradient></defs><g stroke="url(#outside-butterfly-mirror)" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><path d="M79 67C58 29 21 5 17 28C13 49 42 71 79 67ZM81 67C102 29 139 5 143 28C147 49 118 71 81 67ZM79 68C48 60 27 82 40 99C53 115 72 88 79 68ZM81 68C112 60 133 82 120 99C107 115 88 88 81 68Z"/><path d="M80 48C77 63 77 79 80 88C83 79 83 63 80 48ZM78 48C74 37 68 32 62 31M82 48C86 37 92 32 98 31M72 61C51 43 31 30 25 30M88 61C109 43 129 30 135 30M72 75C58 77 46 88 44 96M88 75C102 77 114 88 116 96" opacity=".65"/></g></svg>
         <h2 id="nh-touch-title">Fora da caixa.</h2>
