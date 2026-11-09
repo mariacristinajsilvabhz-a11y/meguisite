@@ -12,6 +12,7 @@ from textile_data import FABRICS
 from content_data import HISTORICAL_BRANDS, PORTFOLIO, PRODUCTION_VIDEOS, RECENT_WORKS, DESIGN_PROJECTS, NEW_WORKS, LATEST_WORK
 
 from mockup_3d import mockup_3d
+import seo
 
 app = Flask(__name__)
 app.register_blueprint(mockup_3d)
@@ -49,6 +50,24 @@ def add_security_headers(response):
     if request.path.startswith("/static/") and response.status_code == 200:
         response.headers.setdefault("Cache-Control", "public, max-age=3600")
     return response
+
+@app.get("/robots.txt")
+def robots_txt():
+    return app.response_class(seo.robots_txt(), mimetype="text/plain")
+
+
+@app.get("/sitemap.xml")
+def sitemap_xml():
+    items = []
+    if hub_catalog.enabled:
+        try:
+            items = hub_catalog.list(limit=500, timeout=5)[0]
+        except Exception:
+            app.logger.warning("Catálogo do Hub indisponível; sitemap sem produtos")
+    else:
+        items = PRODUCTS
+    return app.response_class(seo.sitemap_xml(CATEGORIES, items), mimetype="application/xml")
+
 
 @app.get("/healthz")
 def healthz():
@@ -225,6 +244,7 @@ def inject_global():
         "portfolio": PORTFOLIO,
         "recent_works": RECENT_WORKS,
         "latest_work": LATEST_WORK,
+        **seo.seo_context(),
         "featured_works": [NEW_WORKS[i] for i in [0,1,3,2,4,5]] + [RECENT_WORKS[0],RECENT_WORKS[2]],
         "design_projects": DESIGN_PROJECTS,
         "production_videos": PRODUCTION_VIDEOS,

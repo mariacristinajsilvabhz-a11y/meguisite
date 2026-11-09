@@ -5,8 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="{{ url_for('static',filename='js/theme-mode.js',v='20261028-night-v1') }}"></script>
   <meta name="theme-color" content="#171219">
-  <meta name="description" content="Megui Personalizados: confecção e personalização em malha. Camisetas, uniformes, saquinhos, eventos, brindes e comunicação visual.">
   <title>{% block title %}Megui Personalizados{% endblock %}</title>
+  {%- set meta_desc %}{% block meta_description %}{{ seo_description }}{% endblock %}{% endset %}
+  <meta name="description" content="{{ meta_desc|trim }}">
+  <link rel="canonical" href="{{ seo_canonical }}">
+  {% if seo_noindex %}<meta name="robots" content="noindex, follow">{% else %}<meta name="robots" content="index, follow, max-image-preview:large">{% endif %}
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Megui Personalizados">
+  <meta property="og:title" content="{{ self.title()|trim }}">
+  <meta property="og:description" content="{{ meta_desc|trim }}">
+  <meta property="og:url" content="{{ seo_canonical }}">
+  <meta property="og:image" content="{% block og_image %}{{ seo_image }}{% endblock %}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="geo.region" content="BR-MG">
+  <meta name="geo.placename" content="Contagem">
+  {% if request.endpoint in ['home','contact','about'] %}
+  <script type="application/ld+json">
+  {{ {
+    "@context": "https://schema.org",
+    "@type": ["LocalBusiness", "ClothingStore"],
+    "@id": seo_site ~ "/#megui",
+    "name": "Megui Personalizados",
+    "description": "Confecção própria de camisetas, uniformes, brindes e kits personalizados para empresas, times, igrejas e eventos.",
+    "url": seo_site ~ "/",
+    "logo": seo_site ~ url_for('static', filename='img/logo-megui-oficial.png'),
+    "image": seo_image,
+    "telephone": "+55 31 99488-8250",
+    "email": contact_email,
+    "taxID": company_cnpj,
+    "priceRange": "$$",
+    "address": {"@type": "PostalAddress", "streetAddress": "Avenida Seis, 31, Água Branca", "addressLocality": "Contagem", "addressRegion": "MG", "addressCountry": "BR"},
+    "areaServed": ["Contagem", "Belo Horizonte", "Betim", "Região Metropolitana de Belo Horizonte", "Minas Gerais"],
+    "knowsAbout": ["camisetas personalizadas", "uniformes personalizados", "uniformes esportivos", "brindes corporativos", "kits personalizados"]
+  }|tojson }}
+  </script>
+  {% endif %}
   <link id="megui-favicon" rel="icon" type="image/svg+xml" href="{{ url_for('static',filename='ui/favicon-butterfly.svg',v='20261016-v1') }}" data-logo="{{ url_for('static',filename='img/logo-megui-oficial.png') }}">
   <script defer src="{{ url_for('static',filename='js/favicon.js',v='20261016-v1') }}"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">

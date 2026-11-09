@@ -1,5 +1,7 @@
 {% extends "base.html" %}
-{% block title %}{{ product.name }} | Megui{% endblock %}
+{% block title %}{{ product.name }} com a sua marca | Megui Personalizados{% endblock %}
+{% block meta_description %}{{ (product.short or product.description or '')|striptags|truncate(140, True, '…') or product.name }} Personalize com a sua marca na Megui, em Contagem (MG).{% endblock %}
+{% block og_image %}{% if product.image_url %}{{ product.image_url }}{% elif product.image %}{{ seo_site ~ url_for('static', filename=product.image) }}{% else %}{{ seo_image }}{% endif %}{% endblock %}
 {% block content %}
 <section class="product-page">
   <nav class="container breadcrumbs" aria-label="Você está aqui"><a href="{{ url_for('home') }}">Início</a><span aria-hidden="true">/</span><a href="{{ url_for('products') }}">Produtos</a><span aria-hidden="true">/</span><span aria-current="page">{{ product.name }}</span></nav>

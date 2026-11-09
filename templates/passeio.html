@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% from '_icons.html' import icon %}
-{% block title %}{{ active_category.name if active_category else 'Catálogo' }} | Megui Personalizados{% endblock %}
+{% block title %}{{ (active_category.name ~ ' com a sua marca') if active_category else 'Catálogo de produtos personalizados' }} | Megui Personalizados{% endblock %}
 
 {% block extra_head %}
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -8,6 +8,7 @@
 {% endblock %}
 {% block page_finish %}<link rel="stylesheet" href="{{ url_for('static',filename='css/passeio.css',v='20261101-v1') }}">{% endblock %}
 
+{% block meta_description %}{% if active_category and active_category.description %}{{ active_category.description|striptags|truncate(100, True, '…') }} Personalize com a sua marca na Megui, em Contagem (MG).{% else %}{{ seo_description }}{% endif %}{% endblock %}
 {% block content %}
 <div class="ps" data-passeio>
 
