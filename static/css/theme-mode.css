@@ -143,7 +143,6 @@ html:not([data-theme=dark]) .home-cinema #megui-theme-slides .welcome-carousel{
 /* Cabeçalho lilás no tema claro, incluindo menu e busca. */
 html:not([data-theme=dark]) body .top-strip,
 html:not([data-theme=dark]) body .site-header.modern-header,
-html:not([data-theme=dark]) body .modern-header .main-nav,
 html:not([data-theme=dark]) body .modern-header .dropdown-panel{
  background:#f1e5f8!important;border-color:#dac6e8!important;
 }
@@ -250,3 +249,13 @@ html[data-theme=dark] body main .quote-studio .btn-secondary{background:#3c2b48!
 html[data-theme=dark] body main .quote-studio .remove-link{background:#493044!important;color:#ffdae6!important}
 html[data-theme=dark] body main .quote-studio :is(.quote-field-error,.config-warning){color:#ffbfd1!important}
 html[data-theme=dark] body main .quote-studio input[aria-invalid=true]{border-color:#ff9db9!important}
+
+/* Menu claro integrado ao cabeçalho; painel separado apenas no celular. */
+@media(min-width:1001px){
+ html:not([data-theme=dark]) body .site-header.modern-header nav.main-nav{
+  background:transparent!important;border:0!important;box-shadow:none!important;
+ }
+ html:not([data-theme=dark]) body .site-header.modern-header .header-actions{
+  border-left:0!important;
+ }
+}
