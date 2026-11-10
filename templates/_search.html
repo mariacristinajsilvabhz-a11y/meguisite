@@ -1,8 +1,36 @@
 {% from '_icons.html' import icon %}
+<style>
+/* Busca Megui: superfícies opacas e traço leve, compartilhados com os resultados. */
+html body .discovery-bar{--search-paper:#faf7fc;--search-ink:#242027;--search-muted:#625969;--search-line:#cbbbd4;--search-accent:#76538a;background:#eee4f5!important;border-bottom:1px solid #dccde5!important;box-shadow:none!important;backdrop-filter:none!important;opacity:1!important}
+html body .discovery-bar .search-shell{max-width:580px;background:transparent!important;border:0!important;border-radius:6px;box-shadow:none!important;isolation:isolate}
+html body .discovery-bar .search-shell input{box-sizing:border-box;width:100%;height:50px;padding:12px 100px 12px 43px;border:1px solid var(--search-line)!important;border-radius:6px!important;background:var(--search-paper)!important;color:var(--search-ink)!important;font:400 14px/1.5 Sora,sans-serif;opacity:1!important;box-shadow:none!important;backdrop-filter:none!important;transition:border-color .18s}
+html body .discovery-bar .search-shell input::placeholder{color:var(--search-muted)!important;opacity:1;font:inherit}
+html body .discovery-bar .search-shell input:focus{border-color:var(--search-accent)!important;outline:2px solid var(--search-accent);outline-offset:3px;box-shadow:none!important}
+html body .discovery-bar .search-shell>.icon{left:15px;top:16px;width:18px;height:18px;color:var(--search-accent)!important}
+html body .discovery-bar .search-submit{position:absolute;right:5px;top:5px;min-height:40px;padding:0 14px;border:0;border-left:1px solid var(--search-line);border-radius:0 3px 3px 0;background:transparent!important;color:var(--search-ink)!important;font:600 12px/1.4 Sora,sans-serif;cursor:pointer}
+html body .discovery-bar .search-submit:hover{background:#e8daef!important}
+html body .discovery-bar .search-clear{right:77px;top:5px;min-height:40px;width:32px;padding:7px 4px;color:var(--search-muted)!important;background:transparent!important}
+html body .discovery-bar .search-shell:has(.search-clear:not([hidden])) input{padding-right:114px}
+html body .discovery-bar .search-dropdown{z-index:80;top:calc(100% + 8px);background:var(--search-paper)!important;border:1px solid var(--search-line)!important;border-radius:6px!important;padding:8px;box-shadow:0 8px 18px #18121c14!important;color:var(--search-ink)!important;opacity:1!important;backdrop-filter:none!important}
+html body .discovery-bar .search-dropdown a{border-radius:3px!important;color:var(--search-ink)!important;background:transparent!important}
+html body .discovery-bar .search-dropdown a:hover,html body .discovery-bar .search-dropdown a[aria-selected=true]{background:#e8daef!important}
+html body .discovery-bar .search-dropdown :is(small,.search-caption,.search-feedback,.search-no-results){color:var(--search-muted)!important}
+html body .discovery-bar .search-caption{font-size:10px;font-weight:500;letter-spacing:.04em}
+html body .discovery-bar .suggestion-icon{background:#eee4f5!important;color:var(--search-accent)!important;border-radius:4px}
+html body .discovery-bar .search-all-results{border-top:1px solid var(--search-line)}
+html body .discovery-bar .discovery-links a{color:var(--search-ink)!important}
+html body .discovery-bar .discovery-links .icon{color:var(--search-accent)!important}
+html[data-theme=dark] body .discovery-bar{--search-paper:#222024;--search-ink:#f4eef7;--search-muted:#c4b9cb;--search-line:#605369;--search-accent:#c6a5dc;background:#19171b!important;border-color:#39313f!important}
+html[data-theme=dark] body .discovery-bar :is(.search-submit:hover,.search-dropdown a:hover,.search-dropdown a[aria-selected=true]){background:#39303f!important}
+html[data-theme=dark] body .discovery-bar .suggestion-icon{background:#39303f!important}
+@media(max-width:600px){html body .discovery-bar .search-shell{max-width:none}html body .discovery-bar .search-shell input{font-size:16px;height:50px}html body .discovery-bar .search-dropdown ul{max-height:min(320px,55dvh)}}
+@media(prefers-reduced-motion:reduce){html body .discovery-bar .search-shell input{transition:none}}
+</style>
 <form class="search-shell" data-product-search action="{{ url_for('products') }}" method="get" role="search">
   {{ icon('search') }}
   <input id="catalog-search" name="q" type="search" placeholder="O que você quer personalizar?" aria-label="Buscar produtos" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="search-suggestions" autocomplete="off">
   <button class="search-clear" type="button" aria-label="Limpar busca" hidden>{{ icon('close') }}</button>
+  <button class="search-submit" type="submit">Buscar</button>
   <div class="search-dropdown" hidden>
     <span class="search-caption">PRODUTOS ENCONTRADOS</span>
     <ul id="search-suggestions" role="listbox" aria-label="Sugestões de produtos"></ul>
