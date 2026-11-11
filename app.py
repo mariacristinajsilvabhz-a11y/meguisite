@@ -13,6 +13,7 @@ from content_data import HISTORICAL_BRANDS, PORTFOLIO, PRODUCTION_VIDEOS, RECENT
 
 from mockup_3d import mockup_3d
 import seo
+from editorial import GUIDES, GUIDE_MAP, PUBLISHED
 import assets
 
 app = Flask(__name__)
@@ -292,6 +293,40 @@ def home():
         items = order_by_stock(PRODUCTS)[:6]
     # A home anterior (index.html) fica guardada para consulta; a atual é a jornada de nova_home.html.
     return render_template("nova_home.html", products=items, home_categories=home_categories, black_friday=black_friday_active())
+
+
+@app.get("/guias")
+def guides():
+    return render_template("guides.html", guides=GUIDES)
+
+
+@app.get("/guias/<slug>")
+def guide_detail(slug):
+    guide = GUIDE_MAP.get(slug)
+    if guide is None:
+        abort(404)
+    canonical = seo.absolute(url_for("guide_detail", slug=slug))
+    article_schema = {
+        "@context": "https://schema.org", "@type": "Article",
+        "headline": guide["title"], "description": guide["description"],
+        "image": [seo.absolute(url_for("static", filename=guide["image"]))],
+        "datePublished": PUBLISHED, "dateModified": PUBLISHED,
+        "author": {"@type": "Organization", "name": "Megui Personalizados", "url": seo.absolute("/sobre")},
+        "publisher": {"@type": "Organization", "name": "Megui Personalizados", "url": seo.absolute("/")},
+        "mainEntityOfPage": {"@type": "WebPage", "@id": canonical},
+        "articleSection": guide["category"], "inLanguage": "pt-BR",
+    }
+    breadcrumb_schema = {
+        "@context": "https://schema.org", "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Início", "item": seo.absolute("/")},
+            {"@type": "ListItem", "position": 2, "name": "Personalizados na prática", "item": seo.absolute("/guias")},
+            {"@type": "ListItem", "position": 3, "name": guide["title"], "item": canonical},
+        ],
+    }
+    return render_template("guide_detail.html", guide=guide, published=PUBLISHED,
+                           related=[g for g in GUIDES if g["slug"] != slug],
+                           article_schema=article_schema, breadcrumb_schema=breadcrumb_schema)
 
 
 # Black Friday: o anúncio substitui o bloco de apresentação da home até o fim do dia 16/11
