@@ -4,7 +4,8 @@ Para usar um domínio próprio (ex.: https://www.meguipersonalizados.com.br), co
 SITE_URL no Render. Sem ele, o site usa o endereço pelo qual foi acessado.
 """
 import os
-from datetime import date
+from xml.sax.saxutils import escape
+from editorial import GUIDES, PUBLISHED
 from flask import request, url_for
 
 SITE_URL = os.environ.get("SITE_URL", "").rstrip("/")
@@ -34,6 +35,7 @@ NOINDEX = {"quote_view", "create_art", "explore_more"}
 # Páginas fixas do sitemap: (endpoint, prioridade, frequência).
 STATIC_PAGES = [
     ("home", "1.0", "weekly"),
+    ("guides", "0.8", "monthly"),
     ("products", "0.9", "weekly"),
     ("b2b", "0.9", "monthly"),
     ("events", "0.8", "monthly"),
@@ -85,10 +87,11 @@ def robots_txt():
 
 
 def sitemap_xml(categories, products):
-    today = date.today().isoformat()
     urls = [(url_for(ep), prio, freq) for ep, prio, freq in STATIC_PAGES]
     urls += [(url_for("category", slug=c["slug"]), "0.7", "weekly") for c in categories]
     urls += [(url_for("product", slug=p["slug"]), "0.6", "weekly") for p in products]
+    urls += [(url_for("guide_detail", slug=g["slug"]), "0.7", "monthly") for g in GUIDES]
+    editorial_paths = {url_for("guide_detail", slug=g["slug"]) for g in GUIDES} | {url_for("guides")}
     out = ['<?xml version="1.0" encoding="UTF-8"?>',
            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     seen = set()
@@ -96,7 +99,8 @@ def sitemap_xml(categories, products):
         if path in seen:
             continue
         seen.add(path)
-        out.append(f"  <url><loc>{absolute(path)}</loc><lastmod>{today}</lastmod>"
+        lastmod = f"<lastmod>{PUBLISHED}</lastmod>" if path in editorial_paths else ""
+        out.append(f"  <url><loc>{escape(absolute(path))}</loc>{lastmod}"
                    f"<changefreq>{freq}</changefreq><priority>{prio}</priority></url>")
     out.append("</urlset>")
     return "\n".join(out)
