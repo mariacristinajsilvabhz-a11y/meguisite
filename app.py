@@ -80,7 +80,7 @@ def healthz():
     return jsonify(status="ok")
 
 PRIMARY_WHATSAPP = "5531994888250"
-ADMIN_PHONE = "5531993181939"
+ADMIN_PHONE = "5531933059600"
 CONTACT_EMAIL = "contatomegui@gmail.com"
 CONTACT_ADDRESS = "Avenida Seis, nº 31, Água Branca, Contagem - MG"
 COMPANY_CNPJ = "45.833.844/0001-51"
