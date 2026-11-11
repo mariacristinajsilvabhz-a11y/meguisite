@@ -9,6 +9,9 @@ from editorial import GUIDES, PUBLISHED
 from flask import request, url_for
 
 SITE_URL = os.environ.get("SITE_URL", "").rstrip("/")
+# Código de verificação do Google Search Console (só o valor do "content" da meta tag).
+GOOGLE_SITE_VERIFICATION = os.environ.get("GOOGLE_SITE_VERIFICATION", "").strip()
+INSTAGRAM_URL = "https://www.instagram.com/megui.personalizados/"
 
 DEFAULT_DESCRIPTION = (
     "Confecção própria em Contagem (MG): camisetas, uniformes, brindes e kits personalizados "
@@ -70,6 +73,8 @@ def seo_context():
         "seo_noindex": endpoint in NOINDEX,
         "seo_image": absolute(url_for("static", filename="img/seo/compartilhar-megui.jpg")),
         "seo_site": site_base(),
+        "seo_google_verification": GOOGLE_SITE_VERIFICATION,
+        "seo_instagram": INSTAGRAM_URL,
     }
 
 

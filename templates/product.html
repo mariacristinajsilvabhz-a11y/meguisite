@@ -98,5 +98,14 @@
 </section>
 {% endblock %}
 
-{% block extra_head %}<link rel="stylesheet" href="{{ url_for('static',filename='css/catalog-gallery.css',v='20261016-v3') }}">{% endblock %}
+{% block extra_head %}
+<script type="application/ld+json">{{ {
+  "@context": "https://schema.org", "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Início", "item": seo_site ~ url_for('home')},
+    {"@type": "ListItem", "position": 2, "name": "Produtos", "item": seo_site ~ url_for('products')},
+    {"@type": "ListItem", "position": 3, "name": product.name, "item": seo_canonical}
+  ]
+}|tojson }}</script>
+<link rel="stylesheet" href="{{ url_for('static',filename='css/catalog-gallery.css',v='20261016-v3') }}">{% endblock %}
 {% block extra_scripts %}<script defer src="{{ url_for('static',filename='js/catalog-gallery.js',v='20261016-v3') }}"></script>{% endblock %}
