@@ -79,8 +79,8 @@ def sitemap_xml():
 def healthz():
     return jsonify(status="ok")
 
-PRIMARY_WHATSAPP = "5531994888250"
-ADMIN_PHONE = "5531933059600"
+PRIMARY_WHATSAPP = "5531933059600"
+ADMIN_PHONE = "5531994888250"
 CONTACT_EMAIL = "contatomegui@gmail.com"
 CONTACT_ADDRESS = "Avenida Seis, nº 31, Água Branca, Contagem - MG"
 COMPANY_CNPJ = "45.833.844/0001-51"
@@ -88,9 +88,9 @@ COMPANY_CNPJ = "45.833.844/0001-51"
 _raw_whatsapp = os.environ.get("WHATSAPP_NUMBER", PRIMARY_WHATSAPP)
 WHATSAPP_NUMBER = re.sub(r"\D", "", _raw_whatsapp)
 
-# Número antigo não pertence mais à Megui. Mesmo que ainda esteja salvo no Render,
-# o site substitui pelo atendimento atual.
-if WHATSAPP_NUMBER in {"31984912083", "5531984912083"}:
+# Números legados de atendimento são redirecionados ao comercial atual.
+# O número final 8250 agora atende apenas assuntos administrativos.
+if WHATSAPP_NUMBER in {"31984912083", "5531984912083", "31994888250", "5531994888250"}:
     WHATSAPP_NUMBER = PRIMARY_WHATSAPP
 
 from catalog_taxonomy import CATEGORIES, CATEGORY_MAP, COLLECTIONS, SUBCATEGORY_MAP, classify, matches
