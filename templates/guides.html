@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Brindes e personalizados em Contagem MG: guias | Megui{% endblock %}
+{% block meta_description %}Guias da Megui para escolher brindes, camisetas, uniformes e kits personalizados em Contagem, BH e região. Ideias com trabalhos reais e orientação para orçamento.{% endblock %}
+{% block page_finish %}<link rel="stylesheet" href="{{ url_for('static', filename='css/editorial.css', v='20261111') }}">{% endblock %}
+{% block content %}
+<section class="megui-editorial container">
+  <header class="megui-editorial-heading"><span class="eyebrow">PERSONALIZADOS NA PRÁTICA</span><h1>Brindes e personalizados<br>em Contagem, MG.</h1><p>Da escolha da camiseta ao kit da sua empresa: ideias, detalhes e trabalhos reais para ajudar no seu próximo pedido.</p><p>Somos a Megui Personalizados, com confecção própria em Água Branca, Contagem. Atendemos empresas e eventos de Belo Horizonte e região. Explore os guias ou <a href="{{ url_for('products') }}">vá direto ao catálogo</a>.</p></header>
+  <div class="megui-editorial-grid">{% for guide in guides %}
+    <article class="megui-editorial-card"><a href="{{ url_for('guide_detail', slug=guide.slug) }}"><img src="{{ url_for('static', filename=guide.image) }}" alt="{{ guide.alt }}" width="800" height="600" loading="lazy"><span class="eyebrow">{{ guide.category }}</span><h2>{{ guide.title }}</h2><p>{{ guide.description }}</p><span class="megui-editorial-read">Ler o guia ↗</span></a></article>
+  {% endfor %}</div>
+  <aside class="megui-editorial-call"><h2>Sua ideia já tem um caminho?</h2><p>Envie o produto que procura, a quantidade e a data de uso. A gente conversa sobre as possibilidades.</p><a href="{{ url_for('quote_view') }}">Começar meu orçamento ↗</a> · <a href="{{ url_for('portfolio_view') }}">Conhecer os trabalhos da Megui</a></aside>
+</section>
+{% endblock %}

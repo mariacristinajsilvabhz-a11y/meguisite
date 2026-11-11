@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}{{ guide.title }} | Megui{% endblock %}
+{% block meta_description %}{{ guide.description }}{% endblock %}
+{% block og_image %}{{ seo_site }}{{ url_for('static', filename=guide.image) }}{% endblock %}
+{% block page_finish %}<link rel="stylesheet" href="{{ url_for('static', filename='css/editorial.css', v='20261111') }}">{% endblock %}
+{% block extra_head %}
+<script type="application/ld+json">{{ article_schema|tojson }}</script>
+<script type="application/ld+json">{{ breadcrumb_schema|tojson }}</script>
+{% endblock %}
+{% block content %}
+<article class="megui-editorial megui-editorial-article container">
+  <nav class="megui-editorial-breadcrumb" aria-label="Caminho da página"><a href="{{ url_for('home') }}">Início</a> / <a href="{{ url_for('guides') }}">Personalizados na prática</a></nav>
+  <header class="megui-editorial-heading"><span class="eyebrow">{{ guide.category }}</span><h1>{{ guide.title }}</h1><p>{{ guide.intro }}</p><small>Por Megui Personalizados · Publicado em <time datetime="{{ published }}">11 de novembro de 2026</time></small></header>
+  <figure><img class="megui-editorial-cover" src="{{ url_for('static', filename=guide.image) }}" alt="{{ guide.alt }}" width="1000" height="750" fetchpriority="high"><figcaption>{{ guide.alt }}. Foto do acervo Megui.</figcaption></figure>
+  <div class="megui-editorial-copy">{% for heading, paragraphs in guide.sections %}<section><h2>{{ heading }}</h2>{% for paragraph in paragraphs %}<p>{{ paragraph }}</p>{% endfor %}</section>{% endfor %}</div>
+  <aside class="megui-editorial-call"><h2>Vamos pensar no seu pedido?</h2><p>Conte a ideia, a quantidade e quando você precisa receber.</p><a href="https://wa.me/{{ whatsapp_number }}?text={{ ('Olá, Megui! Li o guia ' ~ guide.title ~ ' e gostaria de um orçamento.')|urlencode }}" target="_blank" rel="noopener">Conversar com a Megui ↗</a><p><a href="{{ url_for('category', slug=guide.category_slug) }}">{{ guide.category_label }}</a> · <a href="{{ url_for('textiles') }}">Tecidos e materiais</a> · <a href="{{ url_for('portfolio_view') }}">Trabalhos reais</a></p></aside>
+  <section><h2>Continue explorando</h2><ul class="megui-editorial-related">{% for other in related %}<li><a href="{{ url_for('guide_detail', slug=other.slug) }}">{{ other.title }}</a></li>{% endfor %}</ul></section>
+</article>
+{% endblock %}

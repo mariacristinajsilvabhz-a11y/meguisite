@@ -10,7 +10,7 @@
   <meta name="description" content="{{ meta_desc|trim }}">
   <link rel="canonical" href="{{ seo_canonical }}">
   {% if seo_noindex %}<meta name="robots" content="noindex, follow">{% else %}<meta name="robots" content="index, follow, max-image-preview:large">{% endif %}
-  <meta property="og:type" content="website">
+  <meta property="og:type" content="{{ 'article' if request.endpoint == 'guide_detail' else 'website' }}">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:site_name" content="Megui Personalizados">
   <meta property="og:title" content="{{ self.title()|trim }}">
@@ -133,6 +133,7 @@
         <a href="{{ url_for('events') }}">Eventos</a>
         <a href="{{ url_for('portfolio_view') }}">Trabalhos</a>
         <a href="{{ url_for('portfolio_view') }}#processos">Bastidores da produção</a>
+        <a href="{{ url_for('guides') }}">Personalizados na prática</a>
         <a href="{{ url_for('about') }}">Sobre nós</a>
       </div>
       <div>
