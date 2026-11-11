@@ -26,7 +26,7 @@ GUIDES = [
     dict(slug="uniformes-personalizados-contagem", category="Camisetas e uniformes",
          title="Uniformes personalizados em Contagem: organize o pedido da equipe",
          description="Como planejar uniformes personalizados para sua empresa em Contagem: modelos, grade de tamanhos, identidade visual e informações para orçamento.",
-         image="img/acervo/uniforme-personalizado.jpg", alt="Polo preta personalizada do Bar do Rocha, com detalhes amarelos na gola e nas mangas",
+         image="img/trabalhos/2026/motopao-camisetas-estudio-v1.webp", alt="Camisetas pretas Moto Pão, com personalização na frente e nas costas",
          intro="Renovar os uniformes fica mais simples quando o pedido começa pela rotina da equipe. Na Megui, a confecção própria em Contagem permite conversar sobre as peças e a personalização em conjunto. Veja o que organizar para receber uma proposta adequada.",
          sections=[
              ("Escolha os modelos por função", ["Liste os setores que vão usar as peças e descreva a rotina de cada um. Atendimento, escritório e trabalho externo podem ter necessidades diferentes de mobilidade, apresentação e frequência de lavagem.", "Camisetas, polos e outras peças devem ser avaliadas conforme o uso e a disponibilidade de confecção. Um uniforme comum não deve ser considerado equipamento de proteção; necessidades técnicas específicas precisam ser informadas antes do orçamento."]),
