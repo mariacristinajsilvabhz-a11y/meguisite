@@ -1,13 +1,67 @@
 {% extends "base.html" %}
 {% block title %}Brindes e personalizados em Contagem MG: guias | Megui{% endblock %}
 {% block meta_description %}Guias da Megui para escolher brindes, camisetas, uniformes e kits personalizados em Contagem, BH e região. Ideias com trabalhos reais e orientação para orçamento.{% endblock %}
-{% block page_finish %}<link rel="stylesheet" href="{{ url_for('static', filename='css/editorial.css', v='20261111') }}">{% endblock %}
+{% block extra_head %}
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400..600,100&display=swap" rel="stylesheet">
+{% endblock %}
+{% block page_finish %}<link rel="stylesheet" href="{{ url_for('static', filename='css/guias-20261111.css', v='20261111-1') }}">{% endblock %}
 {% block content %}
-<section class="megui-editorial container">
-  <header class="megui-editorial-heading"><span class="eyebrow">PERSONALIZADOS NA PRÁTICA</span><h1>Brindes e personalizados<br>em Contagem, MG.</h1><p>Da escolha da camiseta ao kit da sua empresa: ideias, detalhes e trabalhos reais para ajudar no seu próximo pedido.</p><p>Somos a Megui Personalizados, com confecção própria em Água Branca, Contagem. Atendemos empresas e eventos de Belo Horizonte e região. Explore os guias ou <a href="{{ url_for('products') }}">vá direto ao catálogo</a>.</p></header>
-  <div class="megui-editorial-grid">{% for guide in guides %}
-    <article class="megui-editorial-card"><a href="{{ url_for('guide_detail', slug=guide.slug) }}"><img src="{{ url_for('static', filename=guide.image) }}" alt="{{ guide.alt }}" width="800" height="600" loading="lazy"><span class="eyebrow">{{ guide.category }}</span><h2>{{ guide.title }}</h2><p>{{ guide.description }}</p><span class="megui-editorial-read">Ler o guia ↗</span></a></article>
-  {% endfor %}</div>
-  <aside class="megui-editorial-call"><h2>Sua ideia já tem um caminho?</h2><p>Envie o produto que procura, a quantidade e a data de uso. A gente conversa sobre as possibilidades.</p><a href="{{ url_for('quote_view') }}">Começar meu orçamento ↗</a> · <a href="{{ url_for('portfolio_view') }}">Conhecer os trabalhos da Megui</a></aside>
-</section>
+{% from '_icons.html' import icon %}
+{% set lead = guides[0] %}
+<div class="gx">
+  <header class="gx-head container">
+    <h1>Brindes e personalizados <span>em Contagem, MG</span></h1>
+    <div class="gx-head-side">
+      <p>O que a gente aprende todo dia na confecção, escrito para quem vai fazer um pedido: como escolher a peça, o tecido e a personalização.</p>
+      <p class="gx-head-note">Megui Personalizados, confecção própria em Água Branca, Contagem. Atendemos Belo Horizonte e região. <a href="{{ url_for('products') }}">Ver o catálogo</a></p>
+    </div>
+  </header>
+
+  <section class="gx-lead container" aria-label="Guia em destaque">
+    <a class="gx-lead-link" href="{{ url_for('guide_detail', slug=lead.slug) }}">
+      <figure class="gx-lead-photo">
+        <img src="{{ url_for('static', filename=lead.image) }}" alt="{{ lead.alt }}" width="1200" height="900" fetchpriority="high">
+        <figcaption class="gx-tag">{{ lead.category }}</figcaption>
+      </figure>
+      <div class="gx-lead-copy">
+        <h2>{{ lead.title }}</h2>
+        <p>{{ lead.description }}</p>
+        <span class="gx-read">Ler o guia {{ icon('arrow') }}</span>
+      </div>
+    </a>
+  </section>
+
+  {% if guides|length > 1 %}
+  <section class="gx-index container" aria-labelledby="gx-index-title">
+    <h2 id="gx-index-title" class="gx-index-title">Mais guias da Megui</h2>
+    <ul class="gx-list">{% for guide in guides[1:] %}
+      <li>
+        <a class="gx-row" href="{{ url_for('guide_detail', slug=guide.slug) }}">
+          <img src="{{ url_for('static', filename=guide.image) }}" alt="{{ guide.alt }}" width="800" height="600" loading="lazy">
+          <div class="gx-row-copy">
+            <span class="gx-row-topic">{{ guide.category }}</span>
+            <h3>{{ guide.title }}</h3>
+            <p>{{ guide.description }}</p>
+          </div>
+          <span class="gx-row-go" aria-hidden="true">{{ icon('arrow') }}</span>
+        </a>
+      </li>{% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
+  <section class="gx-call container" aria-labelledby="gx-call-title">
+    <div class="gx-call-panel">
+      <div>
+        <h2 id="gx-call-title">Já sabe o que quer pedir?</h2>
+        <p>Envie o produto, a quantidade e a data de uso. A gente responde com as possibilidades para o seu pedido.</p>
+      </div>
+      <div class="gx-call-actions">
+        <a class="gx-btn gx-btn-main" href="https://wa.me/{{ whatsapp_number }}?text={{ 'Olá, Megui! Vi os guias no site e gostaria de um orçamento.'|urlencode }}" target="_blank" rel="noopener">{{ icon('whatsapp') }} Falar no WhatsApp</a>
+        <a class="gx-btn gx-btn-line" href="{{ url_for('quote_view') }}">Montar meu orçamento</a>
+        <a class="gx-call-more" href="{{ url_for('portfolio_view') }}">Ver trabalhos da Megui</a>
+      </div>
+    </div>
+  </section>
+</div>
 {% endblock %}
