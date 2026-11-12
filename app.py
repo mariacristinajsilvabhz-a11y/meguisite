@@ -79,8 +79,8 @@ def sitemap_xml():
 def healthz():
     return jsonify(status="ok")
 
-PRIMARY_WHATSAPP = "5531933059600"
-ADMIN_PHONE = "5531994888250"
+PRIMARY_WHATSAPP = "5531994888250"
+SECONDARY_WHATSAPP = "5531933059600"
 CONTACT_EMAIL = "contatomegui@gmail.com"
 CONTACT_ADDRESS = "Avenida Seis, nº 31, Água Branca, Contagem - MG"
 COMPANY_CNPJ = "45.833.844/0001-51"
@@ -88,9 +88,8 @@ COMPANY_CNPJ = "45.833.844/0001-51"
 _raw_whatsapp = os.environ.get("WHATSAPP_NUMBER", PRIMARY_WHATSAPP)
 WHATSAPP_NUMBER = re.sub(r"\D", "", _raw_whatsapp)
 
-# Números legados de atendimento são redirecionados ao comercial atual.
-# O número final 8250 agora atende apenas assuntos administrativos.
-if WHATSAPP_NUMBER in {"31984912083", "5531984912083", "31994888250", "5531994888250"}:
+# Mantém o Atendimento 1 como destino principal dos botões do site.
+if WHATSAPP_NUMBER in {"31984912083", "5531984912083", "31933059600", "5531933059600", "31994888250"}:
     WHATSAPP_NUMBER = PRIMARY_WHATSAPP
 
 from catalog_taxonomy import CATEGORIES, CATEGORY_MAP, COLLECTIONS, SUBCATEGORY_MAP, classify, matches
@@ -242,7 +241,7 @@ def inject_global():
         "reviews": REVIEWS,
         "whatsapp_configured": bool(WHATSAPP_NUMBER),
         "whatsapp_number": WHATSAPP_NUMBER,
-        "admin_phone": ADMIN_PHONE,
+        "secondary_whatsapp": SECONDARY_WHATSAPP,
         "contact_email": CONTACT_EMAIL,
         "contact_address": CONTACT_ADDRESS,
         "company_cnpj": COMPANY_CNPJ,

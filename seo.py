@@ -27,7 +27,7 @@ DESCRIPTIONS = {
     "portfolio_view": "Trabalhos reais da Megui: uniformes, camisetas, brindes e kits personalizados para Senac, Sesc, Fecomércio MG, Band Minas e muitas outras marcas.",
     "about": "Conheça a história da Megui Personalizados, confecção em Contagem (MG) que transforma ideias em camisetas, uniformes e brindes com a sua marca.",
     "policies": "Política de trocas, devoluções, cancelamento, prazos e privacidade da Megui Personalizados. Saiba como funcionam pedidos de peças personalizadas.",
-    "contact": "Fale com a Megui Personalizados: WhatsApp (31) 93305-9600, e-mail e endereço em Contagem (MG). Orçamentos de camisetas, uniformes e brindes.",
+    "contact": "Fale com a Megui Personalizados: WhatsApp (31) 99488-8250, e-mail e endereço em Contagem (MG). Orçamentos de camisetas, uniformes e brindes.",
     "textiles": "Tecidoteca Megui: conheça as malhas e materiais das nossas camisetas e uniformes personalizados e escolha o tecido ideal para o seu projeto.",
     "outside_box": "Tem uma ideia diferente? A Megui cria produtos personalizados sob medida: brindes, kits, embalagens e peças fora do catálogo para a sua marca.",
 }
