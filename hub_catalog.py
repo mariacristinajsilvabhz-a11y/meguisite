@@ -56,7 +56,7 @@ class HubCatalog:
         params={'categoria':category,'q':query,'pagina':page,'limite':limit,'vitrine':int(vitrine)}
         if subtype:params['subcategoria']=subtype
         data=self.fetch('/api/site/catalogo',params,timeout=timeout)
-        return [adapt(p) for p in data['produtos'] if int(p.get('estoque') or 0)>0],data['paginacao'],data.get('filtros',{})
+        return [adapt(p) for p in data['produtos'] if int(p.get('estoque') or 0)>0 or p.get('sob_consulta')],data['paginacao'],data.get('filtros',{})
 
     def list(self,category='',query='',page=1,limit=48,vitrine=False,timeout=25):
         items,pagination,_=self.listing(category,query,page,limit,vitrine,timeout=timeout)
@@ -64,7 +64,7 @@ class HubCatalog:
 
     def get(self,hub_id):
         data=self.fetch('/api/site/catalogo/'+str(hub_id))
-        return adapt(data['produto']) if data and int(data['produto'].get('estoque') or 0)>0 else None
+        return adapt(data['produto']) if data and (int(data['produto'].get('estoque') or 0)>0 or data['produto'].get('sob_consulta')) else None
 
 
 # Values are a fixed palette; supplier text is never interpolated into CSS.
@@ -102,7 +102,7 @@ def adapt(p):
     variants=[]
     for variant in p.get('variacoes') or []:
         variants.append({'id':str(variant['id']),'sku':str(variant.get('sku') or ''),
-                         'color':str(variant.get('cor') or ''),'swatch':color_swatch(variant.get('cor')),'stock':max(0,int(variant.get('estoque') or 0)),
+                         'on_request':bool(variant.get('sob_consulta')),'color':str(variant.get('opcao') or variant.get('cor') or ''),'swatch':color_swatch(variant.get('cor')),'stock':max(0,int(variant.get('estoque') or 0)),
                          'image':safe_image(variant.get('imagem'))})
     gallery=list(dict.fromkeys(url for url in [image]+[safe_image(v) for v in p.get('imagens',[])] if url))
     return {'variants':variants,'gallery':gallery,'id':1_000_000_000+int(p['id']),'hub_id':int(p['id']),
@@ -112,4 +112,4 @@ def adapt(p):
             'description':description or 'Consulte nossa equipe para definir a quantidade, a personalização e o prazo deste produto.',
             'tags':[p.get('categoria_original') or 'Personalizável'],
             'visual':'hub','image_url':image,'image':'','image_reference':False,
-            'stock':max(0,int(p.get('estoque') or 0))}
+            'on_request':bool(p.get('sob_consulta')),'stock':max(0,int(p.get('estoque') or 0))}

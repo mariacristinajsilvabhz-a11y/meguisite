@@ -19,7 +19,7 @@
     <div class="product-info">
       <span class="eyebrow">{{ product.line }}</span>
       <h1>{{ product.name }}</h1>
-      <p class="lead">{{ product.description }}</p>
+      <p class="lead">{{ product.description }}</p>{% if product.on_request|default(false) %}<p class="product-availability-note">Produção sob consulta. Confirmamos disponibilidade, quantidade e prazo antes de fechar seu pedido.</p>{% endif %}
 
       <div class="tag-row">
         {% for tag in product.tags %}{% if tag|lower|replace('á','a') != 'personalizavel' %}<span>{{ tag }}</span>{% endif %}{% endfor %}
@@ -48,20 +48,20 @@
           <input type="hidden" name="next" value="{{ request.path }}">
           {% if product.variants %}
           <div class="variant-picker">
-            <div class="variant-picker-heading"><strong>Cores e opções disponíveis</strong><span data-variant-selected aria-live="polite">Selecione uma opção</span></div>
+            <div class="variant-picker-heading"><strong>{{ 'Opções de quantidade' if product.on_request|default(false) else 'Cores e opções disponíveis' }}</strong><span data-variant-selected aria-live="polite">Selecione uma opção</span></div>
             <div class="variant-swatches" role="group" aria-label="Escolher cor ou opção">
               {% for variant in product.variants %}
-              <button type="button" class="variant-swatch" data-variant-choice="{{ variant.id }}" data-variant-name="{{ variant.color or ('Opção ' ~ loop.index) }}" aria-pressed="false" {% if variant.stock <= 0 %}disabled title="Indisponível"{% endif %}>
+              <button type="button" class="variant-swatch" data-variant-choice="{{ variant.id }}" data-variant-name="{{ variant.color or ('Opção ' ~ loop.index) }}" aria-pressed="false" {% if variant.stock <= 0 and not variant.on_request|default(false) %}disabled title="Indisponível"{% endif %}>
                 <span class="variant-swatch-dot" aria-hidden="true"></span>
                 <span class="variant-swatch-name">{{ variant.color or ('Opção ' ~ loop.index) }}</span>
-                {% if variant.stock <= 0 %}<span class="variant-unavailable">Indisponível</span>{% endif %}
+                {% if variant.stock <= 0 and not variant.on_request|default(false) %}<span class="variant-unavailable">Indisponível</span>{% endif %}
               </button>
               {% endfor %}
             </div>
             <label class="variant-fallback-label">Opção selecionada
             <select name="variant_id" data-catalog-variant required>
               {% if product.variants|length > 1 %}<option value="">Escolha uma opção</option>{% endif %}
-              {% for variant in product.variants %}<option value="{{ variant.id }}" data-image="{{ variant.image }}" data-color="{{ variant.color }}" {% if variant.stock <= 0 %}disabled{% endif %}>{{ variant.color or ('Opção ' ~ loop.index) }}{% if variant.stock <= 0 %} (indisponível){% endif %}</option>{% endfor %}
+              {% for variant in product.variants %}<option value="{{ variant.id }}" data-image="{{ variant.image }}" data-color="{{ variant.color }}" {% if variant.stock <= 0 and not variant.on_request|default(false) %}disabled{% endif %}>{{ variant.color or ('Opção ' ~ loop.index) }}{% if variant.stock <= 0 and not variant.on_request|default(false) %} (indisponível){% endif %}</option>{% endfor %}
             </select>
             </label>
           </div>
@@ -84,7 +84,7 @@
       <div class="product-benefits">
         <span>✓ Atendimento consultivo</span>
         <span>✓ Personalização sob medida</span>
-        <span>✓ Confecção própria em Contagem (MG)</span>
+        <span>{{ '✓ Produção com parceiros selecionados' if product.on_request|default(false) else '✓ Confecção própria em Contagem (MG)' }}</span>
       </div>
 
       {% if trusted_brands %}

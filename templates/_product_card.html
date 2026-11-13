@@ -5,10 +5,10 @@
 
   </a>
   <div class="product-body">
-    <div class="product-meta"><span>{{ card_category.name if card_category else 'Personalizados Megui' }}</span></div>
+    <div class="product-meta">{% if product.on_request|default(false) %}<span>Sob consulta</span>{% endif %}<span>{{ card_category.name if card_category else 'Personalizados Megui' }}</span></div>
     <h3><a href="{{ url_for('product', slug=product.slug) }}">{{ product.name }}</a></h3>
-    {% set available_colors = product.variants|default([])|selectattr('stock','gt',0)|list %}
-    {% if available_colors %}<div class="product-options"><span class="product-options-label">{{ available_colors|length }} {{ 'opção disponível' if available_colors|length == 1 else 'opções disponíveis' }}</span><div class="product-color-peeks" aria-label="Cores disponíveis de {{ product.name }}">{% for variant in available_colors[:7] %}<a href="{{ url_for('product',slug=product.slug,opcao=variant.id) }}" aria-label="Escolher {{ variant.color or ('opção ' ~ loop.index) }}" title="{{ variant.color or ('Opção ' ~ loop.index) }}">{% if variant.swatch %}<span class="product-color-dot" style="--product-color:{{ variant.swatch }}" aria-hidden="true"></span>{% elif variant.image %}<img src="{{ variant.image }}" alt="" width="24" height="24" loading="lazy">{% else %}<span class="product-color-unknown" aria-hidden="true">?</span>{% endif %}</a>{% endfor %}{% if available_colors|length > 7 %}<a class="product-color-more" href="{{ url_for('product',slug=product.slug) }}" aria-label="Ver todas as {{ available_colors|length }} opções">+{{ available_colors|length - 7 }}</a>{% endif %}</div></div>{% endif %}
+    {% set available_colors = product.variants|default([])|list if product.on_request|default(false) else product.variants|default([])|selectattr('stock','gt',0)|list %}
+    {% if available_colors %}<div class="product-options"><span class="product-options-label">{{ available_colors|length }} {{ ('tiragem' if available_colors|length == 1 else 'tiragens') if product.on_request|default(false) else ('opção disponível' if available_colors|length == 1 else 'opções disponíveis') }}</span><div class="product-color-peeks" aria-label="Cores disponíveis de {{ product.name }}">{% for variant in available_colors[:7] %}<a href="{{ url_for('product',slug=product.slug,opcao=variant.id) }}" aria-label="Escolher {{ variant.color or ('opção ' ~ loop.index) }}" title="{{ variant.color or ('Opção ' ~ loop.index) }}">{% if variant.swatch %}<span class="product-color-dot" style="--product-color:{{ variant.swatch }}" aria-hidden="true"></span>{% elif variant.image %}<img src="{{ variant.image }}" alt="" width="24" height="24" loading="lazy">{% else %}<span class="product-color-unknown" aria-hidden="true">?</span>{% endif %}</a>{% endfor %}{% if available_colors|length > 7 %}<a class="product-color-more" href="{{ url_for('product',slug=product.slug) }}" aria-label="Ver todas as {{ available_colors|length }} opções">+{{ available_colors|length - 7 }}</a>{% endif %}</div></div>{% endif %}
     <div class="product-actions">
       <form class="product-quick-quote" action="{{ url_for('add_to_quote', product_id=product.id) }}" method="post">
         <input type="hidden" name="qty" value="50">
@@ -20,7 +20,7 @@
             <label class="product-quick-variant">
               <span class="sr-only">Cor ou opção para {{ product.name }}</span>
               <select name="variant_id" required aria-label="Cor ou opção para {{ product.name }}">
-                <option value="">Escolha uma cor / opção</option>
+                <option value="">Escolha uma opção</option>
                 {% for variant in available_colors %}<option value="{{ variant.id }}">{{ variant.color or ('Opção ' ~ loop.index) }}</option>{% endfor %}
               </select>
             </label>

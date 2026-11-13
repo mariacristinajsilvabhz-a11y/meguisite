@@ -570,7 +570,7 @@ def add_to_quote(product_id):
     if variants and not variant_id:
         abort(400, description="Escolha uma opção disponível deste produto.")
     variant = next((v for v in variants if v["id"] == variant_id), None)
-    if variant_id and (not variant or variant["stock"] <= 0):
+    if variant_id and (not variant or (variant["stock"] <= 0 and not variant.get("on_request"))):
         abort(400, description="Escolha uma opção disponível deste produto.")
     key = str(product["id"]) + (":" + variant_id if variant else "")
     quote_cart = cart()
